@@ -87,7 +87,7 @@
   <ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="https://json-schema.org/draft-04/schema" /></VisualStudio></ProjectExtensions>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\$(TargetFileName)&quot;&#xD;&#xA;del thunder.zip&#xD;&#xA;tar -acf thunder.zip -C $(TargetDir) $(TargetFileName) README.md icon.png manifest.json" />
+    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)README.md&quot; &quot;$(SolutionDir)README.md&quot;&#xD;&#xA;del thunder.zip&#xD;&#xA;tar -acf thunder.zip -C $(TargetDir) $(TargetFileName) README.md icon.png manifest.json" />
   </Target>
 
 </Project>
