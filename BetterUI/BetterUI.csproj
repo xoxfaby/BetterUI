@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Release</Configurations>
+    <OutputType>Library</OutputType>
+    <AssemblyName>BetterUI</AssemblyName>
+    <RootNamespace>BetterUI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp.R2API.mm">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\monomod\tristanmcpherson-R2API\Assembly-CSharp.R2API.mm.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.MonoMod.Loader">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\patchers\BepInEx.MonoMod.Loader\BepInEx.MonoMod.Loader.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\plugins\tristanmcpherson-R2API\R2API\MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\plugins\tristanmcpherson-R2API\R2API\R2API.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="https://json-schema.org/draft-04/schema" /></VisualStudio></ProjectExtensions>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\$(TargetFileName)&quot;&#xD;&#xA;del thunder.zip&#xD;&#xA;tar -acf thunder.zip -C $(TargetDir) $(TargetFileName) README.md icon.png manifest.json" />
+  </Target>
+
+</Project>

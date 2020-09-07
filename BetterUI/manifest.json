@@ -1,0 +1,10 @@
+﻿{
+  "name": "BetterUI",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/xoxfaby/BetterUI",
+  "description": "Various UI improvements like item sorting, advanced item descriptions and more. ",
+  "dependencies": [
+    "bbepis-BepInExPack-5.3.1",
+    "tristanmcpherson-R2API-2.5.14"
+  ]
+}
