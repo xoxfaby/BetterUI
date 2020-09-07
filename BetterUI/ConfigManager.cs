@@ -78,7 +78,8 @@ namespace BetterUI
                 "e = Equipment Related First\n" +
                 "E = Equipment Related Last\n" +
                 "p = Sprint Related First\n" +
-                "P = Sprint Related Last\n");
+                "P = Sprint Related Last\n\n" +
+                "Since RoR2Modman seems to have issues with the config file you can find the full list in the README on Thunderstore.");
         }
     }
 }

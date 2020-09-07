@@ -1,28 +1,31 @@
 ﻿using System;
-using System.Reflection;
 using System.Linq;
-using System.Collections.Generic;
 
 using RoR2;
-using RoR2.UI;
 using BepInEx;
 
+using System.Security;
+using System.Security.Permissions;
+
+[module: UnverifiableCode]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.0.0")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.0.1")]
 
 
     public class BetterUI : BaseUnityPlugin
     {
-
-        public static BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
-
         private ConfigManager config;
+
         public void Awake()
         {
             config = new ConfigManager(this);
+        }
+        public void OnEnable()
+        {
 
             if (config.showHidden)
             {
@@ -41,7 +44,7 @@ namespace BetterUI
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (config.showHidden)
             {
@@ -84,15 +87,10 @@ namespace BetterUI
 
             orig(self);
 
-            Inventory inventory = typeof(ItemInventoryDisplay).GetField("inventory", flags).GetValue(self) as Inventory;
-            if (inventory)
+
+            if (self.inventory && self.inventory.itemAcquisitionOrder.Any())
             {
-                if (!inventory.itemAcquisitionOrder.Any())
-                {
-                    System.Console.WriteLine("no any");
-                    return;
-                }
-                IOrderedEnumerable<ItemIndex> finalOrder = inventory.itemAcquisitionOrder.OrderBy(a => 1);
+                IOrderedEnumerable<ItemIndex> finalOrder = self.inventory.itemAcquisitionOrder.OrderBy(a => 1);
                 foreach (char c in config.sortOrder.ToCharArray())
                 {
                     switch (c)
@@ -104,22 +102,16 @@ namespace BetterUI
                             finalOrder = finalOrder.ThenByDescending(item => config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                             break;
                         case '2': // Stack Size Ascending
-                        {
-                            int[] itemStacks = (int[])typeof(ItemInventoryDisplay).GetField("itemStacks", flags).GetValue(self);
-                            finalOrder = finalOrder.ThenBy(item => itemStacks[(int)item]);
+                            finalOrder = finalOrder.ThenBy(item => self.inventory.itemStacks[(int)item]);
                             break;
-                        }
                         case '3': // Stack Size Descending
-                            {
-                                int[] itemStacks = (int[])typeof(ItemInventoryDisplay).GetField("itemStacks", flags).GetValue(self);
-                            finalOrder = finalOrder.ThenByDescending(item => itemStacks[(int)item]);
+                            finalOrder = finalOrder.ThenByDescending(item => self.inventory.itemStacks[(int)item]);
                             break;
-                        }
                         case '4': // Pickup Order
-                            finalOrder = finalOrder.ThenBy(item => inventory.itemAcquisitionOrder.IndexOf(item));
+                            finalOrder = finalOrder.ThenBy(item => self.inventory.itemAcquisitionOrder.IndexOf(item));
                             break;
                         case '5': // Pickup Order Reversed
-                            finalOrder = finalOrder.ThenByDescending(item => inventory.itemAcquisitionOrder.IndexOf(item));
+                            finalOrder = finalOrder.ThenByDescending(item => self.inventory.itemAcquisitionOrder.IndexOf(item));
                             break;
                         case '6': // Alphabetical
                             finalOrder = finalOrder.ThenBy(item => Language.GetString(ItemCatalog.GetItemDef(item).nameToken));
@@ -176,11 +168,9 @@ namespace BetterUI
                     }
                 }
 
-
-                ItemIndex[] itemOrder = (ItemIndex[])typeof(ItemInventoryDisplay).GetField("itemOrder", flags).GetValue(self);
-                if (itemOrder != null)
+                if (self.itemOrder != null)
                 {
-                    finalOrder.ToList().CopyTo(itemOrder);
+                    finalOrder.ToList().CopyTo(self.itemOrder);
                 }
             }
         }
