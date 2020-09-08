@@ -2,6 +2,11 @@
 
 A simple mod that adds various UI improvements. Currently implemented:
 
+#### StatsDisplay
+Show all of your character's stats! Completely customizable!
+
+![StatsDisplay](https://fby.pw/statsdisplay.png)
+
 #### Improved Item Sorting
 Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage". EVEN RANDOMLY?!
 
@@ -15,7 +20,31 @@ Use the advanced item descriptions from the logbook that show the actual numbers
 #### Show Hidden Items
 Show hidden items like the hidden monsoon/drizzle items
 
+### Help & Feedback
+
+If you need help or have suggestions, create an issue on github or find me on the RoR2 Modding Discord 
+
+[RoR2 Modding Discord](https://discord.com/invite/5MbXZvd) Username: @XoXFaby#1337
+
+https://github.com/xoxfaby/BetterUI
+
 ### Configuration
+
+#### StatsDisplay
+
+The StatsDisplay parses the `StatString` in the config file and replaces all the parameters it finds.
+The StatsDisplay can also be moved, resized and recolored.
+Here is a list of all valid parameters right now: 
+
+$exp $level $luck  
+$dmg $crit $atkspd  
+$hp $maxhp $shield $maxshield $barrier $maxbarrier  
+$armor $regen  
+$movespeed $jumps $maxjumps  
+$killcount $multikill  
+
+
+#### Sorting
 
 You can enable/disable any part of the mod in the config file.  
 The sorting is completely customizable as well. 
@@ -57,14 +86,11 @@ E = Equipment Related Last
 p = Sprint Related First  
 P = Sprint Related Last  
 
-### Help
-
-If you need help or have suggestions, create an issue on github or find me on the RoR2 Modding Discord @XoXFaby#1337
-
-https://github.com/xoxfaby/BetterUI
-
 ### Changelog
+
+#### v1.1.0
+ - Added StatsDisplay
 
 #### v1.0.1
  - Fixed up the README
- - Interal Changes
+ - Internal Changes
