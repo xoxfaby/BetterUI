@@ -96,7 +96,7 @@ namespace BetterUI
                 printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
                 printString = printString.Replace("$luck", self.targetMaster.luck.ToString());
                 printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
-                printString = printString.Replace("$kills", playerBody.killCountServer.ToString());
+                printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
 
 
                 textMesh.text = printString;
