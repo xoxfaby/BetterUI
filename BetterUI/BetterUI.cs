@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.0.1")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.2")]
 
 
     public class BetterUI : BaseUnityPlugin
@@ -26,52 +26,60 @@ namespace BetterUI
         public void OnEnable()
         {
 
-            if (config.showHidden)
+            if (config.showHidden.Value)
             {
                 On.RoR2.UI.ItemInventoryDisplay.ItemIsVisible += hook_ItemIsVisible;
             }
 
-            if (config.AdvancedDescriptions)
+            if (config.advancedDescriptions.Value)
             {
                 On.RoR2.UI.GenericNotification.SetItem += hook_SetItem;
                 On.RoR2.UI.ItemIcon.SetItemIndex += hook_SetItemIndex;
             }
 
-            if (config.showStatsDisplay)
+            if (config.showStatsDisplay.Value)
             {
                 On.RoR2.UI.HUD.OnEnable += statsDisplay.hook_OnEnable;
                 On.RoR2.UI.HUD.OnDisable += statsDisplay.hook_OnDisable;
             }
 
-            if (config.sortItems)
-            { 
+            if (config.sortItemsInventory.Value)
+            {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += itemSorting.hook_OnInventoryChanged;
+            }
+            if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += itemSorting.hook_SetPickupOptions;
             }
 
         }
 
         private void OnDisable()
         {
-            if (config.showHidden)
+            if (config.showHidden.Value)
             {
                 On.RoR2.UI.ItemInventoryDisplay.ItemIsVisible -= hook_ItemIsVisible;
             }
 
-            if (config.AdvancedDescriptions)
+            if (config.advancedDescriptions.Value)
             {
                 On.RoR2.UI.GenericNotification.SetItem -= hook_SetItem;
                 On.RoR2.UI.ItemIcon.SetItemIndex -= hook_SetItemIndex;
             }
 
-            if (config.showStatsDisplay)
+            if (config.showStatsDisplay.Value)
             {
                 On.RoR2.UI.HUD.OnEnable -= statsDisplay.hook_OnEnable;
                 On.RoR2.UI.HUD.OnDisable -= statsDisplay.hook_OnDisable;
             }
 
-            if (config.sortItems)
+            if (config.sortItemsInventory.Value)
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged -= itemSorting.hook_OnInventoryChanged;
+            }
+            if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= itemSorting.hook_SetPickupOptions;
             }
         }
 

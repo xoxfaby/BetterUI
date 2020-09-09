@@ -33,15 +33,15 @@ namespace BetterUI
             statsDisplayContainer.transform.SetParent(self.mainContainer.transform);
 
             RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
-            rectTransform.anchorMin = config.windowAnchorMin;
-            rectTransform.anchorMax = config.windowAnchorMax;
-            rectTransform.anchoredPosition = config.windowPosition;
-            rectTransform.sizeDelta = config.windowSize;
+            rectTransform.anchorMin = config.windowAnchorMin.Value;
+            rectTransform.anchorMax = config.windowAnchorMax.Value;
+            rectTransform.anchoredPosition = config.windowPosition.Value;
+            rectTransform.sizeDelta = config.windowSize.Value;
 
             textMesh = statsDisplayContainer.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
-            textMesh.fontSize = config.statsFontSize;
-            textMesh.faceColor = config.statsFontColor;
-            textMesh.outlineColor = config.statsFontOutlineColor;
+            textMesh.fontSize = config.statsFontSize.Value;
+            textMesh.faceColor = config.statsFontColor.Value;
+            textMesh.outlineColor = config.statsFontOutlineColor.Value;
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, 0.2f);
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.4f);
 
@@ -71,13 +71,13 @@ namespace BetterUI
 
             if (playerBody != null && textMesh != null)
             {
-                if (config.scoreboardOnly)
+                if (config.scoreboardOnly.Value)
                 {
                     bool active = self.localUserViewer != null && self.localUserViewer.inputPlayer != null && self.localUserViewer.inputPlayer.GetButton("info");
                     statsDisplayContainer.SetActive(active);
                     if (!active) { return; }
                 }
-                string printString = config.statString;
+                string printString = config.statString.Value;
                 printString = printString.Replace("$exp", playerBody.experience.ToString());
                 printString = printString.Replace("$level", playerBody.level.ToString());
                 printString = printString.Replace("$dmg", playerBody.damage.ToString());

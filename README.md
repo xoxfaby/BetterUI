@@ -1,6 +1,13 @@
 # BetterUI
 
-A simple mod that adds various UI improvements. Currently implemented:
+A simple mod that adds various UI improvements.  
+Each be disabled and configured in the config file.
+
+##### Currently implemented:
+- StatsDisplay
+- Ordered Inventory, Scrapper Menu, Command Menu
+- Advanced Item Description
+- Show Hidden Items
 
 #### StatsDisplay
 Show all of your character's stats! Completely customizable!
@@ -12,8 +19,11 @@ Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage"
 
 ![Item Sorting](https://fby.pw/itembar.png)
 
+![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
+
 #### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
+No calculations are implemented at this point, but might be in the future!
 
 ![Item Description](https://fby.pw/itemdesc.png)
 
@@ -87,6 +97,12 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ### Changelog
+
+#### v1.1.2
+ - Added Sorting to Scrapper and Command Menu
+
+#### v1.1.1
+ - Fixed $killcount not working
 
 #### v1.1.0
  - Added StatsDisplay
