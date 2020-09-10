@@ -14,6 +14,28 @@ namespace BetterUI
             config = c;
         }
 
+        public List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
+        {
+            IOrderedEnumerable<EquipmentIndex> finalOrder = equipmentList.OrderBy(a => 1);
+            foreach (char c in sortOrder.ToCharArray())
+            {
+                switch (c)
+                {
+                    case '6': // Alphabetical
+                        finalOrder = finalOrder.ThenBy(equipment => Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
+                        break;
+                    case '7': // Alphabetical Reversed
+                        finalOrder = finalOrder.ThenByDescending(equipment => Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
+                        break;
+                    case '8': // Random"
+                        Random random = new Random();
+                        finalOrder = finalOrder.ThenBy(equipment => random.Next());
+                        break;
+                }
+            }
+            return equipmentList;
+        }
+
         public List<ItemIndex> sortItems(List<ItemIndex> itemList, Inventory inventory, String sortOrder)
         {
 
@@ -132,16 +154,34 @@ namespace BetterUI
             }
                   
             Inventory inventory = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.inventory;
-            
-            bool[] availableIndex = new bool[ItemCatalog.itemCount];
-            foreach (RoR2.PickupPickerController.Option option in options)
+            RoR2.PickupPickerController.Option[] sortedOptions;
+            if (PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex == ItemIndex.None)
             {
-                availableIndex[(int) PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
+                bool[] availableIndex = new bool[EquipmentCatalog.equipmentCount];
+                foreach (RoR2.PickupPickerController.Option option in options)
+                {
+                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex] = option.available;
+                }
+
+                List<EquipmentIndex> sortedItems = sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
+
+                sortedOptions = sortedItems.Select(equipmentIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipmentIndex), available = availableIndex[(int)equipmentIndex] }).ToArray();
+
+            }
+            else
+            {
+                bool[] availableIndex = new bool[ItemCatalog.itemCount];
+                foreach (RoR2.PickupPickerController.Option option in options)
+                {
+                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
+                }
+
+                List<ItemIndex> sortedItems = sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
+
+                sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
+
             }
 
-            List<ItemIndex> sortedItems = sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
-
-            RoR2.PickupPickerController.Option[] sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
 
             int[] optionMap = sortedOptions.Select(option => Array.IndexOf(options,option)).ToArray();
 

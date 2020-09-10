@@ -1,6 +1,6 @@
 ﻿{
   "name": "BetterUI",
-  "version_number": "1.1.2",
+  "version_number": "1.1.3",
   "website_url": "https://github.com/xoxfaby/BetterUI",
   "description": "Now with sorted scrapper and command menu! Various UI improvements like ordered items with multiple ways of sorting, customizable StatsDisplay, advanced item descriptions and more. ",
   "dependencies": [

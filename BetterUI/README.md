@@ -98,6 +98,9 @@ P = Sprint Related Last
 
 ### Changelog
 
+#### v1.1.3
+ - Fixed Equipments with sorted command window.
+
 #### v1.1.2
  - Added Sorting to Scrapper and Command Menu
 
