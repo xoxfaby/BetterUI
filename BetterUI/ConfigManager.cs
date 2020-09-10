@@ -73,7 +73,10 @@ namespace BetterUI
                     "5 = Pickup Order Reversed\n" +
                     "6 = Alphabetical\n" +
                     "7 = Alphabetical Reversed\n" +
-                    "8 = Random\n\n" +
+                    "8 = Random\n" +
+                    "i = ItemIndex\n" +
+                    "I = ItemIndex Descending\n" +
+                    "\n" +
                     "Tag Based:\n" +
                     "s = Scrap First\n" +
                     "S = Scrap Last\n" +

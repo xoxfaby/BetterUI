@@ -78,6 +78,8 @@ The full options:
 6 = Alphabetical  
 7 = Alphabetical Reversed  
 8 = Random   
+i = ItemIndex  
+I = ItemIndex Descending  
 
 Tag Based:  
 
@@ -97,6 +99,9 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ### Changelog
+
+#### v1.1.5
+ - Added ItemIndex (ID) Sorting
 
 #### v1.1.4
  - Added special command menu sorting which keeps most recently picked item in the middle

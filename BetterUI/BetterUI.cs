@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.4")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.5")]
 
 
     public class BetterUI : BaseUnityPlugin

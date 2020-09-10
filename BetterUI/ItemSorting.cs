@@ -104,6 +104,13 @@ namespace BetterUI
                             finalOrder = finalOrderList.OrderBy(a => 1);
                         }
                         break;
+
+                    case 'i': // ItemIndex Ascending
+                        finalOrder = finalOrder.ThenBy(itemIndex => itemIndex);
+                        break;
+                    case 'I': // ItemIndex Ascending
+                        finalOrder = finalOrder.ThenByDescending(itemIndex => itemIndex);
+                        break;
                     case 's': // Scrap First
                         finalOrder = finalOrder.ThenByDescending(item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Scrap));
                         break;
