@@ -98,6 +98,9 @@ P = Sprint Related Last
 
 ### Changelog
 
+#### v1.1.4
+ - Added special command menu sorting which keeps most recently picked item in the middle
+
 #### v1.1.3
  - Fixed Equipments with sorted command window.
 

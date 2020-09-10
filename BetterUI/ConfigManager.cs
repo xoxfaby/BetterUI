@@ -93,8 +93,10 @@ namespace BetterUI
             sortOrderScrapper = mod.Config.Bind<String>("Sorting", "SortOrderScrapper", "S134",
             "Sort order for the scrapper window");
 
-            sortOrderCommand = mod.Config.Bind<String>("Sorting", "SortOrderCommand", "6",
-            "Sort order for the scrapper window");
+            sortOrderCommand = mod.Config.Bind<String>("Sorting", "SortOrderCommand", "36C",
+            "Sort order for the command window\n" +
+            "The command window has a special sort option \"C\" which will place the last selected item in the middle.\n" +
+            "Note: This option must be the last one in the SortOrderCommand option");
 
 
 
@@ -109,8 +111,8 @@ namespace BetterUI
                 "default of (1, 0.5) puts the anchor in the middle of the right side of the screen.\n");
 
             windowAnchorMax = mod.Config.Bind<Vector2>("StatsDisplay", "WindowAnchorMax", new Vector2(1, 0.5f), "Maximum position to anchor from, see above.");
-            windowPosition = mod.Config.Bind<Vector2>("StatsDisplay", "WindowPosition", new Vector2(-260, 400), "Position of the StatsDisplay window relative to anchor");
-            windowSize = mod.Config.Bind<Vector2>("StatsDisplay", "WindowSize", new Vector2(250,600), "Size of the StatsDisplay window");
+            windowPosition = mod.Config.Bind<Vector2>("StatsDisplay", "WindowPosition", new Vector2(-210, 100), "Position of the StatsDisplay window relative to anchor");
+            windowSize = mod.Config.Bind<Vector2>("StatsDisplay", "WindowSize", new Vector2(200,600), "Size of the StatsDisplay window");
             statsFontSize = mod.Config.Bind<float>("StatsDisplay", "StatsDisplayFontSize", 22f, "Size of the StatsDisplay text");
             statsFontColor = mod.Config.Bind<Color>("StatsDisplay", "StatsFontColor", Color.white, "Color of the StatsDisplay text");
             statsFontOutlineColor = mod.Config.Bind<Color>("StatsDisplay", "StatsFontOutlineColor", new Color(0,0,0,1), "Color of the outline for the stats display");

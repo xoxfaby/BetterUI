@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.3")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.4")]
 
 
     public class BetterUI : BaseUnityPlugin
@@ -49,6 +49,10 @@ namespace BetterUI
             }
             if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
             {
+                if(config.sortItemsCommand.Value && config.sortOrderCommand.Value.IndexOf('C') >= 0)
+                {
+                    On.RoR2.PickupPickerController.SubmitChoice += itemSorting.hook_SubmitChoice;
+                }
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions += itemSorting.hook_SetPickupOptions;
             }
 
@@ -79,6 +83,10 @@ namespace BetterUI
             }
             if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
             {
+                if (config.sortItemsCommand.Value && config.sortOrderCommand.Value.Contains('C'))
+                {
+                    On.RoR2.PickupPickerController.SubmitChoice -= itemSorting.hook_SubmitChoice;
+                }
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= itemSorting.hook_SetPickupOptions;
             }
         }

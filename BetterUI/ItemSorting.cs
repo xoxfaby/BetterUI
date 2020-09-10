@@ -8,11 +8,20 @@ namespace BetterUI
     class ItemSorting
     {
         private ConfigManager config;
+        private ItemIndex[] lastItem = new ItemIndex[] {
+            ItemIndex.None,
+            ItemIndex.None,
+            ItemIndex.None,
+            ItemIndex.None,
+            ItemIndex.None,
+            ItemIndex.None,
+        };
 
         public ItemSorting(ConfigManager c)
         {
             config = c;
         }
+
 
         public List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
         {
@@ -72,6 +81,29 @@ namespace BetterUI
                         Random random = new Random();
                         finalOrder = finalOrder.ThenBy(item => random.Next());
                         break;
+                    case 'C': // Special Command Centered
+                        ItemDef firstItemDef = ItemCatalog.GetItemDef(finalOrder.First());
+                        if (firstItemDef != null && lastItem[(int)firstItemDef.tier] != ItemIndex.None && finalOrder.Contains(lastItem[(int)firstItemDef.tier])) 
+                        {
+                            int roundUp = (int)Math.Ceiling((double)finalOrder.Count() / 5) * 5;
+                            int offset;
+                            if (roundUp == 5) 
+                            {
+                                offset = finalOrder.Count() / 2;
+                            } else if (roundUp % 10 == 0)
+                            {
+                                offset = (roundUp / 2) - 3 ;
+                            }
+                            else
+                            {
+                                offset = roundUp / 2;
+                            }
+                            List<ItemIndex> finalOrderList = finalOrder.ToList();
+                            finalOrderList.Remove(lastItem[(int)firstItemDef.tier]);
+                            finalOrderList.Insert(offset, lastItem[(int)firstItemDef.tier]);
+                            finalOrder = finalOrderList.OrderBy(a => 1);
+                        }
+                        break;
                     case 's': // Scrap First
                         finalOrder = finalOrder.ThenByDescending(item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Scrap));
                         break;
@@ -129,6 +161,15 @@ namespace BetterUI
             }
         }
 
+        public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
+        {
+            orig(self, index);
+            if(PickupCatalog.GetPickupDef(self.options[0].pickupIndex).itemIndex != ItemIndex.None)
+            {
+                ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[index].pickupIndex).itemIndex);
+                lastItem[(int)itemDef.tier] = itemDef.itemIndex;
+            }
+        }
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
@@ -155,7 +196,7 @@ namespace BetterUI
                   
             Inventory inventory = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.inventory;
             RoR2.PickupPickerController.Option[] sortedOptions;
-            if (PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex == ItemIndex.None)
+            if (PickupCatalog.GetPickupDef(options[0].pickupIndex).equipmentIndex != EquipmentIndex.None)
             {
                 bool[] availableIndex = new bool[EquipmentCatalog.equipmentCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
@@ -168,7 +209,7 @@ namespace BetterUI
                 sortedOptions = sortedItems.Select(equipmentIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipmentIndex), available = availableIndex[(int)equipmentIndex] }).ToArray();
 
             }
-            else
+            else if(PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex != ItemIndex.None)
             {
                 bool[] availableIndex = new bool[ItemCatalog.itemCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
@@ -180,6 +221,11 @@ namespace BetterUI
 
                 sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
 
+            }
+            else
+            {
+                orig(self, options);
+                return;
             }
 
 
