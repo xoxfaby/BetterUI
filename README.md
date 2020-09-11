@@ -9,6 +9,12 @@ Each be disabled and configured in the config file.
 - Advanced Item Description
 - Show Hidden Items
 
+#### Support Me
+
+If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
+
+https://github.com/sponsors/xoxfaby
+
 #### StatsDisplay
 Show all of your character's stats! Completely customizable!
 
@@ -99,6 +105,9 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ### Changelog
+
+#### v1.1.6
+ - Added AdvancedTooltips for equipement 
 
 #### v1.1.5
  - Added ItemIndex (ID) Sorting

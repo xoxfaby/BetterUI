@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.5")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.6")]
 
 
     public class BetterUI : BaseUnityPlugin
@@ -35,6 +35,8 @@ namespace BetterUI
             {
                 On.RoR2.UI.GenericNotification.SetItem += hook_SetItem;
                 On.RoR2.UI.ItemIcon.SetItemIndex += hook_SetItemIndex;
+                On.RoR2.UI.GenericNotification.SetEquipment += hook_SetEquipment;
+                On.RoR2.UI.EquipmentIcon.Update += hook_EquipmentIconUpdate;
             }
 
             if (config.showStatsDisplay.Value)
@@ -69,14 +71,14 @@ namespace BetterUI
             {
                 On.RoR2.UI.GenericNotification.SetItem -= hook_SetItem;
                 On.RoR2.UI.ItemIcon.SetItemIndex -= hook_SetItemIndex;
+                On.RoR2.UI.GenericNotification.SetEquipment -= hook_SetEquipment;
+                On.RoR2.UI.EquipmentIcon.Update -= hook_EquipmentIconUpdate;
             }
-
             if (config.showStatsDisplay.Value)
             {
                 On.RoR2.UI.HUD.OnEnable -= statsDisplay.hook_OnEnable;
                 On.RoR2.UI.HUD.OnDisable -= statsDisplay.hook_OnDisable;
             }
-
             if (config.sortItemsInventory.Value)
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged -= itemSorting.hook_OnInventoryChanged;
@@ -104,11 +106,29 @@ namespace BetterUI
             self.descriptionText.token = itemDef.descriptionToken;
         }
 
+        private void hook_SetEquipment(On.RoR2.UI.GenericNotification.orig_SetEquipment orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
+        {
+            orig(self, equipmentDef);
+
+            self.descriptionText.token = equipmentDef.descriptionToken;
+        }
+
         private void hook_SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
         {
             orig(self, itemIndex, itemCount);
 
             self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
         }
+
+        //private void hook_SetDisplayData(On.RoR2.UI.EquipmentIcon.orig_SetDisplayData orig, RoR2.UI.EquipmentIcon self, ValueType newDisplayData)
+        private void hook_EquipmentIconUpdate(On.RoR2.UI.EquipmentIcon.orig_Update orig, RoR2.UI.EquipmentIcon self)
+        {
+            orig(self);
+            if (self.currentDisplayData.hasEquipment && self.tooltipProvider)
+            {
+                EquipmentDef equipmentDef = self.currentDisplayData.equipmentDef;
+                self.tooltipProvider.bodyToken = equipmentDef.descriptionToken;
+            }
+         }
     }
 }
