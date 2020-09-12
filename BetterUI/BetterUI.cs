@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.2.1")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.2.2")]
 
 
     public class BetterUI : BaseUnityPlugin
@@ -24,7 +24,11 @@ namespace BetterUI
             itemSorting = new ItemSorting(this);
             statsDisplay = new StatsDisplay(this);
             commandImprovements = new CommandImprovements(this);
+        }
 
+        public void Update()
+        {
+            commandImprovements.Update();
         }
         public void OnEnable()
         {
@@ -61,6 +65,10 @@ namespace BetterUI
             {
                 On.RoR2.UI.PickupPickerPanel.OnCreateButton += commandImprovements.hook_OnCreateButton;
             }
+            if (config.closeOnEscape.Value || config.closeOnWASD.Value || config.closeOnCustom.Value != "")
+            {
+                On.RoR2.UI.PickupPickerPanel.Awake += commandImprovements.hook_PickupPickerPanelAwake;
+            }
 
         }
 
@@ -95,6 +103,10 @@ namespace BetterUI
             if (config.commandCounters.Value)
             {
                 On.RoR2.UI.PickupPickerPanel.OnCreateButton -= commandImprovements.hook_OnCreateButton;
+            }
+            if (config.closeOnEscape.Value || config.closeOnWASD.Value || config.closeOnCustom.Value != "")
+            {
+                On.RoR2.UI.PickupPickerPanel.Awake -= commandImprovements.hook_PickupPickerPanelAwake;
             }
         }
 

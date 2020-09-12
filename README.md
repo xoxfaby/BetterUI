@@ -7,6 +7,8 @@ Each be disabled and configured in the config file.
 - StatsDisplay
 - Ordered Inventory, Scrapper Menu, Command Menu
 - Command/Scrapper Menu Item Counters and Tooltips
+- Close the command menu with escape, WASD or a custom keybind
+- Automatically resize the command window if there are more items
 - Advanced Item Description
 - Show Hidden Items
 
@@ -113,6 +115,11 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+#### v1.2.1
+ - Added ability to close command/scrapper menu with Escape, WASD or a custom key
+ - Added ability to scale the command window to the number of items shown, this should help with mods that add new items.
+ - removed debug spam ( sorry ) 
 
 #### v1.2.1
  - Fixed bug with command and scrapper menu

@@ -19,8 +19,12 @@ namespace BetterUI
         public BepInEx.Configuration.ConfigEntry<bool> advancedDescriptions;
         public BepInEx.Configuration.ConfigEntry<bool> showHidden;
 
-        //CommandCounters
+        //CommandImprovements
 
+        public BepInEx.Configuration.ConfigEntry<bool> resizeCommandWindow;
+        public BepInEx.Configuration.ConfigEntry<bool> closeOnEscape;
+        public BepInEx.Configuration.ConfigEntry<bool> closeOnWASD;
+        public BepInEx.Configuration.ConfigEntry<String> closeOnCustom;
         public BepInEx.Configuration.ConfigEntry<String> counterPosition;
         public TMPro.TextAlignmentOptions counterTextAlignmentOption;
         public BepInEx.Configuration.ConfigEntry<float> counterFontSize;
@@ -56,9 +60,16 @@ namespace BetterUI
             advancedDescriptions = mod.Config.Bind<bool>("BetterUI", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item or picking it up.");
             showHidden = mod.Config.Bind<bool>("BetterUI", "ShowHidden", false, "Show hidden items in the item inventory");
 
-            //CommandCounters 
+            //CommandImprovements
 
-            counterPosition = mod.Config.Bind<String>("CommandCounters", "CounterPosition", "TopRight",
+            resizeCommandWindow = mod.Config.Bind<bool>("CommandImprovements", "ResizeCommandWindow", true, "Resize the command window to the number of items.");
+            closeOnEscape = mod.Config.Bind<bool>("CommandImprovements", "CloseOnEscape", true, "Close the command/scrapper window when you press escape.");
+            closeOnWASD = mod.Config.Bind<bool>("CommandImprovements", "CloseOnWASD", false, "Close the command/scrapper window when you press W, A, S or D");
+            closeOnCustom = mod.Config.Bind<String>("CommandImprovements", "CloseOnCustom", "", "Close the command/scrapper window when you press the key selected here.\n" +
+                "Example: space\n" +
+                "Must be lowercase. Leave blank to disable");
+
+            counterPosition = mod.Config.Bind<String>("CommandImprovements", "CounterPosition", "TopRight",
                 "Location of the command item counter\n" +
                 "Valid options:\n" +
                 "TopLeft\n" +
@@ -69,8 +80,8 @@ namespace BetterUI
 
             counterTextAlignmentOption = (TMPro.TextAlignmentOptions) Enum.Parse(typeof(TMPro.TextAlignmentOptions), counterPosition.Value, true);
 
-            counterFontSize = mod.Config.Bind<float>("CommandCounters", "CounterFontSize", 20f, "Size of the command item counter text");
-            counterPrefix = mod.Config.Bind<String>("CommandCounters", "CounterPrefix", "x", "Prefix for the command item counter. Example 'x' will show x0, x1, x2, etc.\nCan be empty.");
+            counterFontSize = mod.Config.Bind<float>("CommandImprovements", "CounterFontSize", 20f, "Size of the command item counter text");
+            counterPrefix = mod.Config.Bind<String>("CommandImprovements", "CounterPrefix", "x", "Prefix for the command item counter. Example 'x' will show x0, x1, x2, etc.\nCan be empty.");
 
 
             //Sorting

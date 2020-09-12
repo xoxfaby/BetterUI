@@ -14,6 +14,7 @@ namespace BetterUI
     {
         private readonly BetterUI mod;
 
+        private PickupPickerPanel currentPanel;
         private int[] optionMap;
 
         internal ItemIndex[] lastItem = new ItemIndex[] {
@@ -29,6 +30,28 @@ namespace BetterUI
             mod = m;
         }
 
+        public void hook_PickupPickerPanelAwake(On.RoR2.UI.PickupPickerPanel.orig_Awake orig, PickupPickerPanel self)
+        {
+            currentPanel = self;
+            orig(self);
+        }
+        public void Update()
+        {
+            if(currentPanel != null && currentPanel.gameObject != null)
+            {
+                if (mod.config.closeOnEscape.Value && Input.GetKeyDown("escape") ||
+                   mod.config.closeOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d") ) ||
+                   mod.config.closeOnCustom.Value != "" && Input.GetKeyDown(mod.config.closeOnCustom.Value))
+                {
+                    if(Input.GetKeyDown("escape"))
+                    {
+                        RoR2.Console.instance.SubmitCmd(null, "pause", false);
+                    }
+                    BetterUI.Destroy(currentPanel.gameObject);
+                }
+            }
+
+        }
         public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
         {
             if(optionMap != null)
@@ -43,20 +66,24 @@ namespace BetterUI
             }
             else
             {
-                orig(self, optionMap[index]);
+                orig(self, index);
             }
         }
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
+
+            if( mod.config.resizeCommandWindow.Value && self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
+            {
+                self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float) Math.Ceiling(options.Count()/5f)));
+            }
+
             if (self.pickerController.contextString == "SCRAPPER_CONTEXT" && !mod.config.sortItemsScrapper.Value ||
                 self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && !mod.config.sortItemsCommand.Value)
             {
                 orig(self, options);
                 return;
             }
-
-            Chat.AddMessage(self.pickerController.contextString);
 
             String sortOrder;
             switch (self.pickerController.contextString)
@@ -85,7 +112,7 @@ namespace BetterUI
 
                 List<EquipmentIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
 
-                PickupPickerController.Option[] sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
+                PickupPickerController.Option[] sortedOptions = sortedItems.Select(equipemntIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipemntIndex), available = availableIndex[(int)equipemntIndex] }).ToArray();
                 optionMap = sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray();
                 options = sortedOptions;
             }
