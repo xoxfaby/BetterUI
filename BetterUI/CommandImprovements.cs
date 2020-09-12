@@ -31,11 +31,19 @@ namespace BetterUI
 
         public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
         {
-            orig(self, optionMap[index]);
-            if (PickupCatalog.GetPickupDef(self.options[0].pickupIndex).itemIndex != ItemIndex.None)
+            if(optionMap != null)
+            { 
+                orig(self, optionMap[index]);
+                if (PickupCatalog.GetPickupDef(self.options[0].pickupIndex).itemIndex != ItemIndex.None)
+                {
+                    ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[optionMap[index]].pickupIndex).itemIndex);
+                    lastItem[(int)itemDef.tier] = itemDef.itemIndex;
+                }
+                optionMap = null;
+            }
+            else
             {
-                ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[optionMap[index]].pickupIndex).itemIndex);
-                lastItem[(int)itemDef.tier] = itemDef.itemIndex;
+                orig(self, optionMap[index]);
             }
         }
 
@@ -47,6 +55,8 @@ namespace BetterUI
                 orig(self, options);
                 return;
             }
+
+            Chat.AddMessage(self.pickerController.contextString);
 
             String sortOrder;
             switch (self.pickerController.contextString)

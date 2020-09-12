@@ -114,6 +114,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.2.1
+ - Fixed bug with command and scrapper menu
+
 ### v1.2.0
  - Added command menu item counters and tooltips 
 

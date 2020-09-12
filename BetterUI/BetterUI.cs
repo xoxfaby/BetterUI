@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.1.6")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.2.1")]
 
 
     public class BetterUI : BaseUnityPlugin
@@ -54,10 +54,7 @@ namespace BetterUI
             }
             if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
             {
-                if(config.sortItemsCommand.Value && config.sortOrderCommand.Value.IndexOf('C') >= 0)
-                {
-                    On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
-                }
+                On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions += commandImprovements.hook_SetPickupOptions;
             }
             if (config.commandCounters.Value)
@@ -92,10 +89,7 @@ namespace BetterUI
             }
             if (config.sortItemsCommand.Value || config.sortItemsScrapper.Value)
             {
-                if (config.sortItemsCommand.Value && config.sortOrderCommand.Value.Contains('C'))
-                {
-                    On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
-                }
+                On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= commandImprovements.hook_SetPickupOptions;
             }
             if (config.commandCounters.Value)
