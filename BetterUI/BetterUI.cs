@@ -13,15 +13,18 @@ namespace BetterUI
 
     public class BetterUI : BaseUnityPlugin
     {
-        private ConfigManager config;
-        private ItemSorting itemSorting;
-        private StatsDisplay statsDisplay;
+        internal ConfigManager config;
+        internal ItemSorting itemSorting;
+        internal StatsDisplay statsDisplay;
+        internal CommandImprovements commandImprovements;
 
         public void Awake()
         {
             config = new ConfigManager(this);
-            itemSorting = new ItemSorting(config);
-            statsDisplay = new StatsDisplay(config);
+            itemSorting = new ItemSorting(this);
+            statsDisplay = new StatsDisplay(this);
+            commandImprovements = new CommandImprovements(this);
+
         }
         public void OnEnable()
         {
@@ -53,9 +56,13 @@ namespace BetterUI
             {
                 if(config.sortItemsCommand.Value && config.sortOrderCommand.Value.IndexOf('C') >= 0)
                 {
-                    On.RoR2.PickupPickerController.SubmitChoice += itemSorting.hook_SubmitChoice;
+                    On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
                 }
-                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += itemSorting.hook_SetPickupOptions;
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += commandImprovements.hook_SetPickupOptions;
+            }
+            if (config.commandCounters.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.OnCreateButton += commandImprovements.hook_OnCreateButton;
             }
 
         }
@@ -87,9 +94,13 @@ namespace BetterUI
             {
                 if (config.sortItemsCommand.Value && config.sortOrderCommand.Value.Contains('C'))
                 {
-                    On.RoR2.PickupPickerController.SubmitChoice -= itemSorting.hook_SubmitChoice;
+                    On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
                 }
-                On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= itemSorting.hook_SetPickupOptions;
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= commandImprovements.hook_SetPickupOptions;
+            }
+            if (config.commandCounters.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.OnCreateButton -= commandImprovements.hook_OnCreateButton;
             }
         }
 

@@ -13,35 +13,33 @@ namespace BetterUI
 {
     class StatsDisplay
     {
-        ConfigManager config;
+        private readonly BetterUI mod;
 
         private GameObject statsDisplayContainer;
         private RoR2.UI.HGTextMeshProUGUI textMesh;
         private CharacterBody playerBody;
-        public StatsDisplay(ConfigManager c)
+        public StatsDisplay(BetterUI m)
         {
-            config = c;
+            mod = m;
         }
         public void hook_OnEnable(On.RoR2.UI.HUD.orig_OnEnable orig, RoR2.UI.HUD self)
         {
             orig(self);
 
-
-
-
             statsDisplayContainer = new GameObject("StatsDisplayContainer");
+            statsDisplayContainer.layer = 5;
             statsDisplayContainer.transform.SetParent(self.mainContainer.transform);
 
             RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
-            rectTransform.anchorMin = config.windowAnchorMin.Value;
-            rectTransform.anchorMax = config.windowAnchorMax.Value;
-            rectTransform.anchoredPosition = config.windowPosition.Value;
-            rectTransform.sizeDelta = config.windowSize.Value;
+            rectTransform.anchorMin = mod.config.windowAnchorMin.Value;
+            rectTransform.anchorMax = mod.config.windowAnchorMax.Value;
+            rectTransform.anchoredPosition = mod.config.windowPosition.Value;
+            rectTransform.sizeDelta = mod.config.windowSize.Value;
 
             textMesh = statsDisplayContainer.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
-            textMesh.fontSize = config.statsFontSize.Value;
-            textMesh.faceColor = config.statsFontColor.Value;
-            textMesh.outlineColor = config.statsFontOutlineColor.Value;
+            textMesh.fontSize = mod.config.statsFontSize.Value;
+            textMesh.faceColor = mod.config.statsFontColor.Value;
+            textMesh.outlineColor = mod.config.statsFontOutlineColor.Value;
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, 0.2f);
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.4f);
 
@@ -71,13 +69,13 @@ namespace BetterUI
 
             if (playerBody != null && textMesh != null)
             {
-                if (config.scoreboardOnly.Value)
+                if (mod.config.scoreboardOnly.Value)
                 {
                     bool active = self.localUserViewer != null && self.localUserViewer.inputPlayer != null && self.localUserViewer.inputPlayer.GetButton("info");
                     statsDisplayContainer.SetActive(active);
                     if (!active) { return; }
                 }
-                string printString = config.statString.Value;
+                string printString = mod.config.statString.Value;
                 printString = printString.Replace("$exp", playerBody.experience.ToString());
                 printString = printString.Replace("$level", playerBody.level.ToString());
                 printString = printString.Replace("$dmg", playerBody.damage.ToString());

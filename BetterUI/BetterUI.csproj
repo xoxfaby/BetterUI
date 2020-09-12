@@ -77,6 +77,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

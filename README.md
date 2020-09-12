@@ -3,40 +3,48 @@
 A simple mod that adds various UI improvements.  
 Each be disabled and configured in the config file.
 
-##### Currently implemented:
+## Currently implemented:
 - StatsDisplay
 - Ordered Inventory, Scrapper Menu, Command Menu
+- Command/Scrapper Menu Item Counters and Tooltips
 - Advanced Item Description
 - Show Hidden Items
 
-#### Support Me
+## Support Me
 
 If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
 
 https://github.com/sponsors/xoxfaby
 
-#### StatsDisplay
+## Features
+
+### StatsDisplay
 Show all of your character's stats! Completely customizable!
 
 ![StatsDisplay](https://fby.pw/statsdisplay.png)
 
-#### Improved Item Sorting
+### Command/Scrapper Item Counters
+See how many items you have when using the scrapper or picking an item using the command artifact!
+
+![Command Counters](https://fby.pw/commandcounters.png)
+
+### Improved Item Sorting
 Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage". EVEN RANDOMLY?!
 
 ![Item Sorting](https://fby.pw/itembar.png)
 
 ![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
 
-#### Advanced item descriptions
+### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
 No calculations are implemented at this point, but might be in the future!
 
 ![Item Description](https://fby.pw/itemdesc.png)
 
-#### Show Hidden Items
+### Show Hidden Items
 Show hidden items like the hidden monsoon/drizzle items
 
-### Help & Feedback
+## Help & Feedback
 
 If you need help or have suggestions, create an issue on github or find me on the RoR2 Modding Discord 
 
@@ -44,7 +52,7 @@ If you need help or have suggestions, create an issue on github or find me on th
 
 https://github.com/xoxfaby/BetterUI
 
-### Configuration
+## Configuration
 
 #### StatsDisplay
 
@@ -104,7 +112,10 @@ E = Equipment Related Last
 p = Sprint Related First  
 P = Sprint Related Last  
 
-### Changelog
+## Changelog
+
+### v1.2.0
+ - Added command menu item counters and tooltips 
 
 #### v1.1.6
  - Added AdvancedTooltips for equipement 
@@ -124,9 +135,12 @@ P = Sprint Related Last
 #### v1.1.1
  - Fixed $killcount not working
 
-#### v1.1.0
+### v1.1.0
  - Added StatsDisplay
 
 #### v1.0.1
  - Fixed up the README
  - Internal Changes
+
+### v1.0.0
+ - Inital Release

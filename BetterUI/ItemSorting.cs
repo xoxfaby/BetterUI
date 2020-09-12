@@ -7,19 +7,11 @@ namespace BetterUI
 {
     class ItemSorting
     {
-        private ConfigManager config;
-        private ItemIndex[] lastItem = new ItemIndex[] {
-            ItemIndex.None,
-            ItemIndex.None,
-            ItemIndex.None,
-            ItemIndex.None,
-            ItemIndex.None,
-            ItemIndex.None,
-        };
+        private readonly BetterUI mod;
 
-        public ItemSorting(ConfigManager c)
+        public ItemSorting(BetterUI m)
         {
-            config = c;
+            mod = m;
         }
 
 
@@ -54,10 +46,10 @@ namespace BetterUI
                 switch (c)
                 {
                     case '0': // Tier Ascending
-                        finalOrder = finalOrder.ThenBy(item => config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenBy(item => mod. config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '1': // Tier Descending
-                        finalOrder = finalOrder.ThenByDescending(item => config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenByDescending(item => mod.config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '2': // Stack Size Ascending
                         finalOrder = finalOrder.ThenBy(item => inventory.itemStacks[(int)item]);
@@ -83,7 +75,7 @@ namespace BetterUI
                         break;
                     case 'C': // Special Command Centered
                         ItemDef firstItemDef = ItemCatalog.GetItemDef(finalOrder.First());
-                        if (firstItemDef != null && lastItem[(int)firstItemDef.tier] != ItemIndex.None && finalOrder.Contains(lastItem[(int)firstItemDef.tier])) 
+                        if (firstItemDef != null && mod.commandImprovements.lastItem[(int)firstItemDef.tier] != ItemIndex.None && finalOrder.Contains(mod.commandImprovements.lastItem[(int)firstItemDef.tier])) 
                         {
                             int roundUp = (int)Math.Ceiling((double)finalOrder.Count() / 5) * 5;
                             int offset;
@@ -99,8 +91,8 @@ namespace BetterUI
                                 offset = roundUp / 2;
                             }
                             List<ItemIndex> finalOrderList = finalOrder.ToList();
-                            finalOrderList.Remove(lastItem[(int)firstItemDef.tier]);
-                            finalOrderList.Insert(offset, lastItem[(int)firstItemDef.tier]);
+                            finalOrderList.Remove(mod.commandImprovements.lastItem[(int)firstItemDef.tier]);
+                            finalOrderList.Insert(offset, mod.commandImprovements.lastItem[(int)firstItemDef.tier]);
                             finalOrder = finalOrderList.OrderBy(a => 1);
                         }
                         break;
@@ -164,93 +156,8 @@ namespace BetterUI
 
             if (self.itemOrder != null && self.inventory && self.inventory.itemAcquisitionOrder.Any())
             {
-                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, config.sortOrder.Value).ToList().CopyTo(self.itemOrder);
+                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, mod.config.sortOrder.Value).ToList().CopyTo(self.itemOrder);
             }
-        }
-
-        public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
-        {
-            orig(self, index);
-            if(PickupCatalog.GetPickupDef(self.options[0].pickupIndex).itemIndex != ItemIndex.None)
-            {
-                ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[index].pickupIndex).itemIndex);
-                lastItem[(int)itemDef.tier] = itemDef.itemIndex;
-            }
-        }
-
-        public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
-        {
-            if (self.pickerController.contextString == "SCRAPPER_CONTEXT" && !config.sortItemsScrapper.Value || 
-                self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && !config.sortItemsCommand.Value)
-            {
-                orig(self, options);
-                return;
-            }
-
-            String sortOrder;
-            switch (self.pickerController.contextString)
-            {
-                case "SCRAPPER_CONTEXT":
-                    sortOrder = config.sortOrderScrapper.Value;
-                    break;
-                case "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT":
-                    sortOrder = config.sortOrderCommand.Value;
-                    break;
-                default:
-                    sortOrder = config.sortOrder.Value;
-                    break;
-            }
-                  
-            Inventory inventory = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.inventory;
-            RoR2.PickupPickerController.Option[] sortedOptions;
-            if (PickupCatalog.GetPickupDef(options[0].pickupIndex).equipmentIndex != EquipmentIndex.None)
-            {
-                bool[] availableIndex = new bool[EquipmentCatalog.equipmentCount];
-                foreach (RoR2.PickupPickerController.Option option in options)
-                {
-                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex] = option.available;
-                }
-
-                List<EquipmentIndex> sortedItems = sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
-
-                sortedOptions = sortedItems.Select(equipmentIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipmentIndex), available = availableIndex[(int)equipmentIndex] }).ToArray();
-
-            }
-            else if(PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex != ItemIndex.None)
-            {
-                bool[] availableIndex = new bool[ItemCatalog.itemCount];
-                foreach (RoR2.PickupPickerController.Option option in options)
-                {
-                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
-                }
-
-                List<ItemIndex> sortedItems = sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
-
-                sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
-
-            }
-            else
-            {
-                orig(self, options);
-                return;
-            }
-
-
-            int[] optionMap = sortedOptions.Select(option => Array.IndexOf(options,option)).ToArray();
-
-
-            //This feels dirty but it's the only way I can think to do it rn
-
-            void hook_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig2, RoR2.UI.PickupPickerPanel self2, int index, RoR2.UI.MPButton button)
-            {
-                orig2(self2, optionMap[index], button);
-            }
-
-            On.RoR2.UI.PickupPickerPanel.OnCreateButton += hook_OnCreateButton;
-
-            orig(self, sortedOptions);
-
-            On.RoR2.UI.PickupPickerPanel.OnCreateButton -= hook_OnCreateButton;
         }
     }
 }

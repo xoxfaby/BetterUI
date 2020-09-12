@@ -12,12 +12,19 @@ namespace BetterUI
     {
         //BetterUI
         public BepInEx.Configuration.ConfigEntry<bool> showStatsDisplay;
+        public BepInEx.Configuration.ConfigEntry<bool> commandCounters;
         public BepInEx.Configuration.ConfigEntry<bool> sortItemsInventory;
         public BepInEx.Configuration.ConfigEntry<bool> sortItemsScrapper;
         public BepInEx.Configuration.ConfigEntry<bool> sortItemsCommand;
         public BepInEx.Configuration.ConfigEntry<bool> advancedDescriptions;
         public BepInEx.Configuration.ConfigEntry<bool> showHidden;
 
+        //CommandCounters
+
+        public BepInEx.Configuration.ConfigEntry<String> counterPosition;
+        public TMPro.TextAlignmentOptions counterTextAlignmentOption;
+        public BepInEx.Configuration.ConfigEntry<float> counterFontSize;
+        public BepInEx.Configuration.ConfigEntry<String> counterPrefix;
 
         //Sorting
         public BepInEx.Configuration.ConfigEntry<String> tierOrderString;
@@ -42,11 +49,29 @@ namespace BetterUI
         {
             //BetterUI
             showStatsDisplay = mod.Config.Bind<bool>("BetterUI", "ShowStatsDisplay", true, "Show Stats Display");
+            commandCounters = mod.Config.Bind<bool>("BetterUI", "commandCounters", true, "Show counters in the command and scrapper window");
             sortItemsInventory = mod.Config.Bind<bool>("BetterUI", "SortItemsInventory", true, "Sort items in the inventory and scoreboard");
             sortItemsScrapper = mod.Config.Bind<bool>("BetterUI", "SortItemsScrapper", true, "Sort items in the scrapper window");
             sortItemsCommand = mod.Config.Bind<bool>("BetterUI", "SortItemsCommand", true, "Sort items in the command window");
             advancedDescriptions = mod.Config.Bind<bool>("BetterUI", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item or picking it up.");
             showHidden = mod.Config.Bind<bool>("BetterUI", "ShowHidden", false, "Show hidden items in the item inventory");
+
+            //CommandCounters 
+
+            counterPosition = mod.Config.Bind<String>("CommandCounters", "CounterPosition", "TopRight",
+                "Location of the command item counter\n" +
+                "Valid options:\n" +
+                "TopLeft\n" +
+                "TopRight\n" +
+                "BottomLeft\n" +
+                "BottomRight\n" +
+                "Center\n");
+
+            counterTextAlignmentOption = (TMPro.TextAlignmentOptions) Enum.Parse(typeof(TMPro.TextAlignmentOptions), counterPosition.Value, true);
+
+            counterFontSize = mod.Config.Bind<float>("CommandCounters", "CounterFontSize", 20f, "Size of the command item counter text");
+            counterPrefix = mod.Config.Bind<String>("CommandCounters", "CounterPrefix", "x", "Prefix for the command item counter. Example 'x' will show x0, x1, x2, etc.\nCan be empty.");
+
 
             //Sorting
             tierOrderString = mod.Config.Bind<String>("Sorting", "TierOrder", "012345", "Tiers in ascending order, left to right \n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
