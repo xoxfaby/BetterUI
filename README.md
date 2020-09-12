@@ -116,7 +116,10 @@ P = Sprint Related Last
 
 ## Changelog
 
-#### v1.2.1
+#### v1.2.3
+ - Fixed a potential scrapper multiplayer bug
+
+#### v1.2.2
  - Added ability to close command/scrapper menu with Escape, WASD or a custom key
  - Added ability to scale the command window to the number of items shown, this should help with mods that add new items.
  - removed debug spam ( sorry ) 

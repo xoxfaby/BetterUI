@@ -72,13 +72,13 @@ namespace BetterUI
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
-
             if( mod.config.resizeCommandWindow.Value && self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
             {
-                self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float) Math.Ceiling(options.Count()/5f)));
+                self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float) Math.Ceiling(options.Length/5f)));
             }
 
-            if (self.pickerController.contextString == "SCRAPPER_CONTEXT" && !mod.config.sortItemsScrapper.Value ||
+            if (options == null || options.Length == 0 || 
+                self.pickerController.contextString == "SCRAPPER_CONTEXT" && !mod.config.sortItemsScrapper.Value ||
                 self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && !mod.config.sortItemsCommand.Value)
             {
                 orig(self, options);
@@ -137,7 +137,6 @@ namespace BetterUI
         public void hook_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
         {
             orig(self, index, button);
-
 
             GameObject textGameObject = new GameObject("StackText");
             textGameObject.transform.SetParent(button.transform);
