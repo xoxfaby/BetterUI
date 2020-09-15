@@ -351,4 +351,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-BetterUI/thunder.zip
+
+BetterUI/Thunderstore/thunder.zip
+BetterUI/Thunderstore/BetterUI.dll
