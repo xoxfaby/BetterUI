@@ -10,7 +10,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.3.1")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.3.2")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -91,6 +91,7 @@ namespace BetterUI
 
             if (config.StatsDisplayEnable.Value)
             {
+                RoR2.Run.onRunStartGlobal += statsDisplay.hook_runStartGlobal;
                 On.RoR2.UI.HUD.OnEnable += statsDisplay.hook_Awake;
             }
 
@@ -159,6 +160,7 @@ namespace BetterUI
 
             if (config.StatsDisplayEnable.Value)
             {
+                RoR2.Run.onRunStartGlobal -= statsDisplay.hook_runStartGlobal;
                 On.RoR2.UI.HUD.OnEnable -= statsDisplay.hook_Awake;
             }
 

@@ -19,9 +19,15 @@ namespace BetterUI
         private GameObject statsDisplayContainer;
         private GameObject stupidBuffer;
         private RoR2.UI.HGTextMeshProUGUI textMesh;
+        private int highestMultikill = 0;
         public StatsDisplay(BetterUI m)
         {
             mod = m;
+        }
+
+        public void hook_runStartGlobal(RoR2.Run self)
+        {
+            highestMultikill = 0;
         }
         public void hook_Awake(On.RoR2.UI.HUD.orig_OnEnable orig, RoR2.UI.HUD self)
         {
@@ -132,6 +138,8 @@ namespace BetterUI
                     statsDisplayContainer.SetActive(active);
                     if (!active) { return; }
                 }
+
+                highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
                 string printString = mod.config.StatsDisplayStatString.Value;
                 printString = printString.Replace("$exp", playerBody.experience.ToString());
                 printString = printString.Replace("$level", playerBody.level.ToString());
@@ -151,6 +159,7 @@ namespace BetterUI
                 printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
                 printString = printString.Replace("$luck", LocalUserManager.GetFirstLocalUser().cachedMaster.luck.ToString());
                 printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
+                printString = printString.Replace("$highestmultikill", highestMultikill.ToString());
                 printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
                 //printString = printString.Replace("$deaths", playerBody.master.dea);
                 printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;

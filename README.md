@@ -137,6 +137,10 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.3.2
+ - Added $highestmultikill for StatsDisplay to keep track of your largest multikill of the run
+ - This was added by request, if you want anything else added to the StatsDisplay, please just let me know. 
+
 #### v1.3.1
  - Fixed CommandCountersHideOnZero not showing tooltips without counters
 
