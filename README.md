@@ -4,12 +4,15 @@ A simple mod that adds various UI improvements.
 Each be disabled and configured in the config file.
 
 ## Currently implemented:
+- DPS Meter
 - StatsDisplay
 - Ordered Inventory, Scrapper Menu, Command Menu
 - Command/Scrapper Menu Item Counters and Tooltips
 - Close the command menu with escape, WASD or a custom keybind
 - Automatically resize the command window if there are more items
+- Remove background blur from command window
 - Advanced Item Description
+- ItemsStatsMod integration for command window
 - Show Hidden Items
 
 ## Support Me
@@ -20,13 +23,20 @@ https://github.com/sponsors/xoxfaby
 
 ## Features
 
+### DPSMeter
+Fully clientside DPS Meter that can be integrated into the StatsDisplay. Counts minion damage! 
+
+![DPSMeter](https://fby.pw/dpsmeter.png)
+
 ### StatsDisplay
 Show all of your character's stats! Completely customizable!
 
 ![StatsDisplay](https://fby.pw/statsdisplay.png)
 
-### Command/Scrapper Item Counters
+### Command/Scrapper Improvements
 See how many items you have when using the scrapper or picking an item using the command artifact!
+Tooltips with ItemStatsMod integration!
+Close the command/scrapper window with Escape, WASD or a custom keybind!
 
 ![Command Counters](https://fby.pw/commandcounters.png)
 
@@ -39,7 +49,7 @@ Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage"
 
 ### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
-No calculations are implemented at this point, but might be in the future!
+Integration with ItemStats in the command and scrapper counters
 
 ![Item Description](https://fby.pw/itemdesc.png)
 
@@ -59,8 +69,9 @@ https://github.com/xoxfaby/BetterUI
 #### StatsDisplay
 
 The StatsDisplay parses the `StatString` in the config file and replaces all the parameters it finds.
-The StatsDisplay can also be moved, resized and recolored.
-Here is a list of all valid parameters right now: 
+The StatsDisplay can also be moved, resized and recolored and formatted ( See: http://digitalnativestudios.com/textmeshpro/docs/rich-text/ )  
+If you want another parameter added, feel free to suggest it to me (See Help & Feedback)
+Here is a list of all valid parameters right now
 
 $exp $level $luck  
 $dmg $crit $atkspd  
@@ -68,6 +79,7 @@ $hp $maxhp $shield $maxshield $barrier $maxbarrier
 $armor $regen  
 $movespeed $jumps $maxjumps  
 $killcount $multikill  
+$dps $dpscharacter $dpsminions
 
 
 #### Sorting
@@ -115,6 +127,16 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+### v1.3.0
+ - Clientside DPS Meter
+ - StatsDisplay can now list DPS
+ - StatsDisplay can now attach to the objective panel to automatically move out of the way
+ - StatsDisplay can be fully formatted (See: http://digitalnativestudios.com/textmeshpro/docs/rich-text/)
+ - Added ability remove background blur from the command menu
+ - ItemStatsMod integration for the command and scrapper window
+ - Many of these changes were directly requested so feel free to make suggestions to me on discord or on github. 
+ - The config file has moved and split up which means your settings will be reset, but with all the new changes I encourage you to check options you might've disabled before. 
 
 #### v1.2.3
  - Fixed a potential scrapper multiplayer bug

@@ -8,13 +8,10 @@ namespace BetterUI
     class ItemSorting
     {
         private readonly BetterUI mod;
-
         public ItemSorting(BetterUI m)
         {
             mod = m;
         }
-
-
         public List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
         {
             IOrderedEnumerable<EquipmentIndex> finalOrder = equipmentList.OrderBy(a => 1);
@@ -46,10 +43,10 @@ namespace BetterUI
                 switch (c)
                 {
                     case '0': // Tier Ascending
-                        finalOrder = finalOrder.ThenBy(item => mod. config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenBy(item => mod.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '1': // Tier Descending
-                        finalOrder = finalOrder.ThenByDescending(item => mod.config.tierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenByDescending(item => mod.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '2': // Stack Size Ascending
                         finalOrder = finalOrder.ThenBy(item => inventory.itemStacks[(int)item]);
@@ -156,7 +153,7 @@ namespace BetterUI
 
             if (self.itemOrder != null && self.inventory && self.inventory.itemAcquisitionOrder.Any())
             {
-                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, mod.config.sortOrder.Value).ToList().CopyTo(self.itemOrder);
+                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, mod.config.SortingSortOrder.Value).ToList().CopyTo(self.itemOrder);
             }
         }
     }

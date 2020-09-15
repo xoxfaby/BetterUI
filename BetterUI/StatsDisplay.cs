@@ -5,6 +5,7 @@ using System.Text;
 using RoR2;
 using BepInEx;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -16,66 +17,122 @@ namespace BetterUI
         private readonly BetterUI mod;
 
         private GameObject statsDisplayContainer;
+        private GameObject stupidBuffer;
         private RoR2.UI.HGTextMeshProUGUI textMesh;
-        private CharacterBody playerBody;
         public StatsDisplay(BetterUI m)
         {
             mod = m;
         }
-        public void hook_OnEnable(On.RoR2.UI.HUD.orig_OnEnable orig, RoR2.UI.HUD self)
+        public void hook_Awake(On.RoR2.UI.HUD.orig_OnEnable orig, RoR2.UI.HUD self)
         {
             orig(self);
 
             statsDisplayContainer = new GameObject("StatsDisplayContainer");
-            statsDisplayContainer.layer = 5;
-            statsDisplayContainer.transform.SetParent(self.mainContainer.transform);
-
             RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
-            rectTransform.anchorMin = mod.config.windowAnchorMin.Value;
-            rectTransform.anchorMax = mod.config.windowAnchorMax.Value;
-            rectTransform.anchoredPosition = mod.config.windowPosition.Value;
-            rectTransform.sizeDelta = mod.config.windowSize.Value;
 
-            textMesh = statsDisplayContainer.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
-            textMesh.fontSize = mod.config.statsFontSize.Value;
-            textMesh.faceColor = mod.config.statsFontColor.Value;
-            textMesh.outlineColor = mod.config.statsFontOutlineColor.Value;
+            if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
+            {
+                stupidBuffer = new GameObject("StupidBuffer");
+                RectTransform rectTransform3 = stupidBuffer.AddComponent<RectTransform>();
+                LayoutElement layoutElement2 = stupidBuffer.AddComponent<LayoutElement>();
+
+                layoutElement2.minWidth = 0;
+                layoutElement2.minHeight = 2;
+                layoutElement2.flexibleHeight = 1;
+                layoutElement2.flexibleWidth = 1;
+
+                stupidBuffer.transform.SetParent(self.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                statsDisplayContainer.transform.SetParent(self.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+
+                rectTransform.localPosition = new Vector3(0, -10, 0);
+                rectTransform.anchorMin = Vector2.zero;
+                rectTransform.anchorMax = Vector2.one;
+                rectTransform.localScale = new Vector3(1, -1, 1);
+                rectTransform.sizeDelta = Vector2.zero;
+                rectTransform.anchoredPosition = new Vector2(0, 0);
+                rectTransform.eulerAngles = new Vector3(0, 6, 0);
+            }
+            else
+            {
+                statsDisplayContainer.transform.SetParent(self.mainContainer.transform);
+
+                rectTransform.localPosition = new Vector3(0, 0, 0);
+                rectTransform.anchorMin = mod.config.StatsDisplayWindowAnchorMin.Value;
+                rectTransform.anchorMax = mod.config.StatsDisplayWindowAnchorMax.Value;
+                rectTransform.localScale = new Vector3(1, -1, 1);
+                rectTransform.sizeDelta = mod.config.StatsDisplayWindowSize.Value;
+                rectTransform.anchoredPosition = mod.config.StatsDisplayWindowPosition.Value;
+                rectTransform.eulerAngles = mod.config.StatsDisplayWindowAngle.Value;
+            }
+
+
+            VerticalLayoutGroup verticalLayoutGroup = statsDisplayContainer.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+            verticalLayoutGroup.padding = new RectOffset(5, 5, 10, 5);
+
+            GameObject statsDisplayText = new GameObject("StatsDisplayText");
+            RectTransform rectTransform2 = statsDisplayText.AddComponent<RectTransform>();
+            textMesh = statsDisplayText.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
+            LayoutElement layoutElement = statsDisplayText.AddComponent<LayoutElement>();
+
+            statsDisplayText.transform.SetParent(statsDisplayContainer.transform);
+
+
+            rectTransform2.localPosition = Vector3.zero;
+            rectTransform2.anchorMin = Vector2.zero;
+            rectTransform2.anchorMax = Vector2.one;
+            rectTransform2.localScale = new Vector3(1, -1, 1);
+            rectTransform2.sizeDelta = Vector2.zero;
+            rectTransform2.anchoredPosition = Vector2.zero;
+
+            if (mod.config.StatsDisplayPanelBackground.Value)
+            {
+                Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
+                Image copyImage = self.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
+                image.sprite = copyImage.sprite;
+                image.color = copyImage.color;
+                image.type = Image.Type.Sliced;
+            }
+
+            textMesh.fontSize = 12;
+            textMesh.fontSizeMin = 6;
+            textMesh.faceColor = Color.white; ;
+            textMesh.outlineColor = Color.black;
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, 0.2f);
             textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.4f);
 
-            On.RoR2.UI.HUD.Update += hook_HUDUpdate;
-        }
-
-        public void hook_OnDisable(On.RoR2.UI.HUD.orig_OnDisable orig, RoR2.UI.HUD self)
-        {
-            orig(self);
-
-            On.RoR2.UI.HUD.Update -= hook_HUDUpdate;
-            playerBody = null;
+            layoutElement.minWidth = 1;
+            layoutElement.minHeight = 1;
+            layoutElement.flexibleHeight = 1;
+            layoutElement.flexibleWidth = 1;
 
         }
-
-        public void hook_HUDUpdate(On.RoR2.UI.HUD.orig_Update orig, RoR2.UI.HUD self)
+             
+        public void Update()
         {
-            orig(self);
-
-
-            if (self != null && self.targetMaster != null)
+            if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
             {
-                playerBody = self.targetMaster.GetBody();
-            }
-
-            
-
-            if (playerBody != null && textMesh != null)
-            {
-                if (mod.config.scoreboardOnly.Value)
+                if (stupidBuffer != null)
                 {
-                    bool active = self.localUserViewer != null && self.localUserViewer.inputPlayer != null && self.localUserViewer.inputPlayer.GetButton("info");
+                    stupidBuffer.transform.SetAsLastSibling();
+                }
+                if (statsDisplayContainer != null)
+                {
+                    statsDisplayContainer.transform.SetAsLastSibling();
+                }
+            }
+            if (LocalUserManager.GetFirstLocalUser() != null && 
+                LocalUserManager.GetFirstLocalUser().cachedMaster != null && 
+                LocalUserManager.GetFirstLocalUser().cachedMaster.GetBody() != null && 
+                textMesh != null)
+            {
+                CharacterBody playerBody = LocalUserManager.GetFirstLocalUser().cachedMaster.GetBody();
+                if (mod.config.StatsDisplayShowScoreboardOnly.Value)
+                {
+                    bool active = LocalUserManager.GetFirstLocalUser().inputPlayer != null && LocalUserManager.GetFirstLocalUser().inputPlayer.GetButton("info");
                     statsDisplayContainer.SetActive(active);
                     if (!active) { return; }
                 }
-                string printString = mod.config.statString.Value;
+                string printString = mod.config.StatsDisplayStatString.Value;
                 printString = printString.Replace("$exp", playerBody.experience.ToString());
                 printString = printString.Replace("$level", playerBody.level.ToString());
                 printString = printString.Replace("$dmg", playerBody.damage.ToString());
@@ -88,14 +145,17 @@ namespace BetterUI
                 printString = printString.Replace("$maxbarrier", playerBody.maxBarrier.ToString());
                 printString = printString.Replace("$armor", playerBody.armor.ToString());
                 printString = printString.Replace("$regen", playerBody.regen.ToString());
-                printString = printString.Replace("$movespeed", playerBody.moveSpeed.ToString());
+                printString = printString.Replace("$movespeed", Math.Round(playerBody.moveSpeed, 1).ToString());
                 printString = printString.Replace("$jumps", (playerBody.maxJumpCount - playerBody.characterMotor.jumpCount).ToString());
                 printString = printString.Replace("$maxjumps", playerBody.maxJumpCount.ToString());
                 printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
-                printString = printString.Replace("$luck", self.targetMaster.luck.ToString());
+                printString = printString.Replace("$luck", LocalUserManager.GetFirstLocalUser().cachedMaster.luck.ToString());
                 printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
                 printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
-
+                //printString = printString.Replace("$deaths", playerBody.master.dea);
+                printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;
+                printString = printString.Replace("$dpscharacter", mod.DPSMeter.CharacterDPS.ToString("N0")); ;
+                printString = printString.Replace("$dpsminion", mod.DPSMeter.MinionDPS.ToString("N0")); ;
 
                 textMesh.text = printString;
             }

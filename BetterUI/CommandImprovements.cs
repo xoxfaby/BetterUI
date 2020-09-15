@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 using RoR2;
 using RoR2.UI;
-using BepInEx;
 using UnityEngine;
 
 namespace BetterUI
@@ -37,11 +35,11 @@ namespace BetterUI
         }
         public void Update()
         {
-            if(currentPanel != null && currentPanel.gameObject != null)
+            if(currentPanel && currentPanel.gameObject)
             {
-                if (mod.config.closeOnEscape.Value && Input.GetKeyDown("escape") ||
-                   mod.config.closeOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d") ) ||
-                   mod.config.closeOnCustom.Value != "" && Input.GetKeyDown(mod.config.closeOnCustom.Value))
+                if (mod.config.CommandCloseOnEscape.Value && Input.GetKeyDown("escape") ||
+                   mod.config.CommandCloseOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d") ) ||
+                   mod.config.CommandCloseOnCustom.Value != "" && Input.GetKeyDown(mod.config.CommandCloseOnCustom.Value))
                 {
                     if(Input.GetKeyDown("escape"))
                     {
@@ -72,14 +70,7 @@ namespace BetterUI
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
-            if( mod.config.resizeCommandWindow.Value && self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
-            {
-                self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float) Math.Ceiling(options.Length/5f)));
-            }
-
-            if (options == null || options.Length == 0 || 
-                self.pickerController.contextString == "SCRAPPER_CONTEXT" && !mod.config.sortItemsScrapper.Value ||
-                self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && !mod.config.sortItemsCommand.Value)
+            if (options == null || options.Length == 0)
             {
                 orig(self, options);
                 return;
@@ -88,15 +79,32 @@ namespace BetterUI
             String sortOrder;
             switch (self.pickerController.contextString)
             {
-                case "SCRAPPER_CONTEXT":
-                    sortOrder = mod.config.sortOrderScrapper.Value;
-                    break;
                 case "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT":
-                    sortOrder = mod.config.sortOrderCommand.Value;
-                    break;
+                    if (mod.config.CommandResizeCommandWindow.Value)
+                    {
+                        self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float)Math.Ceiling(options.Length / 5f)));
+                    }
+
+                    if (mod.config.CommandRemoveBackgroundBlur.Value)
+                    {
+                        self.transform.GetComponent<LeTai.Asset.TranslucentImage.TranslucentImage>().enabled = false;
+                    }
+                    if (mod.config.SortingSortItemsCommand.Value)
+                    {
+                        sortOrder = mod.config.SortingSortOrderCommand.Value;
+                        break;
+                    }
+                    goto default;
+                case "SCRAPPER_CONTEXT":
+                    if (mod.config.SortingSortItemsScrapper.Value)
+                    {
+                        sortOrder = mod.config.SortingSortOrderScrapper.Value;
+                        break;
+                    }
+                    goto default;
                 default:
-                    sortOrder = mod.config.sortOrder.Value;
-                    break;
+                    orig(self, options);
+                    return;
             }
 
 
@@ -138,33 +146,9 @@ namespace BetterUI
         {
             orig(self, index, button);
 
-            GameObject textGameObject = new GameObject("StackText");
-            textGameObject.transform.SetParent(button.transform);
-            textGameObject.layer = 5;
-
-
-            textGameObject.AddComponent<CanvasRenderer>();
-
-            RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
-            HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
-            TooltipProvider tooltipProvider = textGameObject.AddComponent<TooltipProvider>();
-
-            counterRect.localPosition = Vector3.zero;
-            counterRect.anchorMin = Vector2.zero;
-            counterRect.anchorMax = Vector2.one;
-            counterRect.localScale = Vector3.one;
-            counterRect.sizeDelta = new Vector2(-10, -4);
-            counterRect.anchoredPosition = Vector2.zero;
-
-            counterText.enableWordWrapping = false;
-            counterText.alignment = mod.config.counterTextAlignmentOption;
-            counterText.fontSize = mod.config.counterFontSize.Value;
-            counterText.faceColor = Color.white;
-            counterText.outlineWidth = 0.2f;
-
-
-
+            CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
             PickupDef pickupDef;
+
             if (optionMap != null)
             {
                 pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[index]].pickupIndex);
@@ -174,31 +158,81 @@ namespace BetterUI
                 pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[index].pickupIndex);
             }
 
+            GameObject textGameObject = new GameObject("StackText");
+            textGameObject.transform.SetParent(button.transform);
+            textGameObject.layer = 5;
 
-            if (pickupDef.itemIndex != ItemIndex.None)
+            RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
+
+            if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
             {
-                Inventory inventory = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.inventory;
-                ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-
-                counterText.text = mod.config.counterPrefix.Value + inventory.itemStacks[(int) itemDef.itemIndex];
-
-
-
-                tooltipProvider.titleToken = itemDef.nameToken;
-                tooltipProvider.bodyToken = itemDef.descriptionToken;
-                tooltipProvider.titleColor = ColorCatalog.GetColor(itemDef.darkColorIndex); ;
-                tooltipProvider.bodyColor = new Color(0.6f, 0.6f, 0.6f, 1f);
-
+                int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
+                if (!mod.config.CommandCountersHideOnZero.Value || count > 0)
+                {
+                    HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
+                    counterText.enableWordWrapping = false;
+                    counterText.alignment = mod.config.CommandCountersTextAlignmentOption;
+                    counterText.fontSize = mod.config.CommandCountersFontSize.Value;
+                    counterText.faceColor = Color.white;
+                    counterText.outlineWidth = 0.2f;
+                    counterText.text = mod.config.CommandCountersPrefix.Value + count;
+                }
             }
-            else if(pickupDef.equipmentIndex != EquipmentIndex.None)    
+
+            if (mod.config.CommandTooltipsShow.Value)
             {
-                EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
+                TooltipProvider tooltipProvider = textGameObject.AddComponent<TooltipProvider>();
+                if (pickupDef.itemIndex != ItemIndex.None)
+                {
+                    ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
 
-                tooltipProvider.titleToken = equipmentDef.nameToken;
-                tooltipProvider.bodyToken = equipmentDef.descriptionToken;
-                tooltipProvider.titleColor = ColorCatalog.GetColor(equipmentDef.colorIndex);
-                tooltipProvider.bodyColor = Color.gray;
+                    if (mod.ItemStatsModIntegration)
+                    {
+                        int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
+                        string bodyText = Language.GetString(itemDef.descriptionToken);
+                        if (mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
+                        {
+                            bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
+                            String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                            bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                            bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
+                            descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                            bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                        }
+                        else
+                        {
+                            bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master);
+                        }
+
+                        tooltipProvider.overrideBodyText = bodyText;
+                    }
+                    else
+                    {
+                        tooltipProvider.bodyToken = itemDef.descriptionToken;
+                    }
+
+                    tooltipProvider.titleToken = itemDef.nameToken;
+                    tooltipProvider.titleColor = ColorCatalog.GetColor(itemDef.darkColorIndex); ;
+                    tooltipProvider.bodyColor = new Color(0.6f, 0.6f, 0.6f, 1f);
+                }
+                else if (pickupDef.equipmentIndex != EquipmentIndex.None)
+                {
+                    EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
+
+                    tooltipProvider.titleToken = equipmentDef.nameToken;
+                    tooltipProvider.bodyToken = equipmentDef.descriptionToken;
+                    tooltipProvider.titleColor = ColorCatalog.GetColor(equipmentDef.colorIndex);
+                    tooltipProvider.bodyColor = Color.gray;
+                }
+                
             }
+
+            counterRect.localPosition = Vector3.zero;
+            counterRect.anchorMin = Vector2.zero;
+            counterRect.anchorMax = Vector2.one;
+            counterRect.localScale = Vector3.one;
+            counterRect.sizeDelta = new Vector2(-10, -4);
+            counterRect.anchoredPosition = Vector2.zero;
         }
     }
 }
