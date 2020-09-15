@@ -128,6 +128,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.3.1
+ - Fixed CommandCountersHideOnZero not showing tooltips without counters
+
 ### v1.3.0
  - Clientside DPS Meter
  - StatsDisplay can now list DPS

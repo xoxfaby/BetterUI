@@ -158,17 +158,17 @@ namespace BetterUI
                 pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[index].pickupIndex);
             }
 
-            GameObject textGameObject = new GameObject("StackText");
-            textGameObject.transform.SetParent(button.transform);
-            textGameObject.layer = 5;
-
-            RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
-
             if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
             {
                 int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                 if (!mod.config.CommandCountersHideOnZero.Value || count > 0)
                 {
+                    GameObject textGameObject = new GameObject("StackText");
+                    textGameObject.transform.SetParent(button.transform);
+                    textGameObject.layer = 5;
+
+                    RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
+
                     HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
                     counterText.enableWordWrapping = false;
                     counterText.alignment = mod.config.CommandCountersTextAlignmentOption;
@@ -176,12 +176,20 @@ namespace BetterUI
                     counterText.faceColor = Color.white;
                     counterText.outlineWidth = 0.2f;
                     counterText.text = mod.config.CommandCountersPrefix.Value + count;
+
+                    counterRect.localPosition = Vector3.zero;
+                    counterRect.anchorMin = Vector2.zero;
+                    counterRect.anchorMax = Vector2.one;
+                    counterRect.localScale = Vector3.one;
+                    counterRect.sizeDelta = new Vector2(-10, -4);
+                    counterRect.anchoredPosition = Vector2.zero;
                 }
             }
 
             if (mod.config.CommandTooltipsShow.Value)
             {
-                TooltipProvider tooltipProvider = textGameObject.AddComponent<TooltipProvider>();
+                TooltipProvider tooltipProvider = button.gameObject.AddComponent<TooltipProvider>();
+
                 if (pickupDef.itemIndex != ItemIndex.None)
                 {
                     ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
@@ -227,12 +235,7 @@ namespace BetterUI
                 
             }
 
-            counterRect.localPosition = Vector3.zero;
-            counterRect.anchorMin = Vector2.zero;
-            counterRect.anchorMax = Vector2.one;
-            counterRect.localScale = Vector3.one;
-            counterRect.sizeDelta = new Vector2(-10, -4);
-            counterRect.anchoredPosition = Vector2.zero;
+            
         }
     }
 }
