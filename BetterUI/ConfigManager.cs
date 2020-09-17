@@ -109,7 +109,7 @@ namespace BetterUI
             BuffTooltips = ConfigFileBuffs.Bind("Buffs", "BuffTooltips", true, "Show Buff Tooltips");
 
             BuffTimersPosition = ConfigFileBuffs.Bind("Buffs", "CountersPosition", "TopRight",
-               "Location of the command item counter\n" +
+               "Location of buff timer text\n" +
                "Valid options:\n" +
                "TopLeft\n" +
                "TopRight\n" +
@@ -119,7 +119,7 @@ namespace BetterUI
 
             BuffTimersTextAlignmentOption = (TMPro.TextAlignmentOptions)Enum.Parse(typeof(TMPro.TextAlignmentOptions), BuffTimersPosition.Value, true);
 
-            BuffTimersFontSize = ConfigFileBuffs.Bind("Buffs", "CountersFontSize", 23f, "Size of the command item counter text");
+            BuffTimersFontSize = ConfigFileBuffs.Bind("Buffs", "CountersFontSize", 23f, "Size of the buff timer text");
 
             // Command / Scrapper Improvements
 
