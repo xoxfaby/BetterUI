@@ -137,7 +137,7 @@ P = Sprint Related Last
 ## Changelog
 
 #### v1.4.1
- -Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
+ - Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
 
 ### v1.4.0
  - Added BuffTimers and Tooltips

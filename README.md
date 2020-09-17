@@ -50,12 +50,13 @@ Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage"
 ![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
 
 ### BuffTimers & Tooltips
+Buff timers currently only work if you are the host because the timers are not networked in multiplayer. 
 
 ![Buff Timers](https://fby.pw/buffs.png)
 
 ### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
-Integration with ItemStats in the command and scrapper counters
+Integration with ItemStats in the command and scrapper windows.
 
 ![Item Description](https://fby.pw/itemdesc.png)
 
@@ -134,6 +135,9 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+#### v1.4.1
+ -Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
 
 ### v1.4.0
  - Added BuffTimers and Tooltips
