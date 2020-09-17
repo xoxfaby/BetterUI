@@ -4,13 +4,14 @@ using System.Linq;
 using RoR2;
 using R2API.Utils;
 using BepInEx;
+using UnityEngine;
 
 
 namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.3.2")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.4.0")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -19,7 +20,8 @@ namespace BetterUI
         internal StatsDisplay statsDisplay;
         internal CommandImprovements commandImprovements;
         internal DPSMeter DPSMeter;
-        internal bool ItemStatsModIntegration; 
+        internal bool ItemStatsModIntegration;
+        internal RoR2.UI.HUD HUD;
         public void Awake()
         {
             BepInExPatcher.DoPatching();
@@ -81,7 +83,7 @@ namespace BetterUI
             if (config.DPSMeterWindowShow.Value ||
                 config.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                On.RoR2.GlobalEventManager.ClientDamageNotified += DPSMeter.hook_HandleDamageDealt;
+                On.RoR2.GlobalEventManager.ClientDamageNotified += DPSMeter.hook_ClientDamageNotified;
             }
 
             if (config.DPSMeterWindowShow.Value)
@@ -92,7 +94,7 @@ namespace BetterUI
             if (config.StatsDisplayEnable.Value)
             {
                 RoR2.Run.onRunStartGlobal += statsDisplay.hook_runStartGlobal;
-                On.RoR2.UI.HUD.OnEnable += statsDisplay.hook_Awake;
+                On.RoR2.UI.HUD.Awake += statsDisplay.hook_Awake;
             }
 
             if (config.SortingSortItemsInventory.Value)
@@ -103,6 +105,12 @@ namespace BetterUI
                 config.SortingSortItemsScrapper.Value)
             {
                 On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
+            }
+            if(config.BuffTimers.Value || config.BuffTooltips.Value)
+            {
+                On.RoR2.UI.BuffIcon.Awake += hook_BuffIconAwake;
+                On.RoR2.UI.BuffIcon.UpdateIcon += hook_BuffIconUpdateIcon;
+                On.RoR2.UI.HUD.Awake += hook_HUDAwake;
             }
         }
 
@@ -150,7 +158,7 @@ namespace BetterUI
             if (config.DPSMeterWindowShow.Value ||
                 config.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                On.RoR2.GlobalEventManager.ClientDamageNotified -= DPSMeter.hook_HandleDamageDealt;
+                On.RoR2.GlobalEventManager.ClientDamageNotified -= DPSMeter.hook_ClientDamageNotified;
             }
 
             if (config.DPSMeterWindowShow.Value)
@@ -161,7 +169,7 @@ namespace BetterUI
             if (config.StatsDisplayEnable.Value)
             {
                 RoR2.Run.onRunStartGlobal -= statsDisplay.hook_runStartGlobal;
-                On.RoR2.UI.HUD.OnEnable -= statsDisplay.hook_Awake;
+                On.RoR2.UI.HUD.Awake -= statsDisplay.hook_Awake;
             }
 
             if (config.SortingSortItemsInventory.Value)
@@ -173,8 +181,96 @@ namespace BetterUI
             {
                 On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
             }
+            if (config.BuffTimers.Value || config.BuffTooltips.Value)
+            {
+                On.RoR2.UI.BuffIcon.Awake -= hook_BuffIconAwake;
+                On.RoR2.UI.BuffIcon.UpdateIcon -= hook_BuffIconUpdateIcon;
+                On.RoR2.UI.HUD.Awake -= hook_HUDAwake;
+            }
+        }
+        
+        private void hook_HUDAwake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        {
+            orig(self);
+            HUD = self;
+        }
+        private void hook_BuffIconAwake(On.RoR2.UI.BuffIcon.orig_Awake orig, RoR2.UI.BuffIcon self)
+        {
+            orig(self);
+            if (self.transform.parent.name == "BuffDisplayRoot")
+            {
+                if (config.BuffTooltips.Value)
+                {
+                    UnityEngine.UI.GraphicRaycaster raycaster = self.transform.parent.GetComponent<UnityEngine.UI.GraphicRaycaster>();
+                    if (raycaster == null)
+                    {
+                        self.transform.parent.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+                    }
+                    self.gameObject.AddComponent<RoR2.UI.TooltipProvider>();
+                }
+                if (config.BuffTimers.Value)
+                {
+                    GameObject TimerText = new GameObject("TimerText");
+                    RectTransform timerRect = TimerText.AddComponent<RectTransform>();
+                    RoR2.UI.HGTextMeshProUGUI timerTextMesh = TimerText.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
+                    TimerText.transform.SetParent(self.transform);
+
+                    timerTextMesh.enableWordWrapping = false;
+                    timerTextMesh.alignment = config.BuffTimersTextAlignmentOption;
+                    timerTextMesh.fontSize = config.BuffTimersFontSize.Value;
+                    timerTextMesh.faceColor = Color.white;
+                    timerTextMesh.text = "";
+
+                    timerRect.localPosition = Vector3.zero;
+                    timerRect.anchorMin = new Vector2(1,0);
+                    timerRect.anchorMax = new Vector2(1,0);
+                    timerRect.localScale = Vector3.one;
+                    timerRect.sizeDelta = new Vector2(48,48);
+                    timerRect.anchoredPosition = new Vector2(-24,24);
+                }
+            }
         }
 
+
+        private void hook_BuffIconUpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
+        {
+            orig(self);
+            BuffDef buffDef = BuffCatalog.GetBuffDef(self.buffIndex);
+            if (buffDef != null && self.transform.parent.name == "BuffDisplayRoot")
+            {
+                if (config.BuffTooltips.Value)
+                {
+                    RoR2.UI.TooltipProvider tooltipProvider = self.GetComponent<RoR2.UI.TooltipProvider>();
+                    tooltipProvider.overrideTitleText = buffDef.name;
+                    tooltipProvider.titleColor = buffDef.buffColor;
+                }
+                if (config.BuffTimers.Value)
+                {
+                    Transform timerText = self.transform.Find("TimerText");
+                    if (timerText != null)
+                    {
+                        if (HUD != null)
+                        {
+                            CharacterBody characterBody = HUD.targetBodyObject ? HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                            if (characterBody != null)
+                            {
+                                var ThisBuff = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex);
+                                if (ThisBuff.Any())
+                                {
+                                    var buff = ThisBuff.OrderByDescending(b => b.timer).First();
+                                    if (buff != null)
+                                    {
+                                        timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = buff.timer < 10 && config.BuffTimersDecimal.Value ? buff.timer.ToString("N1") : buff.timer.ToString("N0");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = "";
+                    }
+                }
+            }
+        }
 
         private bool hook_ItemIsVisible(On.RoR2.UI.ItemInventoryDisplay.orig_ItemIsVisible orig, ItemIndex itemIndex)
         {
@@ -202,7 +298,6 @@ namespace BetterUI
             self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
         }
 
-        //private void hook_SetDisplayData(On.RoR2.UI.EquipmentIcon.orig_SetDisplayData orig, RoR2.UI.EquipmentIcon self, ValueType newDisplayData)
         private void hook_EquipmentIconUpdate(On.RoR2.UI.EquipmentIcon.orig_Update orig, RoR2.UI.EquipmentIcon self)
         {
             orig(self);

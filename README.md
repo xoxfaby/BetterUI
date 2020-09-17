@@ -8,7 +8,7 @@ Each be disabled and configured in the config file.
 In the current version of r2modman the default value of StatsDisplay StatString can't load into the editor.  
 If you want a default to work from, copy and paste it from here:
 ```
-<color=#FFFFFF><size=18><b>Stats</b></size>\n<size=14>Luck: $luck\nBase Damage: $dmg\nCrit Chance: $crit%\nAttack Speed: $atkspd\nArmor: $armor\nRegen: $regen\nMoveSpeed: $movespeed\nJumps: $jumps/$maxjumps\nKills: $killcount
+<color=#FFFFFF><size=18><b>Stats</b></size>\n<size=14>Luck: $luck\nBase Damage: $dmg\nCrit Chance: $crit%\nAttack Speed: $atkspd\nArmor: $armor | $dmgreduction%\nRegen: $regen\nMoveSpeed: $movespeed\nJumps: $jumps/$maxjumps\nKills: $killcount\nMountain Shrines: $mountainshrines\nBlue Portal: $blueportal\n
 ```
 
 
@@ -22,6 +22,7 @@ If you want a default to work from, copy and paste it from here:
 - Remove background blur from command window
 - Advanced Item Description
 - ItemsStatsMod integration for command window
+- Buff Timers and Tooltips
 - Show Hidden Items
 
 ## Support Me
@@ -56,6 +57,10 @@ Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage"
 
 ![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
 
+### BuffTimers & Tooltips
+
+![Buff Timers](https://fby.pw/buffs.png)
+
 ### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
 Integration with ItemStats in the command and scrapper counters
@@ -85,11 +90,12 @@ Here is a list of all valid parameters right now
 $exp $level $luck  
 $dmg $crit $atkspd  
 $hp $maxhp $shield $maxshield $barrier $maxbarrier  
-$armor $regen  
+$armor $armordmgreduction $regen  
 $movespeed $jumps $maxjumps  
-$killcount $multikill  
-$dps $dpscharacter $dpsminions
-
+$killcount $multikill $highestmultikill  
+$dps $dpscharacter $dpsminions  
+$mountainshrines  
+$blueportal $goldportal $celestialportal  
 
 #### Sorting
 
@@ -136,6 +142,12 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+### v1.4.0
+ - Added BuffTimers and Tooltips
+ - Added seperate StatsDisplay StatString for when the scoreboard is open.
+ - Added StatsDisplay parameters: $armordmgreduction $mountainshrines $blueportal $goldportal $celestialportal
+ - Potential fix for (harmless) DPSMeter console spam
 
 #### v1.3.2
  - Added $highestmultikill for StatsDisplay to keep track of your largest multikill of the run

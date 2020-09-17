@@ -7,7 +7,7 @@
     <AssemblyName>BetterUI</AssemblyName>
     <RootNamespace>BetterUI</RootNamespace>
   </PropertyGroup>
-
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <DefineConstants>TRACE</DefineConstants>
@@ -39,7 +39,7 @@
       <HintPath>D:\Projects\ror2\ItemStats.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\plugins\tristanmcpherson-R2API\R2API\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\R2API\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\r2modman\BepInEx\core\Mono.Cecil.dll</HintPath>
@@ -110,7 +110,7 @@
     </None>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="https://json-schema.org/draft-04/schema" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;Thunderstore\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)Thunderstore\README.md&quot; &quot;$(SolutionDir)README.md&quot;&#xD;&#xA;del Thunderstore\thunder.zip&#xD;&#xA;tar -acf Thunderstore\thunder.zip -C Thunderstore\ $(TargetFileName) README.md icon.png manifest.json" />

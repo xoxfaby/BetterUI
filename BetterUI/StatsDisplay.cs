@@ -29,7 +29,7 @@ namespace BetterUI
         {
             highestMultikill = 0;
         }
-        public void hook_Awake(On.RoR2.UI.HUD.orig_OnEnable orig, RoR2.UI.HUD self)
+        public void hook_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
 
@@ -126,47 +126,52 @@ namespace BetterUI
                     statsDisplayContainer.transform.SetAsLastSibling();
                 }
             }
-            if (LocalUserManager.GetFirstLocalUser() != null && 
-                LocalUserManager.GetFirstLocalUser().cachedMaster != null && 
-                LocalUserManager.GetFirstLocalUser().cachedMaster.GetBody() != null && 
-                textMesh != null)
+            if (mod.HUD != null && textMesh != null)
             {
-                CharacterBody playerBody = LocalUserManager.GetFirstLocalUser().cachedMaster.GetBody();
-                if (mod.config.StatsDisplayShowScoreboardOnly.Value)
+                    CharacterBody playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                if (playerBody != null)
                 {
-                    bool active = LocalUserManager.GetFirstLocalUser().inputPlayer != null && LocalUserManager.GetFirstLocalUser().inputPlayer.GetButton("info");
-                    statsDisplayContainer.SetActive(active);
-                    if (!active) { return; }
+                    bool scoreBoardOpen = LocalUserManager.GetFirstLocalUser().inputPlayer != null && LocalUserManager.GetFirstLocalUser().inputPlayer.GetButton("info");
+                    if (mod.config.StatsDisplayShowScoreboardOnly.Value)
+                    {
+                        statsDisplayContainer.SetActive(scoreBoardOpen);
+                        if (!scoreBoardOpen) { return; }
+                    }
+
+                    highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
+                    string printString = scoreBoardOpen ? mod.config.StatsDisplayStatStringScoreboard.Value : mod.config.StatsDisplayStatString.Value;
+                    printString = printString.Replace("$armordmgreduction", ((playerBody.armor >= 0 ? playerBody.armor / (100 + playerBody.armor) : (100 / (100 - playerBody.armor) - 1)) * 100).ToString("N2"));
+                    printString = printString.Replace("$exp", playerBody.experience.ToString());
+                    printString = printString.Replace("$level", playerBody.level.ToString());
+                    printString = printString.Replace("$dmg", playerBody.damage.ToString());
+                    printString = printString.Replace("$crit", playerBody.crit.ToString());
+                    printString = printString.Replace("$hp", Math.Floor(playerBody.healthComponent.health).ToString());
+                    printString = printString.Replace("$maxhp", playerBody.maxHealth.ToString());
+                    printString = printString.Replace("$shield", Math.Floor(playerBody.healthComponent.shield).ToString());
+                    printString = printString.Replace("$maxshield", playerBody.maxShield.ToString());
+                    printString = printString.Replace("$barrier", Math.Floor(playerBody.healthComponent.barrier).ToString());
+                    printString = printString.Replace("$maxbarrier", playerBody.maxBarrier.ToString());
+                    printString = printString.Replace("$armor", playerBody.armor.ToString());
+                    printString = printString.Replace("$regen", playerBody.regen.ToString());
+                    printString = printString.Replace("$movespeed", Math.Round(playerBody.moveSpeed, 1).ToString());
+                    printString = printString.Replace("$jumps", (playerBody.maxJumpCount - playerBody.characterMotor.jumpCount).ToString());
+                    printString = printString.Replace("$maxjumps", playerBody.maxJumpCount.ToString());
+                    printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
+                    printString = printString.Replace("$luck", LocalUserManager.GetFirstLocalUser().cachedMaster.luck.ToString());
+                    printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
+                    printString = printString.Replace("$highestmultikill", highestMultikill.ToString());
+                    printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
+                    //printString = printString.Replace("$deaths", playerBody.master.dea);
+                    printString = printString.Replace("$dpscharacter", mod.DPSMeter.CharacterDPS.ToString("N0")); ;
+                    printString = printString.Replace("$dpsminion", mod.DPSMeter.MinionDPS.ToString("N0")); ;
+                    printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;
+                    printString = printString.Replace("$mountainshrines", TeleporterInteraction.instance.shrineBonusStacks.ToString()); ;
+                    printString = printString.Replace("$blueportal", TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString());
+                    printString = printString.Replace("$goldportal", TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString());
+                    printString = printString.Replace("$celestialportal", TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString());
+
+                    textMesh.text = printString;
                 }
-
-                highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
-                string printString = mod.config.StatsDisplayStatString.Value;
-                printString = printString.Replace("$exp", playerBody.experience.ToString());
-                printString = printString.Replace("$level", playerBody.level.ToString());
-                printString = printString.Replace("$dmg", playerBody.damage.ToString());
-                printString = printString.Replace("$crit", playerBody.crit.ToString());
-                printString = printString.Replace("$hp", Math.Floor(playerBody.healthComponent.health).ToString());
-                printString = printString.Replace("$maxhp", playerBody.maxHealth.ToString());
-                printString = printString.Replace("$shield", Math.Floor(playerBody.healthComponent.shield).ToString());
-                printString = printString.Replace("$maxshield", playerBody.maxShield.ToString());
-                printString = printString.Replace("$barrier", Math.Floor(playerBody.healthComponent.barrier).ToString());
-                printString = printString.Replace("$maxbarrier", playerBody.maxBarrier.ToString());
-                printString = printString.Replace("$armor", playerBody.armor.ToString());
-                printString = printString.Replace("$regen", playerBody.regen.ToString());
-                printString = printString.Replace("$movespeed", Math.Round(playerBody.moveSpeed, 1).ToString());
-                printString = printString.Replace("$jumps", (playerBody.maxJumpCount - playerBody.characterMotor.jumpCount).ToString());
-                printString = printString.Replace("$maxjumps", playerBody.maxJumpCount.ToString());
-                printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
-                printString = printString.Replace("$luck", LocalUserManager.GetFirstLocalUser().cachedMaster.luck.ToString());
-                printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
-                printString = printString.Replace("$highestmultikill", highestMultikill.ToString());
-                printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
-                //printString = printString.Replace("$deaths", playerBody.master.dea);
-                printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;
-                printString = printString.Replace("$dpscharacter", mod.DPSMeter.CharacterDPS.ToString("N0")); ;
-                printString = printString.Replace("$dpsminion", mod.DPSMeter.MinionDPS.ToString("N0")); ;
-
-                textMesh.text = printString;
             }
         }
     }

@@ -12,8 +12,18 @@ namespace BetterUI
         public ConfigEntry<bool> MiscAdvancedDescriptions;
         public ConfigEntry<bool> MiscAdvancedPickupNotifications;
         public ConfigEntry<bool> MiscItemStatsIntegration;
+
         public ConfigEntry<bool> MiscShowHidden;
 
+
+        // Buffs
+
+        public ConfigEntry<bool> BuffTimers;
+        public ConfigEntry<bool> BuffTimersDecimal;
+        public ConfigEntry<bool> BuffTooltips;
+        public ConfigEntry<String> BuffTimersPosition;
+        public TMPro.TextAlignmentOptions BuffTimersTextAlignmentOption;
+        public ConfigEntry<float> BuffTimersFontSize;
 
         // 2 Command / Scrapper Improvements
 
@@ -47,6 +57,7 @@ namespace BetterUI
         // 4 StatsDisplay
         public ConfigEntry<bool> StatsDisplayEnable;
         public ConfigEntry<String> StatsDisplayStatString;
+        public ConfigEntry<String> StatsDisplayStatStringScoreboard;
         public ConfigEntry<bool> StatsDisplayShowScoreboardOnly;
         public ConfigEntry<bool> StatsDisplayPanelBackground;
         public ConfigEntry<bool> StatsDisplayAttachToObjectivePanel;
@@ -73,6 +84,7 @@ namespace BetterUI
         public ConfigManager(BetterUI mod)
         {
             ConfigFile ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
+            ConfigFile ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
             ConfigFile ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
             ConfigFile ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
             ConfigFile ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
@@ -87,6 +99,27 @@ namespace BetterUI
             MiscItemStatsIntegration = ConfigFileMisc.Bind("Misc", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable");
 
             MiscShowHidden = ConfigFileMisc.Bind("Misc", "ShowHidden", false, "Show hidden items in the item inventory");
+
+            // Buffs
+
+            BuffTimers = ConfigFileBuffs.Bind("Buffs", "BuffTimers", true, "Show Buff Timers (Host Only)");
+
+            BuffTimersDecimal = ConfigFileBuffs.Bind("Buffs", "BuffTimersDecimal", true, "Show 1 decimal point when timer is below 10.");
+
+            BuffTooltips = ConfigFileBuffs.Bind("Buffs", "BuffTooltips", true, "Show Buff Tooltips");
+
+            BuffTimersPosition = ConfigFileBuffs.Bind("Buffs", "CountersPosition", "TopRight",
+               "Location of the command item counter\n" +
+               "Valid options:\n" +
+               "TopLeft\n" +
+               "TopRight\n" +
+               "BottomLeft\n" +
+               "BottomRight\n" +
+               "Center\n");
+
+            BuffTimersTextAlignmentOption = (TMPro.TextAlignmentOptions)Enum.Parse(typeof(TMPro.TextAlignmentOptions), BuffTimersPosition.Value, true);
+
+            BuffTimersFontSize = ConfigFileBuffs.Bind("Buffs", "CountersFontSize", 23f, "Size of the command item counter text");
 
             // Command / Scrapper Improvements
 
@@ -163,20 +196,41 @@ namespace BetterUI
                 "Base Damage: $dmg\n" +
                 "Crit Chance: $crit%\n" +
                 "Attack Speed: $atkspd\n" +
-                "Armor: $armor\n" +
+                "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +
-                "MoveSpeed: $movespeed\n" +
+                "Speed: $movespeed\n" +
                 "Jumps: $jumps/$maxjumps\n" +
-                "Kills: $killcount",
+                "Kills: $killcount\n" +
+                "Mountain Shrines: $mountainshrines\n",
                 "You may format the StatString using formatting tags such as color, size, bold, underline, italics. See Readme for more\n" +
                 "Valid Parameters:\n" +
                 "$exp $level $luck\n" +
                 "$dmg $crit $atkspd\n" +
                 "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
-                "$armor $regen\n" +
+                "$armor $armordmgreduction $regen\n" +
                 "$movespeed $jumps $maxjumps\n" +
-                "$killcount $multikill\n" +
-                "$dps $dpscharacter $dpsminions\n");
+                "$killcount $multikill $highestmultikill\n" +
+                "$dps $dpscharacter $dpsminions\n" +
+                "$mountainshrines\n" +
+                "$blueportal $goldportal $celestialportal");
+
+            StatsDisplayStatStringScoreboard = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringScoreboard", 
+                "<color=#FFFFFF>" +
+                "<size=18><b>Stats</b></size>\n" +
+                "<size=14>Luck: $luck\n" +
+                "Base Damage: $dmg\n" +
+                "Crit Chance: $crit%\n" +
+                "Attack Speed: $atkspd\n" +
+                "Armor: $armor | $armordmgreduction%\n" +
+                "Regen: $regen\n" +
+                "Speed: $movespeed\n" +
+                "Jumps: $jumps/$maxjumps\n" +
+                "Kills: $killcount\n" +
+                "Mountain Shrines: $mountainshrines\n" +
+                "Blue Portal: $blueportal\n" +
+                "Gold Portal: $goldportal\n" +
+                "Celestial Portal: $celestialportal\n",
+                "StatDisplay string to show when the scoreboard is open. This can be the same or different from the normal StatString");
 
             StatsDisplayShowScoreboardOnly = ConfigFileStatsDisplay.Bind("StatsDisplay", "ShowOnlyScoreboard", false, "Only show the StatsDisplay when the scoreboard is open");
 

@@ -89,7 +89,7 @@ namespace BetterUI
             }
         }
 
-        public void hook_HandleDamageDealt(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
+        public void hook_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
         {
             orig(dmgMsg);
 
@@ -97,13 +97,14 @@ namespace BetterUI
 
 
 
-            if (dmgMsg.attacker != null)
+            if (dmgMsg != null && dmgMsg.attacker != null)
             {
                 if (dmgMsg.attacker == localMaster.GetBodyObject())
                 {
                     characterDamageLog.Add(new DamageLog(dmgMsg.damage));
                 }
                 else if (dmgMsg.attacker.GetComponent<CharacterBody>() != null &&
+                    dmgMsg.attacker.GetComponent<CharacterBody>().master != null &&
                     dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership != null &&
                     dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership.ownerMasterId == localMaster.netId)
                 { 
