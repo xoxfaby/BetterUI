@@ -165,10 +165,20 @@ namespace BetterUI
                     printString = printString.Replace("$dpscharacter", mod.DPSMeter.CharacterDPS.ToString("N0")); ;
                     printString = printString.Replace("$dpsminion", mod.DPSMeter.MinionDPS.ToString("N0")); ;
                     printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;
-                    printString = printString.Replace("$mountainshrines", TeleporterInteraction.instance.shrineBonusStacks.ToString()); ;
-                    printString = printString.Replace("$blueportal", TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString());
-                    printString = printString.Replace("$goldportal", TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString());
-                    printString = printString.Replace("$celestialportal", TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString());
+                    if (TeleporterInteraction.instance)
+                    {
+                        printString = printString.Replace("$mountainshrines", TeleporterInteraction.instance.shrineBonusStacks.ToString()); ;
+                        printString = printString.Replace("$blueportal", TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString());
+                        printString = printString.Replace("$goldportal", TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString());
+                        printString = printString.Replace("$celestialportal", TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString());
+                    }
+                    else
+                    {
+                        printString = printString.Replace("$mountainshrines", "N\\A"); ;
+                        printString = printString.Replace("$blueportal", "N\\A");
+                        printString = printString.Replace("$goldportal", "N\\A");
+                        printString = printString.Replace("$celestialportal", "N\\A");
+                    }
 
                     textMesh.text = printString;
                 }
