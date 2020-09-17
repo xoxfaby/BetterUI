@@ -1,15 +1,7 @@
 # BetterUI
 
 A simple mod that adds various UI improvements.  
-Each be disabled and configured in the config file.
-
-### Important note
-
-In the current version of r2modman the default value of StatsDisplay StatString can't load into the editor.  
-If you want a default to work from, copy and paste it from here:
-```
-<color=#FFFFFF><size=18><b>Stats</b></size>\n<size=14>Luck: $luck\nBase Damage: $dmg\nCrit Chance: $crit%\nAttack Speed: $atkspd\nArmor: $armor | $dmgreduction%\nRegen: $regen\nMoveSpeed: $movespeed\nJumps: $jumps/$maxjumps\nKills: $killcount\nMountain Shrines: $mountainshrines\nBlue Portal: $blueportal\n
-```
+Each can be disabled and configured in the config file.
 
 
 ## Currently implemented:
@@ -58,12 +50,13 @@ Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage"
 ![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
 
 ### BuffTimers & Tooltips
+Buff timers currently only work if you are the host because the timers are not networked in multiplayer. 
 
 ![Buff Timers](https://fby.pw/buffs.png)
 
 ### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
-Integration with ItemStats in the command and scrapper counters
+Integration with ItemStats in the command and scrapper windows.
 
 ![Item Description](https://fby.pw/itemdesc.png)
 
@@ -142,6 +135,9 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+#### v1.4.1
+ -Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
 
 ### v1.4.0
  - Added BuffTimers and Tooltips

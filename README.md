@@ -1,15 +1,7 @@
 # BetterUI
 
 A simple mod that adds various UI improvements.  
-Each be disabled and configured in the config file.
-
-### Important note
-
-In the current version of r2modman the default value of StatsDisplay StatString can't load into the editor.  
-If you want a default to work from, copy and paste it from here:
-```
-<color=#FFFFFF><size=18><b>Stats</b></size>\n<size=14>Luck: $luck\nBase Damage: $dmg\nCrit Chance: $crit%\nAttack Speed: $atkspd\nArmor: $armor | $dmgreduction%\nRegen: $regen\nMoveSpeed: $movespeed\nJumps: $jumps/$maxjumps\nKills: $killcount\nMountain Shrines: $mountainshrines\nBlue Portal: $blueportal\n
-```
+Each can be disabled and configured in the config file.
 
 
 ## Currently implemented:
