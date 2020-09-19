@@ -52,20 +52,11 @@ namespace BetterUI
         }
         public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
         {
-            if(optionMap != null)
-            { 
-                orig(self, optionMap[index]);
-                if (PickupCatalog.GetPickupDef(self.options[0].pickupIndex).itemIndex != ItemIndex.None)
-                {
-                    ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[optionMap[index]].pickupIndex).itemIndex);
-                    lastItem[(int)itemDef.tier] = itemDef.itemIndex;
-                }
-                optionMap = null;
-            }
-            else
-            {
-                orig(self, index);
-            }
+
+            ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[optionMap[index]].pickupIndex).itemIndex);
+            lastItem[(int)itemDef.tier] = itemDef.itemIndex;
+
+            orig(self, index);
         }
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
@@ -129,7 +120,7 @@ namespace BetterUI
                 bool[] availableIndex = new bool[ItemCatalog.itemCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
                 {
-                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
+                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = false;//option.available;
                 }
 
                 List<ItemIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
@@ -144,98 +135,89 @@ namespace BetterUI
 
         public void hook_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
         {
-            orig(self, index, button);
+            orig(self, optionMap != null ? optionMap[index] : index, button);
 
-            CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
-            PickupDef pickupDef;
+            if (mod.config.CommandTooltipsShow.Value || mod.config.CommandCountersShow.Value)
+            {
+                CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
+                PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap != null ? optionMap[index] : index ].pickupIndex);
 
-            if (optionMap != null)
-            {
-                pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[index]].pickupIndex);
-            }
-            else
-            {
-                pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[index].pickupIndex);
-            }
-
-            if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
-            {
-                int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
-                if (!mod.config.CommandCountersHideOnZero.Value || count > 0)
+                if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
                 {
-                    GameObject textGameObject = new GameObject("StackText");
-                    textGameObject.transform.SetParent(button.transform);
-                    textGameObject.layer = 5;
-
-                    RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
-
-                    HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
-                    counterText.enableWordWrapping = false;
-                    counterText.alignment = mod.config.CommandCountersTextAlignmentOption;
-                    counterText.fontSize = mod.config.CommandCountersFontSize.Value;
-                    counterText.faceColor = Color.white;
-                    counterText.outlineWidth = 0.2f;
-                    counterText.text = mod.config.CommandCountersPrefix.Value + count;
-
-                    counterRect.localPosition = Vector3.zero;
-                    counterRect.anchorMin = Vector2.zero;
-                    counterRect.anchorMax = Vector2.one;
-                    counterRect.localScale = Vector3.one;
-                    counterRect.sizeDelta = new Vector2(-10, -4);
-                    counterRect.anchoredPosition = Vector2.zero;
-                }
-            }
-
-            if (mod.config.CommandTooltipsShow.Value)
-            {
-                TooltipProvider tooltipProvider = button.gameObject.AddComponent<TooltipProvider>();
-
-                if (pickupDef.itemIndex != ItemIndex.None)
-                {
-                    ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-
-                    if (mod.ItemStatsModIntegration)
+                    int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
+                    if (!mod.config.CommandCountersHideOnZero.Value || count > 0)
                     {
-                        int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
-                        string bodyText = Language.GetString(itemDef.descriptionToken);
-                        if (mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
+                        GameObject textGameObject = new GameObject("StackText");
+                        textGameObject.transform.SetParent(button.transform);
+                        textGameObject.layer = 5;
+
+                        RectTransform counterRect = textGameObject.AddComponent<RectTransform>();
+
+                        HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
+                        counterText.enableWordWrapping = false;
+                        counterText.alignment = mod.config.CommandCountersTextAlignmentOption;
+                        counterText.fontSize = mod.config.CommandCountersFontSize.Value;
+                        counterText.faceColor = Color.white;
+                        counterText.outlineWidth = 0.2f;
+                        counterText.text = mod.config.CommandCountersPrefix.Value + count;
+
+                        counterRect.localPosition = Vector3.zero;
+                        counterRect.anchorMin = Vector2.zero;
+                        counterRect.anchorMax = Vector2.one;
+                        counterRect.localScale = Vector3.one;
+                        counterRect.sizeDelta = new Vector2(-10, -4);
+                        counterRect.anchoredPosition = Vector2.zero;
+                    }
+                }
+
+                if (mod.config.CommandTooltipsShow.Value)
+                {
+                    TooltipProvider tooltipProvider = button.gameObject.AddComponent<TooltipProvider>();
+
+                    if (pickupDef.itemIndex != ItemIndex.None)
+                    {
+                        ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
+
+                        if (mod.ItemStatsModIntegration)
                         {
-                            bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
-                            String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
-                            bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
-                            bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
-                            descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
-                            bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                            int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
+                            string bodyText = Language.GetString(itemDef.descriptionToken);
+                            if (mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
+                            {
+                                bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
+                                String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                                bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
+                                descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                            }
+                            else
+                            {
+                                bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master);
+                            }
+
+                            tooltipProvider.overrideBodyText = bodyText;
                         }
                         else
                         {
-                            bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master);
+                            tooltipProvider.bodyToken = itemDef.descriptionToken;
                         }
 
-                        tooltipProvider.overrideBodyText = bodyText;
+                        tooltipProvider.titleToken = itemDef.nameToken;
+                        tooltipProvider.titleColor = ColorCatalog.GetColor(itemDef.darkColorIndex); ;
+                        tooltipProvider.bodyColor = new Color(0.6f, 0.6f, 0.6f, 1f);
                     }
-                    else
+                    else if (pickupDef.equipmentIndex != EquipmentIndex.None)
                     {
-                        tooltipProvider.bodyToken = itemDef.descriptionToken;
+                        EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
+
+                        tooltipProvider.titleToken = equipmentDef.nameToken;
+                        tooltipProvider.bodyToken = equipmentDef.descriptionToken;
+                        tooltipProvider.titleColor = ColorCatalog.GetColor(equipmentDef.colorIndex);
+                        tooltipProvider.bodyColor = Color.gray;
                     }
-
-                    tooltipProvider.titleToken = itemDef.nameToken;
-                    tooltipProvider.titleColor = ColorCatalog.GetColor(itemDef.darkColorIndex); ;
-                    tooltipProvider.bodyColor = new Color(0.6f, 0.6f, 0.6f, 1f);
                 }
-                else if (pickupDef.equipmentIndex != EquipmentIndex.None)
-                {
-                    EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
-
-                    tooltipProvider.titleToken = equipmentDef.nameToken;
-                    tooltipProvider.bodyToken = equipmentDef.descriptionToken;
-                    tooltipProvider.titleColor = ColorCatalog.GetColor(equipmentDef.colorIndex);
-                    tooltipProvider.bodyColor = Color.gray;
-                }
-                
             }
-
-            
         }
     }
 }

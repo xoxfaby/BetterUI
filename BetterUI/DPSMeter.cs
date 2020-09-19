@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -16,21 +17,23 @@ namespace BetterUI
     class DPSMeter
     {
         private readonly BetterUI mod;
-        private List<DamageLog> characterDamageLog = new List<DamageLog>();
-        private List<DamageLog> minionDamageLog = new List<DamageLog>();
+        private readonly Queue<DamageLog> characterDamageLog = new Queue<DamageLog>();
+        private float characterDamageSum = 0;
+        private readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
+        private float minionDamageSum = 0;
 
         private HGTextMeshProUGUI textMesh;
         public float DPS { get => MinionDPS + CharacterDPS; }
-        public float MinionDPS;
-        public float CharacterDPS;
+        public float CharacterDPS { get => characterDamageLog.Count > 0 ? characterDamageSum / Clamp(Time.time - characterDamageLog.Peek().time) : 0; }
+        public float MinionDPS { get => minionDamageLog.Count > 0 ? minionDamageSum / Clamp(Time.time - minionDamageLog.Peek().time) : 0; }
         internal struct DamageLog
         {
             public float damage;
-            public DateTime time;
+            public float time;
             public DamageLog(float dmg)
             {
                 damage = dmg;
-                time = DateTime.UtcNow;
+                time = Time.time;
             }
         }
         public DPSMeter(BetterUI m)
@@ -41,47 +44,17 @@ namespace BetterUI
         {
             return Math.Min(Math.Max(1, value), mod.config.DPSMeterTimespan.Value);
         }
+
         public void Update()
         {
-            if (characterDamageLog.Count > 0)
+            
+            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - mod.config.DPSMeterTimespan.Value)
             {
-                float damageSum = 0;
-                int i = characterDamageLog.Count - 1;
-                var now = DateTime.UtcNow;
-                while (i >= 0)
-                {
-                    if ((now - characterDamageLog[i].time).Seconds < 5)
-                    {
-                        damageSum += characterDamageLog[i].damage;
-                        i--;
-                    }
-                    else
-                    {
-                        characterDamageLog.RemoveRange(0, i);
-                        break;
-                    }
-                }
-                CharacterDPS = damageSum / Clamp((characterDamageLog.First().time - characterDamageLog.Last().time).Seconds);
+                characterDamageSum -= characterDamageLog.Dequeue().damage;
             }
-            if (minionDamageLog.Count > 0)
+            while (minionDamageLog.Count > 0 && minionDamageLog.Peek().time < Time.time - mod.config.DPSMeterTimespan.Value)
             {
-                float damageSum = 0;
-                int i = minionDamageLog.Count - 1;
-                var now = DateTime.UtcNow;
-                while (i >= 0)
-                {
-                    if ((now - minionDamageLog[i].time).Seconds < 5)
-                    {
-                        damageSum += minionDamageLog[i].damage;
-                        i--;
-                    }
-                    else
-                    {
-                        minionDamageLog.RemoveRange(0, i);
-                        break;
-                    }
-                }
-                MinionDPS = damageSum / Clamp((minionDamageLog.First().time - minionDamageLog.Last().time).Seconds);
+                minionDamageSum -= minionDamageLog.Dequeue().damage;
             }
             if (textMesh != null)
             {
@@ -101,14 +74,16 @@ namespace BetterUI
             {
                 if (dmgMsg.attacker == localMaster.GetBodyObject())
                 {
-                    characterDamageLog.Add(new DamageLog(dmgMsg.damage));
+                    characterDamageSum += dmgMsg.damage;
+                    characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
                 }
                 else if (dmgMsg.attacker.GetComponent<CharacterBody>() != null &&
                     dmgMsg.attacker.GetComponent<CharacterBody>().master != null &&
                     dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership != null &&
                     dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership.ownerMasterId == localMaster.netId)
-                { 
-                    minionDamageLog.Add(new DamageLog(dmgMsg.damage));
+                {
+                    minionDamageSum += dmgMsg.damage;
+                    minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
                 }
             }
         }

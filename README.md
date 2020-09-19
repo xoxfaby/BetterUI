@@ -81,7 +81,7 @@ If you want another parameter added, feel free to suggest it to me (See Help & F
 Here is a list of all valid parameters right now
 
 $exp $level $luck  
-$dmg $crit $atkspd  
+$dmg $crit $luckcrit $atkspd  
 $hp $maxhp $shield $maxshield $barrier $maxbarrier  
 $armor $armordmgreduction $regen  
 $movespeed $jumps $maxjumps  
@@ -136,8 +136,16 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.4.2
+ - Added $luckcrit for StatsDisplay to show the crit chance considering luck. 
+ - Changed default command sortorder to "6" ( Alphabetical ). I believe that sorting that changes the order in the command window during a run leads to more confusion than it helps.
+ - Fixed some small mistakes with config values and hooks
+ - Moved command sorting optionmap application to OnCreateButton to remove an unnecesary hook and attempt to improve compatibility with mods that call SubmitChoice directly
+ - Rewrote DPSMeter calculations for performance
+ - Rewrote StatsDisplay StatsString parser for performance
+
 #### v1.4.1
- -Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
+ - Fixed bug that would break StatsDisplay in levels without a teleporter and spam the console with errors. 
 
 ### v1.4.0
  - Added BuffTimers and Tooltips

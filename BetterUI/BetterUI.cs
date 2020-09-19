@@ -11,7 +11,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.4.1")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.4.2")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -68,7 +68,7 @@ namespace BetterUI
             }
 
             if (config.CommandCloseOnEscape.Value ||
-                config.CommandCloseOnEscape.Value ||
+                config.CommandCloseOnWASD.Value ||
                 config.CommandCloseOnCustom.Value != "")
             {
                 On.RoR2.UI.PickupPickerPanel.Awake += commandImprovements.hook_PickupPickerPanelAwake;
@@ -101,8 +101,7 @@ namespace BetterUI
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += itemSorting.hook_OnInventoryChanged;
             }
-            if (config.SortingSortItemsCommand.Value ||
-                config.SortingSortItemsScrapper.Value)
+            if (config.SortingSortItemsCommand.Value || config.SortingSortOrderCommand.Value.Contains("C"))
             {
                 On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
             }
@@ -137,20 +136,22 @@ namespace BetterUI
 
             if (config.CommandResizeCommandWindow.Value ||
                 config.SortingSortItemsScrapper.Value ||
-                config.SortingSortItemsScrapper.Value)
+                config.SortingSortItemsCommand.Value)
             {
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions -= commandImprovements.hook_SetPickupOptions;
             }
 
             if (config.CommandCloseOnEscape.Value ||
-                config.CommandCloseOnEscape.Value ||
+                config.CommandCloseOnWASD.Value ||
                 config.CommandCloseOnCustom.Value != "")
             {
                 On.RoR2.UI.PickupPickerPanel.Awake -= commandImprovements.hook_PickupPickerPanelAwake;
             }
 
             if (config.CommandTooltipsShow.Value ||
-                config.CommandCountersShow.Value)
+                config.CommandCountersShow.Value || 
+                config.SortingSortItemsScrapper.Value ||
+                config.SortingSortItemsCommand.Value)
             {
                 On.RoR2.UI.PickupPickerPanel.OnCreateButton -= commandImprovements.hook_OnCreateButton;
             }
@@ -176,8 +177,7 @@ namespace BetterUI
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged -= itemSorting.hook_OnInventoryChanged;
             }
-            if (config.SortingSortItemsCommand.Value ||
-                config.SortingSortItemsScrapper.Value)
+            if (config.SortingSortItemsCommand.Value || config.SortingSortOrderCommand.Value.Contains("C"))
             {
                 On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
             }

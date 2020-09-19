@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 using RoR2;
 using BepInEx;
@@ -20,9 +22,47 @@ namespace BetterUI
         private GameObject stupidBuffer;
         private RoR2.UI.HGTextMeshProUGUI textMesh;
         private int highestMultikill = 0;
+
+        readonly Dictionary<String, Func<CharacterBody,String>> regexmap;
+        readonly String regexpattern;
+
         public StatsDisplay(BetterUI m)
         {
             mod = m;
+
+            regexmap = new Dictionary<String, Func<CharacterBody, string>> {
+                { "$armordmgreduction", (statBody) => ((statBody.armor >= 0 ? statBody.armor / (100 + statBody.armor) : (100 / (100 - statBody.armor) - 1)) * 100).ToString("N2") },
+                { "$exp", (statBody) => statBody.experience.ToString() },
+                { "$level", (statBody) => statBody.level.ToString() },
+                { "$dmg", (statBody) => statBody.damage.ToString() },
+                { "$crit", (statBody) => statBody.crit.ToString() },
+                { "$luckcrit", (statBody) =>  ( 100 * ((int)statBody.crit / 100) + 100 * Math.Pow(statBody.master.luck < 0 ? 1 - (statBody.crit % 100 / 100) : 1 - (1 - (statBody.crit % 100 / 100)), Math.Abs( statBody.master.luck ) + 1)).ToString() },
+                { "$hp", (statBody) => Math.Floor(statBody.healthComponent.health).ToString() },
+                { "$maxhp", (statBody) => statBody.maxHealth.ToString() },
+                { "$shield", (statBody) => Math.Floor(statBody.healthComponent.shield).ToString() },
+                { "$maxshield", (statBody) => statBody.maxShield.ToString() },
+                { "$barrier", (statBody) => Math.Floor(statBody.healthComponent.barrier).ToString() },
+                { "$maxbarrier", (statBody) => statBody.maxBarrier.ToString() },
+                { "$armor", (statBody) => statBody.armor.ToString() },
+                { "$regen", (statBody) => statBody.regen.ToString() },
+                { "$movespeed", (statBody) => Math.Round(statBody.moveSpeed, 1).ToString() },
+                { "$jumps", (statBody) => (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString() },
+                { "$maxjumps", (statBody) => statBody.maxJumpCount.ToString() },
+                { "$atkspd", (statBody) => statBody.attackSpeed.ToString() },
+                { "$luck", (statBody) => statBody.master.luck.ToString() },
+                { "$multikill", (statBody) => statBody.multiKillCount.ToString() },
+                { "$highestmultikill", (statBody) => highestMultikill.ToString() },
+                { "$killcount", (statBody) => statBody.killCountServer.ToString() },
+                //{ \"$deaths", (statBody) => statBody.master.dea },
+                { "$dpscharacter", (statBody) => mod.DPSMeter.CharacterDPS.ToString("N0") },
+                { "$dpsminion", (statBody) => mod.DPSMeter.MinionDPS.ToString("N0") },
+                { "$dps", (statBody) => mod.DPSMeter.DPS.ToString("N0") },
+                { "$mountainshrines", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shrineBonusStacks.ToString() : "N/A" },
+                { "$blueportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString() : "N/A" },
+                { "$goldportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString() : "N/A" },
+                { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
+            };
+            regexpattern = @"(\" + String.Join(@"|\", regexmap.Keys) + ")";
         }
 
         public void hook_runStartGlobal(RoR2.Run self)
@@ -112,7 +152,7 @@ namespace BetterUI
             layoutElement.flexibleWidth = 1;
 
         }
-             
+
         public void Update()
         {
             if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
@@ -128,59 +168,18 @@ namespace BetterUI
             }
             if (mod.HUD != null && textMesh != null)
             {
-                    CharacterBody playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                CharacterBody playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody != null)
                 {
+                    MatchEvaluator matchEvaluator = (match) => regexmap[match.Value](playerBody);
                     bool scoreBoardOpen = LocalUserManager.GetFirstLocalUser().inputPlayer != null && LocalUserManager.GetFirstLocalUser().inputPlayer.GetButton("info");
                     if (mod.config.StatsDisplayShowScoreboardOnly.Value)
                     {
                         statsDisplayContainer.SetActive(scoreBoardOpen);
                         if (!scoreBoardOpen) { return; }
                     }
-
                     highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
-                    string printString = scoreBoardOpen ? mod.config.StatsDisplayStatStringScoreboard.Value : mod.config.StatsDisplayStatString.Value;
-                    printString = printString.Replace("$armordmgreduction", ((playerBody.armor >= 0 ? playerBody.armor / (100 + playerBody.armor) : (100 / (100 - playerBody.armor) - 1)) * 100).ToString("N2"));
-                    printString = printString.Replace("$exp", playerBody.experience.ToString());
-                    printString = printString.Replace("$level", playerBody.level.ToString());
-                    printString = printString.Replace("$dmg", playerBody.damage.ToString());
-                    printString = printString.Replace("$crit", playerBody.crit.ToString());
-                    printString = printString.Replace("$hp", Math.Floor(playerBody.healthComponent.health).ToString());
-                    printString = printString.Replace("$maxhp", playerBody.maxHealth.ToString());
-                    printString = printString.Replace("$shield", Math.Floor(playerBody.healthComponent.shield).ToString());
-                    printString = printString.Replace("$maxshield", playerBody.maxShield.ToString());
-                    printString = printString.Replace("$barrier", Math.Floor(playerBody.healthComponent.barrier).ToString());
-                    printString = printString.Replace("$maxbarrier", playerBody.maxBarrier.ToString());
-                    printString = printString.Replace("$armor", playerBody.armor.ToString());
-                    printString = printString.Replace("$regen", playerBody.regen.ToString());
-                    printString = printString.Replace("$movespeed", Math.Round(playerBody.moveSpeed, 1).ToString());
-                    printString = printString.Replace("$jumps", (playerBody.maxJumpCount - playerBody.characterMotor.jumpCount).ToString());
-                    printString = printString.Replace("$maxjumps", playerBody.maxJumpCount.ToString());
-                    printString = printString.Replace("$atkspd", playerBody.attackSpeed.ToString());
-                    printString = printString.Replace("$luck", LocalUserManager.GetFirstLocalUser().cachedMaster.luck.ToString());
-                    printString = printString.Replace("$multikill", playerBody.multiKillCount.ToString());
-                    printString = printString.Replace("$highestmultikill", highestMultikill.ToString());
-                    printString = printString.Replace("$killcount", playerBody.killCountServer.ToString());
-                    //printString = printString.Replace("$deaths", playerBody.master.dea);
-                    printString = printString.Replace("$dpscharacter", mod.DPSMeter.CharacterDPS.ToString("N0")); ;
-                    printString = printString.Replace("$dpsminion", mod.DPSMeter.MinionDPS.ToString("N0")); ;
-                    printString = printString.Replace("$dps", mod.DPSMeter.DPS.ToString("N0")); ;
-                    if (TeleporterInteraction.instance)
-                    {
-                        printString = printString.Replace("$mountainshrines", TeleporterInteraction.instance.shrineBonusStacks.ToString()); ;
-                        printString = printString.Replace("$blueportal", TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString());
-                        printString = printString.Replace("$goldportal", TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString());
-                        printString = printString.Replace("$celestialportal", TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString());
-                    }
-                    else
-                    {
-                        printString = printString.Replace("$mountainshrines", "N\\A"); ;
-                        printString = printString.Replace("$blueportal", "N\\A");
-                        printString = printString.Replace("$goldportal", "N\\A");
-                        printString = printString.Replace("$celestialportal", "N\\A");
-                    }
-
-                    textMesh.text = printString;
+                    textMesh.text = Regex.Replace(scoreBoardOpen ? mod.config.StatsDisplayStatStringScoreboard.Value : mod.config.StatsDisplayStatString.Value, regexpattern, matchEvaluator);
                 }
             }
         }

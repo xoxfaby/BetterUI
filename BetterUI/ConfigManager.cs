@@ -205,7 +205,7 @@ namespace BetterUI
                 "You may format the StatString using formatting tags such as color, size, bold, underline, italics. See Readme for more\n" +
                 "Valid Parameters:\n" +
                 "$exp $level $luck\n" +
-                "$dmg $crit $atkspd\n" +
+                "$dmg $crit $luckcrit $atkspd\n" +
                 "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
                 "$armor $armordmgreduction $regen\n" +
                 "$movespeed $jumps $maxjumps\n" +
@@ -307,7 +307,7 @@ namespace BetterUI
                     "p = Sprint Related First\n" +
                     "P = Sprint Related Last");
 
-            SortingSortOrderCommand = ConfigFileSorting.Bind("Sorting", "SortOrderCommand", "36",
+            SortingSortOrderCommand = ConfigFileSorting.Bind("Sorting", "SortOrderCommand", "6",
             "Sort order for the command window\n" +
             "The command window has a special sort option \"C\" which will place the last selected item in the middle.\n" +
             "Note: This option must be the last one in the SortOrderCommand option");
