@@ -120,7 +120,7 @@ namespace BetterUI
                 bool[] availableIndex = new bool[ItemCatalog.itemCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
                 {
-                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = false;//option.available;
+                    availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
                 }
 
                 List<ItemIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);

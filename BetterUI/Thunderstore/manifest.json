@@ -1,6 +1,6 @@
 ﻿{
   "name": "BetterUI",
-  "version_number": "1.4.2",
+  "version_number": "1.4.3",
   "website_url": "https://github.com/xoxfaby/BetterUI",
   "description": "Now with DPSMeter and Buff Timers! Various UI improvements like ordered items with multiple ways of sorting, command/scrapper improvements, customizable StatsDisplay, advanced item descriptions and more. ",
   "dependencies": [

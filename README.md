@@ -136,6 +136,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.4.3
+ - undid the debug code i pushed on accident that locked all items in command. 
+
 #### v1.4.2
  - Added $luckcrit for StatsDisplay to show the crit chance considering luck. 
  - Changed default command sortorder to "6" ( Alphabetical ). I believe that sorting that changes the order in the command window during a run leads to more confusion than it helps.
