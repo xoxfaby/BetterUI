@@ -11,7 +11,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.4.3")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.4.4")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -101,7 +101,7 @@ namespace BetterUI
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += itemSorting.hook_OnInventoryChanged;
             }
-            if (config.SortingSortItemsCommand.Value || config.SortingSortOrderCommand.Value.Contains("C"))
+            if (config.SortingSortItemsCommand.Value && config.SortingSortOrderCommand.Value.Contains("C"))
             {
                 On.RoR2.PickupPickerController.SubmitChoice += commandImprovements.hook_SubmitChoice;
             }
@@ -177,7 +177,7 @@ namespace BetterUI
             {
                 On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged -= itemSorting.hook_OnInventoryChanged;
             }
-            if (config.SortingSortItemsCommand.Value || config.SortingSortOrderCommand.Value.Contains("C"))
+            if (config.SortingSortItemsCommand.Value && config.SortingSortOrderCommand.Value.Contains("C"))
             {
                 On.RoR2.PickupPickerController.SubmitChoice -= commandImprovements.hook_SubmitChoice;
             }

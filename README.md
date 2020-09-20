@@ -136,6 +136,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.4.4
+ - Fixed command bug when picking equipment due to leftover code and hook typo
+
 #### v1.4.3
  - undid the debug code i pushed on accident that locked all items in command. 
 

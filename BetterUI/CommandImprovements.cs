@@ -52,11 +52,13 @@ namespace BetterUI
         }
         public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
         {
-
-            ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[optionMap[index]].pickupIndex).itemIndex);
-            lastItem[(int)itemDef.tier] = itemDef.itemIndex;
-
             orig(self, index);
+            
+            ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[index].pickupIndex).itemIndex);
+            if(itemDef.itemIndex != ItemIndex.None)
+            {
+                lastItem[(int)itemDef.tier] = itemDef.itemIndex;
+            }
         }
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
