@@ -11,6 +11,30 @@ namespace DebugTools
 {
     [BepInDependency("com.bepis.r2api")]
     [BepInPlugin("com.xoxfaby.DebugTools", "DebugTools", "1.0.0")]
+    public class DebugTools : BaseUnityPlugin
+    {
+        public void Awake()
+        {
+            On.EntityStates.EngiTurret.EngiTurretWeapon.FireBeam.FixedUpdate += (orig, self) => {
+                orig(self);
+                print("--------");
+                print(self.fireFrequency);
+                print(self.procCoefficient);
+                print(self.procCoefficient / self.fireFrequency);
+            };
+
+            On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
+            RoR2.Run.onRunStartGlobal += (run) =>
+            {
+                foreach (var skillDef in RoR2.Skills.SkillCatalog.allSkillDefs)
+                {
+                    print("Skill:");
+                    print(RoR2.Skills.SkillCatalog.GetSkillName(skillDef.skillIndex));
+                    print(Language.GetString(skillDef.skillNameToken));
+                }
+            };
+        }
+    }
     static class Extentions
     {
         public static List<Variance> DetailedCompare<T>(this T val1, T val2)
@@ -38,11 +62,5 @@ namespace DebugTools
         public object valA { get; set; }
         public object valB { get; set; }
     }
-    public class DebugTools : BaseUnityPlugin
-    {
-        public void Awake()
-        {
-            On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
-        }
-    }
+
 }
