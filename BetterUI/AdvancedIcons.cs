@@ -23,10 +23,10 @@ namespace BetterUI
         internal void hook_SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
         {
             orig(self);
-
+            
             if(mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
             {
-                List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = self.targetSkill ? ProcCoefficientCatalog.GetProcCoefficientInfo(RoR2.Skills.SkillCatalog.GetSkillName(self.targetSkill.skillDef.skillIndex)) : null;
+                List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = self.targetSkill ? ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken) : null;
 
                 if (procCoefficientInfos != null)
                 {

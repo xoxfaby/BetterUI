@@ -15,22 +15,16 @@ namespace DebugTools
     {
         public void Awake()
         {
-            On.EntityStates.EngiTurret.EngiTurretWeapon.FireBeam.FixedUpdate += (orig, self) => {
-                orig(self);
-                print("--------");
-                print(self.fireFrequency);
-                print(self.procCoefficient);
-                print(self.procCoefficient / self.fireFrequency);
-            };
+
 
             On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
-            RoR2.Run.onRunStartGlobal += (run) =>
-            {
+            RoR2.Run.onRunStartGlobal += (run) => {
                 foreach (var skillDef in RoR2.Skills.SkillCatalog.allSkillDefs)
                 {
                     print("Skill:");
                     print(RoR2.Skills.SkillCatalog.GetSkillName(skillDef.skillIndex));
                     print(Language.GetString(skillDef.skillNameToken));
+                    print(skillDef.skillNameToken);
                 }
             };
         }
