@@ -143,21 +143,25 @@ P = Sprint Related Last
 
 ## Changelog
 
+
+### v1.5.1
+ - Bugfix: Fixed a few incorrect proc coefficient values. 
+
 ### v1.5.0
- - ##### New Features:
+ - #### New Features:
    - __Advanced Skill Tooltips:__  
      Proc Coefficients have been added to skill tooltips.  
      Calculated effects based on the items you are carrying. 
      Includes public methods so other mod makers can integrate their information into BetterUI.
-   - __**Equipment cooldown:__ **  
+   - __Equipment cooldown:__ 
      Show the base cooldown of your equipment and the effective cooldown if it has been reduced by your items
    - Skills and equipment show the cooldown remaining even if you can have multiple stacks. 
    - Ability to disable pickup notifications for items/equipemnts/artifacts
- - ##### Bugfixes:
+ - #### Bugfixes:
    - Scrapper window no longer shows before/after ItemStatsIntegration text, only the normal one.
    - $luckcrit now works correctly
    - Fixed a bug with command windows if sorting was enabled on the scrapper window but not the command window
- - ##### Other Notes:
+ - #### Other Notes:
    - Some default options have been changed, such as the default command sorting not changing the item order anymore because it was found to be disruptive. I encourage everyone to look back at features they might've previously disabled because it's possible they have been improved since then. 
    - If you want something added to the mod feel free to create an issue on GitHub, many features and options for the StatsDisplay were added because they were requested. 
 
