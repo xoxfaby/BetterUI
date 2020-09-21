@@ -11,7 +11,7 @@ namespace DebugTools
 {
     [BepInDependency("com.bepis.r2api")]
     [BepInPlugin("com.xoxfaby.DebugTools", "DebugTools", "1.0.0")]
-    static class extentions
+    static class Extentions
     {
         public static List<Variance> DetailedCompare<T>(this T val1, T val2)
         {

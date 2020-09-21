@@ -12,7 +12,10 @@ Each can be disabled and configured in the config file.
 - Close the command menu with escape, WASD or a custom keybind
 - Automatically resize the command window if there are more items
 - Remove background blur from command window
-- Advanced Item Description
+- Advanced Item Descriptions
+- Advanced Equipment Descriptions
+- Hide Pickup Notifications
+- Skill Proc Coefficients with calculated effects based on the items you are carrying
 - ItemsStatsMod integration for command window
 - Buff Timers and Tooltips
 - Show Hidden Items
@@ -34,6 +37,10 @@ Fully clientside DPS Meter that can be integrated into the StatsDisplay. Counts 
 Show all of your character's stats! Completely customizable!
 
 ![StatsDisplay](https://fby.pw/statsdisplay.png)
+
+### Skill Proc Coefficient Information
+
+![Skill Tooltip](https://fby.pw/skilltooltip.png)
 
 ### Command/Scrapper Improvements
 See how many items you have when using the scrapper or picking an item using the command artifact!
@@ -135,6 +142,24 @@ p = Sprint Related First
 P = Sprint Related Last  
 
 ## Changelog
+
+### v1.5.0
+ - ##### New Features:
+   - __Advanced Skill Tooltips:__  
+     Proc Coefficients have been added to skill tooltips.  
+     Calculated effects based on the items you are carrying. 
+     Includes public methods so other mod makers can integrate their information into BetterUI.
+   - __**Equipment cooldown:__ **  
+     Show the base cooldown of your equipment and the effective cooldown if it has been reduced by your items
+   - Skills and equipment show the cooldown remaining even if you can have multiple stacks. 
+   - Ability to disable pickup notifications for items/equipemnts/artifacts
+ - ##### Bugfixes:
+   - Scrapper window no longer shows before/after ItemStatsIntegration text, only the normal one.
+   - $luckcrit now works correctly
+   - Fixed a bug with command windows if sorting was enabled on the scrapper window but not the command window
+ - ##### Other Notes:
+   - Some default options have been changed, such as the default command sorting not changing the item order anymore because it was found to be disruptive. I encourage everyone to look back at features they might've previously disabled because it's possible they have been improved since then. 
+   - If you want something added to the mod feel free to create an issue on GitHub, many features and options for the StatsDisplay were added because they were requested. 
 
 #### v1.4.4
  - Fixed command bug when picking equipment due to leftover code and hook typo

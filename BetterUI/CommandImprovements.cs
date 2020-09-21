@@ -63,6 +63,7 @@ namespace BetterUI
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
+            optionMap = null;
             if (options == null || options.Length == 0)
             {
                 orig(self, options);
@@ -184,7 +185,7 @@ namespace BetterUI
                         {
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                             string bodyText = Language.GetString(itemDef.descriptionToken);
-                            if (mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
+                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
                             {
                                 bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
                                 String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);

@@ -7,14 +7,26 @@ namespace BetterUI
 {
     class ConfigManager
     {
-        // 1 Misc
-
-        public ConfigEntry<bool> MiscAdvancedDescriptions;
-        public ConfigEntry<bool> MiscAdvancedPickupNotifications;
-        public ConfigEntry<bool> MiscItemStatsIntegration;
+        // Misc
 
         public ConfigEntry<bool> MiscShowHidden;
+        public ConfigEntry<bool> MiscAdvancedPickupNotificationsItems;
+        public ConfigEntry<bool> MiscAdvancedPickupNotificationsEquipements;
+        public ConfigEntry<bool> MiscHidePickupNotificiationsItems;
+        public ConfigEntry<bool> MiscHidePickupNotificiationsEquipements;
+        public ConfigEntry<bool> MiscHidePickupNotificiationsArtifacts;
 
+        // AdvancedIcons
+
+        public ConfigEntry<bool> AdvancedIconsItemAdvancedDescriptions;
+        public ConfigEntry<bool> AdvancedIconsItemItemStatsIntegration;
+        public ConfigEntry<bool> AdvancedIconsEquipementShowCooldownStacks;
+        public ConfigEntry<bool> AdvancedIconsEquipementAdvancedDescriptions;
+        public ConfigEntry<bool> AdvancedIconsEquipementShowBaseCooldown;
+        public ConfigEntry<bool> AdvancedIconsEquipementShowCalculatedCooldown;
+        public ConfigEntry<bool> AdvancedIconsSkillShowCooldownStacks;
+        public ConfigEntry<bool> AdvancedIconsSkillShowProcCoefficient;
+        public ConfigEntry<bool> AdvancedIconsSkillCalculateSkillProcEffects;
 
         // Buffs
 
@@ -25,7 +37,7 @@ namespace BetterUI
         public TMPro.TextAlignmentOptions BuffTimersTextAlignmentOption;
         public ConfigEntry<float> BuffTimersFontSize;
 
-        // 2 Command / Scrapper Improvements
+        // CommandImprovements
 
         public ConfigEntry<bool> CommandResizeCommandWindow;
         public ConfigEntry<bool> CommandRemoveBackgroundBlur;
@@ -84,6 +96,7 @@ namespace BetterUI
         public ConfigManager(BetterUI mod)
         {
             ConfigFile ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
+            ConfigFile ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
             ConfigFile ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
             ConfigFile ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
             ConfigFile ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
@@ -92,13 +105,38 @@ namespace BetterUI
 
             // Misc
 
-            MiscAdvancedDescriptions = ConfigFileMisc.Bind("Misc", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
-
-            MiscAdvancedPickupNotifications = ConfigFileMisc.Bind("Misc", "AdvancedPickupNotifications", true, "Show advanced descriptions when picking up an item.");
-
-            MiscItemStatsIntegration = ConfigFileMisc.Bind("Misc", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable");
 
             MiscShowHidden = ConfigFileMisc.Bind("Misc", "ShowHidden", false, "Show hidden items in the item inventory");
+
+            MiscAdvancedPickupNotificationsItems = ConfigFileMisc.Bind("Misc", "AdvancedPickupNotificationsItems", false, "Show advanced descriptions when picking up an item.");
+
+            MiscAdvancedPickupNotificationsEquipements = ConfigFileMisc.Bind("Misc", "AdvancedPickupNotificationsEquipements", false, "Show advanced descriptions when picking up an equipment.");
+
+            MiscHidePickupNotificiationsItems = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsItems", false, "Hide pickup notifications for items.");
+
+            MiscHidePickupNotificiationsEquipements = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsEquipements", false, "Hide pickup notifications for equipments.");
+
+            MiscHidePickupNotificiationsArtifacts = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsArtifacts", false, "Hide pickup notifications for artifacts.");
+
+            // Advanced Icons
+
+            AdvancedIconsItemAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
+
+            AdvancedIconsItemItemStatsIntegration = ConfigFileAdvancedIcons.Bind("Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable");
+
+            AdvancedIconsEquipementShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipement when charging multiple stacks.");
+
+            AdvancedIconsEquipementAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an equipment.");
+
+            AdvancedIconsEquipementShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculateCooldown", true, "Show the base cooldown when hovering over an equipment.");
+
+            AdvancedIconsEquipementShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculateCooldown", true, "Show the the calculated cooldown based on your items when hovering over an equipment.");
+
+            AdvancedIconsSkillShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowCooldownStacks", true, "Show the cooldown for skills when charging multiple stacks.");
+
+            AdvancedIconsSkillShowProcCoefficient = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowProcCoefficient", true, "Show the proc coefficient when hovering over a skill.");
+
+            AdvancedIconsSkillCalculateSkillProcEffects = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculateProcEffects", true, "Show the effects of proc coefficient of a skill related to the items you are carrying.");
 
             // Buffs
 
