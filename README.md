@@ -156,6 +156,10 @@ P = Sprint Related Last
  - ##### Bugfixes:
    - Scrapper window no longer shows before/after ItemStatsIntegration text, only the normal one.
    - $luckcrit now works correctly
+   - Fixed a bug with command windows if sorting was enabled on the scrapper window but not the command window
+ - ##### Other Notes:
+   - Some default options have been changed, such as the default command sorting not changing the item order anymore because it was found to be disruptive. I encourage everyone to look back at features they might've previously disabled because it's possible they have been improved since then. 
+   - If you want something added to the mod feel free to create an issue on GitHub, many features and options for the StatsDisplay were added because they were requested. 
 
 #### v1.4.4
  - Fixed command bug when picking equipment due to leftover code and hook typo
