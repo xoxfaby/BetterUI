@@ -143,6 +143,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.5.3
+ - Bugfix: Made a change that could *potentially* fix issues with scrapper/command sorting in multiplayer
+
 #### v1.5.2
  - Internal Change: Changed the way skills are registered to allow makers of custom skills to more easily register their skills. 
 
