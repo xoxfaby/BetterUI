@@ -143,6 +143,10 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.5.6
+ - Bugfix: Added formatting for more numbers in StatsDisplay
+ - Internal Change: more changes to allow modders to more easily register their items for display in skill tooltips
+
 #### v1.5.5
  - Oops: Removed debug console spam from FINALLY FIXING THIS BUG YAY anyways sorry 
 
