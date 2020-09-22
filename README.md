@@ -143,6 +143,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.5.4
+ - Bugfix: ACTUAL fix that fixes issues with scrapper/command sorting in multiplayer
+
 #### v1.5.3
  - Bugfix: Made a change that could *potentially* fix issues with scrapper/command sorting in multiplayer
 
