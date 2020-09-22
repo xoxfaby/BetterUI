@@ -63,13 +63,13 @@ namespace BetterUI
 
         public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
-            optionMap = null;
             if (options == null || options.Length == 0)
             {
                 orig(self, options);
                 return;
             }
 
+            optionMap = null;
             String sortOrder;
             switch (self.pickerController.contextString)
             {
