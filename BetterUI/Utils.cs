@@ -14,11 +14,11 @@ namespace BetterUI
             }
             else if (luck < 0)
             {
-                return (float)Math.Pow(chance % 1, Math.Abs(luck) + 1);
+                return (float) ((int) chance + Math.Pow(chance % 1, Math.Abs(luck) + 1));
             }
             else
             {
-                return (float)(1 - Math.Pow(1 - (chance % 1), Math.Abs(luck) + 1));
+                return (float) ((int)chance + (1 - Math.Pow(1 - (chance % 1), Math.Abs(luck) + 1)));
             }
         }
     }

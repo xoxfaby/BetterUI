@@ -23,34 +23,35 @@ namespace BetterUI
         }
 
 
-        public delegate string EffectFormatter(EffectInfo effectInfo, int stacks, float luck, float procCoefficient);
-        public static string ChanceFormatter(EffectInfo effectInfo, int stacks, float luck, float procCoefficient)
+        public delegate string EffectFormatter(float value, float procCoefficient, float luck, bool canCap, int cap);
+
+        public static string ChanceFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsDamage>{Math.Min(100, 100 * Utils.LuckCalc(effectInfo.GetValue(stacks) * procCoefficient, luck)):0.##}%</style>";
-            if (effectInfo.capFormula != null) {
-                returnString += $" <style=cStack>({effectInfo.GetCap(procCoefficient)} stacks to cap)</style>";
+            string returnString = $"<style=cIsDamage>{Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)):0.##}%</style>";
+            if (canCap) {
+                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
                 
             }
             return returnString;
         }
 
-        public static string HPFormatter(EffectInfo effectInfo, int stacks, float luck, float procCoefficient)
+        public static string HPFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsHealing>{effectInfo.GetValue(stacks) * procCoefficient} HP</style>";
-            if (effectInfo.capFormula != null)
+            string returnString = $"<style=cIsHealing>{value * procCoefficient} HP</style>";
+            if (canCap)
             {
-                returnString += $" <style=cStack>({effectInfo.GetCap(procCoefficient)} stacks to cap)</style>";
+                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
 
             }
             return returnString;
         }
 
-        public static string RangeFormatter(EffectInfo effectInfo, int stacks, float luck, float procCoefficient)
+        public static string RangeFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsHealing>{effectInfo.GetValue(stacks) * procCoefficient} HP</style>";
-            if (effectInfo.capFormula != null)
+            string returnString = $"<style=cIsDamage>{value * procCoefficient} m</style>";
+            if (canCap)
             {
-                returnString += $" <style=cStack>({effectInfo.GetCap(procCoefficient)} stacks to cap)</style>";
+                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
 
             }
             return returnString;
@@ -89,7 +90,8 @@ namespace BetterUI
 
             public string GetOutputString(int stacks, float luck, float procCoefficient)
             {
-                return this.effectFormatter(this, stacks, luck, procCoefficient);
+                bool canCap = capFormula != null;
+                return this.effectFormatter(this.stackingFormula(this.value, this.extraStackValue, stacks), procCoefficient, luck, canCap, canCap ? this.capFormula(this.value, this.extraStackValue, procCoefficient) : 1);
             }
             public float GetValue(int stacks)
             {
