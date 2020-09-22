@@ -134,17 +134,6 @@ namespace BetterUI
                 optionMap = sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray();
                 options = sortedOptions;
             }
-            BetterUI.print("optionmap");
-            foreach (var option in optionMap)
-            {
-                BetterUI.print(option);
-            }
-
-            BetterUI.print("sorted");
-            foreach (var option in options)
-            {
-                BetterUI.print(option.pickupIndex);
-            }
 
             orig(self, options);
         }
