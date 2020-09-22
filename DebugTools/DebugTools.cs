@@ -13,22 +13,16 @@ namespace DebugTools
     [BepInPlugin("com.xoxfaby.DebugTools", "DebugTools", "1.0.0")]
     public class DebugTools : BaseUnityPlugin
     {
+
+
+
         public void Awake()
         {
-
-
             On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
-            RoR2.Run.onRunStartGlobal += (run) => {
-                foreach (var skillDef in RoR2.Skills.SkillCatalog.allSkillDefs)
-                {
-                    print("Skill:");
-                    print(RoR2.Skills.SkillCatalog.GetSkillName(skillDef.skillIndex));
-                    print(Language.GetString(skillDef.skillNameToken));
-                    print(skillDef.skillNameToken);
-                }
-            };
         }
+
     }
+
     static class Extentions
     {
         public static List<Variance> DetailedCompare<T>(this T val1, T val2)
@@ -47,6 +41,7 @@ namespace DebugTools
             }
             return variances;
         }
+
 
 
     }

@@ -23,8 +23,8 @@ namespace BetterUI
         internal void hook_SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
         {
             orig(self);
-            
-            if(mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+
+            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
             {
                 List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = self.targetSkill ? ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken) : null;
 
@@ -33,9 +33,10 @@ namespace BetterUI
                     string tooltipBody = Language.GetString(self.targetSkill.skillDescriptionToken) + "";
                     foreach (var info in procCoefficientInfos)
                     {
+                        tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
                         if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
                         {
-                            tooltipBody += "\n\n<size=110%>" + info.name + ":</size>\n<style=cIsUtility>Proc Coefficient: " + info.procCoefficient + "</style>";
+                            tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
                         }
                         if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                         {
@@ -46,35 +47,12 @@ namespace BetterUI
                                 {
                                     ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
                                     tooltipBody += "\n  " + Language.GetString(itemDef.nameToken) + ": ";
-                                    switch (item.Value.effectType)
-                                    {
-                                        case ProcItemsCatalog.ProcEffect.Chance:
-                                            if (item.Value.stacking == ProcItemsCatalog.Stacking.Linear)
-                                            {
-                                                tooltipBody += "<style=cIsDamage>" + Math.Min(100, Utils.LuckCalc((item.Value.value + item.Value.stackAmount * (stacks - 1)) * info.procCoefficient, self.targetSkill.characterBody.master.luck)).ToString("0.##");
-                                                tooltipBody += "%</style> <style=cStack>(" + Math.Ceiling(1 / (item.Value.value * info.procCoefficient * 0.01)) + " stacks to cap)</style>";
-                                            }
-                                            else if (item.Value.stacking == ProcItemsCatalog.Stacking.Hyperbolic)
-                                            {
-                                                tooltipBody += "<style=cIsDamage>" + Math.Min(100, Utils.LuckCalc((float)(1 - 1 / (1 + item.Value.value * 0.01 * stacks)) * info.procCoefficient * 100, self.targetSkill.characterBody.master.luck)).ToString("0.##") + "%</style>";
-                                            }
-                                            else if (item.Value.stacking == ProcItemsCatalog.Stacking.None)
-                                            {
-                                                tooltipBody += "<style=cIsDamage>" + Math.Min(100, Utils.LuckCalc(item.Value.value * info.procCoefficient, self.targetSkill.characterBody.master.luck)).ToString("0.##") + "%</style>";
-                                            }
-                                            break;
-                                        case ProcItemsCatalog.ProcEffect.HP:
-                                            tooltipBody += "<style=cIsHealing>" + (item.Value.value + item.Value.stackAmount * (stacks - 1)) * info.procCoefficient + " HP</style>";
-                                            break;
-                                        case ProcItemsCatalog.ProcEffect.Range:
-                                            tooltipBody += "<style=cIsDamage>" + (item.Value.value + item.Value.stackAmount * (stacks - 1)) * info.procCoefficient + "m</style>";
-                                            break;
-                                    }
+                                    float luck = self.targetSkill.characterBody.master.luck;
+                                    tooltipBody += item.Value.GetOutputString(stacks, luck, info.procCoefficient);
                                 }
                             }
                         }
                     }
-
                     self.tooltipProvider.overrideBodyText = tooltipBody;
                 }
                 else
