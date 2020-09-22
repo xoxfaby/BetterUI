@@ -26,6 +26,14 @@ If you like what I'm doing, consider supporting me through GitHub Sponsors so I 
 
 https://github.com/sponsors/xoxfaby
 
+## Help & Feedback
+
+If you need help or have suggestions, create an issue on github, join my discord or find me on the RoR2 Modding Discord 
+
+[My Discord](https://discord.gg/Zy2HSB4) XoXFaby#1337
+
+https://github.com/xoxfaby/BetterUI
+
 ## Features
 
 ### DPSMeter
@@ -69,14 +77,6 @@ Integration with ItemStats in the command and scrapper windows.
 
 ### Show Hidden Items
 Show hidden items like the hidden monsoon/drizzle items
-
-## Help & Feedback
-
-If you need help or have suggestions, create an issue on github or find me on the RoR2 Modding Discord 
-
-[RoR2 Modding Discord](https://discord.com/invite/5MbXZvd) Username: @XoXFaby#1337
-
-https://github.com/xoxfaby/BetterUI
 
 ## Configuration
 
