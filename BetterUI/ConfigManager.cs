@@ -232,7 +232,7 @@ namespace BetterUI
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
                 "Base Damage: $dmg\n" +
-                "Crit Chance: $crit%\n" +
+                "Crit Chance: $luckcrit%\n" +
                 "Attack Speed: $atkspd\n" +
                 "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +

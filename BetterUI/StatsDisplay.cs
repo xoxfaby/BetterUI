@@ -36,7 +36,7 @@ namespace BetterUI
                 { "$level", (statBody) => statBody.level.ToString() },
                 { "$dmg", (statBody) => statBody.damage.ToString("0.##") },
                 { "$crit", (statBody) => statBody.crit.ToString("0.##") },
-                { "$luckcrit", (statBody) =>  ( 100 * ((int)statBody.crit / 100) + Utils.LuckCalc(statBody.crit,statBody.master.luck)).ToString("0.##") },
+                { "$luckcrit", (statBody) =>  ( 100 * ((int)statBody.crit / 100) + 100 * Utils.LuckCalc(statBody.crit % 100 * 0.01f,statBody.master.luck)).ToString("0.##") },
                 { "$hp", (statBody) => Math.Floor(statBody.healthComponent.health).ToString("0.##") },
                 { "$maxhp", (statBody) => statBody.maxHealth.ToString("0.##") },
                 { "$shield", (statBody) => Math.Floor(statBody.healthComponent.shield).ToString("0.##") },
