@@ -38,9 +38,9 @@ https://github.com/xoxfaby/BetterUI
 ## Features
 
 ### ItemCounters
-Customizable ItemCounters. Choose which tiers you want counted, Choose which tiers to show.  
+Customizable ItemCounters. Choose which tiers you want counted, choose which tiers to show.  
 Use ItemScore to not just see how many items you have but how good they are.
-By default item score is based on tiers, but you can change how much each tier is worth of even set custom values for each item!
+By default item score is based on tiers, but you can change how much each tier is worth or even set custom values for each item!
 
 ![ItemCounters](https://fby.pw/itemcounters.png)
 
