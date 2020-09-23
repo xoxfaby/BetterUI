@@ -2,11 +2,25 @@
 using BepInEx.Configuration;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using RoR2;
 
 namespace BetterUI
 {
     class ConfigManager
     {
+        // Files 
+
+        public ConfigFile ConfigFileMisc;
+        public ConfigFile ConfigFileAdvancedIcons;
+        public ConfigFile ConfigFileBuffs;
+        public ConfigFile ConfigFileCommandImprovements;
+        public ConfigFile ConfigFileDPSMeter;
+        public ConfigFile ConfigFileItemCounters;
+        public ConfigFile ConfigFileStatsDisplay;
+        public ConfigFile ConfigFileSorting; 
+        
         // Misc
 
         public ConfigEntry<bool> MiscShowHidden;
@@ -25,6 +39,8 @@ namespace BetterUI
         public ConfigEntry<bool> AdvancedIconsEquipementShowBaseCooldown;
         public ConfigEntry<bool> AdvancedIconsEquipementShowCalculatedCooldown;
         public ConfigEntry<bool> AdvancedIconsSkillShowCooldownStacks;
+        public ConfigEntry<bool> AdvancedIconsSkillShowBaseCooldown;
+        public ConfigEntry<bool> AdvancedIconsSkillShowCalculatedCooldown;
         public ConfigEntry<bool> AdvancedIconsSkillShowProcCoefficient;
         public ConfigEntry<bool> AdvancedIconsSkillCalculateSkillProcEffects;
 
@@ -53,7 +69,7 @@ namespace BetterUI
         public ConfigEntry<float> CommandCountersFontSize;
         public ConfigEntry<String> CommandCountersPrefix;
 
-        // 3 DPSMeter
+        // DPSMeter
 
         public ConfigEntry<float> DPSMeterTimespan;
         public ConfigEntry<bool> DPSMeterWindowShow;
@@ -66,7 +82,29 @@ namespace BetterUI
         public ConfigEntry<Vector2> DPSMeterWindowSize;
         public ConfigEntry<Vector3> DPSMeterWindowAngle;
 
-        // 4 StatsDisplay
+        // ItemCounters
+
+        public ConfigEntry<bool> ItemCountersShowItemCounters;
+        public ConfigEntry<bool> ItemCountersShowItemScore;
+        public ConfigEntry<bool> ItemCountersItemScoreFromTier;
+        public ConfigEntry<bool> ItemCountersShowItemSum;
+        public ConfigEntry<string> ItemCountersItemSumTiersString;
+        public List<ItemTier> ItemCountersItemSumTiers;
+        public ConfigEntry<bool> ItemCountersShowItemsByTier;
+        public ConfigEntry<string> ItemCountersItemsByTierOrderString;
+        public List<ItemTier> ItemCountersItemsByTierOrder;
+        public ConfigEntry<int> ItemCountersTierScoreTier1;
+        public ConfigEntry<int> ItemCountersTierScoreTier2;
+        public ConfigEntry<int> ItemCountersTierScoreTier3;
+        public ConfigEntry<int> ItemCountersTierScoreLunar;
+        public ConfigEntry<int> ItemCountersTierScoreBoss;
+        public ConfigEntry<int> ItemCountersTierScoreNoTier;
+        public int[] ItemCountersTierScores;
+        public List<ConfigEntry<int>> ItemScoreConfig;
+        public int[] ItemCountersItemScores;
+
+        // StatsDisplay
+
         public ConfigEntry<bool> StatsDisplayEnable;
         public ConfigEntry<String> StatsDisplayStatString;
         public ConfigEntry<String> StatsDisplayStatStringCustomBind;
@@ -81,7 +119,8 @@ namespace BetterUI
         public ConfigEntry<Vector2> StatsDisplayWindowSize;
         public ConfigEntry<Vector3> StatsDisplayWindowAngle;
 
-        // 5 Sorting
+        // Sorting
+
         public ConfigEntry<bool> SortingSortItemsInventory;
         public ConfigEntry<bool> SortingSortItemsCommand;
         public ConfigEntry<bool> SortingSortItemsScrapper;
@@ -96,13 +135,14 @@ namespace BetterUI
 
         public ConfigManager(BetterUI mod)
         {
-            ConfigFile ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
-            ConfigFile ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
-            ConfigFile ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
-            ConfigFile ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
-            ConfigFile ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
-            ConfigFile ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
-            ConfigFile ConfigFileSorting = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Sorting.cfg", true);
+            ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
+            ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
+            ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
+            ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
+            ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
+            ConfigFileItemCounters = new ConfigFile(Paths.ConfigPath + "\\BetterUI-ItemCounters.cfg", true);
+            ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
+            ConfigFileSorting = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Sorting.cfg", true);
 
             // Misc
 
@@ -129,11 +169,15 @@ namespace BetterUI
 
             AdvancedIconsEquipementAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an equipment.");
 
-            AdvancedIconsEquipementShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculateCooldown", true, "Show the base cooldown when hovering over an equipment.");
+            AdvancedIconsEquipementShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over an equipment.");
 
-            AdvancedIconsEquipementShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculateCooldown", true, "Show the the calculated cooldown based on your items when hovering over an equipment.");
+            AdvancedIconsEquipementShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculatedCooldown", true, "Show the the calculated cooldown based on your items when hovering over an equipment.");
 
             AdvancedIconsSkillShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowCooldownStacks", true, "Show the cooldown for skills when charging multiple stacks.");
+
+            AdvancedIconsSkillShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Skill Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over a skill.");
+
+            AdvancedIconsSkillShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculatedCooldown", true, "Show the the calculated cooldown based on your items when hovering over a skill.");
 
             AdvancedIconsSkillShowProcCoefficient = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowProcCoefficient", true, "Show the proc coefficient when hovering over a skill.");
 
@@ -224,6 +268,48 @@ namespace BetterUI
 
             DPSMeterWindowAngle = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAngle", new Vector3(0, -6, 0), "Angle of the DPSMeter window");
 
+            // ItemCounters
+
+            ItemCountersShowItemCounters = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemCounters", true, "Enable/Disable ItemCounters entirely.");
+
+            ItemCountersShowItemScore = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemScore", true, "Show your item score.");
+
+            ItemCountersItemScoreFromTier = ConfigFileItemCounters.Bind("ItemCounters", "ItemScoreFromTier", true, "Whether or not the ItemScore should be based on tier. If disabled, the per-item settings will be used.");
+
+            ItemCountersShowItemSum = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
+            
+            ItemCountersItemSumTiersString = ConfigFileItemCounters.Bind("ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            
+            ItemCountersItemSumTiers = ItemCountersItemSumTiersString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
+            
+            
+            ItemCountersShowItemsByTier = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemsByTier", true, "Show how many items you have, by tier.");
+            
+            ItemCountersItemsByTierOrderString = ConfigFileItemCounters.Bind("ItemCounters", "ItemsByTierOrderString", "43210", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            
+            ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
+
+            ItemCountersTierScoreTier1 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier1", 1, "Score for each tier");
+            ItemCountersTierScoreTier2 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier2", 3);
+            ItemCountersTierScoreTier3 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier3", 12);
+            ItemCountersTierScoreLunar = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Lunar", 0);
+            ItemCountersTierScoreBoss = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Boss", 4);
+            ItemCountersTierScoreNoTier = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "NoTier", 0);
+
+            ItemCountersTierScores = new int[]
+            {
+                ItemCountersTierScoreTier1.Value,
+                ItemCountersTierScoreTier2.Value,
+                ItemCountersTierScoreTier3.Value,
+                ItemCountersTierScoreLunar.Value,
+                ItemCountersTierScoreBoss.Value,
+                ItemCountersTierScoreNoTier.Value,
+            };
+
+
+            ItemScoreConfig = new List<ConfigEntry<int>>();
+
+
             // StatsDisplay
 
             StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
@@ -253,7 +339,7 @@ namespace BetterUI
                 "$mountainshrines\n" +
                 "$blueportal $goldportal $celestialportal");
 
-            StatsDisplayStatStringCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringCustomBind", 
+            StatsDisplayStatStringCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringCustomBind",
                 "<color=#FFFFFF>" +
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
@@ -299,7 +385,7 @@ namespace BetterUI
 
             StatsDisplayWindowSize = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowSize", new Vector2(200, 600), "Size of the StatsDisplay window");
 
-            StatsDisplayWindowAngle = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAngle", new Vector3(0,6,0), "Angle of the StatsDisplay window");
+            StatsDisplayWindowAngle = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAngle", new Vector3(0, 6, 0), "Angle of the StatsDisplay window");
 
             // Sorting
 

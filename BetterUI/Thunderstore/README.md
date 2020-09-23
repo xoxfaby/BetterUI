@@ -5,6 +5,7 @@ Each can be disabled and configured in the config file.
 
 
 ## Currently implemented:
+- Item Counters
 - DPS Meter
 - StatsDisplay
 - Ordered Inventory, Scrapper Menu, Command Menu
@@ -35,6 +36,13 @@ If you need help or have suggestions, create an issue on github, join my discord
 https://github.com/xoxfaby/BetterUI
 
 ## Features
+
+### ItemCounters
+Customizable ItemCounters. Choose which tiers you want counted, choose which tiers to show.  
+Use ItemScore to not just see how many items you have but how good they are.
+By default item score is based on tiers, but you can change how much each tier is worth or even set custom values for each item!
+
+![ItemCounters](https://fby.pw/itemcounters.png)
 
 ### DPSMeter
 Fully clientside DPS Meter that can be integrated into the StatsDisplay. Counts minion damage! 
@@ -143,14 +151,17 @@ P = Sprint Related Last
 
 ## Changelog
 
+### v1.6.0
+ - New Feature: Item Counters: Fully customizable. Simple counting of items, groups by tier or item score by tier or even individual items
+ - New Feature: Skill cooldowns: Base cooldown & calculated cooldown in the tooltip. Base cooldown in the loadout screen.
+
 #### v1.5.7
  - Addition: Added $difficulty parameter to display the Difficulty Coefficient in the StatsDisplay
  - Addition: Added the ability to change the custom bind for showing/changing the StatsDisplay, by default it replaces the old Scoreboard bind.
  - Addition: Added the Proc Coefficient information to the loadout screen.
- - Change: Replaced $crit with $luckcrit in the StatString, added both and $difficulty to the custom bind only version. 
+ - Change: Replaced $crit with $luckcrit in the StatString, added both and $difficulty to StatStringCustomBind 
  - Bugfix: Fixed $luckcrit not working. 
  - Notes: The custom bind changes will reset your StatStringScoreboard because it was moved to a different config variable. It felt wrong to keep the same name when it is no longer tied to the scoreboard directly.
- - 
 
 #### v1.5.6
  - Bugfix: Added formatting for more numbers in StatsDisplay
