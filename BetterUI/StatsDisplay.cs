@@ -172,15 +172,16 @@ namespace BetterUI
                 CharacterBody playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody != null)
                 {
-                    MatchEvaluator matchEvaluator = (match) => regexmap[match.Value](playerBody);
-                    bool scoreBoardOpen = LocalUserManager.GetFirstLocalUser().inputPlayer != null && LocalUserManager.GetFirstLocalUser().inputPlayer.GetButton("info");
-                    if (mod.config.StatsDisplayShowScoreboardOnly.Value)
+                    bool customBindPressed = Input.GetKey(mod.config.StatsDisplayCustomBind.Value);
+                    bool showStatsDisplay = !(mod.config.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
+
+                    statsDisplayContainer.SetActive(showStatsDisplay);
+                    if (showStatsDisplay)
                     {
-                        statsDisplayContainer.SetActive(scoreBoardOpen);
-                        if (!scoreBoardOpen) { return; }
+                        MatchEvaluator matchEvaluator = (match) => regexmap[match.Value](playerBody);
+                        highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
+                        textMesh.text = Regex.Replace(customBindPressed ? mod.config.StatsDisplayStatStringCustomBind.Value : mod.config.StatsDisplayStatString.Value, regexpattern, matchEvaluator);
                     }
-                    highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
-                    textMesh.text = Regex.Replace(scoreBoardOpen ? mod.config.StatsDisplayStatStringScoreboard.Value : mod.config.StatsDisplayStatString.Value, regexpattern, matchEvaluator);
                 }
             }
         }

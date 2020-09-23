@@ -69,8 +69,9 @@ namespace BetterUI
         // 4 StatsDisplay
         public ConfigEntry<bool> StatsDisplayEnable;
         public ConfigEntry<String> StatsDisplayStatString;
-        public ConfigEntry<String> StatsDisplayStatStringScoreboard;
-        public ConfigEntry<bool> StatsDisplayShowScoreboardOnly;
+        public ConfigEntry<String> StatsDisplayStatStringCustomBind;
+        public ConfigEntry<String> StatsDisplayCustomBind;
+        public ConfigEntry<bool> StatsDisplayShowCustomBindOnly;
         public ConfigEntry<bool> StatsDisplayPanelBackground;
         public ConfigEntry<bool> StatsDisplayAttachToObjectivePanel;
         public ConfigEntry<Vector2> StatsDisplayWindowAnchorMin;
@@ -252,12 +253,13 @@ namespace BetterUI
                 "$mountainshrines\n" +
                 "$blueportal $goldportal $celestialportal");
 
-            StatsDisplayStatStringScoreboard = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringScoreboard", 
+            StatsDisplayStatStringCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringCustomBind", 
                 "<color=#FFFFFF>" +
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
                 "Base Damage: $dmg\n" +
                 "Crit Chance: $crit%\n" +
+                "Crit w/ Luck: $luckcrit%\n" +
                 "Attack Speed: $atkspd\n" +
                 "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +
@@ -269,9 +271,13 @@ namespace BetterUI
                 "Blue Portal: $blueportal\n" +
                 "Gold Portal: $goldportal\n" +
                 "Celestial Portal: $celestialportal\n",
-                "StatDisplay string to show when the scoreboard is open. This can be the same or different from the normal StatString");
+                "StatDisplay string to show when the custom bind is being pressed. This can be the same or different from the normal StatString");
 
-            StatsDisplayShowScoreboardOnly = ConfigFileStatsDisplay.Bind("StatsDisplay", "ShowOnlyScoreboard", false, "Only show the StatsDisplay when the scoreboard is open");
+            StatsDisplayCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "CustomBind", "tab", "Bind to show secondary StatsDisplay string.\n" +
+                "Example: space\n" +
+                "Must be lowercase. Leave blank to disable");
+
+            StatsDisplayShowCustomBindOnly = ConfigFileStatsDisplay.Bind("StatsDisplay", "ShowCustomBindOnly", false, "Only show the StatsDisplay when the scoreboard is open");
 
             StatsDisplayPanelBackground = ConfigFileStatsDisplay.Bind("StatsDisplay", "PanelBackground", true, "Whether or not the StatsDisplay panel should have a background.");
 
