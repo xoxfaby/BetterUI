@@ -1,13 +1,21 @@
 ﻿namespace BetterUI
 {
-    class Hooks
+    static class Hooks
     {
         public static void Hook(BetterUI mod)
         {
             On.RoR2.UI.HUD.Awake += mod.hook_HUDAwake;
 
+            if (mod.config.ItemCountersShowItemCounters.Value)
+            {
+                On.RoR2.UI.ScoreboardStrip.SetMaster += mod.itemCounters.hook_ScoreboardStrip_SetMaster;
+                On.RoR2.UI.ScoreboardStrip.Update += mod.itemCounters.hook_ScoreboardStrip_Update;
+            }
+
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
-                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value ||
+                mod.config.AdvancedIconsSkillShowBaseCooldown.Value ||
+                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
                 On.RoR2.UI.LoadoutPanelController.Row.AddButton += mod.advancedIcons.hook_LoadoutPanelController_Row_AddButton;
                 On.RoR2.UI.SkillIcon.Update += mod.advancedIcons.hook_SkillIcon_Update;
@@ -99,8 +107,16 @@
         {
             On.RoR2.UI.HUD.Awake -= mod.hook_HUDAwake;
 
+            if (mod.config.ItemCountersShowItemCounters.Value)
+            {
+                On.RoR2.UI.ScoreboardStrip.SetMaster -= mod.itemCounters.hook_ScoreboardStrip_SetMaster;
+                On.RoR2.UI.ScoreboardStrip.Update -= mod.itemCounters.hook_ScoreboardStrip_Update;
+            }
+
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
-                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value ||
+                mod.config.AdvancedIconsSkillShowBaseCooldown.Value ||
+                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
                 On.RoR2.UI.LoadoutPanelController.Row.AddButton -= mod.advancedIcons.hook_LoadoutPanelController_Row_AddButton;
                 On.RoR2.UI.SkillIcon.Update -= mod.advancedIcons.hook_SkillIcon_Update;

@@ -10,6 +10,8 @@ namespace BetterUI
     class AdvancedIcons
     {
         readonly BetterUI mod;
+
+        Dictionary<string, float> skillCooldowns = new Dictionary<string, float>();
         internal AdvancedIcons(BetterUI mod)
         {
             this.mod = mod;
@@ -21,35 +23,55 @@ namespace BetterUI
             self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
         }
 
+        internal void Start()
+        {
+            foreach(var skill in RoR2.Skills.SkillCatalog.allSkillDefs)
+            {
+                if(skill.baseRechargeInterval>0 && skill.requiredStock > 0)
+                {
+                    skillCooldowns[skill.skillNameToken] = skill.baseRechargeInterval;
+                }
+            }
+        }
+
         internal void hook_LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
         {
             orig(self, owner, icon, titleToken, bodyToken, tooltipColor, callback, unlockableName, viewableNode, isWIP);
 
             LoadoutPanelController.Row selfRow = (LoadoutPanelController.Row) self;
             UserProfile userProfile = selfRow.userProfile;
-            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
             {
                 if (userProfile != null && userProfile.HasUnlockable(unlockableName))
                 {
-                    List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(titleToken);
-
-                    if (procCoefficientInfos != null)
+                    string tooltipBody = Language.GetString(bodyToken);
+                    if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value && skillCooldowns.ContainsKey(titleToken))
                     {
-                        string tooltipBody = Language.GetString(bodyToken) + "";
-                        foreach (var info in procCoefficientInfos)
-                        {
-                            tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
-                            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
-                            {
-                                tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
-                            }
-                        }
+                        tooltipBody += $"\n\nCooldown: <style=cIsDamage>{skillCooldowns[titleToken]}</style> seconds";
+                    }
 
-                        TooltipProvider tooltipProvider = selfRow.buttons[selfRow.buttons.Count-1].GetComponent<TooltipProvider>();
-                        if (tooltipProvider != null)
+                    if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                    {
+                        List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(titleToken);
+
+                        if (procCoefficientInfos != null)
                         {
-                            tooltipProvider.overrideBodyText = tooltipBody;
+                            foreach (var info in procCoefficientInfos)
+                            {
+                                tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
+                                if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                                {
+                                    tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
+                                }
+                            }
+
+                            
                         }
+                    }
+                    TooltipProvider tooltipProvider = selfRow.buttons[selfRow.buttons.Count - 1].GetComponent<TooltipProvider>();
+                    if (tooltipProvider != null)
+                    {
+                        tooltipProvider.overrideBodyText = tooltipBody;
                     }
                 }
             }
@@ -58,41 +80,54 @@ namespace BetterUI
         {
             orig(self);
 
-            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+            if (self.targetSkill != null)
             {
-                List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = self.targetSkill ? ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken) : null;
-
-                if (procCoefficientInfos != null)
+                string tooltipBody = Language.GetString(self.targetSkill.skillDescriptionToken);
+                if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value || mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value)
                 {
-                    string tooltipBody = Language.GetString(self.targetSkill.skillDescriptionToken) + "";
-                    foreach (var info in procCoefficientInfos)
+                    tooltipBody += "\n";
+                }
+                if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
+                {
+                    tooltipBody += $"\nBase Cooldown: <style=cIsDamage>{self.targetSkill.baseRechargeInterval}</style> seconds";
+                }
+                if (mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
+                {
+                    tooltipBody += $"\nEffective Cooldown: <style=cIsHealing>{self.targetSkill.finalRechargeInterval}</style> seconds";
+                }
+
+                if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                {
+                    List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken);
+
+                    if (procCoefficientInfos != null)
                     {
-                        tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
-                        if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                        foreach (var info in procCoefficientInfos)
                         {
-                            tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
-                        }
-                        if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
-                        {
-                            foreach (var item in ProcItemsCatalog.GetAllItems())
+                            tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
+                            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
-                                int stacks = self.targetSkill.characterBody.inventory.itemStacks[(int)item.Key];
-                                if (stacks > 0)
+                                tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
+                            }
+                            if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                            {
+                                foreach (var item in ProcItemsCatalog.GetAllItems())
                                 {
-                                    ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
-                                    tooltipBody += "\n  " + Language.GetString(itemDef.nameToken) + ": ";
-                                    float luck = self.targetSkill.characterBody.master.luck;
-                                    tooltipBody += item.Value.GetOutputString(stacks, luck, info.procCoefficient);
+                                    int stacks = self.targetSkill.characterBody.inventory.itemStacks[(int)item.Key];
+                                    if (stacks > 0)
+                                    {
+                                        ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
+                                        tooltipBody += "\n  " + Language.GetString(itemDef.nameToken) + ": ";
+                                        float luck = self.targetSkill.characterBody.master.luck;
+                                        tooltipBody += item.Value.GetOutputString(stacks, luck, info.procCoefficient);
+                                    }
                                 }
                             }
                         }
                     }
-                    self.tooltipProvider.overrideBodyText = tooltipBody;
                 }
-                else
-                {
-                    self.tooltipProvider.overrideBodyText = null;
-                }
+
+                self.tooltipProvider.overrideBodyText = tooltipBody;
             }
 
             if (mod.config.AdvancedIconsSkillShowCooldownStacks.Value && self.targetSkill && self.targetSkill.cooldownRemaining > 0)

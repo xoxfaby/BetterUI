@@ -11,7 +11,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.5.7")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.0")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -22,6 +22,7 @@ namespace BetterUI
         internal DPSMeter DPSMeter;
         internal BuffTimers buffTimers;
         internal AdvancedIcons advancedIcons;
+        internal ItemCounters itemCounters;
         internal bool ItemStatsModIntegration;
         internal RoR2.UI.HUD HUD;
         public void Awake()
@@ -32,8 +33,9 @@ namespace BetterUI
             statsDisplay = new StatsDisplay(this);
             commandImprovements = new CommandImprovements(this);
             DPSMeter = new DPSMeter(this);
-            advancedIcons = new AdvancedIcons(this);
             buffTimers = new BuffTimers(this);
+            advancedIcons = new AdvancedIcons(this);
+            itemCounters = new ItemCounters(this);
         }
 
         public void Update()
@@ -54,6 +56,12 @@ namespace BetterUI
         public void OnDisable()
         {
             Hooks.Unhook(this);
+        }
+
+        public void Start()
+        {
+            advancedIcons.Start();
+            itemCounters.Start();
         }
 
         internal void hook_HUDAwake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)

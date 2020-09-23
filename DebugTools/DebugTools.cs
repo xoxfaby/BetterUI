@@ -13,12 +13,17 @@ namespace DebugTools
     [BepInPlugin("com.xoxfaby.DebugTools", "DebugTools", "1.0.0")]
     public class DebugTools : BaseUnityPlugin
     {
-
-
-
         public void Awake()
         {
-            On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
+
+            RoR2.Run.onRunStartGlobal += (run) =>
+            {
+                for(int i = 1; i < (int)ColorCatalog.ColorIndex.Count; i++)
+                {
+                    Chat.AddMessage($"<#{ColorCatalog.GetColorHexString((ColorCatalog.ColorIndex)i)}>{((ColorCatalog.ColorIndex)i).ToString()}</color>");
+                }
+            };
+            //On.RoR2.Networking.GameNetworkManager.OnClientConnect += (self, user, t) => { };
         }
 
     }
