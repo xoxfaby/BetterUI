@@ -9,6 +9,7 @@
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
                 mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
             {
+                On.RoR2.UI.LoadoutPanelController.Row.AddButton += mod.advancedIcons.hook_LoadoutPanelController_Row_AddButton;
                 On.RoR2.UI.SkillIcon.Update += mod.advancedIcons.hook_SkillIcon_Update;
             }
             if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)
@@ -101,6 +102,7 @@
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
                 mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
             {
+                On.RoR2.UI.LoadoutPanelController.Row.AddButton -= mod.advancedIcons.hook_LoadoutPanelController_Row_AddButton;
                 On.RoR2.UI.SkillIcon.Update -= mod.advancedIcons.hook_SkillIcon_Update;
             }
             if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)

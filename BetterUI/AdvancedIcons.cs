@@ -20,6 +20,40 @@ namespace BetterUI
 
             self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
         }
+
+        internal void hook_LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
+        {
+            orig(self, owner, icon, titleToken, bodyToken, tooltipColor, callback, unlockableName, viewableNode, isWIP);
+
+            LoadoutPanelController.Row selfRow = (LoadoutPanelController.Row) self;
+            UserProfile userProfile = selfRow.userProfile;
+            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+            {
+                if (userProfile != null && userProfile.HasUnlockable(unlockableName))
+                {
+                    List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(titleToken);
+
+                    if (procCoefficientInfos != null)
+                    {
+                        string tooltipBody = Language.GetString(bodyToken) + "";
+                        foreach (var info in procCoefficientInfos)
+                        {
+                            tooltipBody += $"\n\n<size=110%>{info.name}:</size>";
+                            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                            {
+                                tooltipBody += $"\n <style=cIsUtility>Proc Coefficient: {info.procCoefficient}</style>";
+                            }
+                        }
+
+                        TooltipProvider tooltipProvider = selfRow.buttons[selfRow.buttons.Count-1].GetComponent<TooltipProvider>();
+                        if (tooltipProvider != null)
+                        {
+                            tooltipProvider.overrideBodyText = tooltipBody;
+                        }
+                    }
+                }
+            }
+        }
         internal void hook_SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
         {
             orig(self);
