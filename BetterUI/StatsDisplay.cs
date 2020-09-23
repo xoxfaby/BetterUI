@@ -61,6 +61,7 @@ namespace BetterUI
                 { "$blueportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString() : "N/A" },
                 { "$goldportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString() : "N/A" },
                 { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
+                { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
             regexpattern = @"(\" + String.Join(@"|\", regexmap.Keys) + ")";
         }

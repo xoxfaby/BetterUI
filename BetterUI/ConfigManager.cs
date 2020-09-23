@@ -265,6 +265,7 @@ namespace BetterUI
                 "Jumps: $jumps/$maxjumps\n" +
                 "Kills: $killcount\n" +
                 "Mountain Shrines: $mountainshrines\n" +
+                "Difficulty: $difficulty\n" +
                 "Blue Portal: $blueportal\n" +
                 "Gold Portal: $goldportal\n" +
                 "Celestial Portal: $celestialportal\n",
