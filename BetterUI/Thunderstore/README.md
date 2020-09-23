@@ -143,6 +143,15 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.5.7
+ - Addition: Added $difficulty parameter to display the Difficulty Coefficient in the StatsDisplay
+ - Addition: Added the ability to change the custom bind for showing/changing the StatsDisplay, by default it replaces the old Scoreboard bind.
+ - Addition: Added the Proc Coefficient information to the loadout screen.
+ - Change: Replaced $crit with $luckcrit in the StatString, added both and $difficulty to the custom bind only version. 
+ - Bugfix: Fixed $luckcrit not working. 
+ - Notes: The custom bind changes will reset your StatStringScoreboard because it was moved to a different config variable. It felt wrong to keep the same name when it is no longer tied to the scoreboard directly.
+ - 
+
 #### v1.5.6
  - Bugfix: Added formatting for more numbers in StatsDisplay
  - Internal Change: more changes to allow modders to more easily register their items for display in skill tooltips
