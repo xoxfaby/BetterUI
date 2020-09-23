@@ -124,7 +124,6 @@ namespace BetterUI
             AddSkill("TREEBOT_PRIMARY_NAME", "Syringes", 0.5f);
             AddSkill("TREEBOT_SECONDARY_NAME", "Mortar", 1);
             AddSkill("TREEBOT_SECONDARY_ALT1_NAME", "Hit", 0.5f);
-            AddSkill("TREEBOT_UTILITY_NAME", "Boom", 0);
             AddSkill("TREEBOT_UTILITY_ALT1_NAME", "Boom", 0.5f);
             AddSkill("TREEBOT_SPECIAL_NAME", "Projectile", 1);
             AddToSkill("TREEBOT_SPECIAL_NAME", "Roots", 0);
