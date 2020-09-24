@@ -7,15 +7,11 @@ using UnityEngine;
 
 namespace BetterUI
 {
-    class AdvancedIcons
+    class AdvancedIcons : BetterUI.ModComponent
     {
-        readonly BetterUI mod;
+        public AdvancedIcons(BetterUI mod) : base(mod) { }
 
         Dictionary<string, float> skillCooldowns = new Dictionary<string, float>();
-        internal AdvancedIcons(BetterUI mod)
-        {
-            this.mod = mod;
-        }
         internal void hook_SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
         {
             orig(self, itemIndex, itemCount);
@@ -23,7 +19,28 @@ namespace BetterUI
             self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
         }
 
-        internal void Start()
+        internal override void Hook()
+        {
+            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
+                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value ||
+                mod.config.AdvancedIconsSkillShowBaseCooldown.Value ||
+                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+            {
+                On.RoR2.UI.LoadoutPanelController.Row.AddButton += hook_LoadoutPanelController_Row_AddButton;
+                On.RoR2.UI.SkillIcon.Update += hook_SkillIcon_Update;
+            }
+            if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)
+            {
+                On.RoR2.UI.ItemIcon.SetItemIndex += hook_SetItemIndex;
+            }
+            if (mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ||
+                mod.config.AdvancedIconsEquipementShowBaseCooldown.Value ||
+                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+            {
+                On.RoR2.UI.EquipmentIcon.Update += hook_EquipmentIcon_Update;
+            }
+        }
+        internal override void Start()
         {
             foreach(var skill in RoR2.Skills.SkillCatalog.allSkillDefs)
             {

@@ -14,9 +14,10 @@ using UnityEngine.UI;
 namespace BetterUI
 {
 
-    class DPSMeter
+    class DPSMeter : BetterUI.ModComponent
     {
-        private readonly BetterUI mod;
+        public DPSMeter(BetterUI mod) : base(mod) { }
+
         private readonly Queue<DamageLog> characterDamageLog = new Queue<DamageLog>();
         private float characterDamageSum = 0;
         private readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
@@ -36,16 +37,26 @@ namespace BetterUI
                 time = Time.time;
             }
         }
-        public DPSMeter(BetterUI m)
+
+        internal override void Hook()
         {
-            mod = m;
+            if (mod.config.DPSMeterWindowShow.Value ||
+            mod.config.StatsDisplayStatString.Value.Contains("$dps"))
+            {
+                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.hook_ClientDamageNotified;
+            }
+            if (mod.config.DPSMeterWindowShow.Value)
+            {
+                On.RoR2.UI.HUD.Awake += mod.DPSMeter.hook_Awake;
+            }
+
         }
         public float Clamp(float value)
         {
             return Math.Min(Math.Max(1, value), mod.config.DPSMeterTimespan.Value);
         }
 
-        public void Update()
+        internal override void Update()
         {
             
             while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - mod.config.DPSMeterTimespan.Value)
@@ -67,8 +78,6 @@ namespace BetterUI
             orig(dmgMsg);
 
             CharacterMaster localMaster = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
-
-
 
             if (dmgMsg != null && dmgMsg.attacker != null)
             {

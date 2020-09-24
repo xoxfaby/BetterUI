@@ -14,9 +14,8 @@ using TMPro;
 
 namespace BetterUI
 {
-    class StatsDisplay
+    class StatsDisplay : BetterUI.ModComponent
     {
-        private readonly BetterUI mod;
 
         private GameObject statsDisplayContainer;
         private GameObject stupidBuffer;
@@ -26,10 +25,8 @@ namespace BetterUI
         readonly Dictionary<String, Func<CharacterBody,String>> regexmap;
         readonly String regexpattern;
 
-        public StatsDisplay(BetterUI m)
+        public StatsDisplay(BetterUI mod) : base(mod)
         {
-            mod = m;
-
             regexmap = new Dictionary<String, Func<CharacterBody, string>> {
                 { "$armordmgreduction", (statBody) => ((statBody.armor >= 0 ? statBody.armor / (100 + statBody.armor) : (100 / (100 - statBody.armor) - 1)) * 100).ToString("0.##") },
                 { "$exp", (statBody) => statBody.experience.ToString("0.##") },
@@ -64,6 +61,15 @@ namespace BetterUI
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
             regexpattern = @"(\" + String.Join(@"|\", regexmap.Keys) + ")";
+        }
+
+        internal override void Hook()
+        {
+            if (mod.config.StatsDisplayEnable.Value)
+            {
+                RoR2.Run.onRunStartGlobal += hook_runStartGlobal;
+                On.RoR2.UI.HUD.Awake += hook_Awake;
+            }
         }
 
         public void hook_runStartGlobal(RoR2.Run self)
@@ -153,8 +159,7 @@ namespace BetterUI
             layoutElement.flexibleWidth = 1;
 
         }
-
-        public void Update()
+        internal override void Update()
         {
             if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
             {

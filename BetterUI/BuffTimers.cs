@@ -8,12 +8,17 @@ using RoR2;
 
 namespace BetterUI
 {
-    class BuffTimers
+    class BuffTimers : BetterUI.ModComponent
     {
-        BetterUI mod;
-        internal BuffTimers(BetterUI mod)
+        public BuffTimers(BetterUI mod) : base(mod){ }
+
+        internal override void Hook()
         {
-            this.mod = mod;
+            if (mod.config.BuffTimers.Value || mod.config.BuffTooltips.Value)
+            {
+                On.RoR2.UI.BuffIcon.Awake += mod.buffTimers.hook_BuffIconAwake;
+                On.RoR2.UI.BuffIcon.UpdateIcon += mod.buffTimers.hook_BuffIconUpdateIcon;
+            }
         }
         internal void hook_BuffIconAwake(On.RoR2.UI.BuffIcon.orig_Awake orig, RoR2.UI.BuffIcon self)
         {
@@ -51,7 +56,6 @@ namespace BetterUI
                 }
             }
         }
-
 
         internal void hook_BuffIconUpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
         {

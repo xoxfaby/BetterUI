@@ -8,9 +8,31 @@ using UnityEngine;
 
 namespace BetterUI
 {
-    class CommandImprovements
+    class CommandImprovements : BetterUI.ModComponent
     {
-        private readonly BetterUI mod;
+        public CommandImprovements(BetterUI mod) : base(mod) { }
+
+        internal override void Hook()
+        {
+            if (mod.config.CommandResizeCommandWindow.Value ||
+                mod.config.SortingSortItemsScrapper.Value ||
+                mod.config.SortingSortItemsScrapper.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += hook_SetPickupOptions;
+            }
+            if (mod.config.CommandCloseOnEscape.Value ||
+                mod.config.CommandCloseOnWASD.Value ||
+                mod.config.CommandCloseOnCustom.Value != "")
+            {
+                On.RoR2.UI.PickupPickerPanel.Awake += mod.commandImprovements.hook_PickupPickerPanelAwake;
+            }
+
+            if (mod.config.CommandTooltipsShow.Value ||
+                mod.config.CommandCountersShow.Value)
+            {
+                On.RoR2.UI.PickupPickerPanel.OnCreateButton += mod.commandImprovements.hook_OnCreateButton;
+            }
+        }
 
         private PickupPickerPanel currentPanel;
         private int[] optionMap;
@@ -23,17 +45,12 @@ namespace BetterUI
             ItemIndex.None,
             ItemIndex.None,
         };
-        public CommandImprovements(BetterUI m)
-        {
-            mod = m;
-        }
-
         public void hook_PickupPickerPanelAwake(On.RoR2.UI.PickupPickerPanel.orig_Awake orig, PickupPickerPanel self)
         {
             currentPanel = self;
             orig(self);
         }
-        public void Update()
+        internal override void Update()
         {
             if(currentPanel && currentPanel.gameObject)
             {

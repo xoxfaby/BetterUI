@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 using RoR2;
 using R2API.Utils;
@@ -25,6 +26,7 @@ namespace BetterUI
         internal ItemCounters itemCounters;
         internal bool ItemStatsModIntegration;
         internal RoR2.UI.HUD HUD;
+        internal List<ModComponent> modComponents = new List<ModComponent>();
         public void Awake()
         {
             BepInExPatcher.DoPatching();
@@ -36,74 +38,71 @@ namespace BetterUI
             buffTimers = new BuffTimers(this);
             advancedIcons = new AdvancedIcons(this);
             itemCounters = new ItemCounters(this);
-        }
 
-        public void Update()
-        {
-            commandImprovements.Update();
-            DPSMeter.Update();
-            statsDisplay.Update();
-        }
-        public void OnEnable()
-        {
-            config = new ConfigManager(this);
-
-            ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
-
-            Hooks.Hook(this);
-        }
-
-        public void OnDisable()
-        {
-            Hooks.Unhook(this);
+            this.AddComponent(itemSorting);
+            this.AddComponent(statsDisplay);
+            this.AddComponent(commandImprovements);
+            this.AddComponent(DPSMeter);
+            this.AddComponent(buffTimers);
+            this.AddComponent(advancedIcons);
+            this.AddComponent(itemCounters);
         }
 
         public void Start()
         {
-            advancedIcons.Start();
-            itemCounters.Start();
+            foreach (ModComponent modComponent in modComponents)
+            {
+                modComponent.Start();
+            }
+        }
+        public void Update()
+        {
+            foreach(ModComponent modComponent in modComponents)
+            {
+                modComponent.Update();
+            }
+        }
+        public void OnEnable()
+        {
+            On.RoR2.UI.HUD.Awake += hook_HUD_Awake;
+            config = new ConfigManager(this);
+
+            ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
+
+            foreach (ModComponent modComponent in modComponents)
+            {
+                modComponent.Hook();
+            }
         }
 
-        internal void hook_HUDAwake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        public void OnDisable()
+        {
+            On.RoR2.UI.HUD.Awake -= hook_HUD_Awake;
+            foreach (ModComponent modComponent in modComponents)
+            {
+                modComponent.Unhook();
+            }
+        }
+        internal void hook_HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
             HUD = self;
         }
-        internal bool hook_ItemIsVisible(On.RoR2.UI.ItemInventoryDisplay.orig_ItemIsVisible orig, ItemIndex itemIndex)
+        public void AddComponent(ModComponent modComponent)
         {
-            return true;
+            modComponents.Add(modComponent);
         }
-        internal void hook_SetArtifact(On.RoR2.UI.GenericNotification.orig_SetArtifact orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
+        public abstract class ModComponent
         {
-            if (config.MiscHidePickupNotificiationsArtifacts.Value)
+            protected BetterUI mod;
+            public ModComponent(BetterUI mod)
             {
-                BetterUI.Destroy(self.gameObject);
-                return;
+                this.mod = mod;
             }
-            orig(self, artifactDef);
-
-        }
-        internal void hook_SetEquipment(On.RoR2.UI.GenericNotification.orig_SetEquipment orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
-        {
-            if (config.MiscHidePickupNotificiationsEquipements.Value)
-            {
-                BetterUI.Destroy(self.gameObject);
-                return;
-            }
-            orig(self, equipmentDef);
-
-            self.descriptionText.token = equipmentDef.descriptionToken;
-        }
-        internal void hook_SetItem(On.RoR2.UI.GenericNotification.orig_SetItem orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
-        {
-            if (config.MiscHidePickupNotificiationsItems.Value)
-            {
-                BetterUI.Destroy(self.gameObject);
-                return;
-            }
-            orig(self, itemDef);
-
-            self.descriptionText.token = itemDef.descriptionToken;
+            internal virtual void Start() { }
+            internal virtual void Update() { }
+            internal virtual void Hook() { }
+            internal virtual void Unhook() { }
         }
     }
 }

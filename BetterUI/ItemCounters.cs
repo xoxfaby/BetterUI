@@ -10,21 +10,17 @@ using BepInEx.Configuration;
 
 namespace BetterUI
 {
-    class ItemCounters
+    class ItemCounters : BetterUI.ModComponent
     {
+        internal ItemCounters(BetterUI mod) : base(mod) { }
+
         public static readonly Dictionary<ItemIndex, int> ItemScores = new Dictionary<ItemIndex, int>();
         
         static ItemCounters()
         {
             //TODO: Add individual item scores.
         }
-
-        BetterUI mod;
-        internal ItemCounters(BetterUI mod)
-        {
-            this.mod = mod;
-        }
-
+        
         string[] tierColorMap = new string[]
         {
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Tier1Item),
@@ -35,7 +31,16 @@ namespace BetterUI
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Error),
         };
 
-        internal void Start()
+        internal override void Hook()
+        {
+            if (mod.config.ItemCountersShowItemCounters.Value)
+            {
+                On.RoR2.UI.ScoreboardStrip.SetMaster += mod.itemCounters.hook_ScoreboardStrip_SetMaster;
+                On.RoR2.UI.ScoreboardStrip.Update += mod.itemCounters.hook_ScoreboardStrip_Update;
+            }
+        }
+
+        internal override void Start()
         {
             bool first = true;
             foreach (var itemIndex in RoR2.ItemCatalog.allItems)

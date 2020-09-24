@@ -5,15 +5,24 @@ using System.Linq;
 using System.Collections.Generic;
 namespace BetterUI
 {
-    class ItemSorting
+    class ItemSorting : BetterUI.ModComponent
     {
-        private readonly BetterUI mod;
-        public ItemSorting(BetterUI m)
+        public ItemSorting(BetterUI mod) : base(mod) { }
+
+        internal override void Hook()
         {
-            mod = m;
+            if (mod.config.SortingSortItemsInventory.Value)
+            {
+                On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += mod.itemSorting.hook_OnInventoryChanged;
+            }
+            if (mod.config.SortingSortItemsCommand.Value && mod.config.SortingSortOrderCommand.Value.Contains("C"))
+            {
+                On.RoR2.PickupPickerController.SubmitChoice += mod.commandImprovements.hook_SubmitChoice;
+            }
         }
+
         public List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
-        {
+        { 
             IOrderedEnumerable<EquipmentIndex> finalOrder = equipmentList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
             {
