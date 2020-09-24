@@ -72,19 +72,27 @@ namespace BetterUI
 
             if (dmgMsg != null && dmgMsg.attacker != null)
             {
-                if (dmgMsg.attacker == localMaster.GetBodyObject())
+                if (dmgMsg.victim)
                 {
-                    characterDamageSum += dmgMsg.damage;
-                    characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                    CharacterBody victimBody = dmgMsg.victim.gameObject.GetComponent<CharacterBody>();
+                    if(victimBody && victimBody.teamComponent.teamIndex != TeamIndex.Player)
+                    {
+                        if (dmgMsg.attacker == localMaster.GetBodyObject())
+                        {
+                            characterDamageSum += dmgMsg.damage;
+                            characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                        }
+                        else if (dmgMsg.attacker.GetComponent<CharacterBody>() != null &&
+                            dmgMsg.attacker.GetComponent<CharacterBody>().master != null &&
+                            dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership != null &&
+                            dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership.ownerMasterId == localMaster.netId)
+                        {
+                            minionDamageSum += dmgMsg.damage;
+                            minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                        }
+                    }
                 }
-                else if (dmgMsg.attacker.GetComponent<CharacterBody>() != null &&
-                    dmgMsg.attacker.GetComponent<CharacterBody>().master != null &&
-                    dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership != null &&
-                    dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership.ownerMasterId == localMaster.netId)
-                {
-                    minionDamageSum += dmgMsg.damage;
-                    minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
-                }
+                
             }
         }
 
