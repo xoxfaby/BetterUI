@@ -215,7 +215,11 @@ namespace BetterUI
                             }
                             else
                             {
-                                bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master);
+                                if(self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
+                                {
+                                    count += 1;
+                                }
+                                bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count, master);
                             }
 
                             tooltipProvider.overrideBodyText = bodyText;
