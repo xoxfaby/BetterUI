@@ -92,7 +92,7 @@ namespace BetterUI
             AddSkill("HUNTRESS_PRIMARY_NAME", "Arrow", 1);
             AddSkill("HUNTRESS_PRIMARY_ALT_NAME", "Arrow", 0.7f);
             AddSkill("HUNTRESS_SECONDARY_NAME", "Glaive", 0.8f);
-            AddSkill("HUNTRESS_SPECIAL_NAME", "Rain", 1);
+            AddSkill("HUNTRESS_SPECIAL_NAME", "Rain", 0.2f);
             AddSkill("HUNTRESS_SPECIAL_ALT1_NAME", "Ballista", 1);
 
             // Loader
