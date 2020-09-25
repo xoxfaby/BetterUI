@@ -151,6 +151,11 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.1
+ - Bugfix: Corrected Huntress Arrow Rain Proc Coefficient
+ - Bugfix: Scrapper Tooltips w/ ItemStatsMod no longer shows you have one extra item. 
+ - Internal Changes: Lots of things moved around, but none of this should affect anything.
+
 ### v1.6.0
  - New Feature: Item Counters: Fully customizable. Simple counting of items, groups by tier or item score by tier or even individual items
  - New Feature: Skill cooldowns: Base cooldown & calculated cooldown in the tooltip. Base cooldown in the loadout screen.
