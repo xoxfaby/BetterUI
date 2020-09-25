@@ -53,18 +53,18 @@ namespace BetterUI
                 }
                 if (first)
                 {
-                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemIndex.ToString(), itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemDef.nameToken, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
                     mod.config.ItemScoreConfig.Add(itemScore);
                     first = false;
                 }
                 else
                 {
-                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemIndex.ToString(), itemValue, Language.GetString(itemDef.nameToken));
+                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemDef.nameToken, itemValue, Language.GetString(itemDef.nameToken));
                     mod.config.ItemScoreConfig.Add(itemScore);
                 }
             }
 
-            mod.config.ItemCountersItemScores = mod.config.ItemScoreConfig.Select(c => c.Value).ToArray();
+            mod.config.ItemCountersItemScores = mod.config.ItemScoreConfig.ToDictionary(e => e.Definition.Key, e => e.Value);
 
         }
         internal void hook_ScoreboardStrip_SetMaster(On.RoR2.UI.ScoreboardStrip.orig_SetMaster orig, ScoreboardStrip self, CharacterMaster master)
@@ -93,7 +93,7 @@ namespace BetterUI
                 }
                 if (mod.config.ItemCountersShowItemScore.Value)
                 {
-                    itemScore = self.master.inventory.itemAcquisitionOrder.Aggregate(0, (s, i) => s + mod.config.ItemCountersItemScores[(int)i] * self.master.inventory.itemStacks[(int)i]).ToString();
+                    itemScore = self.master.inventory.itemAcquisitionOrder.Aggregate(0, (s, i) => s + mod.config.ItemCountersItemScores[ItemCatalog.GetItemDef(i).nameToken] * self.master.inventory.itemStacks[(int)i]).ToString();
                 }
                 moneyLabel += String.Join(" | ", new[] { itemScore, itemSum }.Where(s => !string.IsNullOrEmpty(s)));
 

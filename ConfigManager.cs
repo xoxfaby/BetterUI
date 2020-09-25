@@ -101,7 +101,7 @@ namespace BetterUI
         public ConfigEntry<int> ItemCountersTierScoreNoTier;
         public int[] ItemCountersTierScores;
         public List<ConfigEntry<int>> ItemScoreConfig;
-        public int[] ItemCountersItemScores;
+        public Dictionary<string,int> ItemCountersItemScores;
 
         // StatsDisplay
 
