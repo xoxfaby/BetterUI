@@ -24,6 +24,7 @@ namespace BetterUI
         internal BuffTimers buffTimers;
         internal AdvancedIcons advancedIcons;
         internal ItemCounters itemCounters;
+        internal Misc misc;
         internal bool ItemStatsModIntegration;
         internal RoR2.UI.HUD HUD;
         internal List<ModComponent> modComponents = new List<ModComponent>();
@@ -38,6 +39,7 @@ namespace BetterUI
             buffTimers = new BuffTimers(this);
             advancedIcons = new AdvancedIcons(this);
             itemCounters = new ItemCounters(this);
+            misc = new Misc(this);
 
             this.AddComponent(itemSorting);
             this.AddComponent(statsDisplay);
@@ -46,6 +48,7 @@ namespace BetterUI
             this.AddComponent(buffTimers);
             this.AddComponent(advancedIcons);
             this.AddComponent(itemCounters);
+            this.AddComponent(misc);
         }
 
         public void Start()
