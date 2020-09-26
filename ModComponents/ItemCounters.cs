@@ -71,6 +71,9 @@ namespace BetterUI
         {
             orig(self, master);
 
+            self.nameLabel.lineSpacing = -20;
+            self.nameLabel.overflowMode = TMPro.TextOverflowModes.Truncate;
+            self.nameLabel.enableWordWrapping = false;
             self.moneyText.overflowMode = TMPro.TextOverflowModes.Overflow;
         }
 
