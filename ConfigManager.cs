@@ -29,6 +29,8 @@ namespace BetterUI
         public ConfigEntry<bool> MiscHidePickupNotificiationsItems;
         public ConfigEntry<bool> MiscHidePickupNotificiationsEquipements;
         public ConfigEntry<bool> MiscHidePickupNotificiationsArtifacts;
+        public ConfigEntry<bool> MiscShowPickupDescription;
+        public ConfigEntry<bool> MiscPickupDescriptionAdvanced;
 
         // AdvancedIcons
 
@@ -158,6 +160,10 @@ namespace BetterUI
             MiscHidePickupNotificiationsEquipements = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsEquipements", false, "Hide pickup notifications for equipments.");
 
             MiscHidePickupNotificiationsArtifacts = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsArtifacts", false, "Hide pickup notifications for artifacts.");
+
+            MiscShowPickupDescription = ConfigFileMisc.Bind("Misc", "ShowPickupDescription", true, "Show the items description on the interaction popup.");
+
+            MiscPickupDescriptionAdvanced = ConfigFileMisc.Bind("Misc", "PickupDescriptionAdvanced", false, "Show advanced descriptions for the interaction popup.");
 
             // Advanced Icons
 
