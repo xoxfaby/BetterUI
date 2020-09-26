@@ -151,7 +151,12 @@ P = Sprint Related Last
 
 ## Changelog
 
-#### v1.6.1
+#### v1.6.3
+ - New Feature: Added ability to show item description on the pickup interaction text
+ - Bugfix: Readded all functionality from the Misc config
+ - Bugfix: change nameLabel line space, overflow mode and word wrapping to work for more names
+
+#### v1.6.2
  - Internal Change: ItemCounters custom item score now uses the name token to increase compatibility with modded items. 
 
 #### v1.6.1
