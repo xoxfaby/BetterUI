@@ -43,7 +43,7 @@ namespace BetterUI
             if (mod.config.DPSMeterWindowShow.Value ||
             mod.config.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.hook_ClientDamageNotified;
+                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.hook_DamageDealtMessage_ClientDamageNotified;
             }
             if (mod.config.DPSMeterWindowShow.Value)
             {
@@ -73,36 +73,25 @@ namespace BetterUI
             }
         }
 
-        public void hook_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
+        public void hook_DamageDealtMessage_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
         {
             orig(dmgMsg);
 
             CharacterMaster localMaster = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
 
-            if (dmgMsg != null && dmgMsg.attacker != null)
+            if (dmgMsg?.attacker && dmgMsg.victim?.gameObject.GetComponent<CharacterBody>()?.teamComponent.teamIndex != TeamIndex.Player)
             {
-                if (dmgMsg.victim)
+                if (dmgMsg.attacker == localMaster.GetBodyObject())
                 {
-                    CharacterBody victimBody = dmgMsg.victim.gameObject.GetComponent<CharacterBody>();
-                    if(victimBody && victimBody.teamComponent.teamIndex != TeamIndex.Player)
-                    {
-                        if (dmgMsg.attacker == localMaster.GetBodyObject())
-                        {
-                            characterDamageSum += dmgMsg.damage;
-                            characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
-                        }
-                        else if (dmgMsg.attacker.GetComponent<CharacterBody>() != null &&
-                            dmgMsg.attacker.GetComponent<CharacterBody>().master != null &&
-                            dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership != null &&
-                            dmgMsg.attacker.GetComponent<CharacterBody>().master.minionOwnership.ownerMasterId == localMaster.netId)
-                        {
-                            minionDamageSum += dmgMsg.damage;
-                            minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
-                        }
-                    }
+                    characterDamageSum += dmgMsg.damage;
+                    characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
                 }
-                
-            }
+                else if (dmgMsg?.attacker?.GetComponent<CharacterBody>()?.master?.minionOwnership?.ownerMasterId == localMaster.netId)
+                {
+                    minionDamageSum += dmgMsg.damage;
+                    minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                }
+            }     
         }
 
         public void hook_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
