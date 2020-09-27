@@ -79,19 +79,27 @@ namespace BetterUI
 
             CharacterMaster localMaster = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
 
-            if (dmgMsg?.attacker && dmgMsg.victim?.gameObject.GetComponent<CharacterBody>()?.teamComponent.teamIndex != TeamIndex.Player)
+            if (dmgMsg.attacker && dmgMsg.victim) 
             {
-                if (dmgMsg.attacker == localMaster.GetBodyObject())
+                var victimBody = dmgMsg.victim.gameObject.GetComponent<CharacterBody>();
+                if (victimBody && victimBody.teamComponent.teamIndex != TeamIndex.Player)
                 {
-                    characterDamageSum += dmgMsg.damage;
-                    characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                    if (dmgMsg.attacker == localMaster.GetBodyObject())
+                    {
+                        characterDamageSum += dmgMsg.damage;
+                        characterDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                    }
+                    else
+                    {
+                        var attackerBody = dmgMsg.attacker.GetComponent<CharacterBody>();
+                        if (attackerBody && attackerBody.master && attackerBody.master.minionOwnership && attackerBody.master.minionOwnership.ownerMasterId == localMaster.netId)
+                        {
+                            minionDamageSum += dmgMsg.damage;
+                            minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
+                        }
+                    }
                 }
-                else if (dmgMsg?.attacker?.GetComponent<CharacterBody>()?.master?.minionOwnership?.ownerMasterId == localMaster.netId)
-                {
-                    minionDamageSum += dmgMsg.damage;
-                    minionDamageLog.Enqueue(new DamageLog(dmgMsg.damage));
-                }
-            }     
+            }
         }
 
         public void hook_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
