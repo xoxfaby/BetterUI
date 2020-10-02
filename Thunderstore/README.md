@@ -151,6 +151,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.4
+ - Internal Change: Many internal changes to improve performance and memory usage. 
+
 #### v1.6.3
  - New Feature: Added ability to show item description on the pickup interaction text
  - Bugfix: Readded all functionality from the Misc config
