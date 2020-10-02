@@ -34,8 +34,19 @@ namespace BetterUI
             }
         }
 
+        internal override void Start()
+        {
+            var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
+            optionMap = new int[maxOptions];
+            availableIndex = new bool[maxOptions];
+            sortedOptions = new PickupPickerController.Option[maxOptions];
+        }
+
         private PickupPickerPanel currentPanel;
         private int[] optionMap;
+        private bool[] availableIndex;
+        PickupPickerController.Option[] sortedOptions;
+        private String sortOrder;
 
         internal ItemIndex[] lastItem = new ItemIndex[] {
             ItemIndex.None,
@@ -88,8 +99,7 @@ namespace BetterUI
 
 
             self.buttonAllocator.AllocateElements(0);
-            optionMap = null;
-            String sortOrder;
+            optionMap[0] = -1;
             switch (self.pickerController.contextString)
             {
                 case "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT":
@@ -125,7 +135,6 @@ namespace BetterUI
 
             if (PickupCatalog.GetPickupDef(options[0].pickupIndex).equipmentIndex != EquipmentIndex.None)
             {
-                bool[] availableIndex = new bool[EquipmentCatalog.equipmentCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
                 {
                     availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex] = option.available;

@@ -22,8 +22,11 @@ namespace BetterUI
         private RoR2.UI.HGTextMeshProUGUI textMesh;
         private int highestMultikill = 0;
 
-        readonly Dictionary<String, Func<CharacterBody,String>> regexmap;
-        readonly String regexpattern;
+        readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
+        readonly Regex regexpattern;
+
+        string[] normalText;
+        string[] altText;
 
         public StatsDisplay(BetterUI mod) : base(mod)
         {
@@ -60,9 +63,24 @@ namespace BetterUI
                 { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
-            regexpattern = @"(\" + String.Join(@"|\", regexmap.Keys) + ")";
+            regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
         }
 
+        internal override void Start()
+        {
+            normalText = regexpattern.Split(mod.config.StatsDisplayStatString.Value);
+            altText = regexpattern.Split(mod.config.StatsDisplayStatStringCustomBind.Value);
+            var pattern1 = new List<string>();
+            foreach (Match match in regexpattern.Matches(mod.config.StatsDisplayStatString.Value))
+            {
+                pattern1.Add(match.Value);
+            }
+            var pattern2 = new List<string>();
+            foreach (Match match in regexpattern.Matches(mod.config.StatsDisplayStatStringCustomBind.Value))
+            {
+                pattern2.Add(match.Value);
+            }
+        }
         internal override void Hook()
         {
             if (mod.config.StatsDisplayEnable.Value)
@@ -183,9 +201,40 @@ namespace BetterUI
                     statsDisplayContainer.SetActive(showStatsDisplay);
                     if (showStatsDisplay)
                     {
-                        MatchEvaluator matchEvaluator = (match) => regexmap[match.Value](playerBody);
                         highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
-                        textMesh.text = Regex.Replace(customBindPressed ? mod.config.StatsDisplayStatStringCustomBind.Value : mod.config.StatsDisplayStatString.Value, regexpattern, matchEvaluator);
+
+                        Util.sharedStringBuilder.Clear();
+                        if (customBindPressed)
+                        {
+                            for (int i = 0; i < altText.Length; i++)
+                            {
+                                if(i % 2 == 0)
+                                {
+                                    Util.sharedStringBuilder.Append(altText[i]);
+
+                                }
+                                else
+                                {
+                                    Util.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < normalText.Length; i++)
+                            {
+                                if (i % 2 == 0)
+                                {
+                                    Util.sharedStringBuilder.Append(normalText[i]);
+
+                                }
+                                else
+                                {
+                                    Util.sharedStringBuilder.Append(regexmap[normalText[i]](playerBody));
+                                }
+                            }
+                        }
+                        textMesh.SetText(Util.sharedStringBuilder);
                     }
                 }
             }

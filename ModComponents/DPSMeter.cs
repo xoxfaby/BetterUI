@@ -69,7 +69,11 @@ namespace BetterUI
             }
             if (textMesh != null)
             {
-                textMesh.text = "DPS: " + (mod.config.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0") ;
+                Util.sharedStringBuilder.Clear();
+                Util.sharedStringBuilder.Append("DPS: ");
+                Util.sharedStringBuilder.Append((mod.config.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
+
+                textMesh.text = Util.sharedStringBuilder.ToString();
             }
         }
 

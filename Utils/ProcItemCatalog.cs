@@ -7,6 +7,7 @@ namespace BetterUI
 {
     public static class ProcItemsCatalog
     {
+        public static StringBuilder sb = new StringBuilder();
         [Obsolete("Deprecated: ProcEffect is deprecated and will be removed in BetterUI version 1.7.0. Use EffectFormatter instead.")]
         public enum ProcEffect
         {
@@ -27,34 +28,46 @@ namespace BetterUI
 
         public static string ChanceFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsDamage>{Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)):0.##}%</style>";
+            sb.Clear();
+            sb.Append("<style=cIsDamage>");
+            sb.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
+            sb.Append("%</style>");
             if (canCap) {
-                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
-                
+                sb.Append(" <style=cStack>(");
+                sb.Append(cap);
+                sb.Append("stacks to cap)</style>");
             }
-            return returnString;
+            return sb.ToString();
         }
 
         public static string HPFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsHealing>{value * procCoefficient} HP</style>";
+            sb.Clear();
+            sb.Append("<style=cIsHealing>");
+            sb.Append(value * procCoefficient);
+            sb.Append(" HP</style>");
             if (canCap)
             {
-                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
-
+                sb.Append(" <style=cStack>(");
+                sb.Append(cap);
+                sb.Append("stacks to cap)</style>");
             }
-            return returnString;
+            return sb.ToString();
         }
 
         public static string RangeFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            string returnString = $"<style=cIsDamage>{value * procCoefficient} m</style>";
+            sb.Clear();
+            sb.Append("<style=cIsDamage>");
+            sb.Append(value * procCoefficient);
+            sb.Append("m </style>");
             if (canCap)
             {
-                returnString += $" <style=cStack>({cap} stacks to cap)</style>";
-
+                sb.Append(" <style=cStack>(");
+                sb.Append(cap);
+                sb.Append("stacks to cap)</style>");
             }
-            return returnString;
+            return sb.ToString();
         }
 
         public delegate float StackingFormula(float value, float extraStackValue, int stacks);
@@ -169,7 +182,7 @@ namespace BetterUI
         }
         public static Dictionary<ItemIndex, EffectInfo> GetAllItems()
         {
-            return new Dictionary<ItemIndex, EffectInfo>(items);
+            return items;
         }
 
         static ProcItemsCatalog()

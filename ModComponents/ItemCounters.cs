@@ -77,38 +77,65 @@ namespace BetterUI
             self.moneyText.overflowMode = TMPro.TextOverflowModes.Overflow;
         }
 
+        int itemSum;
+        int itemScore;
         internal void hook_ScoreboardStrip_Update(On.RoR2.UI.ScoreboardStrip.orig_Update orig, ScoreboardStrip self)
         {
             orig(self);
 
-            if (self.master)
+            if (self.master && self.master.inventory)
             {
-                string nameLabel = $"{Util.GetBestMasterName(self.master)}\n<#F8FC97>${self.master.money}</color>";
-                string moneyLabel = "<#FFFFFF>";
+                Util.sharedStringBuilder.Clear();
+                Util.sharedStringBuilder.Append(Util.GetBestMasterName(self.master));
+                Util.sharedStringBuilder.Append("\n<#F8FC97>");
+                Util.sharedStringBuilder.Append(self.master.money);
+                Util.sharedStringBuilder.Append("</color>");
 
-                string itemSum = "";
-                string itemScore = "";
+                self.nameLabel.text = Util.sharedStringBuilder.ToString();
+                Util.sharedStringBuilder.Clear();
+                Util.sharedStringBuilder.Append("<#FFFFFF>");
+
 
 
                 if (mod.config.ItemCountersShowItemSum.Value)
                 {
-                    itemSum = mod.config.ItemCountersItemSumTiers.Aggregate(0, (s, t) => s + self.master.inventory.GetTotalItemCountOfTier(t)).ToString();
+                    itemSum = 0;
+                    foreach (var tier in mod.config.ItemCountersItemSumTiers)
+                    {
+                        itemSum += self.master.inventory.GetTotalItemCountOfTier(tier);
+                    }
+                    Util.sharedStringBuilder.Append(itemSum);
+                    if (mod.config.ItemCountersShowItemScore.Value)
+                    {
+                        Util.sharedStringBuilder.Append(" | ");
+                    }
                 }
                 if (mod.config.ItemCountersShowItemScore.Value)
                 {
-                    itemScore = self.master.inventory.itemAcquisitionOrder.Aggregate(0, (s, i) => s + mod.config.ItemCountersItemScores[ItemCatalog.GetItemDef(i).nameToken] * self.master.inventory.itemStacks[(int)i]).ToString();
+                    itemScore = 0;
+                    foreach (var item in self.master.inventory.itemAcquisitionOrder)
+                    {
+                        itemScore += mod.config.ItemCountersItemScores[ItemCatalog.GetItemDef(item).nameToken] * self.master.inventory.GetItemCount(item);
+                    }
+                    Util.sharedStringBuilder.Append(itemScore);
                 }
-                moneyLabel += String.Join(" | ", new[] { itemScore, itemSum }.Where(s => !string.IsNullOrEmpty(s)));
-
+                
                 if (mod.config.ItemCountersShowItemsByTier.Value)
                 {
-                    moneyLabel += "\n" + string.Join(" ", mod.config.ItemCountersItemsByTierOrder.Select(tier => $"<#{tierColorMap[(int)tier]}>{self.master.inventory.GetTotalItemCountOfTier(tier)}</color>"));
+                    Util.sharedStringBuilder.Append("\n");
+                    foreach(var tier in mod.config.ItemCountersItemsByTierOrder)
+                    {
+                        Util.sharedStringBuilder.Append(" <#");
+                        Util.sharedStringBuilder.Append(tierColorMap[(int)tier]);
+                        Util.sharedStringBuilder.Append(">");
+                        Util.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
+                        Util.sharedStringBuilder.Append("</color>");
+                    }
                 }
 
-                moneyLabel += "</color>";
+                Util.sharedStringBuilder.Append("</color>");
 
-                self.nameLabel.text = nameLabel;
-                self.moneyText.text = moneyLabel;
+                self.moneyText.text = Util.sharedStringBuilder.ToString();
             }
         }
 

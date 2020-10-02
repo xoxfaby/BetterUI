@@ -79,15 +79,11 @@ namespace BetterUI
                             CharacterBody characterBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                             if (characterBody != null)
                             {
-                                var ThisBuff = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex);
-                                if (ThisBuff.Any())
+                                var thisBuff = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex).OrderByDescending(b => b.timer).First();
+                                if (thisBuff != null)
                                 {
-                                    var buff = ThisBuff.OrderByDescending(b => b.timer).First();
-                                    if (buff != null)
-                                    {
-                                        timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = buff.timer < 10 && mod.config.BuffTimersDecimal.Value ? buff.timer.ToString("N1") : buff.timer.ToString("N0");
-                                        return;
-                                    }
+                                    timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = thisBuff.timer < 10 && mod.config.BuffTimersDecimal.Value ? thisBuff.timer.ToString("N1") : thisBuff.timer.ToString("N0");
+                                    return;
                                 }
                             }
                         }
