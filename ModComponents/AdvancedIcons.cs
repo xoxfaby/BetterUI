@@ -201,17 +201,17 @@ namespace BetterUI
             {
                 lastEquipment = self.currentDisplayData.equipmentDef;
                 this.EquipmentIconDirty = false;
-                Util.sharedStringBuilder.Clear();
-                Util.sharedStringBuilder.Append(Language.GetString(mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ? self.currentDisplayData.equipmentDef.descriptionToken : self.currentDisplayData.equipmentDef.pickupToken));
+                BetterUI.sharedStringBuilder.Clear();
+                BetterUI.sharedStringBuilder.Append(Language.GetString(mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ? self.currentDisplayData.equipmentDef.descriptionToken : self.currentDisplayData.equipmentDef.pickupToken));
                 if(mod.config.AdvancedIconsEquipementShowBaseCooldown.Value || mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
-                    Util.sharedStringBuilder.Append("\n");
+                    BetterUI.sharedStringBuilder.Append("\n");
                 }
                 if (mod.config.AdvancedIconsEquipementShowBaseCooldown.Value)
                 {
-                    Util.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
-                    Util.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
-                    Util.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUI.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
+                    BetterUI.sharedStringBuilder.Append("</style> seconds");
                 }
                 if (mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
@@ -233,15 +233,15 @@ namespace BetterUI
                         }
                         if (reduction < 1)
                         {
-                            Util.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
-                            Util.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
-                            Util.sharedStringBuilder.Append("</style> seconds");
+                            BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                            BetterUI.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
+                            BetterUI.sharedStringBuilder.Append("</style> seconds");
                         }
                     }
                 }
                 
 
-                self.tooltipProvider.overrideBodyText = Util.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
             }
 
             if (mod.config.AdvancedIconsEquipementShowCooldownStacks.Value && self.cooldownText && self.currentDisplayData.cooldownValue > 0)

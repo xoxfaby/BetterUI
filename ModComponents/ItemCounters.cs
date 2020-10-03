@@ -85,15 +85,15 @@ namespace BetterUI
 
             if (self.master && self.master.inventory)
             {
-                Util.sharedStringBuilder.Clear();
-                Util.sharedStringBuilder.Append(Util.GetBestMasterName(self.master));
-                Util.sharedStringBuilder.Append("\n<#F8FC97>");
-                Util.sharedStringBuilder.Append(self.master.money);
-                Util.sharedStringBuilder.Append("</color>");
+                BetterUI.sharedStringBuilder.Clear();
+                BetterUI.sharedStringBuilder.Append(Util.GetBestMasterName(self.master));
+                BetterUI.sharedStringBuilder.Append("\n<#F8FC97>");
+                BetterUI.sharedStringBuilder.Append(self.master.money);
+                BetterUI.sharedStringBuilder.Append("</color>");
 
-                self.nameLabel.text = Util.sharedStringBuilder.ToString();
-                Util.sharedStringBuilder.Clear();
-                Util.sharedStringBuilder.Append("<#FFFFFF>");
+                self.nameLabel.text = BetterUI.sharedStringBuilder.ToString();
+                BetterUI.sharedStringBuilder.Clear();
+                BetterUI.sharedStringBuilder.Append("<#FFFFFF>");
 
 
 
@@ -104,10 +104,10 @@ namespace BetterUI
                     {
                         itemSum += self.master.inventory.GetTotalItemCountOfTier(tier);
                     }
-                    Util.sharedStringBuilder.Append(itemSum);
+                    BetterUI.sharedStringBuilder.Append(itemSum);
                     if (mod.config.ItemCountersShowItemScore.Value)
                     {
-                        Util.sharedStringBuilder.Append(" | ");
+                        BetterUI.sharedStringBuilder.Append(" | ");
                     }
                 }
                 if (mod.config.ItemCountersShowItemScore.Value)
@@ -117,25 +117,25 @@ namespace BetterUI
                     {
                         itemScore += mod.config.ItemCountersItemScores[ItemCatalog.GetItemDef(item).nameToken] * self.master.inventory.GetItemCount(item);
                     }
-                    Util.sharedStringBuilder.Append(itemScore);
+                    BetterUI.sharedStringBuilder.Append(itemScore);
                 }
                 
                 if (mod.config.ItemCountersShowItemsByTier.Value)
                 {
-                    Util.sharedStringBuilder.Append("\n");
+                    BetterUI.sharedStringBuilder.Append("\n");
                     foreach(var tier in mod.config.ItemCountersItemsByTierOrder)
                     {
-                        Util.sharedStringBuilder.Append(" <#");
-                        Util.sharedStringBuilder.Append(tierColorMap[(int)tier]);
-                        Util.sharedStringBuilder.Append(">");
-                        Util.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
-                        Util.sharedStringBuilder.Append("</color>");
+                        BetterUI.sharedStringBuilder.Append(" <#");
+                        BetterUI.sharedStringBuilder.Append(tierColorMap[(int)tier]);
+                        BetterUI.sharedStringBuilder.Append(">");
+                        BetterUI.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
+                        BetterUI.sharedStringBuilder.Append("</color>");
                     }
                 }
 
-                Util.sharedStringBuilder.Append("</color>");
+                BetterUI.sharedStringBuilder.Append("</color>"); 
 
-                self.moneyText.text = Util.sharedStringBuilder.ToString();
+                self.moneyText.text = BetterUI.sharedStringBuilder.ToString();
             }
         }
 

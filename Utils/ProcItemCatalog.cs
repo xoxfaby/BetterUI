@@ -7,7 +7,6 @@ namespace BetterUI
 {
     public static class ProcItemsCatalog
     {
-        public static StringBuilder sb = new StringBuilder();
         [Obsolete("Deprecated: ProcEffect is deprecated and will be removed in BetterUI version 1.7.0. Use EffectFormatter instead.")]
         public enum ProcEffect
         {
@@ -28,46 +27,46 @@ namespace BetterUI
 
         public static string ChanceFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            sb.Clear();
-            sb.Append("<style=cIsDamage>");
-            sb.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
-            sb.Append("%</style>");
+            BetterUI.sharedStringBuilder.Clear();
+            BetterUI.sharedStringBuilder.Append("<style=cIsDamage>");
+            BetterUI.sharedStringBuilder.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
+            BetterUI.sharedStringBuilder.Append("%</style>");
             if (canCap) {
-                sb.Append(" <style=cStack>(");
-                sb.Append(cap);
-                sb.Append("stacks to cap)</style>");
+                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
+                BetterUI.sharedStringBuilder.Append(cap);
+                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
             }
-            return sb.ToString();
+            return BetterUI.sharedStringBuilder.ToString();
         }
 
         public static string HPFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            sb.Clear();
-            sb.Append("<style=cIsHealing>");
-            sb.Append(value * procCoefficient);
-            sb.Append(" HP</style>");
+            BetterUI.sharedStringBuilder.Clear();
+            BetterUI.sharedStringBuilder.Append("<style=cIsHealing>");
+            BetterUI.sharedStringBuilder.Append(value * procCoefficient);
+            BetterUI.sharedStringBuilder.Append(" HP</style>");
             if (canCap)
             {
-                sb.Append(" <style=cStack>(");
-                sb.Append(cap);
-                sb.Append("stacks to cap)</style>");
+                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
+                BetterUI.sharedStringBuilder.Append(cap);
+                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
             }
-            return sb.ToString();
+            return BetterUI.sharedStringBuilder.ToString();
         }
 
         public static string RangeFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            sb.Clear();
-            sb.Append("<style=cIsDamage>");
-            sb.Append(value * procCoefficient);
-            sb.Append("m </style>");
+            BetterUI.sharedStringBuilder.Clear();
+            BetterUI.sharedStringBuilder.Append("<style=cIsDamage>");
+            BetterUI.sharedStringBuilder.Append(value * procCoefficient);
+            BetterUI.sharedStringBuilder.Append("m </style>");
             if (canCap)
             {
-                sb.Append(" <style=cStack>(");
-                sb.Append(cap);
-                sb.Append("stacks to cap)</style>");
+                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
+                BetterUI.sharedStringBuilder.Append(cap);
+                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
             }
-            return sb.ToString();
+            return BetterUI.sharedStringBuilder.ToString();
         }
 
         public delegate float StackingFormula(float value, float extraStackValue, int stacks);

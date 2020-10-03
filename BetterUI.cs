@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Collections.Generic;
 
 using RoR2;
@@ -12,7 +13,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.4")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.7")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -28,6 +29,8 @@ namespace BetterUI
         internal bool ItemStatsModIntegration;
         internal RoR2.UI.HUD HUD;
         internal List<ModComponent> modComponents = new List<ModComponent>();
+
+        public static StringBuilder sharedStringBuilder = new StringBuilder(); 
         public void Awake()
         {
             BepInExPatcher.DoPatching();
@@ -41,14 +44,7 @@ namespace BetterUI
             itemCounters = new ItemCounters(this);
             misc = new Misc(this);
 
-            this.AddComponent(itemSorting);
-            this.AddComponent(statsDisplay);
-            this.AddComponent(commandImprovements);
-            this.AddComponent(DPSMeter);
-            this.AddComponent(buffTimers);
-            this.AddComponent(advancedIcons);
-            this.AddComponent(itemCounters);
-            this.AddComponent(misc);
+
         }
 
         public void Start()
@@ -69,6 +65,22 @@ namespace BetterUI
         {
             On.RoR2.UI.HUD.Awake += hook_HUD_Awake;
             config = new ConfigManager(this);
+            if (config.ComponentsItemSorting.Value)
+                this.AddComponent(itemSorting);
+            if (config.ComponentsStatsDisplay.Value)
+                this.AddComponent(statsDisplay);
+            if (config.ComponentsCommandImprovements.Value)
+                this.AddComponent(commandImprovements);
+            if (config.ComponentsDPSMeter.Value)
+                this.AddComponent(DPSMeter);
+            if (config.ComponentsBuffTimers.Value)
+                this.AddComponent(buffTimers);
+            if (config.ComponentsAdvancedIcons.Value)
+                this.AddComponent(advancedIcons);
+            if (config.ComponentsItemCounters.Value)
+                this.AddComponent(itemCounters);
+            if (config.ComponentsMisc.Value)
+                this.AddComponent(misc);
 
             ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
 

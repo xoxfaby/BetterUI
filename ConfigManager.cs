@@ -12,6 +12,7 @@ namespace BetterUI
     {
         // Files 
 
+        public ConfigFile ConfigFileComponents;
         public ConfigFile ConfigFileMisc;
         public ConfigFile ConfigFileAdvancedIcons;
         public ConfigFile ConfigFileBuffs;
@@ -19,8 +20,19 @@ namespace BetterUI
         public ConfigFile ConfigFileDPSMeter;
         public ConfigFile ConfigFileItemCounters;
         public ConfigFile ConfigFileStatsDisplay;
-        public ConfigFile ConfigFileSorting; 
-        
+        public ConfigFile ConfigFileSorting;
+
+        // Components
+
+        public ConfigEntry<bool> ComponentsAdvancedIcons;
+        public ConfigEntry<bool> ComponentsBuffTimers;
+        public ConfigEntry<bool> ComponentsCommandImprovements;
+        public ConfigEntry<bool> ComponentsDPSMeter;
+        public ConfigEntry<bool> ComponentsItemCounters;
+        public ConfigEntry<bool> ComponentsItemSorting;
+        public ConfigEntry<bool> ComponentsMisc;
+        public ConfigEntry<bool> ComponentsStatsDisplay;
+
         // Misc
 
         public ConfigEntry<bool> MiscShowHidden;
@@ -137,6 +149,7 @@ namespace BetterUI
 
         public ConfigManager(BetterUI mod)
         {
+            ConfigFileComponents = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Components.cfg", true);
             ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
             ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
             ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
@@ -145,6 +158,24 @@ namespace BetterUI
             ConfigFileItemCounters = new ConfigFile(Paths.ConfigPath + "\\BetterUI-ItemCounters.cfg", true);
             ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
             ConfigFileSorting = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Sorting.cfg", true);
+
+            // Components
+
+            ComponentsAdvancedIcons = ConfigFileComponents.Bind("Components", "AdvanedIcons", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsBuffTimers = ConfigFileComponents.Bind("Components", "BuffTimers", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsCommandImprovements = ConfigFileComponents.Bind("Components", "CommandImprovements", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsDPSMeter = ConfigFileComponents.Bind("Components", "DPSMeter", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsItemCounters = ConfigFileComponents.Bind("Components", "ItemCounters", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsItemSorting = ConfigFileComponents.Bind("Components", "ItemSorting", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsMisc = ConfigFileComponents.Bind("Components", "Misc", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+
+            ComponentsStatsDisplay = ConfigFileComponents.Bind("Components", "StatsDisplay", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
             // Misc
 
@@ -283,16 +314,16 @@ namespace BetterUI
             ItemCountersItemScoreFromTier = ConfigFileItemCounters.Bind("ItemCounters", "ItemScoreFromTier", true, "Whether or not the ItemScore should be based on tier. If disabled, the per-item settings will be used.");
 
             ItemCountersShowItemSum = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
-            
+
             ItemCountersItemSumTiersString = ConfigFileItemCounters.Bind("ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
-            
+
             ItemCountersItemSumTiers = ItemCountersItemSumTiersString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
-            
-            
+
+
             ItemCountersShowItemsByTier = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemsByTier", true, "Show how many items you have, by tier.");
-            
+
             ItemCountersItemsByTierOrderString = ConfigFileItemCounters.Bind("ItemCounters", "ItemsByTierOrderString", "43210", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
-            
+
             ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
             ItemCountersTierScoreTier1 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier1", 1, "Score for each tier");

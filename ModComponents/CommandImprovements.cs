@@ -142,9 +142,9 @@ namespace BetterUI
 
                 List<EquipmentIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
 
-                PickupPickerController.Option[] sortedOptions = sortedItems.Select(equipemntIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipemntIndex), available = availableIndex[(int)equipemntIndex] }).ToArray();
-                optionMap = sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray();
-                options = sortedOptions;
+                sortedItems.Select(equipemntIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipemntIndex), available = availableIndex[(int)equipemntIndex] }).ToArray().CopyTo(sortedOptions, 0); ;
+                sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap,0);
+                options = sortedOptions.Take(options.Length).ToArray();
             }
             else if (PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex != ItemIndex.None)
             {
@@ -156,9 +156,9 @@ namespace BetterUI
 
                 List<ItemIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
 
-                PickupPickerController.Option[] sortedOptions = sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray();
-                optionMap = sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray();
-                options = sortedOptions;
+                sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray().CopyTo(sortedOptions, 0);
+                sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap, 0);
+                options = sortedOptions.Take(options.Length).ToArray();
             }
 
             orig(self, options);
@@ -166,12 +166,12 @@ namespace BetterUI
 
         public void hook_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
         {
-            orig(self, optionMap != null ? optionMap[index] : index, button);
+            orig(self, optionMap[0] >= 0 ? optionMap[index] : index, button);
 
             if (mod.config.CommandTooltipsShow.Value || mod.config.CommandCountersShow.Value)
             {
                 CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
-                PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap != null ? optionMap[index] : index ].pickupIndex);
+                PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[0] >= 0 ? optionMap[index] : index ].pickupIndex);
 
                 if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
                 {

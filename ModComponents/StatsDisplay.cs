@@ -203,19 +203,19 @@ namespace BetterUI
                     {
                         highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
 
-                        Util.sharedStringBuilder.Clear();
+                        BetterUI.sharedStringBuilder.Clear();
                         if (customBindPressed)
                         {
                             for (int i = 0; i < altText.Length; i++)
                             {
                                 if(i % 2 == 0)
                                 {
-                                    Util.sharedStringBuilder.Append(altText[i]);
+                                    BetterUI.sharedStringBuilder.Append(altText[i]);
 
                                 }
                                 else
                                 {
-                                    Util.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
+                                    BetterUI.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
                                 }
                             }
                         }
@@ -225,16 +225,16 @@ namespace BetterUI
                             {
                                 if (i % 2 == 0)
                                 {
-                                    Util.sharedStringBuilder.Append(normalText[i]);
+                                    BetterUI.sharedStringBuilder.Append(normalText[i]);
 
                                 }
                                 else
                                 {
-                                    Util.sharedStringBuilder.Append(regexmap[normalText[i]](playerBody));
+                                    BetterUI.sharedStringBuilder.Append(regexmap[normalText[i]](playerBody));
                                 }
                             }
                         }
-                        textMesh.SetText(Util.sharedStringBuilder);
+                        textMesh.SetText(BetterUI.sharedStringBuilder);
                     }
                 }
             }

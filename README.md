@@ -151,6 +151,14 @@ P = Sprint Related Last
 
 ## Changelog
 
+
+#### v1.6.6
+ - Bugfix: Fixed scrapper/command breaking.
+ - Bugfix: Fixed more BuffIcon related console spam. 
+
+#### v1.6.5
+ - Bugfix: Fixed BuffIcon related console spam. 
+
 #### v1.6.4
  - Internal Change: Many internal changes to improve performance and memory usage. 
 

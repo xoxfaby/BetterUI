@@ -10,6 +10,8 @@ namespace BetterUI
 {
     class BuffTimers : BetterUI.ModComponent
     {
+        IEnumerable<CharacterBody.TimedBuff> timedBuffs;
+        CharacterBody.TimedBuff thisBuff;
         public BuffTimers(BetterUI mod) : base(mod){ }
 
         internal override void Hook()
@@ -77,11 +79,12 @@ namespace BetterUI
                         if (mod.HUD != null)
                         {
                             CharacterBody characterBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
-                            if (characterBody != null)
+                            if (characterBody != null && characterBody.timedBuffs.Count > 0)
                             {
-                                var thisBuff = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex).OrderByDescending(b => b.timer).First();
-                                if (thisBuff != null)
+                                timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex);
+                                if(timedBuffs.Any())
                                 {
+                                    thisBuff = timedBuffs.OrderByDescending(b => b.timer).First();
                                     timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = thisBuff.timer < 10 && mod.config.BuffTimersDecimal.Value ? thisBuff.timer.ToString("N1") : thisBuff.timer.ToString("N0");
                                     return;
                                 }
