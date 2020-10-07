@@ -77,13 +77,13 @@ namespace BetterUI
             {
                 if (userProfile != null && userProfile.HasUnlockable(unlockableName))
                 {
-                    SkillIcon.sharedStringBuilder.Clear();
-                    SkillIcon.sharedStringBuilder.Append(Language.GetString(bodyToken));
+                    BetterUI.sharedStringBuilder.Clear();
+                    BetterUI.sharedStringBuilder.Append(Language.GetString(bodyToken));
                     if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value && skillCooldowns.ContainsKey(titleToken))
                     {
-                        SkillIcon.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
-                        SkillIcon.sharedStringBuilder.Append(skillCooldowns[titleToken]);
-                        SkillIcon.sharedStringBuilder.Append("</style> seconds");
+                        BetterUI.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
+                        BetterUI.sharedStringBuilder.Append(skillCooldowns[titleToken]);
+                        BetterUI.sharedStringBuilder.Append("</style> seconds");
                     }
 
                     if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
@@ -94,14 +94,14 @@ namespace BetterUI
                         {
                             foreach (var info in procCoefficientInfos)
                             {
-                                SkillIcon.sharedStringBuilder.Append("\n\n<size=110%>");
-                                SkillIcon.sharedStringBuilder.Append(info.name);
-                                SkillIcon.sharedStringBuilder.Append(":</size>");
+                                BetterUI.sharedStringBuilder.Append("\n\n<size=110%>");
+                                BetterUI.sharedStringBuilder.Append(info.name);
+                                BetterUI.sharedStringBuilder.Append(":</size>");
                                 if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
                                 {
-                                    SkillIcon.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
-                                    SkillIcon.sharedStringBuilder.Append(info.procCoefficient);
-                                    SkillIcon.sharedStringBuilder.Append("</style>");
+                                    BetterUI.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                    BetterUI.sharedStringBuilder.Append(info.procCoefficient);
+                                    BetterUI.sharedStringBuilder.Append("</style>");
                                 }
                             }
 
@@ -111,7 +111,7 @@ namespace BetterUI
                     TooltipProvider tooltipProvider = selfRow.buttons[selfRow.buttons.Count - 1].GetComponent<TooltipProvider>();
                     if (tooltipProvider != null)
                     {
-                        tooltipProvider.overrideBodyText = SkillIcon.sharedStringBuilder.ToString();
+                        tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
                     }
                 }
             }
@@ -124,23 +124,23 @@ namespace BetterUI
             {
                 this.lastSkill = self.targetSkill;
                 this.SkillIconDirty = false;
-                SkillIcon.sharedStringBuilder.Clear();
-                SkillIcon.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
+                BetterUI.sharedStringBuilder.Clear();
+                BetterUI.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
                 if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value || mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value)
                 {
-                    SkillIcon.sharedStringBuilder.Append("\n");
+                    BetterUI.sharedStringBuilder.Append("\n");
                 }
                 if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
                 {
-                    SkillIcon.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
-                    SkillIcon.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
-                    SkillIcon.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUI.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
+                    BetterUI.sharedStringBuilder.Append("</style> seconds");
                 }
                 if (mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
                 {
-                    SkillIcon.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
-                    SkillIcon.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
-                    SkillIcon.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                    BetterUI.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
+                    BetterUI.sharedStringBuilder.Append("</style> seconds");
                 }
 
                 if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
@@ -151,14 +151,14 @@ namespace BetterUI
                     {
                         foreach (var info in procCoefficientInfos)
                         {
-                            SkillIcon.sharedStringBuilder.Append("\n\n<size=110%>");
-                            SkillIcon.sharedStringBuilder.Append("info.name");
-                            SkillIcon.sharedStringBuilder.Append("</size>");
+                            BetterUI.sharedStringBuilder.Append("\n\n<size=110%>");
+                            BetterUI.sharedStringBuilder.Append("info.name");
+                            BetterUI.sharedStringBuilder.Append("</size>");
                             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
-                                SkillIcon.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
-                                SkillIcon.sharedStringBuilder.Append(info.procCoefficient);
-                                SkillIcon.sharedStringBuilder.Append("</style>");
+                                BetterUI.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                BetterUI.sharedStringBuilder.Append(info.procCoefficient);
+                                BetterUI.sharedStringBuilder.Append("</style>");
                             }
                             if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                             {
@@ -168,10 +168,10 @@ namespace BetterUI
                                     if (stacks > 0)
                                     {
                                         ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
-                                        SkillIcon.sharedStringBuilder.Append("\n  ");
-                                        SkillIcon.sharedStringBuilder.Append(Language.GetString(itemDef.nameToken));
-                                        SkillIcon.sharedStringBuilder.Append(": ");
-                                        SkillIcon.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
+                                        BetterUI.sharedStringBuilder.Append("\n  ");
+                                        BetterUI.sharedStringBuilder.Append(Language.GetString(itemDef.nameToken));
+                                        BetterUI.sharedStringBuilder.Append(": ");
+                                        BetterUI.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
                                     }
                                 }
                             }
@@ -179,14 +179,14 @@ namespace BetterUI
                     }
                 }
 
-                self.tooltipProvider.overrideBodyText = SkillIcon.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
             }
 
             if (mod.config.AdvancedIconsSkillShowCooldownStacks.Value && self.targetSkill && self.targetSkill.cooldownRemaining > 0)
             {
-                SkillIcon.sharedStringBuilder.Clear();
-                SkillIcon.sharedStringBuilder.AppendInt(Mathf.CeilToInt(self.targetSkill.cooldownRemaining), 0U, uint.MaxValue);
-                self.cooldownText.SetText(SkillIcon.sharedStringBuilder);
+                BetterUI.sharedStringBuilder.Clear();
+                BetterUI.sharedStringBuilder.AppendInt(Mathf.CeilToInt(self.targetSkill.cooldownRemaining), 0U, uint.MaxValue);
+                self.cooldownText.SetText(BetterUI.sharedStringBuilder);
                 self.cooldownText.gameObject.SetActive(true);
             }
         }
@@ -242,7 +242,7 @@ namespace BetterUI
                 }
                 
 
-                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = Util.sharedStringBuilder.ToString();
             }
 
             if (mod.config.AdvancedIconsEquipementShowCooldownStacks.Value && self.cooldownText && self.currentDisplayData.cooldownValue > 0)
