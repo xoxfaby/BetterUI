@@ -51,6 +51,7 @@ namespace BetterUI
 
         private void hook_CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
+            orig(self);
             this.SkillIconDirty = true;
             this.EquipmentIconDirty = true;
         }
