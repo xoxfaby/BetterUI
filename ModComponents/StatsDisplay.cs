@@ -21,6 +21,7 @@ namespace BetterUI
         private GameObject stupidBuffer;
         private RoR2.UI.HGTextMeshProUGUI textMesh;
         private int highestMultikill = 0;
+        private CharacterBody playerBody;
 
         readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
         readonly Regex regexpattern;
@@ -192,7 +193,7 @@ namespace BetterUI
             }
             if (mod.HUD != null && textMesh != null)
             {
-                CharacterBody playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody != null)
                 {
                     bool customBindPressed = Input.GetKey(mod.config.StatsDisplayCustomBind.Value);
@@ -211,11 +212,14 @@ namespace BetterUI
                                 if(i % 2 == 0)
                                 {
                                     BetterUI.sharedStringBuilder.Append(altText[i]);
-
+                                    BetterUI.print(altText[i]);
                                 }
                                 else
                                 {
                                     BetterUI.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
+                                    BetterUI.print(altText[i]);
+                                    BetterUI.print(regexmap[altText[i]](playerBody));
+                                    BetterUI.print("----------");
                                 }
                             }
                         }
