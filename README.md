@@ -151,6 +151,10 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.8
+ - Bugfix: Fixed issue that prevented luck from being updated. 
+ - Internal Change: More stringbuilder stuff
+
 #### v1.6.7
  - Addition: ADded config file to entirely disable modcomponents ( these are the big internal parts the mod is split into )
  - Internal Change: Stopped using the ror2 built in sharedStringBuilder because some mods seem to be misuing it and bug out.  
