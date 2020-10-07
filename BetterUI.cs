@@ -78,9 +78,9 @@ namespace BetterUI
             if (config.ComponentsAdvancedIcons.Value)
                 this.AddComponent(advancedIcons);
             if (config.ComponentsItemCounters.Value)
-                this.AddComponent(itemCounters);
+               this.AddComponent(itemCounters);
             if (config.ComponentsMisc.Value)
-                this.AddComponent(misc);
+               this.AddComponent(misc);
 
             ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
 
