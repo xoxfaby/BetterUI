@@ -151,6 +151,12 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.10
+ - Bugfix: Fixed bug that would mess up skill tooltips. 
+
+#### v1.6.9
+ - Bugfix: Removed debug code that would massively slow down the game when opening scoreboard. oops. 
+
 #### v1.6.8
  - Bugfix: Fixed issue that prevented luck from being updated. 
  - Internal Change: More stringbuilder stuff
