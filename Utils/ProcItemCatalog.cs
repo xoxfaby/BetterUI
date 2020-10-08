@@ -35,7 +35,7 @@ namespace BetterUI
             if (canCap) {
                 formatterStringBuilder.Append(" <style=cStack>(");
                 formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" stacks to cap)</style>");
             }
             return formatterStringBuilder.ToString();
         }
@@ -50,7 +50,7 @@ namespace BetterUI
             {
                 formatterStringBuilder.Append(" <style=cStack>(");
                 formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" stacks to cap)</style>");
             }
             return formatterStringBuilder.ToString();
         }
@@ -65,7 +65,7 @@ namespace BetterUI
             {
                 formatterStringBuilder.Append(" <style=cStack>(");
                 formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" stacks to cap)</style>");
             }
             return formatterStringBuilder.ToString();
         }
