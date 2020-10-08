@@ -7,6 +7,7 @@ namespace BetterUI
 {
     public static class ProcItemsCatalog
     {
+        private static StringBuilder formatterStringBuilder = new StringBuilder();
         [Obsolete("Deprecated: ProcEffect is deprecated and will be removed in BetterUI version 1.7.0. Use EffectFormatter instead.")]
         public enum ProcEffect
         {
@@ -27,46 +28,46 @@ namespace BetterUI
 
         public static string ChanceFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            BetterUI.sharedStringBuilder.Clear();
-            BetterUI.sharedStringBuilder.Append("<style=cIsDamage>");
-            BetterUI.sharedStringBuilder.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
-            BetterUI.sharedStringBuilder.Append("%</style>");
+            formatterStringBuilder.Clear();
+            formatterStringBuilder.Append("<style=cIsDamage>");
+            formatterStringBuilder.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
+            formatterStringBuilder.Append("%</style>");
             if (canCap) {
-                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
-                BetterUI.sharedStringBuilder.Append(cap);
-                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" <style=cStack>(");
+                formatterStringBuilder.Append(cap);
+                formatterStringBuilder.Append("stacks to cap)</style>");
             }
-            return BetterUI.sharedStringBuilder.ToString();
+            return formatterStringBuilder.ToString();
         }
 
         public static string HPFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            BetterUI.sharedStringBuilder.Clear();
-            BetterUI.sharedStringBuilder.Append("<style=cIsHealing>");
-            BetterUI.sharedStringBuilder.Append(value * procCoefficient);
-            BetterUI.sharedStringBuilder.Append(" HP</style>");
+            formatterStringBuilder.Clear();
+            formatterStringBuilder.Append("<style=cIsHealing>");
+            formatterStringBuilder.Append(value * procCoefficient);
+            formatterStringBuilder.Append(" HP</style>");
             if (canCap)
             {
-                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
-                BetterUI.sharedStringBuilder.Append(cap);
-                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" <style=cStack>(");
+                formatterStringBuilder.Append(cap);
+                formatterStringBuilder.Append("stacks to cap)</style>");
             }
-            return BetterUI.sharedStringBuilder.ToString();
+            return formatterStringBuilder.ToString();
         }
 
         public static string RangeFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
-            BetterUI.sharedStringBuilder.Clear();
-            BetterUI.sharedStringBuilder.Append("<style=cIsDamage>");
-            BetterUI.sharedStringBuilder.Append(value * procCoefficient);
-            BetterUI.sharedStringBuilder.Append("m </style>");
+            formatterStringBuilder.Clear();
+            formatterStringBuilder.Append("<style=cIsDamage>");
+            formatterStringBuilder.Append(value * procCoefficient);
+            formatterStringBuilder.Append("m </style>");
             if (canCap)
             {
-                BetterUI.sharedStringBuilder.Append(" <style=cStack>(");
-                BetterUI.sharedStringBuilder.Append(cap);
-                BetterUI.sharedStringBuilder.Append("stacks to cap)</style>");
+                formatterStringBuilder.Append(" <style=cStack>(");
+                formatterStringBuilder.Append(cap);
+                formatterStringBuilder.Append("stacks to cap)</style>");
             }
-            return BetterUI.sharedStringBuilder.ToString();
+            return formatterStringBuilder.ToString();
         }
 
         public delegate float StackingFormula(float value, float extraStackValue, int stacks);
