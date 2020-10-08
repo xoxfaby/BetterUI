@@ -212,14 +212,10 @@ namespace BetterUI
                                 if(i % 2 == 0)
                                 {
                                     BetterUI.sharedStringBuilder.Append(altText[i]);
-                                    BetterUI.print(altText[i]);
                                 }
                                 else
                                 {
                                     BetterUI.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
-                                    BetterUI.print(altText[i]);
-                                    BetterUI.print(regexmap[altText[i]](playerBody));
-                                    BetterUI.print("----------");
                                 }
                             }
                         }
