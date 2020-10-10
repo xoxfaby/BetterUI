@@ -10,16 +10,19 @@ namespace BetterUI
     class AdvancedIcons : BetterUI.ModComponent
     {
         public AdvancedIcons(BetterUI mod) : base(mod) { }
-        public bool EquipmentIconDirty = true;
-        public bool SkillIconDirty = true;
-        public GenericSkill lastSkill;
-        public EquipmentDef lastEquipment;
+
+        public Dictionary<EquipmentIcon,bool> EquipmentIconDirty = new Dictionary<EquipmentIcon, bool>();
+        public Dictionary<EquipmentIcon, EquipmentDef> lastEquipment = new Dictionary<EquipmentIcon, EquipmentDef>();
+
+        public Dictionary<SkillIcon,bool> SkillIconDirty = new Dictionary<SkillIcon, bool>();
+        public Dictionary<SkillIcon, GenericSkill> lastSkill = new Dictionary<SkillIcon, GenericSkill>();
+
         List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos;
         Inventory inventory;
         CharacterBody targetbody;
 
         Dictionary<string, float> skillCooldowns = new Dictionary<string, float>();
-        internal void hook_SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
+        internal void SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
         {
             orig(self, itemIndex, itemCount);
 
@@ -33,9 +36,9 @@ namespace BetterUI
                 mod.config.AdvancedIconsSkillShowBaseCooldown.Value ||
                 mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
-                On.RoR2.UI.LoadoutPanelController.Row.AddButton += hook_LoadoutPanelController_Row_AddButton;
-                On.RoR2.UI.SkillIcon.Update += hook_SkillIcon_Update;
-                On.RoR2.CharacterMaster.OnInventoryChanged += hook_CharacterMaster_OnInventoryChanged;
+                On.RoR2.UI.LoadoutPanelController.Row.AddButton += LoadoutPanelController_Row_AddButton;
+                On.RoR2.UI.SkillIcon.Update += SkillIcon_Update;
+                On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             }
             if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)
             {
@@ -52,8 +55,21 @@ namespace BetterUI
         private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
             orig(self);
-            this.SkillIconDirty = true;
-            this.EquipmentIconDirty = true;
+
+            foreach (EquipmentIcon equipment in new List<EquipmentIcon>(this.EquipmentIconDirty.Keys))
+            {
+                if (equipment.targetInventory == self.inventory)
+                {
+                    this.EquipmentIconDirty[equipment] = true;
+                }
+            }
+            foreach (SkillIcon skill in new List<SkillIcon>(SkillIconDirty.Keys))
+            {
+               if(skill.playerCharacterMasterController.master == self)
+                {
+                    this.SkillIconDirty[skill] = true;
+                }
+            }
         }
 
         internal override void Start()
@@ -120,10 +136,15 @@ namespace BetterUI
         {
             orig(self);
 
-            if (self.targetSkill && self.targetSkill != this.lastSkill && this.SkillIconDirty)
+            if (!SkillIconDirty.ContainsKey(self))
             {
-                this.lastSkill = self.targetSkill;
-                this.SkillIconDirty = false;
+                this.SkillIconDirty.Add(self, true);
+                this.lastSkill.Add(self, null);
+            }
+            if (self.targetSkill && (self.targetSkill != this.lastSkill[self] || this.SkillIconDirty[self]))
+            {
+                this.lastSkill[self] = self.targetSkill;
+                this.SkillIconDirty[self] = false;
                 BetterUI.sharedStringBuilder.Clear();
                 BetterUI.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
                 if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value || mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value)
@@ -152,7 +173,7 @@ namespace BetterUI
                         foreach (var info in procCoefficientInfos)
                         {
                             BetterUI.sharedStringBuilder.Append("\n\n<size=110%>");
-                            BetterUI.sharedStringBuilder.Append("info.name");
+                            BetterUI.sharedStringBuilder.Append(info.name);
                             BetterUI.sharedStringBuilder.Append("</size>");
                             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
@@ -194,14 +215,20 @@ namespace BetterUI
         internal void EquipmentIcon_Update(On.RoR2.UI.EquipmentIcon.orig_Update orig, EquipmentIcon self)
         {
             orig(self);
+
+            if (!EquipmentIconDirty.ContainsKey(self))
+            {
+                this.EquipmentIconDirty.Add(self,true);
+                this.lastEquipment.Add(self,null);
+            }
             if ((mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value || 
                 mod.config.AdvancedIconsEquipementShowBaseCooldown.Value || 
                 mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value) && 
-                (self.currentDisplayData.equipmentDef != this.lastEquipment || this.EquipmentIconDirty) &&
+                (self.currentDisplayData.equipmentDef != this.lastEquipment[self] || this.EquipmentIconDirty[self]) &&
                 self.currentDisplayData.hasEquipment && self.tooltipProvider)
             {
-                lastEquipment = self.currentDisplayData.equipmentDef;
-                this.EquipmentIconDirty = false;
+                this.lastEquipment[self] = self.currentDisplayData.equipmentDef;
+                this.EquipmentIconDirty[self] = false;
                 BetterUI.sharedStringBuilder.Clear();
                 BetterUI.sharedStringBuilder.Append(Language.GetString(mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ? self.currentDisplayData.equipmentDef.descriptionToken : self.currentDisplayData.equipmentDef.pickupToken));
                 if(mod.config.AdvancedIconsEquipementShowBaseCooldown.Value || mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
