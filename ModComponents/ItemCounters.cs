@@ -35,8 +35,8 @@ namespace BetterUI
         {
             if (mod.config.ItemCountersShowItemCounters.Value)
             {
-                On.RoR2.UI.ScoreboardStrip.SetMaster += mod.itemCounters.hook_ScoreboardStrip_SetMaster;
-                On.RoR2.UI.ScoreboardStrip.Update += mod.itemCounters.hook_ScoreboardStrip_Update;
+                On.RoR2.UI.ScoreboardStrip.SetMaster += mod.itemCounters.ScoreboardStrip_SetMaster;
+                On.RoR2.UI.ScoreboardStrip.Update += mod.itemCounters.ScoreboardStrip_Update;
             }
         }
 
@@ -67,7 +67,7 @@ namespace BetterUI
             mod.config.ItemCountersItemScores = mod.config.ItemScoreConfig.ToDictionary(e => e.Definition.Key, e => e.Value);
 
         }
-        internal void hook_ScoreboardStrip_SetMaster(On.RoR2.UI.ScoreboardStrip.orig_SetMaster orig, ScoreboardStrip self, CharacterMaster master)
+        internal void ScoreboardStrip_SetMaster(On.RoR2.UI.ScoreboardStrip.orig_SetMaster orig, ScoreboardStrip self, CharacterMaster master)
         {
             orig(self, master);
 
@@ -79,7 +79,7 @@ namespace BetterUI
 
         int itemSum;
         int itemScore;
-        internal void hook_ScoreboardStrip_Update(On.RoR2.UI.ScoreboardStrip.orig_Update orig, ScoreboardStrip self)
+        internal void ScoreboardStrip_Update(On.RoR2.UI.ScoreboardStrip.orig_Update orig, ScoreboardStrip self)
         {
             orig(self);
 

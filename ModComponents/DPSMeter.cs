@@ -43,11 +43,11 @@ namespace BetterUI
             if (mod.config.DPSMeterWindowShow.Value ||
             mod.config.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.hook_DamageDealtMessage_ClientDamageNotified;
+                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.DamageDealtMessage_ClientDamageNotified;
             }
             if (mod.config.DPSMeterWindowShow.Value)
             {
-                On.RoR2.UI.HUD.Awake += mod.DPSMeter.hook_Awake;
+                On.RoR2.UI.HUD.Awake += mod.DPSMeter.Awake;
             }
 
         }
@@ -77,7 +77,7 @@ namespace BetterUI
             }
         }
 
-        public void hook_DamageDealtMessage_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
+        public void DamageDealtMessage_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
         {
             orig(dmgMsg);
 
@@ -106,7 +106,7 @@ namespace BetterUI
             }
         }
 
-        public void hook_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        public void Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
 

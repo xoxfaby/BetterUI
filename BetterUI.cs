@@ -63,7 +63,7 @@ namespace BetterUI
         }
         public void OnEnable()
         {
-            On.RoR2.UI.HUD.Awake += hook_HUD_Awake;
+            On.RoR2.UI.HUD.Awake += HUD_Awake;
             config = new ConfigManager(this);
             if (config.ComponentsItemSorting.Value)
                 this.AddComponent(itemSorting);
@@ -92,13 +92,13 @@ namespace BetterUI
 
         public void OnDisable()
         {
-            On.RoR2.UI.HUD.Awake -= hook_HUD_Awake;
+            On.RoR2.UI.HUD.Awake -= HUD_Awake;
             foreach (ModComponent modComponent in modComponents)
             {
                 modComponent.Unhook();
             }
         }
-        internal void hook_HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        internal void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
             HUD = self;

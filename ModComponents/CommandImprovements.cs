@@ -18,19 +18,19 @@ namespace BetterUI
                 mod.config.SortingSortItemsScrapper.Value ||
                 mod.config.SortingSortItemsScrapper.Value)
             {
-                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += hook_SetPickupOptions;
+                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += SetPickupOptions;
             }
             if (mod.config.CommandCloseOnEscape.Value ||
                 mod.config.CommandCloseOnWASD.Value ||
                 mod.config.CommandCloseOnCustom.Value != "")
             {
-                On.RoR2.UI.PickupPickerPanel.Awake += mod.commandImprovements.hook_PickupPickerPanelAwake;
+                On.RoR2.UI.PickupPickerPanel.Awake += mod.commandImprovements.PickupPickerPanelAwake;
             }
 
             if (mod.config.CommandTooltipsShow.Value ||
                 mod.config.CommandCountersShow.Value)
             {
-                On.RoR2.UI.PickupPickerPanel.OnCreateButton += mod.commandImprovements.hook_OnCreateButton;
+                On.RoR2.UI.PickupPickerPanel.OnCreateButton += mod.commandImprovements.OnCreateButton;
             }
         }
 
@@ -56,7 +56,7 @@ namespace BetterUI
             ItemIndex.None,
             ItemIndex.None,
         };
-        public void hook_PickupPickerPanelAwake(On.RoR2.UI.PickupPickerPanel.orig_Awake orig, PickupPickerPanel self)
+        public void PickupPickerPanelAwake(On.RoR2.UI.PickupPickerPanel.orig_Awake orig, PickupPickerPanel self)
         {
             currentPanel = self;
             orig(self);
@@ -78,7 +78,7 @@ namespace BetterUI
             }
 
         }
-        public void hook_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
+        public void SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
         {
             orig(self, index);
             
@@ -89,7 +89,7 @@ namespace BetterUI
             }
         }
 
-        public void hook_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
+        public void SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
             if (options == null || options.Length == 0)
             {
@@ -164,7 +164,7 @@ namespace BetterUI
             orig(self, options);
         }
 
-        public void hook_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
+        public void OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
         {
             orig(self, optionMap[0] >= 0 ? optionMap[index] : index, button);
 

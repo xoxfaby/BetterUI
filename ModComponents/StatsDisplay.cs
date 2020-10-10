@@ -86,16 +86,16 @@ namespace BetterUI
         {
             if (mod.config.StatsDisplayEnable.Value)
             {
-                RoR2.Run.onRunStartGlobal += hook_runStartGlobal;
-                On.RoR2.UI.HUD.Awake += hook_Awake;
+                RoR2.Run.onRunStartGlobal += runStartGlobal;
+                On.RoR2.UI.HUD.Awake += Awake;
             }
         }
 
-        public void hook_runStartGlobal(RoR2.Run self)
+        public void runStartGlobal(RoR2.Run self)
         {
             highestMultikill = 0;
         }
-        public void hook_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        public void Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
 

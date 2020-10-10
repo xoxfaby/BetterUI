@@ -39,17 +39,17 @@ namespace BetterUI
             }
             if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)
             {
-                On.RoR2.UI.ItemIcon.SetItemIndex += hook_SetItemIndex;
+                On.RoR2.UI.ItemIcon.SetItemIndex += SetItemIndex;
             }
             if (mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ||
                 mod.config.AdvancedIconsEquipementShowBaseCooldown.Value ||
                 mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
-                On.RoR2.UI.EquipmentIcon.Update += hook_EquipmentIcon_Update;
+                On.RoR2.UI.EquipmentIcon.Update += EquipmentIcon_Update;
             }
         }
 
-        private void hook_CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
             orig(self);
             this.SkillIconDirty = true;
@@ -67,7 +67,7 @@ namespace BetterUI
             }
         }
 
-        internal void hook_LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
+        internal void LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
         {
             orig(self, owner, icon, titleToken, bodyToken, tooltipColor, callback, unlockableName, viewableNode, isWIP);
 
@@ -116,7 +116,7 @@ namespace BetterUI
                 }
             }
         }
-        internal void hook_SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
+        internal void SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
         {
             orig(self);
 
@@ -191,7 +191,7 @@ namespace BetterUI
             }
         }
 
-        internal void hook_EquipmentIcon_Update(On.RoR2.UI.EquipmentIcon.orig_Update orig, EquipmentIcon self)
+        internal void EquipmentIcon_Update(On.RoR2.UI.EquipmentIcon.orig_Update orig, EquipmentIcon self)
         {
             orig(self);
             if ((mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value || 
