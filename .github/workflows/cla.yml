@@ -14,9 +14,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path-to-signatures: 'signatures/version1/cla.json'
           url-to-cladocument: 'https://github.com/xoxfaby/BetterUI/blob/master/CLA.md'
-          # This branch can't have protections, commits are made directly to the specified branch.
-          branch: 'master'
-          whitelist: 
-          blockchain-storage-flag: false
