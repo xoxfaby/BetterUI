@@ -83,6 +83,13 @@ namespace BetterUI
             }
         }
 
+        internal override void HUD_Awake()
+        {
+            EquipmentIconDirty.Clear();
+            lastEquipment.Clear();
+            SkillIconDirty.Clear();
+            lastSkill.Clear()
+        }
         internal void LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
         {
             orig(self, owner, icon, titleToken, bodyToken, tooltipColor, callback, unlockableName, viewableNode, isWIP);
