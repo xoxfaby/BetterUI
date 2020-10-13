@@ -45,17 +45,13 @@ namespace BetterUI
             {
                 On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.DamageDealtMessage_ClientDamageNotified;
             }
-            if (mod.config.DPSMeterWindowShow.Value)
-            {
-                On.RoR2.UI.HUD.Awake += mod.DPSMeter.Awake;
-            }
-
         }
         public float Clamp(float value)
         {
             return Math.Min(Math.Max(1, value), mod.config.DPSMeterTimespan.Value);
         }
 
+   
         internal override void Update()
         {
             
@@ -106,54 +102,56 @@ namespace BetterUI
             }
         }
 
-        public void Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        internal override void HUD_Awake()
         {
-            orig(self);
-
-            GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
-            RectTransform rectTransform = DPSMeterPanel.AddComponent<RectTransform>();
-
-            DPSMeterPanel.transform.SetParent(self.mainContainer.transform);
-            DPSMeterPanel.transform.SetAsFirstSibling();
-
-
-
-            GameObject DPSMeterText = new GameObject("DPSMeterText");
-            RectTransform rectTransform2 = DPSMeterText.AddComponent<RectTransform>();
-            textMesh = DPSMeterText.AddComponent<HGTextMeshProUGUI>();
-
-            DPSMeterText.transform.SetParent(DPSMeterPanel.transform);
-
-
-            rectTransform.localPosition = new Vector3(0, 0, 0);
-            rectTransform.anchorMin = mod.config.DPSMeterWindowAnchorMin.Value;
-            rectTransform.anchorMax = mod.config.DPSMeterWindowAnchorMax.Value;
-            rectTransform.localScale = Vector3.one;
-            rectTransform.pivot = mod.config.DPSMeterWindowPivot.Value;
-            rectTransform.sizeDelta = mod.config.DPSMeterWindowSize.Value;
-            rectTransform.anchoredPosition = mod.config.DPSMeterWindowPosition.Value;
-            rectTransform.eulerAngles = mod.config.DPSMeterWindowAngle.Value;
-             
-            rectTransform2.localPosition = Vector3.zero;
-            rectTransform2.anchorMin = Vector2.zero;
-            rectTransform2.anchorMax = Vector2.one;
-            rectTransform2.localScale = Vector3.one;
-            rectTransform2.sizeDelta = new Vector2(-12, -12);
-            rectTransform2.anchoredPosition = Vector2.zero;
-
-            if (mod.config.DPSMeterWindowBackground.Value)
+            if (mod.config.DPSMeterWindowShow.Value)
             {
-                Image image = DPSMeterPanel.AddComponent<Image>();
-                Image copyImage = self.itemInventoryDisplay.gameObject.GetComponent<Image>();
-                image.sprite = copyImage.sprite;
-                image.color = copyImage.color;
-                image.type = Image.Type.Sliced;
-            }
 
-            textMesh.enableAutoSizing = true;
-            textMesh.fontSizeMax = 256;
-            textMesh.faceColor = Color.white;
-            textMesh.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
+                RectTransform rectTransform = DPSMeterPanel.AddComponent<RectTransform>();
+
+                DPSMeterPanel.transform.SetParent(mod.HUD.mainContainer.transform);
+                DPSMeterPanel.transform.SetAsFirstSibling();
+
+
+
+                GameObject DPSMeterText = new GameObject("DPSMeterText");
+                RectTransform rectTransform2 = DPSMeterText.AddComponent<RectTransform>();
+                textMesh = DPSMeterText.AddComponent<HGTextMeshProUGUI>();
+
+                DPSMeterText.transform.SetParent(DPSMeterPanel.transform);
+
+
+                rectTransform.localPosition = new Vector3(0, 0, 0);
+                rectTransform.anchorMin = mod.config.DPSMeterWindowAnchorMin.Value;
+                rectTransform.anchorMax = mod.config.DPSMeterWindowAnchorMax.Value;
+                rectTransform.localScale = Vector3.one;
+                rectTransform.pivot = mod.config.DPSMeterWindowPivot.Value;
+                rectTransform.sizeDelta = mod.config.DPSMeterWindowSize.Value;
+                rectTransform.anchoredPosition = mod.config.DPSMeterWindowPosition.Value;
+                rectTransform.eulerAngles = mod.config.DPSMeterWindowAngle.Value;
+
+                rectTransform2.localPosition = Vector3.zero;
+                rectTransform2.anchorMin = Vector2.zero;
+                rectTransform2.anchorMax = Vector2.one;
+                rectTransform2.localScale = Vector3.one;
+                rectTransform2.sizeDelta = new Vector2(-12, -12);
+                rectTransform2.anchoredPosition = Vector2.zero;
+
+                if (mod.config.DPSMeterWindowBackground.Value)
+                {
+                    Image image = DPSMeterPanel.AddComponent<Image>();
+                    Image copyImage = mod.HUD.itemInventoryDisplay.gameObject.GetComponent<Image>();
+                    image.sprite = copyImage.sprite;
+                    image.color = copyImage.color;
+                    image.type = Image.Type.Sliced;
+                }
+
+                textMesh.enableAutoSizing = true;
+                textMesh.fontSizeMax = 256;
+                textMesh.faceColor = Color.white;
+                textMesh.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+            }
         }
     }
 }

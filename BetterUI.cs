@@ -63,7 +63,6 @@ namespace BetterUI
         }
         public void OnEnable()
         {
-            On.RoR2.UI.HUD.Awake += HUD_Awake;
             config = new ConfigManager(this);
             if (config.ComponentsItemSorting.Value)
                 this.AddComponent(itemSorting);
@@ -102,6 +101,10 @@ namespace BetterUI
         {
             orig(self);
             HUD = self;
+            foreach (ModComponent modComponent in modComponents)
+            {
+                modComponent.HUD_Awake();
+            }
         }
         public void AddComponent(ModComponent modComponent)
         {
@@ -118,6 +121,7 @@ namespace BetterUI
             internal virtual void Update() { }
             internal virtual void Hook() { }
             internal virtual void Unhook() { }
+            internal virtual void HUD_Awake() { }
         }
     }
 }

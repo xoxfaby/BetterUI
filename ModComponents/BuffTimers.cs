@@ -18,11 +18,11 @@ namespace BetterUI
         {
             if (mod.config.BuffTimers.Value || mod.config.BuffTooltips.Value)
             {
-                On.RoR2.UI.BuffIcon.Awake += mod.buffTimers.BuffIconAwake;
-                On.RoR2.UI.BuffIcon.UpdateIcon += mod.buffTimers.BuffIconUpdateIcon;
+                On.RoR2.UI.BuffIcon.Awake += mod.buffTimers.BuffIcon_Awake;
+                On.RoR2.UI.BuffIcon.UpdateIcon += mod.buffTimers.BuffIcon_UpdateIcon;
             }
         }
-        internal void BuffIconAwake(On.RoR2.UI.BuffIcon.orig_Awake orig, RoR2.UI.BuffIcon self)
+        internal void BuffIcon_Awake(On.RoR2.UI.BuffIcon.orig_Awake orig, RoR2.UI.BuffIcon self)
         {
             orig(self);
             if (self.transform.parent.name == "BuffDisplayRoot")
@@ -59,7 +59,7 @@ namespace BetterUI
             }
         }
 
-        internal void BuffIconUpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
+        internal void BuffIcon_UpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
         {
             orig(self);
             BuffDef buffDef = BuffCatalog.GetBuffDef(self.buffIndex);

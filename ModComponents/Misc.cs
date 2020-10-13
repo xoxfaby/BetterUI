@@ -13,22 +13,22 @@ namespace BetterUI
         {
             if (mod.config.MiscHidePickupNotificiationsArtifacts.Value)
             {
-                On.RoR2.UI.GenericNotification.SetArtifact += SetArtifact;
+                On.RoR2.UI.GenericNotification.SetArtifact += GenericNotification_SetArtifact;
             }
             if (mod.config.MiscAdvancedPickupNotificationsEquipements.Value ||
                 mod.config.MiscHidePickupNotificiationsEquipements.Value)
             {
-                On.RoR2.UI.GenericNotification.SetEquipment += SetEquipment;
+                On.RoR2.UI.GenericNotification.SetEquipment += GenericNotification_SetEquipment;
             }
             if (mod.config.MiscAdvancedPickupNotificationsItems.Value ||
                 mod.config.MiscHidePickupNotificiationsItems.Value)
             {
-                On.RoR2.UI.GenericNotification.SetItem += SetItem;
+                On.RoR2.UI.GenericNotification.SetItem += GenericNotification_SetItem;
             }
 
             if (mod.config.MiscShowHidden.Value)
             {
-                On.RoR2.UI.ItemInventoryDisplay.ItemIsVisible += ItemIsVisible;
+                On.RoR2.UI.ItemInventoryDisplay.ItemIsVisible += ItemInventoryDisplay_ItemIsVisible;
             }
             if (mod.config.MiscShowPickupDescription.Value)
             {
@@ -64,11 +64,11 @@ namespace BetterUI
             }
             return pickupText;
         }
-        internal bool ItemIsVisible(On.RoR2.UI.ItemInventoryDisplay.orig_ItemIsVisible orig, ItemIndex itemIndex)
+        internal bool ItemInventoryDisplay_ItemIsVisible(On.RoR2.UI.ItemInventoryDisplay.orig_ItemIsVisible orig, ItemIndex itemIndex)
         {
             return true;
         }
-        internal void SetArtifact(On.RoR2.UI.GenericNotification.orig_SetArtifact orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
+        internal void GenericNotification_SetArtifact(On.RoR2.UI.GenericNotification.orig_SetArtifact orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
         {
             if (mod.config.MiscHidePickupNotificiationsArtifacts.Value)
             {
@@ -78,7 +78,7 @@ namespace BetterUI
             orig(self, artifactDef);
 
         }
-        internal void SetEquipment(On.RoR2.UI.GenericNotification.orig_SetEquipment orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
+        internal void GenericNotification_SetEquipment(On.RoR2.UI.GenericNotification.orig_SetEquipment orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
         {
             if (mod.config.MiscHidePickupNotificiationsEquipements.Value)
             {
@@ -89,7 +89,7 @@ namespace BetterUI
 
             self.descriptionText.token = equipmentDef.descriptionToken;
         }
-        internal void SetItem(On.RoR2.UI.GenericNotification.orig_SetItem orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
+        internal void GenericNotification_SetItem(On.RoR2.UI.GenericNotification.orig_SetItem orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
         {
             if (mod.config.MiscHidePickupNotificiationsItems.Value)
             {

@@ -13,11 +13,11 @@ namespace BetterUI
         {
             if (mod.config.SortingSortItemsInventory.Value)
             {
-                On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += mod.itemSorting.OnInventoryChanged;
+                On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += mod.itemSorting.ItemInventoryDisplay_OnInventoryChanged;
             }
             if (mod.config.SortingSortItemsCommand.Value && mod.config.SortingSortOrderCommand.Value.Contains("C"))
             {
-                On.RoR2.PickupPickerController.SubmitChoice += mod.commandImprovements.SubmitChoice;
+                On.RoR2.PickupPickerController.SubmitChoice += mod.commandImprovements.PickupPickerController_SubmitChoice;
             }
         }
 
@@ -155,7 +155,7 @@ namespace BetterUI
             }
             return finalOrder.ToList();
         }
-        public void OnInventoryChanged(On.RoR2.UI.ItemInventoryDisplay.orig_OnInventoryChanged orig, RoR2.UI.ItemInventoryDisplay self)
+        public void ItemInventoryDisplay_OnInventoryChanged(On.RoR2.UI.ItemInventoryDisplay.orig_OnInventoryChanged orig, RoR2.UI.ItemInventoryDisplay self)
         {
 
             orig(self);

@@ -87,96 +87,96 @@ namespace BetterUI
             if (mod.config.StatsDisplayEnable.Value)
             {
                 RoR2.Run.onRunStartGlobal += runStartGlobal;
-                On.RoR2.UI.HUD.Awake += Awake;
             }
         }
 
-        public void runStartGlobal(RoR2.Run self)
+        internal void runStartGlobal(RoR2.Run self)
         {
             highestMultikill = 0;
         }
-        public void Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        internal override void HUD_Awake()
         {
-            orig(self);
-
-            statsDisplayContainer = new GameObject("StatsDisplayContainer");
-            RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
-
-            if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
+            if (mod.config.StatsDisplayEnable.Value)
             {
-                stupidBuffer = new GameObject("StupidBuffer");
-                RectTransform rectTransform3 = stupidBuffer.AddComponent<RectTransform>();
-                LayoutElement layoutElement2 = stupidBuffer.AddComponent<LayoutElement>();
 
-                layoutElement2.minWidth = 0;
-                layoutElement2.minHeight = 2;
-                layoutElement2.flexibleHeight = 1;
-                layoutElement2.flexibleWidth = 1;
+                statsDisplayContainer = new GameObject("StatsDisplayContainer");
+                RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
 
-                stupidBuffer.transform.SetParent(self.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
-                statsDisplayContainer.transform.SetParent(self.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
+                {
+                    stupidBuffer = new GameObject("StupidBuffer");
+                    RectTransform rectTransform3 = stupidBuffer.AddComponent<RectTransform>();
+                    LayoutElement layoutElement2 = stupidBuffer.AddComponent<LayoutElement>();
 
-                rectTransform.localPosition = new Vector3(0, -10, 0);
-                rectTransform.anchorMin = Vector2.zero;
-                rectTransform.anchorMax = Vector2.one;
-                rectTransform.localScale = new Vector3(1, -1, 1);
-                rectTransform.sizeDelta = Vector2.zero;
-                rectTransform.anchoredPosition = new Vector2(0, 0);
-                rectTransform.eulerAngles = new Vector3(0, 6, 0);
+                    layoutElement2.minWidth = 0;
+                    layoutElement2.minHeight = 2;
+                    layoutElement2.flexibleHeight = 1;
+                    layoutElement2.flexibleWidth = 1;
+
+                    stupidBuffer.transform.SetParent(mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                    statsDisplayContainer.transform.SetParent(mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+
+                    rectTransform.localPosition = new Vector3(0, -10, 0);
+                    rectTransform.anchorMin = Vector2.zero;
+                    rectTransform.anchorMax = Vector2.one;
+                    rectTransform.localScale = new Vector3(1, -1, 1);
+                    rectTransform.sizeDelta = Vector2.zero;
+                    rectTransform.anchoredPosition = new Vector2(0, 0);
+                    rectTransform.eulerAngles = new Vector3(0, 6, 0);
+                }
+                else
+                {
+                    statsDisplayContainer.transform.SetParent(mod.HUD.mainContainer.transform);
+
+                    rectTransform.localPosition = new Vector3(0, 0, 0);
+                    rectTransform.anchorMin = mod.config.StatsDisplayWindowAnchorMin.Value;
+                    rectTransform.anchorMax = mod.config.StatsDisplayWindowAnchorMax.Value;
+                    rectTransform.localScale = new Vector3(1, -1, 1);
+                    rectTransform.sizeDelta = mod.config.StatsDisplayWindowSize.Value;
+                    rectTransform.anchoredPosition = mod.config.StatsDisplayWindowPosition.Value;
+                    rectTransform.eulerAngles = mod.config.StatsDisplayWindowAngle.Value;
+                }
+
+
+                VerticalLayoutGroup verticalLayoutGroup = statsDisplayContainer.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+                verticalLayoutGroup.padding = new RectOffset(5, 5, 10, 5);
+
+                GameObject statsDisplayText = new GameObject("StatsDisplayText");
+                RectTransform rectTransform2 = statsDisplayText.AddComponent<RectTransform>();
+                textMesh = statsDisplayText.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
+                LayoutElement layoutElement = statsDisplayText.AddComponent<LayoutElement>();
+
+                statsDisplayText.transform.SetParent(statsDisplayContainer.transform);
+
+
+                rectTransform2.localPosition = Vector3.zero;
+                rectTransform2.anchorMin = Vector2.zero;
+                rectTransform2.anchorMax = Vector2.one;
+                rectTransform2.localScale = new Vector3(1, -1, 1);
+                rectTransform2.sizeDelta = Vector2.zero;
+                rectTransform2.anchoredPosition = Vector2.zero;
+
+                if (mod.config.StatsDisplayPanelBackground.Value)
+                {
+                    Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
+                    Image copyImage = mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
+                    image.sprite = copyImage.sprite;
+                    image.color = copyImage.color;
+                    image.type = Image.Type.Sliced;
+                }
+
+                textMesh.fontSize = 12;
+                textMesh.fontSizeMin = 6;
+                textMesh.faceColor = Color.white; ;
+                textMesh.outlineColor = Color.black;
+                textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, 0.2f);
+                textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.4f);
+
+                layoutElement.minWidth = 1;
+                layoutElement.minHeight = 1;
+                layoutElement.flexibleHeight = 1;
+                layoutElement.flexibleWidth = 1;
             }
-            else
-            {
-                statsDisplayContainer.transform.SetParent(self.mainContainer.transform);
-
-                rectTransform.localPosition = new Vector3(0, 0, 0);
-                rectTransform.anchorMin = mod.config.StatsDisplayWindowAnchorMin.Value;
-                rectTransform.anchorMax = mod.config.StatsDisplayWindowAnchorMax.Value;
-                rectTransform.localScale = new Vector3(1, -1, 1);
-                rectTransform.sizeDelta = mod.config.StatsDisplayWindowSize.Value;
-                rectTransform.anchoredPosition = mod.config.StatsDisplayWindowPosition.Value;
-                rectTransform.eulerAngles = mod.config.StatsDisplayWindowAngle.Value;
-            }
-
-
-            VerticalLayoutGroup verticalLayoutGroup = statsDisplayContainer.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
-            verticalLayoutGroup.padding = new RectOffset(5, 5, 10, 5);
-
-            GameObject statsDisplayText = new GameObject("StatsDisplayText");
-            RectTransform rectTransform2 = statsDisplayText.AddComponent<RectTransform>();
-            textMesh = statsDisplayText.AddComponent<RoR2.UI.HGTextMeshProUGUI>();
-            LayoutElement layoutElement = statsDisplayText.AddComponent<LayoutElement>();
-
-            statsDisplayText.transform.SetParent(statsDisplayContainer.transform);
-
-
-            rectTransform2.localPosition = Vector3.zero;
-            rectTransform2.anchorMin = Vector2.zero;
-            rectTransform2.anchorMax = Vector2.one;
-            rectTransform2.localScale = new Vector3(1, -1, 1);
-            rectTransform2.sizeDelta = Vector2.zero;
-            rectTransform2.anchoredPosition = Vector2.zero;
-
-            if (mod.config.StatsDisplayPanelBackground.Value)
-            {
-                Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
-                Image copyImage = self.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
-                image.sprite = copyImage.sprite;
-                image.color = copyImage.color;
-                image.type = Image.Type.Sliced;
-            }
-
-            textMesh.fontSize = 12;
-            textMesh.fontSizeMin = 6;
-            textMesh.faceColor = Color.white; ;
-            textMesh.outlineColor = Color.black;
-            textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, 0.2f);
-            textMesh.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.4f);
-
-            layoutElement.minWidth = 1;
-            layoutElement.minHeight = 1;
-            layoutElement.flexibleHeight = 1;
-            layoutElement.flexibleWidth = 1;
-
         }
         internal override void Update()
         {
