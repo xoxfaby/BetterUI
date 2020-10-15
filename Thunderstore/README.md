@@ -151,6 +151,12 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.11
+ - Bugfix: Fixed error that broke dpsmeter and statsdisplay
+
+#### v1.6.11
+ - Bugfix: Fixed issues with AdvnacedIcons portion of BetterUI  
+
 #### v1.6.10
  - Bugfix: Fixed bug that would mess up skill tooltips. 
 

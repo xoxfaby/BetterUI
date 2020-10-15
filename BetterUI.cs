@@ -13,7 +13,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.10")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.12")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class BetterUI : BaseUnityPlugin
     {
@@ -82,6 +82,7 @@ namespace BetterUI
                this.AddComponent(misc);
 
             ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
+            On.RoR2.UI.HUD.Awake += HUD_Awake;
 
             foreach (ModComponent modComponent in modComponents)
             {
