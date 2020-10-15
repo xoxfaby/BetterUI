@@ -223,7 +223,7 @@ namespace BetterUI
         {
             orig(self);
 
-            if (!EquipmentIconDirty.ContainsKey(self))
+            if (!this.EquipmentIconDirty.ContainsKey(self))
             {
                 this.EquipmentIconDirty.Add(self,true);
                 this.lastEquipment.Add(self,null);
@@ -276,7 +276,7 @@ namespace BetterUI
                 }
                 
 
-                self.tooltipProvider.overrideBodyText = Util.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
             }
 
             if (mod.config.AdvancedIconsEquipementShowCooldownStacks.Value && self.cooldownText && self.currentDisplayData.cooldownValue > 0)
