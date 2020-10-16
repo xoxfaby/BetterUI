@@ -151,7 +151,10 @@ P = Sprint Related Last
 
 ## Changelog
 
-#### v1.6.11
+#### v1.6.13
+ - Bugfix: Fixed error that equipment cooldown tooltip
+ 
+#### v1.6.12
  - Bugfix: Fixed error that broke dpsmeter and statsdisplay
 
 #### v1.6.11
