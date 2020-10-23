@@ -151,6 +151,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.14
+ - Actual upload of version 1.6.13
+
 #### v1.6.13
  - Bugfix: Fixed error that equipment cooldown tooltip
  
