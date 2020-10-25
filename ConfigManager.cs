@@ -289,12 +289,14 @@ namespace BetterUI
             DPSMeterWindowBackground = ConfigFileDPSMeter.Bind("DPSMeter", "WindowBackground", true, "Whether or not the DPS window should have a background.");
 
             DPSMeterWindowAnchorMin = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAnchorMin", new Vector2(0, 0),
-                "Minimum position to anchor from. x & y\n" +
-                "X: 0 is left of the screen, 1 is right of screen\n" +
-                "Y: 0 is bottom of the screen, 1 is top of the screen\n" +
-                "default of (0, 0) puts the anchor in the bottom left corner of the screen.");
+                "Screen position the lower left window corner is anchored to.\n" +
+                "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
+                "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            DPSMeterWindowAnchorMax = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAnchorMax", new Vector2(0, 0f), "Maximum position to anchor from, see above.");
+            DPSMeterWindowAnchorMax = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAnchorMax", new Vector2(0, 0f),
+                "Screen position the upper right window corner is anchored to.\n" +
+                "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
+                "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
             DPSMeterWindowPosition = ConfigFileDPSMeter.Bind("DPSMeter", "WindowPosition", new Vector2(120, 240), "Position of the DPSMeter window relative to the anchor.");
 
@@ -408,12 +410,14 @@ namespace BetterUI
                 "If not, it will be a free-floating window that can be moved with the options below.");
 
             StatsDisplayWindowAnchorMin = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAnchorMin", new Vector2(1, 0.5f),
-                "Minimum position to anchor from. x & y\n" +
-                "X: 0 is left of the screen, 1 is right of the screen\n" +
-                "Y: 0 is bottom of the screen, 1 is top of the screen\n" +
-                "default of (1, 0.5) puts the anchor in the middle of the right side of the screen.\n");
+                "Screen position the lower left window corner is anchored to.\n" +
+                "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
+                "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            StatsDisplayWindowAnchorMax = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAnchorMax", new Vector2(1, 0.5f), "Maximum position to anchor from, see above.");
+            StatsDisplayWindowAnchorMax = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAnchorMax", new Vector2(1, 0.5f),
+                "Screen position the upper right window corner is anchored to.\n" +
+                "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
+                "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
             StatsDisplayWindowPosition = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowPosition", new Vector2(-210, 100), "Position of the StatsDisplay window relative to the anchor.");
 
