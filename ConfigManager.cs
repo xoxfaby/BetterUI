@@ -200,7 +200,7 @@ namespace BetterUI
 
             AdvancedIconsItemAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
 
-            AdvancedIconsItemItemStatsIntegration = ConfigFileAdvancedIcons.Bind("Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable");
+            AdvancedIconsItemItemStatsIntegration = ConfigFileAdvancedIcons.Bind("Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable.");
 
             AdvancedIconsEquipementShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipement when charging multiple stacks.");
 
