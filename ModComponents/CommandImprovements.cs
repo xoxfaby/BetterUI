@@ -15,7 +15,7 @@ namespace BetterUI
         internal override void Hook()
         {
             if (mod.config.CommandResizeCommandWindow.Value ||
-                mod.config.SortingSortItemsScrapper.Value ||
+                mod.config.SortingSortItemsCommand.Value ||
                 mod.config.SortingSortItemsScrapper.Value)
             {
                 On.RoR2.UI.PickupPickerPanel.SetPickupOptions += PickupPickerPanel_SetPickupOptions;
