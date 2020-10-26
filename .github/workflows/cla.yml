@@ -1,15 +1,19 @@
 name: "CLA Signature Bot"
 on:
+  issue_comment:
+    types: [created]
   pull_request_target:
-    types: [opened,closed,synchronize,edited]
+    types: [opened,closed,synchronize]
 
 jobs:
   CLABot:
+    if: github.event_name == 'pull_request_target' || contains(github.event.comment.html_url, '/pull/')
     runs-on: ubuntu-latest
     steps:
       - name: "CLA Signature Bot"
-        uses: roblox/cla-assistant@v2.0.1
+        uses: MetaMask/cla-signature-bot@v3.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          allowlist: 'xoxfaby' 
           url-to-cladocument: 'https://github.com/xoxfaby/BetterUI/blob/master/CLA.md'
