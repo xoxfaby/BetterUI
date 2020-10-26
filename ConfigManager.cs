@@ -261,7 +261,7 @@ namespace BetterUI
 
             CommandCountersShow = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersShow", true, "Show counters in the command and scrapper windows.");
 
-            CommandCountersHideOnZero = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersHideOnZero", false, "Hide counters if they would be zero.");
+            CommandCountersHideOnZero = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersHideOnZero", false, "Hide counters when they are zero.");
 
             CommandCountersPosition = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersPosition", "TopRight",
                 "Location of the command item counter.\n" +
