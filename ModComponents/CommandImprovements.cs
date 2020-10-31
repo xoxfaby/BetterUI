@@ -39,6 +39,7 @@ namespace BetterUI
         {
             var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
             optionMap = new int[maxOptions];
+            optionMap[0] = -1;
             availableIndex = new bool[maxOptions];
             sortedOptions = new PickupPickerController.Option[maxOptions];
         }
