@@ -22,13 +22,6 @@ namespace BetterUI
         CharacterBody targetbody;
 
         Dictionary<string, float> skillCooldowns = new Dictionary<string, float>();
-        internal void SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
-        {
-            orig(self, itemIndex, itemCount);
-
-            self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
-        }
-
         internal override void Hook()
         {
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
@@ -52,22 +45,33 @@ namespace BetterUI
             }
         }
 
+        internal void SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
+        {
+            orig(self, itemIndex, itemCount);
+
+            self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
+        }
+
+
         private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
             orig(self);
 
-            foreach (EquipmentIcon equipment in new List<EquipmentIcon>(this.EquipmentIconDirty.Keys))
+            if (self.inventory)
             {
-                if (equipment.targetInventory == self.inventory)
+                foreach (EquipmentIcon equipment in new List<EquipmentIcon>(this.EquipmentIconDirty.Keys))
                 {
-                    this.EquipmentIconDirty[equipment] = true;
+                    if (equipment && equipment.targetInventory == self.inventory)
+                    {
+                        this.EquipmentIconDirty[equipment] = true;
+                    }
                 }
-            }
-            foreach (SkillIcon skill in new List<SkillIcon>(SkillIconDirty.Keys))
-            {
-               if(skill.playerCharacterMasterController.master == self)
+                foreach (SkillIcon skill in new List<SkillIcon>(SkillIconDirty.Keys))
                 {
-                    this.SkillIconDirty[skill] = true;
+                    if (skill && skill.playerCharacterMasterController && skill.playerCharacterMasterController.master == self)
+                    {
+                        this.SkillIconDirty[skill] = true;
+                    }
                 }
             }
         }
