@@ -14,13 +14,12 @@ namespace BetterUI
     {
         internal ItemCounters(BetterUI mod) : base(mod) { }
 
-        public static readonly Dictionary<ItemIndex, int> ItemScores = new Dictionary<ItemIndex, int>();
-        
+
         static ItemCounters()
         {
             //TODO: Add individual item scores.
         }
-        
+
         string[] tierColorMap = new string[]
         {
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Tier1Item),
@@ -42,30 +41,26 @@ namespace BetterUI
 
         internal override void Start()
         {
+            char[] bad_characters = new char[] { '\n', '\t', '\\', '"', '\'', '[', ']' };
             bool first = true;
             foreach (var itemIndex in RoR2.ItemCatalog.allItems)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
-                int itemValue;
-                if (!ItemScores.TryGetValue(itemIndex, out itemValue))
-                { 
-                    itemValue = mod.config.ItemCountersTierScores[(int)itemDef.tier];
-                }
+                int itemValue = mod.config.ItemCountersTierScores[(int)itemDef.tier];
+                String safe_name = String.Join("", itemDef.nameToken.Split(bad_characters));
+                ConfigEntry<int> itemScore;
                 if (first)
                 {
-                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemDef.nameToken, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
-                    mod.config.ItemScoreConfig.Add(itemScore);
+                    itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
                     first = false;
                 }
                 else
                 {
-                    var itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", itemDef.nameToken, itemValue, Language.GetString(itemDef.nameToken));
-                    mod.config.ItemScoreConfig.Add(itemScore);
+                    itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
+
+                mod.config.ItemCountersItemScores.Add(itemDef.nameToken, itemScore.Value);
             }
-
-            mod.config.ItemCountersItemScores = mod.config.ItemScoreConfig.ToDictionary(e => e.Definition.Key, e => e.Value);
-
         }
         internal void ScoreboardStrip_SetMaster(On.RoR2.UI.ScoreboardStrip.orig_SetMaster orig, ScoreboardStrip self, CharacterMaster master)
         {
@@ -119,7 +114,7 @@ namespace BetterUI
                     }
                     BetterUI.sharedStringBuilder.Append(itemScore);
                 }
-                
+
                 if (mod.config.ItemCountersShowItemsByTier.Value)
                 {
                     BetterUI.sharedStringBuilder.Append("\n");

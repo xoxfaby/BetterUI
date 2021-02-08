@@ -114,7 +114,6 @@ namespace BetterUI
         public ConfigEntry<int> ItemCountersTierScoreBoss;
         public ConfigEntry<int> ItemCountersTierScoreNoTier;
         public int[] ItemCountersTierScores;
-        public List<ConfigEntry<int>> ItemScoreConfig;
         public Dictionary<string,int> ItemCountersItemScores;
 
         // StatsDisplay
@@ -346,12 +345,12 @@ namespace BetterUI
             };
 
 
-            ItemScoreConfig = new List<ConfigEntry<int>>();
+            ItemCountersItemScores = new Dictionary<string, int>();
 
 
-            // StatsDisplay
+        // StatsDisplay
 
-            StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
+        StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
 
             StatsDisplayStatString = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatString",
                 "<color=#FFFFFF>" +
