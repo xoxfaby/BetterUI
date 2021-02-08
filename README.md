@@ -151,12 +151,15 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v1.6.16
+ - Bugfix: Fixed bug when setting up config files for ItemCounters if a modded item had an invalid character in its name token. 
+
 #### v1.6.15
  - Bugfix: Fixed bug in AdvancedIcons that could cause various issues when playing with an unmodded host. 
  - Bugfix: Fixed small logic issue in CommandImprovements ( Thank you ethall )
  - Bugfix: Fixed bug in CommandImprovements if a specific set of config options was selected ( Thank you ethall )
  - Config change: Updated configuration tooltips for grammar, consistency, and clarity. ( Thank you ethall )
- - 
+
 #### v1.6.14
  - Actual upload of version 1.6.13
 
