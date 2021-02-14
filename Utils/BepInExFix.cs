@@ -13,9 +13,13 @@ namespace BetterUI
 	{
 		public static void DoPatching()
 		{
-			var harmony = new Harmony("com.xoxfaby.BepInExFix");
 
-			harmony.PatchAll();
+			if (typeof(BepInEx.BaseUnityPlugin).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version != "5.4.5.0")
+			{
+				var harmony = new Harmony("com.xoxfaby.BepInExFix");
+
+				harmony.PatchAll();
+			}
 		}
 
 
