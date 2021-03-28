@@ -67,10 +67,20 @@ namespace BetterUI
             AddSkill("MAGE_SPECIAL_FIRE_NAME", "Flame Thrower", 1);
             AddSkill("MAGE_SPECIAL_LIGHTNING_NAME", "Surge", 1);
 
+            // Bandit
+            AddSkill("BANDIT2_PRIMARY_NAME", "Burst", 0.5f);
+            AddSkill("BANDIT2_PRIMARY_ALT_NAME", "Blast", 1);
+            AddSkill("BANDIT2_SECONDARY_NAME", "Slash", 1);
+            AddSkill("BANDIT2_SECONDARY_ALT_NAME", "Blade", 1);
+            AddSkill("BANDIT2_SPECIAL_NAME", "Shot", 1);
+            AddSkill("BANDIT2_SPECIAL_ALT_NAME", "Shot", 1);
+            AddSkill("BANDIT2_UTILITY_NAME", "Smoke Bomb", 1);
+
             // Captain
             AddSkill("CAPTAIN_PRIMARY_NAME", "Shotgun", 0.75f);
             AddSkill("CAPTAIN_SECONDARY_NAME", "Power Tazer", 1);
             AddSkill("CAPTAIN_UTILITY_NAME", "Airstrike", 1);
+            AddSkill("CAPTAIN_UTILITY_ALT1_NAME", "Airstrike", 1);
             AddSkill("CAPTAIN_SPECIAL_NAME", "Impact", 0);
 
             // Commando
@@ -100,13 +110,15 @@ namespace BetterUI
             AddSkill("LOADER_YANKHOOK_NAME", "Fist", 1);
             AddSkill("LOADER_UTILITY_NAME", "Fist", 1);
             AddSkill("LOADER_UTILITY_ALT1_NAME", "Fist", 1);
-            AddSkill("LOADER_SPECIAL_NAME", "Fist", 0.5f);
+            AddSkill("LOADER_SPECIAL_NAME", "Zap", 0.5f);
+            AddSkill("LOADER_SPECIAL_ALT_NAME", "Slam", 1);
 
             // Mercenary
             AddSkill("MERC_PRIMARY_NAME", "Sword", 1);
             AddSkill("MERC_SECONDARY_NAME", "Slice", 1);
             AddSkill("MERC_SECONDARY_ALT1_NAME", "Slice", 1);
             AddSkill("MERC_UTILITY_NAME", "Dash", 1);
+            AddSkill("MERC_UTILITY_ALT1_NAME", "Dash", 1);
             AddSkill("MERC_SPECIAL_NAME", "Hit", 1);
             AddSkill("MERC_SPECIAL_ALT1_NAME", "Blade", 1);
 
@@ -128,12 +140,15 @@ namespace BetterUI
             AddSkill("TREEBOT_UTILITY_ALT1_NAME", "Boom", 0.5f);
             AddSkill("TREEBOT_SPECIAL_NAME", "Projectile", 1);
             AddToSkill("TREEBOT_SPECIAL_NAME", "Roots", 0);
+            AddSkill("TREEBOT_SPECIAL_ALT1_NAME", "Projectile", 1);
 
             // Items
             AddSkill("SKILL_LUNAR_PRIMARY_REPLACEMENT_NAME", "Shard", 0.1f);
             AddToSkill("SKILL_LUNAR_PRIMARY_REPLACEMENT_NAME", "Explosion", 1);
-
-            
+            AddSkill("SKILL_LUNAR_SECONDARY_REPLACEMENT_NAME ", "Maelstrom", 0.2f);
+            AddSkill("SKILL_LUNAR_SPECIAL_REPLACEMENT_NAME ", "Maelstrom", 0.2f);
+            AddToSkill("SKILL_LUNAR_SECONDARY_REPLACEMENT_NAME", "Explosion", 1);
+            AddSkill("SKILL_LUNAR_SPECIAL_REPLACEMENT_NAME ", "Detonation", 1);
         }
     }
 }

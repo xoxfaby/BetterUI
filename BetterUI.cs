@@ -3,18 +3,12 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 
-using RoR2;
-using R2API.Utils;
 using BepInEx;
-using UnityEngine;
-
 
 namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "1.6.16.4")]
-    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.0.0.6")]
     public class BetterUI : BaseUnityPlugin
     {
         internal ConfigManager config;
@@ -64,6 +58,10 @@ namespace BetterUI
         public void OnEnable()
         {
             config = new ConfigManager(this);
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.gog909.ordereditems")){
+                BetterUI.print("WARNING: ORDEREDITEMS DETECTED.\nHIS MOD IS NOT COMPATIBLE WITH BETTERUI \nBETTERUI DISABLED");
+                return;
+            }
             if (config.ComponentsItemSorting.Value)
                 this.AddComponent(itemSorting);
             if (config.ComponentsStatsDisplay.Value)

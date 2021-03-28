@@ -62,14 +62,13 @@ namespace BetterUI
         internal void BuffIcon_UpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
         {
             orig(self);
-            BuffDef buffDef = BuffCatalog.GetBuffDef(self.buffIndex);
-            if (buffDef != null && self.transform.parent.name == "BuffDisplayRoot")
+            if (self.buffDef && self.transform.parent.name == "BuffDisplayRoot")
             {
                 if (mod.config.BuffTooltips.Value)
                 {
                     RoR2.UI.TooltipProvider tooltipProvider = self.GetComponent<RoR2.UI.TooltipProvider>();
-                    tooltipProvider.overrideTitleText = buffDef.name;
-                    tooltipProvider.titleColor = buffDef.buffColor;
+                    tooltipProvider.overrideTitleText = self.buffDef.name;
+                    tooltipProvider.titleColor = self.buffDef.buffColor;
                 }
                 if (mod.config.BuffTimers.Value)
                 {
@@ -81,7 +80,7 @@ namespace BetterUI
                             CharacterBody characterBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                             if (characterBody != null && characterBody.timedBuffs.Count > 0)
                             {
-                                timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffIndex);
+                                timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffDef.buffIndex);
                                 if(timedBuffs.Any())
                                 {
                                     thisBuff = timedBuffs.OrderByDescending(b => b.timer).First();

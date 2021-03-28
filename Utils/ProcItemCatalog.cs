@@ -8,21 +8,6 @@ namespace BetterUI
     public static class ProcItemsCatalog
     {
         private static StringBuilder formatterStringBuilder = new StringBuilder();
-        [Obsolete("Deprecated: ProcEffect is deprecated and will be removed in BetterUI version 1.7.0. Use EffectFormatter instead.")]
-        public enum ProcEffect
-        {
-            Chance,
-            HP,
-            Range,
-        }
-        [Obsolete("Deprecated: Stacking is deprecated and will be removed in BetterUI version 1.7.0. Use StackingForumla and CapFormula instead.")]
-        public enum Stacking
-        {
-            None,
-            Linear,
-            Hyperbolic,
-        }
-
 
         public delegate string EffectFormatter(float value, float procCoefficient, float luck, bool canCap, int cap);
 
@@ -137,49 +122,7 @@ namespace BetterUI
                 capFormula = capFormula 
             });
         }
-        [Obsolete("Deprecated: This overload uses deprecated types and will be removed in BetterUI version 1.7.0")]
-        public static void AddEffect(ItemIndex itemIndex, ProcEffect procEffect, float value, Stacking stacking = Stacking.Linear)
-        {
-            AddEffect(itemIndex, procEffect, value, value, stacking);
-        }
-
-        [Obsolete("Deprecated: This overload uses deprecated types and will be removed in BetterUI version 1.7.0")]
-        public static void AddEffect(ItemIndex itemIndex, ProcEffect procEffect, float value, float extraStackValue, Stacking stacking = Stacking.Linear)
-        {
-            StackingFormula stackingFormula;
-            CapFormula capFormula = null;
-            if (stacking == Stacking.Linear)
-            {
-                stackingFormula = LinearStacking;
-                if (procEffect == ProcEffect.Chance)
-                {
-                    capFormula = LinearCap;
-                }
-            } 
-            else if (stacking == Stacking.Hyperbolic)
-            {
-                stackingFormula = HyperbolicStacking;
-            }
-            else
-            {
-                stackingFormula = NoStacking;
-            }
-            EffectFormatter effectFormatter;
-
-            if (procEffect == ProcEffect.Chance)
-            {
-                effectFormatter = ChanceFormatter;
-            } 
-            else if (procEffect == ProcEffect.HP)
-            {
-                effectFormatter = HPFormatter;
-            }
-            else
-            {
-                effectFormatter = RangeFormatter;
-            }
-            AddEffect(itemIndex, value, extraStackValue, effectFormatter, stackingFormula, capFormula);
-        }
+        
         public static Dictionary<ItemIndex, EffectInfo> GetAllItems()
         {
             return items;
@@ -187,16 +130,16 @@ namespace BetterUI
 
         static ProcItemsCatalog()
         {
-            AddEffect(ItemIndex.BleedOnHit, 0.15f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(ItemIndex.StunChanceOnHit, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking );
-            AddEffect(ItemIndex.StickyBomb, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(ItemIndex.Missile,  0.1f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(ItemIndex.ChainLightning,  0.25f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(ItemIndex.Seed, 1, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemIndex.HealOnCrit, 8, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemIndex.Behemoth, 4, 2.5f, effectFormatter: RangeFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemIndex.BounceNearby, 0.2f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking);
-            AddEffect(ItemIndex.GoldOnHit, 0.3f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(ItemCatalog.FindItemIndex("BleedOnHit"), 0.1f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
+            AddEffect(ItemCatalog.FindItemIndex("StunChanceOnHit"), 0.05f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking );
+            AddEffect(ItemCatalog.FindItemIndex("StickyBomb"), 0.05f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
+            AddEffect(ItemCatalog.FindItemIndex("Missile"),  0.1f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(ItemCatalog.FindItemIndex("ChainLightning"),  0.25f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(ItemCatalog.FindItemIndex("Seed"), 1, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
+            AddEffect(ItemCatalog.FindItemIndex("HealOnCrit"), 8, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
+            AddEffect(ItemCatalog.FindItemIndex("Behemoth"), 4, 2.5f, effectFormatter: RangeFormatter, stackingFormula: LinearStacking);
+            AddEffect(ItemCatalog.FindItemIndex("BounceNearby"), 0.2f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking);
+            AddEffect(ItemCatalog.FindItemIndex("GoldOnHit"), 0.3f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace BetterUI
         private RoR2.UI.HGTextMeshProUGUI textMesh;
         private int highestMultikill = 0;
         private CharacterBody playerBody;
+        private Boolean statsDisplayToggle = false;
 
         readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
         readonly Regex regexpattern;
@@ -197,13 +198,14 @@ namespace BetterUI
                 if (playerBody != null)
                 {
                     bool customBindPressed = Input.GetKey(mod.config.StatsDisplayCustomBind.Value);
-                    bool showStatsDisplay = !(mod.config.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
+                    if (Input.GetKeyDown(mod.config.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
+                    bool showStatsDisplay = mod.config.StatsDisplayToggleOnBind.Value ? statsDisplayToggle : !(mod.config.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
+
+                    highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
 
                     statsDisplayContainer.SetActive(showStatsDisplay);
                     if (showStatsDisplay)
                     {
-                        highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
-
                         BetterUI.sharedStringBuilder.Clear();
                         if (customBindPressed)
                         {

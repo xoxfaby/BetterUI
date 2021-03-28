@@ -151,6 +151,19 @@ P = Sprint Related Last
 
 ## Changelog
 
+## v2.0.0
+ - No longer requires R2API
+ - Anniversary Update: Added Proc coefficient values for new Character, Items & Item changes.
+ - New Config Option: Added option to toggle StatsDisplay instead of holding to show.
+ - Bugfix: Fixed HighestMultiKill in Statsdispaly only updating when the statsdisplay is open. 
+ - Bugfix: Fixed BuffIcon issues cause by new update. 
+ - Bugfix: Fixed tooltips showing seconds for cooldowns that are only 1 second
+ - Bugfix: Fixed tooltips in lobby showing incorrect cooldowns
+ - Internal: Removed deprecated ProcItemCatalog methods, if you were somehow still using these to add your custom proc effects please contact me for help to use the new ones. 
+
+#### v1.6.17
+ - Update simply to update the tags on the Thunderstore listing
+
 #### v1.6.16
  - Bugfix: Fixed bug when setting up config files for ItemCounters if a modded item had an invalid character in its name token. 
 
@@ -330,5 +343,5 @@ P = Sprint Related Last
  - Fixed up the README
  - Internal Changes
 
-### v1.0.0
+## v1.0.0
  - Inital Release

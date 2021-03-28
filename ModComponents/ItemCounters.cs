@@ -46,6 +46,10 @@ namespace BetterUI
             foreach (var itemIndex in RoR2.ItemCatalog.allItems)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
+                if (String.IsNullOrWhiteSpace(itemDef.nameToken))
+                {
+                    continue;
+                }
                 int itemValue = mod.config.ItemCountersTierScores[(int)itemDef.tier];
                 String safe_name = String.Join("", itemDef.nameToken.Split(bad_characters));
                 ConfigEntry<int> itemScore;
@@ -110,7 +114,8 @@ namespace BetterUI
                     itemScore = 0;
                     foreach (var item in self.master.inventory.itemAcquisitionOrder)
                     {
-                        itemScore += mod.config.ItemCountersItemScores[ItemCatalog.GetItemDef(item).nameToken] * self.master.inventory.GetItemCount(item);
+                        int value;
+                        itemScore += mod.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item).nameToken, out value) ? value * self.master.inventory.GetItemCount(item) : 0;
                     }
                     BetterUI.sharedStringBuilder.Append(itemScore);
                 }

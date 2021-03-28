@@ -26,10 +26,6 @@
       <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp.R2API.mm">
-      <HintPath>..\Libs\Assembly-CSharp.R2API.mm.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\Libs\BepInEx.dll</HintPath>
       <Private>false</Private>
@@ -52,7 +48,7 @@
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
       <HintPath>..\Libs\MMHOOK_Assembly-CSharp.dll</HintPath>
-      <Private>false</Private>
+      <Private>true</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\Libs\Mono.Cecil.dll</HintPath>
@@ -76,10 +72,6 @@
     </Reference>
     <Reference Include="MonoMod.Utils">
       <HintPath>..\Libs\MonoMod.Utils.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="R2API">
-      <HintPath>..\Libs\R2API.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Rewired_Core">
@@ -132,7 +124,7 @@
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;Thunderstore\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)Thunderstore\README.md&quot; &quot;$(ProjectDir)README.md&quot;&#xD;&#xA;del Thunderstore\thunder.zip&#xD;&#xA;tar -acf Thunderstore\thunder.zip -C Thunderstore\ $(TargetFileName) README.md icon.png manifest.json" />
+    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;Thunderstore\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)$(OutDir)\MMHOOK_Assembly-CSharp.dll&quot; &quot;Thunderstore\MMHOOK_Assembly-CSharp.dll&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)Thunderstore\README.md&quot; &quot;$(ProjectDir)README.md&quot;&#xD;&#xA;del Thunderstore\thunder.zip&#xD;&#xA;tar -acf Thunderstore\thunder.zip -C Thunderstore\ $(TargetFileName) MMHOOK_Assembly-CSharp.dll README.md icon.png manifest.json" />
   </Target>
 
 </Project>

@@ -123,6 +123,7 @@ namespace BetterUI
         public ConfigEntry<String> StatsDisplayStatStringCustomBind;
         public ConfigEntry<String> StatsDisplayCustomBind;
         public ConfigEntry<bool> StatsDisplayShowCustomBindOnly;
+        public ConfigEntry<bool> StatsDisplayToggleOnBind;
         public ConfigEntry<bool> StatsDisplayPanelBackground;
         public ConfigEntry<bool> StatsDisplayAttachToObjectivePanel;
         public ConfigEntry<Vector2> StatsDisplayWindowAnchorMin;
@@ -348,9 +349,9 @@ namespace BetterUI
             ItemCountersItemScores = new Dictionary<string, int>();
 
 
-        // StatsDisplay
+            // StatsDisplay
 
-        StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
+            StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
 
             StatsDisplayStatString = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatString",
                 "<color=#FFFFFF>" +
@@ -402,6 +403,8 @@ namespace BetterUI
                 "Must be lowercase. Leave blank to disable.");
 
             StatsDisplayShowCustomBindOnly = ConfigFileStatsDisplay.Bind("StatsDisplay", "ShowCustomBindOnly", false, "Only show the StatsDisplay when the scoreboard is open.");
+
+            StatsDisplayToggleOnBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "ToggleOnBind", false, "Toggle the StatsDisplay when the bind is pressed rather than showing it when it is held.");
 
             StatsDisplayPanelBackground = ConfigFileStatsDisplay.Bind("StatsDisplay", "PanelBackground", true, "Whether or not the StatsDisplay panel should have a background.");
 

@@ -21,7 +21,6 @@ namespace BetterUI
         Inventory inventory;
         CharacterBody targetbody;
 
-        Dictionary<string, float> skillCooldowns = new Dictionary<string, float>();
         internal override void Hook()
         {
             if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
@@ -76,17 +75,6 @@ namespace BetterUI
             }
         }
 
-        internal override void Start()
-        {
-            foreach(var skill in RoR2.Skills.SkillCatalog.allSkillDefs)
-            {
-                if(skill.baseRechargeInterval>0 && skill.requiredStock > 0)
-                {
-                    skillCooldowns[skill.skillNameToken] = skill.baseRechargeInterval;
-                }
-            }
-        }
-
         internal override void HUD_Awake()
         {
             EquipmentIconDirty.Clear();
@@ -106,11 +94,17 @@ namespace BetterUI
                 {
                     BetterUI.sharedStringBuilder.Clear();
                     BetterUI.sharedStringBuilder.Append(Language.GetString(bodyToken));
-                    if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value && skillCooldowns.ContainsKey(titleToken))
+                    if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
                     {
-                        BetterUI.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
-                        BetterUI.sharedStringBuilder.Append(skillCooldowns[titleToken]);
-                        BetterUI.sharedStringBuilder.Append("</style> seconds");
+                        BetterUI.print(titleToken);
+                        var skillDef = RoR2.Skills.SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName(titleToken));
+                        if (skillDef)
+                        {
+                            BetterUI.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
+                            BetterUI.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
+                            BetterUI.sharedStringBuilder.Append("</style> second");
+                            if(skillDef.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
+                        }
                     }
 
                     if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
@@ -166,13 +160,15 @@ namespace BetterUI
                 {
                     BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
                     BetterUI.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
-                    BetterUI.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("</style> second");
+                    if (self.targetSkill.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
                 }
                 if (mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
                 {
                     BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
                     BetterUI.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
-                    BetterUI.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("</style> second");
+                    if (self.targetSkill.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
                 }
 
                 if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
@@ -250,7 +246,8 @@ namespace BetterUI
                 {
                     BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
                     BetterUI.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
-                    BetterUI.sharedStringBuilder.Append("</style> seconds");
+                    BetterUI.sharedStringBuilder.Append("</style> second");
+                    if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUI.sharedStringBuilder.Append("s");
                 }
                 if (mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
@@ -265,16 +262,17 @@ namespace BetterUI
                     }
                     if (inventory)
                     {
-                        float reduction = (float)Math.Pow(0.85, inventory.itemStacks[(int)ItemIndex.EquipmentMagazine]);
-                        if (inventory.itemStacks[(int)ItemIndex.AutoCastEquipment] > 0)
+                        float reduction = (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("EquipmentMagazine")]);
+                        if (inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] > 0)
                         {
-                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.itemStacks[(int)ItemIndex.AutoCastEquipment] - 1);
+                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] - 1);
                         }
                         if (reduction < 1)
                         {
                             BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
                             BetterUI.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
-                            BetterUI.sharedStringBuilder.Append("</style> seconds");
+                            BetterUI.sharedStringBuilder.Append("</style> second");
+                            if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUI.sharedStringBuilder.Append("s");
                         }
                     }
                 }

@@ -1,10 +1,9 @@
 ﻿{
   "name": "BetterUI",
-  "version_number": "1.6.16",
+  "version_number": "2.0.0",
   "website_url": "https://github.com/xoxfaby/BetterUI",
-  "description": "Now with Item Counters! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
+  "description": "Anniversary Update Support! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
   "dependencies": [
     "bbepis-BepInExPack-5.3.1",
-    "tristanmcpherson-R2API-2.5.14"
   ]
 }
