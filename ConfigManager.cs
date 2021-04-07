@@ -218,7 +218,7 @@ namespace BetterUI
 
             AdvancedIconsSkillShowProcCoefficient = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowProcCoefficient", true, "Show the proc coefficient when hovering over a skill.");
 
-            AdvancedIconsSkillCalculateSkillProcEffects = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculateProcEffects", true, "Show the effects of proc coefficient of a skill related to the items you are carrying.");
+            AdvancedIconsSkillCalculateSkillProcEffects = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculateProcEffects", true, "Show the proc coefficient of a skill after applying item effects.");
 
             // Buffs
 
