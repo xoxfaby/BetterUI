@@ -192,9 +192,9 @@ namespace BetterUI
 
             MiscHidePickupNotificiationsArtifacts = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsArtifacts", false, "Hide pickup notifications for artifacts.");
 
-            MiscShowPickupDescription = ConfigFileMisc.Bind("Misc", "ShowPickupDescription", true, "Show the item description on the interaction popup.");
+            MiscShowPickupDescription = ConfigFileMisc.Bind("Misc", "ShowPickupDescription", true, "Show the item description on the interaction pop-up.");
 
-            MiscPickupDescriptionAdvanced = ConfigFileMisc.Bind("Misc", "PickupDescriptionAdvanced", false, "Show advanced descriptions for the interaction popup.");
+            MiscPickupDescriptionAdvanced = ConfigFileMisc.Bind("Misc", "PickupDescriptionAdvanced", false, "Show advanced descriptions for the interaction pop-up.");
 
             // Advanced Icons
 
@@ -202,7 +202,7 @@ namespace BetterUI
 
             AdvancedIconsItemItemStatsIntegration = ConfigFileAdvancedIcons.Bind("Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable.");
 
-            AdvancedIconsEquipementShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipement when charging multiple stacks.");
+            AdvancedIconsEquipementShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipment when charging multiple stacks.");
 
             AdvancedIconsEquipementAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over equipment.");
 
