@@ -144,8 +144,32 @@ namespace BetterUI
         public ConfigEntry<String> SortingSortOrderCommand;
         public ConfigEntry<String> SortingSortOrderScrapper;
 
+        // Internal
 
-
+        /*
+         * NOTE:
+         *  When renaming a config entry within the same config file, place both the new Section + Key
+         *  and the old Section + Key in the dictionary below.
+         *
+         *  By creating a rename mapping, we're able to
+         *      1) transfer the old entry's value to the new entry's value.
+         *      2) remove the old entry from the config file.
+         *
+         *  This let's us update config files without users' configs suddenly changing.
+         */
+        private IReadOnlyDictionary<(string, string), (string, string)> previousEntryMap = new Dictionary<(string, string), (string, string)>()
+        {
+            // Current config section & key pairs.                  Previous config section & key pairs.
+            { ("Components", "AdvancedIcons"),                      ("Components", "AdvanedIcons") },
+            { ("Misc", "AdvancedPickupNotificationsEquipment"),     ("Misc", "AdvancedPickupNotificationsEquipements") },
+            { ("Misc", "HidePickupNotificationsItems"),             ("Misc", "HidePickupNotificiationsItems") },
+            { ("Misc", "HidePickupNotificationsEquipment"),         ("Misc", "HidePickupNotificiationsEquipements") },
+            { ("Misc", "HidePickupNotificationsArtifacts"),         ("Misc", "HidePickupNotificiationsArtifacts") },
+            { ("Equipment Improvements", "ShowCooldownStacks"),     ("Equipement Improvements", "ShowCooldownStacks") },
+            { ("Equipment Improvements", "AdvancedDescriptions"),   ("Equipement Improvements", "AdvancedDescriptions") },
+            { ("Equipment Improvements", "BaseCooldown"),           ("Equipement Improvements", "BaseCooldown") },
+            { ("Equipment Improvements", "CalculatedCooldown"),     ("Equipement Improvements", "CalculatedCooldown") },
+        };
 
         public ConfigManager(BetterUI mod)
         {
@@ -161,74 +185,73 @@ namespace BetterUI
 
             // Components
 
-            ComponentsAdvancedIcons = ConfigFileComponents.Bind("Components", "AdvanedIcons", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsAdvancedIcons = Bind(ConfigFileComponents, "Components", "AdvancedIcons", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsBuffTimers = ConfigFileComponents.Bind("Components", "BuffTimers", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsBuffTimers = Bind(ConfigFileComponents, "Components", "BuffTimers", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsCommandImprovements = ConfigFileComponents.Bind("Components", "CommandImprovements", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsCommandImprovements = Bind(ConfigFileComponents, "Components", "CommandImprovements", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsDPSMeter = ConfigFileComponents.Bind("Components", "DPSMeter", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsDPSMeter = Bind(ConfigFileComponents, "Components", "DPSMeter", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsItemCounters = ConfigFileComponents.Bind("Components", "ItemCounters", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsItemCounters = Bind(ConfigFileComponents, "Components", "ItemCounters", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsItemSorting = ConfigFileComponents.Bind("Components", "ItemSorting", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsItemSorting = Bind(ConfigFileComponents, "Components", "ItemSorting", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsMisc = ConfigFileComponents.Bind("Components", "Misc", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsMisc = Bind(ConfigFileComponents, "Components", "Misc", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsStatsDisplay = ConfigFileComponents.Bind("Components", "StatsDisplay", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsStatsDisplay = Bind(ConfigFileComponents, "Components", "StatsDisplay", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
             // Misc
 
+            MiscShowHidden = Bind(ConfigFileMisc, "Misc", "ShowHidden", false, "Show hidden items in the item inventory.");
 
-            MiscShowHidden = ConfigFileMisc.Bind("Misc", "ShowHidden", false, "Show hidden items in the item inventory.");
+            MiscAdvancedPickupNotificationsItems = Bind(ConfigFileMisc, "Misc", "AdvancedPickupNotificationsItems", false, "Show advanced descriptions when picking up an item.");
 
-            MiscAdvancedPickupNotificationsItems = ConfigFileMisc.Bind("Misc", "AdvancedPickupNotificationsItems", false, "Show advanced descriptions when picking up an item.");
+            MiscAdvancedPickupNotificationsEquipements = Bind(ConfigFileMisc, "Misc", "AdvancedPickupNotificationsEquipment", false, "Show advanced descriptions when picking up equipment.");
 
-            MiscAdvancedPickupNotificationsEquipements = ConfigFileMisc.Bind("Misc", "AdvancedPickupNotificationsEquipements", false, "Show advanced descriptions when picking up equipment.");
+            MiscHidePickupNotificiationsItems = Bind(ConfigFileMisc, "Misc", "HidePickupNotificationsItems", false, "Hide pickup notifications for items.");
 
-            MiscHidePickupNotificiationsItems = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsItems", false, "Hide pickup notifications for items.");
+            MiscHidePickupNotificiationsEquipements = Bind(ConfigFileMisc, "Misc", "HidePickupNotificationsEquipment", false, "Hide pickup notifications for equipment.");
 
-            MiscHidePickupNotificiationsEquipements = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsEquipements", false, "Hide pickup notifications for equipment.");
+            MiscHidePickupNotificiationsArtifacts = Bind(ConfigFileMisc, "Misc", "HidePickupNotificationsArtifacts", false, "Hide pickup notifications for artifacts.");
 
-            MiscHidePickupNotificiationsArtifacts = ConfigFileMisc.Bind("Misc", "HidePickupNotificiationsArtifacts", false, "Hide pickup notifications for artifacts.");
+            MiscShowPickupDescription = Bind(ConfigFileMisc, "Misc", "ShowPickupDescription", true, "Show the item description on the interaction pop-up.");
 
-            MiscShowPickupDescription = ConfigFileMisc.Bind("Misc", "ShowPickupDescription", true, "Show the item description on the interaction pop-up.");
-
-            MiscPickupDescriptionAdvanced = ConfigFileMisc.Bind("Misc", "PickupDescriptionAdvanced", false, "Show advanced descriptions for the interaction pop-up.");
+            MiscPickupDescriptionAdvanced = Bind(ConfigFileMisc, "Misc", "PickupDescriptionAdvanced", false, "Show advanced descriptions for the interaction pop-up.");
 
             // Advanced Icons
 
-            AdvancedIconsItemAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
+            AdvancedIconsItemAdvancedDescriptions = Bind(ConfigFileAdvancedIcons, "Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
 
-            AdvancedIconsItemItemStatsIntegration = ConfigFileAdvancedIcons.Bind("Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable.");
+            AdvancedIconsItemItemStatsIntegration = Bind(ConfigFileAdvancedIcons, "Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable.");
 
-            AdvancedIconsEquipementShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipment when charging multiple stacks.");
+            AdvancedIconsEquipementShowCooldownStacks = Bind(ConfigFileAdvancedIcons, "Equipment Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipment when charging multiple stacks.");
 
-            AdvancedIconsEquipementAdvancedDescriptions = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over equipment.");
+            AdvancedIconsEquipementAdvancedDescriptions = Bind(ConfigFileAdvancedIcons, "Equipment Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over equipment.");
 
-            AdvancedIconsEquipementShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over equipment.");
+            AdvancedIconsEquipementShowBaseCooldown = Bind(ConfigFileAdvancedIcons, "Equipment Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over equipment.");
 
-            AdvancedIconsEquipementShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Equipement Improvements", "CalculatedCooldown", true, "Show the calculated cooldown based on your items when hovering over equipment.");
+            AdvancedIconsEquipementShowCalculatedCooldown = Bind(ConfigFileAdvancedIcons, "Equipment Improvements", "CalculatedCooldown", true, "Show the calculated cooldown based on your items when hovering over equipment.");
 
-            AdvancedIconsSkillShowCooldownStacks = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowCooldownStacks", true, "Show the cooldown for skills when charging multiple stacks.");
+            AdvancedIconsSkillShowCooldownStacks = Bind(ConfigFileAdvancedIcons, "Skill Improvements", "ShowCooldownStacks", true, "Show the cooldown for skills when charging multiple stacks.");
 
-            AdvancedIconsSkillShowBaseCooldown = ConfigFileAdvancedIcons.Bind("Skill Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over a skill.");
+            AdvancedIconsSkillShowBaseCooldown = Bind(ConfigFileAdvancedIcons, "Skill Improvements", "BaseCooldown", true, "Show the base cooldown when hovering over a skill.");
 
-            AdvancedIconsSkillShowCalculatedCooldown = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculatedCooldown", true, "Show the calculated cooldown based on your items when hovering over a skill.");
+            AdvancedIconsSkillShowCalculatedCooldown = Bind(ConfigFileAdvancedIcons, "Skill Improvements", "CalculatedCooldown", true, "Show the calculated cooldown based on your items when hovering over a skill.");
 
-            AdvancedIconsSkillShowProcCoefficient = ConfigFileAdvancedIcons.Bind("Skill Improvements", "ShowProcCoefficient", true, "Show the proc coefficient when hovering over a skill.");
+            AdvancedIconsSkillShowProcCoefficient = Bind(ConfigFileAdvancedIcons, "Skill Improvements", "ShowProcCoefficient", true, "Show the proc coefficient when hovering over a skill.");
 
-            AdvancedIconsSkillCalculateSkillProcEffects = ConfigFileAdvancedIcons.Bind("Skill Improvements", "CalculateProcEffects", true, "Show the proc coefficient of a skill after applying item effects.");
+            AdvancedIconsSkillCalculateSkillProcEffects = Bind(ConfigFileAdvancedIcons, "Skill Improvements", "CalculateProcEffects", true, "Show the proc coefficient of a skill after applying item effects.");
 
             // Buffs
 
-            BuffTimers = ConfigFileBuffs.Bind("Buffs", "BuffTimers", true, "Show buff timers (host only).");
+            BuffTimers = Bind(ConfigFileBuffs, "Buffs", "BuffTimers", true, "Show buff timers (host only).");
 
-            BuffTimersDecimal = ConfigFileBuffs.Bind("Buffs", "BuffTimersDecimal", true, "Show 1 decimal point when timer is below 10.");
+            BuffTimersDecimal = Bind(ConfigFileBuffs, "Buffs", "BuffTimersDecimal", true, "Show 1 decimal point when timer is below 10.");
 
-            BuffTooltips = ConfigFileBuffs.Bind("Buffs", "BuffTooltips", true, "Show buff tooltips.");
+            BuffTooltips = Bind(ConfigFileBuffs, "Buffs", "BuffTooltips", true, "Show buff tooltips.");
 
-            BuffTimersPosition = ConfigFileBuffs.Bind("Buffs", "CountersPosition", "TopRight",
+            BuffTimersPosition = Bind(ConfigFileBuffs, "Buffs", "CountersPosition", "TopRight",
                "Location of buff timer text.\n" +
                "Valid options:\n" +
                "TopLeft\n" +
@@ -239,31 +262,31 @@ namespace BetterUI
 
             BuffTimersTextAlignmentOption = (TMPro.TextAlignmentOptions)Enum.Parse(typeof(TMPro.TextAlignmentOptions), BuffTimersPosition.Value, true);
 
-            BuffTimersFontSize = ConfigFileBuffs.Bind("Buffs", "CountersFontSize", 23f, "Size of the buff timer text.");
+            BuffTimersFontSize = Bind(ConfigFileBuffs, "Buffs", "CountersFontSize", 23f, "Size of the buff timer text.");
 
             // Command / Scrapper Improvements
 
-            CommandResizeCommandWindow = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "ResizeCommandWindow", true, "Resize the command window depending on the number of items.");
+            CommandResizeCommandWindow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "ResizeCommandWindow", true, "Resize the command window depending on the number of items.");
 
-            CommandRemoveBackgroundBlur = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "RemoveBackgroundBlur", true, "Remove the blur behind the command window that hides the rest of the UI.");
+            CommandRemoveBackgroundBlur = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "RemoveBackgroundBlur", true, "Remove the blur behind the command window that hides the rest of the UI.");
 
-            CommandCloseOnEscape = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CloseOnEscape", true, "Close the command/scrapper window when you press escape.");
+            CommandCloseOnEscape = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CloseOnEscape", true, "Close the command/scrapper window when you press escape.");
 
-            CommandCloseOnWASD = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CloseOnWASD", true, "Close the command/scrapper window when you press W, A, S, or D.");
+            CommandCloseOnWASD = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CloseOnWASD", true, "Close the command/scrapper window when you press W, A, S, or D.");
 
-            CommandCloseOnCustom = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CloseOnCustom", "", "Close the command/scrapper window when you press the key selected here.\n" +
+            CommandCloseOnCustom = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CloseOnCustom", "", "Close the command/scrapper window when you press the key selected here.\n" +
                 "Example: space\n" +
                 "Must be lowercase. Leave blank to disable.");
 
-            CommandTooltipsShow = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "TooltipsShow", true, "Show tooltips in the command and scrapper windows.");
+            CommandTooltipsShow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "TooltipsShow", true, "Show tooltips in the command and scrapper windows.");
 
-            CommandTooltipsItemStatsBeforeAfter = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "TooltipsItemStatsBeforeAfter", true, "If ItemStatsMod is installed, show the stats before and after picking up the item.");
+            CommandTooltipsItemStatsBeforeAfter = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "TooltipsItemStatsBeforeAfter", true, "If ItemStatsMod is installed, show the stats before and after picking up the item.");
 
-            CommandCountersShow = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersShow", true, "Show counters in the command and scrapper windows.");
+            CommandCountersShow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersShow", true, "Show counters in the command and scrapper windows.");
 
-            CommandCountersHideOnZero = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersHideOnZero", false, "Hide counters when they are zero.");
+            CommandCountersHideOnZero = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersHideOnZero", false, "Hide counters when they are zero.");
 
-            CommandCountersPosition = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersPosition", "TopRight",
+            CommandCountersPosition = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersPosition", "TopRight",
                 "Location of the command item counter.\n" +
                 "Valid options:\n" +
                 "TopLeft\n" +
@@ -274,66 +297,66 @@ namespace BetterUI
 
             CommandCountersTextAlignmentOption = (TMPro.TextAlignmentOptions)Enum.Parse(typeof(TMPro.TextAlignmentOptions), CommandCountersPosition.Value, true);
 
-            CommandCountersFontSize = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersFontSize", 20f, "Size of the command item counter text.");
+            CommandCountersFontSize = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersFontSize", 20f, "Size of the command item counter text.");
 
-            CommandCountersPrefix = ConfigFileCommandImprovements.Bind("Command / Scrapper Improvements", "CountersPrefix", "x", "Prefix for the command item counter. Example 'x' will show x0, x1, x2, etc.\nCan be empty.");
+            CommandCountersPrefix = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersPrefix", "x", "Prefix for the command item counter. Example 'x' will show x0, x1, x2, etc.\nCan be empty.");
 
             // DPSMeter
 
-            DPSMeterTimespan = ConfigFileDPSMeter.Bind("DPSMeter", "Timespan", 5f, "Calculate DPS across this many seconds.");
+            DPSMeterTimespan = Bind(ConfigFileDPSMeter, "DPSMeter", "Timespan", 5f, "Calculate DPS across this many seconds.");
 
-            DPSMeterWindowShow = ConfigFileDPSMeter.Bind("DPSMeter", "WindowShow", true, "Show a dedicated DPSMeter.");
+            DPSMeterWindowShow = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowShow", true, "Show a dedicated DPSMeter.");
 
-            DPSMeterWindowIncludeMinions = ConfigFileDPSMeter.Bind("DPSMeter", "WindowIncludeMinions", true, "Include minions such as turrets and drones in the DPS meter.");
+            DPSMeterWindowIncludeMinions = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowIncludeMinions", true, "Include minions such as turrets and drones in the DPS meter.");
 
-            DPSMeterWindowBackground = ConfigFileDPSMeter.Bind("DPSMeter", "WindowBackground", true, "Whether or not the DPS window should have a background.");
+            DPSMeterWindowBackground = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowBackground", true, "Whether or not the DPS window should have a background.");
 
-            DPSMeterWindowAnchorMin = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAnchorMin", new Vector2(0, 0),
+            DPSMeterWindowAnchorMin = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowAnchorMin", new Vector2(0, 0),
                 "Screen position the lower left window corner is anchored to.\n" +
                 "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
                 "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            DPSMeterWindowAnchorMax = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAnchorMax", new Vector2(0, 0f),
+            DPSMeterWindowAnchorMax = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowAnchorMax", new Vector2(0, 0f),
                 "Screen position the upper right window corner is anchored to.\n" +
                 "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
                 "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            DPSMeterWindowPosition = ConfigFileDPSMeter.Bind("DPSMeter", "WindowPosition", new Vector2(120, 240), "Position of the DPSMeter window relative to the anchor.");
+            DPSMeterWindowPosition = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowPosition", new Vector2(120, 240), "Position of the DPSMeter window relative to the anchor.");
 
-            DPSMeterWindowPivot = ConfigFileDPSMeter.Bind("DPSMeter", "WindowPivot", new Vector2(0, 1), "Pivot of the DPSMeter window.\n" +
+            DPSMeterWindowPivot = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowPivot", new Vector2(0, 1), "Pivot of the DPSMeter window.\n" +
                 "Window Position is from the anchor to the pivot.");
 
-            DPSMeterWindowSize = ConfigFileDPSMeter.Bind("DPSMeter", "WindowSize", new Vector2(350, 45), "Size of the DPSMeter window.");
+            DPSMeterWindowSize = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowSize", new Vector2(350, 45), "Size of the DPSMeter window.");
 
-            DPSMeterWindowAngle = ConfigFileDPSMeter.Bind("DPSMeter", "WindowAngle", new Vector3(0, -6, 0), "Angle of the DPSMeter window.");
+            DPSMeterWindowAngle = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowAngle", new Vector3(0, -6, 0), "Angle of the DPSMeter window.");
 
             // ItemCounters
 
-            ItemCountersShowItemCounters = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemCounters", true, "Enable/Disable ItemCounters entirely.");
+            ItemCountersShowItemCounters = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemCounters", true, "Enable/Disable ItemCounters entirely.");
 
-            ItemCountersShowItemScore = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemScore", true, "Show your item score.");
+            ItemCountersShowItemScore = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemScore", true, "Show your item score.");
 
-            ItemCountersItemScoreFromTier = ConfigFileItemCounters.Bind("ItemCounters", "ItemScoreFromTier", true, "Whether or not the ItemScore should be based on tier. If disabled, the per-item settings will be used.");
+            ItemCountersItemScoreFromTier = Bind(ConfigFileItemCounters, "ItemCounters", "ItemScoreFromTier", true, "Whether or not the ItemScore should be based on tier. If disabled, the per-item settings will be used.");
 
-            ItemCountersShowItemSum = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
+            ItemCountersShowItemSum = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
 
-            ItemCountersItemSumTiersString = ConfigFileItemCounters.Bind("ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            ItemCountersItemSumTiersString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
 
             ItemCountersItemSumTiers = ItemCountersItemSumTiersString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
 
-            ItemCountersShowItemsByTier = ConfigFileItemCounters.Bind("ItemCounters", "ShowItemsByTier", true, "Show how many items you have, by tier.");
+            ItemCountersShowItemsByTier = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemsByTier", true, "Show how many items you have, by tier.");
 
-            ItemCountersItemsByTierOrderString = ConfigFileItemCounters.Bind("ItemCounters", "ItemsByTierOrderString", "43210", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            ItemCountersItemsByTierOrderString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemsByTierOrderString", "43210", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
 
             ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
-            ItemCountersTierScoreTier1 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier1", 1, "Score for Tier 1 items.");
-            ItemCountersTierScoreTier2 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier2", 3, "Score for Tier 2 items.");
-            ItemCountersTierScoreTier3 = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Tier3", 12, "Score for Tier 3 items.");
-            ItemCountersTierScoreLunar = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Lunar", 0, "Score for Lunar items.");
-            ItemCountersTierScoreBoss = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "Boss", 4, "Score for Boss items.");
-            ItemCountersTierScoreNoTier = ConfigFileItemCounters.Bind("ItemCounters Tier Score", "NoTier", 0, "Score for items without a tier.");
+            ItemCountersTierScoreTier1 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier1", 1, "Score for Tier 1 items.");
+            ItemCountersTierScoreTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier2", 3, "Score for Tier 2 items.");
+            ItemCountersTierScoreTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier3", 12, "Score for Tier 3 items.");
+            ItemCountersTierScoreLunar = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Lunar", 0, "Score for Lunar items.");
+            ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4, "Score for Boss items.");
+            ItemCountersTierScoreNoTier = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "NoTier", 0, "Score for items without a tier.");
 
             ItemCountersTierScores = new int[]
             {
@@ -351,9 +374,9 @@ namespace BetterUI
 
             // StatsDisplay
 
-            StatsDisplayEnable = ConfigFileStatsDisplay.Bind("StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
+            StatsDisplayEnable = Bind(ConfigFileStatsDisplay, "StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
 
-            StatsDisplayStatString = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatString",
+            StatsDisplayStatString = Bind(ConfigFileStatsDisplay, "StatsDisplay", "StatString",
                 "<color=#FFFFFF>" +
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
@@ -378,7 +401,7 @@ namespace BetterUI
                 "$mountainshrines\n" +
                 "$blueportal $goldportal $celestialportal");
 
-            StatsDisplayStatStringCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "StatStringCustomBind",
+            StatsDisplayStatStringCustomBind = Bind(ConfigFileStatsDisplay, "StatsDisplay", "StatStringCustomBind",
                 "<color=#FFFFFF>" +
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
@@ -398,47 +421,47 @@ namespace BetterUI
                 "Celestial Portal: $celestialportal\n",
                 "StatDisplay string to show when the custom bind is being pressed. This can be the same or different from the normal StatString.");
 
-            StatsDisplayCustomBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "CustomBind", "tab", "Bind to show secondary StatsDisplay string.\n" +
+            StatsDisplayCustomBind = Bind(ConfigFileStatsDisplay, "StatsDisplay", "CustomBind", "tab", "Bind to show secondary StatsDisplay string.\n" +
                 "Example: space\n" +
                 "Must be lowercase. Leave blank to disable.");
 
-            StatsDisplayShowCustomBindOnly = ConfigFileStatsDisplay.Bind("StatsDisplay", "ShowCustomBindOnly", false, "Only show the StatsDisplay when the scoreboard is open.");
+            StatsDisplayShowCustomBindOnly = Bind(ConfigFileStatsDisplay, "StatsDisplay", "ShowCustomBindOnly", false, "Only show the StatsDisplay when the scoreboard is open.");
 
-            StatsDisplayToggleOnBind = ConfigFileStatsDisplay.Bind("StatsDisplay", "ToggleOnBind", false, "Toggle the StatsDisplay when the bind is pressed rather than showing it when it is held.");
+            StatsDisplayToggleOnBind = Bind(ConfigFileStatsDisplay, "StatsDisplay", "ToggleOnBind", false, "Toggle the StatsDisplay when the bind is pressed rather than showing it when it is held.");
 
-            StatsDisplayPanelBackground = ConfigFileStatsDisplay.Bind("StatsDisplay", "PanelBackground", true, "Whether or not the StatsDisplay panel should have a background.");
+            StatsDisplayPanelBackground = Bind(ConfigFileStatsDisplay, "StatsDisplay", "PanelBackground", true, "Whether or not the StatsDisplay panel should have a background.");
 
-            StatsDisplayAttachToObjectivePanel = ConfigFileStatsDisplay.Bind("StatsDisplay", "AttachToObjectivePanel", true, "Whether to attach the stats display to the objective panel.\n" +
+            StatsDisplayAttachToObjectivePanel = Bind(ConfigFileStatsDisplay, "StatsDisplay", "AttachToObjectivePanel", true, "Whether to attach the stats display to the objective panel.\n" +
                 "If not, it will be a free-floating window that can be moved with the options below.");
 
-            StatsDisplayWindowAnchorMin = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAnchorMin", new Vector2(1, 0.5f),
+            StatsDisplayWindowAnchorMin = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowAnchorMin", new Vector2(1, 0.5f),
                 "Screen position the lower left window corner is anchored to.\n" +
                 "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
                 "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            StatsDisplayWindowAnchorMax = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAnchorMax", new Vector2(1, 0.5f),
+            StatsDisplayWindowAnchorMax = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowAnchorMax", new Vector2(1, 0.5f),
                 "Screen position the upper right window corner is anchored to.\n" +
                 "X & Y can be any number from 0.0 to 1.0 (inclusive).\n" +
                 "Screen position starts at the bottom-left (0.0, 0.0) and increases toward the top-right (1.0, 1.0).");
 
-            StatsDisplayWindowPosition = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowPosition", new Vector2(-210, 100), "Position of the StatsDisplay window relative to the anchor.");
+            StatsDisplayWindowPosition = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowPosition", new Vector2(-210, 100), "Position of the StatsDisplay window relative to the anchor.");
 
-            StatsDisplayWindowPivot = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowPivot", new Vector2(0, 0.5f), "Pivot of the StatsDisplay window.\n" +
+            StatsDisplayWindowPivot = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowPivot", new Vector2(0, 0.5f), "Pivot of the StatsDisplay window.\n" +
                 "Window Position is from the anchor to the pivot.");
 
-            StatsDisplayWindowSize = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowSize", new Vector2(200, 600), "Size of the StatsDisplay window.");
+            StatsDisplayWindowSize = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowSize", new Vector2(200, 600), "Size of the StatsDisplay window.");
 
-            StatsDisplayWindowAngle = ConfigFileStatsDisplay.Bind("StatsDisplay", "WindowAngle", new Vector3(0, 6, 0), "Angle of the StatsDisplay window.");
+            StatsDisplayWindowAngle = Bind(ConfigFileStatsDisplay, "StatsDisplay", "WindowAngle", new Vector3(0, 6, 0), "Angle of the StatsDisplay window.");
 
             // Sorting
 
-            SortingSortItemsInventory = ConfigFileSorting.Bind("Sorting", "SortItemsInventory", true, "Sort items in the inventory and scoreboard.");
+            SortingSortItemsInventory = Bind(ConfigFileSorting, "Sorting", "SortItemsInventory", true, "Sort items in the inventory and scoreboard.");
 
-            SortingSortItemsCommand = ConfigFileSorting.Bind("Sorting", "SortItemsCommand", true, "Sort items in the command window.");
+            SortingSortItemsCommand = Bind(ConfigFileSorting, "Sorting", "SortItemsCommand", true, "Sort items in the command window.");
 
-            SortingSortItemsScrapper = ConfigFileSorting.Bind("Sorting", "SortItemsScrapper", true, "Sort items in the scrapper window.");
+            SortingSortItemsScrapper = Bind(ConfigFileSorting, "Sorting", "SortItemsScrapper", true, "Sort items in the scrapper window.");
 
-            SortingTierOrderString = ConfigFileSorting.Bind("Sorting", "TierOrder", "012345", "Tiers in ascending order, left to right.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            SortingTierOrderString = Bind(ConfigFileSorting, "Sorting", "TierOrder", "012345", "Tiers in ascending order, left to right.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
 
             SortingTierOrder = new int[]
             {
@@ -450,7 +473,7 @@ namespace BetterUI
                 SortingTierOrderString.Value.IndexOf('5'),
             };
 
-            SortingSortOrder = ConfigFileSorting.Bind("Sorting", "SortOrder", "S134",
+            SortingSortOrder = Bind(ConfigFileSorting, "Sorting", "SortOrder", "S134",
                     "What to sort the items by, most important to least important.\n" +
                     "Find the full details and an example in the Readme on Thunderstore/Github.\n" +
                     "0 = Tier Ascending\n" +
@@ -481,14 +504,44 @@ namespace BetterUI
                     "p = Sprint Related First\n" +
                     "P = Sprint Related Last");
 
-            SortingSortOrderCommand = ConfigFileSorting.Bind("Sorting", "SortOrderCommand", "6",
+            SortingSortOrderCommand = Bind(ConfigFileSorting, "Sorting", "SortOrderCommand", "6",
             "Sort order for the command window.\n" +
             "The command window has a special sort option \"C\" which will place the last selected item in the middle.\n" +
             "Note: This option must be the last one in the SortOrderCommand option.");
 
-            SortingSortOrderScrapper = ConfigFileSorting.Bind("Sorting", "SortOrderScrapper", "134",
+            SortingSortOrderScrapper = Bind(ConfigFileSorting, "Sorting", "SortOrderScrapper", "134",
             "Sort order for the scrapper window.");
 
+        }
+
+        /// <summary>
+        /// Automatically transfers the value of old config entries to new config entries based on
+        /// <see cref="previousEntryMap"/>. Old config entries are deleted after their value has
+        /// been transferred.<br/>
+        /// Wraps <see cref="ConfigFile.Bind{T}(string, string, T, string)"/>.
+        /// </summary>
+        /// <param name="config">File containing the config entry..</param>
+        /// <param name="section">Section/category/group of the setting. Settings are grouped by this.</param>
+        /// <param name="key">Name of the setting.</param>
+        /// <param name="defaultValue">Value of the setting if the setting was not created yet.</param>
+        /// <param name="description">Simple description of the setting shown to the user.</param>
+        /// <typeparam name="T">Type of the value contained in this setting.</typeparam>
+        private ConfigEntry<T> Bind<T>(ConfigFile config, string section, string key, T defaultValue, string description)
+        {
+            var currentEntry = config.Bind(section, key, defaultValue, description);
+
+            if (this.previousEntryMap.ContainsKey((section, key)))
+            {
+                var previousTuple = this.previousEntryMap[(section, key)];
+                var previousDefinition = new ConfigDefinition(previousTuple.Item1, previousTuple.Item2);
+                // ConfigFile has to Bind to a Section + Key before it knows that it's in the file.
+                var previousEntry = config.Bind(previousDefinition, defaultValue, new ConfigDescription(description));
+                // Let ConfigBaseEntry deal with type parsing.
+                currentEntry.SetSerializedValue(previousEntry.GetSerializedValue());
+                config.Remove(previousDefinition);
+            }
+
+            return currentEntry;
         }
     }
 }
