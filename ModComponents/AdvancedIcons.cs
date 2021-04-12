@@ -190,14 +190,13 @@ namespace BetterUI
                             }
                             if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                             {
-                                foreach (var item in ProcItemsCatalog.GetAllItems())
+                                foreach (var item in ProcItemsCatalog.items)
                                 {
-                                    int stacks = self.targetSkill.characterBody.inventory.itemStacks[(int)item.Key];
+                                    int stacks = self.targetSkill.characterBody.inventory.GetItemCount(item.Key);
                                     if (stacks > 0)
                                     {
-                                        ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
                                         BetterUI.sharedStringBuilder.Append("\n  ");
-                                        BetterUI.sharedStringBuilder.Append(Language.GetString(itemDef.nameToken));
+                                        BetterUI.sharedStringBuilder.Append(Language.GetString(item.Key.nameToken));
                                         BetterUI.sharedStringBuilder.Append(": ");
                                         BetterUI.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
                                     }
@@ -262,10 +261,10 @@ namespace BetterUI
                     }
                     if (inventory)
                     {
-                        float reduction = (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("EquipmentMagazine")]);
-                        if (inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] > 0)
+                        float reduction = (float)Math.Pow(0.85, inventory.GetItemCount(RoR2.RoR2Content.Items.EquipmentMagazine));
+                        if (inventory.GetItemCount(RoR2.RoR2Content.Items.AutoCastEquipment.itemIndex) > 0)
                         {
-                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] - 1);
+                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.GetItemCount(RoR2.RoR2Content.Items.AutoCastEquipment.itemIndex) - 1);
                         }
                         if (reduction < 1)
                         {

@@ -151,6 +151,16 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.0.3
+ - Bugfix: AdvanvedIcons: No longer breaks when bad items are added.
+ - ModCompat: AdvancedIcons: Now accepts ItemDefs as well.
+
+#### v2.0.2
+ - Depend on MMHOOK Standalone instead of shipping own MMHOOK.
+
+#### v2.0.1
+ - Bugfix: Stopped R2API from adding BetterUI to the networkModList
+
 ## v2.0.0
  - No longer requires R2API
  - Anniversary Update: Added Proc coefficient values for new Character, Items & Item changes.

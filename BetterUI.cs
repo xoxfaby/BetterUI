@@ -8,7 +8,7 @@ using BepInEx;
 namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.0.0.6")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.0.3.1")]
     public class BetterUI : BaseUnityPlugin
     {
         internal ConfigManager config;
