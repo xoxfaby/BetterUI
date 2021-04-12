@@ -42,6 +42,9 @@
       <HintPath>..\Libs\BepInEx.Preloader.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="HGCSharpUtils">
+      <HintPath>..\Libs\HGCSharpUtils.dll</HintPath>
+    </Reference>
     <Reference Include="ItemStats">
       <HintPath>..\Libs\ItemStats.dll</HintPath>
       <Private>false</Private>

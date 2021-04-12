@@ -151,6 +151,9 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.0.4
+ - Bugfix: Fixed command/scrapper not working after new update.
+
 #### v2.0.3
  - Bugfix: AdvanvedIcons: No longer breaks when bad items are added.
  - ModCompat: AdvancedIcons: Now accepts ItemDefs as well.
