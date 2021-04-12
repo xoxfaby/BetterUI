@@ -23,7 +23,7 @@
       <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\Libs\Assembly-CSharp-Release.publicized.dll</HintPath>
+      <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="BepInEx">
