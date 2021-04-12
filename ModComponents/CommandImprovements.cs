@@ -37,11 +37,20 @@ namespace BetterUI
 
         internal override void Start()
         {
-            var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
-            optionMap = new int[maxOptions];
-            optionMap[0] = -1;
-            availableIndex = new bool[maxOptions];
-            sortedOptions = new PickupPickerController.Option[maxOptions];
+            ItemCatalog.availability.CallWhenAvailable(Init);
+            EquipmentCatalog.availability.CallWhenAvailable(Init);
+        }
+
+        private void Init()
+        {
+            if(ItemCatalog.availability.available && EquipmentCatalog.availability.available)
+            {
+                var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
+                optionMap = new int[maxOptions];
+                optionMap[0] = -1;
+                availableIndex = new bool[maxOptions];
+                sortedOptions = new PickupPickerController.Option[maxOptions];
+            }
         }
 
         private PickupPickerPanel currentPanel;
