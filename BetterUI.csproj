@@ -49,10 +49,6 @@
       <HintPath>..\Libs\ItemStats.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>..\Libs\MMHOOK_Assembly-CSharp.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\Libs\Mono.Cecil.dll</HintPath>
       <Private>false</Private>

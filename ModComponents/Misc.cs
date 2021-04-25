@@ -6,38 +6,37 @@ using RoR2;
 
 namespace BetterUI
 {
-    class Misc : BetterUI.ModComponent
+    static class Misc
     {
-        internal Misc(BetterUI mod) : base(mod) { }
-        internal override void Hook()
+        internal static void Hook()
         {
-            if (mod.config.MiscHidePickupNotificiationsArtifacts.Value)
+            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsArtifacts.Value)
             {
-                On.RoR2.UI.GenericNotification.SetArtifact += GenericNotification_SetArtifact;
+                HookManager.Add<RoR2.UI.GenericNotification, ArtifactDef>( "SetArtifact", GenericNotification_SetArtifact );
             }
-            if (mod.config.MiscAdvancedPickupNotificationsEquipements.Value ||
-                mod.config.MiscHidePickupNotificiationsEquipements.Value)
+            if (BetterUIPlugin.instance.config.MiscAdvancedPickupNotificationsEquipements.Value ||
+                BetterUIPlugin.instance.config.MiscHidePickupNotificiationsEquipements.Value)
             {
-                On.RoR2.UI.GenericNotification.SetEquipment += GenericNotification_SetEquipment;
+                HookManager.Add<RoR2.UI.GenericNotification, EquipmentDef>( "SetEquipment", GenericNotification_SetEquipment );
             }
-            if (mod.config.MiscAdvancedPickupNotificationsItems.Value ||
-                mod.config.MiscHidePickupNotificiationsItems.Value)
+            if (BetterUIPlugin.instance.config.MiscAdvancedPickupNotificationsItems.Value ||
+                BetterUIPlugin.instance.config.MiscHidePickupNotificiationsItems.Value)
             {
-                On.RoR2.UI.GenericNotification.SetItem += GenericNotification_SetItem;
+                HookManager.Add<RoR2.UI.GenericNotification, ItemDef>( "SetItem", GenericNotification_SetItem );
             }
 
-            if (mod.config.MiscShowHidden.Value)
+            if (BetterUIPlugin.instance.config.MiscShowHidden.Value)
             {
-                On.RoR2.UI.ItemInventoryDisplay.ItemIsVisible += ItemInventoryDisplay_ItemIsVisible;
+                HookManager.Add<RoR2.UI.ItemInventoryDisplay>( "ItemIsVisible", (ItemInventoryDisplay_ItemIsVisible_Delegate) ItemInventoryDisplay_ItemIsVisible);
             }
-            if (mod.config.MiscShowPickupDescription.Value)
+            if (BetterUIPlugin.instance.config.MiscShowPickupDescription.Value)
             {
-                On.RoR2.UI.ContextManager.Awake += ContextManager_Awake;
-                On.RoR2.GenericPickupController.GetContextString += GenericPickupController_GetContextString;
+                HookManager.Add<RoR2.UI.ContextManager>( "Awake", ContextManager_Awake );
+                HookManager.Add<RoR2.GenericPickupController>( "GetContextString", (GenericPickupController_GetContextString_Delegate) GenericPickupController_GetContextString );
             }
         }
 
-        internal void ContextManager_Awake(On.RoR2.UI.ContextManager.orig_Awake orig, RoR2.UI.ContextManager self)
+        internal static void ContextManager_Awake(Action<RoR2.UI.ContextManager> orig, RoR2.UI.ContextManager self)
         {
             var Description = self.gameObject.transform.Find("ContextDisplay/Description");
             var textMesh = Description.gameObject.GetComponent<RoR2.UI.HGTextMeshProUGUI>();
@@ -48,52 +47,54 @@ namespace BetterUI
             textMesh.alignment = TMPro.TextAlignmentOptions.TopLeft;
             orig(self);
         }
-        internal string GenericPickupController_GetContextString(On.RoR2.GenericPickupController.orig_GetContextString orig, GenericPickupController self, Interactor activator)
+        internal delegate string GenericPickupController_GetContextString_Delegate(Func<RoR2.GenericPickupController, Interactor, string> orig, GenericPickupController self, Interactor activator);
+        internal static string GenericPickupController_GetContextString(Func<RoR2.GenericPickupController, Interactor, string> orig, GenericPickupController self, Interactor activator)
         {
             PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickupIndex);
             string pickupText = string.Format(Language.GetString(((pickupDef != null) ? pickupDef.interactContextToken : null) ?? string.Empty), Language.GetString(pickupDef.nameToken));
             if (pickupDef.itemIndex != ItemIndex.None)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-                pickupText += $"\n\n{Language.GetString( mod.config.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
+                pickupText += $"\n\n{Language.GetString( BetterUIPlugin.instance.config.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
             }
             else if (pickupDef.equipmentIndex != EquipmentIndex.None)
             {
                 EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
-                pickupText += $"\n\n{Language.GetString(mod.config.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
+                pickupText += $"\n\n{Language.GetString(BetterUIPlugin.instance.config.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
             }
             return pickupText;
         }
-        internal bool ItemInventoryDisplay_ItemIsVisible(On.RoR2.UI.ItemInventoryDisplay.orig_ItemIsVisible orig, ItemIndex itemIndex)
+        internal delegate bool ItemInventoryDisplay_ItemIsVisible_Delegate(Func<ItemIndex, bool> orig, ItemIndex itemIndex);
+        internal static bool ItemInventoryDisplay_ItemIsVisible(Func<ItemIndex, bool> orig, ItemIndex itemIndex)
         {
             return true;
         }
-        internal void GenericNotification_SetArtifact(On.RoR2.UI.GenericNotification.orig_SetArtifact orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
+        internal static void GenericNotification_SetArtifact(Action<RoR2.UI.GenericNotification, ArtifactDef> orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
         {
-            if (mod.config.MiscHidePickupNotificiationsArtifacts.Value)
+            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsArtifacts.Value)
             {
-                BetterUI.Destroy(self.gameObject);
+                UnityEngine.Object.Destroy(self.gameObject);
                 return;
             }
             orig(self, artifactDef);
 
         }
-        internal void GenericNotification_SetEquipment(On.RoR2.UI.GenericNotification.orig_SetEquipment orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
+        internal static void GenericNotification_SetEquipment(Action<RoR2.UI.GenericNotification, EquipmentDef> orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
         {
-            if (mod.config.MiscHidePickupNotificiationsEquipements.Value)
+            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsEquipements.Value)
             {
-                BetterUI.Destroy(self.gameObject);
+                UnityEngine.Object.Destroy(self.gameObject);
                 return;
             }
             orig(self, equipmentDef);
 
             self.descriptionText.token = equipmentDef.descriptionToken;
         }
-        internal void GenericNotification_SetItem(On.RoR2.UI.GenericNotification.orig_SetItem orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
+        internal static void GenericNotification_SetItem(Action<RoR2.UI.GenericNotification, ItemDef> orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
         {
-            if (mod.config.MiscHidePickupNotificiationsItems.Value)
+            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsItems.Value)
             {
-                BetterUI.Destroy(self.gameObject);
+                UnityEngine.Object.Destroy(self.gameObject);
                 return;
             }
             orig(self, itemDef);

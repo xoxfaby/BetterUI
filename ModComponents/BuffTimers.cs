@@ -8,26 +8,24 @@ using RoR2;
 
 namespace BetterUI
 {
-    class BuffTimers : BetterUI.ModComponent
+    static class BuffTimers
     {
-        IEnumerable<CharacterBody.TimedBuff> timedBuffs;
-        CharacterBody.TimedBuff thisBuff;
-        public BuffTimers(BetterUI mod) : base(mod){ }
-
-        internal override void Hook()
+        static IEnumerable<CharacterBody.TimedBuff> timedBuffs;
+        static CharacterBody.TimedBuff thisBuff;
+        internal static void Hook()
         {
-            if (mod.config.BuffTimers.Value || mod.config.BuffTooltips.Value)
+            if (BetterUIPlugin.instance.config.BuffTimers.Value || BetterUIPlugin.instance.config.BuffTooltips.Value)
             {
-                On.RoR2.UI.BuffIcon.Awake += mod.buffTimers.BuffIcon_Awake;
-                On.RoR2.UI.BuffIcon.UpdateIcon += mod.buffTimers.BuffIcon_UpdateIcon;
+                HookManager.Add<RoR2.UI.BuffIcon>("Awake", BuffIcon_Awake);
+                HookManager.Add<RoR2.UI.BuffIcon>("UpdateIcon", BuffIcon_UpdateIcon);
             }
         }
-        internal void BuffIcon_Awake(On.RoR2.UI.BuffIcon.orig_Awake orig, RoR2.UI.BuffIcon self)
+        internal static void BuffIcon_Awake(Action<RoR2.UI.BuffIcon> orig, RoR2.UI.BuffIcon self)
         {
             orig(self);
             if (self.transform.parent.name == "BuffDisplayRoot")
             {
-                if (mod.config.BuffTooltips.Value)
+                if (BetterUIPlugin.instance.config.BuffTooltips.Value)
                 {
                     UnityEngine.UI.GraphicRaycaster raycaster = self.transform.parent.GetComponent<UnityEngine.UI.GraphicRaycaster>();
                     if (raycaster == null)
@@ -36,7 +34,7 @@ namespace BetterUI
                     }
                     self.gameObject.AddComponent<RoR2.UI.TooltipProvider>();
                 }
-                if (mod.config.BuffTimers.Value)
+                if (BetterUIPlugin.instance.config.BuffTimers.Value)
                 {
                     GameObject TimerText = new GameObject("TimerText");
                     RectTransform timerRect = TimerText.AddComponent<RectTransform>();
@@ -44,8 +42,8 @@ namespace BetterUI
                     TimerText.transform.SetParent(self.transform);
 
                     timerTextMesh.enableWordWrapping = false;
-                    timerTextMesh.alignment = mod.config.BuffTimersTextAlignmentOption;
-                    timerTextMesh.fontSize = mod.config.BuffTimersFontSize.Value;
+                    timerTextMesh.alignment = BetterUIPlugin.instance.config.BuffTimersTextAlignmentOption;
+                    timerTextMesh.fontSize = BetterUIPlugin.instance.config.BuffTimersFontSize.Value;
                     timerTextMesh.faceColor = Color.white;
                     timerTextMesh.text = "";
 
@@ -59,32 +57,32 @@ namespace BetterUI
             }
         }
 
-        internal void BuffIcon_UpdateIcon(On.RoR2.UI.BuffIcon.orig_UpdateIcon orig, RoR2.UI.BuffIcon self)
+        internal static void BuffIcon_UpdateIcon(Action<RoR2.UI.BuffIcon> orig, RoR2.UI.BuffIcon self)
         {
             orig(self);
             if (self.buffDef && self.transform.parent.name == "BuffDisplayRoot")
             {
-                if (mod.config.BuffTooltips.Value)
+                if (BetterUIPlugin.instance.config.BuffTooltips.Value)
                 {
                     RoR2.UI.TooltipProvider tooltipProvider = self.GetComponent<RoR2.UI.TooltipProvider>();
                     tooltipProvider.overrideTitleText = self.buffDef.name;
                     tooltipProvider.titleColor = self.buffDef.buffColor;
                 }
-                if (mod.config.BuffTimers.Value)
+                if (BetterUIPlugin.instance.config.BuffTimers.Value)
                 {
                     Transform timerText = self.transform.Find("TimerText");
                     if (timerText != null)
                     {
-                        if (mod.HUD != null)
+                        if (BetterUIPlugin.HUD != null)
                         {
-                            CharacterBody characterBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                            CharacterBody characterBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                             if (characterBody != null && characterBody.timedBuffs.Count > 0)
                             {
                                 timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffDef.buffIndex);
                                 if(timedBuffs.Any())
                                 {
                                     thisBuff = timedBuffs.OrderByDescending(b => b.timer).First();
-                                    timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = thisBuff.timer < 10 && mod.config.BuffTimersDecimal.Value ? thisBuff.timer.ToString("N1") : thisBuff.timer.ToString("N0");
+                                    timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = thisBuff.timer < 10 && BetterUIPlugin.instance.config.BuffTimersDecimal.Value ? thisBuff.timer.ToString("N1") : thisBuff.timer.ToString("N0");
                                     return;
                                 }
                             }

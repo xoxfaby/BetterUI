@@ -147,7 +147,7 @@ namespace BetterUI
 
 
 
-        public ConfigManager(BetterUI mod)
+        public ConfigManager()
         {
             ConfigFileComponents = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Components.cfg", true);
             ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);

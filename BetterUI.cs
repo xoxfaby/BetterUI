@@ -4,123 +4,102 @@ using System.Text;
 using System.Collections.Generic;
 
 using BepInEx;
+using MonoMod.RuntimeDetour;
+using System.Reflection;
 
 namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.0.4.1")]
-    public class BetterUI : BaseUnityPlugin
+    public class BetterUIPlugin : BaseUnityPlugin
     {
-        internal ConfigManager config;
-        internal ItemSorting itemSorting;
-        internal StatsDisplay statsDisplay;
-        internal CommandImprovements commandImprovements;
-        internal DPSMeter DPSMeter;
-        internal BuffTimers buffTimers;
-        internal AdvancedIcons advancedIcons;
-        internal ItemCounters itemCounters;
-        internal Misc misc;
-        internal bool ItemStatsModIntegration;
-        internal RoR2.UI.HUD HUD;
-        internal List<ModComponent> modComponents = new List<ModComponent>();
+        public static BetterUIPlugin instance;
 
-        public static StringBuilder sharedStringBuilder = new StringBuilder(); 
+        internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
+        internal delegate void BetterUIEvent(BetterUIPlugin self);
+
+        internal static event BetterUIEvent onStart;
+        internal static event BetterUIEvent onEnable;
+        internal static event BetterUIEvent onDisable;
+        internal static event BetterUIEvent onUpdate;
+        internal static event HUDAwakeEvent onHUDAwake;
+
+        internal ConfigManager config;
+        internal bool ItemStatsModIntegration;
+        internal static RoR2.UI.HUD HUD;
+
+        public static StringBuilder sharedStringBuilder = new StringBuilder();
+
+        BetterUIPlugin()
+        {
+            BetterUIPlugin.instance = this;
+        }
+
         public void Awake()
         {
             BepInExPatcher.DoPatching();
-
-            itemSorting = new ItemSorting(this);
-            statsDisplay = new StatsDisplay(this);
-            commandImprovements = new CommandImprovements(this);
-            DPSMeter = new DPSMeter(this);
-            buffTimers = new BuffTimers(this);
-            advancedIcons = new AdvancedIcons(this);
-            itemCounters = new ItemCounters(this);
-            misc = new Misc(this);
-
-
+            config = new ConfigManager();
+            if (config.ComponentsItemSorting.Value)
+                ItemSorting.Hook();
+            if (config.ComponentsStatsDisplay.Value)
+                StatsDisplay.Hook();
+            if (config.ComponentsCommandImprovements.Value)
+                CommandImprovements.Hook();
+            if (config.ComponentsDPSMeter.Value)
+                DPSMeter.Hook();
+            if (config.ComponentsBuffTimers.Value)
+                BuffTimers.Hook();
+            if (config.ComponentsAdvancedIcons.Value)
+                AdvancedIcons.Hook();
+            if (config.ComponentsItemCounters.Value)
+                ItemCounters.Hook();
+            if (config.ComponentsMisc.Value)
+                Misc.Hook();
         }
 
         public void Start()
         {
-            foreach (ModComponent modComponent in modComponents)
+            if (onStart != null)
             {
-                modComponent.Start();
+                onStart.Invoke(this);
             }
         }
         public void Update()
         {
-            foreach(ModComponent modComponent in modComponents)
+            if (onUpdate != null)
             {
-                modComponent.Update();
+                onUpdate.Invoke(this);
             }
         }
+
         public void OnEnable()
         {
-            config = new ConfigManager(this);
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.gog909.ordereditems")){
-                BetterUI.print("WARNING: ORDEREDITEMS DETECTED.\nHIS MOD IS NOT COMPATIBLE WITH BETTERUI \nBETTERUI DISABLED");
-                return;
-            }
-            if (config.ComponentsItemSorting.Value)
-                this.AddComponent(itemSorting);
-            if (config.ComponentsStatsDisplay.Value)
-                this.AddComponent(statsDisplay);
-            if (config.ComponentsCommandImprovements.Value)
-                this.AddComponent(commandImprovements);
-            if (config.ComponentsDPSMeter.Value)
-                this.AddComponent(DPSMeter);
-            if (config.ComponentsBuffTimers.Value)
-                this.AddComponent(buffTimers);
-            if (config.ComponentsAdvancedIcons.Value)
-                this.AddComponent(advancedIcons);
-            if (config.ComponentsItemCounters.Value)
-               this.AddComponent(itemCounters);
-            if (config.ComponentsMisc.Value)
-               this.AddComponent(misc);
 
             ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
-            On.RoR2.UI.HUD.Awake += HUD_Awake;
+            HookManager.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
 
-            foreach (ModComponent modComponent in modComponents)
+            if (onEnable != null)
             {
-                modComponent.Hook();
+                onEnable.Invoke(this);
             }
         }
 
         public void OnDisable()
         {
-            On.RoR2.UI.HUD.Awake -= HUD_Awake;
-            foreach (ModComponent modComponent in modComponents)
+            if (onDisable != null)
             {
-                modComponent.Unhook();
+                onDisable.Invoke(this);
             }
         }
-        internal void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+
+        internal static void HUD_Awake(Action<RoR2.UI.HUD> orig, RoR2.UI.HUD self)
         {
             orig(self);
             HUD = self;
-            foreach (ModComponent modComponent in modComponents)
+            if (onHUDAwake != null)
             {
-                modComponent.HUD_Awake();
+                onHUDAwake.Invoke(self);
             }
-        }
-        public void AddComponent(ModComponent modComponent)
-        {
-            modComponents.Add(modComponent);
-        }
-        public abstract class ModComponent
-        {
-            protected BetterUI mod;
-            public ModComponent(BetterUI mod)
-            {
-                this.mod = mod;
-            }
-            internal virtual void Start() { }
-            internal virtual void Update() { }
-            internal virtual void Hook() { }
-            internal virtual void Unhook() { }
-            internal virtual void HUD_Awake() { }
         }
     }
 }

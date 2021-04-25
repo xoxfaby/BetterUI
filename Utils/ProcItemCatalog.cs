@@ -107,7 +107,7 @@ namespace BetterUI
         {
             if (itemIndex <= ItemIndex.None)
             {
-                BetterUI.print("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
+                UnityEngine.Debug.LogError("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
                 return;
             }
             AddEffect(ItemCatalog.GetItemDef(itemIndex), effectInfo);
@@ -116,7 +116,7 @@ namespace BetterUI
         {
             if (itemIndex <= ItemIndex.None)
             {
-                BetterUI.print("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
+                UnityEngine.Debug.LogError("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
                 return;
             }
             AddEffect(ItemCatalog.GetItemDef(itemIndex), value, extraStackValue, effectFormatter, stackingFormula, capFormula);
@@ -125,7 +125,7 @@ namespace BetterUI
         {
             if ((effectInfo.value > 1 || effectInfo.extraStackValue > 1) && effectInfo.effectFormatter == ChanceFormatter)
             {
-                BetterUI.print("Warning: EffectInfo.value for chance is expected to be 0 to 1 based. After BetterUI v1.7.0 it will no longer be converted.");
+                UnityEngine.Debug.LogError("Warning: EffectInfo.value for chance is expected to be 0 to 1 based. After BetterUI v1.7.0 it will no longer be converted.");
                 effectInfo.value = effectInfo.value * 0.01f;
                 effectInfo.extraStackValue = effectInfo.extraStackValue * 0.01f;
             }

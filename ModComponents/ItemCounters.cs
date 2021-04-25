@@ -10,17 +10,9 @@ using BepInEx.Configuration;
 
 namespace BetterUI
 {
-    class ItemCounters : BetterUI.ModComponent
+    static class ItemCounters
     {
-        internal ItemCounters(BetterUI mod) : base(mod) { }
-
-
-        static ItemCounters()
-        {
-            //TODO: Add individual item scores.
-        }
-
-        string[] tierColorMap = new string[]
+        static string[] tierColorMap = new string[]
         {
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Tier1Item),
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Tier2Item),
@@ -30,16 +22,20 @@ namespace BetterUI
             ColorCatalog.GetColorHexString(ColorCatalog.ColorIndex.Error),
         };
 
-        internal override void Hook()
+        static ItemCounters()
         {
-            if (mod.config.ItemCountersShowItemCounters.Value)
+            BetterUIPlugin.onStart += onStart;
+        }
+        internal static void Hook()
+        {
+            if (BetterUIPlugin.instance.config.ItemCountersShowItemCounters.Value)
             {
-                On.RoR2.UI.ScoreboardStrip.SetMaster += mod.itemCounters.ScoreboardStrip_SetMaster;
-                On.RoR2.UI.ScoreboardStrip.Update += mod.itemCounters.ScoreboardStrip_Update;
+                HookManager.Add<RoR2.UI.ScoreboardStrip, CharacterMaster>("SetMaster", ScoreboardStrip_SetMaster);
+                HookManager.Add<RoR2.UI.ScoreboardStrip>("Update", ScoreboardStrip_Update);
             }
         }
 
-        internal override void Start()
+        private static void onStart(BetterUIPlugin plugin)
         {
             char[] bad_characters = new char[] { '\n', '\t', '\\', '"', '\'', '[', ']' };
             bool first = true;
@@ -50,23 +46,23 @@ namespace BetterUI
                 {
                     continue;
                 }
-                int itemValue = mod.config.ItemCountersTierScores[(int)itemDef.tier];
+                int itemValue = BetterUIPlugin.instance.config.ItemCountersTierScores[(int)itemDef.tier];
                 String safe_name = String.Join("", itemDef.nameToken.Split(bad_characters));
                 ConfigEntry<int> itemScore;
                 if (first)
                 {
-                    itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    itemScore = BetterUIPlugin.instance.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
                     first = false;
                 }
                 else
                 {
-                    itemScore = mod.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
+                    itemScore = BetterUIPlugin.instance.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
 
-                mod.config.ItemCountersItemScores.Add(itemDef.nameToken, itemScore.Value);
+                BetterUIPlugin.instance.config.ItemCountersItemScores.Add(itemDef.nameToken, itemScore.Value);
             }
         }
-        internal void ScoreboardStrip_SetMaster(On.RoR2.UI.ScoreboardStrip.orig_SetMaster orig, ScoreboardStrip self, CharacterMaster master)
+        internal static void ScoreboardStrip_SetMaster(Action<RoR2.UI.ScoreboardStrip, CharacterMaster> orig, ScoreboardStrip self, CharacterMaster master)
         {
             orig(self, master);
 
@@ -76,69 +72,67 @@ namespace BetterUI
             self.moneyText.overflowMode = TMPro.TextOverflowModes.Overflow;
         }
 
-        int itemSum;
-        int itemScore;
-        internal void ScoreboardStrip_Update(On.RoR2.UI.ScoreboardStrip.orig_Update orig, ScoreboardStrip self)
+        static int itemSum;
+        static int itemScore;
+        internal static void ScoreboardStrip_Update(Action<RoR2.UI.ScoreboardStrip> orig, ScoreboardStrip self)
         {
             orig(self);
 
             if (self.master && self.master.inventory)
             {
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.Append(Util.GetBestMasterName(self.master));
-                BetterUI.sharedStringBuilder.Append("\n<#F8FC97>");
-                BetterUI.sharedStringBuilder.Append(self.master.money);
-                BetterUI.sharedStringBuilder.Append("</color>");
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append(Util.GetBestMasterName(self.master));
+                BetterUIPlugin.sharedStringBuilder.Append("\n<#F8FC97>");
+                BetterUIPlugin.sharedStringBuilder.Append(self.master.money);
+                BetterUIPlugin.sharedStringBuilder.Append("</color>");
 
-                self.nameLabel.text = BetterUI.sharedStringBuilder.ToString();
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.Append("<#FFFFFF>");
+                self.nameLabel.text = BetterUIPlugin.sharedStringBuilder.ToString();
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append("<#FFFFFF>");
 
 
 
-                if (mod.config.ItemCountersShowItemSum.Value)
+                if (BetterUIPlugin.instance.config.ItemCountersShowItemSum.Value)
                 {
                     itemSum = 0;
-                    foreach (var tier in mod.config.ItemCountersItemSumTiers)
+                    foreach (var tier in BetterUIPlugin.instance.config.ItemCountersItemSumTiers)
                     {
                         itemSum += self.master.inventory.GetTotalItemCountOfTier(tier);
                     }
-                    BetterUI.sharedStringBuilder.Append(itemSum);
-                    if (mod.config.ItemCountersShowItemScore.Value)
+                    BetterUIPlugin.sharedStringBuilder.Append(itemSum);
+                    if (BetterUIPlugin.instance.config.ItemCountersShowItemScore.Value)
                     {
-                        BetterUI.sharedStringBuilder.Append(" | ");
+                        BetterUIPlugin.sharedStringBuilder.Append(" | ");
                     }
                 }
-                if (mod.config.ItemCountersShowItemScore.Value)
+                if (BetterUIPlugin.instance.config.ItemCountersShowItemScore.Value)
                 {
                     itemScore = 0;
                     foreach (var item in self.master.inventory.itemAcquisitionOrder)
                     {
                         int value;
-                        itemScore += mod.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item).nameToken, out value) ? value * self.master.inventory.GetItemCount(item) : 0;
+                        itemScore += BetterUIPlugin.instance.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item).nameToken, out value) ? value * self.master.inventory.GetItemCount(item) : 0;
                     }
-                    BetterUI.sharedStringBuilder.Append(itemScore);
+                    BetterUIPlugin.sharedStringBuilder.Append(itemScore);
                 }
 
-                if (mod.config.ItemCountersShowItemsByTier.Value)
+                if (BetterUIPlugin.instance.config.ItemCountersShowItemsByTier.Value)
                 {
-                    BetterUI.sharedStringBuilder.Append("\n");
-                    foreach(var tier in mod.config.ItemCountersItemsByTierOrder)
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
+                    foreach (var tier in BetterUIPlugin.instance.config.ItemCountersItemsByTierOrder)
                     {
-                        BetterUI.sharedStringBuilder.Append(" <#");
-                        BetterUI.sharedStringBuilder.Append(tierColorMap[(int)tier]);
-                        BetterUI.sharedStringBuilder.Append(">");
-                        BetterUI.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
-                        BetterUI.sharedStringBuilder.Append("</color>");
+                        BetterUIPlugin.sharedStringBuilder.Append(" <#");
+                        BetterUIPlugin.sharedStringBuilder.Append(tierColorMap[(int)tier]);
+                        BetterUIPlugin.sharedStringBuilder.Append(">");
+                        BetterUIPlugin.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
+                        BetterUIPlugin.sharedStringBuilder.Append("</color>");
                     }
                 }
 
-                BetterUI.sharedStringBuilder.Append("</color>"); 
+                BetterUIPlugin.sharedStringBuilder.Append("</color>");
 
-                self.moneyText.text = BetterUI.sharedStringBuilder.ToString();
+                self.moneyText.text = BetterUIPlugin.sharedStringBuilder.ToString();
             }
         }
-
-
-}
+    }
 }
