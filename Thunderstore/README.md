@@ -151,6 +151,14 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.1.0
+ - Bugfix: Fixed ItemScores:
+ - Bugfix: StatsDisplay: Fixed $exp.
+ - Addition: StatsDisplay: Added $maxexp which shows the exp needed to level up
+ - Addition: StatsDisplay: Added $velocity and $2dvelocity to show how fast you are moving, $2dvelocity ignores the y axis.
+ - Internal: Removed MMHook Dependency
+ - Internal: Implemented ManivestV2 alongside normal manifest to hopefully allow local installation into mod managers. 
+
 #### v2.0.4
  - Bugfix: Fixed command/scrapper not working after new update.
 
@@ -209,7 +217,7 @@ P = Sprint Related Last
  - Internal Change: More stringbuilder stuff
 
 #### v1.6.7
- - Addition: ADded config file to entirely disable modcomponents ( these are the big internal parts the mod is split into )
+ - Addition: Added config file to entirely disable modcomponents ( these are the big internal parts the mod is split into )
  - Internal Change: Stopped using the ror2 built in sharedStringBuilder because some mods seem to be misuing it and bug out.  
 
 #### v1.6.6

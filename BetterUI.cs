@@ -10,7 +10,7 @@ using System.Reflection;
 namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.0.4.1")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.1.0.1")]
     public class BetterUIPlugin : BaseUnityPlugin
     {
         public static BetterUIPlugin instance;
