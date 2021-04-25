@@ -368,7 +368,7 @@ namespace BetterUI
                 "Mountain Shrines: $mountainshrines\n",
                 "You may format the StatString using formatting tags such as color, size, bold, underline, italics. See Readme for more.\n" +
                 "Valid Parameters:\n" +
-                "$exp $level $luck\n" +
+                "$exp $maxexp $level $luck\n" +
                 "$dmg $crit $luckcrit $atkspd\n" +
                 "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
                 "$armor $armordmgreduction $regen\n" +

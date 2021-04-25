@@ -34,7 +34,8 @@ namespace BetterUI
         {
             regexmap = new Dictionary<String, Func<CharacterBody, string>> {
                 { "$armordmgreduction", (statBody) => ((statBody.armor >= 0 ? statBody.armor / (100 + statBody.armor) : (100 / (100 - statBody.armor) - 1)) * 100).ToString("0.##") },
-                { "$exp", (statBody) => statBody.experience.ToString("0.##") },
+                { "$exp", (statBody) => TeamManager.instance.GetTeamExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
+                { "$maxexp", (statBody) => TeamManager.instance.GetTeamNextLevelExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
                 { "$level", (statBody) => statBody.level.ToString() },
                 { "$dmg", (statBody) => statBody.damage.ToString("0.##") },
                 { "$crit", (statBody) => statBody.crit.ToString("0.##") },
