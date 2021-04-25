@@ -24,7 +24,7 @@ namespace BetterUI
 
         static ItemCounters()
         {
-            BetterUIPlugin.onStart += onStart;
+            ItemCatalog.availability.CallWhenAvailable(GenerateItemScores);
         }
         internal static void Hook()
         {
@@ -35,7 +35,7 @@ namespace BetterUI
             }
         }
 
-        private static void onStart(BetterUIPlugin plugin)
+        private static void GenerateItemScores()
         {
             char[] bad_characters = new char[] { '\n', '\t', '\\', '"', '\'', '[', ']' };
             bool first = true;
