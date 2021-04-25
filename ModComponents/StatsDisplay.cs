@@ -48,7 +48,14 @@ namespace BetterUI
                 { "$maxbarrier", (statBody) => statBody.maxBarrier.ToString("0.##") },
                 { "$armor", (statBody) => statBody.armor.ToString("0.##") },
                 { "$regen", (statBody) => statBody.regen.ToString("0.##") },
-                { "$movespeed", (statBody) => Math.Round(statBody.moveSpeed, 1).ToString("0.##") },
+                { "$movespeed", (statBody) => statBody.moveSpeed.ToString("0.##") },
+                { "$velocity", (statBody) => statBody.characterMotor.velocity.magnitude.ToString("0.##") },
+                { "$2dvelocity", (statBody) => {
+                    var vector = statBody.characterMotor.velocity;
+                    vector.y = 0;
+                    return vector.magnitude.ToString("0.##");
+                    }
+                },
                 { "$jumps", (statBody) => (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString() },
                 { "$maxjumps", (statBody) => statBody.maxJumpCount.ToString() },
                 { "$atkspd", (statBody) => statBody.attackSpeed.ToString() },

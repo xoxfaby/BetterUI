@@ -362,7 +362,7 @@ namespace BetterUI
                 "Attack Speed: $atkspd\n" +
                 "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +
-                "Speed: $movespeed\n" +
+                "Speed: $velocity\n" +
                 "Jumps: $jumps/$maxjumps\n" +
                 "Kills: $killcount\n" +
                 "Mountain Shrines: $mountainshrines\n",
@@ -372,7 +372,7 @@ namespace BetterUI
                 "$dmg $crit $luckcrit $atkspd\n" +
                 "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
                 "$armor $armordmgreduction $regen\n" +
-                "$movespeed $jumps $maxjumps\n" +
+                "$velocity $2dvelocity $movespeed $jumps $maxjumps\n" +
                 "$killcount $multikill $highestmultikill\n" +
                 "$dps $dpscharacter $dpsminions\n" +
                 "$mountainshrines\n" +
@@ -382,13 +382,14 @@ namespace BetterUI
                 "<color=#FFFFFF>" +
                 "<size=18><b>Stats</b></size>\n" +
                 "<size=14>Luck: $luck\n" +
+                "Experience: $exp/$maxexp\n" +
                 "Base Damage: $dmg\n" +
                 "Crit Chance: $crit%\n" +
                 "Crit w/ Luck: $luckcrit%\n" +
                 "Attack Speed: $atkspd\n" +
                 "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +
-                "Speed: $movespeed\n" +
+                "Speed: $velocity\n" +
                 "Jumps: $jumps/$maxjumps\n" +
                 "Kills: $killcount\n" +
                 "Mountain Shrines: $mountainshrines\n" +
