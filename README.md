@@ -151,7 +151,10 @@ P = Sprint Related Last
 
 ## Changelog
 
-#### v2.1.0
+#### v2.1.1
+ - Bugfig: ItemScores: Fixed issue if mods added items with duplicate nametokens, uses ItemDef.name instead. 
+
+### v2.1.0
  - Bugfix: Fixed ItemScores:
  - Bugfix: StatsDisplay: Fixed $exp.
  - Addition: StatsDisplay: Added $maxexp which shows the exp needed to level up

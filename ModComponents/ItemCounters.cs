@@ -42,12 +42,13 @@ namespace BetterUI
             foreach (var itemIndex in RoR2.ItemCatalog.allItems)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
-                if (String.IsNullOrWhiteSpace(itemDef.nameToken))
+                String safe_name = String.Join("", itemDef.name.Split(bad_characters));
+                if (String.IsNullOrWhiteSpace(safe_name))
                 {
+                    UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
                 }
                 int itemValue = BetterUIPlugin.instance.config.ItemCountersTierScores[(int)itemDef.tier];
-                String safe_name = String.Join("", itemDef.nameToken.Split(bad_characters));
                 ConfigEntry<int> itemScore;
                 if (first)
                 {
@@ -59,7 +60,7 @@ namespace BetterUI
                     itemScore = BetterUIPlugin.instance.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
 
-                BetterUIPlugin.instance.config.ItemCountersItemScores.Add(itemDef.nameToken, itemScore.Value);
+                BetterUIPlugin.instance.config.ItemCountersItemScores.Add(itemDef, itemScore.Value);
             }
         }
         internal static void ScoreboardStrip_SetMaster(Action<RoR2.UI.ScoreboardStrip, CharacterMaster> orig, ScoreboardStrip self, CharacterMaster master)
@@ -111,7 +112,7 @@ namespace BetterUI
                     foreach (var item in self.master.inventory.itemAcquisitionOrder)
                     {
                         int value;
-                        itemScore += BetterUIPlugin.instance.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item).nameToken, out value) ? value * self.master.inventory.GetItemCount(item) : 0;
+                        itemScore += BetterUIPlugin.instance.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item), out value) ? value * self.master.inventory.GetItemCount(item) : 0;
                     }
                     BetterUIPlugin.sharedStringBuilder.Append(itemScore);
                 }

@@ -114,7 +114,7 @@ namespace BetterUI
         public ConfigEntry<int> ItemCountersTierScoreBoss;
         public ConfigEntry<int> ItemCountersTierScoreNoTier;
         public int[] ItemCountersTierScores;
-        public Dictionary<string,int> ItemCountersItemScores;
+        public Dictionary<ItemDef,int> ItemCountersItemScores;
 
         // StatsDisplay
 
@@ -346,7 +346,7 @@ namespace BetterUI
             };
 
 
-            ItemCountersItemScores = new Dictionary<string, int>();
+            ItemCountersItemScores = new Dictionary<ItemDef, int>();
 
 
             // StatsDisplay
