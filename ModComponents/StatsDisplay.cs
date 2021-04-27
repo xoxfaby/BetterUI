@@ -76,7 +76,7 @@ namespace BetterUI
             regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
 
 
-            if (BetterUIPlugin.instance.config.StatsDisplayEnable.Value)
+            if (ConfigManager.StatsDisplayEnable.Value)
             {
                 RoR2.Run.onRunStartGlobal += runStartGlobal;
             }
@@ -86,17 +86,17 @@ namespace BetterUI
         }
         internal static void Hook() { }
 
-        static void onStart(BetterUIPlugin plugin)
+        static void onStart()
         {
-            normalText = regexpattern.Split(BetterUIPlugin.instance.config.StatsDisplayStatString.Value);
-            altText = regexpattern.Split(BetterUIPlugin.instance.config.StatsDisplayStatStringCustomBind.Value);
+            normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
+            altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
             var pattern1 = new List<string>();
-            foreach (Match match in regexpattern.Matches(BetterUIPlugin.instance.config.StatsDisplayStatString.Value))
+            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatString.Value))
             {
                 pattern1.Add(match.Value);
             }
             var pattern2 = new List<string>();
-            foreach (Match match in regexpattern.Matches(BetterUIPlugin.instance.config.StatsDisplayStatStringCustomBind.Value))
+            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatStringCustomBind.Value))
             {
                 pattern2.Add(match.Value);
             }
@@ -108,13 +108,13 @@ namespace BetterUI
         }
         static void onHUDAwake(RoR2.UI.HUD self)
         {
-            if (BetterUIPlugin.instance.config.StatsDisplayEnable.Value)
+            if (ConfigManager.StatsDisplayEnable.Value)
             {
 
                 statsDisplayContainer = new GameObject("StatsDisplayContainer");
                 RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
 
-                if (BetterUIPlugin.instance.config.StatsDisplayAttachToObjectivePanel.Value)
+                if (ConfigManager.StatsDisplayAttachToObjectivePanel.Value)
                 {
                     stupidBuffer = new GameObject("StupidBuffer");
                     RectTransform rectTransform3 = stupidBuffer.AddComponent<RectTransform>();
@@ -141,12 +141,12 @@ namespace BetterUI
                     statsDisplayContainer.transform.SetParent(BetterUIPlugin.HUD.mainContainer.transform);
 
                     rectTransform.localPosition = new Vector3(0, 0, 0);
-                    rectTransform.anchorMin = BetterUIPlugin.instance.config.StatsDisplayWindowAnchorMin.Value;
-                    rectTransform.anchorMax = BetterUIPlugin.instance.config.StatsDisplayWindowAnchorMax.Value;
+                    rectTransform.anchorMin = ConfigManager.StatsDisplayWindowAnchorMin.Value;
+                    rectTransform.anchorMax = ConfigManager.StatsDisplayWindowAnchorMax.Value;
                     rectTransform.localScale = new Vector3(1, -1, 1);
-                    rectTransform.sizeDelta = BetterUIPlugin.instance.config.StatsDisplayWindowSize.Value;
-                    rectTransform.anchoredPosition = BetterUIPlugin.instance.config.StatsDisplayWindowPosition.Value;
-                    rectTransform.eulerAngles = BetterUIPlugin.instance.config.StatsDisplayWindowAngle.Value;
+                    rectTransform.sizeDelta = ConfigManager.StatsDisplayWindowSize.Value;
+                    rectTransform.anchoredPosition = ConfigManager.StatsDisplayWindowPosition.Value;
+                    rectTransform.eulerAngles = ConfigManager.StatsDisplayWindowAngle.Value;
                 }
 
 
@@ -168,7 +168,7 @@ namespace BetterUI
                 rectTransform2.sizeDelta = Vector2.zero;
                 rectTransform2.anchoredPosition = Vector2.zero;
 
-                if (BetterUIPlugin.instance.config.StatsDisplayPanelBackground.Value)
+                if (ConfigManager.StatsDisplayPanelBackground.Value)
                 {
                     Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
                     Image copyImage = BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
@@ -190,9 +190,9 @@ namespace BetterUI
                 layoutElement.flexibleWidth = 1;
             }
         }
-        static void onUpdate(BetterUIPlugin plugin)
+        static void onUpdate()
         {
-            if (BetterUIPlugin.instance.config.StatsDisplayAttachToObjectivePanel.Value)
+            if (ConfigManager.StatsDisplayAttachToObjectivePanel.Value)
             {
                 if (stupidBuffer != null)
                 {
@@ -208,9 +208,9 @@ namespace BetterUI
                 playerBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody != null)
                 {
-                    bool customBindPressed = Input.GetKey(BetterUIPlugin.instance.config.StatsDisplayCustomBind.Value);
-                    if (Input.GetKeyDown(BetterUIPlugin.instance.config.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
-                    bool showStatsDisplay = BetterUIPlugin.instance.config.StatsDisplayToggleOnBind.Value ? statsDisplayToggle : !(BetterUIPlugin.instance.config.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
+                    bool customBindPressed = Input.GetKey(ConfigManager.StatsDisplayCustomBind.Value);
+                    if (Input.GetKeyDown(ConfigManager.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
+                    bool showStatsDisplay = ConfigManager.StatsDisplayToggleOnBind.Value ? statsDisplayToggle : !(ConfigManager.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
 
                     highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
 

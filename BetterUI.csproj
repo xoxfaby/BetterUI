@@ -12,6 +12,10 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Include="..\BetterAPI\BetterUnityPlugin.cs" Link="BetterUnityPlugin.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />

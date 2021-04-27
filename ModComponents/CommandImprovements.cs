@@ -17,38 +17,38 @@ namespace BetterUI
         }
         internal static void Hook() 
         { 
-            if (BetterUIPlugin.instance.config.CommandResizeCommandWindow.Value ||
-                BetterUIPlugin.instance.config.SortingSortItemsCommand.Value ||
-                BetterUIPlugin.instance.config.SortingSortItemsScrapper.Value)
+            if (ConfigManager.CommandResizeCommandWindow.Value ||
+                ConfigManager.SortingSortItemsCommand.Value ||
+                ConfigManager.SortingSortItemsScrapper.Value)
             {
-                HookManager.Add<RoR2.UI.PickupPickerPanel, RoR2.PickupPickerController.Option[]>("SetPickupOptions", PickupPickerPanel_SetPickupOptions);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel, RoR2.PickupPickerController.Option[]>("SetPickupOptions", PickupPickerPanel_SetPickupOptions);
             }
-            if (BetterUIPlugin.instance.config.CommandCloseOnEscape.Value ||
-                BetterUIPlugin.instance.config.CommandCloseOnWASD.Value ||
-                BetterUIPlugin.instance.config.CommandCloseOnCustom.Value != "")
+            if (ConfigManager.CommandCloseOnEscape.Value ||
+                ConfigManager.CommandCloseOnWASD.Value ||
+                ConfigManager.CommandCloseOnCustom.Value != "")
             {
-                HookManager.Add<RoR2.UI.PickupPickerPanel>("Awake", PickupPickerPanel_Awake);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel>("Awake", PickupPickerPanel_Awake);
             }
 
-            if (BetterUIPlugin.instance.config.CommandTooltipsShow.Value ||
-                BetterUIPlugin.instance.config.CommandCountersShow.Value)
+            if (ConfigManager.CommandTooltipsShow.Value ||
+                ConfigManager.CommandCountersShow.Value)
             {
-                HookManager.Add<RoR2.UI.PickupPickerPanel, int, MPButton>("OnCreateButton", PickupPickerPanel_OnCreateButton);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel, int, MPButton>("OnCreateButton", PickupPickerPanel_OnCreateButton);
             }
         }
-        private static void onStart(BetterUIPlugin self)
+        private static void onStart()
         {
             ItemCatalog.availability.CallWhenAvailable(Init);
             EquipmentCatalog.availability.CallWhenAvailable(Init);
         }
 
-        private static void onUpdate(BetterUIPlugin self)
+        private static void onUpdate()
         {
             if (currentPanel && currentPanel.gameObject)
             {
-                if (BetterUIPlugin.instance.config.CommandCloseOnEscape.Value && Input.GetKeyDown("escape") ||
-                   BetterUIPlugin.instance.config.CommandCloseOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) ||
-                   BetterUIPlugin.instance.config.CommandCloseOnCustom.Value != "" && Input.GetKeyDown(BetterUIPlugin.instance.config.CommandCloseOnCustom.Value))
+                if (ConfigManager.CommandCloseOnEscape.Value && Input.GetKeyDown("escape") ||
+                   ConfigManager.CommandCloseOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) ||
+                   ConfigManager.CommandCloseOnCustom.Value != "" && Input.GetKeyDown(ConfigManager.CommandCloseOnCustom.Value))
                 {
                     if (Input.GetKeyDown("escape"))
                     {
@@ -116,25 +116,25 @@ namespace BetterUI
             switch (self.pickerController.contextString)
             {
                 case "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT":
-                    if (BetterUIPlugin.instance.config.CommandResizeCommandWindow.Value)
+                    if (ConfigManager.CommandResizeCommandWindow.Value)
                     {
                         self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float)Math.Ceiling(options.Length / 5f)));
                     }
 
-                    if (BetterUIPlugin.instance.config.CommandRemoveBackgroundBlur.Value)
+                    if (ConfigManager.CommandRemoveBackgroundBlur.Value)
                     {
                         self.transform.GetComponent<LeTai.Asset.TranslucentImage.TranslucentImage>().enabled = false;
                     }
-                    if (BetterUIPlugin.instance.config.SortingSortItemsCommand.Value)
+                    if (ConfigManager.SortingSortItemsCommand.Value)
                     {
-                        sortOrder = BetterUIPlugin.instance.config.SortingSortOrderCommand.Value;
+                        sortOrder = ConfigManager.SortingSortOrderCommand.Value;
                         break;
                     }
                     goto default;
                 case "SCRAPPER_CONTEXT":
-                    if (BetterUIPlugin.instance.config.SortingSortItemsScrapper.Value)
+                    if (ConfigManager.SortingSortItemsScrapper.Value)
                     {
-                        sortOrder = BetterUIPlugin.instance.config.SortingSortOrderScrapper.Value;
+                        sortOrder = ConfigManager.SortingSortOrderScrapper.Value;
                         break;
                     }
                     goto default;
@@ -181,15 +181,15 @@ namespace BetterUI
         {
             orig(self, optionMap[0] >= 0 ? optionMap[index] : index, button);
 
-            if (BetterUIPlugin.instance.config.CommandTooltipsShow.Value || BetterUIPlugin.instance.config.CommandCountersShow.Value)
+            if (ConfigManager.CommandTooltipsShow.Value || ConfigManager.CommandCountersShow.Value)
             {
                 CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
                 PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[0] >= 0 ? optionMap[index] : index ].pickupIndex);
 
-                if (pickupDef.itemIndex != ItemIndex.None && BetterUIPlugin.instance.config.CommandCountersShow.Value)
+                if (pickupDef.itemIndex != ItemIndex.None && ConfigManager.CommandCountersShow.Value)
                 {
                     int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
-                    if (!BetterUIPlugin.instance.config.CommandCountersHideOnZero.Value || count > 0)
+                    if (!ConfigManager.CommandCountersHideOnZero.Value || count > 0)
                     {
                         GameObject textGameObject = new GameObject("StackText");
                         textGameObject.transform.SetParent(button.transform);
@@ -199,11 +199,11 @@ namespace BetterUI
 
                         HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
                         counterText.enableWordWrapping = false;
-                        counterText.alignment = BetterUIPlugin.instance.config.CommandCountersTextAlignmentOption;
-                        counterText.fontSize = BetterUIPlugin.instance.config.CommandCountersFontSize.Value;
+                        counterText.alignment = ConfigManager.CommandCountersTextAlignmentOption;
+                        counterText.fontSize = ConfigManager.CommandCountersFontSize.Value;
                         counterText.faceColor = Color.white;
                         counterText.outlineWidth = 0.2f;
-                        counterText.text = BetterUIPlugin.instance.config.CommandCountersPrefix.Value + count;
+                        counterText.text = ConfigManager.CommandCountersPrefix.Value + count;
 
                         counterRect.localPosition = Vector3.zero;
                         counterRect.anchorMin = Vector2.zero;
@@ -214,7 +214,7 @@ namespace BetterUI
                     }
                 }
 
-                if (BetterUIPlugin.instance.config.CommandTooltipsShow.Value)
+                if (ConfigManager.CommandTooltipsShow.Value)
                 {
                     TooltipProvider tooltipProvider = button.gameObject.AddComponent<TooltipProvider>();
 
@@ -222,11 +222,11 @@ namespace BetterUI
                     {
                         ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
 
-                        if (BetterUIPlugin.instance.ItemStatsModIntegration)
+                        if (BetterUIPlugin.ItemStatsModIntegration)
                         {
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                             string bodyText = Language.GetString(itemDef.descriptionToken);
-                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && BetterUIPlugin.instance.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
+                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
                             {
                                 bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
                                 String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);

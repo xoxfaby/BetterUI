@@ -28,10 +28,10 @@ namespace BetterUI
         }
         internal static void Hook()
         {
-            if (BetterUIPlugin.instance.config.ItemCountersShowItemCounters.Value)
+            if (ConfigManager.ItemCountersShowItemCounters.Value)
             {
-                HookManager.Add<RoR2.UI.ScoreboardStrip, CharacterMaster>("SetMaster", ScoreboardStrip_SetMaster);
-                HookManager.Add<RoR2.UI.ScoreboardStrip>("Update", ScoreboardStrip_Update);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ScoreboardStrip, CharacterMaster>("SetMaster", ScoreboardStrip_SetMaster);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ScoreboardStrip>("Update", ScoreboardStrip_Update);
             }
         }
 
@@ -48,19 +48,19 @@ namespace BetterUI
                     UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
                 }
-                int itemValue = BetterUIPlugin.instance.config.ItemCountersTierScores[(int)itemDef.tier];
+                int itemValue = ConfigManager.ItemCountersTierScores[(int)itemDef.tier];
                 ConfigEntry<int> itemScore;
                 if (first)
                 {
-                    itemScore = BetterUIPlugin.instance.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
                     first = false;
                 }
                 else
                 {
-                    itemScore = BetterUIPlugin.instance.config.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
 
-                BetterUIPlugin.instance.config.ItemCountersItemScores.Add(itemDef, itemScore.Value);
+                ConfigManager.ItemCountersItemScores.Add(itemDef, itemScore.Value);
             }
         }
         internal static void ScoreboardStrip_SetMaster(Action<RoR2.UI.ScoreboardStrip, CharacterMaster> orig, ScoreboardStrip self, CharacterMaster master)
@@ -93,34 +93,34 @@ namespace BetterUI
 
 
 
-                if (BetterUIPlugin.instance.config.ItemCountersShowItemSum.Value)
+                if (ConfigManager.ItemCountersShowItemSum.Value)
                 {
                     itemSum = 0;
-                    foreach (var tier in BetterUIPlugin.instance.config.ItemCountersItemSumTiers)
+                    foreach (var tier in ConfigManager.ItemCountersItemSumTiers)
                     {
                         itemSum += self.master.inventory.GetTotalItemCountOfTier(tier);
                     }
                     BetterUIPlugin.sharedStringBuilder.Append(itemSum);
-                    if (BetterUIPlugin.instance.config.ItemCountersShowItemScore.Value)
+                    if (ConfigManager.ItemCountersShowItemScore.Value)
                     {
                         BetterUIPlugin.sharedStringBuilder.Append(" | ");
                     }
                 }
-                if (BetterUIPlugin.instance.config.ItemCountersShowItemScore.Value)
+                if (ConfigManager.ItemCountersShowItemScore.Value)
                 {
                     itemScore = 0;
                     foreach (var item in self.master.inventory.itemAcquisitionOrder)
                     {
                         int value;
-                        itemScore += BetterUIPlugin.instance.config.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item), out value) ? value * self.master.inventory.GetItemCount(item) : 0;
+                        itemScore += ConfigManager.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item), out value) ? value * self.master.inventory.GetItemCount(item) : 0;
                     }
                     BetterUIPlugin.sharedStringBuilder.Append(itemScore);
                 }
 
-                if (BetterUIPlugin.instance.config.ItemCountersShowItemsByTier.Value)
+                if (ConfigManager.ItemCountersShowItemsByTier.Value)
                 {
                     BetterUIPlugin.sharedStringBuilder.Append("\n");
-                    foreach (var tier in BetterUIPlugin.instance.config.ItemCountersItemsByTierOrder)
+                    foreach (var tier in ConfigManager.ItemCountersItemsByTierOrder)
                     {
                         BetterUIPlugin.sharedStringBuilder.Append(" <#");
                         BetterUIPlugin.sharedStringBuilder.Append(tierColorMap[(int)tier]);

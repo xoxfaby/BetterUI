@@ -9,13 +9,13 @@ namespace BetterUI
     {
         internal static void Hook()
         {
-            if (BetterUIPlugin.instance.config.SortingSortItemsInventory.Value)
+            if (ConfigManager.SortingSortItemsInventory.Value)
             {
-                HookManager.Add<RoR2.UI.ItemInventoryDisplay>("OnInventoryChanged", ItemInventoryDisplay_OnInventoryChanged);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>("OnInventoryChanged", ItemInventoryDisplay_OnInventoryChanged);
             }
-            if (BetterUIPlugin.instance.config.SortingSortItemsCommand.Value && BetterUIPlugin.instance.config.SortingSortOrderCommand.Value.Contains("C"))
+            if (ConfigManager.SortingSortItemsCommand.Value && ConfigManager.SortingSortOrderCommand.Value.Contains("C"))
             {
-                HookManager.Add<RoR2.PickupPickerController, int>( "SubmitChoice", CommandImprovements.PickupPickerController_SubmitChoice );
+                BetterUIPlugin.Hooks.Add<RoR2.PickupPickerController, int>( "SubmitChoice", CommandImprovements.PickupPickerController_SubmitChoice );
             }
         }
 
@@ -50,10 +50,10 @@ namespace BetterUI
                 switch (c)
                 {
                     case '0': // Tier Ascending
-                        finalOrder = finalOrder.ThenBy(item => BetterUIPlugin.instance.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenBy(item => ConfigManager.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '1': // Tier Descending
-                        finalOrder = finalOrder.ThenByDescending(item => BetterUIPlugin.instance.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenByDescending(item => ConfigManager.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '2': // Stack Size Ascending
                         finalOrder = finalOrder.ThenBy(item => inventory.itemStacks[(int)item]);
@@ -159,7 +159,7 @@ namespace BetterUI
 
             if (self.itemOrder != null && self.inventory && self.inventory.itemAcquisitionOrder.Any())
             {
-                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, BetterUIPlugin.instance.config.SortingSortOrder.Value).ToList().CopyTo(self.itemOrder);
+                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, ConfigManager.SortingSortOrder.Value).ToList().CopyTo(self.itemOrder);
             }
         }
     }

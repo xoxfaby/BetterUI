@@ -10,29 +10,29 @@ namespace BetterUI
     {
         internal static void Hook()
         {
-            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsArtifacts.Value)
+            if (ConfigManager.MiscHidePickupNotificiationsArtifacts.Value)
             {
-                HookManager.Add<RoR2.UI.GenericNotification, ArtifactDef>( "SetArtifact", GenericNotification_SetArtifact );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ArtifactDef>( "SetArtifact", GenericNotification_SetArtifact );
             }
-            if (BetterUIPlugin.instance.config.MiscAdvancedPickupNotificationsEquipements.Value ||
-                BetterUIPlugin.instance.config.MiscHidePickupNotificiationsEquipements.Value)
+            if (ConfigManager.MiscAdvancedPickupNotificationsEquipements.Value ||
+                ConfigManager.MiscHidePickupNotificiationsEquipements.Value)
             {
-                HookManager.Add<RoR2.UI.GenericNotification, EquipmentDef>( "SetEquipment", GenericNotification_SetEquipment );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, EquipmentDef>( "SetEquipment", GenericNotification_SetEquipment );
             }
-            if (BetterUIPlugin.instance.config.MiscAdvancedPickupNotificationsItems.Value ||
-                BetterUIPlugin.instance.config.MiscHidePickupNotificiationsItems.Value)
+            if (ConfigManager.MiscAdvancedPickupNotificationsItems.Value ||
+                ConfigManager.MiscHidePickupNotificiationsItems.Value)
             {
-                HookManager.Add<RoR2.UI.GenericNotification, ItemDef>( "SetItem", GenericNotification_SetItem );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ItemDef>( "SetItem", GenericNotification_SetItem );
             }
 
-            if (BetterUIPlugin.instance.config.MiscShowHidden.Value)
+            if (ConfigManager.MiscShowHidden.Value)
             {
-                HookManager.Add<RoR2.UI.ItemInventoryDisplay>( "ItemIsVisible", (ItemInventoryDisplay_ItemIsVisible_Delegate) ItemInventoryDisplay_ItemIsVisible);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>( "ItemIsVisible", (ItemInventoryDisplay_ItemIsVisible_Delegate) ItemInventoryDisplay_ItemIsVisible);
             }
-            if (BetterUIPlugin.instance.config.MiscShowPickupDescription.Value)
+            if (ConfigManager.MiscShowPickupDescription.Value)
             {
-                HookManager.Add<RoR2.UI.ContextManager>( "Awake", ContextManager_Awake );
-                HookManager.Add<RoR2.GenericPickupController>( "GetContextString", (GenericPickupController_GetContextString_Delegate) GenericPickupController_GetContextString );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ContextManager>( "Awake", ContextManager_Awake );
+                BetterUIPlugin.Hooks.Add<RoR2.GenericPickupController>( "GetContextString", (GenericPickupController_GetContextString_Delegate) GenericPickupController_GetContextString );
             }
         }
 
@@ -55,12 +55,12 @@ namespace BetterUI
             if (pickupDef.itemIndex != ItemIndex.None)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-                pickupText += $"\n\n{Language.GetString( BetterUIPlugin.instance.config.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
+                pickupText += $"\n\n{Language.GetString( ConfigManager.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
             }
             else if (pickupDef.equipmentIndex != EquipmentIndex.None)
             {
                 EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
-                pickupText += $"\n\n{Language.GetString(BetterUIPlugin.instance.config.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
+                pickupText += $"\n\n{Language.GetString(ConfigManager.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
             }
             return pickupText;
         }
@@ -71,7 +71,7 @@ namespace BetterUI
         }
         internal static void GenericNotification_SetArtifact(Action<RoR2.UI.GenericNotification, ArtifactDef> orig, RoR2.UI.GenericNotification self, ArtifactDef artifactDef)
         {
-            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsArtifacts.Value)
+            if (ConfigManager.MiscHidePickupNotificiationsArtifacts.Value)
             {
                 UnityEngine.Object.Destroy(self.gameObject);
                 return;
@@ -81,7 +81,7 @@ namespace BetterUI
         }
         internal static void GenericNotification_SetEquipment(Action<RoR2.UI.GenericNotification, EquipmentDef> orig, RoR2.UI.GenericNotification self, EquipmentDef equipmentDef)
         {
-            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsEquipements.Value)
+            if (ConfigManager.MiscHidePickupNotificiationsEquipements.Value)
             {
                 UnityEngine.Object.Destroy(self.gameObject);
                 return;
@@ -92,7 +92,7 @@ namespace BetterUI
         }
         internal static void GenericNotification_SetItem(Action<RoR2.UI.GenericNotification, ItemDef> orig, RoR2.UI.GenericNotification self, ItemDef itemDef)
         {
-            if (BetterUIPlugin.instance.config.MiscHidePickupNotificiationsItems.Value)
+            if (ConfigManager.MiscHidePickupNotificiationsItems.Value)
             {
                 UnityEngine.Object.Destroy(self.gameObject);
                 return;

@@ -44,27 +44,26 @@ namespace BetterUI
         }
         internal static void Hook()
         {
-            if (BetterUIPlugin.instance.config.DPSMeterWindowShow.Value ||
-            BetterUIPlugin.instance.config.StatsDisplayStatString.Value.Contains("$dps"))
+            if (ConfigManager.DPSMeterWindowShow.Value ||
+            ConfigManager.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                HookManager.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
+                BetterUIPlugin.Hooks.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
             }
         }
 
         public static float Clamp(float value)
         {
-            return Math.Min(Math.Max(1, value), BetterUIPlugin.instance.config.DPSMeterTimespan.Value);
+            return Math.Min(Math.Max(1, value), ConfigManager.DPSMeterTimespan.Value);
         }
 
    
-        private static void onUpdate(BetterUIPlugin plugin)
+        private static void onUpdate()
         {
-            
-            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - BetterUIPlugin.instance.config.DPSMeterTimespan.Value)
+            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
             {
                 characterDamageSum -= characterDamageLog.Dequeue().damage;
             }
-            while (minionDamageLog.Count > 0 && minionDamageLog.Peek().time < Time.time - BetterUIPlugin.instance.config.DPSMeterTimespan.Value)
+            while (minionDamageLog.Count > 0 && minionDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
             {
                 minionDamageSum -= minionDamageLog.Dequeue().damage;
             }
@@ -72,7 +71,7 @@ namespace BetterUI
             {
                 BetterUIPlugin.sharedStringBuilder.Clear();
                 BetterUIPlugin.sharedStringBuilder.Append("DPS: ");
-                BetterUIPlugin.sharedStringBuilder.Append((BetterUIPlugin.instance.config.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
+                BetterUIPlugin.sharedStringBuilder.Append((ConfigManager.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
 
                 textMesh.SetText(BetterUIPlugin.sharedStringBuilder);
             }
@@ -111,7 +110,7 @@ namespace BetterUI
 
         private static void onHUDAwake(HUD self)
         {
-            if (BetterUIPlugin.instance.config.DPSMeterWindowShow.Value)
+            if (ConfigManager.DPSMeterWindowShow.Value)
             {
 
                 GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
@@ -130,13 +129,13 @@ namespace BetterUI
 
 
                 rectTransform.localPosition = new Vector3(0, 0, 0);
-                rectTransform.anchorMin = BetterUIPlugin.instance.config.DPSMeterWindowAnchorMin.Value;
-                rectTransform.anchorMax = BetterUIPlugin.instance.config.DPSMeterWindowAnchorMax.Value;
+                rectTransform.anchorMin = ConfigManager.DPSMeterWindowAnchorMin.Value;
+                rectTransform.anchorMax = ConfigManager.DPSMeterWindowAnchorMax.Value;
                 rectTransform.localScale = Vector3.one;
-                rectTransform.pivot = BetterUIPlugin.instance.config.DPSMeterWindowPivot.Value;
-                rectTransform.sizeDelta = BetterUIPlugin.instance.config.DPSMeterWindowSize.Value;
-                rectTransform.anchoredPosition = BetterUIPlugin.instance.config.DPSMeterWindowPosition.Value;
-                rectTransform.eulerAngles = BetterUIPlugin.instance.config.DPSMeterWindowAngle.Value;
+                rectTransform.pivot = ConfigManager.DPSMeterWindowPivot.Value;
+                rectTransform.sizeDelta = ConfigManager.DPSMeterWindowSize.Value;
+                rectTransform.anchoredPosition = ConfigManager.DPSMeterWindowPosition.Value;
+                rectTransform.eulerAngles = ConfigManager.DPSMeterWindowAngle.Value;
 
                 rectTransform2.localPosition = Vector3.zero;
                 rectTransform2.anchorMin = Vector2.zero;
@@ -145,7 +144,7 @@ namespace BetterUI
                 rectTransform2.sizeDelta = new Vector2(-12, -12);
                 rectTransform2.anchoredPosition = Vector2.zero;
 
-                if (BetterUIPlugin.instance.config.DPSMeterWindowBackground.Value)
+                if (ConfigManager.DPSMeterWindowBackground.Value)
                 {
                     Image image = DPSMeterPanel.AddComponent<Image>();
                     Image copyImage = BetterUIPlugin.HUD.itemInventoryDisplay.gameObject.GetComponent<Image>();

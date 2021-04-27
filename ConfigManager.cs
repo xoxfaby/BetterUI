@@ -8,146 +8,146 @@ using RoR2;
 
 namespace BetterUI
 {
-    class ConfigManager
+    internal static class ConfigManager
     {
         // Files 
 
-        public ConfigFile ConfigFileComponents;
-        public ConfigFile ConfigFileMisc;
-        public ConfigFile ConfigFileAdvancedIcons;
-        public ConfigFile ConfigFileBuffs;
-        public ConfigFile ConfigFileCommandImprovements;
-        public ConfigFile ConfigFileDPSMeter;
-        public ConfigFile ConfigFileItemCounters;
-        public ConfigFile ConfigFileStatsDisplay;
-        public ConfigFile ConfigFileSorting;
+        public static ConfigFile ConfigFileComponents;
+        public static ConfigFile ConfigFileMisc;
+        public static ConfigFile ConfigFileAdvancedIcons;
+        public static ConfigFile ConfigFileBuffs;
+        public static ConfigFile ConfigFileCommandImprovements;
+        public static ConfigFile ConfigFileDPSMeter;
+        public static ConfigFile ConfigFileItemCounters;
+        public static ConfigFile ConfigFileStatsDisplay;
+        public static ConfigFile ConfigFileSorting;
 
         // Components
 
-        public ConfigEntry<bool> ComponentsAdvancedIcons;
-        public ConfigEntry<bool> ComponentsBuffTimers;
-        public ConfigEntry<bool> ComponentsCommandImprovements;
-        public ConfigEntry<bool> ComponentsDPSMeter;
-        public ConfigEntry<bool> ComponentsItemCounters;
-        public ConfigEntry<bool> ComponentsItemSorting;
-        public ConfigEntry<bool> ComponentsMisc;
-        public ConfigEntry<bool> ComponentsStatsDisplay;
+        public static ConfigEntry<bool> ComponentsAdvancedIcons;
+        public static ConfigEntry<bool> ComponentsBuffTimers;
+        public static ConfigEntry<bool> ComponentsCommandImprovements;
+        public static ConfigEntry<bool> ComponentsDPSMeter;
+        public static ConfigEntry<bool> ComponentsItemCounters;
+        public static ConfigEntry<bool> ComponentsItemSorting;
+        public static ConfigEntry<bool> ComponentsMisc;
+        public static ConfigEntry<bool> ComponentsStatsDisplay;
 
         // Misc
 
-        public ConfigEntry<bool> MiscShowHidden;
-        public ConfigEntry<bool> MiscAdvancedPickupNotificationsItems;
-        public ConfigEntry<bool> MiscAdvancedPickupNotificationsEquipements;
-        public ConfigEntry<bool> MiscHidePickupNotificiationsItems;
-        public ConfigEntry<bool> MiscHidePickupNotificiationsEquipements;
-        public ConfigEntry<bool> MiscHidePickupNotificiationsArtifacts;
-        public ConfigEntry<bool> MiscShowPickupDescription;
-        public ConfigEntry<bool> MiscPickupDescriptionAdvanced;
+        public static ConfigEntry<bool> MiscShowHidden;
+        public static ConfigEntry<bool> MiscAdvancedPickupNotificationsItems;
+        public static ConfigEntry<bool> MiscAdvancedPickupNotificationsEquipements;
+        public static ConfigEntry<bool> MiscHidePickupNotificiationsItems;
+        public static ConfigEntry<bool> MiscHidePickupNotificiationsEquipements;
+        public static ConfigEntry<bool> MiscHidePickupNotificiationsArtifacts;
+        public static ConfigEntry<bool> MiscShowPickupDescription;
+        public static ConfigEntry<bool> MiscPickupDescriptionAdvanced;
 
         // AdvancedIcons
 
-        public ConfigEntry<bool> AdvancedIconsItemAdvancedDescriptions;
-        public ConfigEntry<bool> AdvancedIconsItemItemStatsIntegration;
-        public ConfigEntry<bool> AdvancedIconsEquipementShowCooldownStacks;
-        public ConfigEntry<bool> AdvancedIconsEquipementAdvancedDescriptions;
-        public ConfigEntry<bool> AdvancedIconsEquipementShowBaseCooldown;
-        public ConfigEntry<bool> AdvancedIconsEquipementShowCalculatedCooldown;
-        public ConfigEntry<bool> AdvancedIconsSkillShowCooldownStacks;
-        public ConfigEntry<bool> AdvancedIconsSkillShowBaseCooldown;
-        public ConfigEntry<bool> AdvancedIconsSkillShowCalculatedCooldown;
-        public ConfigEntry<bool> AdvancedIconsSkillShowProcCoefficient;
-        public ConfigEntry<bool> AdvancedIconsSkillCalculateSkillProcEffects;
+        public static ConfigEntry<bool> AdvancedIconsItemAdvancedDescriptions;
+        public static ConfigEntry<bool> AdvancedIconsItemItemStatsIntegration;
+        public static ConfigEntry<bool> AdvancedIconsEquipementShowCooldownStacks;
+        public static ConfigEntry<bool> AdvancedIconsEquipementAdvancedDescriptions;
+        public static ConfigEntry<bool> AdvancedIconsEquipementShowBaseCooldown;
+        public static ConfigEntry<bool> AdvancedIconsEquipementShowCalculatedCooldown;
+        public static ConfigEntry<bool> AdvancedIconsSkillShowCooldownStacks;
+        public static ConfigEntry<bool> AdvancedIconsSkillShowBaseCooldown;
+        public static ConfigEntry<bool> AdvancedIconsSkillShowCalculatedCooldown;
+        public static ConfigEntry<bool> AdvancedIconsSkillShowProcCoefficient;
+        public static ConfigEntry<bool> AdvancedIconsSkillCalculateSkillProcEffects;
 
         // Buffs
 
-        public ConfigEntry<bool> BuffTimers;
-        public ConfigEntry<bool> BuffTimersDecimal;
-        public ConfigEntry<bool> BuffTooltips;
-        public ConfigEntry<String> BuffTimersPosition;
-        public TMPro.TextAlignmentOptions BuffTimersTextAlignmentOption;
-        public ConfigEntry<float> BuffTimersFontSize;
+        public static ConfigEntry<bool> BuffTimers;
+        public static ConfigEntry<bool> BuffTimersDecimal;
+        public static ConfigEntry<bool> BuffTooltips;
+        public static ConfigEntry<String> BuffTimersPosition;
+        public static TMPro.TextAlignmentOptions BuffTimersTextAlignmentOption;
+        public static ConfigEntry<float> BuffTimersFontSize;
 
         // CommandImprovements
 
-        public ConfigEntry<bool> CommandResizeCommandWindow;
-        public ConfigEntry<bool> CommandRemoveBackgroundBlur;
-        public ConfigEntry<bool> CommandCloseOnEscape;
-        public ConfigEntry<bool> CommandCloseOnWASD;
-        public ConfigEntry<String> CommandCloseOnCustom;
-        public ConfigEntry<bool> CommandTooltipsShow;
-        public ConfigEntry<bool> CommandTooltipsItemStatsBeforeAfter;
-        public ConfigEntry<bool> CommandCountersShow;
-        public ConfigEntry<bool> CommandCountersHideOnZero;
-        public ConfigEntry<String> CommandCountersPosition;
-        public TMPro.TextAlignmentOptions CommandCountersTextAlignmentOption;
-        public ConfigEntry<float> CommandCountersFontSize;
-        public ConfigEntry<String> CommandCountersPrefix;
+        public static ConfigEntry<bool> CommandResizeCommandWindow;
+        public static ConfigEntry<bool> CommandRemoveBackgroundBlur;
+        public static ConfigEntry<bool> CommandCloseOnEscape;
+        public static ConfigEntry<bool> CommandCloseOnWASD;
+        public static ConfigEntry<String> CommandCloseOnCustom;
+        public static ConfigEntry<bool> CommandTooltipsShow;
+        public static ConfigEntry<bool> CommandTooltipsItemStatsBeforeAfter;
+        public static ConfigEntry<bool> CommandCountersShow;
+        public static ConfigEntry<bool> CommandCountersHideOnZero;
+        public static ConfigEntry<String> CommandCountersPosition;
+        public static TMPro.TextAlignmentOptions CommandCountersTextAlignmentOption;
+        public static ConfigEntry<float> CommandCountersFontSize;
+        public static ConfigEntry<String> CommandCountersPrefix;
 
         // DPSMeter
 
-        public ConfigEntry<float> DPSMeterTimespan;
-        public ConfigEntry<bool> DPSMeterWindowShow;
-        public ConfigEntry<bool> DPSMeterWindowIncludeMinions;
-        public ConfigEntry<bool> DPSMeterWindowBackground;
-        public ConfigEntry<Vector2> DPSMeterWindowAnchorMin;
-        public ConfigEntry<Vector2> DPSMeterWindowAnchorMax;
-        public ConfigEntry<Vector2> DPSMeterWindowPosition;
-        public ConfigEntry<Vector2> DPSMeterWindowPivot;
-        public ConfigEntry<Vector2> DPSMeterWindowSize;
-        public ConfigEntry<Vector3> DPSMeterWindowAngle;
+        public static ConfigEntry<float> DPSMeterTimespan;
+        public static ConfigEntry<bool> DPSMeterWindowShow;
+        public static ConfigEntry<bool> DPSMeterWindowIncludeMinions;
+        public static ConfigEntry<bool> DPSMeterWindowBackground;
+        public static ConfigEntry<Vector2> DPSMeterWindowAnchorMin;
+        public static ConfigEntry<Vector2> DPSMeterWindowAnchorMax;
+        public static ConfigEntry<Vector2> DPSMeterWindowPosition;
+        public static ConfigEntry<Vector2> DPSMeterWindowPivot;
+        public static ConfigEntry<Vector2> DPSMeterWindowSize;
+        public static ConfigEntry<Vector3> DPSMeterWindowAngle;
 
         // ItemCounters
 
-        public ConfigEntry<bool> ItemCountersShowItemCounters;
-        public ConfigEntry<bool> ItemCountersShowItemScore;
-        public ConfigEntry<bool> ItemCountersItemScoreFromTier;
-        public ConfigEntry<bool> ItemCountersShowItemSum;
-        public ConfigEntry<string> ItemCountersItemSumTiersString;
-        public List<ItemTier> ItemCountersItemSumTiers;
-        public ConfigEntry<bool> ItemCountersShowItemsByTier;
-        public ConfigEntry<string> ItemCountersItemsByTierOrderString;
-        public List<ItemTier> ItemCountersItemsByTierOrder;
-        public ConfigEntry<int> ItemCountersTierScoreTier1;
-        public ConfigEntry<int> ItemCountersTierScoreTier2;
-        public ConfigEntry<int> ItemCountersTierScoreTier3;
-        public ConfigEntry<int> ItemCountersTierScoreLunar;
-        public ConfigEntry<int> ItemCountersTierScoreBoss;
-        public ConfigEntry<int> ItemCountersTierScoreNoTier;
-        public int[] ItemCountersTierScores;
-        public Dictionary<ItemDef,int> ItemCountersItemScores;
+        public static ConfigEntry<bool> ItemCountersShowItemCounters;
+        public static ConfigEntry<bool> ItemCountersShowItemScore;
+        public static ConfigEntry<bool> ItemCountersItemScoreFromTier;
+        public static ConfigEntry<bool> ItemCountersShowItemSum;
+        public static ConfigEntry<string> ItemCountersItemSumTiersString;
+        public static List<ItemTier> ItemCountersItemSumTiers;
+        public static ConfigEntry<bool> ItemCountersShowItemsByTier;
+        public static ConfigEntry<string> ItemCountersItemsByTierOrderString;
+        public static List<ItemTier> ItemCountersItemsByTierOrder;
+        public static ConfigEntry<int> ItemCountersTierScoreTier1;
+        public static ConfigEntry<int> ItemCountersTierScoreTier2;
+        public static ConfigEntry<int> ItemCountersTierScoreTier3;
+        public static ConfigEntry<int> ItemCountersTierScoreLunar;
+        public static ConfigEntry<int> ItemCountersTierScoreBoss;
+        public static ConfigEntry<int> ItemCountersTierScoreNoTier;
+        public static int[] ItemCountersTierScores;
+        public static Dictionary<ItemDef,int> ItemCountersItemScores;
 
         // StatsDisplay
 
-        public ConfigEntry<bool> StatsDisplayEnable;
-        public ConfigEntry<String> StatsDisplayStatString;
-        public ConfigEntry<String> StatsDisplayStatStringCustomBind;
-        public ConfigEntry<String> StatsDisplayCustomBind;
-        public ConfigEntry<bool> StatsDisplayShowCustomBindOnly;
-        public ConfigEntry<bool> StatsDisplayToggleOnBind;
-        public ConfigEntry<bool> StatsDisplayPanelBackground;
-        public ConfigEntry<bool> StatsDisplayAttachToObjectivePanel;
-        public ConfigEntry<Vector2> StatsDisplayWindowAnchorMin;
-        public ConfigEntry<Vector2> StatsDisplayWindowAnchorMax;
-        public ConfigEntry<Vector2> StatsDisplayWindowPosition;
-        public ConfigEntry<Vector2> StatsDisplayWindowPivot;
-        public ConfigEntry<Vector2> StatsDisplayWindowSize;
-        public ConfigEntry<Vector3> StatsDisplayWindowAngle;
+        public static ConfigEntry<bool> StatsDisplayEnable;
+        public static ConfigEntry<String> StatsDisplayStatString;
+        public static ConfigEntry<String> StatsDisplayStatStringCustomBind;
+        public static ConfigEntry<String> StatsDisplayCustomBind;
+        public static ConfigEntry<bool> StatsDisplayShowCustomBindOnly;
+        public static ConfigEntry<bool> StatsDisplayToggleOnBind;
+        public static ConfigEntry<bool> StatsDisplayPanelBackground;
+        public static ConfigEntry<bool> StatsDisplayAttachToObjectivePanel;
+        public static ConfigEntry<Vector2> StatsDisplayWindowAnchorMin;
+        public static ConfigEntry<Vector2> StatsDisplayWindowAnchorMax;
+        public static ConfigEntry<Vector2> StatsDisplayWindowPosition;
+        public static ConfigEntry<Vector2> StatsDisplayWindowPivot;
+        public static ConfigEntry<Vector2> StatsDisplayWindowSize;
+        public static ConfigEntry<Vector3> StatsDisplayWindowAngle;
 
         // Sorting
 
-        public ConfigEntry<bool> SortingSortItemsInventory;
-        public ConfigEntry<bool> SortingSortItemsCommand;
-        public ConfigEntry<bool> SortingSortItemsScrapper;
-        public ConfigEntry<String> SortingTierOrderString;
-        public int[] SortingTierOrder;
-        public ConfigEntry<String> SortingSortOrder;
-        public ConfigEntry<String> SortingSortOrderCommand;
-        public ConfigEntry<String> SortingSortOrderScrapper;
+        public static ConfigEntry<bool> SortingSortItemsInventory;
+        public static ConfigEntry<bool> SortingSortItemsCommand;
+        public static ConfigEntry<bool> SortingSortItemsScrapper;
+        public static ConfigEntry<String> SortingTierOrderString;
+        public static int[] SortingTierOrder;
+        public static ConfigEntry<String> SortingSortOrder;
+        public static ConfigEntry<String> SortingSortOrderCommand;
+        public static ConfigEntry<String> SortingSortOrderScrapper;
 
 
 
 
-        public ConfigManager()
+        static ConfigManager()
         {
             ConfigFileComponents = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Components.cfg", true);
             ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);

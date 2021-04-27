@@ -11,85 +11,45 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.1.1.1")]
-    public class BetterUIPlugin : BaseUnityPlugin
+    public class BetterUIPlugin : BetterAPI.BetterUnityPlugin<BetterUIPlugin>
     {
-        public static BetterUIPlugin instance;
 
         internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
-        internal delegate void BetterUIEvent(BetterUIPlugin self);
-
-        internal static event BetterUIEvent onStart;
-        internal static event BetterUIEvent onEnable;
-        internal static event BetterUIEvent onDisable;
-        internal static event BetterUIEvent onUpdate;
         internal static event HUDAwakeEvent onHUDAwake;
 
-        internal ConfigManager config;
-        internal bool ItemStatsModIntegration;
+        internal static bool ItemStatsModIntegration;
         internal static RoR2.UI.HUD HUD;
 
         public static StringBuilder sharedStringBuilder = new StringBuilder();
 
-        BetterUIPlugin()
-        {
-            BetterUIPlugin.instance = this;
-        }
+        public override BaseUnityPlugin typeReference => throw new NotImplementedException();
 
-        public void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             BepInExPatcher.DoPatching();
-            config = new ConfigManager();
-            if (config.ComponentsItemSorting.Value)
+            if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
-            if (config.ComponentsStatsDisplay.Value)
+            if (ConfigManager.ComponentsStatsDisplay.Value)
                 StatsDisplay.Hook();
-            if (config.ComponentsCommandImprovements.Value)
+            if (ConfigManager.ComponentsCommandImprovements.Value)
                 CommandImprovements.Hook();
-            if (config.ComponentsDPSMeter.Value)
+            if (ConfigManager.ComponentsDPSMeter.Value)
                 DPSMeter.Hook();
-            if (config.ComponentsBuffTimers.Value)
+            if (ConfigManager.ComponentsBuffTimers.Value)
                 BuffTimers.Hook();
-            if (config.ComponentsAdvancedIcons.Value)
+            if (ConfigManager.ComponentsAdvancedIcons.Value)
                 AdvancedIcons.Hook();
-            if (config.ComponentsItemCounters.Value)
+            if (ConfigManager.ComponentsItemCounters.Value)
                 ItemCounters.Hook();
-            if (config.ComponentsMisc.Value)
+            if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
         }
-
-        public void Start()
+        protected override void OnEnable()
         {
-            if (onStart != null)
-            {
-                onStart.Invoke(this);
-            }
-        }
-        public void Update()
-        {
-            if (onUpdate != null)
-            {
-                onUpdate.Invoke(this);
-            }
-        }
-
-        public void OnEnable()
-        {
-
-            ItemStatsModIntegration = config.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
-            HookManager.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
-
-            if (onEnable != null)
-            {
-                onEnable.Invoke(this);
-            }
-        }
-
-        public void OnDisable()
-        {
-            if (onDisable != null)
-            {
-                onDisable.Invoke(this);
-            }
+            base.OnEnable();
+            ItemStatsModIntegration = ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
+            BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
         }
 
         internal static void HUD_Awake(Action<RoR2.UI.HUD> orig, RoR2.UI.HUD self)
