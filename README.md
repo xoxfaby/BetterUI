@@ -151,8 +151,15 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.2.0
+ - Addition: Buffs: Buff tooltips now have better names and descriptions. 
+   Comes with a public API for other mods to register the names and descriptions of their buffs.
+   Uses the Language system if you want to provide translated names/descriptions.
+   Buffs registered with BetterAPI have their names imported if registered there.
+ - Bugfix: AdvancedIcons: Fixed issue where skill tooltips didn't update if the skill was overridden.' 
+
 #### v2.1.1
- - Bugfig: ItemScores: Fixed issue if mods added items with duplicate nametokens, uses ItemDef.name instead. 
+ - Bugfix: ItemScores: Fixed issue if mods added items with duplicate nametokens, uses ItemDef.name instead. 
 
 ### v2.1.0
  - Bugfix: Fixed ItemScores:

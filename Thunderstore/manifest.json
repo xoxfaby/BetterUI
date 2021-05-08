@@ -1,8 +1,8 @@
 ﻿{
   "name": "BetterUI",
-  "version_number": "2.1.1",
+  "version_number": "2.2.0",
   "website_url": "https://github.com/xoxfaby/BetterUI",
-  "description": "Anniversary Update Support! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
+  "description": "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
   "dependencies": [
     "bbepis-BepInExPack-5.4.9"
   ],
@@ -10,10 +10,10 @@
   "AuthorName": "XoXFaby",
   "Name": "XoXFaby-BetterUI",
   "DisplayName": "BetterUI",
-  "Version": "2.1.1",
+  "Version": "2.2.0",
   "Licence": "",
   "WebsiteURL": "https://github.com/xoxfaby/BetterUI",
-  "Description": "Anniversary Update Support! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
+  "Description": "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
   "GameVersion": "N/A",
   "Dependencies": [
     "bbepis-BepInExPack-5.4.9"
