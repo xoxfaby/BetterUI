@@ -1,9 +1,32 @@
 ﻿{
   "name": "BetterUI",
-  "version_number": "2.0.0",
+  "version_number": "2.2.0",
   "website_url": "https://github.com/xoxfaby/BetterUI",
-  "description": "Anniversary Update Support! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
+  "description": "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
   "dependencies": [
-    "bbepis-BepInExPack-5.3.1"
-  ]
+    "bbepis-BepInExPack-5.4.9"
+  ],
+  "ManifestVersion": 2,
+  "AuthorName": "XoXFaby",
+  "Name": "XoXFaby-BetterUI",
+  "DisplayName": "BetterUI",
+  "Version": "2.2.0",
+  "Licence": "",
+  "WebsiteURL": "https://github.com/xoxfaby/BetterUI",
+  "Description": "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more. ",
+  "GameVersion": "N/A",
+  "Dependencies": [
+    "bbepis-BepInExPack-5.4.9"
+  ],
+  "OptionalDependencies": [
+    "ontrigger-ItemStatsMod-2.2.1"
+  ],
+  "Incompatibilities": [],
+  "NetworkMode": "client",
+  "PackageType": "mod",
+  "InstallMode": "managed",
+  "Loaders": [
+    "bepinex"
+  ],
+  "ExtraData": {}
 }

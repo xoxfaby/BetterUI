@@ -3,48 +3,59 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using RoR2.UI;
+using RoR2.Skills;
 using UnityEngine;
 
 namespace BetterUI
 {
-    class AdvancedIcons : BetterUI.ModComponent
+    static class AdvancedIcons
     {
-        public AdvancedIcons(BetterUI mod) : base(mod) { }
+        static Dictionary<EquipmentIcon,bool> EquipmentIconDirty = new Dictionary<EquipmentIcon, bool>();
+        static Dictionary<EquipmentIcon, EquipmentDef> lastEquipment = new Dictionary<EquipmentIcon, EquipmentDef>();
 
-        public Dictionary<EquipmentIcon,bool> EquipmentIconDirty = new Dictionary<EquipmentIcon, bool>();
-        public Dictionary<EquipmentIcon, EquipmentDef> lastEquipment = new Dictionary<EquipmentIcon, EquipmentDef>();
+        static Dictionary<SkillIcon,bool> SkillIconDirty = new Dictionary<SkillIcon, bool>();
+        static Dictionary<SkillIcon, SkillDef> lastSkill = new Dictionary<SkillIcon, SkillDef>();
 
-        public Dictionary<SkillIcon,bool> SkillIconDirty = new Dictionary<SkillIcon, bool>();
-        public Dictionary<SkillIcon, GenericSkill> lastSkill = new Dictionary<SkillIcon, GenericSkill>();
+        static List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos;
+        static Inventory inventory;
+        static CharacterBody targetbody;
 
-        List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos;
-        Inventory inventory;
-        CharacterBody targetbody;
-
-        internal override void Hook()
+        static AdvancedIcons()
         {
-            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value ||
-                mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value ||
-                mod.config.AdvancedIconsSkillShowBaseCooldown.Value ||
-                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+            BetterUIPlugin.onHUDAwake += onHUDAwake;
+        }
+        internal static void Hook()
+        {
+            if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value ||
+                ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value ||
+                ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value ||
+                ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
-                On.RoR2.UI.LoadoutPanelController.Row.AddButton += LoadoutPanelController_Row_AddButton;
-                On.RoR2.UI.SkillIcon.Update += SkillIcon_Update;
-                On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.LoadoutPanelController.Row>("AddButton", (LoadoutPanelController_Row_AddButton_Delegate) LoadoutPanelController_Row_AddButton);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.SkillIcon>("Update", SkillIcon_Update);
+                BetterUIPlugin.Hooks.Add<RoR2.CharacterMaster>("OnInventoryChanged", CharacterMaster_OnInventoryChanged);
             }
-            if (mod.config.AdvancedIconsItemAdvancedDescriptions.Value)
+            if (ConfigManager.AdvancedIconsItemAdvancedDescriptions.Value)
             {
-                On.RoR2.UI.ItemIcon.SetItemIndex += SetItemIndex;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemIcon, ItemIndex, int>("SetItemIndex", ItemIcon_SetItemIndex);
             }
-            if (mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ||
-                mod.config.AdvancedIconsEquipementShowBaseCooldown.Value ||
-                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+            if (ConfigManager.AdvancedIconsEquipementAdvancedDescriptions.Value ||
+                ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value ||
+                ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
-                On.RoR2.UI.EquipmentIcon.Update += EquipmentIcon_Update;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.EquipmentIcon>("Update", EquipmentIcon_Update);
             }
         }
 
-        internal void SetItemIndex(On.RoR2.UI.ItemIcon.orig_SetItemIndex orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
+        private static void onHUDAwake(HUD self)
+        {
+            EquipmentIconDirty.Clear();
+            lastEquipment.Clear();
+            SkillIconDirty.Clear();
+            lastSkill.Clear();
+        }
+
+        private static void ItemIcon_SetItemIndex(Action<RoR2.UI.ItemIcon, ItemIndex, int> orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
         {
             orig(self, itemIndex, itemCount);
 
@@ -52,62 +63,57 @@ namespace BetterUI
         }
 
 
-        private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        private static void CharacterMaster_OnInventoryChanged(Action<RoR2.CharacterMaster> orig, CharacterMaster self)
         {
             orig(self);
 
             if (self.inventory)
             {
-                foreach (EquipmentIcon equipment in new List<EquipmentIcon>(this.EquipmentIconDirty.Keys))
+                foreach (EquipmentIcon equipment in new List<EquipmentIcon>(EquipmentIconDirty.Keys))
                 {
                     if (equipment && equipment.targetInventory == self.inventory)
                     {
-                        this.EquipmentIconDirty[equipment] = true;
+                        EquipmentIconDirty[equipment] = true;
                     }
                 }
                 foreach (SkillIcon skill in new List<SkillIcon>(SkillIconDirty.Keys))
                 {
                     if (skill && skill.playerCharacterMasterController && skill.playerCharacterMasterController.master == self)
                     {
-                        this.SkillIconDirty[skill] = true;
+                        SkillIconDirty[skill] = true;
                     }
                 }
             }
         }
 
-        internal override void HUD_Awake()
-        {
-            EquipmentIconDirty.Clear();
-            lastEquipment.Clear();
-            SkillIconDirty.Clear();
-            lastSkill.Clear();
-        }
-        internal void LoadoutPanelController_Row_AddButton(On.RoR2.UI.LoadoutPanelController.Row.orig_AddButton orig, object self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
+        internal delegate void LoadoutPanelController_Row_AddButton_Delegate(Action<RoR2.UI.LoadoutPanelController.Row, LoadoutPanelController, Sprite, string, string, Color, UnityEngine.Events.UnityAction, string, ViewablesCatalog.Node, bool> orig,
+            RoR2.UI.LoadoutPanelController.Row self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false);
+        internal static void LoadoutPanelController_Row_AddButton(Action<RoR2.UI.LoadoutPanelController.Row, LoadoutPanelController, Sprite, string, string, Color, UnityEngine.Events.UnityAction, string, ViewablesCatalog.Node, bool> orig,
+            RoR2.UI.LoadoutPanelController.Row self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false)
         {
             orig(self, owner, icon, titleToken, bodyToken, tooltipColor, callback, unlockableName, viewableNode, isWIP);
 
             LoadoutPanelController.Row selfRow = (LoadoutPanelController.Row) self;
             UserProfile userProfile = selfRow.userProfile;
-            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
+            if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value || ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value)
             {
                 if (userProfile != null && userProfile.HasUnlockable(unlockableName))
                 {
-                    BetterUI.sharedStringBuilder.Clear();
-                    BetterUI.sharedStringBuilder.Append(Language.GetString(bodyToken));
-                    if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
+                    BetterUIPlugin.sharedStringBuilder.Clear();
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(bodyToken));
+                    if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value)
                     {
-                        BetterUI.print(titleToken);
                         var skillDef = RoR2.Skills.SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName(titleToken));
                         if (skillDef)
                         {
-                            BetterUI.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
-                            BetterUI.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
-                            BetterUI.sharedStringBuilder.Append("</style> second");
-                            if(skillDef.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
+                            BetterUIPlugin.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
+                            BetterUIPlugin.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
+                            BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                            if(skillDef.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                         }
                     }
 
-                    if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                    if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                     {
                         List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(titleToken);
 
@@ -115,14 +121,14 @@ namespace BetterUI
                         {
                             foreach (var info in procCoefficientInfos)
                             {
-                                BetterUI.sharedStringBuilder.Append("\n\n<size=110%>");
-                                BetterUI.sharedStringBuilder.Append(info.name);
-                                BetterUI.sharedStringBuilder.Append(":</size>");
-                                if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                                BetterUIPlugin.sharedStringBuilder.Append("\n\n<size=110%>");
+                                BetterUIPlugin.sharedStringBuilder.Append(info.name);
+                                BetterUIPlugin.sharedStringBuilder.Append(":</size>");
+                                if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                                 {
-                                    BetterUI.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
-                                    BetterUI.sharedStringBuilder.Append(info.procCoefficient);
-                                    BetterUI.sharedStringBuilder.Append("</style>");
+                                    BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                    BetterUIPlugin.sharedStringBuilder.Append(info.procCoefficient);
+                                    BetterUIPlugin.sharedStringBuilder.Append("</style>");
                                 }
                             }
 
@@ -132,46 +138,46 @@ namespace BetterUI
                     TooltipProvider tooltipProvider = selfRow.buttons[selfRow.buttons.Count - 1].GetComponent<TooltipProvider>();
                     if (tooltipProvider != null)
                     {
-                        tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
+                        tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
                     }
                 }
             }
         }
-        internal void SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
+        internal static void SkillIcon_Update(Action<RoR2.UI.SkillIcon> orig, SkillIcon self)
         {
             orig(self);
 
             if (!SkillIconDirty.ContainsKey(self))
             {
-                this.SkillIconDirty.Add(self, true);
-                this.lastSkill.Add(self, null);
+                SkillIconDirty.Add(self, true);
+                lastSkill.Add(self, null);
             }
-            if (self.targetSkill && (self.targetSkill != this.lastSkill[self] || this.SkillIconDirty[self]))
+            if (self.targetSkill && (self.targetSkill.skillDef != lastSkill[self] || SkillIconDirty[self]))
             {
-                this.lastSkill[self] = self.targetSkill;
-                this.SkillIconDirty[self] = false;
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
-                if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value || mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value)
+                lastSkill[self] = self.targetSkill.skillDef ;
+                SkillIconDirty[self] = false;
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
+                if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value || ConfigManager.AdvancedIconsSkillShowCalculatedCooldown.Value)
                 {
-                    BetterUI.sharedStringBuilder.Append("\n");
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
                 }
-                if (mod.config.AdvancedIconsSkillShowBaseCooldown.Value)
+                if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value)
                 {
-                    BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
-                    BetterUI.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
-                    BetterUI.sharedStringBuilder.Append("</style> second");
-                    if (self.targetSkill.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUIPlugin.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
+                    BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                    if (self.targetSkill.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                 }
-                if (mod.config.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
+                if (ConfigManager.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
                 {
-                    BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
-                    BetterUI.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
-                    BetterUI.sharedStringBuilder.Append("</style> second");
-                    if (self.targetSkill.baseRechargeInterval != 1) BetterUI.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                    BetterUIPlugin.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
+                    BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                    if (self.targetSkill.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                 }
 
-                if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value || mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value || ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                 {
                     procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken);
 
@@ -179,27 +185,26 @@ namespace BetterUI
                     {
                         foreach (var info in procCoefficientInfos)
                         {
-                            BetterUI.sharedStringBuilder.Append("\n\n<size=110%>");
-                            BetterUI.sharedStringBuilder.Append(info.name);
-                            BetterUI.sharedStringBuilder.Append("</size>");
-                            if (mod.config.AdvancedIconsSkillShowProcCoefficient.Value)
+                            BetterUIPlugin.sharedStringBuilder.Append("\n\n<size=110%>");
+                            BetterUIPlugin.sharedStringBuilder.Append(info.name);
+                            BetterUIPlugin.sharedStringBuilder.Append("</size>");
+                            if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
-                                BetterUI.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
-                                BetterUI.sharedStringBuilder.Append(info.procCoefficient);
-                                BetterUI.sharedStringBuilder.Append("</style>");
+                                BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                BetterUIPlugin.sharedStringBuilder.Append(info.procCoefficient);
+                                BetterUIPlugin.sharedStringBuilder.Append("</style>");
                             }
-                            if (info.procCoefficient > 0 && mod.config.AdvancedIconsSkillCalculateSkillProcEffects.Value)
+                            if (info.procCoefficient > 0 && ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                             {
-                                foreach (var item in ProcItemsCatalog.GetAllItems())
+                                foreach (var item in ProcItemsCatalog.items)
                                 {
-                                    int stacks = self.targetSkill.characterBody.inventory.itemStacks[(int)item.Key];
+                                    int stacks = self.targetSkill.characterBody.inventory.GetItemCount(item.Key);
                                     if (stacks > 0)
                                     {
-                                        ItemDef itemDef = ItemCatalog.GetItemDef(item.Key);
-                                        BetterUI.sharedStringBuilder.Append("\n  ");
-                                        BetterUI.sharedStringBuilder.Append(Language.GetString(itemDef.nameToken));
-                                        BetterUI.sharedStringBuilder.Append(": ");
-                                        BetterUI.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
+                                        BetterUIPlugin.sharedStringBuilder.Append("\n  ");
+                                        BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(item.Key.nameToken));
+                                        BetterUIPlugin.sharedStringBuilder.Append(": ");
+                                        BetterUIPlugin.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
                                     }
                                 }
                             }
@@ -207,54 +212,54 @@ namespace BetterUI
                     }
                 }
 
-                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
             }
 
-            if (mod.config.AdvancedIconsSkillShowCooldownStacks.Value && self.targetSkill && self.targetSkill.cooldownRemaining > 0)
+            if (ConfigManager.AdvancedIconsSkillShowCooldownStacks.Value && self.targetSkill && self.targetSkill.cooldownRemaining > 0)
             {
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.AppendInt(Mathf.CeilToInt(self.targetSkill.cooldownRemaining), 0U, uint.MaxValue);
-                self.cooldownText.SetText(BetterUI.sharedStringBuilder);
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.AppendInt(Mathf.CeilToInt(self.targetSkill.cooldownRemaining), 0U, uint.MaxValue);
+                self.cooldownText.SetText(BetterUIPlugin.sharedStringBuilder);
                 self.cooldownText.gameObject.SetActive(true);
             }
         }
 
-        internal void EquipmentIcon_Update(On.RoR2.UI.EquipmentIcon.orig_Update orig, EquipmentIcon self)
+        internal static void EquipmentIcon_Update(Action<RoR2.UI.EquipmentIcon> orig, EquipmentIcon self)
         {
             orig(self);
 
-            if (!this.EquipmentIconDirty.ContainsKey(self))
+            if (!EquipmentIconDirty.ContainsKey(self))
             {
-                this.EquipmentIconDirty.Add(self,true);
-                this.lastEquipment.Add(self,null);
+                EquipmentIconDirty.Add(self,true);
+                lastEquipment.Add(self,null);
             }
-            if ((mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value || 
-                mod.config.AdvancedIconsEquipementShowBaseCooldown.Value || 
-                mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value) && 
-                (self.currentDisplayData.equipmentDef != this.lastEquipment[self] || this.EquipmentIconDirty[self]) &&
+            if ((ConfigManager.AdvancedIconsEquipementAdvancedDescriptions.Value || 
+                ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value || 
+                ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value) && 
+                (self.currentDisplayData.equipmentDef != lastEquipment[self] || EquipmentIconDirty[self]) &&
                 self.currentDisplayData.hasEquipment && self.tooltipProvider)
             {
-                this.lastEquipment[self] = self.currentDisplayData.equipmentDef;
-                this.EquipmentIconDirty[self] = false;
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.Append(Language.GetString(mod.config.AdvancedIconsEquipementAdvancedDescriptions.Value ? self.currentDisplayData.equipmentDef.descriptionToken : self.currentDisplayData.equipmentDef.pickupToken));
-                if(mod.config.AdvancedIconsEquipementShowBaseCooldown.Value || mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+                lastEquipment[self] = self.currentDisplayData.equipmentDef;
+                EquipmentIconDirty[self] = false;
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(ConfigManager.AdvancedIconsEquipementAdvancedDescriptions.Value ? self.currentDisplayData.equipmentDef.descriptionToken : self.currentDisplayData.equipmentDef.pickupToken));
+                if(ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value || ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
-                    BetterUI.sharedStringBuilder.Append("\n");
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
                 }
-                if (mod.config.AdvancedIconsEquipementShowBaseCooldown.Value)
+                if (ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value)
                 {
-                    BetterUI.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
-                    BetterUI.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
-                    BetterUI.sharedStringBuilder.Append("</style> second");
-                    if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUI.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUIPlugin.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
+                    BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                    if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                 }
-                if (mod.config.AdvancedIconsEquipementShowCalculatedCooldown.Value)
+                if (ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
                     inventory = self.targetInventory;
-                    if (!inventory && mod.HUD.targetBodyObject)
+                    if (!inventory && BetterUIPlugin.HUD.targetBodyObject)
                     {
-                        targetbody = mod.HUD.targetBodyObject.GetComponent<CharacterBody>();
+                        targetbody = BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>();
                         if (targetbody)
                         {
                             inventory = targetbody.inventory;
@@ -262,26 +267,26 @@ namespace BetterUI
                     }
                     if (inventory)
                     {
-                        float reduction = (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("EquipmentMagazine")]);
-                        if (inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] > 0)
+                        float reduction = (float)Math.Pow(0.85, inventory.GetItemCount(RoR2.RoR2Content.Items.EquipmentMagazine));
+                        if (inventory.GetItemCount(RoR2.RoR2Content.Items.AutoCastEquipment.itemIndex) > 0)
                         {
-                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.itemStacks[(int) ItemCatalog.FindItemIndex("AutoCastEquipment")] - 1);
+                            reduction *= 0.5f * (float)Math.Pow(0.85, inventory.GetItemCount(RoR2.RoR2Content.Items.AutoCastEquipment.itemIndex) - 1);
                         }
                         if (reduction < 1)
                         {
-                            BetterUI.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
-                            BetterUI.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
-                            BetterUI.sharedStringBuilder.Append("</style> second");
-                            if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUI.sharedStringBuilder.Append("s");
+                            BetterUIPlugin.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                            BetterUIPlugin.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
+                            BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                            if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                         }
                     }
                 }
                 
 
-                self.tooltipProvider.overrideBodyText = BetterUI.sharedStringBuilder.ToString();
+                self.tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
             }
 
-            if (mod.config.AdvancedIconsEquipementShowCooldownStacks.Value && self.cooldownText && self.currentDisplayData.cooldownValue > 0)
+            if (ConfigManager.AdvancedIconsEquipementShowCooldownStacks.Value && self.cooldownText && self.currentDisplayData.cooldownValue > 0)
             {
                 self.cooldownText.gameObject.SetActive(true);
             }

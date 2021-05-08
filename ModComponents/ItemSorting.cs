@@ -5,23 +5,21 @@ using System.Linq;
 using System.Collections.Generic;
 namespace BetterUI
 {
-    class ItemSorting : BetterUI.ModComponent
+    static class ItemSorting
     {
-        public ItemSorting(BetterUI mod) : base(mod) { }
-
-        internal override void Hook()
+        internal static void Hook()
         {
-            if (mod.config.SortingSortItemsInventory.Value)
+            if (ConfigManager.SortingSortItemsInventory.Value)
             {
-                On.RoR2.UI.ItemInventoryDisplay.OnInventoryChanged += mod.itemSorting.ItemInventoryDisplay_OnInventoryChanged;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>("OnInventoryChanged", ItemInventoryDisplay_OnInventoryChanged);
             }
-            if (mod.config.SortingSortItemsCommand.Value && mod.config.SortingSortOrderCommand.Value.Contains("C"))
+            if (ConfigManager.SortingSortItemsCommand.Value && ConfigManager.SortingSortOrderCommand.Value.Contains("C"))
             {
-                On.RoR2.PickupPickerController.SubmitChoice += mod.commandImprovements.PickupPickerController_SubmitChoice;
+                BetterUIPlugin.Hooks.Add<RoR2.PickupPickerController, int>( "SubmitChoice", CommandImprovements.PickupPickerController_SubmitChoice );
             }
         }
 
-        public List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
+        public static List<EquipmentIndex> sortItems(List<EquipmentIndex> equipmentList, String sortOrder)
         { 
             IOrderedEnumerable<EquipmentIndex> finalOrder = equipmentList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
@@ -43,7 +41,7 @@ namespace BetterUI
             return equipmentList;
         }
 
-        public List<ItemIndex> sortItems(List<ItemIndex> itemList, Inventory inventory, String sortOrder)
+        public static List<ItemIndex> sortItems(List<ItemIndex> itemList, Inventory inventory, String sortOrder)
         {
 
             IOrderedEnumerable<ItemIndex> finalOrder = itemList.OrderBy(a => 1);
@@ -52,10 +50,10 @@ namespace BetterUI
                 switch (c)
                 {
                     case '0': // Tier Ascending
-                        finalOrder = finalOrder.ThenBy(item => mod.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenBy(item => ConfigManager.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '1': // Tier Descending
-                        finalOrder = finalOrder.ThenByDescending(item => mod.config.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
+                        finalOrder = finalOrder.ThenByDescending(item => ConfigManager.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier]);
                         break;
                     case '2': // Stack Size Ascending
                         finalOrder = finalOrder.ThenBy(item => inventory.itemStacks[(int)item]);
@@ -81,7 +79,7 @@ namespace BetterUI
                         break;
                     case 'C': // Special Command Centered
                         ItemDef firstItemDef = ItemCatalog.GetItemDef(finalOrder.First());
-                        if (firstItemDef != null && mod.commandImprovements.lastItem[(int)firstItemDef.tier] != ItemIndex.None && finalOrder.Contains(mod.commandImprovements.lastItem[(int)firstItemDef.tier])) 
+                        if (firstItemDef != null && CommandImprovements.lastItem[(int)firstItemDef.tier] != ItemIndex.None && finalOrder.Contains(CommandImprovements.lastItem[(int)firstItemDef.tier])) 
                         {
                             int roundUp = (int)Math.Ceiling((double)finalOrder.Count() / 5) * 5;
                             int offset;
@@ -97,8 +95,8 @@ namespace BetterUI
                                 offset = roundUp / 2;
                             }
                             List<ItemIndex> finalOrderList = finalOrder.ToList();
-                            finalOrderList.Remove(mod.commandImprovements.lastItem[(int)firstItemDef.tier]);
-                            finalOrderList.Insert(offset, mod.commandImprovements.lastItem[(int)firstItemDef.tier]);
+                            finalOrderList.Remove(CommandImprovements.lastItem[(int)firstItemDef.tier]);
+                            finalOrderList.Insert(offset, CommandImprovements.lastItem[(int)firstItemDef.tier]);
                             finalOrder = finalOrderList.OrderBy(a => 1);
                         }
                         break;
@@ -155,14 +153,13 @@ namespace BetterUI
             }
             return finalOrder.ToList();
         }
-        public void ItemInventoryDisplay_OnInventoryChanged(On.RoR2.UI.ItemInventoryDisplay.orig_OnInventoryChanged orig, RoR2.UI.ItemInventoryDisplay self)
+        public static void ItemInventoryDisplay_OnInventoryChanged(Action<RoR2.UI.ItemInventoryDisplay> orig, RoR2.UI.ItemInventoryDisplay self)
         {
-
             orig(self);
 
             if (self.itemOrder != null && self.inventory && self.inventory.itemAcquisitionOrder.Any())
             {
-                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, mod.config.SortingSortOrder.Value).ToList().CopyTo(self.itemOrder);
+                sortItems(self.inventory.itemAcquisitionOrder, self.inventory, ConfigManager.SortingSortOrder.Value).ToList().CopyTo(self.itemOrder);
             }
         }
     }

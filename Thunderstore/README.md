@@ -151,6 +151,37 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.2.0
+ - Addition: Buffs: Buff tooltips now have better names and descriptions. 
+   Comes with a public API for other mods to register the names and descriptions of their buffs.
+   Uses the Language system if you want to provide translated names/descriptions.
+   Buffs registered with BetterAPI have their names imported if registered there.
+ - Bugfix: AdvancedIcons: Fixed issue where skill tooltips didn't update if the skill was overridden.' 
+
+#### v2.1.1
+ - Bugfix: ItemScores: Fixed issue if mods added items with duplicate nametokens, uses ItemDef.name instead. 
+
+### v2.1.0
+ - Bugfix: Fixed ItemScores:
+ - Bugfix: StatsDisplay: Fixed $exp.
+ - Addition: StatsDisplay: Added $maxexp which shows the exp needed to level up
+ - Addition: StatsDisplay: Added $velocity and $2dvelocity to show how fast you are moving, $2dvelocity ignores the y axis.
+ - Internal: Removed MMHook Dependency
+ - Internal: Implemented ManivestV2 alongside normal manifest to hopefully allow local installation into mod managers. 
+
+#### v2.0.4
+ - Bugfix: Fixed command/scrapper not working after new update.
+
+#### v2.0.3
+ - Bugfix: AdvanvedIcons: No longer breaks when bad items are added.
+ - ModCompat: AdvancedIcons: Now accepts ItemDefs as well.
+
+#### v2.0.2
+ - Depend on MMHOOK Standalone instead of shipping own MMHOOK.
+
+#### v2.0.1
+ - Bugfix: Stopped R2API from adding BetterUI to the networkModList
+
 ## v2.0.0
  - No longer requires R2API
  - Anniversary Update: Added Proc coefficient values for new Character, Items & Item changes.
@@ -196,7 +227,7 @@ P = Sprint Related Last
  - Internal Change: More stringbuilder stuff
 
 #### v1.6.7
- - Addition: ADded config file to entirely disable modcomponents ( these are the big internal parts the mod is split into )
+ - Addition: Added config file to entirely disable modcomponents ( these are the big internal parts the mod is split into )
  - Internal Change: Stopped using the ror2 built in sharedStringBuilder because some mods seem to be misuing it and bug out.  
 
 #### v1.6.6

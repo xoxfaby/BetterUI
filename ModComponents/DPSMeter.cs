@@ -14,19 +14,18 @@ using UnityEngine.UI;
 namespace BetterUI
 {
 
-    class DPSMeter : BetterUI.ModComponent
+    static class DPSMeter
     {
-        public DPSMeter(BetterUI mod) : base(mod) { }
 
-        private readonly Queue<DamageLog> characterDamageLog = new Queue<DamageLog>();
-        private float characterDamageSum = 0;
-        private readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
-        private float minionDamageSum = 0;
+        private static readonly Queue<DamageLog> characterDamageLog = new Queue<DamageLog>();
+        private static float characterDamageSum = 0;
+        private static readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
+        private static float minionDamageSum = 0;
 
-        private HGTextMeshProUGUI textMesh;
-        public float DPS { get => MinionDPS + CharacterDPS; }
-        public float CharacterDPS { get => characterDamageLog.Count > 0 ? characterDamageSum / Clamp(Time.time - characterDamageLog.Peek().time) : 0; }
-        public float MinionDPS { get => minionDamageLog.Count > 0 ? minionDamageSum / Clamp(Time.time - minionDamageLog.Peek().time) : 0; }
+        private static HGTextMeshProUGUI textMesh;
+        public static float DPS { get => MinionDPS + CharacterDPS; }
+        public static float CharacterDPS { get => characterDamageLog.Count > 0 ? characterDamageSum / Clamp(Time.time - characterDamageLog.Peek().time) : 0; }
+        public static float MinionDPS { get => minionDamageLog.Count > 0 ? minionDamageSum / Clamp(Time.time - minionDamageLog.Peek().time) : 0; }
         internal struct DamageLog
         {
             public float damage;
@@ -38,42 +37,47 @@ namespace BetterUI
             }
         }
 
-        internal override void Hook()
+        static DPSMeter()
         {
-            if (mod.config.DPSMeterWindowShow.Value ||
-            mod.config.StatsDisplayStatString.Value.Contains("$dps"))
+            BetterUIPlugin.onHUDAwake += onHUDAwake;
+            BetterUIPlugin.onUpdate += onUpdate;
+        }
+        internal static void Hook()
+        {
+            if (ConfigManager.DPSMeterWindowShow.Value ||
+            ConfigManager.StatsDisplayStatString.Value.Contains("$dps"))
             {
-                On.RoR2.GlobalEventManager.ClientDamageNotified += mod.DPSMeter.DamageDealtMessage_ClientDamageNotified;
+                BetterUIPlugin.Hooks.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
             }
         }
-        public float Clamp(float value)
+
+        public static float Clamp(float value)
         {
-            return Math.Min(Math.Max(1, value), mod.config.DPSMeterTimespan.Value);
+            return Math.Min(Math.Max(1, value), ConfigManager.DPSMeterTimespan.Value);
         }
 
    
-        internal override void Update()
+        private static void onUpdate()
         {
-            
-            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - mod.config.DPSMeterTimespan.Value)
+            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
             {
                 characterDamageSum -= characterDamageLog.Dequeue().damage;
             }
-            while (minionDamageLog.Count > 0 && minionDamageLog.Peek().time < Time.time - mod.config.DPSMeterTimespan.Value)
+            while (minionDamageLog.Count > 0 && minionDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
             {
                 minionDamageSum -= minionDamageLog.Dequeue().damage;
             }
             if (textMesh != null)
             {
-                BetterUI.sharedStringBuilder.Clear();
-                BetterUI.sharedStringBuilder.Append("DPS: ");
-                BetterUI.sharedStringBuilder.Append((mod.config.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append("DPS: ");
+                BetterUIPlugin.sharedStringBuilder.Append((ConfigManager.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
 
-                textMesh.SetText(BetterUI.sharedStringBuilder);
+                textMesh.SetText(BetterUIPlugin.sharedStringBuilder);
             }
         }
 
-        public void DamageDealtMessage_ClientDamageNotified(On.RoR2.GlobalEventManager.orig_ClientDamageNotified orig, DamageDealtMessage dmgMsg)
+        public static void DamageDealtMessage_ClientDamageNotified(Action<DamageDealtMessage> orig, DamageDealtMessage dmgMsg)
         {
             orig(dmgMsg);
 
@@ -102,15 +106,17 @@ namespace BetterUI
             }
         }
 
-        internal override void HUD_Awake()
+
+
+        private static void onHUDAwake(HUD self)
         {
-            if (mod.config.DPSMeterWindowShow.Value)
+            if (ConfigManager.DPSMeterWindowShow.Value)
             {
 
                 GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
                 RectTransform rectTransform = DPSMeterPanel.AddComponent<RectTransform>();
 
-                DPSMeterPanel.transform.SetParent(mod.HUD.mainContainer.transform);
+                DPSMeterPanel.transform.SetParent(BetterUIPlugin.HUD.mainContainer.transform);
                 DPSMeterPanel.transform.SetAsFirstSibling();
 
 
@@ -123,13 +129,13 @@ namespace BetterUI
 
 
                 rectTransform.localPosition = new Vector3(0, 0, 0);
-                rectTransform.anchorMin = mod.config.DPSMeterWindowAnchorMin.Value;
-                rectTransform.anchorMax = mod.config.DPSMeterWindowAnchorMax.Value;
+                rectTransform.anchorMin = ConfigManager.DPSMeterWindowAnchorMin.Value;
+                rectTransform.anchorMax = ConfigManager.DPSMeterWindowAnchorMax.Value;
                 rectTransform.localScale = Vector3.one;
-                rectTransform.pivot = mod.config.DPSMeterWindowPivot.Value;
-                rectTransform.sizeDelta = mod.config.DPSMeterWindowSize.Value;
-                rectTransform.anchoredPosition = mod.config.DPSMeterWindowPosition.Value;
-                rectTransform.eulerAngles = mod.config.DPSMeterWindowAngle.Value;
+                rectTransform.pivot = ConfigManager.DPSMeterWindowPivot.Value;
+                rectTransform.sizeDelta = ConfigManager.DPSMeterWindowSize.Value;
+                rectTransform.anchoredPosition = ConfigManager.DPSMeterWindowPosition.Value;
+                rectTransform.eulerAngles = ConfigManager.DPSMeterWindowAngle.Value;
 
                 rectTransform2.localPosition = Vector3.zero;
                 rectTransform2.anchorMin = Vector2.zero;
@@ -138,10 +144,10 @@ namespace BetterUI
                 rectTransform2.sizeDelta = new Vector2(-12, -12);
                 rectTransform2.anchoredPosition = Vector2.zero;
 
-                if (mod.config.DPSMeterWindowBackground.Value)
+                if (ConfigManager.DPSMeterWindowBackground.Value)
                 {
                     Image image = DPSMeterPanel.AddComponent<Image>();
-                    Image copyImage = mod.HUD.itemInventoryDisplay.gameObject.GetComponent<Image>();
+                    Image copyImage = BetterUIPlugin.HUD.itemInventoryDisplay.gameObject.GetComponent<Image>();
                     image.sprite = copyImage.sprite;
                     image.color = copyImage.color;
                     image.type = Image.Type.Sliced;

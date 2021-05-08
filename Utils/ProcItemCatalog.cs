@@ -7,6 +7,7 @@ namespace BetterUI
 {
     public static class ProcItemsCatalog
     {
+        public static readonly Dictionary<ItemDef, EffectInfo> items = new Dictionary<ItemDef, EffectInfo>();
         private static StringBuilder formatterStringBuilder = new StringBuilder();
 
         public delegate string EffectFormatter(float value, float procCoefficient, float luck, bool canCap, int cap);
@@ -101,20 +102,38 @@ namespace BetterUI
                 return this.capFormula == null ? -1 : this.capFormula(value, extraStackValue, procCoefficient);
             }
         }
-        private static readonly Dictionary<ItemIndex, EffectInfo> items = new Dictionary<ItemIndex, EffectInfo>();
+
         public static void AddEffect(ItemIndex itemIndex, EffectInfo effectInfo)
         {
-            if((effectInfo.value > 1 || effectInfo.extraStackValue > 1) && effectInfo.effectFormatter == ChanceFormatter)
+            if (itemIndex <= ItemIndex.None)
             {
-                BetterUI.print("Warning: EffectInfo.value for chance is expected to be 0 to 1 based. After BetterUI v1.7.0 it will no longer be converted.");
-                effectInfo.value = effectInfo.value * 0.01f;
-                effectInfo.extraStackValue = effectInfo.extraStackValue * 0.01f;
+                UnityEngine.Debug.LogError("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
+                return;
             }
-            items[itemIndex] = effectInfo;
+            AddEffect(ItemCatalog.GetItemDef(itemIndex), effectInfo);
         }
         public static void AddEffect(ItemIndex itemIndex, float value, float? extraStackValue = null, EffectFormatter effectFormatter = null, StackingFormula stackingFormula = null, CapFormula capFormula = null)
         {
-            AddEffect(itemIndex, new EffectInfo() { 
+            if (itemIndex <= ItemIndex.None)
+            {
+                UnityEngine.Debug.LogError("ERROR: AddEffect was passed ItemIndex.None or below, this likely means you tried to register your effect before the item catalog was ready. Please use ItemCatalog.availability.CallWhenAvailable or pass an ItemDef directly.");
+                return;
+            }
+            AddEffect(ItemCatalog.GetItemDef(itemIndex), value, extraStackValue, effectFormatter, stackingFormula, capFormula);
+        }
+        public static void AddEffect(ItemDef itemDef, EffectInfo effectInfo)
+        {
+            if ((effectInfo.value > 1 || effectInfo.extraStackValue > 1) && effectInfo.effectFormatter == ChanceFormatter)
+            {
+                UnityEngine.Debug.LogError("Warning: EffectInfo.value for chance is expected to be 0 to 1 based. After BetterUI v1.7.0 it will no longer be converted.");
+                effectInfo.value = effectInfo.value * 0.01f;
+                effectInfo.extraStackValue = effectInfo.extraStackValue * 0.01f;
+            }
+            items[itemDef] = effectInfo;
+        }
+        public static void AddEffect(ItemDef itemDef, float value, float? extraStackValue = null, EffectFormatter effectFormatter = null, StackingFormula stackingFormula = null, CapFormula capFormula = null)
+        {
+            AddEffect(itemDef, new EffectInfo() { 
                 value = value, 
                 extraStackValue = extraStackValue ?? value, 
                 effectFormatter = effectFormatter ?? ChanceFormatter, 
@@ -122,24 +141,19 @@ namespace BetterUI
                 capFormula = capFormula 
             });
         }
-        
-        public static Dictionary<ItemIndex, EffectInfo> GetAllItems()
-        {
-            return items;
-        }
 
         static ProcItemsCatalog()
         {
-            AddEffect(ItemCatalog.FindItemIndex("BleedOnHit"), 0.1f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(ItemCatalog.FindItemIndex("StunChanceOnHit"), 0.05f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking );
-            AddEffect(ItemCatalog.FindItemIndex("StickyBomb"), 0.05f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(ItemCatalog.FindItemIndex("Missile"),  0.1f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(ItemCatalog.FindItemIndex("ChainLightning"),  0.25f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(ItemCatalog.FindItemIndex("Seed"), 1, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemCatalog.FindItemIndex("HealOnCrit"), 8, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemCatalog.FindItemIndex("Behemoth"), 4, 2.5f, effectFormatter: RangeFormatter, stackingFormula: LinearStacking);
-            AddEffect(ItemCatalog.FindItemIndex("BounceNearby"), 0.2f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking);
-            AddEffect(ItemCatalog.FindItemIndex("GoldOnHit"), 0.3f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(RoR2.RoR2Content.Items.BleedOnHit, 0.1f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
+            AddEffect(RoR2.RoR2Content.Items.StunChanceOnHit, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking );
+            AddEffect(RoR2.RoR2Content.Items.StickyBomb, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
+            AddEffect(RoR2.RoR2Content.Items.Missile,  0.1f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(RoR2.RoR2Content.Items.ChainLightning,  0.25f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
+            AddEffect(RoR2.RoR2Content.Items.Seed, 1, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
+            AddEffect(RoR2.RoR2Content.Items.HealOnCrit, 8, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
+            AddEffect(RoR2.RoR2Content.Items.Behemoth, 4, 2.5f, effectFormatter: RangeFormatter, stackingFormula: LinearStacking);
+            AddEffect(RoR2.RoR2Content.Items.BounceNearby, 0.2f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking);
+            AddEffect(RoR2.RoR2Content.Items.GoldOnHit, 0.3f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
         }
     }
 }

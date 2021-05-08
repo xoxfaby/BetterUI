@@ -12,9 +12,17 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Include="..\BetterAPI\BetterUnityPlugin.cs" Link="BetterUnityPlugin.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BetterAPI\BetterAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,13 +50,12 @@
       <HintPath>..\Libs\BepInEx.Preloader.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="HGCSharpUtils">
+      <HintPath>..\Libs\HGCSharpUtils.dll</HintPath>
+    </Reference>
     <Reference Include="ItemStats">
       <HintPath>..\Libs\ItemStats.dll</HintPath>
       <Private>false</Private>
-    </Reference>
-    <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>..\Libs\MMHOOK_Assembly-CSharp.dll</HintPath>
-      <Private>true</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\Libs\Mono.Cecil.dll</HintPath>
@@ -124,7 +131,7 @@
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;Thunderstore\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)$(OutDir)\MMHOOK_Assembly-CSharp.dll&quot; &quot;Thunderstore\MMHOOK_Assembly-CSharp.dll&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)Thunderstore\README.md&quot; &quot;$(ProjectDir)README.md&quot;&#xD;&#xA;del Thunderstore\thunder.zip&#xD;&#xA;tar -acf Thunderstore\thunder.zip -C Thunderstore\ $(TargetFileName) MMHOOK_Assembly-CSharp.dll README.md icon.png manifest.json" />
+    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI\&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;Thunderstore\$(TargetFileName)&quot;&#xD;&#xA;copy /y &quot;$(ProjectDir)Thunderstore\README.md&quot; &quot;$(ProjectDir)README.md&quot;&#xD;&#xA;del Thunderstore\thunder.zip&#xD;&#xA;tar -acf Thunderstore\thunder.zip -C Thunderstore\ $(TargetFileName) README.md icon.png manifest.json" />
   </Target>
 
 </Project>

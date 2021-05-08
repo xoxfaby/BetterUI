@@ -14,27 +14,28 @@ using TMPro;
 
 namespace BetterUI
 {
-    class StatsDisplay : BetterUI.ModComponent
+    static class StatsDisplay
     {
 
-        private GameObject statsDisplayContainer;
-        private GameObject stupidBuffer;
-        private RoR2.UI.HGTextMeshProUGUI textMesh;
-        private int highestMultikill = 0;
-        private CharacterBody playerBody;
-        private Boolean statsDisplayToggle = false;
+        private static GameObject statsDisplayContainer;
+        private static GameObject stupidBuffer;
+        private static RoR2.UI.HGTextMeshProUGUI textMesh;
+        private static int highestMultikill = 0;
+        private static CharacterBody playerBody;
+        private static Boolean statsDisplayToggle = false;
 
-        readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
-        readonly Regex regexpattern;
+        static readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
+        static readonly Regex regexpattern;
 
-        string[] normalText;
-        string[] altText;
+        static string[] normalText;
+        static string[] altText;
 
-        public StatsDisplay(BetterUI mod) : base(mod)
+        static StatsDisplay()
         {
             regexmap = new Dictionary<String, Func<CharacterBody, string>> {
                 { "$armordmgreduction", (statBody) => ((statBody.armor >= 0 ? statBody.armor / (100 + statBody.armor) : (100 / (100 - statBody.armor) - 1)) * 100).ToString("0.##") },
-                { "$exp", (statBody) => statBody.experience.ToString("0.##") },
+                { "$exp", (statBody) => TeamManager.instance.GetTeamExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
+                { "$maxexp", (statBody) => TeamManager.instance.GetTeamNextLevelExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
                 { "$level", (statBody) => statBody.level.ToString() },
                 { "$dmg", (statBody) => statBody.damage.ToString("0.##") },
                 { "$crit", (statBody) => statBody.crit.ToString("0.##") },
@@ -47,7 +48,14 @@ namespace BetterUI
                 { "$maxbarrier", (statBody) => statBody.maxBarrier.ToString("0.##") },
                 { "$armor", (statBody) => statBody.armor.ToString("0.##") },
                 { "$regen", (statBody) => statBody.regen.ToString("0.##") },
-                { "$movespeed", (statBody) => Math.Round(statBody.moveSpeed, 1).ToString("0.##") },
+                { "$movespeed", (statBody) => statBody.moveSpeed.ToString("0.##") },
+                { "$velocity", (statBody) => statBody.characterMotor.velocity.magnitude.ToString("0.##") },
+                { "$2dvelocity", (statBody) => {
+                    var vector = statBody.characterMotor.velocity;
+                    vector.y = 0;
+                    return vector.magnitude.ToString("0.##");
+                    }
+                },
                 { "$jumps", (statBody) => (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString() },
                 { "$maxjumps", (statBody) => statBody.maxJumpCount.ToString() },
                 { "$atkspd", (statBody) => statBody.attackSpeed.ToString() },
@@ -56,9 +64,9 @@ namespace BetterUI
                 { "$highestmultikill", (statBody) => highestMultikill.ToString() },
                 { "$killcount", (statBody) => statBody.killCountServer.ToString() },
                 //{ \"$deaths", (statBody) => statBody.master.dea },
-                { "$dpscharacter", (statBody) => mod.DPSMeter.CharacterDPS.ToString("N0") },
-                { "$dpsminion", (statBody) => mod.DPSMeter.MinionDPS.ToString("N0") },
-                { "$dps", (statBody) => mod.DPSMeter.DPS.ToString("N0") },
+                { "$dpscharacter", (statBody) => DPSMeter.CharacterDPS.ToString("N0") },
+                { "$dpsminion", (statBody) => DPSMeter.MinionDPS.ToString("N0") },
+                { "$dps", (statBody) => DPSMeter.DPS.ToString("N0") },
                 { "$mountainshrines", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shrineBonusStacks.ToString() : "N/A" },
                 { "$blueportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString() : "N/A" },
                 { "$goldportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString() : "N/A" },
@@ -66,44 +74,47 @@ namespace BetterUI
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
             regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
-        }
 
-        internal override void Start()
+
+            if (ConfigManager.StatsDisplayEnable.Value)
+            {
+                RoR2.Run.onRunStartGlobal += runStartGlobal;
+            }
+            BetterUIPlugin.onStart += onStart;
+            BetterUIPlugin.onUpdate += onUpdate;
+            BetterUIPlugin.onHUDAwake += onHUDAwake;
+        }
+        internal static void Hook() { }
+
+        static void onStart()
         {
-            normalText = regexpattern.Split(mod.config.StatsDisplayStatString.Value);
-            altText = regexpattern.Split(mod.config.StatsDisplayStatStringCustomBind.Value);
+            normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
+            altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
             var pattern1 = new List<string>();
-            foreach (Match match in regexpattern.Matches(mod.config.StatsDisplayStatString.Value))
+            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatString.Value))
             {
                 pattern1.Add(match.Value);
             }
             var pattern2 = new List<string>();
-            foreach (Match match in regexpattern.Matches(mod.config.StatsDisplayStatStringCustomBind.Value))
+            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatStringCustomBind.Value))
             {
                 pattern2.Add(match.Value);
             }
         }
-        internal override void Hook()
-        {
-            if (mod.config.StatsDisplayEnable.Value)
-            {
-                RoR2.Run.onRunStartGlobal += runStartGlobal;
-            }
-        }
 
-        internal void runStartGlobal(RoR2.Run self)
+        internal static void runStartGlobal(RoR2.Run self)
         {
             highestMultikill = 0;
         }
-        internal override void HUD_Awake()
+        static void onHUDAwake(RoR2.UI.HUD self)
         {
-            if (mod.config.StatsDisplayEnable.Value)
+            if (ConfigManager.StatsDisplayEnable.Value)
             {
 
                 statsDisplayContainer = new GameObject("StatsDisplayContainer");
                 RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
 
-                if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
+                if (ConfigManager.StatsDisplayAttachToObjectivePanel.Value)
                 {
                     stupidBuffer = new GameObject("StupidBuffer");
                     RectTransform rectTransform3 = stupidBuffer.AddComponent<RectTransform>();
@@ -114,8 +125,8 @@ namespace BetterUI
                     layoutElement2.flexibleHeight = 1;
                     layoutElement2.flexibleWidth = 1;
 
-                    stupidBuffer.transform.SetParent(mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
-                    statsDisplayContainer.transform.SetParent(mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                    stupidBuffer.transform.SetParent(BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
 
                     rectTransform.localPosition = new Vector3(0, -10, 0);
                     rectTransform.anchorMin = Vector2.zero;
@@ -127,15 +138,15 @@ namespace BetterUI
                 }
                 else
                 {
-                    statsDisplayContainer.transform.SetParent(mod.HUD.mainContainer.transform);
+                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.HUD.mainContainer.transform);
 
                     rectTransform.localPosition = new Vector3(0, 0, 0);
-                    rectTransform.anchorMin = mod.config.StatsDisplayWindowAnchorMin.Value;
-                    rectTransform.anchorMax = mod.config.StatsDisplayWindowAnchorMax.Value;
+                    rectTransform.anchorMin = ConfigManager.StatsDisplayWindowAnchorMin.Value;
+                    rectTransform.anchorMax = ConfigManager.StatsDisplayWindowAnchorMax.Value;
                     rectTransform.localScale = new Vector3(1, -1, 1);
-                    rectTransform.sizeDelta = mod.config.StatsDisplayWindowSize.Value;
-                    rectTransform.anchoredPosition = mod.config.StatsDisplayWindowPosition.Value;
-                    rectTransform.eulerAngles = mod.config.StatsDisplayWindowAngle.Value;
+                    rectTransform.sizeDelta = ConfigManager.StatsDisplayWindowSize.Value;
+                    rectTransform.anchoredPosition = ConfigManager.StatsDisplayWindowPosition.Value;
+                    rectTransform.eulerAngles = ConfigManager.StatsDisplayWindowAngle.Value;
                 }
 
 
@@ -157,10 +168,10 @@ namespace BetterUI
                 rectTransform2.sizeDelta = Vector2.zero;
                 rectTransform2.anchoredPosition = Vector2.zero;
 
-                if (mod.config.StatsDisplayPanelBackground.Value)
+                if (ConfigManager.StatsDisplayPanelBackground.Value)
                 {
                     Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
-                    Image copyImage = mod.HUD.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
+                    Image copyImage = BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
                     image.sprite = copyImage.sprite;
                     image.color = copyImage.color;
                     image.type = Image.Type.Sliced;
@@ -179,9 +190,9 @@ namespace BetterUI
                 layoutElement.flexibleWidth = 1;
             }
         }
-        internal override void Update()
+        static void onUpdate()
         {
-            if (mod.config.StatsDisplayAttachToObjectivePanel.Value)
+            if (ConfigManager.StatsDisplayAttachToObjectivePanel.Value)
             {
                 if (stupidBuffer != null)
                 {
@@ -192,32 +203,32 @@ namespace BetterUI
                     statsDisplayContainer.transform.SetAsLastSibling();
                 }
             }
-            if (mod.HUD != null && textMesh != null)
+            if (BetterUIPlugin.HUD != null && textMesh != null)
             {
-                playerBody = mod.HUD.targetBodyObject ? mod.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                playerBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody != null)
                 {
-                    bool customBindPressed = Input.GetKey(mod.config.StatsDisplayCustomBind.Value);
-                    if (Input.GetKeyDown(mod.config.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
-                    bool showStatsDisplay = mod.config.StatsDisplayToggleOnBind.Value ? statsDisplayToggle : !(mod.config.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
+                    bool customBindPressed = Input.GetKey(ConfigManager.StatsDisplayCustomBind.Value);
+                    if (Input.GetKeyDown(ConfigManager.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
+                    bool showStatsDisplay = ConfigManager.StatsDisplayToggleOnBind.Value ? statsDisplayToggle : !(ConfigManager.StatsDisplayShowCustomBindOnly.Value && !customBindPressed);
 
                     highestMultikill = playerBody.multiKillCount > highestMultikill ? playerBody.multiKillCount : highestMultikill;
 
                     statsDisplayContainer.SetActive(showStatsDisplay);
                     if (showStatsDisplay)
                     {
-                        BetterUI.sharedStringBuilder.Clear();
+                        BetterUIPlugin.sharedStringBuilder.Clear();
                         if (customBindPressed)
                         {
                             for (int i = 0; i < altText.Length; i++)
                             {
                                 if(i % 2 == 0)
                                 {
-                                    BetterUI.sharedStringBuilder.Append(altText[i]);
+                                    BetterUIPlugin.sharedStringBuilder.Append(altText[i]);
                                 }
                                 else
                                 {
-                                    BetterUI.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
+                                    BetterUIPlugin.sharedStringBuilder.Append(regexmap[altText[i]](playerBody));
                                 }
                             }
                         }
@@ -227,16 +238,16 @@ namespace BetterUI
                             {
                                 if (i % 2 == 0)
                                 {
-                                    BetterUI.sharedStringBuilder.Append(normalText[i]);
+                                    BetterUIPlugin.sharedStringBuilder.Append(normalText[i]);
 
                                 }
                                 else
                                 {
-                                    BetterUI.sharedStringBuilder.Append(regexmap[normalText[i]](playerBody));
+                                    BetterUIPlugin.sharedStringBuilder.Append(regexmap[normalText[i]](playerBody));
                                 }
                             }
                         }
-                        textMesh.SetText(BetterUI.sharedStringBuilder);
+                        textMesh.SetText(BetterUIPlugin.sharedStringBuilder);
                     }
                 }
             }

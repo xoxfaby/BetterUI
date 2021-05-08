@@ -8,49 +8,77 @@ using UnityEngine;
 
 namespace BetterUI
 {
-    class CommandImprovements : BetterUI.ModComponent
+    static class CommandImprovements
     {
-        public CommandImprovements(BetterUI mod) : base(mod) { }
-
-        internal override void Hook()
+        static CommandImprovements()
         {
-            if (mod.config.CommandResizeCommandWindow.Value ||
-                mod.config.SortingSortItemsCommand.Value ||
-                mod.config.SortingSortItemsScrapper.Value)
+            BetterUIPlugin.onStart += onStart;
+            BetterUIPlugin.onUpdate += onUpdate;
+        }
+        internal static void Hook() 
+        { 
+            if (ConfigManager.CommandResizeCommandWindow.Value ||
+                ConfigManager.SortingSortItemsCommand.Value ||
+                ConfigManager.SortingSortItemsScrapper.Value)
             {
-                On.RoR2.UI.PickupPickerPanel.SetPickupOptions += PickupPickerPanel_SetPickupOptions;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel, RoR2.PickupPickerController.Option[]>("SetPickupOptions", PickupPickerPanel_SetPickupOptions);
             }
-            if (mod.config.CommandCloseOnEscape.Value ||
-                mod.config.CommandCloseOnWASD.Value ||
-                mod.config.CommandCloseOnCustom.Value != "")
+            if (ConfigManager.CommandCloseOnEscape.Value ||
+                ConfigManager.CommandCloseOnWASD.Value ||
+                ConfigManager.CommandCloseOnCustom.Value != "")
             {
-                On.RoR2.UI.PickupPickerPanel.Awake += mod.commandImprovements.PickupPickerPanel_Awake;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel>("Awake", PickupPickerPanel_Awake);
             }
 
-            if (mod.config.CommandTooltipsShow.Value ||
-                mod.config.CommandCountersShow.Value)
+            if (ConfigManager.CommandTooltipsShow.Value ||
+                ConfigManager.CommandCountersShow.Value)
             {
-                On.RoR2.UI.PickupPickerPanel.OnCreateButton += mod.commandImprovements.PickupPickerPanel_OnCreateButton;
+                BetterUIPlugin.Hooks.Add<RoR2.UI.PickupPickerPanel, int, MPButton>("OnCreateButton", PickupPickerPanel_OnCreateButton);
             }
-
+        }
+        private static void onStart()
+        {
+            ItemCatalog.availability.CallWhenAvailable(Init);
+            EquipmentCatalog.availability.CallWhenAvailable(Init);
         }
 
-        internal override void Start()
+        private static void onUpdate()
         {
-            var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
-            optionMap = new int[maxOptions];
-            optionMap[0] = -1;
-            availableIndex = new bool[maxOptions];
-            sortedOptions = new PickupPickerController.Option[maxOptions];
+            if (currentPanel && currentPanel.gameObject)
+            {
+                if (ConfigManager.CommandCloseOnEscape.Value && Input.GetKeyDown("escape") ||
+                   ConfigManager.CommandCloseOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) ||
+                   ConfigManager.CommandCloseOnCustom.Value != "" && Input.GetKeyDown(ConfigManager.CommandCloseOnCustom.Value))
+                {
+                    if (Input.GetKeyDown("escape"))
+                    {
+                        RoR2.Console.instance.SubmitCmd(null, "pause", false);
+                    }
+                    UnityEngine.Object.Destroy(currentPanel.gameObject);
+                }
+            }
         }
 
-        private PickupPickerPanel currentPanel;
-        private int[] optionMap;
-        private bool[] availableIndex;
-        PickupPickerController.Option[] sortedOptions;
-        private String sortOrder;
 
-        internal ItemIndex[] lastItem = new ItemIndex[] {
+        private static void Init()
+        {   
+            if(ItemCatalog.availability.available && EquipmentCatalog.availability.available)
+            {
+                var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
+                optionMap = new int[maxOptions];
+                optionMap[0] = -1;
+                availableIndex = new bool[maxOptions];
+                sortedOptions = new PickupPickerController.Option[maxOptions];
+            }
+        }
+
+        private static PickupPickerPanel currentPanel;
+        private static int[] optionMap;
+        private static bool[] availableIndex;
+        private static PickupPickerController.Option[] sortedOptions;
+        private static String sortOrder;
+
+        internal static ItemIndex[] lastItem = new ItemIndex[] {
             ItemIndex.None,
             ItemIndex.None,
             ItemIndex.None,
@@ -58,29 +86,12 @@ namespace BetterUI
             ItemIndex.None,
             ItemIndex.None,
         };
-        public void PickupPickerPanel_Awake(On.RoR2.UI.PickupPickerPanel.orig_Awake orig, PickupPickerPanel self)
+        public static void PickupPickerPanel_Awake(Action<RoR2.UI.PickupPickerPanel> orig, PickupPickerPanel self)
         {
             currentPanel = self;
             orig(self);
         }
-        internal override void Update()
-        {
-            if(currentPanel && currentPanel.gameObject)
-            {
-                if (mod.config.CommandCloseOnEscape.Value && Input.GetKeyDown("escape") ||
-                   mod.config.CommandCloseOnWASD.Value && (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("s") || Input.GetKeyDown("d") ) ||
-                   mod.config.CommandCloseOnCustom.Value != "" && Input.GetKeyDown(mod.config.CommandCloseOnCustom.Value))
-                {
-                    if(Input.GetKeyDown("escape"))
-                    {
-                        RoR2.Console.instance.SubmitCmd(null, "pause", false);
-                    }
-                    BetterUI.Destroy(currentPanel.gameObject);
-                }
-            }
-
-        }
-        public void PickupPickerController_SubmitChoice(On.RoR2.PickupPickerController.orig_SubmitChoice orig, RoR2.PickupPickerController self, int index)
+        public static void PickupPickerController_SubmitChoice(Action<RoR2.PickupPickerController, int> orig, RoR2.PickupPickerController self, int index)
         {
             orig(self, index);
             
@@ -91,7 +102,7 @@ namespace BetterUI
             }
         }
 
-        public void PickupPickerPanel_SetPickupOptions(On.RoR2.UI.PickupPickerPanel.orig_SetPickupOptions orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
+        public static void PickupPickerPanel_SetPickupOptions(Action<RoR2.UI.PickupPickerPanel, RoR2.PickupPickerController.Option[]> orig, RoR2.UI.PickupPickerPanel self, RoR2.PickupPickerController.Option[] options)
         {
             if (options == null || options.Length == 0)
             {
@@ -105,25 +116,25 @@ namespace BetterUI
             switch (self.pickerController.contextString)
             {
                 case "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT":
-                    if (mod.config.CommandResizeCommandWindow.Value)
+                    if (ConfigManager.CommandResizeCommandWindow.Value)
                     {
                         self.transform.Find("MainPanel").GetComponent<RectTransform>().sizeDelta = new Vector2(576, 166 + (82 * (float)Math.Ceiling(options.Length / 5f)));
                     }
 
-                    if (mod.config.CommandRemoveBackgroundBlur.Value)
+                    if (ConfigManager.CommandRemoveBackgroundBlur.Value)
                     {
                         self.transform.GetComponent<LeTai.Asset.TranslucentImage.TranslucentImage>().enabled = false;
                     }
-                    if (mod.config.SortingSortItemsCommand.Value)
+                    if (ConfigManager.SortingSortItemsCommand.Value)
                     {
-                        sortOrder = mod.config.SortingSortOrderCommand.Value;
+                        sortOrder = ConfigManager.SortingSortOrderCommand.Value;
                         break;
                     }
                     goto default;
                 case "SCRAPPER_CONTEXT":
-                    if (mod.config.SortingSortItemsScrapper.Value)
+                    if (ConfigManager.SortingSortItemsScrapper.Value)
                     {
-                        sortOrder = mod.config.SortingSortOrderScrapper.Value;
+                        sortOrder = ConfigManager.SortingSortOrderScrapper.Value;
                         break;
                     }
                     goto default;
@@ -142,7 +153,7 @@ namespace BetterUI
                     availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex] = option.available;
                 }
 
-                List<EquipmentIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
+                List<EquipmentIndex> sortedItems = ItemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
 
                 sortedItems.Select(equipemntIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipemntIndex), available = availableIndex[(int)equipemntIndex] }).ToArray().CopyTo(sortedOptions, 0); ;
                 sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap,0);
@@ -156,7 +167,7 @@ namespace BetterUI
                     availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
                 }
 
-                List<ItemIndex> sortedItems = mod.itemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
+                List<ItemIndex> sortedItems = ItemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex).ToList(), inventory, sortOrder);
 
                 sortedItems.Select(itemIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(itemIndex), available = availableIndex[(int)itemIndex] }).ToArray().CopyTo(sortedOptions, 0);
                 sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap, 0);
@@ -166,19 +177,19 @@ namespace BetterUI
             orig(self, options);
         }
 
-        public void PickupPickerPanel_OnCreateButton(On.RoR2.UI.PickupPickerPanel.orig_OnCreateButton orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
+        public static void PickupPickerPanel_OnCreateButton(Action<RoR2.UI.PickupPickerPanel, int, MPButton> orig, RoR2.UI.PickupPickerPanel self, int index, MPButton button)
         {
             orig(self, optionMap[0] >= 0 ? optionMap[index] : index, button);
 
-            if (mod.config.CommandTooltipsShow.Value || mod.config.CommandCountersShow.Value)
+            if (ConfigManager.CommandTooltipsShow.Value || ConfigManager.CommandCountersShow.Value)
             {
                 CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
                 PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[0] >= 0 ? optionMap[index] : index ].pickupIndex);
 
-                if (pickupDef.itemIndex != ItemIndex.None && mod.config.CommandCountersShow.Value)
+                if (pickupDef.itemIndex != ItemIndex.None && ConfigManager.CommandCountersShow.Value)
                 {
                     int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
-                    if (!mod.config.CommandCountersHideOnZero.Value || count > 0)
+                    if (!ConfigManager.CommandCountersHideOnZero.Value || count > 0)
                     {
                         GameObject textGameObject = new GameObject("StackText");
                         textGameObject.transform.SetParent(button.transform);
@@ -188,11 +199,11 @@ namespace BetterUI
 
                         HGTextMeshProUGUI counterText = textGameObject.AddComponent<HGTextMeshProUGUI>();
                         counterText.enableWordWrapping = false;
-                        counterText.alignment = mod.config.CommandCountersTextAlignmentOption;
-                        counterText.fontSize = mod.config.CommandCountersFontSize.Value;
+                        counterText.alignment = ConfigManager.CommandCountersTextAlignmentOption;
+                        counterText.fontSize = ConfigManager.CommandCountersFontSize.Value;
                         counterText.faceColor = Color.white;
                         counterText.outlineWidth = 0.2f;
-                        counterText.text = mod.config.CommandCountersPrefix.Value + count;
+                        counterText.text = ConfigManager.CommandCountersPrefix.Value + count;
 
                         counterRect.localPosition = Vector3.zero;
                         counterRect.anchorMin = Vector2.zero;
@@ -203,7 +214,7 @@ namespace BetterUI
                     }
                 }
 
-                if (mod.config.CommandTooltipsShow.Value)
+                if (ConfigManager.CommandTooltipsShow.Value)
                 {
                     TooltipProvider tooltipProvider = button.gameObject.AddComponent<TooltipProvider>();
 
@@ -211,17 +222,17 @@ namespace BetterUI
                     {
                         ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
 
-                        if (mod.ItemStatsModIntegration)
+                        if (BetterUIPlugin.ItemStatsModIntegration)
                         {
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                             string bodyText = Language.GetString(itemDef.descriptionToken);
-                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && mod.config.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
+                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
                             {
                                 bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
-                                String[] descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                String[] descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
                                 bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
                                 bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
-                                descLines = ModCompat.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
                                 bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
                             }
                             else
@@ -230,7 +241,7 @@ namespace BetterUI
                                 {
                                     count += 1;
                                 }
-                                bodyText += ModCompat.statsFromItemStats(itemDef.itemIndex, count, master);
+                                bodyText += ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master);
                             }
 
                             tooltipProvider.overrideBodyText = bodyText;

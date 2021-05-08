@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using RoR2.Skills;
+using R2API.Utils;
 
+[assembly: ManualNetworkRegistration]
 namespace BetterUI
 {
     static class Utils
@@ -36,4 +38,10 @@ namespace BetterUI
             return -1;
         }
     }
+}
+
+namespace R2API.Utils
+{
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public class ManualNetworkRegistrationAttribute : Attribute { }
 }
