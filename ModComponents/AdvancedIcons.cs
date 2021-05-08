@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using RoR2.UI;
+using RoR2.Skills;
 using UnityEngine;
 
 namespace BetterUI
@@ -13,7 +14,7 @@ namespace BetterUI
         static Dictionary<EquipmentIcon, EquipmentDef> lastEquipment = new Dictionary<EquipmentIcon, EquipmentDef>();
 
         static Dictionary<SkillIcon,bool> SkillIconDirty = new Dictionary<SkillIcon, bool>();
-        static Dictionary<SkillIcon, GenericSkill> lastSkill = new Dictionary<SkillIcon, GenericSkill>();
+        static Dictionary<SkillIcon, SkillDef> lastSkill = new Dictionary<SkillIcon, SkillDef>();
 
         static List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos;
         static Inventory inventory;
@@ -151,9 +152,9 @@ namespace BetterUI
                 SkillIconDirty.Add(self, true);
                 lastSkill.Add(self, null);
             }
-            if (self.targetSkill && (self.targetSkill != lastSkill[self] || SkillIconDirty[self]))
+            if (self.targetSkill && (self.targetSkill.skillDef != lastSkill[self] || SkillIconDirty[self]))
             {
-                lastSkill[self] = self.targetSkill;
+                lastSkill[self] = self.targetSkill.skillDef ;
                 SkillIconDirty[self] = false;
                 BetterUIPlugin.sharedStringBuilder.Clear();
                 BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.targetSkill.skillDescriptionToken));
