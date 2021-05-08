@@ -11,13 +11,15 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.1.1.1")]
+    [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
     public class BetterUIPlugin : BetterAPI.BetterUnityPlugin<BetterUIPlugin>
     {
 
         internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
         internal static event HUDAwakeEvent onHUDAwake;
 
-        internal static bool ItemStatsModIntegration;
+        internal static bool ItemStatsModIntegration = false;
+        internal static bool BetterAPIModIntegration = false;
         internal static RoR2.UI.HUD HUD;
 
         public static StringBuilder sharedStringBuilder = new StringBuilder();
@@ -37,7 +39,7 @@ namespace BetterUI
             if (ConfigManager.ComponentsDPSMeter.Value)
                 DPSMeter.Hook();
             if (ConfigManager.ComponentsBuffTimers.Value)
-                BuffTimers.Hook();
+                Buffs.Hook();
             if (ConfigManager.ComponentsAdvancedIcons.Value)
                 AdvancedIcons.Hook();
             if (ConfigManager.ComponentsItemCounters.Value)
@@ -49,6 +51,7 @@ namespace BetterUI
         {
             base.OnEnable();
             ItemStatsModIntegration = ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
+            BetterAPIModIntegration = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterAPI");
             BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
         }
 
