@@ -157,7 +157,7 @@ namespace BetterUI
          *
          *  This let's us update config files without users' configs suddenly changing.
          */
-        private IReadOnlyDictionary<(string, string), (string, string)> previousEntryMap = new Dictionary<(string, string), (string, string)>()
+        static IReadOnlyDictionary<(string, string), (string, string)> previousEntryMap = new Dictionary<(string, string), (string, string)>()
         {
             // Current config section & key pairs.                  Previous config section & key pairs.
             { ("Components", "AdvancedIcons"),                      ("Components", "AdvanedIcons") },
@@ -528,13 +528,13 @@ namespace BetterUI
         /// <param name="defaultValue">Value of the setting if the setting was not created yet.</param>
         /// <param name="description">Simple description of the setting shown to the user.</param>
         /// <typeparam name="T">Type of the value contained in this setting.</typeparam>
-        private ConfigEntry<T> Bind<T>(ConfigFile config, string section, string key, T defaultValue, string description)
+        static ConfigEntry<T> Bind<T>(ConfigFile config, string section, string key, T defaultValue, string description)
         {
             var currentEntry = config.Bind(section, key, defaultValue, description);
 
-            if (this.previousEntryMap.ContainsKey((section, key)))
+            if (previousEntryMap.ContainsKey((section, key)))
             {
-                var previousTuple = this.previousEntryMap[(section, key)];
+                var previousTuple = previousEntryMap[(section, key)];
                 var previousDefinition = new ConfigDefinition(previousTuple.Item1, previousTuple.Item2);
                 // ConfigFile has to Bind to a Section + Key before it knows that it's in the file.
                 var previousEntry = config.Bind(previousDefinition, defaultValue, new ConfigDescription(description));
