@@ -169,6 +169,7 @@ namespace BetterUI
             { ("Equipment Improvements", "AdvancedDescriptions"),   ("Equipement Improvements", "AdvancedDescriptions") },
             { ("Equipment Improvements", "BaseCooldown"),           ("Equipement Improvements", "BaseCooldown") },
             { ("Equipment Improvements", "CalculatedCooldown"),     ("Equipement Improvements", "CalculatedCooldown") },
+            { ("Components", "Buffs"),                              ("Components", "BuffTimers") },
         };
 
         public ConfigManager(BetterUI mod)
@@ -187,7 +188,7 @@ namespace BetterUI
 
             ComponentsAdvancedIcons = Bind(ConfigFileComponents, "Components", "AdvancedIcons", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
-            ComponentsBuffTimers = Bind(ConfigFileComponents, "Components", "BuffTimers", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
+            ComponentsBuffTimers = Bind(ConfigFileComponents, "Components", "Buffs", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
             ComponentsCommandImprovements = Bind(ConfigFileComponents, "Components", "CommandImprovements", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
