@@ -13,7 +13,7 @@ namespace BetterUI
     {
         static IEnumerable<CharacterBody.TimedBuff> timedBuffs;
         static CharacterBody.TimedBuff thisBuff;
-        static Dictionary<BuffDef, BuffInfo> buffInfos = new Dictionary<BuffDef, BuffInfo>();
+        static readonly Dictionary<BuffDef, BuffInfo> buffInfos = new Dictionary<BuffDef, BuffInfo>();
 
         static Buffs()
         {
@@ -25,15 +25,15 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.AffixPoison, "Malachite", "Gain power of a Malachite Elite : Shoot occasional urchins and apply Healing disabled on hit.");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.AffixHaunted, "Celestine", "Gain power of a Celestine Elite : Cloak nearby allies, and apply a 80% slow on hit.");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.AffixLunar, "Perfected", "Gain power of a Perfected Elite : Cripple on hit, occasionally fire five bomb projectiles at enemies, gain 30% increased movement speed, and gain 25% max hp as well as having all health replaced with shields.");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ArmorBoost, "Armor Boost", "'+200 Armor");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.AttackSpeedOnCrit, "Attack Speed On Crit", "'+12% Attack Speed (stackable)");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ArmorBoost, "Armor Boost", "+200 Armor");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.AttackSpeedOnCrit, "Attack Speed On Crit", "+12% Attack Speed (stackable)");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.BugWings, "Bug Wings", "Sprout wings and fly, +20% Movement Speed");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.Cloak, "Cloak", "Invisible");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.CloakSpeed, "Cloak Speed", "'+40% Movement Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.CloakSpeed, "Cloak Speed", "+40% Movement Speed");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.AffixHauntedRecipient, "Celestine Cloak", "Invisible");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ElephantArmorBoost, "Elephant Armor Boost", "'+500 Armor");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.Energized, "Energized", "'+70% Attack Speed");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.FullCrit, "Full Crit", "'+100% Critical Strike chance");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ElephantArmorBoost, "Elephant Armor Boost", "+500 Armor");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.Energized, "Energized", "+70% Attack Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.FullCrit, "Full Crit", "+100% Critical Strike chance");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.HiddenInvincibility, "Hidden Invincibility", "Invulnerable");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.Immune, "Immune", "Invulnerable");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.CrocoRegen, "Regenerative", "Gain Health Regeneration equal to 10% of your maximum health for  0.5s (stackable)");
@@ -41,14 +41,14 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.NoCooldowns, "No Cooldowns", "Ability cooldowns reduced to 0.5 seconds");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.TeslaField, "Tesla Field", "Shooting lightning");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.TonicBuff, "Tonic Buff", "*150% Max Health , *150% Max Shield , *170% Attack Speed , *130% Movement Speed , +20 Armor , *200% Base Damage , *400% Health Regeneration");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.Warbanner, "Warbanner", "'+30% Movement Speed , +30% Attack Speed");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.WarCryBuff, "War Cry Buff", "'+50% Movement Speed , +100% Attack Speed");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.TeamWarCry, "Team War Cry", "'+50% Movement Speed , +100% Attack Speed");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.WhipBoost, "Whip Boost", "'+30% Movement Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.Warbanner, "Warbanner", "+30% Movement Speed , +30% Attack Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.WarCryBuff, "War Cry Buff", "+50% Movement Speed , +100% Attack Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.TeamWarCry, "Team War Cry", "+50% Movement Speed , +100% Attack Speed");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.WhipBoost, "Whip Boost", "+30% Movement Speed");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LifeSteal, "Life Steal", "Heal for 20% of the damage you deal");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.PowerBuff, "Power Buff", "'+50% Damage");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.PowerBuff, "Power Buff", "+50% Damage");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.ElementalRingsReady, "Elemental Rings Ready", "Runald's Band and/or Kjaro's Band effect can be activated");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.BanditSkull, "Bandit Skull", "'+10% Desperado damage per stack");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.BanditSkull, "Bandit Skull", "+10% Desperado damage per stack");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LaserTurbineKillCharge, "Resonance Disc Kill Charge", "Gain a stack per kill that lasts for 7 seconds.  At 4 stacks the Resonance Disc fires, resetting all stacks.");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.OnFire, "Ignite", "Ignite: Damage over Time , Health Regen set to 0. Note: This debuff appears to stack with Burn, but actually deals damage and counts towards Death Mark separately.| (stackable)");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.OnFire, "Burn", "Burn: Damage over Time , and Health Regen set to 0. Note: This debuff appears to stack with Ignite, but actually deals damage and counts towards Death Mark separately.| (stackable)");
@@ -80,6 +80,7 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LunarDetonationCharge, "Ruin", "Consumes Ruin stacks to deal 300% damage plus 120% damage per Ruin stack (stackable)");
             });
         }
+
         public static void RegisterName(BuffDef buffDef, string nameToken)
         {
             RegisterBuffInfo(buffDef, nameToken: nameToken);
