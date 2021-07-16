@@ -14,7 +14,7 @@ using TMPro;
 
 namespace BetterUI
 {
-    static class StatsDisplay
+    public static class StatsDisplay
     {
 
         private static GameObject statsDisplayContainer;
@@ -24,15 +24,17 @@ namespace BetterUI
         private static CharacterBody playerBody;
         private static Boolean statsDisplayToggle = false;
 
-        static readonly Dictionary<string, Func<CharacterBody,string>> regexmap;
-        static readonly Regex regexpattern;
+        static readonly Dictionary<string, DisplayCallback> regexmap;
+        static Regex regexpattern;
 
         static string[] normalText;
         static string[] altText;
 
+        public delegate string DisplayCallback(CharacterBody characterBody);
+
         static StatsDisplay()
         {
-            regexmap = new Dictionary<String, Func<CharacterBody, string>> {
+            regexmap = new Dictionary<String, DisplayCallback> {
                 { "$armordmgreduction", (statBody) => ((statBody.armor >= 0 ? statBody.armor / (100 + statBody.armor) : (100 / (100 - statBody.armor) - 1)) * 100).ToString("0.##") },
                 { "$exp", (statBody) => TeamManager.instance.GetTeamExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
                 { "$maxexp", (statBody) => TeamManager.instance.GetTeamNextLevelExperience(statBody.teamComponent.teamIndex).ToString("0.##") },
@@ -85,22 +87,25 @@ namespace BetterUI
             BetterUIPlugin.onHUDAwake += onHUDAwake;
         }
         internal static void Hook() { }
+        public static void AddStatsDisplay(string token, Func<CharacterBody, string> displayCallback)
+        {
+            AddStatsDisplay(token, new DisplayCallback(displayCallback));
+        }
+        public static void AddStatsDisplay(string token, DisplayCallback displayCallback)
+        {
+            regexmap[token] = displayCallback;
+            regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
+            normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
+            altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
+        }
+
 
         static void onStart()
         {
             normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
             altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
-            var pattern1 = new List<string>();
-            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatString.Value))
-            {
-                pattern1.Add(match.Value);
-            }
-            var pattern2 = new List<string>();
-            foreach (Match match in regexpattern.Matches(ConfigManager.StatsDisplayStatStringCustomBind.Value))
-            {
-                pattern2.Add(match.Value);
-            }
         }
+
 
         internal static void runStartGlobal(RoR2.Run self)
         {
@@ -110,7 +115,6 @@ namespace BetterUI
         {
             if (ConfigManager.StatsDisplayEnable.Value)
             {
-
                 statsDisplayContainer = new GameObject("StatsDisplayContainer");
                 RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
 
@@ -203,10 +207,10 @@ namespace BetterUI
                     statsDisplayContainer.transform.SetAsLastSibling();
                 }
             }
-            if (BetterUIPlugin.HUD != null && textMesh != null)
+            if (BetterUIPlugin.HUD && BetterUIPlugin.HUD.targetBodyObject && textMesh)
             {
                 playerBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
-                if (playerBody != null)
+                if (playerBody)
                 {
                     bool customBindPressed = Input.GetKey(ConfigManager.StatsDisplayCustomBind.Value);
                     if (Input.GetKeyDown(ConfigManager.StatsDisplayCustomBind.Value)) statsDisplayToggle = !statsDisplayToggle;
