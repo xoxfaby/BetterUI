@@ -42,46 +42,46 @@ Customizable ItemCounters. Choose which tiers you want counted, choose which tie
 Use ItemScore to not just see how many items you have but how good they are.
 By default item score is based on tiers, but you can change how much each tier is worth or even set custom values for each item!
 
-![ItemCounters](https://fby.pw/itemcounters.png)
+![ItemCounters](https://faby.dev/images/itemcounters.png)
 
 ### DPSMeter
 Fully clientside DPS Meter that can be integrated into the StatsDisplay. Counts minion damage! 
 
-![DPSMeter](https://fby.pw/dpsmeter.png)
+![DPSMeter](https://faby.dev/images/dpsmeter.png)
 
 ### StatsDisplay
 Show all of your character's stats! Completely customizable!
 
-![StatsDisplay](https://fby.pw/statsdisplay.png)
+![StatsDisplay](https://faby.dev/images/statsdisplay.png)
 
 ### Skill Proc Coefficient Information
 
-![Skill Tooltip](https://fby.pw/skilltooltip.png)
+![Skill Tooltip](https://faby.dev/images/skilltooltip.png)
 
 ### Command/Scrapper Improvements
 See how many items you have when using the scrapper or picking an item using the command artifact!
 Tooltips with ItemStatsMod integration!
 Close the command/scrapper window with Escape, WASD or a custom keybind!
 
-![Command Counters](https://fby.pw/commandcounters.png)
+![Command Counters](https://faby.dev/images/commandcounters.png)
 
 ### Improved Item Sorting
 Sort items alphabetically, by tier, stacks or even tags like "Scrap" or "Damage". EVEN RANDOMLY?!
 
-![Item Sorting](https://fby.pw/itembar.png)
+![Item Sorting](https://faby.dev/images/itembar.png)
 
-![Sorted Scrapper](https://fby.pw/sortedscrapper.png)
+![Sorted Scrapper](https://faby.dev/images/sortedscrapper.png)
 
 ### BuffTimers & Tooltips
 Buff timers currently only work if you are the host because the timers are not networked in multiplayer. 
 
-![Buff Timers](https://fby.pw/buffs.png)
+![Buff Timers](https://faby.dev/images/buffs.png)
 
 ### Advanced item descriptions
 Use the advanced item descriptions from the logbook that show the actual numbers for all the changes. 
 Integration with ItemStats in the command and scrapper windows.
 
-![Item Description](https://fby.pw/itemdesc.png)
+![Item Description](https://faby.dev/images/itemdesc.png)
 
 ### Show Hidden Items
 Show hidden items like the hidden monsoon/drizzle items
