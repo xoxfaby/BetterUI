@@ -24,7 +24,7 @@ namespace BetterUI
 
         static ItemCounters()
         {
-            ItemCatalog.availability.CallWhenAvailable(GenerateItemScores);
+            Language.onCurrentLanguageChanged += GenerateItemScores;
         }
         internal static void Hook()
         {
