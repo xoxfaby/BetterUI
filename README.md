@@ -151,6 +151,17 @@ P = Sprint Related Last
 
 ## Changelog
 
+### v2.3.1
+ - Bugfix: Fixed error when user attemps to change language
+
+#### v2.3.0
+ - Addition: Added API for StatsDisplay to let other mods add their own parameters.
+ - Bugfix: Fixed item score config options not loading item names 
+ - Localization: Fixed some vanilla buff tooltips.
+ - Localization: Fixed some config option verbiage. ( Thank you ethall )
+ - Internal: Added ability to change config parameters while keeping user set values. ( Thank you ethall )
+
+
 #### v2.2.0
  - Addition: Buffs: Buff tooltips now have better names and descriptions. 
    Comes with a public API for other mods to register the names and descriptions of their buffs.
