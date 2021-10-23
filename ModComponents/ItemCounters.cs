@@ -60,7 +60,7 @@ namespace BetterUI
                     itemScore = ConfigManager.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
 
-                ConfigManager.ItemCountersItemScores.Add(itemDef, itemScore.Value);
+                ConfigManager.ItemCountersItemScores[itemDef] = itemScore.Value;
             }
         }
         internal static void ScoreboardStrip_SetMaster(Action<RoR2.UI.ScoreboardStrip, CharacterMaster> orig, ScoreboardStrip self, CharacterMaster master)
