@@ -537,9 +537,12 @@ namespace BetterUI
                 var previousTuple = previousEntryMap[(section, key)];
                 var previousDefinition = new ConfigDefinition(previousTuple.Item1, previousTuple.Item2);
                 // ConfigFile has to Bind to a Section + Key before it knows that it's in the file.
-                var previousEntry = config.Bind(previousDefinition, defaultValue, new ConfigDescription(description));
-                // Let ConfigBaseEntry deal with type parsing.
-                currentEntry.SetSerializedValue(previousEntry.GetSerializedValue());
+                var previousEntry = config.Bind(previousDefinition, "If you ever set your config option to this, it's your own fault", new ConfigDescription(description));
+                if(previousEntry.Value != "If you ever set your config option to this, it's your own fault")
+                {
+                    // Let ConfigBaseEntry deal with type parsing.
+                    currentEntry.SetSerializedValue(previousEntry.GetSerializedValue());
+                }
                 config.Remove(previousDefinition);
             }
 
