@@ -64,7 +64,7 @@ namespace BetterUI
         {   
             if(ItemCatalog.availability.available && EquipmentCatalog.availability.available)
             {
-                var maxOptions = Math.Max(ItemCatalog.itemCount, EquipmentCatalog.equipmentCount);
+                var maxOptions = ItemCatalog.itemCount + EquipmentCatalog.equipmentCount;
                 optionMap = new int[maxOptions];
                 optionMap[0] = -1;
                 availableIndex = new bool[maxOptions];
@@ -153,7 +153,7 @@ namespace BetterUI
 
             Inventory inventory = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.inventory;
 
-            if (PickupCatalog.GetPickupDef(options[0].pickupIndex).equipmentIndex != EquipmentIndex.None)
+            if (options.All(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex != EquipmentIndex.None))
             {
                 foreach (RoR2.PickupPickerController.Option option in options)
                 {
@@ -166,9 +166,8 @@ namespace BetterUI
                 sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap,0);
                 options = sortedOptions.Take(options.Length).ToArray();
             }
-            else if (PickupCatalog.GetPickupDef(options[0].pickupIndex).itemIndex != ItemIndex.None)
+            else if (options.All(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex != ItemIndex.None))
             {
-                bool[] availableIndex = new bool[ItemCatalog.itemCount];
                 foreach (RoR2.PickupPickerController.Option option in options)
                 {
                     availableIndex[(int)PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex] = option.available;
