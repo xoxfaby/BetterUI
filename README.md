@@ -151,6 +151,10 @@ P = Sprint Related Last
 
 ## Changelog
 
+#### v2.3.3
+ - Change: CommandImprovements: Command window will now resize both horizontally and vertically right away.
+ - Bugfix: (Temporary) Disabled BetterUI command window sorting for command windows that contain both items and equipment. In the future, BetterUI will be able to sort these windows and provide configuration options for their sorting. 
+ - Bugfix: Configuration: Fixed certain config options always resetting to their default value due to a bug in the logic for porting over renamed config options. 
 #### v2.3.2
  - Addition: CommandImprovements: Command window will now resize if it was going to overflow the screen
 
