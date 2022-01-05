@@ -120,10 +120,14 @@ namespace BetterUI
                     {
                         var mainPanelRectTransform = self.transform.Find("MainPanel").GetComponent<RectTransform>();
                         var mainContainerRectTransform = self.transform.parent.GetComponent<RectTransform>();
-                        int defaultPanelHeight = 166 + (82 * (int)Math.Ceiling(options.Length / 5f)); 
-                        int columns = defaultPanelHeight > mainContainerRectTransform.rect.height - 286
-                            ? (int)Math.Ceiling(82 * options.Length / (mainContainerRectTransform.rect.height - 286))
-                            : 5;
+                        int columns = (int)Math.Ceiling(Math.Sqrt(options.Length));;
+                        int defaultPanelHeight = 166 + (82 * (int)Math.Ceiling(options.Length / (float)columns));
+
+                        if (defaultPanelHeight > mainContainerRectTransform.rect.height - 120)
+                        {
+                            columns = (int)Math.Ceiling(options.Length / Math.Floor((mainContainerRectTransform.rect.height - 286) / 82) );
+                        }
+                            
                         self.gridlayoutGroup.constraintCount = self.maxColumnCount = columns;
                         mainPanelRectTransform.sizeDelta = new Vector2(166 + 82 * columns, 166 + (82 * (float)Math.Ceiling(options.Length / (float)columns)));
                     }
