@@ -11,7 +11,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.3.3.0")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.4.0.3")]
     public class BetterUIPlugin : BetterAPI.BetterUnityPlugin<BetterUIPlugin>
     {
 

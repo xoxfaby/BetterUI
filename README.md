@@ -3,6 +3,14 @@
 A simple mod that adds various UI improvements.  
 Each can be disabled and configured in the config file.
 
+## Support Me
+
+If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
+
+https://github.com/sponsors/xoxfaby (preferred)
+https://patreon.com/xoxfaby
+or directly through paypal:
+https://streamelements.com/xoxfaby/tip
 
 ## Currently implemented:
 - Item Counters
@@ -21,17 +29,13 @@ Each can be disabled and configured in the config file.
 - Buff Timers and Tooltips
 - Show Hidden Items
 
-## Support Me
-
-If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
-
-https://github.com/sponsors/xoxfaby
-
 ## Help & Feedback
 
 If you need help or have suggestions, create an issue on github, join my discord or find me on the RoR2 Modding Discord 
 
 [My Discord](https://discord.gg/Zy2HSB4) XoXFaby#1337
+
+Please do not add me on discord, join of the the two servers and ping me there. 
 
 https://github.com/xoxfaby/BetterUI
 
@@ -107,8 +111,7 @@ $blueportal $goldportal $celestialportal
 
 #### Sorting
 
-You can enable/disable any part of the mod in the config file.  
-The sorting is completely customizable as well. 
+The sorting is completely customizable. 
 The default sorting value is **S134**
 
 **S** means the items are first sorted by the "Scrap" tag and all the scrap is put at the end of the list.  
@@ -116,7 +119,15 @@ The default sorting value is **S134**
 **3** sorts it by the stack size in descending order, meaning if you have more of an item, it will come first. 
 **4** then sorts it by pickup order, meaning items you got first, come first. 
 
-You can customize this in any way you like.
+You can customize this in any way you like. 
+
+Filters: 
+
+\# + a tag will apply the next sorting to only items that match the tag.  
+You can use any tags from the tag based sorting.   
+Examples:  
+`#s0` to sort scrap by tier ascending.  
+`#t14#t28` to sort Tier 1 items by pickup order and tier 2 items randomly 
 
 The full options:
 
@@ -149,7 +160,43 @@ E = Equipment Related Last
 p = Sprint Related First  
 P = Sprint Related Last  
 
+t1 = Tier 1 First
+t2 = Tier 2 First
+t3 = Tier 3 First
+tL = Lunar Tier First
+tB = Boss Tier First
+tN = NoTier First
+
+T1 = Tier 1 Last
+T2 = Tier 2 Last
+T3 = Tier 3 Last
+TL = Lunar Tier Last
+TB = Boss Tier Last
+TN = NoTier Last
+
+
+
 ## Changelog
+
+### v2.4.0
+ - Addition: Item Sorting: New sortString options:
+	- Tier Tag: use t (lowercase) + the tier to sort items of that tier first.  
+	Use T (uppercase) to sort them last:  
+	t1 = Tier 1   
+	t2 = Tier 2  
+	t3 = Tier 3  
+	tL = Lunar Tier  
+	tB = Boss Tier  
+	tN = NoTier  
+	Examples:  
+	`tL4` to put Lunar items first, and the rest of the items by pickup order.  
+	`Tn6` to put NoTier items last, and the rest of the items alphabetically.   
+	- Filters: # + a tag will apply the next sorting to only items that match the tag.  
+	You can use any tags from the tag based sorting.   
+	Examples:  
+	`#s0` to sort scrap by tier ascending.  
+	`#t14#t28` to sort Tier 1 items by pickup order and tier 2 items randomly 
+	
 
 #### v2.3.3
  - Change: CommandImprovements: Command window will now resize both horizontally and vertically right away.
