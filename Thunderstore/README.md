@@ -3,6 +3,14 @@
 A simple mod that adds various UI improvements.  
 Each can be disabled and configured in the config file.
 
+## Support Me
+
+If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
+
+https://github.com/sponsors/xoxfaby (preferred)
+https://patreon.com/xoxfaby
+or directly through paypal:
+https://streamelements.com/xoxfaby/tip
 
 ## Currently implemented:
 - Item Counters
@@ -20,12 +28,6 @@ Each can be disabled and configured in the config file.
 - ItemsStatsMod integration for command window
 - Buff Timers and Tooltips
 - Show Hidden Items
-
-## Support Me
-
-If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
-
-https://github.com/sponsors/xoxfaby
 
 ## Help & Feedback
 
