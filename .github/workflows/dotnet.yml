@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./build
+        working-directory: ./build/BetterUI
     steps:
 
     - uses: actions/checkout@v2
