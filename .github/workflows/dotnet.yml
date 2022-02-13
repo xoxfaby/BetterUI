@@ -18,15 +18,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-        
+    - name: Restore dependencies
+      run: dotnet restore   
+      
     - name: Checkout dependencies
       uses: actions/checkout@master
       with:
         repository: xoxfaby/RoR2Libs
         ssh-key: ${{ secrets.LIBRARY_KEY }}
 
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Test
