@@ -32,7 +32,7 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: xoxfaby/BetterAPI
-        path: "../BetterAPI"
+        path: "BetterAPI"
 
     - name: Build
       run: dotnet build --no-restore
