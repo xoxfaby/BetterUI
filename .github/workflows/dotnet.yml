@@ -28,6 +28,12 @@ jobs:
         ssh-key: ${{ secrets.LIBRARY_KEY }}
         path: "Libs"
 
+    - name: Checkout BetterAPI
+      uses: actions/checkout@master
+      with:
+        repository: xoxfaby/BetterAPI
+        path: "../BetterAPI"
+
     - name: Build
       run: dotnet build --no-restore
     - name: Test
