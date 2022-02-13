@@ -19,10 +19,10 @@ jobs:
       with:
         dotnet-version: 5.0.x
         
-    - name: Checkout Dependencies
+    - name: Checkout dependencies
       uses: actions/checkout@master
       with:
-        repository: XoXFaby/RoR2Libs
+        repository: xoxfaby/RoR2Libs
         ssh-key: ${{ secrets.LIBRARY_KEY }}
 
     - name: Restore dependencies
