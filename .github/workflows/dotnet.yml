@@ -12,11 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
+    - name: Checkout Dependencies
+      uses: actions/checkout@master
+      with:
+        repository: XoXFaby/RoR2Libs
+        token: ${{ secrets.LIBRARY_KEY }}
+
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
