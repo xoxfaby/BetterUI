@@ -10,10 +10,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./build
     steps:
 
     - uses: actions/checkout@v2
+      with:
+        path: "build/BetterUI"
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -26,13 +30,13 @@ jobs:
       with:
         repository: xoxfaby/RoR2Libs
         ssh-key: ${{ secrets.LIBRARY_KEY }}
-        path: "Libs"
+        path: "build/Libs"
 
     - name: Checkout BetterAPI
       uses: actions/checkout@master
       with:
         repository: xoxfaby/BetterAPI
-        path: "BetterAPI"
+        path: "build/BetterAPI"
 
     - name: Build
       run: dotnet build --no-restore
