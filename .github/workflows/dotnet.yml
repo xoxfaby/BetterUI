@@ -26,6 +26,7 @@ jobs:
       with:
         repository: xoxfaby/RoR2Libs
         ssh-key: ${{ secrets.LIBRARY_KEY }}
+        path: "Libs"
 
     - name: Build
       run: dotnet build --no-restore
