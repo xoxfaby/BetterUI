@@ -1,0 +1,50 @@
+name: Release
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+    run:
+      working-directory: ./build/BetterUI
+    steps:
+
+    - uses: actions/checkout@v2
+      with:
+        path: "build/BetterUI"
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+      
+    - name: Checkout dependencies
+      uses: actions/checkout@master
+      with:
+        repository: xoxfaby/RoR2Libs
+        ssh-key: ${{ secrets.LIBRARY_KEY }}
+        path: "build/Libs"
+
+    - name: Checkout BetterAPI
+      uses: actions/checkout@master
+      with:
+        repository: xoxfaby/BetterAPI
+        path: "build/BetterAPI"
+
+
+    - name: Restore dependencies
+      run: dotnet restore   
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Pack
+      run: tar
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "BetterUI.dll,manifest.json"
+        token: ${{ secrets.GITHUB_TOKEN }}
