@@ -40,8 +40,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Pack
-      run: tar
+   # - name: Pack
+   #   run: tar
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "BetterUI.dll,manifest.json"
