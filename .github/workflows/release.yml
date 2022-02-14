@@ -2,18 +2,16 @@ name: Release
 on: 
   push:
     tags:
-    - '*'
-
+    - 'v*'
 jobs:
-
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./build/BetterUI
     permissions:
       contents: write 
-    run:
-      working-directory: ./build/BetterUI
     steps:
-
     - uses: actions/checkout@v2
       with:
         path: "build/BetterUI"
