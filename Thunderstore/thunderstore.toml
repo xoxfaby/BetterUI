@@ -1,0 +1,31 @@
+[config]
+schemaVersion = "0.0.1"
+
+[package]
+namespace = "XoXFaby"
+name = "BetterUI"
+versionNumber = "2.0.0"
+description = "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more."
+websiteUrl = "https://github.com/xoxfaby/BetterUI"
+containsNsfwContent = false
+
+[package.dependencies]
+bbepis-BepInExPack = "5.4.9"
+
+[build]
+icon = "./icon.png"
+readme = "../README.md"
+outdir = "../zip"
+
+[[build.copy]]
+source = "../bin/Release/netstandard2.0/BetterUI.dll"
+target = "BetterUI.dll"
+
+[[build.copy]]
+source = "../bin/Release/netstandard2.0/publish/BetterUnityPlugin.dll"
+target = "BetterUnityPlugin.dll"
+
+[publish]
+repository = "https://thunderstore.io"
+communities = ["Risk of Rain2"]
+categories = ["Mods", "Tweaks", "Client-side]
