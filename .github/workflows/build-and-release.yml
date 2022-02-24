@@ -1,0 +1,29 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:        
+      - 'v*' 
+
+jobs:
+  build:
+    uses: xoxfaby/actions/.github/workflows/dotnet-publish.yml@main
+
+  release-nuget:
+    needs: build
+    uses: xoxfaby/actions/.github/workflows/nuget.yml@main
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+
+  release-thunderstore:
+    needs: build
+    uses: xoxfaby/actions/.github/workflows/thunderstore.yml@main
+    with:
+      version: ${{ needs.build.outputs.version }}
+    secrets:
+      THUNDERSTORE_TOKEN: ${{ secrets.THUNDERSTORE_TOKEN }}
+
+  release-github:
+    needs: release-thunderstore
+    uses: xoxfaby/actions/.github/workflows/release.yml@main
