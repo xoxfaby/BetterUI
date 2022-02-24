@@ -1,0 +1,9 @@
+name: .NET
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    uses: xoxfaby/actions/.github/workflows/dotnet.yml@main
