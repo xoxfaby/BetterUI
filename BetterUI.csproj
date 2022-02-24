@@ -15,15 +15,10 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.Core" Version="5.4.9" />
     <PackageReference Include="BetterUnityPlugin" Version="1.0.0" />
+    <PackageReference Include="ItemStatsMod" Version="2.2.1" />
     <PackageReference Include="RiskOfRain2.GameLibs" Version="1.1.1.4-r.1" />
     <PackageReference Include="RoR2-BetterAPI" Version="2.0.0" />
     <PackageReference Include="UnityEngine.Modules" Version="2018.4.16" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="ItemStats">
-      <HintPath>..\Libs\ItemStats.dll</HintPath>
-    </Reference>
   </ItemGroup>
   
 </Project>
