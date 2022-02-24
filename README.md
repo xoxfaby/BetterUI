@@ -178,6 +178,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.4.1
+ - README update only
+
 ### v2.4.0
  - Addition: Item Sorting: New sortString options:
 	- Tier Tag: use t (lowercase) + the tier to sort items of that tier first.  
