@@ -11,7 +11,7 @@ namespace BetterUI
 {
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.4.0.3")]
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.4.1")]
     public class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
 
@@ -20,7 +20,8 @@ namespace BetterUI
 
         internal static bool ItemStatsModIntegration = false;
         internal static bool BetterAPIModIntegration = false;
-        internal static RoR2.UI.HUD HUD;
+        internal static RoR2.UI.HUD hud;
+        internal static RoR2.UI.ObjectivePanelController objectivePanelController;
 
         public static StringBuilder sharedStringBuilder = new StringBuilder();
 
@@ -28,6 +29,7 @@ namespace BetterUI
 
         protected override void Awake()
         {
+            this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
             base.Awake();
             if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
@@ -46,21 +48,23 @@ namespace BetterUI
             if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
         }
+
         protected override void OnEnable()
         {
             base.OnEnable();
             ItemStatsModIntegration = ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
             BetterAPIModIntegration = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterAPI");
-            BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
+            BetterUIPlugin.Hooks.Add<RoR2.UI.HudObjectiveTargetSetter>("OnEnable", HudObjectiveTargetSetter_OnEnable);
         }
 
-        internal static void HUD_Awake(Action<RoR2.UI.HUD> orig, RoR2.UI.HUD self)
+        internal static void HudObjectiveTargetSetter_OnEnable(Action<RoR2.UI.HudObjectiveTargetSetter> orig, RoR2.UI.HudObjectiveTargetSetter self)
         {
             orig(self);
-            HUD = self;
-            if (onHUDAwake != null)
+            hud = self.hud;
+            objectivePanelController = self.objectivePanelController;
+            if (hud != null && objectivePanelController != null && onHUDAwake != null)
             {
-                onHUDAwake.Invoke(self);
+                onHUDAwake.Invoke(hud);
             }
         }
     }

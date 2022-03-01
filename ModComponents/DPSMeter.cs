@@ -116,7 +116,7 @@ namespace BetterUI
                 GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
                 RectTransform rectTransform = DPSMeterPanel.AddComponent<RectTransform>();
 
-                DPSMeterPanel.transform.SetParent(BetterUIPlugin.HUD.mainContainer.transform);
+                DPSMeterPanel.transform.SetParent(BetterUIPlugin.hud.mainContainer.transform);
                 DPSMeterPanel.transform.SetAsFirstSibling();
 
 
@@ -147,7 +147,7 @@ namespace BetterUI
                 if (ConfigManager.DPSMeterWindowBackground.Value)
                 {
                     Image image = DPSMeterPanel.AddComponent<Image>();
-                    Image copyImage = BetterUIPlugin.HUD.itemInventoryDisplay.gameObject.GetComponent<Image>();
+                    Image copyImage = BetterUIPlugin.hud.itemInventoryDisplay.gameObject.GetComponent<Image>();
                     image.sprite = copyImage.sprite;
                     image.color = copyImage.color;
                     image.type = Image.Type.Sliced;

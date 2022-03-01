@@ -129,8 +129,8 @@ namespace BetterUI
                     layoutElement2.flexibleHeight = 1;
                     layoutElement2.flexibleWidth = 1;
 
-                    stupidBuffer.transform.SetParent(BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
-                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                    stupidBuffer.transform.SetParent(BetterUIPlugin.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
+                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.objectivePanelController.objectiveTrackerContainer.parent.parent.transform);
 
                     rectTransform.localPosition = new Vector3(0, -10, 0);
                     rectTransform.anchorMin = Vector2.zero;
@@ -142,7 +142,7 @@ namespace BetterUI
                 }
                 else
                 {
-                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.HUD.mainContainer.transform);
+                    statsDisplayContainer.transform.SetParent(BetterUIPlugin.hud.mainContainer.transform);
 
                     rectTransform.localPosition = new Vector3(0, 0, 0);
                     rectTransform.anchorMin = ConfigManager.StatsDisplayWindowAnchorMin.Value;
@@ -175,7 +175,7 @@ namespace BetterUI
                 if (ConfigManager.StatsDisplayPanelBackground.Value)
                 {
                     Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
-                    Image copyImage = BetterUIPlugin.HUD.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
+                    Image copyImage = BetterUIPlugin.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
                     image.sprite = copyImage.sprite;
                     image.color = copyImage.color;
                     image.type = Image.Type.Sliced;
@@ -207,9 +207,9 @@ namespace BetterUI
                     statsDisplayContainer.transform.SetAsLastSibling();
                 }
             }
-            if (BetterUIPlugin.HUD && BetterUIPlugin.HUD.targetBodyObject && textMesh)
+            if (BetterUIPlugin.hud && BetterUIPlugin.hud.targetBodyObject && textMesh)
             {
-                playerBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                playerBody = BetterUIPlugin.hud.targetBodyObject ? BetterUIPlugin.hud.targetBodyObject.GetComponent<CharacterBody>() : null;
                 if (playerBody)
                 {
                     bool customBindPressed = Input.GetKey(ConfigManager.StatsDisplayCustomBind.Value);

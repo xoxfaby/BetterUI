@@ -257,9 +257,9 @@ namespace BetterUI
                 if (ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
                     inventory = self.targetInventory;
-                    if (!inventory && BetterUIPlugin.HUD.targetBodyObject)
+                    if (!inventory && BetterUIPlugin.hud.targetBodyObject)
                     {
-                        targetbody = BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>();
+                        targetbody = BetterUIPlugin.hud.targetBodyObject.GetComponent<CharacterBody>();
                         if (targetbody)
                         {
                             inventory = targetbody.inventory;

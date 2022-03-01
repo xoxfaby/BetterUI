@@ -73,7 +73,6 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.Fruiting, "Fruiting", "Spawn 2 - 8 fruits on death");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.HealingDisabled, "Healing disabled", "Healing disabled");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.ElementalRingsCooldown, "Elemental Rings Cooldown", "Gain 10 stacks when Runald's Band or Kjaro's Band activates, lose 1 stack every second. Prevents Runald's Band or Kjaro's Band from activating. (stackable)");
-                RegisterBuffInfo(RoR2.RoR2Content.Buffs.NullSafeZone, "Null Safe Zone", "Safe from Damage in the Void Fields Note: Despite the description, this is a debuff");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.PermanentCurse, "Permanent Curse", "Maximum health reduced by a factor of 1 + 0.01 * n , where n is the number of stacks. When taking damage on Eclipse 8 , allies gain a number of stacks of Permanent Curse equal to 40 * Damage / MaxHealth , rounded down. All stacks are removed at the end of each stage and when resurrecting with Dio's Best Friend , but not when using Blast Shower .| (stackable)");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.Overheat, "Overheat", "Overheat: Increases fire damage received");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LunarSecondaryRoot, "Lunar Root", "Root: Reduce movement speed to 0 for 3 (+3 per stack) seconds");
@@ -188,9 +187,9 @@ namespace BetterUI
                     Transform timerText = self.transform.Find("TimerText");
                     if (timerText != null)
                     {
-                        if (BetterUIPlugin.HUD != null)
+                        if (BetterUIPlugin.hud != null)
                         {
-                            CharacterBody characterBody = BetterUIPlugin.HUD.targetBodyObject ? BetterUIPlugin.HUD.targetBodyObject.GetComponent<CharacterBody>() : null;
+                            CharacterBody characterBody = BetterUIPlugin.hud.targetBodyObject ? BetterUIPlugin.hud.targetBodyObject.GetComponent<CharacterBody>() : null;
                             if (characterBody != null && characterBody.timedBuffs.Count > 0)
                             {
                                 timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffDef.buffIndex);
