@@ -29,7 +29,6 @@ namespace BetterUI
         protected override void Awake()
         {
             base.Awake();
-            BepInExPatcher.DoPatching();
             if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
             if (ConfigManager.ComponentsStatsDisplay.Value)
