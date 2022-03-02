@@ -56,12 +56,27 @@ namespace BetterUI
         private static ItemFilter sprintRelatedFilter = item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.SprintRelated);
         private static Dictionary<Char, ItemFilter> tierFilters = new Dictionary<char, ItemFilter>()
         {
-            { '1', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 },
-            { '2', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 },
-            { '3', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 },
+            { '1', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
+            { '2', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
+            { '3', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
             { 'L', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
-            { 'B', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss },
-            { 'N', item => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
+            { 'B', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
+            { 'N', item => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier},
+        };
+
+        //0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier
+        private static Dictionary<ItemTier, int> tierMap = new Dictionary<ItemTier, int>()
+        {
+            { ItemTier.Tier1, 0 },
+            { ItemTier.VoidTier1, 0 },
+            { ItemTier.Tier2, 1 },
+            { ItemTier.VoidTier2, 1 },
+            { ItemTier.Tier3, 2 },
+            { ItemTier.VoidTier3, 2 },
+            { ItemTier.Lunar, 3 },
+            { ItemTier.Boss, 4 },
+            { ItemTier.VoidBoss, 4 },
+            { ItemTier.NoTier, 5 },
         };
 
 
@@ -72,7 +87,7 @@ namespace BetterUI
         private static ItemSorter<bool> onKillEffectSorter = (order, inventory, item) => onKillEffectFilter(item);
         private static ItemSorter<bool> equipmentRelatedSorter = (order, inventory, item) => equipmentRelatedFilter(item);
         private static ItemSorter<bool> sprintRelatedSorter = (order, inventory, item) => sprintRelatedFilter(item);
-        private static ItemSorter<int> tierSorter = (order, inventory, item) => ConfigManager.SortingTierOrder[(int)ItemCatalog.GetItemDef(item).tier];
+        private static ItemSorter<int> tierSorter = (order, inventory, item) => ConfigManager.SortingTierOrder[tierMap[ItemCatalog.GetItemDef(item).tier]];
         private static ItemSorter<int> stackSorter = (order, inventory, item) => inventory.itemStacks[(int)item];
         private static ItemSorter<int> pickupSorter = (order, inventory, item) => inventory.itemAcquisitionOrder.IndexOf(item);
         private static ItemSorter<String> alphabeticalSorter = (order, inventory, item) => Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
@@ -85,11 +100,11 @@ namespace BetterUI
 
         private static Dictionary<Char, ItemSorter<bool>> tierSorters = new Dictionary<char, ItemSorter<bool>>()
         {
-            { '1', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 },
-            { '2', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 },
-            { '3', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 },
+            { '1', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
+            { '2', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
+            { '3', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
             { 'L', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
-            { 'B', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss },
+            { 'B', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
             { 'N', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
         };
 
