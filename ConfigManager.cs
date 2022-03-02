@@ -410,6 +410,7 @@ namespace BetterUI
                 "Base Damage: $dmg\n" +
                 "Crit Chance: $crit%\n" +
                 "Crit w/ Luck: $luckcrit%\n" +
+                "Crit Damage: $critdamage\n" +
                 "Attack Speed: $atkspd\n" +
                 "Armor: $armor | $armordmgreduction%\n" +
                 "Regen: $regen\n" +
