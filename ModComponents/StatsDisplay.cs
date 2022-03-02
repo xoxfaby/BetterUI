@@ -24,7 +24,7 @@ namespace BetterUI
         private static CharacterBody playerBody;
         private static Boolean statsDisplayToggle = false;
 
-        static readonly Dictionary<string, DisplayCallback> regexmap;
+        public static readonly Dictionary<string, DisplayCallback> regexmap;
         static Regex regexpattern;
 
         static string[] normalText;
@@ -42,6 +42,16 @@ namespace BetterUI
                 { "$dmg", (statBody) => statBody.damage.ToString("0.##") },
                 { "$crit", (statBody) => statBody.crit.ToString("0.##") },
                 { "$critdamage", (statBody) => statBody.critMultiplier.ToString("0.##") },
+                { "$weakpointcombo", (statBody) =>
+                    {
+                        var localUser = statBody.master.playerCharacterMasterController.networkUser.localUser;
+                        if (localUser != null)
+                            return (AchievementManager.GetUserAchievementManager(localUser).achievementsList
+                                    .FirstOrDefault(x => x is RoR2.Achievements.Railgunner.RailgunnerConsecutiveWeakPointsAchievement) as
+                                RoR2.Achievements.Railgunner.RailgunnerConsecutiveWeakPointsAchievement)?.consecutiveCount.ToString() ?? "N/A";
+                        return "N/A";
+                    }
+                },
                 { "$luckcrit", (statBody) =>  ( 100 * ((int)statBody.crit / 100) + 100 * Utils.LuckCalc(statBody.crit % 100 * 0.01f,statBody.master.luck)).ToString("0.##") },
                 { "$hp", (statBody) => Math.Floor(statBody.healthComponent.health).ToString("0.##") },
                 { "$maxhp", (statBody) => statBody.maxHealth.ToString("0.##") },
@@ -52,11 +62,11 @@ namespace BetterUI
                 { "$armor", (statBody) => statBody.armor.ToString("0.##") },
                 { "$regen", (statBody) => statBody.regen.ToString("0.##") },
                 { "$movespeed", (statBody) => statBody.moveSpeed.ToString("0.##") },
-                { "$velocity", (statBody) => statBody.characterMotor.velocity.magnitude.ToString("0.##") },
+                { "$velocity", (statBody) => (statBody.characterMotor as IPhysMotor).velocity.magnitude.ToString("0.##") },
                 { "$2dvelocity", (statBody) => {
-                    var vector = statBody.characterMotor.velocity;
-                    vector.y = 0;
-                    return vector.magnitude.ToString("0.##");
+                        var vector = (statBody.characterMotor as IPhysMotor).velocity;
+                        vector.y = 0;
+                        return vector.magnitude.ToString("0.##");
                     }
                 },
                 { "$jumps", (statBody) => (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString() },

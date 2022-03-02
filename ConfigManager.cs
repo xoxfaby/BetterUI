@@ -391,16 +391,7 @@ namespace BetterUI
                 "Kills: $killcount\n" +
                 "Mountain Shrines: $mountainshrines\n",
                 "You may format the StatString using formatting tags such as color, size, bold, underline, italics. See Readme for more.\n" +
-                "Valid Parameters:\n" +
-                "$exp $maxexp $level $luck\n" +
-                "$dmg $crit $luckcrit $atkspd\n" +
-                "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
-                "$armor $armordmgreduction $regen\n" +
-                "$velocity $2dvelocity $movespeed $jumps $maxjumps\n" +
-                "$killcount $multikill $highestmultikill\n" +
-                "$dps $dpscharacter $dpsminions\n" +
-                "$mountainshrines\n" +
-                "$blueportal $goldportal $celestialportal");
+                "Valid Parameters:\n" + string.Join(" ", StatsDisplay.regexmap.Keys));
 
             StatsDisplayStatStringCustomBind = Bind(ConfigFileStatsDisplay, "StatsDisplay", "StatStringCustomBind",
                 "<color=#FFFFFF>" +
