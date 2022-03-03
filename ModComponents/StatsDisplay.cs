@@ -21,10 +21,11 @@ namespace BetterUI
         private static GameObject stupidBuffer;
         private static RoR2.UI.HGTextMeshProUGUI textMesh;
         private static int highestMultikill = 0;
+        private static int weakPointCombo = 0;
         private static CharacterBody playerBody;
         private static Boolean statsDisplayToggle = false;
 
-        public static readonly Dictionary<string, DisplayCallback> regexmap;
+        internal static readonly Dictionary<string, DisplayCallback> regexmap;
         static Regex regexpattern;
 
         static string[] normalText;
@@ -42,16 +43,7 @@ namespace BetterUI
                 { "$dmg", (statBody) => statBody.damage.ToString("0.##") },
                 { "$crit", (statBody) => statBody.crit.ToString("0.##") },
                 { "$critdamage", (statBody) => statBody.critMultiplier.ToString("0.##") },
-                { "$weakpointcombo", (statBody) =>
-                    {
-                        var localUser = statBody.master.playerCharacterMasterController.networkUser.localUser;
-                        if (localUser != null)
-                            return (AchievementManager.GetUserAchievementManager(localUser).achievementsList
-                                    .FirstOrDefault(x => x is RoR2.Achievements.Railgunner.RailgunnerConsecutiveWeakPointsAchievement) as
-                                RoR2.Achievements.Railgunner.RailgunnerConsecutiveWeakPointsAchievement)?.consecutiveCount.ToString() ?? "N/A";
-                        return "N/A";
-                    }
-                },
+                { "$weakpointcombo", (statBody) => weakPointCombo.ToString()},
                 { "$luckcrit", (statBody) =>  ( 100 * ((int)statBody.crit / 100) + 100 * Utils.LuckCalc(statBody.crit % 100 * 0.01f,statBody.master.luck)).ToString("0.##") },
                 { "$hp", (statBody) => Math.Floor(statBody.healthComponent.health).ToString("0.##") },
                 { "$maxhp", (statBody) => statBody.maxHealth.ToString("0.##") },
@@ -115,9 +107,12 @@ namespace BetterUI
         {
             normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
             altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
+            if (normalText.Contains("$weakpointcombo"))
+            {
+                EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointHit += WeakPointComboHit;
+                EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointMissed += WeakPointComboMissed;
+            }
         }
-
-
         internal static void runStartGlobal(RoR2.Run self)
         {
             highestMultikill = 0;
@@ -205,6 +200,20 @@ namespace BetterUI
                 layoutElement.flexibleWidth = 1;
             }
         }
+        
+        private static void WeakPointComboHit(DamageInfo obj)
+        {
+            weakPointCombo++;
+        }
+        private static void WeakPointComboMissed()
+        {
+            weakPointCombo = 0;
+        }
+        private static void PlayerBodyChanged()
+        {
+            WeakPointComboMissed();
+        }
+        
         static void onUpdate()
         {
             if (ConfigManager.StatsDisplayAttachToObjectivePanel.Value)
@@ -220,7 +229,10 @@ namespace BetterUI
             }
             if (BetterUIPlugin.hud && BetterUIPlugin.hud.targetBodyObject && textMesh)
             {
-                playerBody = BetterUIPlugin.hud.targetBodyObject ? BetterUIPlugin.hud.targetBodyObject.GetComponent<CharacterBody>() : null;
+                var newBody = BetterUIPlugin.hud.targetBodyObject ? BetterUIPlugin.hud.targetBodyObject.GetComponent<CharacterBody>() : null;
+                if (playerBody != newBody)
+                    PlayerBodyChanged();
+                playerBody = newBody;
                 if (playerBody)
                 {
                     bool customBindPressed = Input.GetKey(ConfigManager.StatsDisplayCustomBind.Value);
