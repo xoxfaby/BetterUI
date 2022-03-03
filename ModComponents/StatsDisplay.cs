@@ -10,6 +10,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using System.Reflection;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 
 
 namespace BetterUI
@@ -90,7 +93,24 @@ namespace BetterUI
             BetterUIPlugin.onHUDAwake += onHUDAwake;
             BetterUIPlugin.onDisable += onDisable;
         }
-        internal static void Hook() { }
+        internal static void Hook()
+        {
+            BetterUIPlugin.Hooks.Add<EntityStates.Railgunner.Weapon.BaseFireSnipe>(nameof(EntityStates.Railgunner.Weapon.BaseFireSnipe.OnExit), BaseFireSnipe_OnExit_onWeakpointMissedFix);
+        }
+
+        private static void BaseFireSnipe_OnExit_onWeakpointMissedFix(ILContext il)
+        {
+            var c = new ILCursor(il);
+            ILLabel jump = null;
+            c.GotoNext(x => x.MatchLdarg(out _),
+                x => x.MatchLdfld<EntityStates.Railgunner.Weapon.BaseFireSnipe>(nameof(EntityStates.Railgunner.Weapon.BaseFireSnipe.wasMiss)),
+                x => x.MatchBrtrue(out jump)
+            );
+            if (jump == null) return;
+            c.Emit(OpCodes.Ldarg_0);
+            c.Emit(OpCodes.Call, typeof(EntityStates.EntityState).GetMethod("get_isAuthority", BindingFlags.Instance | BindingFlags.NonPublic));
+            c.Emit(OpCodes.Brfalse, jump.Target);
+        }
         public static void AddStatsDisplay(string token, Func<CharacterBody, string> displayCallback)
         {
             AddStatsDisplay(token, new DisplayCallback(displayCallback));
