@@ -88,6 +88,7 @@ namespace BetterUI
             BetterUIPlugin.onStart += onStart;
             BetterUIPlugin.onUpdate += onUpdate;
             BetterUIPlugin.onHUDAwake += onHUDAwake;
+            BetterUIPlugin.onDisable += onDisable;
         }
         internal static void Hook() { }
         public static void AddStatsDisplay(string token, Func<CharacterBody, string> displayCallback)
@@ -111,6 +112,14 @@ namespace BetterUI
             {
                 EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointHit += WeakPointComboHit;
                 EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointMissed += WeakPointComboMissed;
+            }
+        }
+        static void onDisable()
+        {
+            if (normalText.Contains("$weakpointcombo"))
+            {
+                EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointHit -= WeakPointComboHit;
+                EntityStates.Railgunner.Weapon.BaseFireSnipe.onWeakPointMissed -= WeakPointComboMissed;
             }
         }
         internal static void runStartGlobal(RoR2.Run self)
