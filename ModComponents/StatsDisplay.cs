@@ -75,6 +75,18 @@ namespace BetterUI
                 { "$goldportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString() : "N/A" },
                 { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
+                { "$items", (statBody) =>
+                    {
+                        int itemSum = 0;
+                        foreach (object value in Enum.GetValues(typeof(ItemTier)))
+                        {
+                            ItemTier tier = (ItemTier)value;
+                            itemSum += statBody.inventory.GetTotalItemCountOfTier(tier);
+
+                        }
+                        return itemSum.ToString();
+                    }
+                }
             };
             regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
 

@@ -341,7 +341,7 @@ namespace BetterUI
 
             ItemCountersShowItemSum = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
 
-            ItemCountersItemSumTiersString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            ItemCountersItemSumTiersString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemSumTiersString", "012346789", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier, 6 = VoidTier1, 7 = VoidTier2, 8 = VoidTier3, 9 = VoidBoss");
 
             ItemCountersItemSumTiers = ItemCountersItemSumTiersString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
@@ -396,6 +396,7 @@ namespace BetterUI
                 "$dmg $crit $luckcrit $atkspd\n" +
                 "$hp $maxhp $shield $maxshield $barrier $maxbarrier\n" +
                 "$armor $armordmgreduction $regen\n" +
+                "$items\n" +
                 "$velocity $2dvelocity $movespeed $jumps $maxjumps\n" +
                 "$killcount $multikill $highestmultikill\n" +
                 "$dps $dpscharacter $dpsminions\n" +
