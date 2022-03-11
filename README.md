@@ -178,6 +178,18 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.4.5
+ - Bugfix: Moved HUD object aquisition back to Awake to fix bug where multiple StatsDisplays were being created when someone died and respawned. 
+
+#### v2.4.4
+ - Addition: Added crit damage to StatsDisplay
+
+#### v2.4.3
+ - Bugfix: Sort Void items the same as their normal items to quickly fix the game breaking when picking up a void item. Proper system to come later 
+
+#### v2.4.2
+ - Bugfix: Get HUD and ObjectivePanelController from HudObjectiveTargetSetter because HUD.objectivePanelController was removed
+
 #### v2.4.1
  - README update only
 
