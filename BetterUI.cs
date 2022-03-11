@@ -54,15 +54,15 @@ namespace BetterUI
             base.OnEnable();
             ItemStatsModIntegration = ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
             BetterAPIModIntegration = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterAPI");
-            BetterUIPlugin.Hooks.Add<RoR2.UI.HudObjectiveTargetSetter>("OnEnable", HudObjectiveTargetSetter_OnEnable);
+            BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
         }
 
-        internal static void HudObjectiveTargetSetter_OnEnable(Action<RoR2.UI.HudObjectiveTargetSetter> orig, RoR2.UI.HudObjectiveTargetSetter self)
+        internal static void HUD_Awake(Action<RoR2.UI.HUD> orig, RoR2.UI.HUD self)
         {
             orig(self);
-            hud = self.hud;
-            objectivePanelController = self.objectivePanelController;
-            if (hud != null && objectivePanelController != null && onHUDAwake != null)
+            hud = self;
+            objectivePanelController = self.GetComponentInChildren<RoR2.UI.ObjectivePanelController>(true);
+            if (onHUDAwake != null)
             {
                 onHUDAwake.Invoke(hud);
             }
