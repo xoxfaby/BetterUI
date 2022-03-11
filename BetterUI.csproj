@@ -6,10 +6,7 @@
     <OutputType>Library</OutputType>
     <AssemblyName>BetterUI</AssemblyName>
     <RootNamespace>BetterUI</RootNamespace>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
