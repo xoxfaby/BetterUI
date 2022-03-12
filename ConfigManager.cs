@@ -413,7 +413,8 @@ namespace BetterUI
                 "Difficulty: $difficulty\n" +
                 "Blue Portal: $blueportal\n" +
                 "Gold Portal: $goldportal\n" +
-                "Celestial Portal: $celestialportal\n",
+                "Celestial Portal: $celestialportal\n" +
+                "Void Portal: $voidportal\n",
                 "StatDisplay string to show when the custom bind is being pressed. This can be the same or different from the normal StatString.");
 
             StatsDisplayCustomBind = Bind(ConfigFileStatsDisplay, "StatsDisplay", "CustomBind", "tab", "Bind to show secondary StatsDisplay string.\n" +
