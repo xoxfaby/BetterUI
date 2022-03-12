@@ -95,7 +95,9 @@ namespace BetterUI
         public static void AddStatsDisplay(string token, DisplayCallback displayCallback)
         {
             regexmap[token] = displayCallback;
-            regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
+            var sortedKeys = regexmap.Keys.ToList();
+            sortedKeys.Sort((s1, s2) => s2.Length - s1.Length);
+            regexpattern = new Regex(@"(\" + String.Join(@"|\", sortedKeys) + ")");
             normalText = regexpattern.Split(ConfigManager.StatsDisplayStatString.Value);
             altText = regexpattern.Split(ConfigManager.StatsDisplayStatStringCustomBind.Value);
         }
