@@ -87,7 +87,9 @@ namespace BetterUI
                 { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
-            regexpattern = new Regex(@"(\" + String.Join(@"|\", regexmap.Keys) + ")");
+            var sortedKeys = regexmap.Keys.ToList();
+            sortedKeys.Sort((s1, s2) => s2.Length - s1.Length);
+            regexpattern = new Regex(@"(\" + String.Join(@"|\", sortedKeys) + ")");
 
 
             if (ConfigManager.StatsDisplayEnable.Value)
