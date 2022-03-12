@@ -178,9 +178,11 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.4.7
+ - Bugfix: Actually fix $critdmg
 
 #### v2.4.6
- - BugFixes:
+ - Bugfixes:
   - Fixed $critdmg matching with $crit and showing the crit chance + the letters "dmg" instead of showing the critical damage
   - Fixed the StatsDisplay breaking if the current CharacterBody doesn't have a CharacterMotor
  - Change:
