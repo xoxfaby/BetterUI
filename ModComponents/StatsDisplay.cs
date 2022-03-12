@@ -24,7 +24,7 @@ namespace BetterUI
         private static CharacterBody playerBody;
         private static Boolean statsDisplayToggle = false;
 
-        static readonly Dictionary<string, DisplayCallback> regexmap;
+        internal static readonly Dictionary<string, DisplayCallback> regexmap;
         static Regex regexpattern;
 
         static string[] normalText;
