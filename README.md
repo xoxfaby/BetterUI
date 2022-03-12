@@ -178,6 +178,14 @@ TN = NoTier Last
 
 ## Changelog
 
+
+#### v2.4.6
+ - BugFixes:
+  - Fixed $critdmg matching with $crit and showing the crit chance + the letters "dmg" instead of showing the critical damage
+  - Fixed the StatsDisplay breaking if the current CharacterBody doesn't have a CharacterMotor
+ - Change:
+  - Valid Parameter description for StatsDisplay is now automatically generated from all of the valid options. 
+
 #### v2.4.5
  - Bugfix: Moved HUD object aquisition back to Awake to fix bug where multiple StatsDisplays were being created when someone died and respawned. 
 
