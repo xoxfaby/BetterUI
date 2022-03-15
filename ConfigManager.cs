@@ -113,6 +113,10 @@ namespace BetterUI
         public static ConfigEntry<int> ItemCountersTierScoreLunar;
         public static ConfigEntry<int> ItemCountersTierScoreBoss;
         public static ConfigEntry<int> ItemCountersTierScoreNoTier;
+        public static ConfigEntry<int> ItemCountersTierScoreVoidTier1;
+        public static ConfigEntry<int> ItemCountersTierScoreVoidTier2;
+        public static ConfigEntry<int> ItemCountersTierScoreVoidTier3;
+        public static ConfigEntry<int> ItemCountersTierScoreVoidBoss;
         public static int[] ItemCountersTierScores;
         public static Dictionary<ItemDef,int> ItemCountersItemScores;
 
@@ -341,14 +345,14 @@ namespace BetterUI
 
             ItemCountersShowItemSum = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemSum", true, "Show the how many items you have.");
 
-            ItemCountersItemSumTiersString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemSumTiersString", "01234", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            ItemCountersItemSumTiersString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemSumTiersString", "061728349", "Which tiers to include in the ItemSum.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier, 6 = Void White, 7 = Void Green, 8 = Void Red, 9 = Void Boss");
 
             ItemCountersItemSumTiers = ItemCountersItemSumTiersString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
 
             ItemCountersShowItemsByTier = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemsByTier", true, "Show how many items you have, by tier.");
 
-            ItemCountersItemsByTierOrderString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemsByTierOrderString", "43210", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier");
+            ItemCountersItemsByTierOrderString = Bind(ConfigFileItemCounters, "ItemCounters", "ItemsByTierOrderString", "943827160", "Which tiers to include in the ItemsByTier, in order.\n0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier, 6 = Void White, 7 = Void Green, 8 = Void Red, 9 = Void Boss");
 
             ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
@@ -358,6 +362,10 @@ namespace BetterUI
             ItemCountersTierScoreLunar = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Lunar", 0, "Score for Lunar items.");
             ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4, "Score for Boss items.");
             ItemCountersTierScoreNoTier = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "NoTier", 0, "Score for items without a tier.");
+            ItemCountersTierScoreVoidTier1 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "VoidTier1", 2, "Score for Void Tier 1 items.");
+            ItemCountersTierScoreVoidTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "VoidTier2", 4, "Score for Void Tier 2 items.");
+            ItemCountersTierScoreVoidTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "VoidTier3", 13, "Score for Void Tier 3 items.");
+            ItemCountersTierScoreVoidBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "VoidBoss", 5, "Score for Void Boss items.");
 
             ItemCountersTierScores = new int[]
             {
@@ -367,6 +375,10 @@ namespace BetterUI
                 ItemCountersTierScoreLunar.Value,
                 ItemCountersTierScoreBoss.Value,
                 ItemCountersTierScoreNoTier.Value,
+                ItemCountersTierScoreVoidTier1.Value,
+                ItemCountersTierScoreVoidTier2.Value,
+                ItemCountersTierScoreVoidTier3.Value,
+                ItemCountersTierScoreVoidBoss.Value,
             };
 
 
