@@ -26,11 +26,11 @@ namespace BetterUI
             }
         }
 
-        public static int TheREALFindSkillIndexByName(String skillNameToken)
+        public static int TheREALFindSkillIndexByName(String skillDefName)
         {
             for (int i = SkillCatalog._allSkillDefs.Length - 1; i >= 0; i--)
             {
-                if (SkillCatalog._allSkillDefs[i].skillNameToken == skillNameToken)
+                if (SkillCatalog._allSkillNames[i] == skillDefName)
                 {
                     return i;
                 }

@@ -5,6 +5,8 @@ using RoR2;
 using RoR2.UI;
 using RoR2.Skills;
 using UnityEngine;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 
 namespace BetterUI
 {
@@ -31,6 +33,7 @@ namespace BetterUI
                 ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value ||
                 ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
             {
+                BetterUIPlugin.Hooks.Add<RoR2.UI.LoadoutPanelController.Row>("FromSkillSlot", LoadoutPanelController_Row_FromSkillSlot);
                 BetterUIPlugin.Hooks.Add<RoR2.UI.LoadoutPanelController.Row>("AddButton", (LoadoutPanelController_Row_AddButton_Delegate) LoadoutPanelController_Row_AddButton);
                 BetterUIPlugin.Hooks.Add<RoR2.UI.SkillIcon>("Update", SkillIcon_Update);
                 BetterUIPlugin.Hooks.Add<RoR2.CharacterMaster>("OnInventoryChanged", CharacterMaster_OnInventoryChanged);
@@ -86,6 +89,21 @@ namespace BetterUI
             }
         }
 
+        internal static SkillDef skillDef;
+
+        internal static void LoadoutPanelController_Row_FromSkillSlot(ILContext il)
+        {
+            var c = new ILCursor(il);
+            bool matchFound = c.TryGotoNext(MoveType.After,
+                x => x.MatchLdfld<SkillFamily.Variant>(nameof(SkillFamily.Variant.skillDef))
+            );
+            if (matchFound)
+            {
+                c.Emit(OpCodes.Dup);
+                c.EmitDelegate<Action<SkillDef>>(x => skillDef = x);
+            }
+        } 
+
         internal delegate void LoadoutPanelController_Row_AddButton_Delegate(Action<RoR2.UI.LoadoutPanelController.Row, LoadoutPanelController, Sprite, string, string, Color, UnityEngine.Events.UnityAction, string, ViewablesCatalog.Node, bool> orig,
             RoR2.UI.LoadoutPanelController.Row self, LoadoutPanelController owner, Sprite icon, string titleToken, string bodyToken, Color tooltipColor, UnityEngine.Events.UnityAction callback, string unlockableName, ViewablesCatalog.Node viewableNode, bool isWIP = false);
         internal static void LoadoutPanelController_Row_AddButton(Action<RoR2.UI.LoadoutPanelController.Row, LoadoutPanelController, Sprite, string, string, Color, UnityEngine.Events.UnityAction, string, ViewablesCatalog.Node, bool> orig,
@@ -101,21 +119,17 @@ namespace BetterUI
                 {
                     BetterUIPlugin.sharedStringBuilder.Clear();
                     BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(bodyToken));
-                    if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value)
+                    if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value && skillDef != null)
                     {
-                        var skillDef = RoR2.Skills.SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName(titleToken));
-                        if (skillDef)
-                        {
-                            BetterUIPlugin.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
-                            BetterUIPlugin.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
-                            BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                            if(skillDef.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
-                        }
+                        BetterUIPlugin.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
+                        BetterUIPlugin.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
+                        BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                        if(skillDef.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
                     }
 
-                    if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
+                    if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value && skillDef != null)
                     {
-                        List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(titleToken);
+                        List<ProcCoefficientCatalog.ProcCoefficientInfo> procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(SkillCatalog.GetSkillName(skillDef.skillIndex));
 
                         if (procCoefficientInfos != null)
                         {
@@ -142,6 +156,7 @@ namespace BetterUI
                     }
                 }
             }
+            skillDef = null;
         }
         internal static void SkillIcon_Update(Action<RoR2.UI.SkillIcon> orig, SkillIcon self)
         {
@@ -179,7 +194,7 @@ namespace BetterUI
 
                 if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value || ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                 {
-                    procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(self.targetSkill.skillDef.skillNameToken);
+                    procCoefficientInfos = ProcCoefficientCatalog.GetProcCoefficientInfo(SkillCatalog.GetSkillName(self.targetSkill.skillDef.skillIndex));
 
                     if (procCoefficientInfos != null)
                     {
