@@ -10,6 +10,11 @@ namespace BetterUI
 {
     static class Utils
     {
+        public static void RegisterLanguageToken(string token, string text, string language = "en")
+        {
+            RoR2.Language.GetOrCreateLanguage(language).stringsByToken[token] = text;
+        }
+
         public static float LuckCalc(float chance, float luck)
         {
             if (luck == 0)
