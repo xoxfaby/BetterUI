@@ -92,6 +92,7 @@ namespace BetterUI
                 { "$blueportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnShopPortal.ToString() : "N/A" },
                 { "$goldportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnGoldshoresPortal.ToString() : "N/A" },
                 { "$celestialportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.shouldAttemptToSpawnMSPortal.ToString() : "N/A" },
+                { "$voidportal", (statBody) => TeleporterInteraction.instance ? TeleporterInteraction.instance.portalSpawners.Any(spawner => spawner.previewChildName == "VoidPortalIndicator" && spawner.NetworkwillSpawn).ToString() : "N/A"},
                 { "$difficulty", (statBody) => Run.instance.difficultyCoefficient.ToString("0.##") },
             };
             var sortedKeys = regexmap.Keys.ToList();
