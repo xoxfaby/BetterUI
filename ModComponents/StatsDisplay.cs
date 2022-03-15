@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -70,7 +70,14 @@ namespace BetterUI
                         return "n/a";
                     }
                 },
-                { "$jumps", (statBody) => (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString() },
+                { "$jumps", (statBody) => {
+                    if(statBody.characterMotor != null)
+                        {
+                            return (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString();
+                        }
+                        return "0";
+                    } 
+                },
                 { "$maxjumps", (statBody) => statBody.maxJumpCount.ToString() },
                 { "$atkspd", (statBody) => statBody.attackSpeed.ToString() },
                 { "$luck", (statBody) => statBody.master.luck.ToString() },
