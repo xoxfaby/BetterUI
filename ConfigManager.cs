@@ -113,7 +113,7 @@ namespace BetterUI
         public static ConfigEntry<int> ItemCountersTierScoreLunar;
         public static ConfigEntry<int> ItemCountersTierScoreBoss;
         public static ConfigEntry<int> ItemCountersTierScoreNoTier;
-        public static int[] ItemCountersTierScores;
+        public static Dictionary<ItemTier, int> ItemCountersTierScores;
         public static Dictionary<ItemDef,int> ItemCountersItemScores;
 
         // StatsDisplay
@@ -359,14 +359,18 @@ namespace BetterUI
             ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4, "Score for Boss items.");
             ItemCountersTierScoreNoTier = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "NoTier", 0, "Score for items without a tier.");
 
-            ItemCountersTierScores = new int[]
+            ItemCountersTierScores = new Dictionary<ItemTier, int>()
             {
-                ItemCountersTierScoreTier1.Value,
-                ItemCountersTierScoreTier2.Value,
-                ItemCountersTierScoreTier3.Value,
-                ItemCountersTierScoreLunar.Value,
-                ItemCountersTierScoreBoss.Value,
-                ItemCountersTierScoreNoTier.Value,
+                { ItemTier.Tier1, ItemCountersTierScoreTier1.Value },
+                { ItemTier.VoidTier1, ItemCountersTierScoreTier1.Value },
+                { ItemTier.Tier2, ItemCountersTierScoreTier2.Value},
+                { ItemTier.VoidTier2, ItemCountersTierScoreTier2.Value},
+                { ItemTier.Tier3, ItemCountersTierScoreTier3.Value},
+                { ItemTier.VoidTier3, ItemCountersTierScoreTier3.Value},
+                { ItemTier.Lunar, ItemCountersTierScoreLunar.Value},
+                { ItemTier.Boss, ItemCountersTierScoreBoss.Value},
+                { ItemTier.VoidBoss, ItemCountersTierScoreBoss.Value},
+                { ItemTier.NoTier, ItemCountersTierScoreNoTier.Value},
             };
 
 

@@ -49,7 +49,8 @@ namespace BetterUI
                     UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
                 }
-                int itemValue = ConfigManager.ItemCountersTierScores[(int)itemDef.tier];
+                int itemValue = 0;
+                ConfigManager.ItemCountersTierScores.TryGetValue(itemDef.tier, out itemValue);
                 ConfigEntry<int> itemScore;
                 if (first)
                 {
