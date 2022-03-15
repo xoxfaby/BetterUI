@@ -239,10 +239,10 @@ namespace BetterUI
                             if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
                             {
                                 bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
-                                String[] descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                String[] descLines = ItemStats.GetItemStats(itemDef, count).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
                                 bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
                                 bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
-                                descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
+                                descLines = ItemStats.GetItemStats(itemDef, count + 1).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
                                 bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
                             }
                             else
@@ -251,7 +251,7 @@ namespace BetterUI
                                 {
                                     count += 1;
                                 }
-                                bodyText += ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master);
+                                bodyText += ItemStats.GetItemStats(itemDef, count);
                             }
 
                             tooltipProvider.overrideBodyText = bodyText;
