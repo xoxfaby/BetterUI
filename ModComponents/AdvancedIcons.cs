@@ -25,6 +25,7 @@ namespace BetterUI
         static AdvancedIcons()
         {
             BetterUIPlugin.onHUDAwake += onHUDAwake;
+            RoR2Application.onLoad += onRoR2ApplicationLoad;
         }
         internal static void Hook()
         {
@@ -56,6 +57,19 @@ namespace BetterUI
             lastEquipment.Clear();
             SkillIconDirty.Clear();
             lastSkill.Clear();
+        }
+
+        private static void onRoR2ApplicationLoad()
+        {
+            Utils.RegisterLanguageToken("VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION", "Fire a short-range beam for <style=cIsDamage>2000% damage</style>.");
+            Utils.RegisterLanguageToken("VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION", "Fire an arcing bomb for <style=cIsDamage>1100% damage</style>.");
+            Utils.RegisterLanguageToken("VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION", "<style=cIsUtility>Disappear</style> into the Void, <style=cIsUtility>cleansing all debuffs</style> while moving in a <style=cIsUtility>forward arc</style>.");
+            Utils.RegisterLanguageToken("VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION", "Crush <style=cIsHealing>25% health</style> to gain <style=cIsVoid>25% Corruption</style>.");
+
+            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("FireCorruptBeam")).skillDescriptionToken = "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION";
+            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("FireCorruptDisk")).skillDescriptionToken = "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION";
+            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("VoidBlinkDown")).skillDescriptionToken = "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION";
+            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("CrushCorruption")).skillDescriptionToken = "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION";
         }
 
         private static void ItemIcon_SetItemIndex(Action<RoR2.UI.ItemIcon, ItemIndex, int> orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
