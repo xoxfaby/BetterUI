@@ -178,12 +178,21 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.4.8
+ - Note: In the changelog for the latest versions, $critdamage was incorrectly listed as $critdmg, this has been retroactively fixed.
+ - Small Addition: Added different descriptions for survivor that has skills that work differently sometimes.
+ - Small Addition: Void Portal has been added to the StatsDisplay ($voidportal)
+ - Small Addition: Proc Coefficients for new survivors have been added. 
+ - Bugfix: StatsDisplay: Added null-check to jumps to fully fix StatsDisplay for `CharacterBody`s without a CharacterMotor
+ - Bugfix: ItemScores: ItemScores work again. Void tiers are counted as their normal counterparts (for now.)
+ - Bugfix: DPSMeter: DPSMeter window now correctly hides when the rest of the HUD is hidden.
+
 #### v2.4.7
- - Bugfix: Actually fix $critdmg
+ - Bugfix: Actually fix $critdamage
 
 #### v2.4.6
  - Bugfixes:
-  - Fixed $critdmg matching with $crit and showing the crit chance + the letters "dmg" instead of showing the critical damage
+  - Fixed $critdamage matching with $crit and showing the crit chance + the letters "damage" instead of showing the critical damage
   - Fixed the StatsDisplay breaking if the current CharacterBody doesn't have a CharacterMotor
  - Change:
   - Valid Parameter description for StatsDisplay is now automatically generated from all of the valid options. 
