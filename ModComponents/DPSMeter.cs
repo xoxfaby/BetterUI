@@ -128,7 +128,7 @@ namespace BetterUI
                 DPSMeterText.transform.SetParent(DPSMeterPanel.transform);
 
 
-                rectTransform.localPosition = new Vector3(0, 0, 0);
+                rectTransform.localPosition = Vector3.zero;
                 rectTransform.anchorMin = ConfigManager.DPSMeterWindowAnchorMin.Value;
                 rectTransform.anchorMax = ConfigManager.DPSMeterWindowAnchorMax.Value;
                 rectTransform.localScale = Vector3.one;
@@ -136,6 +136,9 @@ namespace BetterUI
                 rectTransform.sizeDelta = ConfigManager.DPSMeterWindowSize.Value;
                 rectTransform.anchoredPosition = ConfigManager.DPSMeterWindowPosition.Value;
                 rectTransform.eulerAngles = ConfigManager.DPSMeterWindowAngle.Value;
+
+
+                DPSMeterPanel.transform.SetParent(BetterUIPlugin.hud.mainUIPanel.transform);
 
                 rectTransform2.localPosition = Vector3.zero;
                 rectTransform2.anchorMin = Vector2.zero;
