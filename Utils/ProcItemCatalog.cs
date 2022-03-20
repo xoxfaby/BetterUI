@@ -5,12 +5,12 @@ using RoR2;
 
 namespace BetterUI
 {
+    [Obsolete]
     public static class ProcItemsCatalog
     {
-        public static readonly Dictionary<ItemDef, EffectInfo> items = new Dictionary<ItemDef, EffectInfo>();
+        [Obsolete]
         private static StringBuilder formatterStringBuilder = new StringBuilder();
 
-        public delegate string EffectFormatter(float value, float procCoefficient, float luck, bool canCap, int cap);
 
         public static string ChanceFormatter(float value, float procCoefficient, float luck, bool canCap, int cap)
         {
@@ -18,11 +18,6 @@ namespace BetterUI
             formatterStringBuilder.Append("<style=cIsDamage>");
             formatterStringBuilder.Append(Math.Min(100, 100 * Utils.LuckCalc(value * procCoefficient, luck)).ToString("0.##"));
             formatterStringBuilder.Append("%</style>");
-            if (canCap) {
-                formatterStringBuilder.Append(" <style=cStack>(");
-                formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append(" stacks to cap)</style>");
-            }
             return formatterStringBuilder.ToString();
         }
 
@@ -32,12 +27,6 @@ namespace BetterUI
             formatterStringBuilder.Append("<style=cIsHealing>");
             formatterStringBuilder.Append(value * procCoefficient);
             formatterStringBuilder.Append(" HP</style>");
-            if (canCap)
-            {
-                formatterStringBuilder.Append(" <style=cStack>(");
-                formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append(" stacks to cap)</style>");
-            }
             return formatterStringBuilder.ToString();
         }
 
@@ -47,38 +36,42 @@ namespace BetterUI
             formatterStringBuilder.Append("<style=cIsDamage>");
             formatterStringBuilder.Append(value * procCoefficient);
             formatterStringBuilder.Append("m </style>");
-            if (canCap)
-            {
-                formatterStringBuilder.Append(" <style=cStack>(");
-                formatterStringBuilder.Append(cap);
-                formatterStringBuilder.Append(" stacks to cap)</style>");
-            }
             return formatterStringBuilder.ToString();
         }
 
-        public delegate float StackingFormula(float value, float extraStackValue, int stacks);
+        public delegate string EffectFormatter(float value, float procCoefficient, float luck, bool canCap, int cap);
+        public class FormatterTranslater
+        {
+            EffectFormatter effectFormatter;
+            internal FormatterTranslater(EffectFormatter effectFormatter)
+            {
+                this.effectFormatter = effectFormatter;
+            }
 
+            public void Formatter(StringBuilder stringBuilder, float value)
+            {
+                stringBuilder.Append(effectFormatter(value, 1, 1, false, 1));
+            }
+        }
+
+
+        [Obsolete]
+        public delegate float StackingFormula(float value, float extraStackValue, int stacks);
+        [Obsolete]
+        public static StackingFormula LinearStacking = ItemStats.LinearStacking;
+        [Obsolete]
+        public static StackingFormula ExponentialStacking = ItemStats.ExponentialStacking;
+        [Obsolete]
+        public static StackingFormula HyperbolicStacking = ItemStats.HyperbolicStacking;
+        [Obsolete]
+        public static StackingFormula NoStacking = ItemStats.NoStacking;
+
+        [Obsolete]
         public delegate int CapFormula(float value, float extraStackValue, float procCoefficient);
-        public static float LinearStacking(float value, float extraStackValue, int stacks)
-        {
-            return value + extraStackValue * (stacks - 1);
-        }
-        public static float ExponentialStacking(float value, float extraStackValue, int stacks)
-        {
-            return (float) (1 - (1 - value) * Math.Pow(1 - extraStackValue, stacks - 1 ));
-        }
-        public static float HyperbolicStacking(float value, float extraStackValue, int stacks)
-        {
-            return (float)(1 - 1 / (1 +( value + extraStackValue * (stacks-1))));
-        }
-        public static float NoStacking(float value, float extraStackValue, int stacks)
-        {
-            return value;
-        }
-        public static int LinearCap(float value, float extraStackValue, float procCoefficient)
-        {
-            return (int) Math.Ceiling((1 - value*procCoefficient) / (extraStackValue * procCoefficient)) + 1;
-        }
+        [Obsolete]
+        public static CapFormula LinearCap = ItemStats.LinearCap;
+
+        [Obsolete]
         public class EffectInfo
         {
             public float value;
@@ -87,22 +80,24 @@ namespace BetterUI
             public StackingFormula stackingFormula;
             public CapFormula capFormula;
 
-            public string GetOutputString(int stacks, float luck, float procCoefficient)
+            public ItemStats.ItemProcInfo ToItemProcInfo()
             {
-                bool canCap = capFormula != null;
-                return this.effectFormatter(this.stackingFormula(this.value, this.extraStackValue, stacks), procCoefficient, luck, canCap, canCap ? this.capFormula(this.value, this.extraStackValue, procCoefficient) : 1);
-            }
-            public float GetValue(int stacks)
-            {
-                return this.stackingFormula(value, extraStackValue, stacks);
-            }
-            
-            public float GetCap(float procCoefficient)
-            {
-                return this.capFormula == null ? -1 : this.capFormula(value, extraStackValue, procCoefficient);
+                var itemProcInfo = new ItemStats.ItemProcInfo()
+                {
+                    value = value,
+                    extraStackValue = extraStackValue,
+                    statFormatter = new ItemStats.StatFormatter()
+                    {
+                        statFormatter = (new FormatterTranslater(effectFormatter)).Formatter
+                    },
+                    stackingFormula = new ItemStats.StackingFormula(stackingFormula),
+                    capFormula = new ItemStats.CapFormula(capFormula)
+                };
+                return itemProcInfo;
             }
         }
 
+        [Obsolete("Removed, please use BetterUI.ItemStats.RegisterEffect", true)]
         public static void AddEffect(ItemIndex itemIndex, EffectInfo effectInfo)
         {
             if (itemIndex <= ItemIndex.None)
@@ -112,6 +107,8 @@ namespace BetterUI
             }
             AddEffect(ItemCatalog.GetItemDef(itemIndex), effectInfo);
         }
+
+        [Obsolete("Removed, please use BetterUI.ItemStats.RegisterEffect", true)]
         public static void AddEffect(ItemIndex itemIndex, float value, float? extraStackValue = null, EffectFormatter effectFormatter = null, StackingFormula stackingFormula = null, CapFormula capFormula = null)
         {
             if (itemIndex <= ItemIndex.None)
@@ -121,16 +118,14 @@ namespace BetterUI
             }
             AddEffect(ItemCatalog.GetItemDef(itemIndex), value, extraStackValue, effectFormatter, stackingFormula, capFormula);
         }
+
+        [Obsolete("Removed, please use BetterUI.ItemStats.RegisterEffect", true)]
         public static void AddEffect(ItemDef itemDef, EffectInfo effectInfo)
         {
-            if ((effectInfo.value > 1 || effectInfo.extraStackValue > 1) && effectInfo.effectFormatter == ChanceFormatter)
-            {
-                UnityEngine.Debug.LogError("Warning: EffectInfo.value for chance is expected to be 0 to 1 based. After BetterUI v1.7.0 it will no longer be converted.");
-                effectInfo.value = effectInfo.value * 0.01f;
-                effectInfo.extraStackValue = effectInfo.extraStackValue * 0.01f;
-            }
-            items[itemDef] = effectInfo;
+            ItemStats.RegisterProc(itemDef, effectInfo.ToItemProcInfo());
         }
+
+        [Obsolete("Removed, please use BetterUI.ItemStats.RegisterEffect", true)]
         public static void AddEffect(ItemDef itemDef, float value, float? extraStackValue = null, EffectFormatter effectFormatter = null, StackingFormula stackingFormula = null, CapFormula capFormula = null)
         {
             AddEffect(itemDef, new EffectInfo() { 
@@ -140,20 +135,6 @@ namespace BetterUI
                 stackingFormula = stackingFormula ?? LinearStacking, 
                 capFormula = capFormula 
             });
-        }
-
-        static ProcItemsCatalog()
-        {
-            AddEffect(RoR2.RoR2Content.Items.BleedOnHit, 0.1f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(RoR2.RoR2Content.Items.StunChanceOnHit, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking );
-            AddEffect(RoR2.RoR2Content.Items.StickyBomb, 0.05f, effectFormatter: ChanceFormatter, stackingFormula: LinearStacking, capFormula: LinearCap);
-            AddEffect(RoR2.RoR2Content.Items.Missile,  0.1f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(RoR2.RoR2Content.Items.ChainLightning,  0.25f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
-            AddEffect(RoR2.RoR2Content.Items.Seed, 1, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(RoR2.RoR2Content.Items.HealOnCrit, 8, effectFormatter: HPFormatter, stackingFormula: LinearStacking);
-            AddEffect(RoR2.RoR2Content.Items.Behemoth, 4, 2.5f, effectFormatter: RangeFormatter, stackingFormula: LinearStacking);
-            AddEffect(RoR2.RoR2Content.Items.BounceNearby, 0.2f, effectFormatter: ChanceFormatter, stackingFormula: HyperbolicStacking);
-            AddEffect(RoR2.RoR2Content.Items.GoldOnHit, 0.3f, effectFormatter: ChanceFormatter, stackingFormula: NoStacking);
         }
     }
 }
