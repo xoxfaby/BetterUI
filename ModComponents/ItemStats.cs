@@ -28,7 +28,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.AttackSpeedOnCrit, "Maximum Attack Speed", 0.36f, 0.24f , LinearStacking, StatFormatter.Percent);
             RegisterStat(RoR2Content.Items.AutoCastEquipment, "Cooldown Reduction", 0.5f, 0.15f, ExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown );
             RegisterModifier(ItemTag.EquipmentCooldown, RoR2Content.Items.AutoCastEquipment, ItemModifier.ExponentialBonus, 0.5f, 0.15f);
-            RegisterStat(RoR2Content.Items.Bandolier, "Drop Chance", 0.18f, 0.10f);
+            RegisterStat(RoR2Content.Items.Bandolier, "Drop Chance", 0.18f, 0.10f, itemTag: ItemTag.Luck);
             RegisterStat(RoR2Content.Items.BarrierOnKill, "Barrier", 15, statFormatter: StatFormatter.HP );
             RegisterStat(RoR2Content.Items.BarrierOnOverHeal, "Healing Converted", 0.5f);
             RegisterStat(RoR2Content.Items.Bear, "Tougher Times", 0.15f, HyperbolicStacking);
@@ -39,9 +39,9 @@ namespace BetterUI
             RegisterProc(RoR2Content.Items.BleedOnHit, 0.1f, capFormula: LinearCap);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Base Damage", 4);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Max HP Damage", 0.15f);
-            RegisterStat(RoR2Content.Items.BonusGoldPackOnKill, "Drop Chance", 0.04f);
+            RegisterStat(RoR2Content.Items.BonusGoldPackOnKill, "Drop Chance", 0.04f, itemTag: ItemTag.Luck);
             RegisterStat(RoR2Content.Items.BossDamageBonus, "Damage", 0.2f);
-            RegisterStat(RoR2Content.Items.BounceNearby, "Chance", 0.25f, HyperbolicStacking );
+            RegisterStat(RoR2Content.Items.BounceNearby, "Chance", 0.25f, HyperbolicStacking, itemTag: ItemTag.Luck);
             RegisterStat(RoR2Content.Items.BounceNearby, "Targets", 10, 5 , statFormatter: StatFormatter.Charges);
             RegisterProc(RoR2Content.Items.BounceNearby, 0.2f, stackingFormula: HyperbolicStacking);
             RegisterStat(RoR2Content.Items.CaptainDefenseMatrix, "Projectiles Shot", 1, statFormatter: StatFormatter.Charges );
@@ -169,13 +169,13 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "Attack Speed", 0.075f);
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "Movement Speed", 0.07f, itemTag: ItemTag.MovementSpeed);
             RegisterStat(DLC1Content.Items.BearVoid, "Recharge Time ", 15, 0.9f, ExponentialStacking, StatFormatter.Seconds );
-            RegisterStat(DLC1Content.Items.BleedOnHitVoid, "Chance", 0.1f);
+            RegisterStat(DLC1Content.Items.BleedOnHitVoid, "Chance", 0.1f, itemTag: ItemTag.Luck);
             RegisterProc(DLC1Content.Items.BleedOnHitVoid, 0.1f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "Hits", 3, statFormatter:StatFormatter.Charges );
             RegisterProc(DLC1Content.Items.ChainLightningVoid, 0.25f, stackingFormula: NoStacking );
             RegisterStat(DLC1Content.Items.CloverVoid, "Items upgraded", 3, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.CritDamage, "Damage", 1f );
-            RegisterStat(DLC1Content.Items.CritGlassesVoid, "Chance", 0.005f );
+            RegisterStat(DLC1Content.Items.CritGlassesVoid, "Chance", 0.005f, itemTag: ItemTag.Luck);
             RegisterProc(DLC1Content.Items.CritGlassesVoid, 0.005f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.DroneWeapons, "Attack Speed", 0.5f);
             RegisterStat(DLC1Content.Items.ElementalRingVoid, "Damage", 1f );
@@ -208,9 +208,9 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.PrimarySkillShuriken, "Damage", 4, 1);
             RegisterStat(DLC1Content.Items.PrimarySkillShuriken, "Shuriken", 3, 1, statFormatter:StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.RandomEquipmentTrigger, "Effects", 1, statFormatter:StatFormatter.Charges );
-            RegisterStat(DLC1Content.Items.RandomlyLunar, "Chance", 0.05f );
+            RegisterStat(DLC1Content.Items.RandomlyLunar, "Chance", 0.05f, itemTag: ItemTag.Luck);
             RegisterStat(DLC1Content.Items.RegeneratingScrap, "Uses", 1, statFormatter:StatFormatter.Charges );
-            RegisterStat(DLC1Content.Items.SlowOnHitVoid, "Chance", 0.05f );
+            RegisterStat(DLC1Content.Items.SlowOnHitVoid, "Chance", 0.05f, itemTag: ItemTag.Luck );
             RegisterStat(DLC1Content.Items.SlowOnHitVoid, "Duration", 1, statFormatter:StatFormatter.Seconds );
             RegisterProc(DLC1Content.Items.SlowOnHitVoid, 0.05f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.StrengthenBurn, "Damage", 3f );
