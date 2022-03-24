@@ -24,7 +24,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.AlienHead, "Cooldown Reduciton", 0.25f, ExponentialStacking, StatFormatter.Percent, itemTag:ItemTag.SkillCooldown);
             RegisterModifier(ItemTag.SkillCooldown, RoR2Content.Items.AlienHead, ItemModifier.ExponentialBonus, 0.25f);
             RegisterStat(RoR2Content.Items.ArmorPlate, "Armor", 5f, LinearStacking, StatFormatter.Armor);
-            RegisterStat(RoR2Content.Items.ArmorReductionOnHit, "Armor Reduction", 8, LinearStacking , StatFormatter.Armor);
+            RegisterStat(RoR2Content.Items.ArmorReductionOnHit, "Duration", 8, LinearStacking , StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.AttackSpeedOnCrit, "Maximum Attack Speed", 0.36f, 0.24f , LinearStacking, StatFormatter.Percent);
             RegisterStat(RoR2Content.Items.AutoCastEquipment, "Cooldown Reduction", 0.5f, 0.15f, ExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown );
             RegisterModifier(ItemTag.EquipmentCooldown, RoR2Content.Items.AutoCastEquipment, ItemModifier.ExponentialBonus, 0.5f, 0.15f);
@@ -61,7 +61,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "Damage", 3.5f, 2.8f, LinearStacking );
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "Radius", 12, 2.4f, statFormatter:StatFormatter.Range );
             RegisterStat(RoR2Content.Items.ExtraLife, "Uses", 1, statFormatter:StatFormatter.Charges);
-            RegisterStat(RoR2Content.Items.FallBoots, "Cooldown", 10, 0.5f, ExponentialStacking );
+            RegisterStat(RoR2Content.Items.FallBoots, "Cooldown", 10, 0.5f, ExponentialStacking, statFormatter:StatFormatter.Seconds );
             RegisterStat(RoR2Content.Items.Feather, "Extra Jumps", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "Damage", 3 );
             RegisterStat(RoR2Content.Items.FireballsOnHit, "Damage", 3 );
