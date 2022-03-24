@@ -224,7 +224,7 @@ namespace BetterUI
 
             AdvancedIconsItemAdvancedDescriptions = Bind(ConfigFileAdvancedIcons, "Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
 
-            AdvancedIconsItemItemStatsIntegration = Bind(ConfigFileAdvancedIcons, "Item Improvements", "ItemStatsIntegration", true, "If installed, show item stats from ItemStatsMod where applicable.");
+            AdvancedIconsItemItemStatsIntegration = Bind(ConfigFileAdvancedIcons, "Item Improvements", "ItemStatsIntegration", true, "Show ItemStats where applicable.");
 
             AdvancedIconsEquipementShowCooldownStacks = Bind(ConfigFileAdvancedIcons, "Equipment Improvements", "ShowCooldownStacks", true, "Show the cooldown for your equipment when charging multiple stacks.");
 
@@ -281,7 +281,7 @@ namespace BetterUI
 
             CommandTooltipsShow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "TooltipsShow", true, "Show tooltips in the command and scrapper windows.");
 
-            CommandTooltipsItemStatsBeforeAfter = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "TooltipsItemStatsBeforeAfter", true, "If ItemStatsMod is installed, show the stats before and after picking up the item.");
+            CommandTooltipsItemStatsBeforeAfter = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "TooltipsItemStatsBeforeAfter", true, "Show the ItemStats before and after picking up the item.");
 
             CommandCountersShow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "CountersShow", true, "Show counters in the command and scrapper windows.");
 
