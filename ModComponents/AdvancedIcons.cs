@@ -88,13 +88,16 @@ namespace BetterUI
 
             if (updateDisplayMaster != null)
             {
-
-                //self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
                 var itemDef = ItemCatalog.GetItemDef(itemIndex);
                 BetterUIPlugin.sharedStringBuilder.Clear();
                 BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(itemDef.descriptionToken));
+                BetterUIPlugin.sharedStringBuilder.Append("</style>\n");
                 ItemStats.GetItemStats(BetterUIPlugin.sharedStringBuilder, itemDef, itemCount, updateDisplayMaster);
                 self.tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
+            }
+            else
+            {
+                self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
             }
         }
 

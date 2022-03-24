@@ -47,7 +47,10 @@ namespace BetterUI
                 ItemCounters.Hook();
             if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
+
+            RoR2.ItemCatalog.availability.CallWhenAvailable(ItemStats.Initialize);
         }
+
 
         protected override void OnEnable()
         {
