@@ -183,6 +183,10 @@ TN = NoTier Last
 
 ## Changelog
 
+
+#### v2.5.3
+ - Bugfix: ItemStats: Added luck modifer to some items that were missing it
+
 #### v2.5.2
  - Bugfix: ItemStats: Corrected 2 incorrect ItemStats
  - Small Change: ItemStats: Changed default formatting to round numbers to 2 decimal places
