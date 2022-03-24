@@ -254,7 +254,7 @@ namespace BetterUI
                                         BetterUIPlugin.sharedStringBuilder.Append("\n  ");
                                         BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(item.Key.nameToken));
                                         BetterUIPlugin.sharedStringBuilder.Append(": ");
-                                        item.Value.GetOutputString(BetterUIPlugin.sharedStringBuilder, stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient);
+                                        item.Value.GetOutputString(BetterUIPlugin.sharedStringBuilder, stacks, self.targetSkill.characterBody.master, info.procCoefficient);
                                     }
                                 }
                             }

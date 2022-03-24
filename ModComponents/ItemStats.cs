@@ -36,18 +36,18 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Behemoth, "Explosion Radius", 4, 2.5f , statFormatter: StatFormatter.Range );
             RegisterProc(RoR2Content.Items.Behemoth, 4f, 2.5f, statFormatter: StatFormatter.Range, stackingFormula: LinearStacking);
             RegisterStat(RoR2Content.Items.BleedOnHit, "Bleed Chance", 0.1f, LinearStacking, StatFormatter.Chance, ItemTag.Luck);
-            RegisterProc(RoR2Content.Items.BleedOnHit, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
+            RegisterProc(RoR2Content.Items.BleedOnHit, 0.1f, capFormula: LinearCap);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Base Damage", 4);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Max HP Damage", 0.15f);
             RegisterStat(RoR2Content.Items.BonusGoldPackOnKill, "Drop Chance", 0.04f);
             RegisterStat(RoR2Content.Items.BossDamageBonus, "Damage", 0.2f);
             RegisterStat(RoR2Content.Items.BounceNearby, "Chance", 0.25f, HyperbolicStacking );
             RegisterStat(RoR2Content.Items.BounceNearby, "Targets", 10, 5 , statFormatter: StatFormatter.Charges);
-            RegisterProc(RoR2Content.Items.BounceNearby, 0.2f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
+            RegisterProc(RoR2Content.Items.BounceNearby, 0.2f, stackingFormula: HyperbolicStacking);
             RegisterStat(RoR2Content.Items.CaptainDefenseMatrix, "Projectiles Shot", 1, statFormatter: StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.ChainLightning, "Targets", 3, 2, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.ChainLightning, "Radius", 20, 2, statFormatter: StatFormatter.Range);
-            RegisterProc(RoR2Content.Items.ChainLightning, 0.25f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
+            RegisterProc(RoR2Content.Items.ChainLightning, 0.25f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.Clover, "Luck", 1, statFormatter: StatFormatter.Charges, itemTag: ItemTag.LuckStat);
             RegisterStat(RoR2Content.Items.CritGlasses, "Chance", 0.10f);
             RegisterStat(RoR2Content.Items.Crowbar, "Damage", 0.75f);
@@ -72,7 +72,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.GhostOnKill, "Ghost Duration", 30 , statFormatter:StatFormatter.Seconds );
             RegisterStat(RoR2Content.Items.GoldOnHit, "Gold Gained", 2, statFormatter:StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.GoldOnHit, "Gold Lost", 1 );
-            RegisterProc(RoR2Content.Items.GoldOnHit, 0.3f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
+            RegisterProc(RoR2Content.Items.GoldOnHit, 0.3f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.HeadHunter, "Duration", 8, 5, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.HealOnCrit, "Heal", 8, 4, statFormatter: StatFormatter.HP);
             RegisterProc(RoR2Content.Items.HealOnCrit, 8f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
@@ -108,7 +108,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.LunarUtilityReplacement, "Duration", 3, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.Medkit, "Heal", 0.05f);
             RegisterStat(RoR2Content.Items.Missile, "Damage",3 );
-            RegisterProc(RoR2Content.Items.Missile, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
+            RegisterProc(RoR2Content.Items.Missile, 0.1f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.MonstersOnShrineUse, "Enemy Difficulty", 1f );
             RegisterStat(RoR2Content.Items.Mushroom, "Health per Second", 0.045f, 0.0225f);
             RegisterStat(RoR2Content.Items.Mushroom, "Radius", 3, 1.5f, statFormatter:StatFormatter.Range );
@@ -149,9 +149,9 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.SprintWisp, "Damage", 3f, itemTag:ItemTag.Damage );
             RegisterStat(RoR2Content.Items.Squid, "Attack Speed", 1f );
             RegisterStat(RoR2Content.Items.StickyBomb, "Chance", 0.05f, itemTag:ItemTag.Luck );
-            RegisterProc(RoR2Content.Items.StickyBomb, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
+            RegisterProc(RoR2Content.Items.StickyBomb, 0.05f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(RoR2Content.Items.StunChanceOnHit, "Chance", 0.05f, HyperbolicStacking , itemTag: ItemTag.Luck);
-            RegisterProc(RoR2Content.Items.StunChanceOnHit, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
+            RegisterProc(RoR2Content.Items.StunChanceOnHit, 0.05f, stackingFormula: HyperbolicStacking);
             RegisterStat(RoR2Content.Items.Syringe, "Attack Speed", 0.15f );
             RegisterStat(RoR2Content.Items.TPHealingNova, "Healing Nova", 1, statFormatter:StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.Talisman, "Cooldown Reduction", 4, 2 ,statFormatter:StatFormatter.Seconds );
@@ -367,7 +367,7 @@ namespace BetterUI
                     stringBuilder.Append("\n");
                     stringBuilder.Append(Language.GetString(itemStat.nameToken));
                     stringBuilder.Append(": ");
-                    itemStat.statFormatter.FormatString(stringBuilder, totalValue);
+                    itemStat.statFormatter.FormatString(stringBuilder, totalValue, master);
                     bool first = true;
                     if (tags != null)
                     {
@@ -392,7 +392,7 @@ namespace BetterUI
                                                 stringBuilder.Append("s");
                                             }
                                             stringBuilder.Append(": ");
-                                            itemStat.statFormatter.FormatString(stringBuilder, baseValue);
+                                            itemStat.statFormatter.FormatString(stringBuilder, baseValue, master);
                                             first = false;
                                         }
                                         float count = itemModifier.GetModificationCount(master);
@@ -418,7 +418,7 @@ namespace BetterUI
                                             stringBuilder.Append(Language.GetString(itemModifier.nameToken));
                                         }
                                         stringBuilder.Append(": ");
-                                        itemStat.statFormatter.FormatString(stringBuilder, modifiedValue);
+                                        itemStat.statFormatter.FormatString(stringBuilder, modifiedValue, master);
                                     }
                                 }
                             }
@@ -432,7 +432,7 @@ namespace BetterUI
 
         public class StatFormatter
         {
-            public delegate void Formatter(StringBuilder stringBuilder, float value);
+            public delegate void Formatter(StringBuilder stringBuilder, float value, CharacterMaster master);
             public Formatter statFormatter;
             public string style;
             public string color;
@@ -446,11 +446,20 @@ namespace BetterUI
             public bool underline;
             public bool strikethrough;
 
+            public static StatFormatter LuckChance = new StatFormatter()
+            {
+                suffix = "%",
+                style = Styles.Damage,
+                statFormatter = (sb, value, master) => {
+                    sb.Append(Math.Min(100, 100 * Utils.LuckCalc(value, master.luck)).ToString("0.##"));
+                }
+            };
+
             public static StatFormatter Chance = new StatFormatter()
             {
                 suffix = "%",
                 style = Styles.Damage,
-                statFormatter = (sb, value) => { sb.Append(value * 100); }
+                statFormatter = (sb, value, master) => { sb.Append(value * 100); }
             };
 
             public static StatFormatter Gold = new StatFormatter()
@@ -466,7 +475,7 @@ namespace BetterUI
 
             public static StatFormatter Percent = new StatFormatter()
             {
-                statFormatter = (StringBuilder stringBuilder, float value) =>
+                statFormatter = (stringBuilder, value, master) =>
                 {
                     stringBuilder.Append("<style=cIsDamage>");
                     stringBuilder.Append(value * 100);
@@ -504,7 +513,7 @@ namespace BetterUI
                 style = Styles.Damage
             };
 
-            public void FormatString(StringBuilder stringBuilder, float value)
+            public void FormatString(StringBuilder stringBuilder, float value, CharacterMaster master)
             {
                 if (!String.IsNullOrEmpty(style))
                 {
@@ -527,7 +536,7 @@ namespace BetterUI
 
                 if (statFormatter != null)
                 {
-                    statFormatter(stringBuilder, value);
+                    statFormatter(stringBuilder, value, master);
                 }
                 else
                 {
@@ -595,9 +604,9 @@ namespace BetterUI
             public StackingFormula stackingFormula;
             public CapFormula capFormula;
 
-            public void GetOutputString(StringBuilder stringBuilder,  int stacks, float luck, float procCoefficient)
+            public void GetOutputString(StringBuilder stringBuilder, int stacks, CharacterMaster master, float procCoefficient)
             {
-                this.statFormatter.FormatString(stringBuilder, this.stackingFormula(this.value, this.extraStackValue, stacks));
+                this.statFormatter.FormatString(stringBuilder, procCoefficient * this.stackingFormula(this.value, this.extraStackValue, stacks), master);
                 if(capFormula != null)
                 {
                     stringBuilder.Append(" <style=cStack>(");
@@ -644,7 +653,7 @@ namespace BetterUI
             {
                 value = value,
                 extraStackValue = extraStackValue ?? value,
-                statFormatter = statFormatter ?? StatFormatter.Chance,
+                statFormatter = statFormatter ?? StatFormatter.LuckChance,
                 stackingFormula = stackingFormula ?? LinearStacking,
                 capFormula = capFormula
             });

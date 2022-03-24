@@ -48,7 +48,7 @@ namespace BetterUI
                 this.effectFormatter = effectFormatter;
             }
 
-            public void Formatter(StringBuilder stringBuilder, float value)
+            public void Formatter(StringBuilder stringBuilder, float value, CharacterMaster master)
             {
                 stringBuilder.Append(effectFormatter(value, 1, 1, false, 1));
             }
