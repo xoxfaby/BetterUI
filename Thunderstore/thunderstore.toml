@@ -1,16 +1,16 @@
-[config]
+﻿[config]
 schemaVersion = "0.0.1"
 
 [package]
 namespace = "XoXFaby"
 name = "BetterUI"
 versionNumber = "2.0.0"
-description = "Now with better buff tooltips! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more."
+description = "Now with ItemStats! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more."
 websiteUrl = "https://github.com/xoxfaby/BetterUI"
 containsNsfwContent = false
 
 [package.dependencies]
-bbepis-BepInExPack = "5.4.9"
+bbepis-BepInExPack = "5.4.19"
 
 [build]
 icon = "./icon.png"

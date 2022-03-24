@@ -13,6 +13,7 @@ or directly through paypal:
 https://streamelements.com/xoxfaby/tip
 
 ## Currently implemented:
+- ItemStats
 - Item Counters
 - DPS Meter
 - StatsDisplay
@@ -25,7 +26,6 @@ https://streamelements.com/xoxfaby/tip
 - Advanced Equipment Descriptions
 - Hide Pickup Notifications
 - Skill Proc Coefficients with calculated effects based on the items you are carrying
-- ItemsStatsMod integration for command window
 - Buff Timers and Tooltips
 - Show Hidden Items
 
@@ -40,6 +40,11 @@ Please do not add me on discord, join of the the two servers and ping me there.
 https://github.com/xoxfaby/BetterUI
 
 ## Features
+
+### ItemStats
+Show calculcated stat bonuses for your items.
+
+![ItemStats](https://cdn.faby.dev/itemstats.png)
 
 ### ItemCounters
 Customizable ItemCounters. Choose which tiers you want counted, choose which tiers to show.  
@@ -64,7 +69,7 @@ Show all of your character's stats! Completely customizable!
 
 ### Command/Scrapper Improvements
 See how many items you have when using the scrapper or picking an item using the command artifact!
-Tooltips with ItemStatsMod integration!
+Tooltips with ItemStats!
 Close the command/scrapper window with Escape, WASD or a custom keybind!
 
 ![Command Counters](https://cdn.faby.dev/commandcounters.png)
@@ -177,6 +182,12 @@ TN = NoTier Last
 
 
 ## Changelog
+
+#### v2.5.0
+ - Addition: ItemStats:
+   - This adds calculated stat bonuses to the descriptions of items.  
+     This is a huge update, if you spot any errors or you feel anything is missing, please submit an issue on the Github: https://github.com/xoxfaby/BetterUI/issues
+ - Small Addition: Added ability for Proc Coefficient skill names to use language tokens.
 
 #### v2.4.8
  - Note: In the changelog for the latest versions, $critdamage was incorrectly listed as $critdmg, this has been retroactively fixed.
