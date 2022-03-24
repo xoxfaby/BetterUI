@@ -232,7 +232,7 @@ namespace BetterUI
                     {
                         ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
 
-                        if (BetterUIPlugin.ItemStatsModIntegration)
+                        if (true) // TODO: Replace with config option
                         {
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                             var stringBuilder = BetterUIPlugin.sharedStringBuilder;
