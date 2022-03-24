@@ -183,7 +183,10 @@ TN = NoTier Last
 
 ## Changelog
 
-#### v2.5.0
+#### v2.5.1
+ - Bugfix: ItemStats: Fixed issue that froze the game at the end screen
+
+### v2.5.0
  - Addition: ItemStats:
    - This adds calculated stat bonuses to the descriptions of items.  
      This is a huge update, if you spot any errors or you feel anything is missing, please submit an issue on the Github: https://github.com/xoxfaby/BetterUI/issues
