@@ -441,6 +441,7 @@ namespace BetterUI
             public string prefix;
             public string suffix;
             public string pluralSuffix;
+            public string format = "{0:0.##}";
             public bool bold;
             public bool italic;
             public bool underline;
@@ -459,7 +460,7 @@ namespace BetterUI
             {
                 suffix = "%",
                 style = Styles.Damage,
-                statFormatter = (sb, value, master) => { sb.Append(value * 100); }
+                statFormatter = (sb, value, master) => { sb.AppendFormat("{0:0.##}", value * 100); }
             };
 
             public static StatFormatter Gold = new StatFormatter()
@@ -470,7 +471,6 @@ namespace BetterUI
 
             public static StatFormatter Charges = new StatFormatter()
             {
-                style = Styles.Stack,
             };
 
             public static StatFormatter Percent = new StatFormatter()
@@ -540,7 +540,7 @@ namespace BetterUI
                 }
                 else
                 {
-                    stringBuilder.Append(value);
+                    stringBuilder.AppendFormat("{0:0.##}", value);
                 }
 
                 if (!String.IsNullOrEmpty(suffix)) stringBuilder.Append(suffix);
