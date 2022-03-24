@@ -77,7 +77,7 @@ namespace BetterUI
 
         internal static void ItemInventoryDisplay_UpdateDisplay(Action<ItemInventoryDisplay> orig, ItemInventoryDisplay self)
         {
-            updateDisplayMaster = self.inventory.gameObject.GetComponent<CharacterMaster>();
+            updateDisplayMaster = self?.inventory?.gameObject.GetComponent<CharacterMaster>();
             orig(self);
             updateDisplayMaster = null;
         }
