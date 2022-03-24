@@ -42,6 +42,7 @@ namespace BetterUI
             if (ConfigManager.AdvancedIconsItemAdvancedDescriptions.Value)
             {
                 BetterUIPlugin.Hooks.Add<RoR2.UI.ItemIcon, ItemIndex, int>("SetItemIndex", ItemIcon_SetItemIndex);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>("UpdateDisplay", ItemInventoryDisplay_UpdateDisplay);
             }
             if (ConfigManager.AdvancedIconsEquipementAdvancedDescriptions.Value ||
                 ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value ||
@@ -71,14 +72,34 @@ namespace BetterUI
             SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("VoidBlinkDown")).skillDescriptionToken = "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION";
             SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("CrushCorruption")).skillDescriptionToken = "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION";
         }
+        
+        public static CharacterMaster updateDisplayMaster;
+
+        internal static void ItemInventoryDisplay_UpdateDisplay(Action<ItemInventoryDisplay> orig, ItemInventoryDisplay self)
+        {
+            updateDisplayMaster = self.inventory.gameObject.GetComponent<CharacterMaster>();
+            orig(self);
+            updateDisplayMaster = null;
+        }
 
         private static void ItemIcon_SetItemIndex(Action<RoR2.UI.ItemIcon, ItemIndex, int> orig, RoR2.UI.ItemIcon self, ItemIndex itemIndex, int itemCount)
         {
             orig(self, itemIndex, itemCount);
 
-            self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
+            if (updateDisplayMaster != null)
+            {
+                var itemDef = ItemCatalog.GetItemDef(itemIndex);
+                BetterUIPlugin.sharedStringBuilder.Clear();
+                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(itemDef.descriptionToken));
+                BetterUIPlugin.sharedStringBuilder.Append("</style>\n");
+                ItemStats.GetItemStats(BetterUIPlugin.sharedStringBuilder, itemDef, itemCount, updateDisplayMaster);
+                self.tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
+            }
+            else
+            {
+                self.tooltipProvider.bodyToken = ItemCatalog.GetItemDef(itemIndex).descriptionToken;
+            }
         }
-
 
         private static void CharacterMaster_OnInventoryChanged(Action<RoR2.CharacterMaster> orig, CharacterMaster self)
         {
@@ -225,7 +246,7 @@ namespace BetterUI
                             }
                             if (info.procCoefficient > 0 && ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
                             {
-                                foreach (var item in ProcItemsCatalog.items)
+                                foreach (var item in ItemStats.itemProcInfos)
                                 {
                                     int stacks = self.targetSkill.characterBody.inventory.GetItemCount(item.Key);
                                     if (stacks > 0)
@@ -233,7 +254,7 @@ namespace BetterUI
                                         BetterUIPlugin.sharedStringBuilder.Append("\n  ");
                                         BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(item.Key.nameToken));
                                         BetterUIPlugin.sharedStringBuilder.Append(": ");
-                                        BetterUIPlugin.sharedStringBuilder.Append(item.Value.GetOutputString(stacks, self.targetSkill.characterBody.master.luck, info.procCoefficient));
+                                        item.Value.GetOutputString(BetterUIPlugin.sharedStringBuilder, stacks, self.targetSkill.characterBody.master, info.procCoefficient);
                                     }
                                 }
                             }

@@ -7,13 +7,6 @@ namespace BetterUI
 {
     namespace ModCompatibility
     {
-        internal static class ItemStatsModCompatibility
-        {
-            internal static string statsFromItemStats(ItemIndex itemIndex, int count, CharacterMaster master)
-            {
-                return ItemStats.ItemStatsMod.GetStatsForItem(itemIndex, count, new ItemStats.StatContext(master));
-            }
-        }
         internal static class BetterAPICompatibility
         {
             internal static class Buffs

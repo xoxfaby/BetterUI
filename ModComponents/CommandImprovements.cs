@@ -232,29 +232,37 @@ namespace BetterUI
                     {
                         ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
 
-                        if (BetterUIPlugin.ItemStatsModIntegration)
+                        if (true) // TODO: Replace with config option
                         {
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
-                            string bodyText = Language.GetString(itemDef.descriptionToken);
-                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0 )
+                            var stringBuilder = BetterUIPlugin.sharedStringBuilder;
+                            stringBuilder.Clear();
+                            stringBuilder.Append(Language.GetString(itemDef.descriptionToken));
+                            stringBuilder.Append("</style>\n");
+                            if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
                             {
-                                bodyText += String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count);
-                                String[] descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
-                                bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
-                                bodyText += String.Format("\n\n<align=left>After ({0} Stacks):", count + 1);
-                                descLines = ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count + 1, master).Split(new String[] { "\n", "<br>" }, StringSplitOptions.None);
-                                bodyText += String.Join("\n", descLines.Take(descLines.Length - 1).Skip(1));
+                                stringBuilder.Append("\n<align=left>Before (");
+                                stringBuilder.Append(count);
+                                stringBuilder.Append(" Stack");
+                                if (count > 1) stringBuilder.Append("s");
+                                stringBuilder.Append("):");
+                                ItemStats.GetItemStats(stringBuilder, itemDef, count, master);
+
+                                stringBuilder.Append("\n\n<align=left>After (");
+                                stringBuilder.Append(count + 1);
+                                stringBuilder.Append(" Stacks):");
+                                ItemStats.GetItemStats(stringBuilder, itemDef, count + 1, master);
                             }
                             else
                             {
-                                if(self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
+                                if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT")
                                 {
                                     count += 1;
                                 }
-                                bodyText += ModCompatibility.ItemStatsModCompatibility.statsFromItemStats(itemDef.itemIndex, count, master);
+                                ItemStats.GetItemStats(stringBuilder, itemDef, count, master);
                             }
 
-                            tooltipProvider.overrideBodyText = bodyText;
+                            tooltipProvider.overrideBodyText = stringBuilder.ToString();
                         }
                         else
                         {

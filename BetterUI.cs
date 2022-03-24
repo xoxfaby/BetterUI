@@ -18,7 +18,6 @@ namespace BetterUI
         internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
         internal static event HUDAwakeEvent onHUDAwake;
 
-        internal static bool ItemStatsModIntegration = false;
         internal static bool BetterAPIModIntegration = false;
         internal static RoR2.UI.HUD hud;
         internal static RoR2.UI.ObjectivePanelController objectivePanelController;
@@ -47,12 +46,14 @@ namespace BetterUI
                 ItemCounters.Hook();
             if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
+
+            RoR2.ItemCatalog.availability.CallWhenAvailable(ItemStats.Initialize);
         }
+
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            ItemStatsModIntegration = ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("dev.ontrigger.itemstats");
             BetterAPIModIntegration = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterAPI");
             BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
         }
