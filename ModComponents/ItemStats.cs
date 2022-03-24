@@ -170,10 +170,13 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "Movement Speed", 0.07f, itemTag: ItemTag.MovementSpeed);
             RegisterStat(DLC1Content.Items.BearVoid, "Recharge Time ", 15, 0.9f, ExponentialStacking, StatFormatter.Seconds );
             RegisterStat(DLC1Content.Items.BleedOnHitVoid, "Chance", 0.1f);
+            RegisterProc(DLC1Content.Items.BleedOnHitVoid, 0.1f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "Hits", 3, statFormatter:StatFormatter.Charges );
+            RegisterProc(DLC1Content.Items.ChainLightningVoid, 0.25f, stackingFormula: NoStacking );
             RegisterStat(DLC1Content.Items.CloverVoid, "Items upgraded", 3, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.CritDamage, "Damage", 1f );
             RegisterStat(DLC1Content.Items.CritGlassesVoid, "Chance", 0.005f );
+            RegisterProc(DLC1Content.Items.CritGlassesVoid, 0.005f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.DroneWeapons, "Attack Speed", 0.5f);
             RegisterStat(DLC1Content.Items.ElementalRingVoid, "Damage", 1f );
             RegisterStat(DLC1Content.Items.EquipmentMagazineVoid, "Charges", 1f, statFormatter: StatFormatter.Charges );
@@ -209,6 +212,7 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.RegeneratingScrap, "Uses", 1, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.SlowOnHitVoid, "Chance", 0.05f );
             RegisterStat(DLC1Content.Items.SlowOnHitVoid, "Duration", 1, statFormatter:StatFormatter.Seconds );
+            RegisterProc(DLC1Content.Items.SlowOnHitVoid, 0.05f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.StrengthenBurn, "Damage", 3f );
             //RegisterStat(DLC1Content.Items.TreasureCacheVoid, "Encrusted Key", , , );
             RegisterStat(DLC1Content.Items.VoidMegaCrabItem, "Cooldown", 60, 0.5f, ExponentialStacking, statFormatter:StatFormatter.Seconds);
