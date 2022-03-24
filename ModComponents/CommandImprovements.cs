@@ -238,12 +238,19 @@ namespace BetterUI
                             var stringBuilder = BetterUIPlugin.sharedStringBuilder;
                             stringBuilder.Clear();
                             stringBuilder.Append(Language.GetString(itemDef.descriptionToken));
+                            stringBuilder.Append("</style>\n");
                             if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
                             {
-                                stringBuilder.Append(String.Format("\n\n<align=left>Before ({0} Stack" + (count > 1 ? "s" : "") + "):", count));
+                                stringBuilder.Append("\n<align=left>Before (");
+                                stringBuilder.Append(count);
+                                stringBuilder.Append(" Stack");
+                                if (count > 1) stringBuilder.Append("s");
+                                stringBuilder.Append("):");
                                 ItemStats.GetItemStats(stringBuilder, itemDef, count, master);
 
-                                stringBuilder.Append(String.Format("\n\n<align=left>After ({0} Stacks):", count + 1));
+                                stringBuilder.Append("\n\n<align=left>After (");
+                                stringBuilder.Append(count + 1);
+                                stringBuilder.Append(" Stacks):");
                                 ItemStats.GetItemStats(stringBuilder, itemDef, count + 1, master);
                             }
                             else
