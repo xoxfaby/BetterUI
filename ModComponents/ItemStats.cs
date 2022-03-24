@@ -49,6 +49,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ChainLightning, "Radius", 20, 2, statFormatter: StatFormatter.Range);
             RegisterProc(RoR2Content.Items.ChainLightning, 0.25f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.Clover, "Luck", 1, statFormatter: StatFormatter.Charges, itemTag: ItemTag.LuckStat);
+            RegisterStat(RoR2Content.Items.CritGlasses, "Chance", 0.10f);
             RegisterStat(RoR2Content.Items.Crowbar, "Damage", 0.75f);
             RegisterStat(RoR2Content.Items.Dagger, "Damage", 1.5f);
             RegisterStat(RoR2Content.Items.DeathMark, "Debuff Duration", 7, statFormatter: StatFormatter.Seconds);
