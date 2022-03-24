@@ -183,6 +183,11 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.2
+ - Bugfix: ItemStats: Corrected 2 incorrect ItemStats
+ - Small Change: ItemStats: Changed default formatting to round numbers to 2 decimal places
+ - Small Addition: ProcCoefiicients: Added proc effects from void items
+
 #### v2.5.1
  - Bugfix: ItemStats: Fixed issue that froze the game at the end screen
 
