@@ -10,7 +10,7 @@ using BepInEx.Configuration;
 
 namespace BetterUI
 {
-    static class ItemCounters
+    public static class ItemCounters
     {
         static string[] tierColorMap = new string[]
         {
@@ -113,8 +113,7 @@ namespace BetterUI
                     itemScore = 0;
                     foreach (var item in self.master.inventory.itemAcquisitionOrder)
                     {
-                        int value;
-                        itemScore += ConfigManager.ItemCountersItemScores.TryGetValue(ItemCatalog.GetItemDef(item), out value) ? value * self.master.inventory.GetItemCount(item) : 0;
+                        itemScore += GetItemScore(ItemCatalog.GetItemDef(item)) * self.master.inventory.GetItemCount(item);
                     }
                     BetterUIPlugin.sharedStringBuilder.Append(itemScore);
                 }
@@ -136,6 +135,11 @@ namespace BetterUI
 
                 self.moneyText.text = BetterUIPlugin.sharedStringBuilder.ToString();
             }
+        }
+
+        public static int GetItemScore(ItemDef item) {
+            int value;
+            return ConfigManager.ItemCountersItemScores.TryGetValue(item, out value) ? value : 0;
         }
     }
 }
