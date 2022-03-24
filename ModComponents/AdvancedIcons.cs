@@ -171,7 +171,7 @@ namespace BetterUI
                             foreach (var info in procCoefficientInfos)
                             {
                                 BetterUIPlugin.sharedStringBuilder.Append("\n\n<size=110%>");
-                                BetterUIPlugin.sharedStringBuilder.Append(info.name);
+                                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(info.name));
                                 BetterUIPlugin.sharedStringBuilder.Append(":</size>");
                                 if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                                 {
@@ -236,7 +236,7 @@ namespace BetterUI
                         foreach (var info in procCoefficientInfos)
                         {
                             BetterUIPlugin.sharedStringBuilder.Append("\n\n<size=110%>");
-                            BetterUIPlugin.sharedStringBuilder.Append(info.name);
+                            BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(info.name));
                             BetterUIPlugin.sharedStringBuilder.Append("</size>");
                             if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
