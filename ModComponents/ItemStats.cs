@@ -16,18 +16,6 @@ namespace BetterUI
         
         public static void Initialize()
         {
-            CharacterMaster.onStartGlobal += CharacterMaster_onStartGlobal;
-
-            RegisterProc(RoR2Content.Items.BleedOnHit, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
-            RegisterProc(RoR2Content.Items.StunChanceOnHit, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
-            RegisterProc(RoR2Content.Items.StickyBomb, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
-            RegisterProc(RoR2Content.Items.Missile, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
-            RegisterProc(RoR2Content.Items.ChainLightning, 0.25f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
-            RegisterProc(RoR2Content.Items.Seed, 1f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
-            RegisterProc(RoR2Content.Items.HealOnCrit, 8f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
-            RegisterProc(RoR2Content.Items.Behemoth, 4f, 2.5f, statFormatter: StatFormatter.Range, stackingFormula: LinearStacking);
-            RegisterProc(RoR2Content.Items.BounceNearby, 0.2f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
-            RegisterProc(RoR2Content.Items.GoldOnHit, 0.3f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
 
 
 
@@ -46,16 +34,20 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Bear, "Tougher Times", 0.15f, HyperbolicStacking);
             RegisterStat(RoR2Content.Items.BeetleGland, "Beetle Guards", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.Behemoth, "Explosion Radius", 4, 2.5f , statFormatter: StatFormatter.Range );
+            RegisterProc(RoR2Content.Items.Behemoth, 4f, 2.5f, statFormatter: StatFormatter.Range, stackingFormula: LinearStacking);
             RegisterStat(RoR2Content.Items.BleedOnHit, "Bleed Chance", 0.1f, LinearStacking, StatFormatter.Chance, ItemTag.Luck);
+            RegisterProc(RoR2Content.Items.BleedOnHit, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Base Damage", 4);
             RegisterStat(RoR2Content.Items.BleedOnHitAndExplode, "Explosion Max HP Damage", 0.15f);
             RegisterStat(RoR2Content.Items.BonusGoldPackOnKill, "Drop Chance", 0.04f);
             RegisterStat(RoR2Content.Items.BossDamageBonus, "Damage", 0.2f);
             RegisterStat(RoR2Content.Items.BounceNearby, "Chance", 0.25f, HyperbolicStacking );
             RegisterStat(RoR2Content.Items.BounceNearby, "Targets", 10, 5 , statFormatter: StatFormatter.Charges);
+            RegisterProc(RoR2Content.Items.BounceNearby, 0.2f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
             RegisterStat(RoR2Content.Items.CaptainDefenseMatrix, "Projectiles Shot", 1, statFormatter: StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.ChainLightning, "Targets", 3, 2, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.ChainLightning, "Radius", 20, 2, statFormatter: StatFormatter.Range);
+            RegisterProc(RoR2Content.Items.ChainLightning, 0.25f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.Clover, "Luck", 1, statFormatter: StatFormatter.Charges, itemTag: ItemTag.LuckStat);
             RegisterStat(RoR2Content.Items.Crowbar, "Damage", 0.75f);
             RegisterStat(RoR2Content.Items.Dagger, "Damage", 1.5f);
@@ -68,20 +60,21 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "Damage", 3.5f, 2.8f, LinearStacking );
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "Radius", 12, 2.4f, statFormatter:StatFormatter.Range );
             RegisterStat(RoR2Content.Items.ExtraLife, "Uses", 1, statFormatter:StatFormatter.Charges);
-            RegisterStat(RoR2Content.Items.FallBoots, "Cooldown", 10, 0.5f, PositiveExponentialStacking );
+            RegisterStat(RoR2Content.Items.FallBoots, "Cooldown", 10, 0.5f, ExponentialStacking );
             RegisterStat(RoR2Content.Items.Feather, "Extra Jumps", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "Damage", 3 );
             RegisterStat(RoR2Content.Items.FireballsOnHit, "Damage", 3 );
             RegisterStat(RoR2Content.Items.Firework, "Fireworks", 8, 4 , statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FlatHealth, "Health", 25, statFormatter:StatFormatter.HP );
             RegisterStat(RoR2Content.Items.FocusConvergence, "Charge Speed", 0.30f);
-            RegisterStat(RoR2Content.Items.FocusConvergence, "Teleporter Zone H", 0.5f, HyperbolicStacking);
-            RegisterStat(RoR2Content.Items.FocusConvergence, "Teleporter Zone E", 0.5f, ExponentialStacking);
+            RegisterStat(RoR2Content.Items.FocusConvergence, "Teleporter Zone", 2, 3, FocusedConvergenceStacking);
             RegisterStat(RoR2Content.Items.GhostOnKill, "Ghost Duration", 30 , statFormatter:StatFormatter.Seconds );
             RegisterStat(RoR2Content.Items.GoldOnHit, "Gold Gained", 2, statFormatter:StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.GoldOnHit, "Gold Lost", 1 );
+            RegisterProc(RoR2Content.Items.GoldOnHit, 0.3f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.HeadHunter, "Duration", 8, 5, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.HealOnCrit, "Heal", 8, 4, statFormatter: StatFormatter.HP);
+            RegisterProc(RoR2Content.Items.HealOnCrit, 8f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
             RegisterStat(RoR2Content.Items.HealWhileSafe, "Regen", 3, statFormatter:StatFormatter.Regen );
             RegisterStat(RoR2Content.Items.Hoof, "Movement Speed", 0.14f, itemTag: ItemTag.MovementSpeed);
             RegisterStat(RoR2Content.Items.IceRing, "Slow Duration", 3, statFormatter: StatFormatter.Seconds);
@@ -101,10 +94,9 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.LaserTurbine, "Explosion", 10 );
             RegisterStat(RoR2Content.Items.LightningStrikeOnHit, "Damage", 5 );
             RegisterStat(RoR2Content.Items.LunarBadLuck, "Luck", -1, statFormatter:StatFormatter.Charges, itemTag: ItemTag.LuckStat);
-            RegisterStat(RoR2Content.Items.LunarDagger, "Damage", 2, PositiveExponentialStacking );
+            RegisterStat(RoR2Content.Items.LunarDagger, "Damage", 2, ExponentialStacking);
             RegisterModifier(ItemTag.Damage, RoR2Content.Items.LunarDagger, ItemModifier.PositiveExponentialBonus, 2);
-            RegisterStat(RoR2Content.Items.LunarDagger, "Health P", 0.5f, PositiveExponentialStacking);
-            RegisterStat(RoR2Content.Items.LunarDagger, "Health N", 0.5f, NegativeExponentialStacking );
+            RegisterStat(RoR2Content.Items.LunarDagger, "Health", 0.5f, ExponentialStacking);
             RegisterStat(RoR2Content.Items.LunarPrimaryReplacement, "Charges", 12, statFormatter:StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.LunarPrimaryReplacement, "Reload", 2, statFormatter:StatFormatter.Seconds );
             RegisterStat(RoR2Content.Items.LunarSecondaryReplacement, "Root Duration", 3, statFormatter:StatFormatter.Seconds );
@@ -115,25 +107,27 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.LunarUtilityReplacement, "Duration", 3, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.Medkit, "Heal", 0.05f);
             RegisterStat(RoR2Content.Items.Missile, "Damage",3 );
+            RegisterProc(RoR2Content.Items.Missile, 0.1f, statFormatter: StatFormatter.Chance, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.MonstersOnShrineUse, "Enemy Difficulty", 1f );
             RegisterStat(RoR2Content.Items.Mushroom, "Health per Second", 0.045f, 0.0225f);
-            RegisterStat(RoR2Content.Items.Mushroom, "Health per Second", 3, 1.5f, statFormatter:StatFormatter.Range );
+            RegisterStat(RoR2Content.Items.Mushroom, "Radius", 3, 1.5f, statFormatter:StatFormatter.Range );
             RegisterStat(RoR2Content.Items.NearbyDamageBonus, "Damage", 0.2f);
             RegisterStat(RoR2Content.Items.NovaOnHeal, "Damage", 1 );
-            RegisterStat(RoR2Content.Items.NovaOnLowHealth, "Recharge Speed", 30, DivideByStack, statFormatter:StatFormatter.Seconds);
+            RegisterStat(RoR2Content.Items.NovaOnLowHealth, "Recharge Speed", 30, DivideByBonusStacks, statFormatter:StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.ParentEgg, "Heath", 15, statFormatter:StatFormatter.HP );
             RegisterStat(RoR2Content.Items.Pearl, "Health", 0.1f );
             RegisterModifier(ItemTag.MaxHealth, RoR2Content.Items.Pearl, ItemModifier.PercentBonus, 10);
             RegisterStat(RoR2Content.Items.PersonalShield, "Shield", 0.08f );
-            RegisterStat(RoR2Content.Items.Phasing, "Cooldown", 30, 0.5f, PositiveExponentialStacking, statFormatter:StatFormatter.Seconds );
+            RegisterStat(RoR2Content.Items.Phasing, "Cooldown", 30, 0.5f, ExponentialStacking, statFormatter:StatFormatter.Seconds );
             RegisterStat(RoR2Content.Items.Plant, "Radius", 5, statFormatter:StatFormatter.Range );
-            RegisterStat(RoR2Content.Items.RandomDamageZone, "Range", 16, 1.5f, PositiveExponentialStacking);
+            RegisterStat(RoR2Content.Items.RandomDamageZone, "Range", 16, 1.5f, ExponentialStacking, statFormatter:StatFormatter.Range);
             RegisterStat(RoR2Content.Items.RepeatHeal, "Healing", 1, itemTag:ItemTag.Healing );
-            RegisterStat(RoR2Content.Items.RepeatHeal, "Maximum", 0.1f, 0.5f, PositiveExponentialStacking, itemTag:ItemTag.Healing );
+            RegisterStat(RoR2Content.Items.RepeatHeal, "Maximum", 0.1f, 0.5f, ExponentialStacking, itemTag:ItemTag.Healing );
             RegisterModifier(ItemTag.Healing, RoR2Content.Items.RepeatHeal, ItemModifier.PercentBonus, 100);
             RegisterStat(RoR2Content.Items.RoboBallBuddy, "Damage", 1f, itemTag:ItemTag.Allies);
             RegisterStat(RoR2Content.Items.SecondarySkillMagazine, "Charges", 1, statFormatter:StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.Seed, "Heal", 1, statFormatter:StatFormatter.HP, itemTag:ItemTag.Healing );
+            RegisterProc(RoR2Content.Items.Seed, 1f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
             RegisterStat(RoR2Content.Items.ShieldOnly, "Maximum Health", 0.5f, 0.25f);
             RegisterModifier(ItemTag.MaxHealth, RoR2Content.Items.ShieldOnly, ItemModifier.PercentBonus, 50, 25);
             RegisterStat(RoR2Content.Items.ShinyPearl, "Health", 0.1f);
@@ -154,9 +148,9 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.SprintWisp, "Damage", 3f, itemTag:ItemTag.Damage );
             RegisterStat(RoR2Content.Items.Squid, "Attack Speed", 1f );
             RegisterStat(RoR2Content.Items.StickyBomb, "Chance", 0.05f, itemTag:ItemTag.Luck );
+            RegisterProc(RoR2Content.Items.StickyBomb, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(RoR2Content.Items.StunChanceOnHit, "Chance", 0.05f, HyperbolicStacking , itemTag: ItemTag.Luck);
-            RegisterStat(RoR2Content.Items.StunChanceOnHit, "Chance", 0.05f, PositiveExponentialStacking , itemTag: ItemTag.Luck);
-            RegisterStat(RoR2Content.Items.StunChanceOnHit, "Chance", 0.05f, NegativeExponentialStacking , itemTag: ItemTag.Luck);
+            RegisterProc(RoR2Content.Items.StunChanceOnHit, 0.05f, statFormatter: StatFormatter.Chance, stackingFormula: HyperbolicStacking);
             RegisterStat(RoR2Content.Items.Syringe, "Attack Speed", 0.15f );
             RegisterStat(RoR2Content.Items.TPHealingNova, "Healing Nova", 1, statFormatter:StatFormatter.Charges );
             RegisterStat(RoR2Content.Items.Talisman, "Cooldown Reduction", 4, 2 ,statFormatter:StatFormatter.Seconds );
@@ -173,8 +167,7 @@ namespace BetterUI
 
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "Attack Speed", 0.075f);
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "Movement Speed", 0.07f, itemTag: ItemTag.MovementSpeed);
-            RegisterStat(DLC1Content.Items.BearVoid, "Recharge Time PE", 15, 0.1f, PositiveExponentialStacking, StatFormatter.Seconds );
-            RegisterStat(DLC1Content.Items.BearVoid, "Recharge Time H", 15, 0.1f, HyperbolicStacking, StatFormatter.Seconds );
+            RegisterStat(DLC1Content.Items.BearVoid, "Recharge Time ", 15, 0.9f, ExponentialStacking, StatFormatter.Seconds );
             RegisterStat(DLC1Content.Items.BleedOnHitVoid, "Chance", 0.1f);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "Hits", 3, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.CloverVoid, "Items upgraded", 3, statFormatter:StatFormatter.Charges );
@@ -190,17 +183,16 @@ namespace BetterUI
             RegisterModifier(ItemTag.Damage, DLC1Content.Items.FragileDamageBonus, ItemModifier.PercentBonus, 20);
 //            RegisterStat(DLC1Content.Items.FreeChest, "Shipping Request Form";
             RegisterStat(DLC1Content.Items.GoldOnHurt, "Base Gold", 3, statFormatter:StatFormatter.Gold );
-            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "Skill Cooldowns", 0.5f, PositiveExponentialStacking, itemTag: ItemTag.SkillCooldown);
-            RegisterModifier(ItemTag.SkillCooldown, DLC1Content.Items.FragileDamageBonus, ItemModifier.ExponentialBonus, 0.5f);
-            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "Attack Speed", 1, DivideByStack );
+            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "Skill Cooldowns", 0.5f, ExponentialStacking, itemTag: ItemTag.SkillCooldown);
+            RegisterModifier(ItemTag.SkillCooldown, DLC1Content.Items.HalfAttackSpeedHalfCooldowns, ItemModifier.ExponentialBonus, 0.5f);
+            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "Attack Speed", 1, DivideByBonusStacks);
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "Max Health", 1 );
             RegisterModifier(ItemTag.MaxHealth, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.PercentBonus, 100);
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "Movement Speed", 0.5f, HyperbolicStacking);
             RegisterModifier(ItemTag.MovementSpeed, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.ExponentialBonus, 0.5f);
             RegisterStat(DLC1Content.Items.HealingPotion, "Uses", 1f, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.ImmuneToDebuff, "Max Health", 100, statFormatter:StatFormatter.HP, itemTag:ItemTag.MaxHealth);
-            RegisterStat(DLC1Content.Items.LunarSun, "Charge time E", 3f, 0.5f, ExponentialStacking, statFormatter: StatFormatter.Seconds );
-            RegisterStat(DLC1Content.Items.LunarSun, "Charge time H", 3f, 0.5f, HyperbolicStacking, statFormatter: StatFormatter.Seconds);
+            RegisterStat(DLC1Content.Items.LunarSun, "Charge time", 3f, DivideByStacks, statFormatter: StatFormatter.Seconds );
             RegisterStat(DLC1Content.Items.LunarSun, "Bombs", 3f, 1f, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.MinorConstructOnKill, "Max Constructs", 4, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.MissileVoid, "Damage", 0.4f );
@@ -225,30 +217,6 @@ namespace BetterUI
             RegisterModifier(ItemTag.Luck, "Luck", ItemModifier.LuckBonus, ItemModifier.LuckLocator, ItemModifier.LuckChecker, ItemModifier.LuckCounter, "Luck");
             RegisterModifier(ItemTag.Allies, "Ally", ItemModifier.AlliesBonus, ItemModifier.AlliesLocator, ItemModifier.AlliesChecker, ItemModifier.AlliesCounter, "Allies");
 
-        }
-
-        private static void CharacterMaster_onStartGlobal(CharacterMaster master)
-        {
-            if(master.playerCharacterMasterController != null)
-            {
-                foreach(var itemDef in itemStats.Keys)
-                {
-                    master.inventory.GiveItem(itemDef);
-                }
-            }
-        }
-
-        public static ItemStat RegisterStat(ItemDef itemDef, ItemStat itemStat, ItemTag itemTag)
-        {
-            if(itemStats.TryGetValue(itemDef, out var stats)){
-                stats.Add(itemStat);
-            } 
-            else
-            {
-                itemStats[itemDef] = new List<ItemStat>() { itemStat };
-            }
-            if (itemTag != null) RegisterTag(itemStat, itemTag);
-            return itemStat;
         }
 
 
@@ -278,18 +246,20 @@ namespace BetterUI
             return RegisterStat(itemDef, itemStat, itemTag);
         }
 
-        public static ItemModifier RegisterModifier(ItemTag itemTag, ItemModifier itemModfier)
+        public static ItemStat RegisterStat(ItemDef itemDef, ItemStat itemStat, ItemTag itemTag)
         {
-            if (itemModifiers.TryGetValue(itemTag, out var modifers))
+            if (itemStats.TryGetValue(itemDef, out var stats))
             {
-                modifers.Add(itemModfier);
+                stats.Add(itemStat);
             }
             else
             {
-                itemModifiers[itemTag] = new List<ItemModifier>() { itemModfier };
+                itemStats[itemDef] = new List<ItemStat>() { itemStat };
             }
-            return itemModfier;
+            if (itemTag != null) RegisterTag(itemStat, itemTag);
+            return itemStat;
         }
+
 
         public static ItemModifier RegisterModifier(
             ItemTag itemTag,
@@ -337,6 +307,19 @@ namespace BetterUI
                 modificationCounter = modificationCounter
             };
             return RegisterModifier(itemTag, itemModfier);
+        }
+
+        public static ItemModifier RegisterModifier(ItemTag itemTag, ItemModifier itemModfier)
+        {
+            if (itemModifiers.TryGetValue(itemTag, out var modifers))
+            {
+                modifers.Add(itemModfier);
+            }
+            else
+            {
+                itemModifiers[itemTag] = new List<ItemModifier>() { itemModfier };
+            }
+            return itemModfier;
         }
 
         public static ItemTag RegisterTag(ItemStat itemStat, ItemTag itemTag)
@@ -568,7 +551,7 @@ namespace BetterUI
         {
             return value + extraStackValue * (stacks - 1);
         }
-        public static float PositiveExponentialStacking(float value, float extraStackValue, int stacks)
+        public static float ExponentialStacking(float value, float extraStackValue, int stacks)
         {
             return value * (float)Math.Pow(extraStackValue, stacks - 1);
         }
@@ -576,17 +559,17 @@ namespace BetterUI
         {
             return (1 - (1 - value) * (float)Math.Pow(1 - extraStackValue, stacks - 1));
         }
-        public static float ExponentialStacking(float value, float extraStackValue, int stacks)
+        public static float DivideByBonusStacks(float value, float extraStackValue, int stacks)
         {
-            return (1 - (1 - value) * (float)Math.Pow(1 - extraStackValue, stacks - 1));
+            return value / (stacks + 1);
         }
-        public static float DivideByStack(float value, float extraStackValue, int stacks)
+        public static float DivideByStacks(float value, float extraStackValue, int stacks)
         {
-            return value / stacks + 1;
+            return value / stacks;
         }
-        public static float WispStacking(float value, float extraStackValue, int stacks)
+        public static float FocusedConvergenceStacking(float value, float extraStackValue, int stacks)
         {
-            return value * (1 + (stacks - 1) * extraStackValue);
+            return 1 / (value * Math.Min(stacks, extraStackValue));
         }
         public static float HyperbolicStacking(float value, float extraStackValue, int stacks)
         {
