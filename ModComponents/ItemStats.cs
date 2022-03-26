@@ -21,7 +21,7 @@ namespace BetterUI
 
 
 
-            RegisterStat(RoR2Content.Items.AlienHead, "Cooldown Reduciton", 0.25f, ExponentialStacking, StatFormatter.Percent, itemTag:ItemTag.SkillCooldown);
+            RegisterStat(RoR2Content.Items.AlienHead, "Cooldown Reduction", 0.25f, NegativeExponentialStacking, StatFormatter.Percent, itemTag:ItemTag.SkillCooldown);
             RegisterModifier(ItemTag.SkillCooldown, RoR2Content.Items.AlienHead, ItemModifier.ExponentialBonus, 0.25f);
             RegisterStat(RoR2Content.Items.ArmorPlate, "Armor", 5f, LinearStacking, StatFormatter.Armor);
             RegisterStat(RoR2Content.Items.ArmorReductionOnHit, "Duration", 8, LinearStacking , StatFormatter.Seconds);
