@@ -183,6 +183,11 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.4
+ - Bugfix: ItemStats: Fixed typo & scaling on Alien Head
+ - Bugfix: ItemStats: Reused the old ItemStatsIntegration setting to toggle ItemStats for now. 
+ - Bugfix: ItemStats: Fixed seer's rounding error
+ - API: Added public ItemScore getter method. 
 
 #### v2.5.3
  - Bugfix: ItemStats: Added luck modifer to some items that were missing it
