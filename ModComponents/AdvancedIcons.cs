@@ -86,7 +86,7 @@ namespace BetterUI
         {
             orig(self, itemIndex, itemCount);
 
-            if (updateDisplayMaster != null)
+            if (ConfigManager.AdvancedIconsItemItemStatsIntegration.Value && updateDisplayMaster != null)
             {
                 var itemDef = ItemCatalog.GetItemDef(itemIndex);
                 BetterUIPlugin.sharedStringBuilder.Clear();
