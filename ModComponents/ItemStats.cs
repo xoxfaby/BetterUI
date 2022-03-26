@@ -597,7 +597,7 @@ namespace BetterUI
         public delegate int CapFormula(float value, float extraStackValue, float procCoefficient);
         public static int LinearCap(float value, float extraStackValue, float procCoefficient)
         {
-            return (int)Math.Ceiling((1 - value * procCoefficient) / (extraStackValue * procCoefficient)) + 1;
+            return (int)UnityEngine.Mathf.Round((1f - value * procCoefficient) / (extraStackValue * procCoefficient)) + 1;
         }
 
         public class ItemProcInfo
