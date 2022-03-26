@@ -20,7 +20,7 @@ namespace BetterUI
                     if (id.Value<ulong>() == Facepunch.Steamworks.Client.Instance.SteamId)
                     {
                         Destroy(BetterUIPlugin.instance);
-                        UnityEngine.Debug.Log("Disabling BetterUI. You have been blacklisted from using BetterUI");
+                        UnityEngine.Debug.LogError("Disabling BetterUI. You have been blacklisted from using BetterUI");
                     }
                 }
                 Destroy(this);
