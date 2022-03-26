@@ -17,6 +17,8 @@
 	<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
 	<PackageReference Include="RiskOfRain2" Version="1.0.6" />
 	<PackageReference Include="KinematicCharacterController" Version="1.0.0" />
+    <PackageReference Include="Facepunch.Steamworks" Version="0.7.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   
 </Project>
