@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 
 
 using BepInEx;
@@ -11,51 +10,10 @@ using System.Reflection;
 
 namespace BetterUI
 {
-    public class BlackListChecker : UnityEngine.MonoBehaviour
-    {
-        JArray blacklist;
-
-        void Start()
-        {
-            StartCoroutine(CheckBlacklist());
-        }
-
-        void Update()
-        {
-            if(blacklist != null && Facepunch.Steamworks.Client.Instance != null)
-            {
-                foreach(var id in blacklist)
-                {
-                    if(id.Value<ulong>() == Facepunch.Steamworks.Client.Instance.SteamId)
-                    {
-                        Destroy(BetterUIPlugin.instance);
-                        UnityEngine.Debug.Log("Disabling BetterUI. You have been blacklisted from using BetterUI");
-                    }
-                }
-                Destroy(this);
-            }
-        }
-        System.Collections.IEnumerator CheckBlacklist()
-        {
-            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get("https://faby.dev/mod_blacklist.json");
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError)
-            {
-                UnityEngine.Debug.Log(www.error);
-            }
-            else
-            {
-                blacklist = JArray.Parse(www.downloadHandler.text);
-                
-            }
-        }
-    }
-
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.5.3")]
-    public class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
+    [BepInPlugin("com.xoxfaby.BetterUI", "BetterUI", "2.5.4")]
+    public partial class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
         internal static BetterUIPlugin instance;
         internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
@@ -75,7 +33,7 @@ namespace BetterUI
 
             instance = this;
             this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
-            this.gameObject.AddComponent<BlackListChecker>();
+            this.gameObject.AddComponent<BlacklistChecker>();
 
             if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
