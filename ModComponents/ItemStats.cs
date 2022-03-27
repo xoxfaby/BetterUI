@@ -26,7 +26,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ArmorPlate, "Armor", 5f, LinearStacking, StatFormatter.Armor);
             RegisterStat(RoR2Content.Items.ArmorReductionOnHit, "Duration", 8, LinearStacking , StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.AttackSpeedOnCrit, "Maximum Attack Speed", 0.36f, 0.24f , LinearStacking, StatFormatter.Percent);
-            RegisterStat(RoR2Content.Items.AutoCastEquipment, "Cooldown Reduction", 0.5f, 0.15f, ExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown );
+            RegisterStat(RoR2Content.Items.AutoCastEquipment, "Cooldown Reduction", 0.5f, 0.15f, NegativeExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown );
             RegisterModifier(ItemTag.EquipmentCooldown, RoR2Content.Items.AutoCastEquipment, ItemModifier.ExponentialBonus, 0.5f, 0.15f);
             RegisterStat(RoR2Content.Items.Bandolier, "Drop Chance", 0.18f, 0.10f, itemTag: ItemTag.Luck);
             RegisterStat(RoR2Content.Items.BarrierOnKill, "Barrier", 15, statFormatter: StatFormatter.HP );
@@ -55,7 +55,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.DeathMark, "Debuff Duration", 7, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.EnergizedOnEquipmentUse, "Duration", 8, 4 , statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.EquipmentMagazine, "Equipment Charges", 1f, LinearStacking, StatFormatter.Charges);
-            RegisterStat(RoR2Content.Items.EquipmentMagazine, "Cooldown Reduction", 0.15f, 0.15f, ExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown);
+            RegisterStat(RoR2Content.Items.EquipmentMagazine, "Cooldown Reduction", 0.15f, 0.15f, NegativeExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown);
             RegisterModifier(ItemTag.EquipmentCooldown, RoR2Content.Items.EquipmentMagazine, ItemModifier.ExponentialBonus, 0.15f);
             RegisterStat(RoR2Content.Items.ExecuteLowHealthElite, "Threshold", 0.13f , HyperbolicStacking );
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "Damage", 3.5f, 2.8f, LinearStacking );
@@ -287,6 +287,7 @@ namespace BetterUI
                 itemDef = itemDef,
                 modifier = modifier,
                 stackModifier = stackModifier ?? modifier,
+                modificationLocator = modificationLocator,
                 modificationChecker = modificationChecker ?? ItemModifier.ItemChecker,
                 modificationCounter = modificationCounter ?? ItemModifier.ItemCounter
             };
