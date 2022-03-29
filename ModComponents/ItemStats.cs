@@ -480,12 +480,9 @@ namespace BetterUI
 
             public static StatFormatter Percent = new StatFormatter()
             {
-                statFormatter = (stringBuilder, value, master) =>
-                {
-                    stringBuilder.Append("<style=cIsDamage>");
-                    stringBuilder.Append(value * 100);
-                    stringBuilder.Append("%</style>");
-                }
+                suffix = "%",
+                style = Styles.Damage,
+                statFormatter = (sb, value, master) => { sb.AppendFormat("{0:0.##}", value * 100); }
             };
 
             public static StatFormatter HP = new StatFormatter()
