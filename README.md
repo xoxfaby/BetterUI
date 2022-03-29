@@ -183,6 +183,10 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.5
+ - Bugfix: ItemStats: Fixed scaling on EquipemntCooldown Items
+ - Bugfix: ItemCounters: Fixed void items not counting towards item sums for each tiers and the total. In the future, there will be options for each void tier seperately, but for now they are counted together with the non-void counterparts.
+
 #### v2.5.4
  - Bugfix: ItemStats: Fixed typo & scaling on Alien Head
  - Bugfix: ItemStats: Reused the old ItemStatsIntegration setting to toggle ItemStats for now. 
