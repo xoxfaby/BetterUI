@@ -49,17 +49,16 @@ namespace BetterUI
                     UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
                 }
-                int itemValue = 0;
-                ConfigManager.ItemCountersTierScores.TryGetValue(itemDef.tier, out itemValue);
-                ConfigEntry<int> itemScore;
+                float itemValue = GetTierScore(itemDef.tier);
+                ConfigEntry<float> itemScore;
                 if (first)
                 {
-                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
                     first = false;
                 }
                 else
                 {
-                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<int>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
                 }
 
                 ConfigManager.ItemCountersItemScores[itemDef] = itemScore.Value;
@@ -76,7 +75,7 @@ namespace BetterUI
         }
 
         static int itemSum;
-        static int itemScore;
+        static float itemScore;
         internal static void ScoreboardStrip_Update(Action<RoR2.UI.ScoreboardStrip> orig, ScoreboardStrip self)
         {
             orig(self);
@@ -101,6 +100,22 @@ namespace BetterUI
                     foreach (var tier in ConfigManager.ItemCountersItemSumTiers)
                     {
                         itemSum += self.master.inventory.GetTotalItemCountOfTier(tier);
+                        if (tier == ItemTier.Tier1)
+                        {
+                            itemSum += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier1);
+                        }
+                        else if (tier == ItemTier.Tier2)
+                        {
+                            itemSum += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier2);
+                        }
+                        else if (tier == ItemTier.Tier3)
+                        {
+                            itemSum += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier3);
+                        }
+                        else if (tier == ItemTier.Boss)
+                        {
+                            itemSum += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidBoss);
+                        }
                     }
                     BetterUIPlugin.sharedStringBuilder.Append(itemSum);
                     if (ConfigManager.ItemCountersShowItemScore.Value)
@@ -123,10 +138,27 @@ namespace BetterUI
                     BetterUIPlugin.sharedStringBuilder.Append("\n");
                     foreach (var tier in ConfigManager.ItemCountersItemsByTierOrder)
                     {
+                        int tierCount = self.master.inventory.GetTotalItemCountOfTier(tier);
+                        if (tier == ItemTier.Tier1)
+                        {
+                            tierCount += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier1);
+                        }
+                        else if (tier == ItemTier.Tier2)
+                        {
+                            tierCount += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier2);
+                        }
+                        else if (tier == ItemTier.Tier3)
+                        {
+                            tierCount += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidTier3);
+                        }
+                        else if (tier == ItemTier.Boss)
+                        {
+                            tierCount += self.master.inventory.GetTotalItemCountOfTier(ItemTier.VoidBoss);
+                        }
                         BetterUIPlugin.sharedStringBuilder.Append(" <#");
                         BetterUIPlugin.sharedStringBuilder.Append(tierColorMap[(int)tier]);
                         BetterUIPlugin.sharedStringBuilder.Append(">");
-                        BetterUIPlugin.sharedStringBuilder.Append(self.master.inventory.GetTotalItemCountOfTier(tier));
+                        BetterUIPlugin.sharedStringBuilder.Append(tierCount);
                         BetterUIPlugin.sharedStringBuilder.Append("</color>");
                     }
                 }
@@ -137,9 +169,23 @@ namespace BetterUI
             }
         }
 
-        public static int GetItemScore(ItemDef item) {
-            int value;
-            return ConfigManager.ItemCountersItemScores.TryGetValue(item, out value) ? value : 0;
+        public static float GetTierScore(ItemTierDef itemTierDef)
+        {
+            float tierValue = 0;
+            ConfigManager.ItemCountersTierScores.TryGetValue(itemTierDef.tier, out tierValue);
+            return tierValue;
+        }
+        public static float GetTierScore(ItemTier tier)
+        {
+            float tierValue = 0;
+            ConfigManager.ItemCountersTierScores.TryGetValue(tier, out tierValue);
+            return tierValue;
+        }
+        public static float GetItemScore(ItemDef itemDef)
+        {
+            float itemValue = 0;
+            ConfigManager.ItemCountersItemScores.TryGetValue(itemDef, out itemValue);
+            return itemValue;
         }
     }
 }
