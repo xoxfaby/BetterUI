@@ -183,6 +183,11 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.6
+ - Small Addition: DPSMeter: Added option to hide the DPSMeter when the chatbox is open (enabled by default)
+ - Small Change: ItemStats: Rounded non-chance percentages to 2 digits as well
+ - Bugfix: DPSMeter: Fixed DPSMeter window being active but nonfunctional if the whole module is disabled
+
 #### v2.5.5
  - Bugfix: ItemStats: Fixed scaling on EquipemntCooldown Items
  - Bugfix: ItemCounters: Fixed void items not counting towards item sums for each tiers and the total. In the future, there will be options for each void tier seperately, but for now they are counted together with the non-void counterparts.
