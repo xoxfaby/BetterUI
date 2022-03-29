@@ -89,6 +89,7 @@ namespace BetterUI
         public static ConfigEntry<bool> DPSMeterWindowShow;
         public static ConfigEntry<bool> DPSMeterWindowIncludeMinions;
         public static ConfigEntry<bool> DPSMeterWindowBackground;
+        public static ConfigEntry<bool> DPSMeterWindowHideWhenTyping;
         public static ConfigEntry<Vector2> DPSMeterWindowAnchorMin;
         public static ConfigEntry<Vector2> DPSMeterWindowAnchorMax;
         public static ConfigEntry<Vector2> DPSMeterWindowPosition;
@@ -311,6 +312,8 @@ namespace BetterUI
             DPSMeterWindowIncludeMinions = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowIncludeMinions", true, "Include minions such as turrets and drones in the DPS meter.");
 
             DPSMeterWindowBackground = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowBackground", true, "Whether or not the DPS window should have a background.");
+
+            DPSMeterWindowHideWhenTyping = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowHideWhenTyping", true, "Whether or not the DPS window should be hidden when typing into the chat box.");
 
             DPSMeterWindowAnchorMin = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowAnchorMin", new Vector2(0, 0),
                 "Screen position the lower left window corner is anchored to.\n" +

@@ -22,6 +22,9 @@ namespace BetterUI
         private static readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
         private static float minionDamageSum = 0;
 
+        public static GameObject DPSMeterPanel;
+        public static RoR2.UI.ChatBox chatBox;
+
         private static HGTextMeshProUGUI textMesh;
         public static float DPS { get => MinionDPS + CharacterDPS; }
         public static float CharacterDPS { get => characterDamageLog.Count > 0 ? characterDamageSum / Clamp(Time.time - characterDamageLog.Peek().time) : 0; }
@@ -49,6 +52,10 @@ namespace BetterUI
             {
                 BetterUIPlugin.Hooks.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
             }
+            if (ConfigManager.DPSMeterWindowShow.Value && ConfigManager.DPSMeterWindowHideWhenTyping.Value)
+            {
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ChatBox>(nameof(RoR2.UI.ChatBox.Awake), ChatBox_Awake);
+            }
         }
 
         public static float Clamp(float value)
@@ -75,8 +82,14 @@ namespace BetterUI
 
                 textMesh.SetText(BetterUIPlugin.sharedStringBuilder);
             }
+            if (chatBox != null && DPSMeterPanel != null) DPSMeterPanel.gameObject.SetActive(!chatBox.showInput);
         }
 
+        public static void ChatBox_Awake(Action<RoR2.UI.ChatBox> orig, RoR2.UI.ChatBox self)
+        {
+            orig(self);
+            chatBox = self;
+        }
         public static void DamageDealtMessage_ClientDamageNotified(Action<DamageDealtMessage> orig, DamageDealtMessage dmgMsg)
         {
             orig(dmgMsg);
@@ -110,10 +123,10 @@ namespace BetterUI
 
         private static void onHUDAwake(HUD self)
         {
-            if (ConfigManager.DPSMeterWindowShow.Value)
+            if (ConfigManager.DPSMeterWindowShow.Value || DPSMeterPanel == null)
             {
 
-                GameObject DPSMeterPanel = new GameObject("DPSMeterPanel");
+                DPSMeterPanel = new GameObject("DPSMeterPanel");
                 RectTransform rectTransform = DPSMeterPanel.AddComponent<RectTransform>();
 
                 DPSMeterPanel.transform.SetParent(BetterUIPlugin.hud.mainContainer.transform);
