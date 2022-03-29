@@ -42,7 +42,7 @@ namespace BetterUI
             if (ConfigManager.ComponentsCommandImprovements.Value)
                 CommandImprovements.Hook();
             if (ConfigManager.ComponentsDPSMeter.Value)
-                DPSMeter.Hook();
+                DPSMeter.Initialize();
             if (ConfigManager.ComponentsBuffTimers.Value)
                 Buffs.Hook();
             if (ConfigManager.ComponentsAdvancedIcons.Value)

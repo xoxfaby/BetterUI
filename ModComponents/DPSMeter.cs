@@ -22,8 +22,8 @@ namespace BetterUI
         private static readonly Queue<DamageLog> minionDamageLog = new Queue<DamageLog>();
         private static float minionDamageSum = 0;
 
-        public static GameObject DPSMeterPanel;
-        public static RoR2.UI.ChatBox chatBox;
+        private static GameObject DPSMeterPanel;
+        private static RoR2.UI.ChatBox chatBox;
 
         private static HGTextMeshProUGUI textMesh;
         public static float DPS { get => MinionDPS + CharacterDPS; }
@@ -40,27 +40,19 @@ namespace BetterUI
             }
         }
 
-        internal static void Hook()
+        internal static void Initialize()
         {
-            BetterUIPlugin.onEnable += () =>
-            {
-                if(ConfigManager.DPSMeterWindowShow.Value) BetterUIPlugin.onHUDAwake += onHUDAwake;
-                BetterUIPlugin.onUpdate += onUpdate;
-            };
-            BetterUIPlugin.onDisable += () =>
-            {
-                if (ConfigManager.DPSMeterWindowShow.Value) BetterUIPlugin.onHUDAwake -= onHUDAwake;
-                BetterUIPlugin.onUpdate -= onUpdate;
-            };
+            BetterUIPlugin.Hooks.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
 
-            if (ConfigManager.DPSMeterWindowShow.Value ||
-            ConfigManager.StatsDisplayStatString.Value.Contains("$dps"))
+            BetterUIPlugin.onEnable += () => BetterUIPlugin.onUpdate += onUpdate;
+            BetterUIPlugin.onDisable += () => BetterUIPlugin.onUpdate -= onUpdate;
+
+            if (ConfigManager.DPSMeterWindowShow.Value)
             {
-                BetterUIPlugin.Hooks.Add<GlobalEventManager, DamageDealtMessage>("ClientDamageNotified", DamageDealtMessage_ClientDamageNotified);
-            }
-            if (ConfigManager.DPSMeterWindowShow.Value && ConfigManager.DPSMeterWindowHideWhenTyping.Value)
-            {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.ChatBox>(nameof(RoR2.UI.ChatBox.Awake), ChatBox_Awake);
+                BetterUIPlugin.onEnable += () => BetterUIPlugin.onHUDAwake += onHUDAwake;
+                BetterUIPlugin.onDisable += () => BetterUIPlugin.onHUDAwake -= onHUDAwake;
+
+                if (ConfigManager.DPSMeterWindowHideWhenTyping.Value) BetterUIPlugin.Hooks.Add<RoR2.UI.ChatBox>(nameof(RoR2.UI.ChatBox.Awake), ChatBox_Awake);
             }
         }
 
