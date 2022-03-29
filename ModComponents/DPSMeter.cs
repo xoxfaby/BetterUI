@@ -44,12 +44,12 @@ namespace BetterUI
         {
             BetterUIPlugin.onEnable += () =>
             {
-                BetterUIPlugin.onHUDAwake += onHUDAwake;
+                if(ConfigManager.DPSMeterWindowShow.Value) BetterUIPlugin.onHUDAwake += onHUDAwake;
                 BetterUIPlugin.onUpdate += onUpdate;
             };
             BetterUIPlugin.onDisable += () =>
             {
-                BetterUIPlugin.onHUDAwake -= onHUDAwake;
+                if (ConfigManager.DPSMeterWindowShow.Value) BetterUIPlugin.onHUDAwake -= onHUDAwake;
                 BetterUIPlugin.onUpdate -= onUpdate;
             };
 
@@ -129,7 +129,7 @@ namespace BetterUI
 
         private static void onHUDAwake(HUD self)
         {
-            if (ConfigManager.DPSMeterWindowShow.Value || DPSMeterPanel == null)
+            if (DPSMeterPanel == null)
             {
 
                 DPSMeterPanel = new GameObject("DPSMeterPanel");
