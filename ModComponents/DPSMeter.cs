@@ -40,13 +40,19 @@ namespace BetterUI
             }
         }
 
-        static DPSMeter()
-        {
-            BetterUIPlugin.onHUDAwake += onHUDAwake;
-            BetterUIPlugin.onUpdate += onUpdate;
-        }
         internal static void Hook()
         {
+            BetterUIPlugin.onEnable += () =>
+            {
+                BetterUIPlugin.onHUDAwake += onHUDAwake;
+                BetterUIPlugin.onUpdate += onUpdate;
+            };
+            BetterUIPlugin.onDisable += () =>
+            {
+                BetterUIPlugin.onHUDAwake -= onHUDAwake;
+                BetterUIPlugin.onUpdate -= onUpdate;
+            };
+
             if (ConfigManager.DPSMeterWindowShow.Value ||
             ConfigManager.StatsDisplayStatString.Value.Contains("$dps"))
             {
