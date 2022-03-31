@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Unity\**" />
+    <EmbeddedResource Remove="Unity\**" />
+    <None Remove="Unity\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BepInEx.Core" Version="5.4.9" />
     <PackageReference Include="BetterUnityPlugin" Version="1.0.0" />
     <PackageReference Include="ItemStatsMod" Version="2.2.2" />
