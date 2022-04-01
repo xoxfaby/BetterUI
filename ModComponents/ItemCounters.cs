@@ -49,11 +49,15 @@ namespace BetterUI
                     UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
                 }
-                float itemValue = GetTierScore(itemDef.tier);
+
+                // Use default for this specific item if available, otherwise use default for the item's tier.
+                float itemValue = ConfigManager.ItemCountersItemScoreDefaults.ContainsKey(safe_name) ?
+                    ConfigManager.ItemCountersItemScoreDefaults[safe_name] : GetTierScore(itemDef.tier);
+
                 ConfigEntry<float> itemScore;
                 if (first)
                 {
-                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore. Default values for vanilla Tier 1, 2, 3 and Boss items are predefined. For other items, their tier's default values are used.\n{Language.GetString(itemDef.nameToken)}");
                     first = false;
                 }
                 else

@@ -116,6 +116,7 @@ namespace BetterUI
         public static ConfigEntry<float> ItemCountersTierScoreNoTier;
         public static Dictionary<ItemTier, float> ItemCountersTierScores;
         public static Dictionary<ItemDef, float> ItemCountersItemScores;
+        public static Dictionary<string, float> ItemCountersItemScoreDefaults;
 
         // StatsDisplay
 
@@ -355,11 +356,11 @@ namespace BetterUI
 
             ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
-            ItemCountersTierScoreTier1 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier1", 1f, "Score for Tier 1 items.");
-            ItemCountersTierScoreTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier2", 3f, "Score for Tier 2 items.");
-            ItemCountersTierScoreTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier3", 12f, "Score for Tier 3 items.");
+            ItemCountersTierScoreTier1 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier1", 1f, "Score for Tier 1 (white) and Void Tier 1 items.");
+            ItemCountersTierScoreTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier2", 3f, "Score for Tier 2 (green) and Void Tier 2 items.");
+            ItemCountersTierScoreTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier3", 12f, "Score for Tier 3 (red) and Void Tier 3 items.");
             ItemCountersTierScoreLunar = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Lunar", 0f, "Score for Lunar items.");
-            ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4f, "Score for Boss items.");
+            ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4f, "Score for Boss Tier (yellow) and Void Boss Tier items.");
             ItemCountersTierScoreNoTier = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "NoTier", 0f, "Score for items without a tier.");
 
             ItemCountersTierScores = new Dictionary<ItemTier, float>()
@@ -376,6 +377,136 @@ namespace BetterUI
                 { ItemTier.NoTier, ItemCountersTierScoreNoTier.Value},
             };
 
+
+            ItemCountersItemScoreDefaults = new Dictionary<string, float>()
+            {
+                // Tier 3 (including void)
+                { "AlienHead", 9f },
+                { "ArmorReductionOnHit", 7.5f },
+                { "BarrierOnOverHeal", 7.5f },
+                { "Behemoth", 10f },
+                { "BounceNearby", 14f },
+                { "CaptainDefenseMatrix", 0f },
+                { "Clover", 15f },
+                { "CloverVoid", 0f },
+                { "CritDamage", 11f },
+                { "Dagger", 11f },
+                { "DroneWeapons", 8f },
+                { "ExtraLife", 7f },
+                { "ExtraLifeVoid", 7f },
+                { "FallBoots", 4f },
+                { "GhostOnKill", 0.5f },
+                { "HeadHunter", 5f },
+                { "Icicle", 9f },
+                { "ImmuneToDebuff", 13f },
+                { "IncreaseHealing", 13f },
+                { "KillEliteFrenzy", 9f },
+                { "LaserTurbine", 11f },
+                { "MoreMissile", 13f },
+                { "NovaOnHeal", 7f },
+                { "PermanentDebuffOnHit", 7f },
+                { "Plant", 8f },
+                { "RandomEquipmentTrigger", 9f },
+                { "ScrapRed", 2f },
+                { "ShockNearby", 14f },
+                { "Talisman", 11f },
+                { "UtilitySkillMagazine", 11f },
+
+                // Tier 2 (including void)
+                { "AttackSpeedOnCrit", 3.25f },
+                { "Bandolier", 1.75f },
+                { "BonusGoldPackOnKill", 1f },
+                { "ChainLightning", 3.6f },
+                { "ChainLightningVoid", 3.8f },
+                { "DeathMark", 2.6f },
+                { "ElementalRingVoid", 2.75f },
+                { "EnergizedOnEquipmentUse", 2.8f },
+                { "EquipmentMagazine", 3f },
+                { "EquipmentMagazineVoid", 3f },
+                { "ExecuteLowHealthElite", 3.25f },
+                { "ExplodeOnDeath", 3.25f },
+                { "ExplodeOnDeathVoid", 2.75f },
+                { "Feather", 3f },
+                { "FireRing", 4f },
+                { "FreeChest", 1f },
+                { "HealOnCrit", 3.25f },
+                { "IceRing", 4f },
+                { "Infusion", 2.25f },
+                { "JumpBoost", 2.5f },
+                { "Missile", 3f },
+                { "MissileVoid", 4f },
+                { "MoveSpeedOnKill", 2.75f },
+                { "Phasing", 2.5f },
+                { "PrimarySkillShuriken", 2.8f },
+                { "RegeneratingScrap", 2f },
+                { "ScrapGreen", 2f },
+                { "Seed", 1.75f },
+                { "SlowOnHit", 1.5f },
+                { "SlowOnHitVoid", 1.85f },
+                { "SprintArmor", 2.25f },
+                { "SprintOutOfCombat", 2f },
+                { "Squid", 1.25f },
+                { "StrengthenBurn", 1.85f },
+                { "TPHealingNova", 0.5f },
+                { "Thorns", 3.1f },
+                { "WarCryOnMultiKill", 1.75f },
+
+                // Tier 1 (including void)
+                { "ArmorPlate", 1.1f },
+                { "AttackSpeedAndMoveSpeed", 1.2f },
+                { "BarrierOnKill", 1.2f },
+                { "Bear", 1.5f },
+                { "BearVoid", 1.2f },
+                { "BleedOnHit", 1.1f },
+                { "BleedOnHitVoid", 1.1f },
+                { "BossDamageBonus", 1.1f },
+                { "CritGlasses", 1.3f },
+                { "CritGlassesVoid", 1.5f },
+                { "Crowbar", 1f },
+                { "Firework", 0.9f },
+                { "FlatHealth", 0.6f },
+                { "FragileDamageBonus", 2.5f },
+                { "GoldOnHurt", 0.4f },
+                { "HealWhileSafe", 1f },
+                { "HealingPotion", 2f },
+                { "Hoof", 1.3f },
+                { "IgniteOnKill", 1f },
+                { "Medkit", 1.2f },
+                { "Mushroom", 0.9f },
+                { "MushroomVoid", 1.4f },
+                { "NearbyDamageBonus", 1.6f },
+                { "OutOfCombatArmor", 1.1f },
+                { "PersonalShield", 0.8f },
+                { "ScrapWhite", 0.8f },
+                { "SecondarySkillMagazine", 1.3f },
+                { "SprintBonus", 1.35f },
+                { "StickyBomb", 0.9f },
+                { "StunChanceOnHit", 0.7f },
+                { "Syringe", 1.2f },
+                { "Tooth", 1f },
+                { "TreasureCache", 1f },
+                { "TreasureCacheVoid", 2.5f },
+                { "WardOnLevel", 0.2f },
+
+                // Boss Tier (including void)
+                { "ArtifactKey", 0f },
+                { "BleedOnHitAndExplode", 3.5f },
+                { "BeetleGland", 1.5f },
+                { "FireballsOnHit", 2.25f },
+                { "Knurl", 2f },
+                { "LightningStrikeOnHit", 3f },
+                { "MinorConstructOnKill", 1.75f },
+                { "NovaOnLowHealth", 2f },
+                { "ParentEgg", 2.8f },
+                { "Pearl", 2f },
+                { "RoboBallBuddy", 2f },
+                { "ScrapYellow", 2f },
+                { "ShinyPearl", 8f },
+                { "SiphonOnLowHealth", 3f },
+                { "SprintWisp", 1.75f },
+                { "TitanGoldDuringTP", 0.5f },
+                { "VoidMegaCrabItem", 1.75f },
+            };
 
             ItemCountersItemScores = new Dictionary<ItemDef, float>();
 
