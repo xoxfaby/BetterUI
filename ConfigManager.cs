@@ -357,10 +357,10 @@ namespace BetterUI
             ItemCountersItemsByTierOrder = ItemCountersItemsByTierOrderString.Value.ToCharArray().Select(c => (ItemTier)char.GetNumericValue(c)).ToList();
 
             ItemCountersTierScoreTier1 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier1", 1f, "Score for Tier 1 (white) and Void Tier 1 items.");
-            ItemCountersTierScoreTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier2", 3f, "Score for Tier 2 (green) and Void Tier 2 items.");
-            ItemCountersTierScoreTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier3", 12f, "Score for Tier 3 (red) and Void Tier 3 items.");
+            ItemCountersTierScoreTier2 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier2", 2.5f, "Score for Tier 2 (green) and Void Tier 2 items.");
+            ItemCountersTierScoreTier3 = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Tier3", 10f, "Score for Tier 3 (red) and Void Tier 3 items.");
             ItemCountersTierScoreLunar = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Lunar", 0f, "Score for Lunar items.");
-            ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 4f, "Score for Boss Tier (yellow) and Void Boss Tier items.");
+            ItemCountersTierScoreBoss = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "Boss", 2.5f, "Score for Boss Tier (yellow) and Void Boss Tier items.");
             ItemCountersTierScoreNoTier = Bind(ConfigFileItemCounters, "ItemCounters Tier Score", "NoTier", 0f, "Score for items without a tier.");
 
             ItemCountersTierScores = new Dictionary<ItemTier, float>()
