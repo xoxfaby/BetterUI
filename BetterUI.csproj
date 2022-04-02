@@ -17,14 +17,20 @@
 
   <ItemGroup>
     <PackageReference Include="BepInEx.Core" Version="5.4.9" />
-    <PackageReference Include="BetterUnityPlugin" Version="1.0.0" />
+    <PackageReference Include="BetterUnityPlugin" Version="1.1.1" />
     <PackageReference Include="ItemStatsMod" Version="2.2.2" />
     <PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.3.1-r.0" />
-    <PackageReference Include="RoR2-BetterAPI" Version="2.0.2" />
 	<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
+    <PackageReference Include="RoR2-BetterAPI" Version="4.0.2" />
 	<PackageReference Include="KinematicCharacterController" Version="1.0.0" />
     <PackageReference Include="Facepunch.Steamworks" Version="0.7.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
