@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 20
-  productGUID: 3f0401c98aedd8a44b13cb602375cda8
+  productGUID: 555dc3d31b129aa44b653ae3aff3da66
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,15 +12,15 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: My project
+  companyName: Hopoo Games, LLC
+  productName: Risk of Rain 2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -39,7 +39,9 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 0}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -47,7 +49,7 @@ PlayerSettings:
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 0
+  m_ActiveColorSpace: 1
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
@@ -63,7 +65,7 @@ PlayerSettings:
   preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
   androidStartInFullscreen: 1
-  androidRenderOutsideSafeArea: 1
+  androidRenderOutsideSafeArea: 0
   androidUseSwappy: 0
   androidBlitType: 0
   defaultIsNativeResolution: 1
@@ -124,13 +126,13 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 1.2.2.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
-  xboxOneDisableKinectGpuReservation: 1
-  xboxOneEnable7thCore: 1
+  xboxOneDisableKinectGpuReservation: 0
+  xboxOneEnable7thCore: 0
   vrSettings:
     cardboard:
       depthFormat: 0
@@ -144,7 +146,7 @@ PlayerSettings:
       maximumSupportedHeadTracking: 1
     hololens:
       depthFormat: 1
-      depthBufferSharingEnabled: 1
+      depthBufferSharingEnabled: 0
     lumin:
       depthFormat: 0
       frameTiming: 2
@@ -152,11 +154,11 @@ PlayerSettings:
       glCacheMaxBlobSize: 524288
       glCacheMaxFileSize: 8388608
     oculus:
-      sharedDepthBuffer: 1
-      dashSupport: 1
+      sharedDepthBuffer: 0
+      dashSupport: 0
       lowOverheadMode: 0
       protectedContext: 0
-      v2Signing: 1
+      v2Signing: 0
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
@@ -182,7 +184,7 @@ PlayerSettings:
   CreateWallpaper: 0
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
-  StripUnusedMeshComponents: 1
+  StripUnusedMeshComponents: 0
   VertexChannelCompressionMask: 4054
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 10.0
@@ -230,7 +232,7 @@ PlayerSettings:
   iOSMetalForceHardShadows: 0
   metalEditorSupport: 1
   metalAPIValidation: 1
-  iOSRenderExtraFrameOnPause: 0
+  iOSRenderExtraFrameOnPause: 1
   iosCopyPluginsCodeInsteadOfSymlink: 0
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
@@ -265,73 +267,11 @@ PlayerSettings:
   AndroidAppBundleSizeToValidate: 150
   m_BuildTargetIcons: []
   m_BuildTargetPlatformIcons: []
-  m_BuildTargetBatching:
-  - m_BuildTarget: Standalone
-    m_StaticBatching: 1
-    m_DynamicBatching: 0
-  - m_BuildTarget: tvOS
-    m_StaticBatching: 1
-    m_DynamicBatching: 0
-  - m_BuildTarget: Android
-    m_StaticBatching: 1
-    m_DynamicBatching: 0
-  - m_BuildTarget: iPhone
-    m_StaticBatching: 1
-    m_DynamicBatching: 0
-  - m_BuildTarget: WebGL
-    m_StaticBatching: 0
-    m_DynamicBatching: 0
-  m_BuildTargetGraphicsJobs:
-  - m_BuildTarget: MacStandaloneSupport
-    m_GraphicsJobs: 0
-  - m_BuildTarget: Switch
-    m_GraphicsJobs: 1
-  - m_BuildTarget: MetroSupport
-    m_GraphicsJobs: 1
-  - m_BuildTarget: AppleTVSupport
-    m_GraphicsJobs: 0
-  - m_BuildTarget: BJMSupport
-    m_GraphicsJobs: 1
-  - m_BuildTarget: LinuxStandaloneSupport
-    m_GraphicsJobs: 1
-  - m_BuildTarget: PS4Player
-    m_GraphicsJobs: 1
-  - m_BuildTarget: iOSSupport
-    m_GraphicsJobs: 0
-  - m_BuildTarget: WindowsStandaloneSupport
-    m_GraphicsJobs: 1
-  - m_BuildTarget: XboxOnePlayer
-    m_GraphicsJobs: 1
-  - m_BuildTarget: LuminSupport
-    m_GraphicsJobs: 0
-  - m_BuildTarget: AndroidPlayer
-    m_GraphicsJobs: 0
-  - m_BuildTarget: WebGLSupport
-    m_GraphicsJobs: 0
-  m_BuildTargetGraphicsJobMode:
-  - m_BuildTarget: PS4Player
-    m_GraphicsJobMode: 0
-  - m_BuildTarget: XboxOnePlayer
-    m_GraphicsJobMode: 0
-  m_BuildTargetGraphicsAPIs:
-  - m_BuildTarget: AndroidPlayer
-    m_APIs: 150000000b000000
-    m_Automatic: 0
-  - m_BuildTarget: iOSSupport
-    m_APIs: 10000000
-    m_Automatic: 1
-  - m_BuildTarget: AppleTVSupport
-    m_APIs: 10000000
-    m_Automatic: 0
-  - m_BuildTarget: WebGLSupport
-    m_APIs: 0b000000
-    m_Automatic: 1
-  m_BuildTargetVRSettings:
-  - m_BuildTarget: Standalone
-    m_Enabled: 0
-    m_Devices:
-    - Oculus
-    - OpenVR
+  m_BuildTargetBatching: []
+  m_BuildTargetGraphicsJobs: []
+  m_BuildTargetGraphicsJobMode: []
+  m_BuildTargetGraphicsAPIs: []
+  m_BuildTargetVRSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
@@ -518,7 +458,7 @@ PlayerSettings:
   ps4RemotePlayKeyAssignment: -1
   ps4RemotePlayKeyMappingDir: 
   ps4PlayTogetherPlayerCount: 0
-  ps4EnterButtonAssignment: 1
+  ps4EnterButtonAssignment: 2
   ps4ApplicationParam1: 0
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
@@ -541,7 +481,7 @@ PlayerSettings:
   ps4UseAudio3dBackend: 0
   ps4UseLowGarlicFragmentationMode: 1
   ps4SocialScreenEnabled: 0
-  ps4ScriptOptimizationLevel: 0
+  ps4ScriptOptimizationLevel: 2
   ps4Audio3dVirtualSpeakerCount: 14
   ps4attribCpuUsage: 0
   ps4PatchPkgPath: 
@@ -591,7 +531,7 @@ PlayerSettings:
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
-  webGLMemorySize: 16
+  webGLMemorySize: 32
   webGLExceptionSupport: 1
   webGLNameFilesAsHashes: 0
   webGLDataCaching: 1
@@ -601,11 +541,24 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 1
+  webGLCompressionFormat: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: riskofrain2;thunderkit;TK_ADDRESSABLE
+    7: TK_ADDRESSABLE;riskofrain2;thunderkit
+    13: TK_ADDRESSABLE;riskofrain2;thunderkit
+    14: TK_ADDRESSABLE;riskofrain2;thunderkit
+    19: TK_ADDRESSABLE;riskofrain2;thunderkit
+    21: TK_ADDRESSABLE;riskofrain2;thunderkit
+    25: TK_ADDRESSABLE;riskofrain2;thunderkit
+    27: TK_ADDRESSABLE;riskofrain2;thunderkit
+    28: TK_ADDRESSABLE;riskofrain2;thunderkit
+    29: TK_ADDRESSABLE;riskofrain2;thunderkit
+    30: TK_ADDRESSABLE;riskofrain2;thunderkit
+    32: TK_ADDRESSABLE;riskofrain2;thunderkit
+    33: TK_ADDRESSABLE;riskofrain2;thunderkit
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -615,19 +568,19 @@ PlayerSettings:
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
-  assemblyVersionValidation: 1
+  assemblyVersionValidation: 0
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Template_3D
+  metroPackageName: Unity
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Template_3D
+  metroApplicationDescription: Unity
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -678,8 +631,7 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled:
-    UNet: 1
+  cloudServicesEnabled: {}
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -699,4 +651,4 @@ PlayerSettings:
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
-  legacyClampBlendShapeWeights: 0
+  legacyClampBlendShapeWeights: 1
