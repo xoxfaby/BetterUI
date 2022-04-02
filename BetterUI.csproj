@@ -26,11 +26,4 @@
     <PackageReference Include="Facepunch.Steamworks" Version="0.7.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Unity.ResourceManager">
-      <HintPath>G:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Unity.ResourceManager.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
