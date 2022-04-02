@@ -14,8 +14,8 @@ GraphicsSettings:
     m_Mode: 1
     m_Shader: {fileID: 64, guid: 0000000000000000f000000000000000, type: 0}
   m_LegacyDeferred:
-    m_Mode: 1
-    m_Shader: {fileID: 63, guid: 0000000000000000f000000000000000, type: 0}
+    m_Mode: 0
+    m_Shader: {fileID: 0}
   m_DepthNormals:
     m_Mode: 1
     m_Shader: {fileID: 62, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,6 +35,36 @@ GraphicsSettings:
   - {fileID: 15106, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10782, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 16000, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 6, guid: 0ff6cda1741104291bf949c87521a10b, type: 2}
+  - {fileID: 8, guid: ad44d28fd55b156cc532ad5e9de0d7da, type: 2}
+  - {fileID: 17000, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 7, guid: 06c9a63f748112842452224741565962, type: 2}
+  - {fileID: 4, guid: 4e3223ce1e8c134bfdfe52e1f6bd9efc, type: 2}
+  - {fileID: 16001, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 19, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 65, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 66, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 67, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 109, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 110, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 107, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9000, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9001, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9002, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9003, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9004, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9007, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9005, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 9006, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 68, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10757, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15309, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 19011, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15312, guid: 0000000000000000f000000000000000, type: 0}
   m_PreloadedShaders: []
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
     type: 0}
@@ -57,7 +87,7 @@ GraphicsSettings:
   m_FogKeepExp: 1
   m_FogKeepExp2: 1
   m_AlbedoSwatchInfos: []
-  m_LightsUseLinearIntensity: 0
-  m_LightsUseColorTemperature: 0
+  m_LightsUseLinearIntensity: 1
+  m_LightsUseColorTemperature: 1
   m_LogWhenShaderIsCompiled: 0
-  m_AllowEnlightenSupportForUpgradedProject: 0
+  m_AllowEnlightenSupportForUpgradedProject: 1
