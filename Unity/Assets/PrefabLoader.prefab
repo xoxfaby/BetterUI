@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: -1262857326, guid: 68f317e7f889c4d418afac7d12dc5903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabAddress: RoR2/Base/Commando/CommandoBody.prefab
+  prefabAddress: RoR2/Base/UI/TitleMenu.prefab

@@ -52,6 +52,7 @@ namespace BetterUI
             if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
 
+            BetterUIWindow.Initialize();
             RoR2.ItemCatalog.availability.CallWhenAvailable(ItemStats.Initialize);
         }
 
