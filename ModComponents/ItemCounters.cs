@@ -130,7 +130,7 @@ namespace BetterUI
                     {
                         itemScore += GetItemScore(ItemCatalog.GetItemDef(item)) * self.master.inventory.GetItemCount(item);
                     }
-                    BetterUIPlugin.sharedStringBuilder.Append(itemScore);
+                    BetterUIPlugin.sharedStringBuilder.AppendFormat("{0:0.#}", itemScore);
                 }
 
                 if (ConfigManager.ItemCountersShowItemsByTier.Value)
