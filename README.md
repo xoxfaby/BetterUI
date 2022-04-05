@@ -183,6 +183,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.8
+ - Bugfix: ItemScores: Fixed 2.5.7 fix
+
 #### v2.5.7
  - Bugfix: ItemScores: Fixed check that ensures item have a properly set name. 
 
