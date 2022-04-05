@@ -183,6 +183,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.7
+ - Bugfix: ItemScores: Fixed check that ensures item have a properly set name. 
+
 #### v2.5.6
  - Small Addition: DPSMeter: Added option to hide the DPSMeter when the chatbox is open (enabled by default)
  - Small Change: ItemStats: Rounded non-chance percentages to 2 digits as well
