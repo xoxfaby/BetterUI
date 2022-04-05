@@ -43,22 +43,23 @@ namespace BetterUI
             foreach (var itemIndex in RoR2.ItemCatalog.allItems)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
-                String safe_name = String.Join("", itemDef.name.Split(bad_characters));
-                if (String.IsNullOrWhiteSpace(safe_name) || String.IsNullOrWhiteSpace(itemDef.nameToken))
+                string safe_name = String.Join("", itemDef.name.Split(bad_characters));
+                if (String.IsNullOrWhiteSpace(safe_name))
                 {
-                    UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: name or nameToken is empty or null! ItemScores may be unreliable.");
+                    UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: name is empty or null! ItemScores may be unreliable.");
                     continue;
                 }
+                string title = itemDef.name != null ? Language.GetString(itemDef.nameToken) : itemDef.name;
                 float itemValue = GetTierScore(itemDef.tier);
                 ConfigEntry<float> itemScore;
                 if (first)
                 {
-                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{Language.GetString(itemDef.nameToken)}");
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, $"Score of each item for the ItemScore.\n{title}");
                     first = false;
                 }
                 else
                 {
-                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, Language.GetString(itemDef.nameToken));
+                    itemScore = ConfigManager.ConfigFileItemCounters.Bind<float>("ItemScores", safe_name, itemValue, title);
                 }
 
                 ConfigManager.ItemCountersItemScores[itemDef] = itemScore.Value;
