@@ -44,7 +44,7 @@ namespace BetterUI
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
                 String safe_name = String.Join("", itemDef.name.Split(bad_characters));
-                if (String.IsNullOrWhiteSpace(safe_name))
+                if (String.IsNullOrWhiteSpace(itemDef.nameToken))
                 {
                     UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
                     continue;
