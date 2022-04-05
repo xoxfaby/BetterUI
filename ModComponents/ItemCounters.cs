@@ -46,7 +46,7 @@ namespace BetterUI
                 String safe_name = String.Join("", itemDef.name.Split(bad_characters));
                 if (String.IsNullOrWhiteSpace(itemDef.nameToken))
                 {
-                    UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty! ItemScores may be unreliable.");
+                    UnityEngine.Debug.LogError($"BetterUI: Unable to generate ItemScore config option for item {itemDef.name}: nameToken is empty or null! ItemScores may be unreliable.");
                     continue;
                 }
                 float itemValue = GetTierScore(itemDef.tier);
