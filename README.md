@@ -183,6 +183,8 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.5.10
+ - Bugfix: ItemScores: Actually really finalized the fix for nameTokens being empty
 
 #### v2.5.9
  - Small Change: ItemScores: Total itemscore now rounds to 1 digit
