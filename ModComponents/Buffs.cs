@@ -77,6 +77,42 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.Overheat, "Overheat", "Overheat: Increases fire damage received");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LunarSecondaryRoot, "Lunar Root", "Root: Reduce movement speed to 0 for 3 (+3 per stack) seconds");
                 RegisterBuffInfo(RoR2.RoR2Content.Buffs.LunarDetonationCharge, "Ruin", "Consumes Ruin stacks to deal 300% damage plus 120% damage per Ruin stack (stackable)");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.EngiShield, "Engi Shield", "+100% shield, take no knockback from damage");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.LunarShell, "Lunar Shell", "Damage cannot exceed 10% of your max health");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.VoidFogMild, "Void Fog (Mild)", "Darkens your view and take increasing damage over time. Void Fields: Damage doesn't increase over time.");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.VoidFogStrong, "Void Fog (Strong)", "Darkens your view and take increasing damage over time.");
+
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.BodyArmor, "Body Armor", "Blocks the next hit, and gets consumed.");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.Deafened, "Deafened", "Muted.");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.EngiTeamShield, "Engi Shield (Team)", "+50% shield, +30% move speed");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.EnrageAncientWisp, "Enrage Ancient Wisp", "+40% move speed");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.GoldEmpowered, "Gold Empowered", "+100% damage");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.LightningShield, "Lightning Shield", "Entirely unused.");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.LoaderOvercharged, "Loader Overcharged", "As Loader, your melee attack does 2x damage and stuns for 1 second.");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.LoaderPylonPowered, "Loader Pylon Powered", "On hit, shocks up to 3 nearby enemies for 30% of the damage within 20m");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.MeatRegenBoost, "Meat Regen Boost", "+2 regen * (1f + currentLevel * 0.2f)");
+                RegisterBuffInfo(RoR2.JunkContent.Buffs.Slow30, "Slow30", "-30% movement speed");
+
+                
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.BearVoidCooldown, "Safer Spaces (Cooldown)", "Safer Spaces is on cooldown.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.BearVoidReady, "Safer Spaces (Ready)", "Safer Spaces will block the next hit, then go on cooldown.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.Blinded, "Blinded", "The area around you darkens, obscuring vision.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.ElementalRingVoidCooldown, "Singularity Band (Cooldown)", "Singularity Band is on cooldown.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.ElementalRingVoidReady, "Singularity Band (Ready)", "Singularity Band effect can be activated");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.EliteEarth, "Mending", "Gain power of a Mending Elite : Heals the nearest ally within 30m for 40% of the holders base damage 4 times per second.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.EliteVoid, "Voidtouched", "Collapse on hit and block one hit every 15 seconds.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.Fracture, "Collapse", "3 seconds after the first stack is applied, deals 400% damage per stack and removes all stacks (stackable).");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.JailerSlow, "Jailer Slow", "-100% movement speed");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.JailerTether, "Jailer Tether", "Indicator buff to show you are tethered. Take damage over time while tethered. Get far enough to break the tether.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.KillMoveSpeed, "Kill Move Speed", "Gain +25% movement speed. (Stackable)");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.MushroomVoidActive, "Heals for 2% (+2% per stack) of your health every second while sprinting.", "");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.OutOfCombatArmorBuff, "Opal Armor", "Gain +100 armor. Removed on hit.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.PermanentDebuff, "Permanent Armor Reduction", "Reduces armor by 2 (2 per stack) for the remainder of the stage, or until killed (stackable).");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.PrimarySkillShurikenBuff, "Shuriken", "Consumes a charge to launch a shuriken upon primary skill activation. (stackable)");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.StrongerBurn, "Stronger Burn", "Stronger variant of the Ignite effect. Increases damage taken from burning. Regen disabled.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.VoidRaidCrabWardWipeFog, "Void Crab Void Void Wipe Fog", "Darkens your view and take increasing damage over time.");
+                RegisterBuffInfo(RoR2.DLC1Content.Buffs.VoidSurvivorCorruptMode, "Void Fiend Corrupt Mode", "Abilities are transformed into more aggressive forms.");
+
             });
         }
 
