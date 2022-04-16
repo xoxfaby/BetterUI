@@ -16,15 +16,13 @@ MonoBehaviour:
   ShowOnStartup: 1
   GameExecutable: Risk of Rain 2.exe
   GamePath: G:\SteamLibrary\steamapps\common\Risk of Rain 2
-  IncludedSettings: 0
   Is64Bit: 1
   DateTimeFormat: HH:mm:ss:fff
   CreatedDateFormat: MMM/dd HH:mm:ss
   ShowLogWindow: 1
-  AttemptAddressableImport: 1
+  MarkdownOpenMode: 0
   SelectedPipeline: {fileID: 0}
   SelectedManifest: {fileID: 0}
   QuickAccessPipelines: []
   QuickAccessManifests: []
-  OldGuidGenerationMode: 0
-  GuidGenerationMode: 0
+  ImportConfiguration: {fileID: 0}
