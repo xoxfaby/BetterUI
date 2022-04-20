@@ -13,9 +13,9 @@
     <PackageReference Include="BepInEx.Core" Version="5.4.9" />
     <PackageReference Include="BetterUnityPlugin" Version="1.0.0" />
     <PackageReference Include="ItemStatsMod" Version="2.2.2" />
-    <PackageReference Include="RoR2-BetterAPI" Version="2.0.2"/>
+    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.3.1-r.0" />
+    <PackageReference Include="RoR2-BetterAPI" Version="2.0.2" />
 	<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
-	<PackageReference Include="RiskOfRain2" Version="1.0.6" />
 	<PackageReference Include="KinematicCharacterController" Version="1.0.0" />
     <PackageReference Include="Facepunch.Steamworks" Version="0.7.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
