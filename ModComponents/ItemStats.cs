@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using RoR2;
+using UnityEngine;
 
 namespace BetterUI
 {
@@ -185,7 +186,9 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.ExtraLifeVoid, "Uses", 1f, statFormatter:StatFormatter.Charges );
             RegisterStat(DLC1Content.Items.FragileDamageBonus, "Damage", 0.2f );
             RegisterModifier(ItemTag.Damage, DLC1Content.Items.FragileDamageBonus, ItemModifier.PercentBonus, 20);
-//            RegisterStat(DLC1Content.Items.FreeChest, "Shipping Request Form";
+            RegisterStat(DLC1Content.Items.FreeChest, "Tier 1 Chance", 1, stackingFormula: FreeChest, StatFormatter.Chance);
+            RegisterStat(DLC1Content.Items.FreeChest, "Tier 2 Chance", 2, stackingFormula: FreeChest, StatFormatter.Chance);
+            RegisterStat(DLC1Content.Items.FreeChest, "Tier 3 Chance", 3, stackingFormula: FreeChest, StatFormatter.Chance);
             RegisterStat(DLC1Content.Items.GoldOnHurt, "Base Gold", 3, statFormatter:StatFormatter.Gold );
             RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "Skill Cooldowns", 0.5f, ExponentialStacking, itemTag: ItemTag.SkillCooldown);
             RegisterModifier(ItemTag.SkillCooldown, DLC1Content.Items.HalfAttackSpeedHalfCooldowns, ItemModifier.ExponentialBonus, 0.5f);
@@ -590,6 +593,24 @@ namespace BetterUI
         public static float NoStacking(float value, float extraStackValue, int stacks)
         {
             return value;
+        }
+        public static float FreeChest(float value, float extraStackValue, int stacks)
+        {
+            float tier1 = 0.79f;
+            float tier2 = 0.2f * stacks;
+            float tier3 = 0.01f * Mathf.Pow(stacks, 2);
+            float weight = tier1 + tier2 + tier3;
+            switch (value)
+            {
+                case 1:
+                    return tier1 / weight;
+                case 2:
+                    return tier2 / weight;
+                case 3:
+                    return tier3 / weight;
+                default:
+                    return 0;
+            }
         }
 
         public delegate int CapFormula(float value, float extraStackValue, float procCoefficient);
