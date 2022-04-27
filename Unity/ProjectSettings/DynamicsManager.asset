@@ -7,7 +7,7 @@ PhysicsManager:
     x: 0
     y: -30
     z: 0
-  m_DefaultMaterial: {fileID: 5013, guid: 35d2eb65154fadae708a54470e36701f, type: 2}
+  m_DefaultMaterial: {fileID: 5016, guid: 1c07e841ed63acb171c681a93f34c2f0, type: 2}
   m_BounceThreshold: 2
   m_SleepThreshold: 0.005
   m_DefaultContactOffset: 0.01
