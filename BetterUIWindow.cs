@@ -31,10 +31,18 @@ namespace BetterUI
         static void BaseMainMenuScreen_Awake(Action<BaseMainMenuScreen> orig, BaseMainMenuScreen self)
         {
             var transform = self.transform.Find("SafeZone/GenericMenuButtonPanel");
+            var DescriptionGameObject = self.transform.Find("SafeZone/GenericMenuButtonPanel/JuicePanel/DescriptionPanel, Naked/ContentSizeFitter/DescriptionText");
+            var DescriptionController = DescriptionGameObject.GetComponent<LanguageTextMeshController>();
             if (transform != null)
             {
+                var hgButtons = prefab.GetComponentsInChildren<HGButton>();
+                foreach(var hgButton in hgButtons)
+                {
+                    hgButton.hoverLanguageTextMeshController = DescriptionController;
+                }
                 UnityEngine.Debug.Log("Boop: Panel Attached");
                 GameObject.Instantiate(prefab, transform);
+                
             }
             else
             {
@@ -43,6 +51,8 @@ namespace BetterUI
             orig(self);
         }
     }
+
+
     [ExecuteAlways]
     internal class PrefabLoader : MonoBehaviour
     {
@@ -66,7 +76,7 @@ namespace BetterUI
                     if (instance != null) DestroyImmediate(instance);
                     var prefab = obj.Result;
                     instance = Instantiate(prefab);
-                    instance.hideFlags |= HideFlags.DontSave;
+                    SetRecursiveFlags(instance.transform);
                     instance.transform.SetParent(this.gameObject.transform, false);
                     break;
                 case AsyncOperationStatus.Failed:
@@ -77,6 +87,15 @@ namespace BetterUI
                     break;
             }
         }
+
+        static void SetRecursiveFlags(Transform transform)
+        {
+            transform.gameObject.hideFlags |= HideFlags.DontSave;
+            foreach(Transform child in transform)
+            {
+                SetRecursiveFlags(child);
+            }
+        }
     }
     [ExecuteAlways]
     internal class SpriteLoader : MonoBehaviour
@@ -84,16 +103,20 @@ namespace BetterUI
         public Image image;
         public string spriteAddress;
 
-        void Start()
+        void LoadAsset()
         {
             image = this.GetComponent<Image>();
             Addressables.LoadAssetAsync<Sprite>(spriteAddress).Completed += SpriteLoaded;
         }
 
+        void Start()
+        {
+            LoadAsset();
+        }
+
         void OnValidate()
         {
-            image = this.GetComponent<Image>();
-            Addressables.LoadAssetAsync<Sprite>(spriteAddress).Completed += SpriteLoaded;
+            LoadAsset();
         }
 
         private void SpriteLoaded(AsyncOperationHandle<Sprite> obj)
