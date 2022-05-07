@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3129306233828474188}
   - component: {fileID: 3129306233828474191}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: PrefabLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3129306233828474190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1262857326, guid: 68f317e7f889c4d418afac7d12dc5903, type: 3}
+  m_Script: {fileID: -1262857326, guid: 51ca7772b3ef0c4439f8d29656abc146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabAddress: RoR2/Base/UI/TitleMenu.prefab
+  prefabAddress: 
