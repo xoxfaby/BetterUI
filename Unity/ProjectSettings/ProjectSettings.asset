@@ -243,9 +243,9 @@ PlayerSettings:
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
-  clonedFromGUID: c0afd0d1d80e3634a9dac47e8a0426ea
-  templatePackageId: com.unity.template.3d@4.2.8
-  templateDefaultScene: Assets/Scenes/SampleScene.unity
+  clonedFromGUID: 00000000000000000000000000000000
+  templatePackageId: 
+  templateDefaultScene: 
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -515,7 +515,7 @@ PlayerSettings:
   ps5BGMPath: 
   ps5ShareOverlayImagePath: 
   ps5NPConfigZipPath: 
-  ps5Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
+  ps5Passcode: F69AzBlax3CF3EDNhm3soLBPh71Yexui
   ps5UseResolutionFallback: 0
   ps5UseAudio3dBackend: 0
   ps5ScriptOptimizationLevel: 2
@@ -546,19 +546,19 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    7: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    13: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    14: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    19: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    21: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    25: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    27: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    28: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    29: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    30: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    32: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
-    33: riskofrain2;TK_ADDRESSABLE;UNITY_POST_PROCESSING_STACK_V2;thunderkit
+    1: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    7: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    13: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    14: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    19: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    21: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    25: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    27: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    28: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    29: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    30: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    32: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
+    33: riskofrain2;UNITY_POST_PROCESSING_STACK_V2;TK_ADDRESSABLE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05aefdad2c778247ab31cf76ea45bf2, type: 3}
   m_Name: AddressableGraphicsSettings
   m_EditorClassIdentifier: 
-  CustomDeferredReflection: 
-  CustomDeferredShading: 
-  CustomDeferredScreenspaceShadows: 
+  editor: {fileID: 0}
+  CustomDeferredReflection: RoR2/Base/Shaders/Internal-DeferredReflections.shader
+  CustomDeferredShading: RoR2/Base/Shaders/Internal-DeferredShadingCustom.shader
+  CustomDeferredScreenspaceShadows: NGSS/NGSS_Directional.shader
