@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.passivepicasso.thunderkit": "https://github.com/PassivePicasso/ThunderKit.git#RC_5_0_0",
+    "com.passivepicasso.thunderkit": "https://github.com/PassivePicasso/ThunderKit.git",
     "com.unity.assetbundlebrowser": "1.7.0",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.2.1",
@@ -8,8 +8,7 @@
     "com.unity.postprocessing": "2.3.0",
     "com.unity.test-framework": "1.1.24",
     "com.unity.timeline": "1.2.18",
-    "com.unity.ugui": "1.0.0",
-    "ror2importer": "https://github.com/PassivePicasso/RoR2ImportExtensions.git",
+    "riskofthunder-ror2importer": "https://github.com/PassivePicasso/RoR2ImportExtensions.git",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
