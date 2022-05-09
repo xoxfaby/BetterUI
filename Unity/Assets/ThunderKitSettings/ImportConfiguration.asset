@@ -95,7 +95,7 @@ MonoBehaviour:
   - {fileID: 8074915251368767508}
   - {fileID: 5793019479991339885}
   - {fileID: 2589617688258481134}
-  ConfigurationIndex: 10
+  ConfigurationIndex: 15
 --- !u!114 &701272364678378004
 MonoBehaviour:
   m_ObjectHideFlags: 0

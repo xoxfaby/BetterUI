@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: -573374155, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _token: TITLE_BETTERUI
+  _token: 
 --- !u!114 &2933658015805124736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,9 +394,9 @@ MonoBehaviour:
   showImageOnHover: 1
   imageOnHover: {fileID: 2933658015564582285}
   imageOnInteractable: {fileID: 0}
-  updateTextOnHover: 1
+  updateTextOnHover: 0
   hoverLanguageTextMeshController: {fileID: 0}
-  hoverToken: Change the settings for BetterUI
+  hoverToken: 
   uiClickSoundOverride: 
 --- !u!114 &2933658015805124749
 MonoBehaviour:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2933658015805124750}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1102028033, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
@@ -486,7 +486,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2933658016516394583}
   - component: {fileID: 2933658016516394581}
-  - component: {fileID: 1310547017}
   - component: {fileID: 2933658016516394580}
   m_Layer: 0
   m_Name: ButtonText
@@ -522,21 +521,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2933658016516394582}
   m_CullTransparentMesh: 0
---- !u!114 &1310547017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2933658016516394582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1545060799, guid: 51ca7772b3ef0c4439f8d29656abc146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  component: {fileID: 2933658016516394580}
-  fieldName: font
-  assetAddress: RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset
 --- !u!114 &2933658016516394580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +546,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: -6463119800548833703, guid: 00000000000000000000000000000000,
     type: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_sharedMaterial: {fileID: 4637027554361432571, guid: 00000000000000000000000000000000,
+    type: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
