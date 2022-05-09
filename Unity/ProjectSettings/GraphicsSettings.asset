@@ -2,17 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!30 &1
 GraphicsSettings:
-  m_ObjectHideFlags: 0
   serializedVersion: 13
   m_Deferred:
-    m_Mode: 1
-    m_Shader: {fileID: 0}
+    m_Mode: 2
+    m_Shader: {fileID: 5, guid: 0f7d9faacd95d132f14a81443dab7cc9, type: 2}
   m_DeferredReflections:
-    m_Mode: 1
-    m_Shader: {fileID: 0}
+    m_Mode: 2
+    m_Shader: {fileID: 3, guid: aa0dcf6f4823a69e7ce2de045dfbf1f8, type: 2}
   m_ScreenSpaceShadows:
-    m_Mode: 1
-    m_Shader: {fileID: 0}
+    m_Mode: 2
+    m_Shader: {fileID: 9, guid: a7a44f210cb79f7bba424c7b5efb9afa, type: 2}
   m_LegacyDeferred:
     m_Mode: 0
     m_Shader: {fileID: 0}
@@ -66,27 +65,45 @@ GraphicsSettings:
   - {fileID: 15304, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 15312, guid: 0000000000000000f000000000000000, type: 0}
   m_PreloadedShaders: []
-  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
-    type: 0}
+  m_SpritesDefaultMaterial: {fileID: 2, guid: cd6abf9cbc29db9c77108c5da068e87f, type: 2}
   m_CustomRenderPipeline: {fileID: 0}
   m_TransparencySortMode: 0
-  m_TransparencySortAxis: {x: 0, y: 0, z: 1}
-  m_DefaultRenderingPath: 1
-  m_DefaultMobileRenderingPath: 1
-  m_TierSettings: []
-  m_LightmapStripping: 0
-  m_FogStripping: 0
-  m_InstancingStripping: 0
-  m_LightmapKeepPlain: 1
-  m_LightmapKeepDirCombined: 1
-  m_LightmapKeepDynamicPlain: 1
-  m_LightmapKeepDynamicDirCombined: 1
-  m_LightmapKeepShadowMask: 1
-  m_LightmapKeepSubtractive: 1
-  m_FogKeepLinear: 1
-  m_FogKeepExp: 1
-  m_FogKeepExp2: 1
-  m_AlbedoSwatchInfos: []
+  m_TransparencySortAxis:
+    x: 0
+    y: 0
+    z: 1
+  m_TierSettings_Tier1:
+    renderingPath: 3
+    hdrMode: 1
+    realtimeGICPUUsage: 25
+    useCascadedShadowMaps: 1
+    prefer32BitShadowMaps: 0
+    enableLPPV: 0
+    useHDR: 1
+  m_TierSettings_Tier2:
+    renderingPath: 3
+    hdrMode: 1
+    realtimeGICPUUsage: 25
+    useCascadedShadowMaps: 1
+    prefer32BitShadowMaps: 0
+    enableLPPV: 0
+    useHDR: 1
+  m_TierSettings_Tier3:
+    renderingPath: 3
+    hdrMode: 1
+    realtimeGICPUUsage: 50
+    useCascadedShadowMaps: 1
+    prefer32BitShadowMaps: 0
+    enableLPPV: 0
+    useHDR: 1
+  m_ShaderDefinesPerShaderCompiler:
+  - shaderPlatform: 4
+    defines_Tier1:
+    - 67421192
+    defines_Tier2:
+    - 67421192
+    defines_Tier3:
+    - 67421192
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
   m_LogWhenShaderIsCompiled: 0
