@@ -95,7 +95,7 @@ MonoBehaviour:
   - {fileID: 8074915251368767508}
   - {fileID: 5793019479991339885}
   - {fileID: 2589617688258481134}
-  ConfigurationIndex: 16
+  ConfigurationIndex: 10
 --- !u!114 &701272364678378004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4761da1836bc043a94000ffe25bf40, type: 3}
   m_Name: Install RoR2 Editor Kit
   m_EditorClassIdentifier: 
-  enabled: 1
+  enabled: 0
 --- !u!114 &8074915251368767508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a6266570ba40d41bad5cf59676ab77, type: 3}
   m_Name: Install RoR2 Compatible Unity Multiplayer HLAPI
   m_EditorClassIdentifier: 
-  enabled: 1
+  enabled: 0
 --- !u!114 &8599229125954970460
 MonoBehaviour:
   m_ObjectHideFlags: 0

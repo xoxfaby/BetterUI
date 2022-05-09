@@ -4,68 +4,98 @@ using System.Text;
 
 using RoR2.UI;
 using RoR2.UI.MainMenu;
+using RoR2.UI.SkinControllers;
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Reflection;
 
 namespace BetterUI
 {
     internal static class BetterUIWindow
     {
         static AssetBundle bundle;
-        static GameObject prefab;
+        static GameObject modPanelPrefab;
+        static GameObject modButtonPrefab;
+        static GameObject betterUIWindowPrefab;
+        internal static Transform safeZone;
 
         static BetterUIWindow()
         {
             bundle = AssetBundle.LoadFromMemory(Properties.Resources.betteruiassets);
-            prefab = bundle.LoadAsset<GameObject>($"Assets/ModPanel.prefab");
+            modPanelPrefab = bundle.LoadAsset<GameObject>($"Assets/ModPanel.prefab");
+            modButtonPrefab = bundle.LoadAsset<GameObject>($"Assets/ModButton.prefab");
+            betterUIWindowPrefab = bundle.LoadAsset<GameObject>($"Assets/BetterUIWindow.prefab");
         }
 
         internal static void Initialize()
         {
             BetterUIPlugin.Hooks.Add<BaseMainMenuScreen>(nameof(BaseMainMenuScreen.Awake), BaseMainMenuScreen_Awake);
+
+            BetterUI.Utils.RegisterLanguageToken("TITLE_BETTERUI", "BetterUI");
+            BetterUI.Utils.RegisterLanguageToken("DESCRIPTION_BETTERUI", "Open the BetterUI window");
         }
+
 
         static void BaseMainMenuScreen_Awake(Action<BaseMainMenuScreen> orig, BaseMainMenuScreen self)
         {
+            safeZone = self.transform.Find("SafeZone");
             var transform = self.transform.Find("SafeZone/GenericMenuButtonPanel");
             var DescriptionGameObject = self.transform.Find("SafeZone/GenericMenuButtonPanel/JuicePanel/DescriptionPanel, Naked/ContentSizeFitter/DescriptionText");
-            var DescriptionController = DescriptionGameObject.GetComponent<LanguageTextMeshController>();
-            if (transform != null)
+            if (transform != null || DescriptionGameObject != null)
             {
-                var hgButtons = prefab.GetComponentsInChildren<HGButton>();
-                foreach(var hgButton in hgButtons)
+                var DescriptionController = DescriptionGameObject.GetComponent<LanguageTextMeshController>();
+                var modPanel = GameObject.Instantiate(modPanelPrefab, transform);
+                foreach(var hgButton in modPanel.GetComponentsInChildren<HGButton>())
                 {
                     hgButton.hoverLanguageTextMeshController = DescriptionController;
                 }
-                UnityEngine.Debug.Log("Boop: Panel Attached");
-                GameObject.Instantiate(prefab, transform);
-                
-            }
-            else
-            {
-                UnityEngine.Debug.Log("Boop: Panel Not Attached");
             }
             orig(self);
         }
     }
 
+    public class BetterUIEventFunctions : MonoBehaviour
+    {
+        static Dictionary<GameObject, GameObject> spawnedGameObjects = new Dictionary<GameObject, GameObject>();
+        public void createWindow(GameObject prefab)
+        {
+            if (BetterUIWindow.safeZone != null)
+            {
+                var exists = spawnedGameObjects.TryGetValue(prefab, out var instance);
+                if (!exists || instance == null)
+                {
+                    spawnedGameObjects[prefab] = GameObject.Instantiate(prefab, BetterUIWindow.safeZone);
+                }
+            }
+        }
+    }
 
     [ExecuteAlways]
     internal class PrefabLoader : MonoBehaviour
     {
         public string prefabAddress;
+        private string loadedPrefab;
+        private Boolean loading = false;
         GameObject instance;
         void Start()
         {
-            Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
+            if (!loading)
+            {
+                loading = true;
+                Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
+            }
         }
 
         void OnValidate()
         {
-            Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
+            if (!loading)
+            {
+                loading = true;
+                Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
+            }
         }
 
         private void PrefabLoaded(AsyncOperationHandle<GameObject> obj)
@@ -73,14 +103,19 @@ namespace BetterUI
             switch (obj.Status)
             {
                 case AsyncOperationStatus.Succeeded:
+                    if (loadedPrefab == prefabAddress) break;
                     if (instance != null) DestroyImmediate(instance);
                     var prefab = obj.Result;
                     instance = Instantiate(prefab);
                     SetRecursiveFlags(instance.transform);
                     instance.transform.SetParent(this.gameObject.transform, false);
+                    loadedPrefab = prefabAddress;
+                    loading = false;
                     break;
                 case AsyncOperationStatus.Failed:
+                    if (instance != null) DestroyImmediate(instance);
                     Debug.LogError("Prefab load failed.");
+                    loading = false;
                     break;
                 default:
                     // case AsyncOperationStatus.None:
@@ -98,18 +133,33 @@ namespace BetterUI
         }
     }
     [ExecuteAlways]
-    internal class SpriteLoader : MonoBehaviour
+    internal class AddressableAssetLoader : MonoBehaviour
     {
-        public Image image;
-        public string spriteAddress;
+        public Component component;
+        public string fieldName;
+        public string assetAddress;
+
+        private static readonly MethodInfo LoadAssetAsyncInfo = typeof(Addressables).GetMethod(nameof(Addressables.LoadAssetAsync), new[] { typeof(string) });
 
         void LoadAsset()
         {
-            image = this.GetComponent<Image>();
-            Addressables.LoadAssetAsync<Sprite>(spriteAddress).Completed += SpriteLoaded;
+            var typ = component.GetType();
+            var field = typ.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.NonPublic);
+            PropertyInfo property = null;
+            if (field == null)
+            {
+                property = typ.GetProperty(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.NonPublic);
+                if (property == null) return;
+            }
+            var meth = LoadAssetAsyncInfo.MakeGenericMethod(field?.FieldType ?? property.PropertyType);
+            var awaiter = meth.Invoke(null, new object[] { assetAddress });
+            var wait = awaiter.GetType().GetMethod("WaitForCompletion", BindingFlags.Instance | BindingFlags.Public);
+            var asset = wait.Invoke(awaiter, null);
+            field?.SetValue(component, asset);
+            property?.SetValue(component, asset);
         }
 
-        void Start()
+        void Awake()
         {
             LoadAsset();
         }
@@ -118,48 +168,34 @@ namespace BetterUI
         {
             LoadAsset();
         }
-
-        private void SpriteLoaded(AsyncOperationHandle<Sprite> obj)
-            {
-                switch (obj.Status)
-                {
-                    case AsyncOperationStatus.Succeeded:
-                        image.sprite = obj.Result;
-                        break;
-                    case AsyncOperationStatus.Failed:
-                        Debug.LogError("Sprite load failed.");
-                        break;
-                    default:
-                        // case AsyncOperationStatus.None:
-                        break;
-                }
-            }
     }
 
     [ExecuteAlways]
     internal class HGButtonLoader : MonoBehaviour
     {
-        public HGButton hgButton;
-        public string imageOnHoverAddress;
-
-        void Start()
+        public ButtonSkinController buttonSkinController;
+        public string SkinDataAddress;
+        void Awake()
         {
-            hgButton = this.GetComponent<HGButton>();
-            Addressables.LoadAssetAsync<Image>(imageOnHoverAddress).Completed += ImageLoaded;
+            buttonSkinController = this.GetComponent<ButtonSkinController>();
+            buttonSkinController.enabled = false;
+            Addressables.LoadAssetAsync<UISkinData>(SkinDataAddress).Completed += SkinDataLoaded;
         }
 
         void OnValidate()
         {
-            hgButton = this.GetComponent<HGButton>();
-            Addressables.LoadAssetAsync<Image>(imageOnHoverAddress).Completed += ImageLoaded;
+            buttonSkinController = this.GetComponent<ButtonSkinController>();
+            buttonSkinController.enabled = false;
+            Addressables.LoadAssetAsync<UISkinData>(SkinDataAddress).Completed += SkinDataLoaded;
         }
 
-        private void ImageLoaded(AsyncOperationHandle<Image> obj)
+        private void SkinDataLoaded(AsyncOperationHandle<UISkinData> obj)
         {
             switch (obj.Status)
             {
                 case AsyncOperationStatus.Succeeded:
-                    hgButton.imageOnHover = obj.Result;
+                    buttonSkinController.skinData = obj.Result;
+                    buttonSkinController.enabled = true;
                     break;
                 case AsyncOperationStatus.Failed:
                     Debug.LogError("Sprite load failed.");
