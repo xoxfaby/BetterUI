@@ -81,16 +81,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1803647914199636229}
     m_Modifications:
+    - target: {fileID: 2933658015511045583, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5982802615382818890, guid: 00000000000000000000000000000000,
+        type: 0}
+    - target: {fileID: 2933658015564582285, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2672845643860450272, guid: 00000000000000000000000000000000,
+        type: 0}
     - target: {fileID: 2933658015805124736, guid: fa1a1afc37de91a4d889c259cf732c3b,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7611533459502552279, guid: 00000000000000000000000000000000,
         type: 0}
+    - target: {fileID: 2933658015805124737, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: _token
+      value: BETTERUI_TITLE
+      objectReference: {fileID: 0}
     - target: {fileID: 2933658015805124738, guid: fa1a1afc37de91a4d889c259cf732c3b,
         type: 3}
       propertyPath: hoverToken
       value: Open the BetterUI Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933658015805124738, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: updateTextOnHover
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2933658015805124738, guid: fa1a1afc37de91a4d889c259cf732c3b,
         type: 3}
@@ -254,7 +276,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2933658016516394580, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: -6463119800548833703, guid: 00000000000000000000000000000000,
+        type: 0}
+    - target: {fileID: 2933658016516394580, guid: fa1a1afc37de91a4d889c259cf732c3b,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4637027554361432571, guid: 00000000000000000000000000000000,
+        type: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: fa1a1afc37de91a4d889c259cf732c3b, type: 3}
 --- !u!1 &548095938755256106 stripped
 GameObject:

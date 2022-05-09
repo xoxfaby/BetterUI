@@ -7,10 +7,10 @@ using RoR2.UI.MainMenu;
 using RoR2.UI.SkinControllers;
 
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System.Reflection;
+using System.Collections;
 
 namespace BetterUI
 {
@@ -20,7 +20,7 @@ namespace BetterUI
         static GameObject modPanelPrefab;
         static GameObject modButtonPrefab;
         static GameObject betterUIWindowPrefab;
-        internal static Transform safeZone;
+        internal static Transform menuParent;
 
         static BetterUIWindow()
         {
@@ -34,14 +34,14 @@ namespace BetterUI
         {
             BetterUIPlugin.Hooks.Add<BaseMainMenuScreen>(nameof(BaseMainMenuScreen.Awake), BaseMainMenuScreen_Awake);
 
-            BetterUI.Utils.RegisterLanguageToken("TITLE_BETTERUI", "BetterUI");
+            BetterUI.Utils.RegisterLanguageToken("BETTERUI_TITLE", "BetterUI");
             BetterUI.Utils.RegisterLanguageToken("DESCRIPTION_BETTERUI", "Open the BetterUI window");
         }
 
 
         static void BaseMainMenuScreen_Awake(Action<BaseMainMenuScreen> orig, BaseMainMenuScreen self)
         {
-            safeZone = self.transform.Find("SafeZone");
+            menuParent = self.transform;
             var transform = self.transform.Find("SafeZone/GenericMenuButtonPanel");
             var DescriptionGameObject = self.transform.Find("SafeZone/GenericMenuButtonPanel/JuicePanel/DescriptionPanel, Naked/ContentSizeFitter/DescriptionText");
             if (transform != null || DescriptionGameObject != null)
@@ -62,12 +62,12 @@ namespace BetterUI
         static Dictionary<GameObject, GameObject> spawnedGameObjects = new Dictionary<GameObject, GameObject>();
         public void createWindow(GameObject prefab)
         {
-            if (BetterUIWindow.safeZone != null)
+            if (BetterUIWindow.menuParent != null)
             {
                 var exists = spawnedGameObjects.TryGetValue(prefab, out var instance);
                 if (!exists || instance == null)
                 {
-                    spawnedGameObjects[prefab] = GameObject.Instantiate(prefab, BetterUIWindow.safeZone);
+                    spawnedGameObjects[prefab] = GameObject.Instantiate(prefab, BetterUIWindow.menuParent);
                 }
             }
         }
@@ -82,16 +82,17 @@ namespace BetterUI
         GameObject instance;
         void Start()
         {
-            if (!loading)
-            {
-                loading = true;
-                Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
-            }
+            LoadPrefab();
         }
 
         void OnValidate()
         {
-            if (!loading)
+            LoadPrefab();
+        }
+
+        void LoadPrefab()
+        {
+            if (!string.IsNullOrEmpty(prefabAddress) && !loading)
             {
                 loading = true;
                 Addressables.LoadAssetAsync<GameObject>(prefabAddress).Completed += PrefabLoaded;
@@ -132,6 +133,7 @@ namespace BetterUI
             }
         }
     }
+
     [ExecuteAlways]
     internal class AddressableAssetLoader : MonoBehaviour
     {
@@ -141,7 +143,7 @@ namespace BetterUI
 
         private static readonly MethodInfo LoadAssetAsyncInfo = typeof(Addressables).GetMethod(nameof(Addressables.LoadAssetAsync), new[] { typeof(string) });
 
-        void LoadAsset()
+        void LoadAsset(bool dontSave = false)
         {
             var typ = component.GetType();
             var field = typ.GetField(fieldName, BindingFlags.Public | BindingFlags.Static | BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.NonPublic);
@@ -155,55 +157,32 @@ namespace BetterUI
             var awaiter = meth.Invoke(null, new object[] { assetAddress });
             var wait = awaiter.GetType().GetMethod("WaitForCompletion", BindingFlags.Instance | BindingFlags.Public);
             var asset = wait.Invoke(awaiter, null);
-            field?.SetValue(component, asset);
-            property?.SetValue(component, asset);
-        }
-
-        void Awake()
-        {
-            LoadAsset();
-        }
-
-        void OnValidate()
-        {
-            LoadAsset();
-        }
-    }
-
-    [ExecuteAlways]
-    internal class HGButtonLoader : MonoBehaviour
-    {
-        public ButtonSkinController buttonSkinController;
-        public string SkinDataAddress;
-        void Awake()
-        {
-            buttonSkinController = this.GetComponent<ButtonSkinController>();
-            buttonSkinController.enabled = false;
-            Addressables.LoadAssetAsync<UISkinData>(SkinDataAddress).Completed += SkinDataLoaded;
-        }
-
-        void OnValidate()
-        {
-            buttonSkinController = this.GetComponent<ButtonSkinController>();
-            buttonSkinController.enabled = false;
-            Addressables.LoadAssetAsync<UISkinData>(SkinDataAddress).Completed += SkinDataLoaded;
-        }
-
-        private void SkinDataLoaded(AsyncOperationHandle<UISkinData> obj)
-        {
-            switch (obj.Status)
+            var assetObject = (UnityEngine.Object)asset;
+            if (assetObject != null)
             {
-                case AsyncOperationStatus.Succeeded:
-                    buttonSkinController.skinData = obj.Result;
-                    buttonSkinController.enabled = true;
-                    break;
-                case AsyncOperationStatus.Failed:
-                    Debug.LogError("Sprite load failed.");
-                    break;
-                default:
-                    // case AsyncOperationStatus.None:
-                    break;
+                if (dontSave)
+                {
+                    assetObject.hideFlags |= HideFlags.DontSave;
+                }
+                field?.SetValue(component, asset);
+                property?.SetValue(component, asset);
             }
         }
+        IEnumerator WaitAndLoadAsset()
+        {
+            yield return new WaitUntil(() => Addressables.InternalIdTransformFunc != null);
+            LoadAsset(true);
+        }
+
+        void Start()
+        {
+            LoadAsset();
+        }
+
+        void OnValidate()
+        {
+            if(gameObject.activeInHierarchy) StartCoroutine(WaitAndLoadAsset());
+        }
+
     }
 }
