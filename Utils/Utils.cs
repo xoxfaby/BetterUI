@@ -10,9 +10,28 @@ namespace BetterUI
 {
     static class Utils
     {
+        static Dictionary<string, List<KeyValuePair<string, string>>> LanguageStrings = new Dictionary<string, List<KeyValuePair<string, string>>>();
+        static Utils()
+        {
+            RoR2.Language.onCurrentLanguageChanged += Language_onCurrentLanguageChanged;
+        }
+
+        static private void Language_onCurrentLanguageChanged()
+        {
+            if(LanguageStrings.TryGetValue(RoR2.Language.currentLanguageName, out var strings)){
+                RoR2.Language.currentLanguage.SetStringsByTokens(strings);
+            }
+        }
+
         public static void RegisterLanguageToken(string token, string text, string language = "en")
         {
-            RoR2.Language.GetOrCreateLanguage(language).stringsByToken[token] = text;
+            if(!LanguageStrings.ContainsKey(language)) LanguageStrings[language] = new List<KeyValuePair<string, string>>();
+            LanguageStrings[language].Add(new KeyValuePair<string, string>(token, text));
+
+            if(RoR2.Language.currentLanguageName == language)
+            {
+                RoR2.Language.currentLanguage.SetStringByToken(token, text);
+            }
         }
 
         public static float LuckCalc(float chance, float luck)
