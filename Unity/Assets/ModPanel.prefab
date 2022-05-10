@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &522421856566537073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548095938755256106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1488684532, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewableName: /BetterUI/
+  markAsViewedOnDisable: 0
+  markAsViewedOnHover: 0
+  viewableVisualStyle: 0
 --- !u!114 &7252004267390835688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 2933658015805124738, guid: fa1a1afc37de91a4d889c259cf732c3b,
         type: 3}
       propertyPath: hoverToken
-      value: Open the BetterUI Window
+      value: BETTERUI_TITLE_HOVER
       objectReference: {fileID: 0}
     - target: {fileID: 2933658015805124738, guid: fa1a1afc37de91a4d889c259cf732c3b,
         type: 3}
