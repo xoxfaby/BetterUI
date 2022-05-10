@@ -7,10 +7,7 @@ Each can be disabled and configured in the config file.
 
 If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
 
-https://github.com/sponsors/xoxfaby (preferred)
-https://patreon.com/xoxfaby
-or directly through paypal:
-https://streamelements.com/xoxfaby/tip
+https://github.com/sponsors/xoxfaby
 
 ## Currently implemented:
 - ItemStats
@@ -182,6 +179,12 @@ TN = NoTier Last
 
 
 ## Changelog
+
+### v2.6.0
+ - Addition: BetterUI Window: For now, this window just shows some helpful links, but it lays the groundwork to let you change the BetterUI settings in-game in the future.
+
+#### v2.5.11 & v2.5.12
+ - Bugfix: Update for the latest patch
 
 #### v2.5.10
  - Bugfix: ItemScores: Actually really finalized the fix for nameTokens being empty
