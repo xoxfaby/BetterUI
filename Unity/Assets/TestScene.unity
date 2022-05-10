@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 3129306233828474191, guid: 021c27ad29daeed458afcf3bb0d9f29d,
         type: 3}
       propertyPath: prefabAddress
-      value: RoR2/Base/UI/ProfileMenu.prefab
+      value: RoR2/Base/UI/TitleMenu.prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021c27ad29daeed458afcf3bb0d9f29d, type: 3}
