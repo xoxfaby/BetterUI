@@ -33,7 +33,6 @@ namespace BetterUI
 
             instance = this;
             this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
-            this.gameObject.AddComponent<BlacklistChecker>();
 
             if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
@@ -52,7 +51,7 @@ namespace BetterUI
             if (ConfigManager.ComponentsMisc.Value)
                 Misc.Hook();
 
-            BetterUIWindow.Initialize();
+            BetterUIWindow.Init();
             RoR2.ItemCatalog.availability.CallWhenAvailable(ItemStats.Initialize);
         }
 

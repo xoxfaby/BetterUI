@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+### v2.6.1
+ - Removed blacklist. Yes, this means I plan to continue working on BetterUI. 
+
 ### v2.6.0
  - Addition: BetterUI Window: For now, this window just shows some helpful links, but it lays the groundwork to let you change the BetterUI settings in-game in the future.
 

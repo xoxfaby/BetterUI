@@ -31,7 +31,7 @@ namespace BetterUI
             betterUIWindowPrefab = bundle.LoadAsset<GameObject>($"Assets/BetterUIWindow.prefab");
         }
 
-        internal static void Initialize()
+        internal static void Init()
         {
             BetterUIPlugin.Hooks.Add<BaseMainMenuScreen>(nameof(BaseMainMenuScreen.Awake), BaseMainMenuScreen_Awake);
 
