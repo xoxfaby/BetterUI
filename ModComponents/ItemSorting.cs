@@ -87,7 +87,13 @@ namespace BetterUI
         private static ItemSorter<bool> onKillEffectSorter = (order, inventory, item) => onKillEffectFilter(item);
         private static ItemSorter<bool> equipmentRelatedSorter = (order, inventory, item) => equipmentRelatedFilter(item);
         private static ItemSorter<bool> sprintRelatedSorter = (order, inventory, item) => sprintRelatedFilter(item);
-        private static ItemSorter<int> tierSorter = (order, inventory, item) => ConfigManager.SortingTierOrder[tierMap[ItemCatalog.GetItemDef(item).tier]];
+        private static ItemSorter<int> tierSorter = (order, inventory, item) =>
+        {
+            if (tierMap.TryGetValue(ItemCatalog.GetItemDef(item).tier, out int value)){
+                return ConfigManager.SortingTierOrder[value];
+            }
+            return ConfigManager.SortingTierOrder[5];
+        };
         private static ItemSorter<int> stackSorter = (order, inventory, item) => inventory.itemStacks[(int)item];
         private static ItemSorter<int> pickupSorter = (order, inventory, item) => inventory.itemAcquisitionOrder.IndexOf(item);
         private static ItemSorter<String> alphabeticalSorter = (order, inventory, item) => Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
