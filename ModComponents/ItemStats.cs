@@ -217,9 +217,25 @@ namespace BetterUI
 
             RegisterModifier(ItemTag.Luck, "Luck", ItemModifier.LuckBonus, ItemModifier.LuckLocator, ItemModifier.LuckChecker, ItemModifier.LuckCounter, "Luck");
             RegisterModifier(ItemTag.Allies, "Ally", ItemModifier.AlliesBonus, ItemModifier.AlliesLocator, ItemModifier.AlliesChecker, ItemModifier.AlliesCounter, "Allies");
-
         }
 
+        public static List<ItemStat> GetItemStats(ItemDef itemDef)
+        {
+            if (itemStats.TryGetValue(itemDef, out var stats)) return stats;
+            return null;
+        }
+
+        public static List<ItemTag> GetItemTags(ItemStat itemStat)
+        {
+            if (itemTags.TryGetValue(itemStat, out var tags)) return tags;
+            return null;
+        }
+
+        public static List<ItemModifier> GetItemModifers(ItemTag itemTag)
+        {
+            if (itemModifiers.TryGetValue(itemTag, out var modifiers)) return modifiers;
+            return null;
+        }
 
         public static ItemStat RegisterStat(ItemDef itemDef, string nameToken, float value, StackingFormula stackingFormula = null, StatFormatter statFormatter = null, ItemTag itemTag = null)
         {
