@@ -70,7 +70,7 @@ namespace BetterUI
             SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("FireCorruptBeam")).skillDescriptionToken = "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION";
             SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("FireCorruptDisk")).skillDescriptionToken = "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION";
             SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("VoidBlinkDown")).skillDescriptionToken = "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION";
-            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("CrushCorruption")).skillDescriptionToken = "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION";
+            SkillCatalog.GetSkillDef(Utils.TheREALFindSkillIndexByName("CrushHealth")).skillDescriptionToken = "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION";
         }
         
         public static CharacterMaster updateDisplayMaster;
