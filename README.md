@@ -181,12 +181,16 @@ TN = NoTier Last
 ## Changelog
 
 
-### v2.6.2
+#### v2.6.3
+ - Bugfix: AdvancedIcons: Fixed Void's special and corrupted special having reverse descriptions. 
+ - Small Addition: Buffs: Added some missing descriptions for vanilla buffs.(Thanks [DestroyedClone](https://thunderstore.io/package/DestroyedClone/))
+
+#### v2.6.2
  - Bugfix: ItemSorting: Fixed a bug that caused BetterUI to break when custom Item Tiers are added, for now BetterUI will simply treat these items as NoTier tier. In the future, there will be config options for custom item tiers. Some developers have already "hacked" their tiers into BetterUI to fix this, this method will continue to work.   
  - Bugfix: Oops: Removed some debug text that was spammed into the console when the Strides of Heresy skill was being used. 
  - Mod Compatibility: ItemStats: Added helper methods for developers to access the ItemStats for an ItemDef, the ItemTags for an ItemStat and the ItemModifiers for an ItemTag. This allows easier access to change or remove ItemStats that have already been added, such as the ItemStats BetterUI adds for vanilla Items. This will allow developers of mods that change the way vanilla items work to also change the corresponding ItemStats. In the future, there will likely be a more user-friendly way to change existing ItemStats but this, somewhat raw, access to the ItemStats allows for max compatibility without large changes.  
 
-### v2.6.1
+#### v2.6.1
  - Removed blacklist. Yes, this means I plan to continue working on BetterUI. 
 
 ### v2.6.0
