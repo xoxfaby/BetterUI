@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.6.4
+
+ - Bugfix: Buffs: Fixed an error where a missing BuffDef was causing the game to hang on load. 
 
 #### v2.6.3
  - Bugfix: AdvancedIcons: Fixed Void's special and corrupted special having reverse descriptions. 
