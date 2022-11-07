@@ -128,6 +128,11 @@ namespace BetterUI
 
         public static void RegisterBuffInfo(BuffDef buffDef, string nameToken = null, string descriptionToken = null)
         {
+            if(buffDef == null)
+            {
+                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {Language.GetString(nameToken)}");
+                return;
+            }
             buffInfos.TryGetValue(buffDef, out BuffInfo buffInfo);
             buffInfo.nameToken = buffInfo.nameToken ?? nameToken;
             buffInfo.descriptionToken = buffInfo.descriptionToken ?? descriptionToken;
@@ -135,6 +140,11 @@ namespace BetterUI
         }
         public static void RegisterBuffInfo(BuffDef buffDef, BuffInfo buffInfo)
         {
+            if (buffDef == null)
+            {
+                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {Language.GetString("nameToken")}");
+                return;
+            }
             if (BetterUIPlugin.BetterAPIModIntegration)
             {
                 ModCompatibility.BetterAPICompatibility.Buffs.AddInfo(buffDef, buffInfo);
