@@ -15,7 +15,13 @@ namespace BetterUI
             // Combine the directory of the .dll file with the name of the /Languages/ directory to get the full path
             string languagesPath = Path.Combine(dllPath, "Languages");
 
-            // Get a list of all .json files in the /Languages/ directory
+            // If the /Languages/ directory does not exist, use the directory of the .dll file instead
+            if (!Directory.Exists(languagesPath))
+            {
+                languagesPath = dllPath;
+            }
+
+            // Get a list of all .json files in the /Languages/ directory or the directory of the .dll file
             string[] jsonFiles = Directory.GetFiles(languagesPath, "*.json");
 
             // Loop through each .json file
