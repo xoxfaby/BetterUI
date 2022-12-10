@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.7.2
+ - Bugfix: Language Support: Fixes crash when a malformed language file is found. 
+
 #### v2.7.1
  - Bugfix: Language Support: Searches the plugin folder for languages file if the Languages folder doesn't exist. 
 
