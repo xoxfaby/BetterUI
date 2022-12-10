@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.7.1
+ - Bugfix: Language Support: Searches the plugin folder for languages file if the Languages folder doesn't exist. 
+
 ### v2.7.0
 
  - Feature: Language Support: BetterUI now supports multiple languages. Currently, only the original English language is included, but users can submit pull requests on the github to add additional languages.
