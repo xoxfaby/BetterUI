@@ -30,17 +30,25 @@ namespace BetterUI
                 // Read the contents of the .json file
                 string json = File.ReadAllText(jsonFile);
 
-                // Deserialize the JSON into a dictionary
-                Dictionary<string, string> languageData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-
-                // Get the name of the .json file without the .json extension
-                string language = Path.GetFileNameWithoutExtension(jsonFile);
-
-                // Loop through each item in the dictionary
-                foreach (KeyValuePair<string, string> item in languageData)
+                try
                 {
-                    // Call BetterUI.Utils.RegisterLanguageToken with the appropriate values
-                    BetterUI.Utils.RegisterLanguageToken(item.Key, item.Value, language);
+                    // Deserialize the JSON into a dictionary
+                    Dictionary<string, string> languageData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+                    // Get the name of the .json file without the .json extension
+                    string language = Path.GetFileNameWithoutExtension(jsonFile);
+
+                    // Loop through each item in the dictionary
+                    foreach (KeyValuePair<string, string> item in languageData)
+                    {
+                        // Call BetterUI.Utils.RegisterLanguageToken with the appropriate values
+                        BetterUI.Utils.RegisterLanguageToken(item.Key, item.Value, language);
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    // There was an error deserializing the JSON string.
+                    UnityEngine.Debug.LogError("Error deserializing JSON file: " + jsonFile + " - " + ex.Message);
                 }
             }
         }
