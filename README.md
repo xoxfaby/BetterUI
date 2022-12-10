@@ -180,6 +180,10 @@ TN = NoTier Last
 
 ## Changelog
 
+### v2.7.0
+
+ - Feature: Language Support: BetterUI now supports multiple languages. Currently, only the original English language is included, but users can submit pull requests on the github to add additional languages.
+
 #### v2.6.4
 
  - Bugfix: Buffs: Fixed an error where a missing BuffDef was causing the game to hang on load. 
