@@ -34,6 +34,9 @@ namespace BetterUI
             instance = this;
             this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
 
+            var languageLoader = new BetterUI.LanguageLoader();
+            languageLoader.LoadLanguages();
+
             if (ConfigManager.ComponentsItemSorting.Value)
                 ItemSorting.Hook();
             if (ConfigManager.ComponentsStatsDisplay.Value)

@@ -49,126 +49,126 @@ namespace BetterUI
         static ProcCoefficientCatalog()
         {
             // Acrid
-            AddSkill("CrocoSlash", "Slash", 1);
-            AddSkill("CrocoSpit", "Spit", 1);
-            AddSkill("CrocoBite", "Bite", 1);
-            AddSkill("CrocoLeap", "Leap", 1);
-            AddToSkill("CrocoLeap", "Pool", 0.1f);
-            AddSkill("CrocoChainableLeap", "Leap", 1);
-            AddSkill("CrocoDisease", "Bounce", 1);
+            AddSkill("CrocoSlash", "SKILL_SLASH_NAME", 1);
+            AddSkill("CrocoSpit", "SKILL_SPIT_NAME", 1);
+            AddSkill("CrocoBite", "SKILL_BITE_NAME", 1);
+            AddSkill("CrocoLeap", "SKILL_LEAP_NAME", 1);
+            AddToSkill("CrocoLeap", "SKILL_POOL_NAME", 0.1f);
+            AddSkill("CrocoChainableLeap", "SKILL_LEAP_NAME", 1);
+            AddSkill("CrocoDisease", "SKILL_BOUNCE_NAME", 1);
 
             // Artificer
-            AddSkill("MageBodyFireFirebolt", "Bolt", 1);
-            AddSkill("MageBodyFireLightningBolt", "Bolt", 1);
-            AddSkill("MageBodyNovaBomb", "Explosion", 1);
-            AddToSkill("MageBodyNovaBomb", "Sparks", 0.3f);
-            AddSkill("MageBodyIceBomb", "Spear", 1);
-            AddSkill("MageBodyWall", "Wall", 1);
-            AddSkill("MageBodyFlamethrower", "Flame Thrower", 1);
-            AddSkill("MageBodyFlyUp", "Surge", 1);
+            AddSkill("MageBodyFireFirebolt", "SKILL_BOLT_NAME", 1);
+            AddSkill("MageBodyFireLightningBolt", "SKILL_BOLT_NAME", 1);
+            AddSkill("MageBodyNovaBomb", "SKILL_EXPLOSION_NAME", 1);
+            AddToSkill("MageBodyNovaBomb", "SKILL_SPARKS_NAME", 0.3f);
+            AddSkill("MageBodyIceBomb", "SKILL_SPEAR_NAME", 1);
+            AddSkill("MageBodyWall", "SKILL_WALL_NAME", 1);
+            AddSkill("MageBodyFlamethrower", "SKILL_FLAMETHROWER_NAME", 1);
+            AddSkill("MageBodyFlyUp", "SKILL_SURGE_NAME", 1);
 
             // Bandit
-            AddSkill("FireShotgun2", "Burst", 0.5f);
-            AddSkill("Bandit2Blast", "Blast", 1);
-            AddSkill("SlashBlade", "Slash", 1);
-            AddSkill("Bandit2SerratedShivs", "Blade", 1);
-            AddSkill("ResetRevolver", "Shot", 1);
-            AddSkill("SkullRevolver", "Shot", 1);
-            AddSkill("ThrowSmokebomb", "Smoke Bomb", 1);
+            AddSkill("FireShotgun2", "SKILL_BURST_NAME", 0.5f);
+            AddSkill("Bandit2Blast", "SKILL_BLAST_NAME", 1);
+            AddSkill("SlashBlade", "SKILL_SLASH_NAME", 1);
+            AddSkill("Bandit2SerratedShivs", "SKILL_BLADE_NAME", 1);
+            AddSkill("ResetRevolver", "SKILL_SHOT_NAME", 1);
+            AddSkill("SkullRevolver", "SKILL_SHOT_NAME", 1);
+            AddSkill("ThrowSmokebomb", "SKILL_SMOKEBOMB_NAME", 1);
 
             // Captain
-            AddSkill("CaptainShotgun", "Shotgun", 0.75f);
-            AddSkill("CaptainTazer", "Power Tazer", 1);
-            AddSkill("CallAirstrike", "Airstrike", 1);
-            AddSkill("CallAirstrikeAlt", "Airstrike", 1);
-            AddSkill("PrepSupplyDrop", "Impact", 0);
+            AddSkill("CaptainShotgun", "SKILL_SHOTGUN_NAME", 0.75f);
+            AddSkill("CaptainTazer", "SKILL_POWERTAZER_NAME", 1);
+            AddSkill("CallAirstrike", "SKILL_AIRSTRIKE_NAME", 1);
+            AddSkill("CallAirstrikeAlt", "SKILL_AIRSTRIKE_NAME", 1);
+            AddSkill("PrepSupplyDrop", "SKILL_IMPACT_NAME", 0);
 
             // Commando
-            AddSkill("CommandoBodyFirePistol", "Bullet", 1);
-            AddSkill("CommandoBodyFireFMJ", "Phase Round", 1);
-            AddSkill("CommandoBodyFireShotgunBlast", "Shotgun", 0.5f);
-            AddSkill("CommandoBodyBarrage", "Bullet", 1);
-            AddSkill("ThrowGrenade", "Grenade", 1);
+            AddSkill("CommandoBodyFirePistol", "SKILL_BULLET_NAME", 1);
+            AddSkill("CommandoBodyFireFMJ", "SKILL_PHASEROUND_NAME", 1);
+            AddSkill("CommandoBodyFireShotgunBlast", "SKILL_SHOTGUN_NAME", 0.5f);
+            AddSkill("CommandoBodyBarrage", "SKILL_BULLET_NAME", 1);
+            AddSkill("ThrowGrenade", "SKILL_GRENADE_NAME", 1);
 
             // Engineer
-            AddSkill("EngiBodyFireGrenade", "Grenade", 1);
-            AddSkill("EngiBodyPlaceMine", "Mine", 1);
-            AddSkill("EngiBodyPlaceSpiderMine", "Mine", 1);
-            AddSkill("EngiHarpoons", "Harpoon", 1);
-            AddSkill("EngiBodyPlaceTurret", "Turret Shot", 1);
-            AddSkill("EngiBodyPlaceWalkerTurret", "Laser", 0.6f);
+            AddSkill("EngiBodyFireGrenade", "SKILL_GRENADE_NAME", 1);
+            AddSkill("EngiBodyPlaceMine", "SKILL_MINE_NAME", 1);
+            AddSkill("EngiBodyPlaceSpiderMine", "SKILL_MINE_NAME", 1);
+            AddSkill("EngiHarpoons", "SKILL_HARPOON_NAME", 1);
+            AddSkill("EngiBodyPlaceTurret", "SKILL_TURRETSHOT_NAME", 1);
+            AddSkill("EngiBodyPlaceWalkerTurret", "SKILL_LASER_NAME", 0.6f);
 
             // Huntress
-            AddSkill("HuntressBodyFireSeekingArrow", "Arrow", 1);
-            AddSkill("FireFlurrySeekingArrow", "Arrow", 0.7f);
-            AddSkill("HuntressBodyGlaive", "Glaive", 0.8f);
-            AddSkill("HuntressBodyArrowRain", "Rain", 0.2f);
-            AddSkill("AimArrowSnipe", "Ballista", 1);
+            AddSkill("HuntressBodyFireSeekingArrow", "SKILL_ARROW_NAME", 1);
+            AddSkill("FireFlurrySeekingArrow", "SKILL_ARROW_NAME", 0.7f);
+            AddSkill("HuntressBodyGlaive", "SKILL_GLAIVE_NAME", 0.8f);
+            AddSkill("HuntressBodyArrowRain", "SKILL_RAIN_NAME", 0.2f);
+            AddSkill("AimArrowSnipe", "SKILL_BALLISTA_NAME", 1);
 
             // Loader
-            AddSkill("SwingFist", "Fist", 1);
-            AddSkill("FireYankHook", "Fist", 1);
-            AddSkill("BigPunch", "Fist", 1);
-            AddSkill("ChargeZapFist", "Fist", 1);
-            AddSkill("ThrowPylon", "Zap", 0.5f);
-            AddSkill("GroundSlam", "Slam", 1);
+            AddSkill("SwingFist", "SKILL_FIST_NAME", 1);
+            AddSkill("FireYankHook", "SKILL_FIST_NAME", 1);
+            AddSkill("BigPunch", "SKILL_FIST_NAME", 1);
+            AddSkill("ChargeZapFist", "SKILL_FIST_NAME", 1);
+            AddSkill("ThrowPylon", "SKILL_ZAP_NAME", 0.5f);
+            AddSkill("GroundSlam", "SKILL_SLAM_NAME", 1);
 
             // Mercenary
-            AddSkill("MercGroundLight2", "Sword", 1);
-            AddSkill("MercBodyWhirlwind", "Slice", 1);
-            AddSkill("MercBodyUppercut", "Slice", 1);
-            AddSkill("MercBodyAssaulter", "Dash", 1);
-            AddSkill("MercBodyFocusedAssault", "Dash", 1);
-            AddSkill("MercBodyEvis", "Hit", 1);
-            AddSkill("MercBodyEvisProjectile", "Blade", 1);
+            AddSkill("MercGroundLight2", "SKILL_SWORD_NAME", 1);
+            AddSkill("MercBodyWhirlwind", "SKILL_SLICE_NAME", 1);
+            AddSkill("MercBodyUppercut", "SKILL_SLICE_NAME", 1);
+            AddSkill("MercBodyAssaulter", "SKILL_DASH_NAME", 1);
+            AddSkill("MercBodyFocusedAssault", "SKILL_DASH_NAME", 1);
+            AddSkill("MercBodyEvis", "SKILL_HIT_NAME", 1);
+            AddSkill("MercBodyEvisProjectile", "SKILL_BLADE_NAME", 1);
 
             // MUL-T
-            AddSkill("ToolbotBodyFireNailgun", "Nail", 0.6f);
-            AddSkill("ToolbotBodyFireSpear", "Rebar", 1);
-            AddSkill("ToolbotBodyFireGrenadeLauncher", "Rocket", 1);
-            AddSkill("ToolbotBodyFireBuzzsaw", "Saw", 1);
-            AddSkill("ToolbotBodyStunDrone", "Canister", 1);
-            AddToSkill("ToolbotBodyStunDrone", "Bomblet", 0.3f);
-            AddSkill("ToolbotBodyToolbotDash", "Charge", 1);
-            AddToSkill("ToolbotBodyToolbotDash", "Ram", 0);
+            AddSkill("ToolbotBodyFireNailgun", "SKILL_NAIL_NAME", 0.6f);
+            AddSkill("ToolbotBodyFireSpear", "SKILL_REBAR_NAME", 1);
+            AddSkill("ToolbotBodyFireGrenadeLauncher", "SKILL_ROCKET_NAME", 1);
+            AddSkill("ToolbotBodyFireBuzzsaw", "SKILL_SAW_NAME", 1);
+            AddSkill("ToolbotBodyStunDrone", "SKILL_CANISTER_NAME", 1);
+            AddToSkill("ToolbotBodyStunDrone", "SKILL_BOMBLET_NAME", 0.3f);
+            AddSkill("ToolbotBodyToolbotDash", "SKILL_CHARGE_NAME", 1);
+            AddToSkill("ToolbotBodyToolbotDash", "SKILL_RAM_NAME", 0);
 
             // REX
-            AddSkill("TreebotBodyFireSyringe", "Syringes", 0.5f);
-            AddSkill("TreebotBodyAimMortar2", "Mortar", 1);
-            AddSkill("TreebotBodyAimMortarRain", "Hit", 0.5f);
-            AddSkill("TreebotBodySonicBoom", "Boom", 0);
-            AddSkill("TreebotBodyPlantSonicBoom", "Boom", 0.5f);
-            AddSkill("TreebotBodyFireFlower2", "Projectile", 1);
-            AddToSkill("TreebotBodyFireFlower2", "Roots", 0);
-            AddSkill("TreebotBodyFireFruitSeed", "Projectile", 1);
+            AddSkill("TreebotBodyFireSyringe", "SKILL_SYRINGES_NAME", 0.5f);
+            AddSkill("TreebotBodyAimMortar2", "SKILL_MORTAR_NAME", 1);
+            AddSkill("TreebotBodyAimMortarRain", "SKILL_HIT_NAME", 0.5f);
+            AddSkill("TreebotBodySonicBoom", "SKILL_BOOM_NAME", 0);
+            AddSkill("TreebotBodyPlantSonicBoom", "SKILL_BOOM_NAME", 0.5f);
+            AddSkill("TreebotBodyFireFlower2", "SKILL_PROJECTILE_NAME", 1);
+            AddToSkill("TreebotBodyFireFlower2", "SKILL_ROOTS_NAME", 0);
+            AddSkill("TreebotBodyFireFruitSeed", "SKILL_PROJECTILE_NAME", 1);
 
             // Railgunner
-            AddSkill("RailgunnerBodyFirePistol", "Projectile", 1f);
-            AddSkill("RailgunnerBodyScopeHeavy", "Projectile", 1f);
-            AddSkill("RailgunnerBodyFireSnipeHeavy", "Projectile", 1f);
-            AddSkill("RailgunnerBodyScopeLight", "Projectile", 1f);
-            AddSkill("RailgunnerBodyFireSnipeLight", "Projectile", 1f);
-            AddSkill("RailgunnerBodyFireMineBlinding", "Mine", 0f);
-            AddSkill("RailgunnerBodyFireMineConcussive", "Mine", 0f);
-            AddSkill("RailgunnerBodyChargeSnipeCryo", "Projectile", 1.5f);
-            AddSkill("RailgunnerBodyFireSnipeCryo", "Projectile", 1.5f);
-            AddSkill("RailgunnerBodyChargeSnipeSuper", "Projectile", 3f);
-            AddSkill("RailgunnerBodyFireSnipeSuper", "Projectile", 3f);
+            AddSkill("RailgunnerBodyFirePistol", "SKILL_PROJECTILE_NAME", 1f);
+            AddSkill("RailgunnerBodyScopeHeavy", "SKILL_PROJECTILE_NAME", 1f);
+            AddSkill("RailgunnerBodyFireSnipeHeavy", "SKILL_PROJECTILE_NAME", 1f);
+            AddSkill("RailgunnerBodyScopeLight", "SKILL_PROJECTILE_NAME", 1f);
+            AddSkill("RailgunnerBodyFireSnipeLight", "SKILL_PROJECTILE_NAME", 1f);
+            AddSkill("RailgunnerBodyFireMineBlinding", "SKILL_MINE_NAME", 0f);
+            AddSkill("RailgunnerBodyFireMineConcussive", "SKILL_MINE_NAME", 0f);
+            AddSkill("RailgunnerBodyChargeSnipeCryo", "SKILL_PROJECTILE_NAME", 1.5f);
+            AddSkill("RailgunnerBodyFireSnipeCryo", "SKILL_PROJECTILE_NAME", 1.5f);
+            AddSkill("RailgunnerBodyChargeSnipeSuper", "SKILL_PROJECTILE_NAME", 3f);
+            AddSkill("RailgunnerBodyFireSnipeSuper", "SKILL_PROJECTILE_NAME", 3f);
 
             // Void Fiend
-            AddSkill("FireHandBeam", "Beam", 1f);
-            AddSkill("FireCorruptBeam", "Beam", 0.625f);
-            AddSkill("ChargeMegaBlaster", "Flood", 1);
-            AddSkill("FireCorruptDisk", "Flood", 1);
-            AddSkill("CrushCorruption", "Crush", 0f);
-            AddSkill("CrushHealth", "Crush", 0f);
+            AddSkill("FireHandBeam", "SKILL_BEAM_NAME", 1f);
+            AddSkill("FireCorruptBeam", "SKILL_BEAM_NAME", 0.625f);
+            AddSkill("ChargeMegaBlaster", "SKILL_FLOOD_NAME", 1);
+            AddSkill("FireCorruptDisk", "SKILL_FLOOD_NAME", 1);
+            AddSkill("CrushCorruption", "SKILL_CRUSH_NAME", 0f);
+            AddSkill("CrushHealth", "SKILL_CRUSH_NAME", 0f);
 
             // Items
-            AddSkill("LunarPrimaryReplacement", "Shard", 0.1f);
-            AddToSkill("LunarPrimaryReplacement", "Explosion", 1);
-            AddSkill("LunarSecondaryReplacement", "Maelstrom", 0.2f);
-            AddToSkill("LunarSecondaryReplacement", "Explosion", 1);
-            AddSkill("LunarDetonatorSpecialReplacement", "Detonation", 1);
+            AddSkill("LunarPrimaryReplacement", "SKILL_SHARD_NAME", 0.1f);
+            AddToSkill("LunarPrimaryReplacement", "SKILL_EXPLOSION_NAME", 1);
+            AddSkill("LunarSecondaryReplacement", "SKILL_MAELSTROM_NAME", 0.2f);
+            AddToSkill("LunarSecondaryReplacement", "SKILL_EXPLOSION_NAME", 1);
+            AddSkill("LunarDetonatorSpecialReplacement", "SKILL_DETONATION_NAME", 1);
         }
     }
 }

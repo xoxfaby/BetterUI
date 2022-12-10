@@ -25,6 +25,10 @@ target = "BetterUI.dll"
 source = "../bin/Release/netstandard2.0/publish/BetterUnityPlugin.dll"
 target = "BetterUnityPlugin.dll"
 
+[[build.copy]]
+source = "../bin/Release/netstandard2.0/Languages"
+target = "Languages"
+
 [publish]
 repository = "https://thunderstore.io"
 communities = ["riskofrain2"]

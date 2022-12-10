@@ -35,15 +35,7 @@ namespace BetterUI
         {
             BetterUIPlugin.Hooks.Add<BaseMainMenuScreen>(nameof(BaseMainMenuScreen.Awake), BaseMainMenuScreen_Awake);
 
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_TITLE", "BetterUI");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_TITLE_HOVER", "Open the BetterUI window");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_DONATE", "Donate to BetterUI");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_DISCORD", "Join our Discord");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_BUGREPORT", "Report a bug");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_CLOSE_WINDOW", "Close Window");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_MADEBY", "Made by XoXFaby");
-            BetterUI.Utils.RegisterLanguageToken("BETTERUI_WINDOW_LABEL", "Thanks for using BetterUI! If you enjoy the mod, please consider donating to enable me to keep working on it as much as possible!\n\nIn the future, this window will allow you to edit the settings for BetterUI!");
-
+         
             ViewablesCatalog.Node node = new ViewablesCatalog.Node("BetterUI", true, null);
             var buttonNode = new ViewablesCatalog.Node("Donate", false, node);
             buttonNode.shouldShowUnviewed = (UserProfile userProfile) => !userProfile.HasViewedViewable(buttonNode.fullName);
