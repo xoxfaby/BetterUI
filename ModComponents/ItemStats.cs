@@ -260,7 +260,7 @@ namespace BetterUI
                 value = value,
                 stackValue = stackValue,
                 stackingFormula = stackingFormula ?? LinearStacking,
-                statFormatter = statFormatter ?? StatFormatter.Chance
+                statFormatter = statFormatter ?? StatFormatter.Percent
             };
             return RegisterStat(itemDef, itemStat, itemTag);
         }
@@ -626,9 +626,8 @@ namespace BetterUI
                 this.statFormatter.FormatString(stringBuilder, procCoefficient * this.stackingFormula(this.value, this.extraStackValue, stacks), master);
                 if(capFormula != null)
                 {
-                    stringBuilder.Append(" <style=cStack>(");
-                    stringBuilder.Append(capFormula(value, extraStackValue, procCoefficient));
-                    stringBuilder.Append(" stacks to cap)</style>");
+                    var stacksToCap = capFormula(value, extraStackValue, procCoefficient);
+                    stringBuilder.AppendFormat(Language.GetString(stacksToCap > 1 ? "BETTERUI_PROCSTACKS_PLURAL" : "BETTERUI_PROCSTACKS_SINGULAR"), stacksToCap);
                 }
             }
             public float GetValue(int stacks)

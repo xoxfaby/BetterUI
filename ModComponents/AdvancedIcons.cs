@@ -152,10 +152,12 @@ namespace BetterUI
                     BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(bodyToken));
                     if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value && skillDef != null)
                     {
-                        BetterUIPlugin.sharedStringBuilder.Append("\n\nCooldown: <style=cIsDamage>");
+                        BetterUIPlugin.sharedStringBuilder.Append("\n\n");
+                        BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_COOLDOWN"));
+                        BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsDamage>");
                         BetterUIPlugin.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
                         BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                        if(skillDef.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
+                        BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(skillDef.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                     }
 
                     if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value && skillDef != null)
@@ -171,7 +173,9 @@ namespace BetterUI
                                 BetterUIPlugin.sharedStringBuilder.Append(":</size>");
                                 if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                                 {
-                                    BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                    BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>");
+                                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_PROCCOEFFICIENT"));
+                                    BetterUIPlugin.sharedStringBuilder.Append(": ");
                                     BetterUIPlugin.sharedStringBuilder.Append(info.procCoefficient);
                                     BetterUIPlugin.sharedStringBuilder.Append("</style>");
                                 }
@@ -210,17 +214,21 @@ namespace BetterUI
                 }
                 if (ConfigManager.AdvancedIconsSkillShowBaseCooldown.Value)
                 {
-                    BetterUIPlugin.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_BASECOOLDOWN"));
+                    BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsDamage>");
                     BetterUIPlugin.sharedStringBuilder.Append(self.targetSkill.baseRechargeInterval);
-                    BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                    if (self.targetSkill.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append("</style> "); 
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.targetSkill.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                 }
                 if (ConfigManager.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
                 {
-                    BetterUIPlugin.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_EFFECTIVECOOLDOWN"));
+                    BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsHealing>");
                     BetterUIPlugin.sharedStringBuilder.Append(self.targetSkill.finalRechargeInterval);
                     BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                    if (self.targetSkill.baseRechargeInterval != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.targetSkill.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                 }
 
                 if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value || ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
@@ -236,7 +244,9 @@ namespace BetterUI
                             BetterUIPlugin.sharedStringBuilder.Append("</size>");
                             if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value)
                             {
-                                BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>Proc Coefficient: ");
+                                BetterUIPlugin.sharedStringBuilder.Append("\n <style=cIsUtility>");
+                                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_PROCCOEFFICIENT"));
+                                BetterUIPlugin.sharedStringBuilder.Append(": ");
                                 BetterUIPlugin.sharedStringBuilder.Append(info.procCoefficient);
                                 BetterUIPlugin.sharedStringBuilder.Append("</style>");
                             }
@@ -295,10 +305,12 @@ namespace BetterUI
                 }
                 if (ConfigManager.AdvancedIconsEquipementShowBaseCooldown.Value)
                 {
-                    BetterUIPlugin.sharedStringBuilder.Append("\nBase Cooldown: <style=cIsDamage>");
+                    BetterUIPlugin.sharedStringBuilder.Append("\n");
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_BASECOOLDOWN"));
+                    BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsDamage>");
                     BetterUIPlugin.sharedStringBuilder.Append(self.currentDisplayData.equipmentDef.cooldown);
-                    BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                    if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
+                    BetterUIPlugin.sharedStringBuilder.Append("</style> ");
+                    BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.currentDisplayData.equipmentDef.cooldown > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                 }
                 if (ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
@@ -320,10 +332,12 @@ namespace BetterUI
                         }
                         if (reduction < 1)
                         {
-                            BetterUIPlugin.sharedStringBuilder.Append("\nEffective Cooldown: <style=cIsHealing>");
+                            BetterUIPlugin.sharedStringBuilder.Append("\n");
+                            BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_EFFECTIVECOOLDOWN"));
+                            BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsHealing>");
                             BetterUIPlugin.sharedStringBuilder.Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"));
-                            BetterUIPlugin.sharedStringBuilder.Append("</style> second");
-                            if (self.currentDisplayData.equipmentDef.cooldown != 1) BetterUIPlugin.sharedStringBuilder.Append("s");
+                            BetterUIPlugin.sharedStringBuilder.Append("</style> ");
+                            BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(self.currentDisplayData.equipmentDef.cooldown > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                         }
                     }
                 }
