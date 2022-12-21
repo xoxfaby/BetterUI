@@ -15,9 +15,9 @@ namespace BetterUI
     [BepInPlugin(GUID, Name, Version)]
     public partial class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
-        private const string GUID = "com.xoxfaby.BetterUI";
-        private const string Name = "BetterUI";
-        private const string Version = "2.7.2";
+        public const string GUID = "com.xoxfaby.BetterUI";
+        public const string Name = "BetterUI";
+        public const string Version = "2.7.2";
         internal static BetterUIPlugin instance;
         internal delegate void HUDAwakeEvent(RoR2.UI.HUD self);
         internal static event HUDAwakeEvent onHUDAwake;
