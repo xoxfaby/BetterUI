@@ -296,6 +296,17 @@
     "BETTERUI_ARMOR_SUFFIX": " броні",
     "BETTERUI_REGEN_SUFFIX": " ОЗ/с",
     "BETTERUI_RANGE_SUFFIX": "м",
+    "BETTERUI_PROCCOEFFICIENT":"Коефіціент проку",
+    "BETTERUI_BASECOOLDOWN":"Базове перезаряджання",
+    "BETTERUI_EFFECTIVECOOLDOWN":"Поточне перезаряджання",
+    "BETTERUI_SECOND":"секунду",
+    "BETTERUI_SECONDS":"секунд",
+    "BETTERUI_BEFORE_SINGULAR":"До ({} стеків): ",
+    "BETTERUI_BEFORE_PLURAL":"До ({} стеків): ",
+    "BETTERUI_AFTER_SINGULAR":"Після ({} стеків): ",
+    "BETTERUI_AFTER_PLURAL":"Після ({} стеків): ",
+    "BETTERUI_DPS":"ШЗС",
+    
   
     "SKILL_SLASH_NAME": "Змах",
     "SKILL_SPIT_NAME": "Коса",
