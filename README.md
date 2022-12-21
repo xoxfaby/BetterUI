@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.7.4
+ - Small Addition: Language Support: Added localization support for all other BetterUI strings I found, exception of StatsDisplay because it's a bit of a complex system and needs its own rework. '
+
 #### v2.7.3
  - Language Support: Added Ukranian (Thank you Damglador).
  - Bugfix: Language Support: Fixed English strings not getting loaded when another language is selected.
