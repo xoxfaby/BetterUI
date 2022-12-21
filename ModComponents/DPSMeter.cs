@@ -75,7 +75,8 @@ namespace BetterUI
             if (textMesh != null)
             {
                 BetterUIPlugin.sharedStringBuilder.Clear();
-                BetterUIPlugin.sharedStringBuilder.Append("DPS: ");
+                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_DPS"));
+                BetterUIPlugin.sharedStringBuilder.Append(": ");
                 BetterUIPlugin.sharedStringBuilder.Append((ConfigManager.DPSMeterWindowIncludeMinions.Value ? DPS : CharacterDPS).ToString("N0"));
 
                 textMesh.SetText(BetterUIPlugin.sharedStringBuilder);
