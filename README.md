@@ -180,6 +180,10 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.7.3
+ - Language Support: Added Ukranian (Thank you Damglador).
+ - Bugfix: Language Support: Fixed English strings not getting loaded when another language is selected.
+ - Bugfix: Language Support: Fixed broken English buff string. 
 #### v2.7.2
  - Bugfix: Language Support: Fixes crash when a malformed language file is found. 
 
