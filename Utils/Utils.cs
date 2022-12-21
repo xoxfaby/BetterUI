@@ -16,10 +16,18 @@ namespace BetterUI
             RoR2.Language.onCurrentLanguageChanged += Language_onCurrentLanguageChanged;
         }
 
+        static private Boolean LanguagesLoaded = false;
+
         static private void Language_onCurrentLanguageChanged()
         {
-            if(LanguageStrings.TryGetValue(RoR2.Language.currentLanguageName, out var strings)){
+            LanguagesLoaded = true;
+            if (LanguageStrings.TryGetValue(RoR2.Language.currentLanguageName, out var strings)){
                 RoR2.Language.currentLanguage.SetStringsByTokens(strings);
+            }
+            if(RoR2.Language.currentLanguageName != "en" 
+               && LanguageStrings.TryGetValue("en", out var enStrings))
+            {
+                RoR2.Language.GetOrCreateLanguage("en").SetStringsByTokens(enStrings);
             }
         }
 
@@ -28,9 +36,11 @@ namespace BetterUI
             if(!LanguageStrings.ContainsKey(language)) LanguageStrings[language] = new List<KeyValuePair<string, string>>();
             LanguageStrings[language].Add(new KeyValuePair<string, string>(token, text));
 
-            if(RoR2.Language.currentLanguageName == language)
+            if (!LanguagesLoaded) return;
+
+            if(RoR2.Language.currentLanguageName == language || language == "en")
             {
-                RoR2.Language.currentLanguage.SetStringByToken(token, text);
+                RoR2.Language.GetOrCreateLanguage(language).SetStringByToken(token, text);
             }
         }
 
