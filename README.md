@@ -180,6 +180,9 @@ TN = NoTier Last
 
 ## Changelog
 
+#### v2.7.5
+ - Bugfix: Language Support: Removed extra "second" in lobby skill tooltip. 
+
 #### v2.7.4
  - Small Addition: Language Support: Added localization support for all other BetterUI strings I found, exception of StatsDisplay because it's a bit of a complex system and needs its own rework. '
 
