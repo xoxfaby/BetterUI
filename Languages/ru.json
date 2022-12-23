@@ -41,7 +41,7 @@
     "BUFF_ENERGIZED_NAME": "Energized",
     "BUFF_ENERGIZED_DESC": "+70% Attack Speed",
     "BUFF_FULLCRIT_NAME": "Full Crit",
-    "BUFF_FULLCRIT_DESC": "+100% Critical Strike chance",
+    "BUFF_FULLCRIT_DESC": "100% Шанс критической атаки",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Hidden Invincibility",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerable",
     "BUFF_IMMUNE_NAME": "Immune",
