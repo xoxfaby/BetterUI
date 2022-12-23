@@ -130,7 +130,7 @@ namespace BetterUI
             AddSkill("ToolbotBodyStunDrone", "SKILL_CANISTER_NAME", 1);
             AddToSkill("ToolbotBodyStunDrone", "SKILL_BOMBLET_NAME", 0.3f);
             AddSkill("ToolbotBodyToolbotDash", "SKILL_CHARGE_NAME", 1);
-            AddToSkill("ToolbotBodyToolbotDash", "SKILL_RAM_NAME", 0);
+            AddToSkill("ToolbotBodyToolbotDash", "SKILL_RAM_NAME", 1);
 
             // REX
             AddSkill("TreebotBodyFireSyringe", "SKILL_SYRINGES_NAME", 0.5f);
