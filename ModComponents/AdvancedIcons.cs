@@ -156,7 +156,7 @@ namespace BetterUI
                         BetterUIPlugin.sharedStringBuilder.Append(Language.GetString("BETTERUI_COOLDOWN"));
                         BetterUIPlugin.sharedStringBuilder.Append(": <style=cIsDamage>");
                         BetterUIPlugin.sharedStringBuilder.Append(skillDef.baseRechargeInterval);
-                        BetterUIPlugin.sharedStringBuilder.Append("</style> second");
+                        BetterUIPlugin.sharedStringBuilder.Append("</style> ");
                         BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(skillDef.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
                     }
 
