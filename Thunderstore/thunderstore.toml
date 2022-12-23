@@ -19,15 +19,15 @@ outdir = "../zip"
 
 [[build.copy]]
 source = "../bin/Release/netstandard2.0/BetterUI.dll"
-target = "BetterUI.dll"
+target = "plugins/BetterUI/BetterUI.dll"
 
 [[build.copy]]
 source = "../bin/Release/netstandard2.0/publish/BetterUnityPlugin.dll"
-target = "BetterUnityPlugin.dll"
+target = "plugins/BetterUI/BetterUnityPlugin.dll"
 
 [[build.copy]]
 source = "../bin/Release/netstandard2.0/Languages"
-target = "Languages"
+target = "plugins/BetterUI/Languages"
 
 [publish]
 repository = "https://thunderstore.io"
