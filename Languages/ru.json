@@ -186,8 +186,6 @@
     "BUFF_PRIMARYSKILLSHURIKENBUFF_DESC": "Consumes a charge to launch a shuriken upon primary skill activation. (складывается)",
     "BUFF_STRONGERBURN_NAME": "Усиленный поджог",
     "BUFF_STRONGERBURN_DESC": "Усиленный вариант Поджога. Увеличивает получаемый урон от горения. Регенерация отключена.",
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Void Crab Void Void Wipe Fog",
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Затуманивает взор и наносит постепенно увеличивающийся урон.",
     "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Осквернение Пустоты",
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Ваши способности принимают более агрессивные формы.",
   
