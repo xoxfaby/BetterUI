@@ -16,6 +16,42 @@ namespace BetterUI
             RoR2.Language.onCurrentLanguageChanged += Language_onCurrentLanguageChanged;
         }
 
+        static public string SecondsToString(float seconds)
+        {
+            switch (RoR2.Language.currentLanguageName)
+            {
+                case "UA":
+                case "RU":
+                    if (seconds % 1 != 0)
+                    {
+                        return "BETTERUI_SECONDS_SPECIAL";
+                    }
+                    int mod10 = (int)seconds % 10;
+                    switch (mod10)
+                    {
+                        case 1:
+                            if (seconds != 11)
+                            {
+                                return "BETTERUI_SECOND";
+                            }
+                            break;
+                        case 2:
+                        case 3:
+                        case 4:
+                            if (seconds < 12 || seconds > 14)
+                            {
+                                return "BETTERUI_SECONDS_SPECIAL";
+                            }
+                            break;
+                    }
+                    return "BETTERUI_SECONDS";
+                case "zh-CN":
+                    return "BETTERUI_SECOND";
+                default:
+                    return seconds == 1 ? "BETTERUI_SECOND" : "BETTERUI_SECONDS";
+            }
+        }
+
         static private Boolean LanguagesLoaded = false;
 
         static private void Language_onCurrentLanguageChanged()

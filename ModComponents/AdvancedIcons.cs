@@ -156,7 +156,7 @@ namespace BetterUI
                             .Append(": <style=cIsDamage>")
                             .Append(skillDef.baseRechargeInterval)
                             .Append("</style> ")
-                            .Append(Language.GetString(skillDef.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
+                            .Append(Language.GetString(Utils.SecondsToString(skillDef.baseRechargeInterval)));
                     }
 
                     if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value && skillDef != null)
@@ -218,7 +218,7 @@ namespace BetterUI
                         .Append(": <style=cIsDamage>")
                         .Append(self.targetSkill.baseRechargeInterval)
                         .Append("</style> ")
-                        .Append(Language.GetString(self.targetSkill.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
+                        .Append(Language.GetString(Utils.SecondsToString(self.targetSkill.baseRechargeInterval)));
                 }
                 if (ConfigManager.AdvancedIconsSkillShowCalculatedCooldown.Value && self.targetSkill.baseRechargeInterval > self.targetSkill.finalRechargeInterval)
                 {
@@ -227,7 +227,7 @@ namespace BetterUI
                         .Append(": <style=cIsHealing>")
                         .Append(self.targetSkill.finalRechargeInterval)
                         .Append("</style> second")
-                        .Append(Language.GetString(self.targetSkill.baseRechargeInterval > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
+                        .Append(Language.GetString(Utils.SecondsToString(self.targetSkill.baseRechargeInterval)));
                 }
 
                 if (ConfigManager.AdvancedIconsSkillShowProcCoefficient.Value || ConfigManager.AdvancedIconsSkillCalculateSkillProcEffects.Value)
@@ -309,7 +309,7 @@ namespace BetterUI
                         .Append(": <style=cIsDamage>")
                         .Append(self.currentDisplayData.equipmentDef.cooldown)
                         .Append("</style> ")
-                        .Append(Language.GetString(self.currentDisplayData.equipmentDef.cooldown > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
+                        .Append(Language.GetString(Utils.SecondsToString(self.currentDisplayData.equipmentDef.cooldown)));
                 }
                 if (ConfigManager.AdvancedIconsEquipementShowCalculatedCooldown.Value)
                 {
@@ -336,7 +336,7 @@ namespace BetterUI
                                 .Append(": <style=cIsHealing>")
                                 .Append((self.currentDisplayData.equipmentDef.cooldown * reduction).ToString("0.###"))
                                 .Append("</style> ")
-                                .Append(Language.GetString(self.currentDisplayData.equipmentDef.cooldown > 1 ? "BETTERUI_SECONDS" : "BETTERUI_SECOND"));
+                                .Append(Language.GetString(Utils.SecondsToString(self.currentDisplayData.equipmentDef.cooldown)));
                         }
                     }
                 }
