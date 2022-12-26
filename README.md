@@ -180,6 +180,16 @@ TN = NoTier Last
 
 ## Changelog
 
+
+#### v2.7.6
+ - Addition: Language Support: Added Chinese ( Thanks 南家老树皮 )
+ - Addition: Language Support: Added Russian ( Thanks l Yoh l )
+ - Small Addition/Bugfix: Changed zip folder structure so that r2modman doesn't destroy the folder structure.
+ - Internal Change: Language Support: Added additional logic for the display of seconds as required by some languages.
+ - Bugfix: Language Support: Fixed language support not being case insensitive in regards to the language name. This should fix issues with the system default language not getting BetterUI strings.
+ - Bugfix: Language Support: Removed extra "second" in effective skill cooldown.
+ - Bugfix: Advanced Icons: Fixed incorrect Proc Coefficient for MUL-T Ram. ( 0 -> 1)
+
 #### v2.7.5
  - Bugfix: Language Support: Removed extra "second" in lobby skill tooltip. 
 
