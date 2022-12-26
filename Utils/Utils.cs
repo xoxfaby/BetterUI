@@ -10,7 +10,7 @@ namespace BetterUI
 {
     static class Utils
     {
-        static Dictionary<string, List<KeyValuePair<string, string>>> LanguageStrings = new Dictionary<string, List<KeyValuePair<string, string>>>();
+        static Dictionary<string, List<KeyValuePair<string, string>>> LanguageStrings = new Dictionary<string, List<KeyValuePair<string, string>>>(StringComparer.OrdinalIgnoreCase);
         static Utils()
         {
             RoR2.Language.onCurrentLanguageChanged += Language_onCurrentLanguageChanged;
@@ -52,31 +52,29 @@ namespace BetterUI
             }
         }
 
-        static private Boolean LanguagesLoaded = false;
 
         static private void Language_onCurrentLanguageChanged()
         {
-            LanguagesLoaded = true;
-            if (LanguageStrings.TryGetValue(RoR2.Language.currentLanguageName, out var strings)){
+            if (LanguageStrings.TryGetValue(RoR2.Language.currentLanguageName, out var strings))
+            {
                 RoR2.Language.currentLanguage.SetStringsByTokens(strings);
             }
-            if(RoR2.Language.currentLanguageName != "en" 
+            if (!string.Equals(RoR2.Language.currentLanguageName, "en", StringComparison.OrdinalIgnoreCase)
                && LanguageStrings.TryGetValue("en", out var enStrings))
             {
-                RoR2.Language.GetOrCreateLanguage("en").SetStringsByTokens(enStrings);
+                RoR2.Language.FindLanguageByName("en")?.SetStringsByTokens(enStrings);
             }
         }
 
         public static void RegisterLanguageToken(string token, string text, string language = "en")
         {
-            if(!LanguageStrings.ContainsKey(language)) LanguageStrings[language] = new List<KeyValuePair<string, string>>();
+            if (!LanguageStrings.ContainsKey(language)) LanguageStrings[language] = new List<KeyValuePair<string, string>>();
             LanguageStrings[language].Add(new KeyValuePair<string, string>(token, text));
 
-            if (!LanguagesLoaded) return;
-
-            if(RoR2.Language.currentLanguageName == language || language == "en")
+            if ( string.Equals(RoR2.Language.currentLanguageName, language, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(language, "en", StringComparison.OrdinalIgnoreCase ))
             {
-                RoR2.Language.GetOrCreateLanguage(language).SetStringByToken(token, text);
+                RoR2.Language.FindLanguageByName(language)?.SetStringByToken(token, text);
             }
         }
 
@@ -88,11 +86,11 @@ namespace BetterUI
             }
             else if (luck < 0)
             {
-                return (float) ((int) chance + Math.Pow(chance % 1, Math.Abs(luck) + 1));
+                return (float)((int)chance + Math.Pow(chance % 1, Math.Abs(luck) + 1));
             }
             else
             {
-                return (float) ((int)chance + (1 - Math.Pow(1 - (chance % 1), Math.Abs(luck) + 1)));
+                return (float)((int)chance + (1 - Math.Pow(1 - (chance % 1), Math.Abs(luck) + 1)));
             }
         }
 
