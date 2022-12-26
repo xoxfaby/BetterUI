@@ -6,7 +6,7 @@
     "BETTERUI_BUGREPORT": "Сообщить об ошибке",
     "BETTERUI_CLOSE_WINDOW": "Закрыть окно",
     "BETTERUI_MADEBY": "Создал XoXFaby",
-    "BETTERUI_WINDOW_LABEL": "Спасибо за использование BetterUI! Если вам нравится мод, пожалуйста поддержите меня, чтобы я мог продолжать работать над ним как можно дольше!\n\nВ будущем это окно позволит вам настраивать BetterUI!",
+    "BETTERUI_WINDOW_LABEL": "Спасибо за использование BetterUI! Если вам нравится мод, пожалуйста, поддержите меня, чтобы я мог продолжать работать над ним как можно дольше!\n\nВ будущем это окно позволит вам настраивать BetterUI!",
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Выстрел лучом малой дальности наносящим <style=cIsDamage>2000% урона</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Запуск бомбы по дуге наносящей <style=cIsDamage>1100% damage</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Исчезнуть</style> в Пустоту, <style=cIsUtility>снимая все дебаффы</style> совершая <style=cIsUtility>прыжок вперёд</style>.",
@@ -191,96 +191,96 @@
     "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",//*
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",//*
   
-    "BETTERUI_BEETLEGUARDS": "Beetle Guards",//*
-    "BETTERUI_HPPERSECOND": "HP в секунду",
+    "BETTERUI_BEETLEGUARDS": "Жуки-стражники",
+    "BETTERUI_HPPERSECOND": "Здоровья в секунду",
     "BETTERUI_ARMORREDUCTION": "Снижение брони",
     "BETTERUI_EXPLOSIONRADIUS": "Радиус взрыва",
-    "BETTERUI_EXPLOSIONMAXHPDAMAGE": "Explosion Max HP Damage",//*
+    "BETTERUI_EXPLOSIONMAXHPDAMAGE": "Урон взрыва от максимального здоровья",
     "BETTERUI_TELEPORTERZONE": "Зона телепорта",
-    "BETTERUI_RELOAD": "Reload",//*
-    "BETTERUI_MAXALLIES": "Max allies",//*
+    "BETTERUI_RELOAD": "Перезарядка",
+    "BETTERUI_MAXALLIES": "Максимальное кол-во союзников",
     "BETTERUI_DAMAGE": "Урон",
     "BETTERUI_SLOWDURATION": "Длительность замедления",
     "BETTERUI_DROPCHANCE": "Шанс выпадения",
     "BETTERUI_MAXIMUMATTACKSPEED": "Максимальная скорость атаки",
-    "BETTERUI_ALLIES": "Allies",//*
+    "BETTERUI_ALLIES": "Союзники",
     "BETTERUI_EXTRAJUMPS": "Дополнительные прыжки",
     "BETTERUI_CRITCHANCE": "Шанс крита",
-    "BETTERUI_CHARGETIME": "Charge time",//*
+    "BETTERUI_CHARGETIME": "Время заряжания",
     "BETTERUI_SHIPPINGREQUESTFORM": "Форма запроса доставки",
-    "BETTERUI_BOOST": "Boost",//*
+    "BETTERUI_BOOST": "Рывок",
     "BETTERUI_HEALTHPERORB": "Здоровье за шар",
-    "BETTERUI_ALLY": "Ally",//*
-    "BETTERUI_CHARGESPEED": "Charge Speed",//*
-    "BETTERUI_PROJECTILESSHOT": "Projectiles Shot",//*
-    "BETTERUI_SKILLCOOLDOWNS": "Skill Cooldowns",//*
+    "BETTERUI_ALLY": "Союзник",
+    "BETTERUI_CHARGESPEED": "Скорость заряжания",
+    "BETTERUI_PROJECTILESSHOT": "Снарядов запускается",
+    "BETTERUI_SKILLCOOLDOWNS": "Перезарядка умений",
     "BETTERUI_BLEEDCHANCE": "Шанс кровотечения",
     "BETTERUI_SPRINTSPEED": "Скорость бега",
     "BETTERUI_USES": "Кол-во использований",
     "BETTERUI_HEATH": "Здоровье",
     "BETTERUI_ROOTDURATION": "Root Duration",//*
     "BETTERUI_MAXHEALTH": "Максимальное здоровье",
-    "BETTERUI_REGEN": "Regen",//*
-    "BETTERUI_RECHARGETIME": "Recharge Time ",//*
+    "BETTERUI_REGEN": "Регенерация",
+    "BETTERUI_RECHARGETIME": "Время восстановления",
     "BETTERUI_BASEGOLD": "Base Gold",//*
     "BETTERUI_EXPLOSION": "Взрыв",
-    "BETTERUI_HEALINGNOVA": "Healing Nova",//*
+    "BETTERUI_HEALINGNOVA": "Исцеляющий взрыв",
     "BETTERUI_GOLDLOST": "Золота потеряно",
-    "BETTERUI_FRENZYDURATION": "Frenzy Duration",//*
-    "BETTERUI_HEALING": "Healing",//*
+    "BETTERUI_FRENZYDURATION": "Продолжительность безумия",
+    "BETTERUI_HEALING": "Лечение",
     "BETTERUI_HEALINGCONVERTED": "Преобразованное лечение",
     "BETTERUI_MAXIMUMRADIUS": "Максимальный радиус",
     "BETTERUI_RECHARGESPEED": "Скорость восстановления",
     "BETTERUI_GOLDGAINED": "Золота получено",
-    "BETTERUI_HITS": "Hits",//*
+    "BETTERUI_HITS": "Попадания",
     "BETTERUI_ARMOR": "Броня",
     "BETTERUI_ITEMSUPGRADED": "Предметов улучшено",
     "BETTERUI_HEALTH": "Здоровье",
     "BETTERUI_EQUIPMENTCHARGES": "Заряды снаряжения",
-    "BETTERUI_TETHEREDENEMIES": "Tethered Enemies",//*
+    "BETTERUI_TETHEREDENEMIES": "Связанные враги",
     "BETTERUI_HEALTHPERSECOND": "Здоровье в секунду",
     "BETTERUI_HEALTHPERKILL": "Здоровье за убийство",
     "BETTERUI_TARGETS": "Цели",
-    "BETTERUI_DEBUFFDURATION": "Debuff Duration",//*
-    "BETTERUI_COOLDOWN": "Cooldown",//*
+    "BETTERUI_DEBUFFDURATION": "Длительность дебаффа",
+    "BETTERUI_COOLDOWN": "Перезарядка",
     "BETTERUI_RUINDURATION": "Ruin Duration",//*
-    "BETTERUI_THRESHOLD": "Threshold",//*
+    "BETTERUI_THRESHOLD": "Лимит",
     "BETTERUI_ATTACKSPEED": "Скорость атаки",
     "BETTERUI_SHIELD": "Щит",
     "BETTERUI_SHURIKEN": "Сюрикэн",
     "BETTERUI_RADIUS": "Радиус",
     "BETTERUI_ENCRUSTEDKEY": "Покрытый коркой ключ",
-    "BETTERUI_EFFECTS": "Effects",//*
+    "BETTERUI_EFFECTS": "Эффекты",
     "BETTERUI_HEAL": "Лечение",
     "BETTERUI_MAXCONSTRUCTS": "Кол-во альфа конструкций",
     "BETTERUI_MOVEMENTSPEED": "Скорость передвижения",
     "BETTERUI_BARRIER": "Барьер",
     "BETTERUI_EXPLOSIONBASEDAMAGE": "Базовый урон взрыва",
     "BETTERUI_FIREWORKS": "Феерверки",
-    "BETTERUI_RANGE": "Range",//*
-    "BETTERUI_BOMBS": "Bombs",//*
+    "BETTERUI_RANGE": "Дальность",
+    "BETTERUI_BOMBS": "Бомбы",
     "BETTERUI_TOUGHERTIMES": "Тяжёлые времена",
-    "BETTERUI_DURATION": "Duration",//*
-    "BETTERUI_ENEMYDIFFICULTY": "Enemy Difficulty",//*
+    "BETTERUI_DURATION": "Длительность",
+    "BETTERUI_ENEMYDIFFICULTY": "Сложность Врагов",
     "BETTERUI_GHOSTDURATION": "Ghost Duration",//*
     "BETTERUI_CHARGES": "Заряды",
-    "BETTERUI_COOLDOWNREDUCTION": "Cooldown Reduction",//*
+    "BETTERUI_COOLDOWNREDUCTION": "Снижение перезарядки",
     "BETTERUI_CHANCE": "Шанс",
     "BETTERUI_MAXIMUMHEALTH": "Максимальное Здоровье",
     "BETTERUI_MAXIMUM": "Максимум",
     "BETTERUI_LUCK": "Удача",
-    "BETTERUI_PROCCOEFFICIENT": "Коэффициент срабатывания",
-    "BETTERUI_BASECOOLDOWN": "Base Cooldown",//*
-    "BETTERUI_EFFECTIVECOOLDOWN": "Effective Cooldown",//*
+    "BETTERUI_PROCCOEFFICIENT": "Коэффициент прока",
+    "BETTERUI_BASECOOLDOWN": "Стандартная перезарядка",
+    "BETTERUI_EFFECTIVECOOLDOWN": "Эффективная перезарядка",
     "BETTERUI_SECOND": "секунд",
     "BETTERUI_SECONDS": "секунды",
-    "BETTERUI_BEFORE_SINGULAR": "До ({0} Предметов): ",
-    "BETTERUI_BEFORE_PLURAL": "До ({0} Stacks): ",
-    "BETTERUI_AFTER_SINGULAR": "После ({0} Stack): ",
-    "BETTERUI_AFTER_PLURAL": "После ({0} Stacks): ",
-    "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} stack to cap)</style>",
-    "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} stacks to cap)</style>",
-    "BETTERUI_DPS": "DPS",//*
+    "BETTERUI_BEFORE_SINGULAR": "До ({0} стаков): ",
+    "BETTERUI_BEFORE_PLURAL": "До ({0} стаков): ",
+    "BETTERUI_AFTER_SINGULAR": "После ({0} стаков): ",
+    "BETTERUI_AFTER_PLURAL": "После ({0} стаков): ",
+    "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} предметов до максимума)</style>",
+    "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} предметов до максимума)</style>",
+    "BETTERUI_DPS": "DPS",
   
     "BETTERUI_LUCKCHANCE_SUFFIX": "% Шанс",
     "BETTERUI_CHANCE_SUFFIX": "% Шанс",
