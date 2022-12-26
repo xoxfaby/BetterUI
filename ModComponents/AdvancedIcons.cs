@@ -226,7 +226,7 @@ namespace BetterUI
                         .Append(Language.GetString("BETTERUI_EFFECTIVECOOLDOWN"))
                         .Append(": <style=cIsHealing>")
                         .Append(self.targetSkill.finalRechargeInterval)
-                        .Append("</style> second")
+                        .Append("</style> ")
                         .Append(Language.GetString(Utils.SecondsToString(self.targetSkill.baseRechargeInterval)));
                 }
 
