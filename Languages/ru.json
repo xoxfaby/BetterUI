@@ -87,7 +87,7 @@
     "BUFF_MERCEXPOSE_NAME": "Раскрытие",
     "BUFF_MERCEXPOSE_DESC": "Раскрытие: Попадание по \"раскрытому\" врагу снижает время восстановления всех навыков на 1 секунду и наносит дополнительные 350% урона",
     "BUFF_DEATHMARK_NAME": "Метка смерти",
-    "BUFF_DEATHMARK_DESC": "Увеличивает получаемый урон на 50% из всех источников на 7 (+7 за предмет) секунд",
+    "BUFF_DEATHMARK_DESC": "Увеличивает получаемый урон на 50% из всех источников на 7 (+7 за стак) секунд",
     "BUFF_PULVERIZEBUILDUP_NAME": "Накопление Разрушения",
     "BUFF_PULVERIZEBUILDUP_DESC": "Накопление Разрушения: по достижении пяти зарядов заменяется на Разрунение (складывается)",
     "BUFF_PULVERIZED_NAME": "Разрушение",
@@ -123,10 +123,10 @@
     "BUFF_OVERHEAT_NAME": "Перегрев",
     "BUFF_OVERHEAT_DESC": "Перегрев: Увеличивает получаемый огненный урон",
     "BUFF_LUNARSECONDARYROOT_NAME": "Лунарные Корни",
-    "BUFF_LUNARSECONDARYROOT_DESC": "Корни: Снижение Скорости передвижения до 0 на 3 (+3 за предмет) секунды",
+    "BUFF_LUNARSECONDARYROOT_DESC": "Корни: Снижение Скорости передвижения до 0 на 3 (+3 за стак) секунды",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "Опустошение",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "Поглощает заряды Опустошения нанося 300% урона плюс 120% урона за заряд Опустошения (складывается)",
-    "BUFF_ENGISHIELD_NAME": "Engi Shield",//*
+    "BUFF_ENGISHIELD_NAME": "Щит Инженера",
     "BUFF_ENGISHIELD_DESC": "+100% шита, при получении урона вас не отбрасывает",
     "BUFF_LUNARSHELL_NAME": "Лунарная скорлупа",
     "BUFF_LUNARSHELL_DESC": "Урон не может превышать 10% вашего максимального здоровья",
@@ -136,22 +136,22 @@
     "BUFF_VOIDFOGSTRONG_DESC": "Затуманивает взгяд и наносит увеличивающийся со временем урон.",
     "BUFF_BODYARMOR_NAME": "Бронежилет",
     "BUFF_BODYARMOR_DESC": "Блокирует следующее попадание и поглощается.",
-    "BUFF_DEAFENED_NAME": "Deafened",//*
-    "BUFF_DEAFENED_DESC": "Muted.",//*
-    "BUFF_ENGITEAMSHIELD_NAME": "Engi Shield (Союзный)",//*
+    "BUFF_DEAFENED_NAME": "Оглушение",
+    "BUFF_DEAFENED_DESC": "Оглушён.",
+    "BUFF_ENGITEAMSHIELD_NAME": "Щит Инженера (Союзный)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% щита, +30% Скорости передвижения",
-    "BUFF_ENRAGEANCIENTWISP_NAME": "Enrage Ancient Wisp",//*
+    "BUFF_ENRAGEANCIENTWISP_NAME": "Разъярённый древний сгусток",
     "BUFF_ENRAGEANCIENTWISP_DESC": "+40% Скорости передвижения",
-    "BUFF_GOLDEMPOWERED_NAME": "Gold Empowered",//*
+    "BUFF_GOLDEMPOWERED_NAME": "Усилен золотом",
     "BUFF_GOLDEMPOWERED_DESC": "+100% урона",
-    "BUFF_LIGHTNINGSHIELD_NAME": "Lightning Shield",//*
-    "BUFF_LIGHTNINGSHIELD_DESC": "Entirely unused.",//*
-    "BUFF_LOADEROVERCHARGED_NAME": "Loader Overcharged",//*
+    "BUFF_LIGHTNINGSHIELD_NAME": "Щит молний",
+    "BUFF_LIGHTNINGSHIELD_DESC": "Совершенно не используется.",
+    "BUFF_LOADEROVERCHARGED_NAME": "Перегрузка Погрузчицы",
     "BUFF_LOADEROVERCHARGED_DESC": "За Погрузчицу, ваши атаки в ближнем бою наносят двойной урон и оглушают на 1 секунду.",
-    "BUFF_LOADERPYLONPOWERED_NAME": "Loader Pylon Powered",//*
-    "BUFF_LOADERPYLONPOWERED_DESC": "On hit, shocks up to 3 nearby enemies for 30% of the damage within 20m",//*
-    "BUFF_MEATREGENBOOST_NAME": "Meat Regen Boost",//*
-    "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + currentLevel * 0.2f)",//*
+    "BUFF_LOADERPYLONPOWERED_NAME": "Заряженная колонна Погрузчика",
+    "BUFF_LOADERPYLONPOWERED_DESC": "При попадании, наносит удары током 3 врагам поблизости на 30% урона в радиусе 20м",
+    "BUFF_MEATREGENBOOST_NAME": "Усиление регенерации от Мяса",
+    "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + currentLevel * 0.2f)",
     "BUFF_SLOW30_NAME": "30% Замедления",
     "BUFF_SLOW30_DESC": "-30% Скорости передвижения",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Безопасное Место (Перезарядка)",
@@ -159,37 +159,37 @@
     "BUFF_BEARVOIDREADY_NAME": "Безопасное место (Готово)",
     "BUFF_BEARVOIDREADY_DESC": "Безопасное место заблокирует следующий удар, затем уйдёт на перезарядку.",
     "BUFF_BLINDED_NAME": "Ослеплён",
-    "BUFF_BLINDED_DESC": "The area around you darkens, obscuring vision.",//*
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Singularity Band (Перезарядка)",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Singularity Band на перезарядке.",
-    "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Singularity Band (Готов)",
-    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Singularity Band effect can be activated",//*
-    "BUFF_ELITEEARTH_NAME": "Mending",//*
-    "BUFF_ELITEEARTH_DESC": "Gain power of a Mending Elite : Heals the nearest ally within 30m for 40% of the holders base damage 4 times per second.",
-    "BUFF_ELITEVOID_NAME": "Voidtouched",//*
-    "BUFF_ELITEVOID_DESC": "Collapse on hit and block one hit every 15 seconds.",
-    "BUFF_FRACTURE_NAME": "Collapse",//*
-    "BUFF_FRACTURE_DESC": "3 seconds after the first stack is applied, deals 400% damage per stack and removes all stacks (складывается).",
-    "BUFF_JAILERSLOW_NAME": "Jailer Slow",//*
+    "BUFF_BLINDED_DESC": "Область вокруг вас темнеет, затуманивая взор.",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Обруч Сингулярности (Перезарядка)",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Обруч Сингулярности на перезарядке.",
+    "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Обруч Сингулярности (Готов)",
+    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Эффект Обруча Сингулярности может быть активирован",
+    "BUFF_ELITEEARTH_NAME": "Исцеляющий",
+    "BUFF_ELITEEARTH_DESC": "Получи силу Исцеляющей Элиты : Лечит ближайшего союзника в радиусе 30м на 40% базового урона держателя 4 раза в секунду.",
+    "BUFF_ELITEVOID_NAME": "Тронутый пустотой",
+    "BUFF_ELITEVOID_DESC": "Накладываешь заряд Разрушения при попадании и блокируешь один удар каждые 15 секунд.",
+    "BUFF_FRACTURE_NAME": "Разрушение",
+    "BUFF_FRACTURE_DESC": "Через 3 секунды после накладывания первого заряда, наносит 400% урона за заряд и снимает все заряды (складывается).",
+    "BUFF_JAILERSLOW_NAME": "Замедление Надзирателя",
     "BUFF_JAILERSLOW_DESC": "-100% Скорости передвижения",
-    "BUFF_JAILERTETHER_NAME": "Jailer Tether",//*
-    "BUFF_JAILERTETHER_DESC": "Indicator buff to show you are tethered. Take Постепенно наносит урон while tethered. Get far enough to break the tether.",
-    "BUFF_KILLMOVESPEED_NAME": "Kill Move Speed",//*
-    "BUFF_KILLMOVESPEED_DESC": "Gain +25% Скорости передвижения. (складывается)",
+    "BUFF_JAILERTETHER_NAME": "Привязь Надзирателя",
+    "BUFF_JAILERTETHER_DESC": "Бафф-индикатор для того, чтобы показать, что вы связаны. Получаете урон со временем пока связаны. Уйдите подальше, чтобы сломать привязь.",
+    "BUFF_KILLMOVESPEED_NAME": "Скорость передвижения за убиййство",
+    "BUFF_KILLMOVESPEED_DESC": "+25% Скорости передвижения. (складывается)",
     "BUFF_MUSHROOMVOIDACTIVE_NAME": "Регенерация слёзогриба",
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Лечит на 2% (+2% per stack) вашего здоровья каждую секунду во время бега.",
     "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Опаловый щит",
-    "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Gain +100 armor. Removed on hit.",
-    "BUFF_PERMANENTDEBUFF_NAME": "Permanent Armor Reduction",//*
-    "BUFF_PERMANENTDEBUFF_DESC": "Reduces armor by 2 (2 per stack) for the remainder of the stage, or until killed (складывается).",
-    "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Shuriken",//*
+    "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Получаешь 100 брони. При получении урона уходит на перезарядку.",
+    "BUFF_PERMANENTDEBUFF_NAME": "Постоянное снижение брони",
+    "BUFF_PERMANENTDEBUFF_DESC": "Снижает броню на 2 (2 за стак) for the remainder of the stage, or until killed (складывается).",
+    "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Сюрикэн",
     "BUFF_PRIMARYSKILLSHURIKENBUFF_DESC": "Consumes a charge to launch a shuriken upon primary skill activation. (складывается)",
-    "BUFF_STRONGERBURN_NAME": "Stronger Burn",//*
-    "BUFF_STRONGERBURN_DESC": "Stronger variant of the Ignite effect. Increases damage taken from burning. Regen disabled.",
+    "BUFF_STRONGERBURN_NAME": "Усиленный поджог",
+    "BUFF_STRONGERBURN_DESC": "Усиленный вариант Поджога. Увеличивает получаемый урон от горения. Регенерация отключена.",
     "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Void Crab Void Void Wipe Fog",//*
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Darkens your view and take увеличивающийся Постепенно наносит урон.",
-    "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",//*
-    "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",//*
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Затуманивает взор и наносит постепенно увеличивающийся урон.",
+    "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Осквернение Пустоты",
+    "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Ваши способности принимают более агрессивные формы.",
   
     "BETTERUI_BEETLEGUARDS": "Жуки-стражники",
     "BETTERUI_HPPERSECOND": "Здоровья в секунду",
@@ -218,11 +218,11 @@
     "BETTERUI_SPRINTSPEED": "Скорость бега",
     "BETTERUI_USES": "Кол-во использований",
     "BETTERUI_HEATH": "Здоровье",
-    "BETTERUI_ROOTDURATION": "Root Duration",//*
+    "BETTERUI_ROOTDURATION": "Продолжительность опутывания",
     "BETTERUI_MAXHEALTH": "Максимальное здоровье",
     "BETTERUI_REGEN": "Регенерация",
     "BETTERUI_RECHARGETIME": "Время восстановления",
-    "BETTERUI_BASEGOLD": "Base Gold",//*
+    "BETTERUI_BASEGOLD": "Стандартное золото",
     "BETTERUI_EXPLOSION": "Взрыв",
     "BETTERUI_HEALINGNOVA": "Исцеляющий взрыв",
     "BETTERUI_GOLDLOST": "Золота потеряно",
@@ -243,7 +243,7 @@
     "BETTERUI_TARGETS": "Цели",
     "BETTERUI_DEBUFFDURATION": "Длительность дебаффа",
     "BETTERUI_COOLDOWN": "Перезарядка",
-    "BETTERUI_RUINDURATION": "Ruin Duration",//*
+    "BETTERUI_RUINDURATION": "Продолжительность Опустошения",
     "BETTERUI_THRESHOLD": "Лимит",
     "BETTERUI_ATTACKSPEED": "Скорость атаки",
     "BETTERUI_SHIELD": "Щит",
@@ -262,7 +262,7 @@
     "BETTERUI_TOUGHERTIMES": "Тяжёлые времена",
     "BETTERUI_DURATION": "Длительность",
     "BETTERUI_ENEMYDIFFICULTY": "Сложность Врагов",
-    "BETTERUI_GHOSTDURATION": "Ghost Duration",//*
+    "BETTERUI_GHOSTDURATION": "Время жизни призрака",
     "BETTERUI_CHARGES": "Заряды",
     "BETTERUI_COOLDOWNREDUCTION": "Снижение перезарядки",
     "BETTERUI_CHANCE": "Шанс",
@@ -278,8 +278,8 @@
     "BETTERUI_BEFORE_PLURAL": "До ({0} стаков): ",
     "BETTERUI_AFTER_SINGULAR": "После ({0} стаков): ",
     "BETTERUI_AFTER_PLURAL": "После ({0} стаков): ",
-    "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} предметов до максимума)</style>",
-    "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} предметов до максимума)</style>",
+    "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} стаков до максимума)</style>",
+    "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} стаков до максимума)</style>",
     "BETTERUI_DPS": "DPS",
   
     "BETTERUI_LUCKCHANCE_SUFFIX": "% Шанс",
@@ -312,7 +312,7 @@
     "SKILL_SMOKEBOMB_NAME": "Дымовая шашка",
     "SKILL_SHOTGUN_NAME": "Дробовик",
     "SKILL_POWERTAZER_NAME": "Энерго-шокер",
-    "SKILL_AIRSTRIKE_NAME": "Airstrike",//*
+    "SKILL_AIRSTRIKE_NAME": "Авиаудар",
     "SKILL_IMPACT_NAME": "Столкновение",
     "SKILL_BULLET_NAME": "Пуля",
     "SKILL_PHASEROUND_NAME": "Фазовый патрон",
@@ -324,10 +324,10 @@
     "SKILL_ARROW_NAME": "Стрела",
     "SKILL_GLAIVE_NAME": "Глефа",
     "SKILL_RAIN_NAME": "Дождь",
-    "SKILL_BALLISTA_NAME": "Ballista",//*
+    "SKILL_BALLISTA_NAME": "Баллиста",
     "SKILL_FIST_NAME": "Кулак",
     "SKILL_ZAP_NAME": "Разряд",
-    "SKILL_SLAM_NAME": "Slam",//*
+    "SKILL_SLAM_NAME": "Удар",
     "SKILL_SWORD_NAME": "Меч",
     "SKILL_SLICE_NAME": "Разрез",
     "SKILL_DASH_NAME": "Рывок",
@@ -345,11 +345,11 @@
     "SKILL_BOOM_NAME": "Волна",
     "SKILL_PROJECTILE_NAME": "Снаряд",
     "SKILL_ROOTS_NAME": "Корни",
-    "SKILL_BEAM_NAME": "Beam",
-    "SKILL_FLOOD_NAME": "Flood",//*
-    "SKILL_CRUSH_NAME": "Crush",//*
-    "SKILL_SHARD_NAME": "Shard",//*
-    "SKILL_MAELSTROM_NAME": "Maelstrom",//*
-    "SKILL_DETONATION_NAME": "Detonation"//*
+    "SKILL_BEAM_NAME": "Луч",
+    "SKILL_FLOOD_NAME": "Поток",
+    "SKILL_CRUSH_NAME": "Сокрушение",
+    "SKILL_SHARD_NAME": "Осколок",
+    "SKILL_MAELSTROM_NAME": "Вихрь",
+    "SKILL_DETONATION_NAME": "Детонация"
   }
   
