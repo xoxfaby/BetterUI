@@ -122,165 +122,165 @@
     "BUFF_PERMANENTCURSE_DESC": "Максимальное здоровье снижено по формуле 1 + 0.01 * n , где n число зарядов. Получая урон на 8 уровне Затмения, союзники получают число зарядов Проклятия по формуле 40 * Урон / Максимальное здоровье , округлённое в меньшую сторону. Все заряды снимаются при переходе на следующий этаж и при воскрешении благодаря Лучшему другу Дио , но не при использовании Града взрывов .| (складывается)",
     "BUFF_OVERHEAT_NAME": "Перегрев",
     "BUFF_OVERHEAT_DESC": "Перегрев: Увеличивает получаемый огненный урон",
-    "BUFF_LUNARSECONDARYROOT_NAME": "Лунные Корни",
+    "BUFF_LUNARSECONDARYROOT_NAME": "Лунарные Корни",
     "BUFF_LUNARSECONDARYROOT_DESC": "Корни: Снижение Скорости передвижения до 0 на 3 (+3 за предмет) секунды",
-    "BUFF_LUNARDETONATIONCHARGE_NAME": "Ruin",
-    "BUFF_LUNARDETONATIONCHARGE_DESC": "Consumes Ruin stacks to deal 300% damage plus 120% damage per Ruin stack (складывается)",
-    "BUFF_ENGISHIELD_NAME": "Engi Shield",
-    "BUFF_ENGISHIELD_DESC": "+100% shield, take no knockback from damage",
-    "BUFF_LUNARSHELL_NAME": "Lunar Shell",
-    "BUFF_LUNARSHELL_DESC": "Damage cannot exceed 10% of your max health",
-    "BUFF_VOIDFOGMILD_NAME": "Void Fog (Mild)",
-    "BUFF_VOIDFOGMILD_DESC": "Darkens your view and take increasing Постепенно наносит урон. Void Fields: Damage doesn't increase over time.",
-    "BUFF_VOIDFOGSTRONG_NAME": "Void Fog (Strong)",
-    "BUFF_VOIDFOGSTRONG_DESC": "Darkens your view and take increasing Постепенно наносит урон.",
-    "BUFF_BODYARMOR_NAME": "Body Armor",
-    "BUFF_BODYARMOR_DESC": "Blocks the next hit, and gets consumed.",
-    "BUFF_DEAFENED_NAME": "Deafened",
-    "BUFF_DEAFENED_DESC": "Muted.",
-    "BUFF_ENGITEAMSHIELD_NAME": "Engi Shield (Team)",
-    "BUFF_ENGITEAMSHIELD_DESC": "+50% shield, +30% move speed",
-    "BUFF_ENRAGEANCIENTWISP_NAME": "Enrage Ancient Wisp",
-    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% move speed",
-    "BUFF_GOLDEMPOWERED_NAME": "Gold Empowered",
-    "BUFF_GOLDEMPOWERED_DESC": "+100% damage",
-    "BUFF_LIGHTNINGSHIELD_NAME": "Lightning Shield",
-    "BUFF_LIGHTNINGSHIELD_DESC": "Entirely unused.",
-    "BUFF_LOADEROVERCHARGED_NAME": "Loader Overcharged",
-    "BUFF_LOADEROVERCHARGED_DESC": "As Loader, your melee attack does 2x damage and stuns for 1 second.",
-    "BUFF_LOADERPYLONPOWERED_NAME": "Loader Pylon Powered",
-    "BUFF_LOADERPYLONPOWERED_DESC": "On hit, shocks up to 3 nearby enemies for 30% of the damage within 20m",
-    "BUFF_MEATREGENBOOST_NAME": "Meat Regen Boost",
-    "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + currentLevel * 0.2f)",
-    "BUFF_SLOW30_NAME": "Slow30",
+    "BUFF_LUNARDETONATIONCHARGE_NAME": "Опустошение",
+    "BUFF_LUNARDETONATIONCHARGE_DESC": "Поглощает заряды Опустошения нанося 300% урона плюс 120% урона за заряд Опустошения (складывается)",
+    "BUFF_ENGISHIELD_NAME": "Engi Shield",//*
+    "BUFF_ENGISHIELD_DESC": "+100% шита, при получении урона вас не отбрасывает",
+    "BUFF_LUNARSHELL_NAME": "Лунарная скорлупа",
+    "BUFF_LUNARSHELL_DESC": "Урон не может превышать 10% вашего максимального здоровья",
+    "BUFF_VOIDFOGMILD_NAME": "Пустотный туман (Средний)",
+    "BUFF_VOIDFOGMILD_DESC": "Затуманивает взгяд и наносит увеличивающийся со временем урон. Пустынные поля: Урон не увеличивается со временем.",
+    "BUFF_VOIDFOGSTRONG_NAME": "Пустотный туман (Сильный)",
+    "BUFF_VOIDFOGSTRONG_DESC": "Затуманивает взгяд и наносит увеличивающийся со временем урон.",
+    "BUFF_BODYARMOR_NAME": "Бронежилет",
+    "BUFF_BODYARMOR_DESC": "Блокирует следующее попадание и поглощается.",
+    "BUFF_DEAFENED_NAME": "Deafened",//*
+    "BUFF_DEAFENED_DESC": "Muted.",//*
+    "BUFF_ENGITEAMSHIELD_NAME": "Engi Shield (Союзный)",//*
+    "BUFF_ENGITEAMSHIELD_DESC": "+50% щита, +30% Скорости передвижения",
+    "BUFF_ENRAGEANCIENTWISP_NAME": "Enrage Ancient Wisp",//*
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% Скорости передвижения",
+    "BUFF_GOLDEMPOWERED_NAME": "Gold Empowered",//*
+    "BUFF_GOLDEMPOWERED_DESC": "+100% урона",
+    "BUFF_LIGHTNINGSHIELD_NAME": "Lightning Shield",//*
+    "BUFF_LIGHTNINGSHIELD_DESC": "Entirely unused.",//*
+    "BUFF_LOADEROVERCHARGED_NAME": "Loader Overcharged",//*
+    "BUFF_LOADEROVERCHARGED_DESC": "За Погрузчицу, ваши атаки в ближнем бою наносят двойной урон и оглушают на 1 секунду.",
+    "BUFF_LOADERPYLONPOWERED_NAME": "Loader Pylon Powered",//*
+    "BUFF_LOADERPYLONPOWERED_DESC": "On hit, shocks up to 3 nearby enemies for 30% of the damage within 20m",//*
+    "BUFF_MEATREGENBOOST_NAME": "Meat Regen Boost",//*
+    "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + currentLevel * 0.2f)",//*
+    "BUFF_SLOW30_NAME": "30% Замедления",
     "BUFF_SLOW30_DESC": "-30% Скорости передвижения",
-    "BUFF_BEARVOIDCOOLDOWN_NAME": "Safer Spaces (Cooldown)",
-    "BUFF_BEARVOIDCOOLDOWN_DESC": "Safer Spaces is on cooldown.",
-    "BUFF_BEARVOIDREADY_NAME": "Safer Spaces (Ready)",
-    "BUFF_BEARVOIDREADY_DESC": "Safer Spaces will block the next hit, then go on cooldown.",
-    "BUFF_BLINDED_NAME": "Blinded",
-    "BUFF_BLINDED_DESC": "The area around you darkens, obscuring vision.",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Singularity Band (Cooldown)",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Singularity Band is on cooldown.",
-    "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Singularity Band (Ready)",
-    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Singularity Band effect can be activated",
-    "BUFF_ELITEEARTH_NAME": "Mending",
+    "BUFF_BEARVOIDCOOLDOWN_NAME": "Безопасное Место (Перезарядка)",
+    "BUFF_BEARVOIDCOOLDOWN_DESC": "Безопасное Место на перезарядке.",
+    "BUFF_BEARVOIDREADY_NAME": "Безопасное место (Готово)",
+    "BUFF_BEARVOIDREADY_DESC": "Безопасное место заблокирует следующий удар, затем уйдёт на перезарядку.",
+    "BUFF_BLINDED_NAME": "Ослеплён",
+    "BUFF_BLINDED_DESC": "The area around you darkens, obscuring vision.",//*
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Singularity Band (Перезарядка)",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Singularity Band на перезарядке.",
+    "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Singularity Band (Готов)",
+    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Singularity Band effect can be activated",//*
+    "BUFF_ELITEEARTH_NAME": "Mending",//*
     "BUFF_ELITEEARTH_DESC": "Gain power of a Mending Elite : Heals the nearest ally within 30m for 40% of the holders base damage 4 times per second.",
-    "BUFF_ELITEVOID_NAME": "Voidtouched",
+    "BUFF_ELITEVOID_NAME": "Voidtouched",//*
     "BUFF_ELITEVOID_DESC": "Collapse on hit and block one hit every 15 seconds.",
-    "BUFF_FRACTURE_NAME": "Collapse",
+    "BUFF_FRACTURE_NAME": "Collapse",//*
     "BUFF_FRACTURE_DESC": "3 seconds after the first stack is applied, deals 400% damage per stack and removes all stacks (складывается).",
-    "BUFF_JAILERSLOW_NAME": "Jailer Slow",
+    "BUFF_JAILERSLOW_NAME": "Jailer Slow",//*
     "BUFF_JAILERSLOW_DESC": "-100% Скорости передвижения",
-    "BUFF_JAILERTETHER_NAME": "Jailer Tether",
+    "BUFF_JAILERTETHER_NAME": "Jailer Tether",//*
     "BUFF_JAILERTETHER_DESC": "Indicator buff to show you are tethered. Take Постепенно наносит урон while tethered. Get far enough to break the tether.",
-    "BUFF_KILLMOVESPEED_NAME": "Kill Move Speed",
+    "BUFF_KILLMOVESPEED_NAME": "Kill Move Speed",//*
     "BUFF_KILLMOVESPEED_DESC": "Gain +25% Скорости передвижения. (складывается)",
     "BUFF_MUSHROOMVOIDACTIVE_NAME": "Регенерация слёзогриба",
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Лечит на 2% (+2% per stack) вашего здоровья каждую секунду во время бега.",
     "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Опаловый щит",
     "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Gain +100 armor. Removed on hit.",
-    "BUFF_PERMANENTDEBUFF_NAME": "Permanent Armor Reduction",
+    "BUFF_PERMANENTDEBUFF_NAME": "Permanent Armor Reduction",//*
     "BUFF_PERMANENTDEBUFF_DESC": "Reduces armor by 2 (2 per stack) for the remainder of the stage, or until killed (складывается).",
-    "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Shuriken",
+    "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Shuriken",//*
     "BUFF_PRIMARYSKILLSHURIKENBUFF_DESC": "Consumes a charge to launch a shuriken upon primary skill activation. (складывается)",
-    "BUFF_STRONGERBURN_NAME": "Stronger Burn",
+    "BUFF_STRONGERBURN_NAME": "Stronger Burn",//*
     "BUFF_STRONGERBURN_DESC": "Stronger variant of the Ignite effect. Increases damage taken from burning. Regen disabled.",
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Void Crab Void Void Wipe Fog",
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Darkens your view and take increasing Постепенно наносит урон.",
-    "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",
-    "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Void Crab Void Void Wipe Fog",//*
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Darkens your view and take увеличивающийся Постепенно наносит урон.",
+    "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",//*
+    "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",//*
   
-    "BETTERUI_BEETLEGUARDS": "Beetle Guards",
+    "BETTERUI_BEETLEGUARDS": "Beetle Guards",//*
     "BETTERUI_HPPERSECOND": "HP в секунду",
     "BETTERUI_ARMORREDUCTION": "Снижение брони",
     "BETTERUI_EXPLOSIONRADIUS": "Радиус взрыва",
-    "BETTERUI_EXPLOSIONMAXHPDAMAGE": "Explosion Max HP Damage",
+    "BETTERUI_EXPLOSIONMAXHPDAMAGE": "Explosion Max HP Damage",//*
     "BETTERUI_TELEPORTERZONE": "Зона телепорта",
-    "BETTERUI_RELOAD": "Reload",
-    "BETTERUI_MAXALLIES": "Max allies",
+    "BETTERUI_RELOAD": "Reload",//*
+    "BETTERUI_MAXALLIES": "Max allies",//*
     "BETTERUI_DAMAGE": "Урон",
     "BETTERUI_SLOWDURATION": "Длительность замедления",
     "BETTERUI_DROPCHANCE": "Шанс выпадения",
     "BETTERUI_MAXIMUMATTACKSPEED": "Максимальная скорость атаки",
-    "BETTERUI_ALLIES": "Allies",
+    "BETTERUI_ALLIES": "Allies",//*
     "BETTERUI_EXTRAJUMPS": "Дополнительные прыжки",
     "BETTERUI_CRITCHANCE": "Шанс крита",
-    "BETTERUI_CHARGETIME": "Charge time",
+    "BETTERUI_CHARGETIME": "Charge time",//*
     "BETTERUI_SHIPPINGREQUESTFORM": "Форма запроса доставки",
-    "BETTERUI_BOOST": "Boost",
+    "BETTERUI_BOOST": "Boost",//*
     "BETTERUI_HEALTHPERORB": "Здоровье за шар",
-    "BETTERUI_ALLY": "Ally",
-    "BETTERUI_CHARGESPEED": "Charge Speed",
-    "BETTERUI_PROJECTILESSHOT": "Projectiles Shot",
-    "BETTERUI_SKILLCOOLDOWNS": "Skill Cooldowns",
+    "BETTERUI_ALLY": "Ally",//*
+    "BETTERUI_CHARGESPEED": "Charge Speed",//*
+    "BETTERUI_PROJECTILESSHOT": "Projectiles Shot",//*
+    "BETTERUI_SKILLCOOLDOWNS": "Skill Cooldowns",//*
     "BETTERUI_BLEEDCHANCE": "Шанс кровотечения",
     "BETTERUI_SPRINTSPEED": "Скорость бега",
     "BETTERUI_USES": "Кол-во использований",
     "BETTERUI_HEATH": "Здоровье",
-    "BETTERUI_ROOTDURATION": "Root Duration",
+    "BETTERUI_ROOTDURATION": "Root Duration",//*
     "BETTERUI_MAXHEALTH": "Максимальное здоровье",
-    "BETTERUI_REGEN": "Regen",
-    "BETTERUI_RECHARGETIME": "Recharge Time ",
-    "BETTERUI_BASEGOLD": "Base Gold",
+    "BETTERUI_REGEN": "Regen",//*
+    "BETTERUI_RECHARGETIME": "Recharge Time ",//*
+    "BETTERUI_BASEGOLD": "Base Gold",//*
     "BETTERUI_EXPLOSION": "Взрыв",
-    "BETTERUI_HEALINGNOVA": "Healing Nova",
+    "BETTERUI_HEALINGNOVA": "Healing Nova",//*
     "BETTERUI_GOLDLOST": "Золота потеряно",
-    "BETTERUI_FRENZYDURATION": "Frenzy Duration",
-    "BETTERUI_HEALING": "Healing",
+    "BETTERUI_FRENZYDURATION": "Frenzy Duration",//*
+    "BETTERUI_HEALING": "Healing",//*
     "BETTERUI_HEALINGCONVERTED": "Преобразованное лечение",
     "BETTERUI_MAXIMUMRADIUS": "Максимальный радиус",
     "BETTERUI_RECHARGESPEED": "Скорость восстановления",
     "BETTERUI_GOLDGAINED": "Золота получено",
-    "BETTERUI_HITS": "Hits",
+    "BETTERUI_HITS": "Hits",//*
     "BETTERUI_ARMOR": "Броня",
     "BETTERUI_ITEMSUPGRADED": "Предметов улучшено",
     "BETTERUI_HEALTH": "Здоровье",
     "BETTERUI_EQUIPMENTCHARGES": "Заряды снаряжения",
-    "BETTERUI_TETHEREDENEMIES": "Tethered Enemies",
+    "BETTERUI_TETHEREDENEMIES": "Tethered Enemies",//*
     "BETTERUI_HEALTHPERSECOND": "Здоровье в секунду",
     "BETTERUI_HEALTHPERKILL": "Здоровье за убийство",
     "BETTERUI_TARGETS": "Цели",
-    "BETTERUI_DEBUFFDURATION": "Debuff Duration",
-    "BETTERUI_COOLDOWN": "Cooldown",
-    "BETTERUI_RUINDURATION": "Ruin Duration",
-    "BETTERUI_THRESHOLD": "Threshold",
+    "BETTERUI_DEBUFFDURATION": "Debuff Duration",//*
+    "BETTERUI_COOLDOWN": "Cooldown",//*
+    "BETTERUI_RUINDURATION": "Ruin Duration",//*
+    "BETTERUI_THRESHOLD": "Threshold",//*
     "BETTERUI_ATTACKSPEED": "Скорость атаки",
     "BETTERUI_SHIELD": "Щит",
     "BETTERUI_SHURIKEN": "Сюрикэн",
     "BETTERUI_RADIUS": "Радиус",
     "BETTERUI_ENCRUSTEDKEY": "Покрытый коркой ключ",
-    "BETTERUI_EFFECTS": "Effects",
+    "BETTERUI_EFFECTS": "Effects",//*
     "BETTERUI_HEAL": "Лечение",
-    "BETTERUI_MAXCONSTRUCTS": "Кол-во конструкций",
+    "BETTERUI_MAXCONSTRUCTS": "Кол-во альфа конструкций",
     "BETTERUI_MOVEMENTSPEED": "Скорость передвижения",
     "BETTERUI_BARRIER": "Барьер",
     "BETTERUI_EXPLOSIONBASEDAMAGE": "Базовый урон взрыва",
     "BETTERUI_FIREWORKS": "Феерверки",
-    "BETTERUI_RANGE": "Range",
-    "BETTERUI_BOMBS": "Bombs",
+    "BETTERUI_RANGE": "Range",//*
+    "BETTERUI_BOMBS": "Bombs",//*
     "BETTERUI_TOUGHERTIMES": "Тяжёлые времена",
-    "BETTERUI_DURATION": "Duration",
-    "BETTERUI_ENEMYDIFFICULTY": "Enemy Difficulty",
-    "BETTERUI_GHOSTDURATION": "Ghost Duration",
+    "BETTERUI_DURATION": "Duration",//*
+    "BETTERUI_ENEMYDIFFICULTY": "Enemy Difficulty",//*
+    "BETTERUI_GHOSTDURATION": "Ghost Duration",//*
     "BETTERUI_CHARGES": "Заряды",
-    "BETTERUI_COOLDOWNREDUCTION": "Cooldown Reduction",
+    "BETTERUI_COOLDOWNREDUCTION": "Cooldown Reduction",//*
     "BETTERUI_CHANCE": "Шанс",
     "BETTERUI_MAXIMUMHEALTH": "Максимальное Здоровье",
     "BETTERUI_MAXIMUM": "Максимум",
     "BETTERUI_LUCK": "Удача",
     "BETTERUI_PROCCOEFFICIENT": "Коэффициент срабатывания",
-    "BETTERUI_BASECOOLDOWN": "Base Cooldown",
-    "BETTERUI_EFFECTIVECOOLDOWN": "Effective Cooldown",
+    "BETTERUI_BASECOOLDOWN": "Base Cooldown",//*
+    "BETTERUI_EFFECTIVECOOLDOWN": "Effective Cooldown",//*
     "BETTERUI_SECOND": "секунд",
     "BETTERUI_SECONDS": "секунды",
-    "BETTERUI_BEFORE_SINGULAR": "До ({0} Stack): ",
+    "BETTERUI_BEFORE_SINGULAR": "До ({0} Предметов): ",
     "BETTERUI_BEFORE_PLURAL": "До ({0} Stacks): ",
     "BETTERUI_AFTER_SINGULAR": "После ({0} Stack): ",
     "BETTERUI_AFTER_PLURAL": "После ({0} Stacks): ",
     "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} stack to cap)</style>",
     "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} stacks to cap)</style>",
-    "BETTERUI_DPS": "DPS",
+    "BETTERUI_DPS": "DPS",//*
   
     "BETTERUI_LUCKCHANCE_SUFFIX": "% Шанс",
     "BETTERUI_CHANCE_SUFFIX": "% Шанс",
@@ -312,7 +312,7 @@
     "SKILL_SMOKEBOMB_NAME": "Дымовая шашка",
     "SKILL_SHOTGUN_NAME": "Дробовик",
     "SKILL_POWERTAZER_NAME": "Энерго-шокер",
-    "SKILL_AIRSTRIKE_NAME": "Airstrike",
+    "SKILL_AIRSTRIKE_NAME": "Airstrike",//*
     "SKILL_IMPACT_NAME": "Столкновение",
     "SKILL_BULLET_NAME": "Пуля",
     "SKILL_PHASEROUND_NAME": "Фазовый патрон",
@@ -324,10 +324,10 @@
     "SKILL_ARROW_NAME": "Стрела",
     "SKILL_GLAIVE_NAME": "Глефа",
     "SKILL_RAIN_NAME": "Дождь",
-    "SKILL_BALLISTA_NAME": "Ballista",
+    "SKILL_BALLISTA_NAME": "Ballista",//*
     "SKILL_FIST_NAME": "Кулак",
     "SKILL_ZAP_NAME": "Разряд",
-    "SKILL_SLAM_NAME": "Slam",
+    "SKILL_SLAM_NAME": "Slam",//*
     "SKILL_SWORD_NAME": "Меч",
     "SKILL_SLICE_NAME": "Разрез",
     "SKILL_DASH_NAME": "Рывок",
@@ -346,10 +346,10 @@
     "SKILL_PROJECTILE_NAME": "Снаряд",
     "SKILL_ROOTS_NAME": "Корни",
     "SKILL_BEAM_NAME": "Beam",
-    "SKILL_FLOOD_NAME": "Flood",
-    "SKILL_CRUSH_NAME": "Crush",
-    "SKILL_SHARD_NAME": "Shard",
-    "SKILL_MAELSTROM_NAME": "Maelstrom",
-    "SKILL_DETONATION_NAME": "Detonation"
+    "SKILL_FLOOD_NAME": "Flood",//*
+    "SKILL_CRUSH_NAME": "Crush",//*
+    "SKILL_SHARD_NAME": "Shard",//*
+    "SKILL_MAELSTROM_NAME": "Maelstrom",//*
+    "SKILL_DETONATION_NAME": "Detonation"//*
   }
   
