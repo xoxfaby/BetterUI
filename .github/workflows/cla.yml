@@ -16,4 +16,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           allowlist: 'xoxfaby' 
+          path-to-signatures: 'signatures/cla.json'
           url-to-cladocument: 'https://github.com/xoxfaby/BetterUI/blob/master/CLA.md'
