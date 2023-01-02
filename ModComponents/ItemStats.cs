@@ -70,7 +70,7 @@ namespace BetterUI
             RegisterProc(RoR2Content.Items.GoldOnHit, 0.3f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.HeadHunter, "BETTERUI_DURATION", 8, 5, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.HealOnCrit, "BETTERUI_HEAL", 8, 4, statFormatter: StatFormatter.HP);
-            RegisterProc(RoR2Content.Items.HealOnCrit, 8f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
+            RegisterProc(RoR2Content.Items.HealOnCrit, 8f, 4f, statFormatter: StatFormatter.HP, stackingFormula: LinearStacking);
             RegisterStat(RoR2Content.Items.HealWhileSafe, "BETTERUI_REGEN", 3, statFormatter: StatFormatter.Regen);
             RegisterStat(RoR2Content.Items.Hoof, "BETTERUI_MOVEMENTSPEED", 0.14f, itemTag: ItemTag.MovementSpeed);
             RegisterStat(RoR2Content.Items.IceRing, "BETTERUI_SLOWDURATION", 3, statFormatter: StatFormatter.Seconds);
