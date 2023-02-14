@@ -372,7 +372,7 @@
   "SKILL_DETONATION_NAME": "Детонація",
   
   
-  "BETTERUI_RAINCOAT": "Зніміє ефектів до перезаряджання",
+  "BETTERUI_RAINCOAT": "Знімає ефектів до перезаряджання",
   "BUFF_RAINCOATREADY_NAME": "Дощовик готовий", 
   "BUFF_RAINCOATREADY_DESC": "Дощовик готовий зняти 1 (+1 за кожен дублікат) стек негативного ефекту та піти на перезаряджання в 5 секунд.",
   "BUFF_RAINCOATCOOLDOWN_NAME": "Дощовик перезаряджається",
