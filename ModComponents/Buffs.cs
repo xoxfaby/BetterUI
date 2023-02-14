@@ -111,6 +111,8 @@ namespace BetterUI
                 RegisterBuffInfo(RoR2.DLC1Content.Buffs.StrongerBurn, "BUFF_STRONGERBURN_NAME", "BUFF_STRONGERBURN_DESC");
                 RegisterBuffInfo(RoR2.DLC1Content.Buffs.VoidRaidCrabWardWipeFog, "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME", "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC");
                 RegisterBuffInfo(RoR2.DLC1Content.Buffs.VoidSurvivorCorruptMode, "BUFF_VOIDSURVIVORCORRUPTMODE_NAME", "BUFF_VOIDSURVIVORCORRUPTMODE_DESC");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ImmuneToDebuffReady, "BUFF_RAINCOATREADY_NAME", "BUFF_RAINCOATREADY_DESC");
+                RegisterBuffInfo(RoR2.RoR2Content.Buffs.ImmuneToDebuffCooldown, "BUFF_RAINCOATCOOLDOWN_NAME", "BUFF_RAINCOATCOOLDOWN_DESC");
             });
         }
 
