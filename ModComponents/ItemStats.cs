@@ -60,6 +60,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Feather, "BETTERUI_EXTRAJUMPS", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.FireballsOnHit, "BETTERUI_DAMAGE", 3);
+            RegisterProc(RoR2Content.Items.FireballsOnHit, 0.1f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.Firework, "BETTERUI_FIREWORKS", 8, 4, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FlatHealth, "BETTERUI_HEALTH", 25, statFormatter: StatFormatter.HP);
             RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_CHARGESPEED", 0.30f);
@@ -89,6 +90,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.LaserTurbine, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.LaserTurbine, "BETTERUI_EXPLOSION", 10);
             RegisterStat(RoR2Content.Items.LightningStrikeOnHit, "BETTERUI_DAMAGE", 5);
+            RegisterProc(RoR2Content.Items.LightningStrikeOnHit, 0.1f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.LunarBadLuck, "BETTERUI_LUCK", -1, statFormatter: StatFormatter.Charges, itemTag: ItemTag.LuckStat);
             RegisterStat(RoR2Content.Items.LunarDagger, "BETTERUI_DAMAGE", 2, ExponentialStacking);
             RegisterModifier(ItemTag.Damage, RoR2Content.Items.LunarDagger, ItemModifier.PositiveExponentialBonus, 2);
