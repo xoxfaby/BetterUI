@@ -352,7 +352,7 @@
   "SKILL_MAELSTROM_NAME": "Maelstrom",
   "SKILL_DETONATION_NAME": "Detonation",
   
-  "BETTERUI_RAINCOAT": "Remove effects until cooldown",
+  "BETTERUI_RAINCOAT": "Debuffs Prevented",
   "BUFF_RAINCOATREADY_NAME": "Raincoat ready", 
   "BUFF_RAINCOATREADY_DESC": "Consume charge to remove one debuff stack and go to 5 sec cooldown after last charge.",
   "BUFF_RAINCOATCOOLDOWN_NAME": "Raincoat on cooldown",
