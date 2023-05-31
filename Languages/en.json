@@ -11,7 +11,6 @@
   "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Fire an arcing bomb for <style=cIsDamage>1100% damage</style>.",
   "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Disappear</style> into the Void, <style=cIsUtility>cleansing all debuffs</style> while moving in a <style=cIsUtility>forward arc</style>.",
   "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Crush <style=cIsHealing>25% health</style> to gain <style=cIsVoid>25% Corruption</style>.",
-
   "BUFF_AFFIXRED_NAME": "Blazing",
   "BUFF_AFFIXRED_DESC": "Gain power of a Blazing Elite : Leave a fire trail, and apply a percent burn on hit.",
   "BUFF_AFFIXBLUE_NAME": "Overloading",
@@ -190,7 +189,10 @@
   "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Darkens your view and take increasing damage over time.",
   "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",
   "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",
-
+  "BUFF_RAINCOATREADY_NAME": "Raincoat Ready",
+  "BUFF_RAINCOATREADY_DESC": "Consumes 1 charge to prevent one debuff from being applied.\n\n Goes on cooldown when all charges are used.",
+  "BUFF_RAINCOATCOOLDOWN_NAME": "Raincoat On Cooldown",
+  "BUFF_RAINCOATCOOLDOWN_DESC": "Raincoat is currently on cooldown and will not block any debuffs.",
   "BETTERUI_BEETLEGUARDS": "Beetle Guards",
   "BETTERUI_HPPERSECOND": "HP per second",
   "BETTERUI_ARMORREDUCTION": "Armor Reduction",
@@ -281,7 +283,7 @@
   "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} stack to cap)</style>",
   "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} stacks to cap)</style>",
   "BETTERUI_DPS": "DPS",
-
+  "BETTERUI_DEBUFFSPREVENTED": "Debuffs Prevented",
   "BETTERUI_LUCKCHANCE_SUFFIX": "% Chance",
   "BETTERUI_CHANCE_SUFFIX": "% Chance",
   "BETTERUI_GOLD_PREFIX": "$",
@@ -291,7 +293,6 @@
   "BETTERUI_ARMOR_SUFFIX": " Armor",
   "BETTERUI_REGEN_SUFFIX": " HP/s",
   "BETTERUI_RANGE_SUFFIX": "m",
-
   "SKILL_SLASH_NAME": "Slash",
   "SKILL_SPIT_NAME": "Spit",
   "SKILL_BITE_NAME": "Bite",
@@ -350,11 +351,5 @@
   "SKILL_CRUSH_NAME": "Crush",
   "SKILL_SHARD_NAME": "Shard",
   "SKILL_MAELSTROM_NAME": "Maelstrom",
-  "SKILL_DETONATION_NAME": "Detonation",
-  
-  "BETTERUI_RAINCOAT": "Debuffs Prevented",
-  "BUFF_RAINCOATREADY_NAME": "Raincoat ready", 
-  "BUFF_RAINCOATREADY_DESC": "Consume charge to remove one debuff stack and go to 5 sec cooldown after last charge.",
-  "BUFF_RAINCOATCOOLDOWN_NAME": "Raincoat on cooldown",
-  "BUFF_RAINCOATCOOLDOWN_DESC": "Raincoat on cooldown to next use."
+  "SKILL_DETONATION_NAME": "Detonation"
 }
