@@ -373,8 +373,8 @@
   
   
   "BETTERUI_RAINCOAT": "Знімає ефектів до перезаряджання",
-  "BUFF_RAINCOATREADY_NAME": "Дощовик готовий", 
+  "BUFF_RAINCOATREADY_NAME": "Дощовик Бена готовий", 
   "BUFF_RAINCOATREADY_DESC": "Витрачає один заряд, щоб зняти стек негативного ефекту та піти на перезаряджання, після використання останнього заряду.",
-  "BUFF_RAINCOATCOOLDOWN_NAME": "Дощовик перезаряджається",
-  "BUFF_RAINCOATCOOLDOWN_DESC": "Дощовик перезаряджається до наступного використання."
+  "BUFF_RAINCOATCOOLDOWN_NAME": "Дощовик Бена перезаряджається",
+  "BUFF_RAINCOATCOOLDOWN_DESC": "Дощовик Бена перезаряджається до наступного використання."
 }
