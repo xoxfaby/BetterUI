@@ -18,6 +18,10 @@ readme = "../README.md"
 outdir = "../zip"
 
 [[build.copy]]
+source = "../CHANGELOG.md"
+target = "CHANGELOG.md"
+
+[[build.copy]]
 source = "../bin/Release/netstandard2.0/BetterUI.dll"
 target = "plugins/BetterUI/BetterUI.dll"
 
