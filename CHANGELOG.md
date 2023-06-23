@@ -1,5 +1,8 @@
 ## Changelog
 
+#### v2.7.8
+ - Bugfix: Included CHANGELOG.md in export so that you can read this. 
+
 #### v2.7.7
  - Addition: Language Support: Added Japanese
  - Small Update: Added more Russian strings ( Thanks l Yoh l )
