@@ -1,5 +1,10 @@
 ## Changelog
 
+#### v2.7.7
+ - Addition: Language Support: Added Japanese
+ - Small Update: Added more Russian strings ( Thanks l Yoh l )
+ - Bugfix: ItemStats: Fixed Harvester's Scythe not showing the correct stack value. 
+ - Bugfix: ItemStats: Updated Ben's Raincoat to the newest version
 
 #### v2.7.6
  - Addition: Language Support: Added Chinese ( Thanks 南家老树皮 )
