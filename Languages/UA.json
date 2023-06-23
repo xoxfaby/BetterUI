@@ -207,6 +207,10 @@
   "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Затемнює ваш зір та з часом завдає все більшої шкоди.",
   "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Заражений режим Породження Порожнечі",
   "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Здібності трансформуються у більш агресивні форми.",
+  "BUFF_RAINCOATREADY_NAME": "Дощовик Бена готовий", 
+  "BUFF_RAINCOATREADY_DESC": "Витрачає один заряд, щоб запобігти отриманню негативного ефекту.\n\nПерезаряджається після використання останнього заряду.",
+  "BUFF_RAINCOATCOOLDOWN_NAME": "Дощовик Бена перезаряджається",
+  "BUFF_RAINCOATCOOLDOWN_DESC": "Дощовик Бена перезаряджає та не може запобігти отриманню негетавних ефектів.",
 
   "BETTERUI_BEETLEGUARDS": "Жуків-вартових",
   "BETTERUI_HPPERSECOND": "ОЗ за секунду",
@@ -286,6 +290,7 @@
   "BETTERUI_MAXIMUMHEALTH": "Максимум здоров'я",
   "BETTERUI_MAXIMUM": "Максимум",
   "BETTERUI_LUCK": "Удача",
+  "BETTERUI_DEBUFFSPREVENTED":"Максимум зарядів",
 
   "BETTERUI_LUCKCHANCE_SUFFIX": "% шанс",
   "BETTERUI_CHANCE_SUFFIX": "% шанс",
@@ -309,7 +314,6 @@
   "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} стек для максимуму)</style>",
   "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} стеків для максимуму)</style>",
   "BETTERUI_DPS": "ШЗС",
-
 
   "SKILL_SLASH_NAME": "Змах",
   "SKILL_SPIT_NAME": "Коса",
@@ -369,12 +373,5 @@
   "SKILL_CRUSH_NAME": "Розчавлення",
   "SKILL_SHARD_NAME": "Осколок",
   "SKILL_MAELSTROM_NAME": "Вихор",
-  "SKILL_DETONATION_NAME": "Детонація",
-  
-  
-  "BETTERUI_RAINCOAT": "Знімає ефектів до перезаряджання",
-  "BUFF_RAINCOATREADY_NAME": "Дощовик Бена готовий", 
-  "BUFF_RAINCOATREADY_DESC": "Витрачає один заряд, щоб зняти стек негативного ефекту та піти на перезаряджання, після використання останнього заряду.",
-  "BUFF_RAINCOATCOOLDOWN_NAME": "Дощовик Бена перезаряджається",
-  "BUFF_RAINCOATCOOLDOWN_DESC": "Дощовик Бена перезаряджається до наступного використання."
+  "SKILL_DETONATION_NAME": "Детонація"
 }
