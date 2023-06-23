@@ -60,6 +60,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Feather, "BETTERUI_EXTRAJUMPS", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.FireballsOnHit, "BETTERUI_DAMAGE", 3);
+            RegisterProc(RoR2Content.Items.FireballsOnHit, 0.1f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.Firework, "BETTERUI_FIREWORKS", 8, 4, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FlatHealth, "BETTERUI_HEALTH", 25, statFormatter: StatFormatter.HP);
             RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_CHARGESPEED", 0.30f);
@@ -89,6 +90,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.LaserTurbine, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.LaserTurbine, "BETTERUI_EXPLOSION", 10);
             RegisterStat(RoR2Content.Items.LightningStrikeOnHit, "BETTERUI_DAMAGE", 5);
+            RegisterProc(RoR2Content.Items.LightningStrikeOnHit, 0.1f, stackingFormula: NoStacking);
             RegisterStat(RoR2Content.Items.LunarBadLuck, "BETTERUI_LUCK", -1, statFormatter: StatFormatter.Charges, itemTag: ItemTag.LuckStat);
             RegisterStat(RoR2Content.Items.LunarDagger, "BETTERUI_DAMAGE", 2, ExponentialStacking);
             RegisterModifier(ItemTag.Damage, RoR2Content.Items.LunarDagger, ItemModifier.PositiveExponentialBonus, 2);
@@ -190,7 +192,7 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 0.5f, HyperbolicStacking);
             RegisterModifier(ItemTag.MovementSpeed, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.ExponentialBonus, 0.5f);
             RegisterStat(DLC1Content.Items.HealingPotion, "BETTERUI_USES", 1f, statFormatter: StatFormatter.Charges);
-            RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_MAXHEALTH", 100, statFormatter: StatFormatter.HP, itemTag: ItemTag.MaxHealth);
+            RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_RAINCOAT", 1f, stackingFormula: LinearStacking, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.LunarSun, "BETTERUI_CHARGETIME", 3f, DivideByStacks, statFormatter: StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.LunarSun, "BETTERUI_BOMBS", 3f, 1f, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.MinorConstructOnKill, "BETTERUI_MAXCONSTRUCTS", 4, statFormatter: StatFormatter.Charges);
