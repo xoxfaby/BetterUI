@@ -12,7 +12,7 @@ namespace BetterUI
 
         System.Collections.IEnumerator CheckForUpdate()
         {
-            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get("https://faby.dev/api/v1/version/betterui");
+            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get("https://faby.dev/api/v1/version/betterui_language");
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
