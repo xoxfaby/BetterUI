@@ -189,7 +189,7 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "BETTERUI_ATTACKSPEED", 1, DivideByBonusStacks);
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MAXHEALTH", 1);
             RegisterModifier(ItemTag.MaxHealth, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.PercentBonus, 100);
-            RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 0.5f, HyperbolicStacking);
+            RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 0.5f, ExponentialStacking);
             RegisterModifier(ItemTag.MovementSpeed, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.ExponentialBonus, 0.5f);
             RegisterStat(DLC1Content.Items.HealingPotion, "BETTERUI_USES", 1f, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_RAINCOAT", 1f, stackingFormula: LinearStacking, statFormatter: StatFormatter.Charges);
