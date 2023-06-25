@@ -85,8 +85,10 @@ namespace BetterUI
             {
                 var itemDef = ItemCatalog.GetItemDef(itemIndex);
                 BetterUIPlugin.sharedStringBuilder.Clear();
-                BetterUIPlugin.sharedStringBuilder.Append(Language.GetString(itemDef.descriptionToken))
-                    .Append("</style>\n");
+                BetterUIPlugin.sharedStringBuilder.Append(
+                    Language.GetString(itemDef.descriptionToken ?? itemDef.pickupToken ?? "")
+                );
+                BetterUIPlugin.sharedStringBuilder.Append("</style>\n");
                 ItemStats.GetItemStats(BetterUIPlugin.sharedStringBuilder, itemDef, itemCount, updateDisplayMaster);
                 self.tooltipProvider.overrideBodyText = BetterUIPlugin.sharedStringBuilder.ToString();
             }
