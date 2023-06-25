@@ -531,6 +531,12 @@ namespace BetterUI
                 suffix = "BETTERUI_RANGE_SUFFIX",
                 style = Styles.Damage
             };
+            public static StatFormatter Damage = new StatFormatter()
+            {
+                suffix = "BETTERUI_DAMAGE_SUFFIX",
+                style = Styles.Damage
+            };
+
 
             public void FormatString(StringBuilder stringBuilder, float value, CharacterMaster master)
             {
