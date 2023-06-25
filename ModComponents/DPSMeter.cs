@@ -61,10 +61,10 @@ namespace BetterUI
             return Math.Min(Math.Max(1, value), ConfigManager.DPSMeterTimespan.Value);
         }
 
-   
+
         private static void onUpdate()
         {
-            while(characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
+            while (characterDamageLog.Count > 0 && characterDamageLog.Peek().time < Time.time - ConfigManager.DPSMeterTimespan.Value)
             {
                 characterDamageSum -= characterDamageLog.Dequeue().damage;
             }
@@ -95,7 +95,7 @@ namespace BetterUI
 
             CharacterMaster localMaster = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
 
-            if (dmgMsg.attacker && dmgMsg.victim) 
+            if (dmgMsg.attacker && dmgMsg.victim)
             {
                 var victimBody = dmgMsg.victim.gameObject.GetComponent<CharacterBody>();
                 if (victimBody && victimBody.teamComponent.teamIndex != TeamIndex.Player)
@@ -161,11 +161,14 @@ namespace BetterUI
 
                 if (ConfigManager.DPSMeterWindowBackground.Value)
                 {
-                    Image image = DPSMeterPanel.AddComponent<Image>();
                     Image copyImage = BetterUIPlugin.hud.itemInventoryDisplay.gameObject.GetComponent<Image>();
-                    image.sprite = copyImage.sprite;
-                    image.color = copyImage.color;
-                    image.type = Image.Type.Sliced;
+                    if (copyImage != null)
+                    {
+                        Image image = DPSMeterPanel.AddComponent<Image>();
+                        image.sprite = copyImage.sprite;
+                        image.color = copyImage.color;
+                        image.type = Image.Type.Sliced;
+                    }
                 }
 
                 textMesh.enableAutoSizing = true;

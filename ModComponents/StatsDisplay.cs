@@ -58,7 +58,7 @@ namespace BetterUI
                         return (statBody.characterMotor != null) ? statBody.characterMotor.velocity.magnitude.ToString("0.##") : "n/a";
                     }
                 },
-                { 
+                {
                     "$2dvelocity", (statBody) =>
                     {
                         if(statBody.characterMotor != null)
@@ -76,7 +76,7 @@ namespace BetterUI
                             return (statBody.maxJumpCount - statBody.characterMotor.jumpCount).ToString();
                         }
                         return "0";
-                    } 
+                    }
                 },
                 { "$maxjumps", (statBody) => statBody.maxJumpCount.ToString() },
                 { "$atkspd", (statBody) => statBody.attackSpeed.ToString() },
@@ -198,11 +198,14 @@ namespace BetterUI
 
                 if (ConfigManager.StatsDisplayPanelBackground.Value)
                 {
-                    Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
                     Image copyImage = BetterUIPlugin.objectivePanelController.objectiveTrackerContainer.parent.GetComponent<Image>();
-                    image.sprite = copyImage.sprite;
-                    image.color = copyImage.color;
-                    image.type = Image.Type.Sliced;
+                    if (copyImage != null)
+                    {
+                        Image image = statsDisplayContainer.AddComponent<UnityEngine.UI.Image>();
+                        image.sprite = copyImage.sprite;
+                        image.color = copyImage.color;
+                        image.type = Image.Type.Sliced;
+                    }
                 }
 
                 textMesh.fontSize = 12;
@@ -250,7 +253,7 @@ namespace BetterUI
                         {
                             for (int i = 0; i < altText.Length; i++)
                             {
-                                if(i % 2 == 0)
+                                if (i % 2 == 0)
                                 {
                                     BetterUIPlugin.sharedStringBuilder.Append(altText[i]);
                                 }
