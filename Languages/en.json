@@ -284,6 +284,7 @@
   "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} stacks to cap)</style>",
   "BETTERUI_DPS": "DPS",
   "BETTERUI_DEBUFFSPREVENTED": "Debuffs Prevented",
+  "BETTERUI_DAMAGEREDUCTION": "Damage Reduction",
   "BETTERUI_LUCKCHANCE_SUFFIX": "% Chance",
   "BETTERUI_CHANCE_SUFFIX": "% Chance",
   "BETTERUI_GOLD_PREFIX": "$",

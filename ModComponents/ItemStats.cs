@@ -13,12 +13,12 @@ namespace BetterUI
         internal static Dictionary<ItemTag, List<ItemModifier>> itemModifiers = new Dictionary<ItemTag, List<ItemModifier>>();
         public static readonly Dictionary<ItemDef, ItemProcInfo> itemProcInfos = new Dictionary<ItemDef, ItemProcInfo>();
 
-        
+
         public static void Initialize()
         {
             RegisterStat(RoR2Content.Items.AlienHead, "BETTERUI_COOLDOWNREDUCTION", 0.25f, NegativeExponentialStacking, StatFormatter.Percent, itemTag: ItemTag.SkillCooldown);
             RegisterModifier(ItemTag.SkillCooldown, RoR2Content.Items.AlienHead, ItemModifier.ExponentialBonus, 0.25f);
-            RegisterStat(RoR2Content.Items.ArmorPlate, "BETTERUI_ARMOR", 5f, LinearStacking, StatFormatter.Armor);
+            RegisterStat(RoR2Content.Items.ArmorPlate, "BETTERUI_DAMAGEREDUCTION", 5f, LinearStacking, StatFormatter.Damage);
             RegisterStat(RoR2Content.Items.ArmorReductionOnHit, "BETTERUI_DURATION", 8, LinearStacking, StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.AttackSpeedOnCrit, "BETTERUI_MAXIMUMATTACKSPEED", 0.36f, 0.24f, LinearStacking, StatFormatter.Percent);
             RegisterStat(RoR2Content.Items.AutoCastEquipment, "BETTERUI_COOLDOWNREDUCTION", 0.5f, 0.15f, NegativeExponentialStacking, StatFormatter.Percent, ItemTag.EquipmentCooldown);
@@ -472,7 +472,8 @@ namespace BetterUI
             {
                 suffix = "BETTERUI_LUCKCHANCE_SUFFIX",
                 style = Styles.Damage,
-                statFormatter = (sb, value, master) => {
+                statFormatter = (sb, value, master) =>
+                {
                     sb.Append(Math.Min(100, 100 * Utils.LuckCalc(value, master.luck)).ToString("0.##"));
                 }
             };
@@ -626,7 +627,7 @@ namespace BetterUI
             public void GetOutputString(StringBuilder stringBuilder, int stacks, CharacterMaster master, float procCoefficient)
             {
                 this.statFormatter.FormatString(stringBuilder, procCoefficient * this.stackingFormula(this.value, this.extraStackValue, stacks), master);
-                if(capFormula != null)
+                if (capFormula != null)
                 {
                     var stacksToCap = capFormula(value, extraStackValue, procCoefficient);
                     stringBuilder.AppendFormat(Language.GetString(stacksToCap > 1 ? "BETTERUI_PROCSTACKS_PLURAL" : "BETTERUI_PROCSTACKS_SINGULAR"), stacksToCap);
@@ -689,9 +690,9 @@ namespace BetterUI
         public class ItemModifier
         {
             public delegate float ModificationFormula(float value, float modifier, float stacks, float stackModifier);
-            public static ModificationFormula ExponentialBonus = (value, modifier, stackModifier, stacks) => (1 - value) - (1 - value) * (1 - modifier) * (float) Math.Pow(1 - stackModifier, stacks - 1);
-            public static ModificationFormula PositiveExponentialBonus = (value, modifier, stackModifier, stacks) => value * modifier * (float) Math.Pow(1 - stackModifier, stacks - 1);
-            public static ModificationFormula PercentBonus = (value, modifier, stackModifier, stacks) => value * ((modifier + (stackModifier * (stacks-1))) / 100);
+            public static ModificationFormula ExponentialBonus = (value, modifier, stackModifier, stacks) => (1 - value) - (1 - value) * (1 - modifier) * (float)Math.Pow(1 - stackModifier, stacks - 1);
+            public static ModificationFormula PositiveExponentialBonus = (value, modifier, stackModifier, stacks) => value * modifier * (float)Math.Pow(1 - stackModifier, stacks - 1);
+            public static ModificationFormula PercentBonus = (value, modifier, stackModifier, stacks) => value * ((modifier + (stackModifier * (stacks - 1))) / 100);
             public static ModificationFormula LuckBonus = (value, modifier, stackModifier, stacks) =>
             {
                 return Math.Min(1, Utils.LuckCalc(value, modifier)) - value;
@@ -717,7 +718,7 @@ namespace BetterUI
 
             public delegate float ModificationCounter(CharacterMaster master, ItemModifier itemModifier);
             public static ModificationCounter ItemCounter = (master, itemModifier) => master.inventory.GetItemCount(itemModifier.itemDef);
-            public static ModificationCounter TeamItemCounter = (master, itemModifier) => Util.GetItemCountForTeam(master.GetBody().teamComponent.teamIndex, itemModifier.itemDef.itemIndex, true, true) - master.inventory.GetItemCount(itemModifier.itemDef); 
+            public static ModificationCounter TeamItemCounter = (master, itemModifier) => Util.GetItemCountForTeam(master.GetBody().teamComponent.teamIndex, itemModifier.itemDef.itemIndex, true, true) - master.inventory.GetItemCount(itemModifier.itemDef);
             public static ModificationCounter LuckCounter = (master, itemModifier) => master.luck;
             public static ModificationCounter AlliesCounter = (master, itemModifier) => Math.Max(TeamComponent.GetTeamMembers(master.GetBody().teamComponent.teamIndex).Count - 1, 0);
 
@@ -733,7 +734,7 @@ namespace BetterUI
 
             public bool GetModificationActive(CharacterMaster master)
             {
-                return modificationChecker(master, this); 
+                return modificationChecker(master, this);
             }
 
             public float GetModificationCount(CharacterMaster master)
@@ -742,7 +743,7 @@ namespace BetterUI
             }
             public float GetModifiedValue(float value, CharacterMaster master, float count)
             {
-                if(modificationLocator != null)
+                if (modificationLocator != null)
                 {
                     return modificationFormula(value, modificationLocator(master), stackModifier, count);
                 }
