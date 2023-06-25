@@ -1,5 +1,12 @@
 ## Changelog
 
+
+#### v2.7.9
+ - Bugfix: ItemStats: Fixed incorrect scaling on negative movementspeed from Stone Flux Pauldron
+ - Bugfix: ItemStats: Fixed incorrect language on Repulsion Armor Plate 
+ - Bugfix: Modcompat: Fixed ItemDefs without language tokens breaking the UI
+ - Bugfix: Modcompat: (Hopefully) fixed RiskUI crashing BetterUI
+
 #### v2.7.8
  - Bugfix: Included CHANGELOG.md in export so that you can read this. 
 
