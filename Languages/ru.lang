@@ -1,6 +1,6 @@
 {
     "BETTERUI_TITLE": "BetterUI",
-    "BETTERUI_TITLE_HOVER": "Открыть окно мода BetterUI",
+    "BETTERUI_TITLE_HOVER": "Открыть окно мода BetterUI.",
     "BETTERUI_DONATE": "Поддержать BetterUI",
     "BETTERUI_DISCORD": "Приглашаем в наш Discord",
     "BETTERUI_BUGREPORT": "Сообщить об ошибке",
@@ -11,7 +11,6 @@
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Запуск бомбы по дуге наносящей <style=cIsDamage>1100% damage</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Исчезнуть</style> в Пустоту, <style=cIsUtility>снимая все дебаффы</style> совершая <style=cIsUtility>прыжок вперёд</style>.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Разбить <style=cIsHealing>25% здоровья</style> получив <style=cIsVoid>25% Заражения;</style>.",
-  
     "BUFF_AFFIXRED_NAME": "Метка ифрита",
     "BUFF_AFFIXRED_DESC": "Станьте воплощением огня : Оставляешь огненный след, и применяешь процентное горение при попадании.",
     "BUFF_AFFIXBLUE_NAME": "Затишье между двумя ударами",
@@ -186,7 +185,6 @@
     "BUFF_STRONGERBURN_DESC": "Усиленный вариант Поджога. Увеличивает получаемый урон от горения. Регенерация отключена.",
     "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Осквернение Пустоты",
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Ваши способности принимают более агрессивные формы.",
-  
     "BETTERUI_BEETLEGUARDS": "Жуки-стражники",
     "BETTERUI_HPPERSECOND": "Здоровья в секунду",
     "BETTERUI_ARMORREDUCTION": "Снижение брони",
@@ -268,8 +266,8 @@
     "BETTERUI_PROCCOEFFICIENT": "Коэффициент прока",
     "BETTERUI_BASECOOLDOWN": "Стандартная перезарядка",
     "BETTERUI_EFFECTIVECOOLDOWN": "Эффективная перезарядка",
-    "BETTERUI_SECOND":"секунда",
-    "BETTERUI_SECONDS":"секунд",
+    "BETTERUI_SECOND": "секунда",
+    "BETTERUI_SECONDS": "секунд",
     "BETTERUI_SECONDS_SPECIAL": "секунды",
     "BETTERUI_BEFORE_SINGULAR": "До ({0} стаков): ",
     "BETTERUI_BEFORE_PLURAL": "До ({0} стаков): ",
@@ -278,7 +276,6 @@
     "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} стаков до максимума)</style>",
     "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} стаков до максимума)</style>",
     "BETTERUI_DPS": "DPS",
-  
     "BETTERUI_LUCKCHANCE_SUFFIX": "% Шанс",
     "BETTERUI_CHANCE_SUFFIX": "% Шанс",
     "BETTERUI_GOLD_PREFIX": "$",
@@ -288,7 +285,6 @@
     "BETTERUI_ARMOR_SUFFIX": " Броня",
     "BETTERUI_REGEN_SUFFIX": " HP/с",
     "BETTERUI_RANGE_SUFFIX": "м",
-  
     "SKILL_SLASH_NAME": "Разрез",
     "SKILL_SPIT_NAME": "Плевок",
     "SKILL_BITE_NAME": "Укус",
@@ -348,8 +344,6 @@
     "SKILL_SHARD_NAME": "Осколок",
     "SKILL_MAELSTROM_NAME": "Вихрь",
     "SKILL_DETONATION_NAME": "Детонация",
-
     "ITEM_NEARBYDAMAGEBONUS_DESC": "Увеличивает урон врагам в радиусе <style=cIsDamage>13м</style> на <style=cIsDamage>20%</style> <style=cStack>(+20% за стак)</style>.",
     "ITEM_HEALINGPOTIONCONSUMED_DESC": "Пустая бутылка из-под эликсира. Ничего не делает."
-  }
-  
+}
