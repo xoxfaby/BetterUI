@@ -22,7 +22,7 @@ namespace BetterUI
             }
 
             // Get a list of all .json files in the /Languages/ directory or the directory of the .dll file
-            string[] jsonFiles = Directory.GetFiles(languagesPath, "*.json");
+            string[] jsonFiles = Directory.GetFiles(languagesPath, "*.lang");
 
             // Loop through each .json file
             foreach (string jsonFile in jsonFiles)
