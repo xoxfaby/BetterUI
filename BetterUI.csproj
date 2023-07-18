@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Languages\*.json">
+    <None Update="Languages\*.lang">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

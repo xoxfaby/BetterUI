@@ -30,7 +30,7 @@ source = "../bin/Release/netstandard2.0/publish/BetterUnityPlugin.dll"
 target = "plugins/BetterUI/BetterUnityPlugin.dll"
 
 [[build.copy]]
-source = "../bin/Release/netstandard2.0/Languages"
+source = "../Languages"
 target = "plugins/BetterUI/Languages"
 
 [publish]
