@@ -353,5 +353,6 @@
     "SKILL_CRUSH_NAME": "Crush",
     "SKILL_SHARD_NAME": "Shard",
     "SKILL_MAELSTROM_NAME": "Maelstrom",
-    "SKILL_DETONATION_NAME": "Detonation"
+    "SKILL_DETONATION_NAME": "Detonation",
+    "BETTERUI_SECOND_PLURAL": "seconds"
 }
