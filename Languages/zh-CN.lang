@@ -271,7 +271,7 @@
     "BETTERUI_BASECOOLDOWN": "基础冷却时间",
     "BETTERUI_EFFECTIVECOOLDOWN": "有效冷却时间",
     "BETTERUI_SECOND": "秒",
-    "BETTERUI_SECONDS": "秒",
+    "BETTERUI_SECOND_PLURAL": "秒",
     "BETTERUI_BEFORE_SINGULAR": "在 ({0} 堆叠前): ",
     "BETTERUI_BEFORE_PLURAL": "在 ({0} 堆叠前): ",
     "BETTERUI_AFTER_SINGULAR": "在 ({0} 堆叠后): ",

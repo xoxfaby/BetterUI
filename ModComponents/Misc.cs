@@ -12,27 +12,27 @@ namespace BetterUI
         {
             if (ConfigManager.MiscHidePickupNotificiationsArtifacts.Value)
             {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ArtifactDef>( "SetArtifact", GenericNotification_SetArtifact );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ArtifactDef>("SetArtifact", GenericNotification_SetArtifact);
             }
             if (ConfigManager.MiscAdvancedPickupNotificationsEquipements.Value ||
                 ConfigManager.MiscHidePickupNotificiationsEquipements.Value)
             {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, EquipmentDef>( "SetEquipment", GenericNotification_SetEquipment );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, EquipmentDef>("SetEquipment", GenericNotification_SetEquipment);
             }
             if (ConfigManager.MiscAdvancedPickupNotificationsItems.Value ||
                 ConfigManager.MiscHidePickupNotificiationsItems.Value)
             {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ItemDef>( "SetItem", GenericNotification_SetItem );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.GenericNotification, ItemDef>("SetItem", GenericNotification_SetItem);
             }
 
             if (ConfigManager.MiscShowHidden.Value)
             {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>( "ItemIsVisible", (ItemInventoryDisplay_ItemIsVisible_Delegate) ItemInventoryDisplay_ItemIsVisible);
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ItemInventoryDisplay>("ItemIsVisible", (ItemInventoryDisplay_ItemIsVisible_Delegate)ItemInventoryDisplay_ItemIsVisible);
             }
             if (ConfigManager.MiscShowPickupDescription.Value)
             {
-                BetterUIPlugin.Hooks.Add<RoR2.UI.ContextManager>( "Awake", ContextManager_Awake );
-                BetterUIPlugin.Hooks.Add<RoR2.GenericPickupController>( "GetContextString", (GenericPickupController_GetContextString_Delegate) GenericPickupController_GetContextString );
+                BetterUIPlugin.Hooks.Add<RoR2.UI.ContextManager>("Awake", ContextManager_Awake);
+                BetterUIPlugin.Hooks.Add<RoR2.GenericPickupController>("GetContextString", (GenericPickupController_GetContextString_Delegate)GenericPickupController_GetContextString);
             }
         }
 
@@ -41,8 +41,8 @@ namespace BetterUI
             var Description = self.gameObject.transform.Find("ContextDisplay/Description");
             var textMesh = Description.gameObject.GetComponent<RoR2.UI.HGTextMeshProUGUI>();
             var rectTransform = Description.gameObject.GetComponent<UnityEngine.RectTransform>();
-            rectTransform.sizeDelta = new UnityEngine.Vector2( rectTransform.sizeDelta.x ,-0.7f);
-            rectTransform.anchoredPosition = new UnityEngine.Vector2( rectTransform.anchoredPosition.x ,-1);
+            rectTransform.sizeDelta = new UnityEngine.Vector2(rectTransform.sizeDelta.x, -0.7f);
+            rectTransform.anchoredPosition = new UnityEngine.Vector2(rectTransform.anchoredPosition.x, -1);
             textMesh.fontSizeMin = textMesh.fontSize;
             textMesh.alignment = TMPro.TextAlignmentOptions.TopLeft;
             orig(self);
@@ -51,16 +51,16 @@ namespace BetterUI
         internal static string GenericPickupController_GetContextString(Func<RoR2.GenericPickupController, Interactor, string> orig, GenericPickupController self, Interactor activator)
         {
             PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickupIndex);
-            string pickupText = string.Format(Language.GetString(((pickupDef != null) ? pickupDef.interactContextToken : null) ?? string.Empty), Language.GetString(pickupDef.nameToken));
+            string pickupText = string.Format(RoR2.Language.GetString(((pickupDef != null) ? pickupDef.interactContextToken : null) ?? string.Empty), RoR2.Language.GetString(pickupDef.nameToken));
             if (pickupDef.itemIndex != ItemIndex.None)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-                pickupText += $"\n\n{Language.GetString( ConfigManager.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
+                pickupText += $"\n\n{RoR2.Language.GetString( ConfigManager.MiscPickupDescriptionAdvanced.Value ? itemDef.descriptionToken : itemDef.pickupToken)}";
             }
             else if (pickupDef.equipmentIndex != EquipmentIndex.None)
             {
                 EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(pickupDef.equipmentIndex);
-                pickupText += $"\n\n{Language.GetString(ConfigManager.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
+                pickupText += $"\n\n{RoR2.Language.GetString(ConfigManager.MiscPickupDescriptionAdvanced.Value ? equipmentDef.descriptionToken : equipmentDef.pickupToken)}";
             }
             return pickupText;
         }

@@ -15,8 +15,8 @@ namespace BetterUI
             BetterUIPlugin.onStart += onStart;
             BetterUIPlugin.onUpdate += onUpdate;
         }
-        internal static void Hook() 
-        { 
+        internal static void Hook()
+        {
             if (ConfigManager.CommandResizeCommandWindow.Value ||
                 ConfigManager.SortingSortItemsCommand.Value ||
                 ConfigManager.SortingSortItemsScrapper.Value)
@@ -61,8 +61,8 @@ namespace BetterUI
 
 
         private static void Init()
-        {   
-            if(ItemCatalog.availability.available && EquipmentCatalog.availability.available)
+        {
+            if (ItemCatalog.availability.available && EquipmentCatalog.availability.available)
             {
                 var maxOptions = ItemCatalog.itemCount + EquipmentCatalog.equipmentCount;
                 optionMap = new int[maxOptions];
@@ -94,9 +94,9 @@ namespace BetterUI
         public static void PickupPickerController_SubmitChoice(Action<RoR2.PickupPickerController, int> orig, RoR2.PickupPickerController self, int index)
         {
             orig(self, index);
-            
+
             ItemDef itemDef = ItemCatalog.GetItemDef(PickupCatalog.GetPickupDef(self.options[index].pickupIndex).itemIndex);
-            if(itemDef.itemIndex != ItemIndex.None)
+            if (itemDef.itemIndex != ItemIndex.None)
             {
                 lastItem[(int)itemDef.tier] = itemDef.itemIndex;
             }
@@ -120,14 +120,14 @@ namespace BetterUI
                     {
                         var mainPanelRectTransform = self.transform.Find("MainPanel").GetComponent<RectTransform>();
                         var mainContainerRectTransform = self.transform.parent.GetComponent<RectTransform>();
-                        int columns = (int)Math.Ceiling(Math.Sqrt(options.Length));;
+                        int columns = (int)Math.Ceiling(Math.Sqrt(options.Length)); ;
                         int defaultPanelHeight = 166 + (82 * (int)Math.Ceiling(options.Length / (float)columns));
 
                         if (defaultPanelHeight > mainContainerRectTransform.rect.height - 120)
                         {
-                            columns = (int)Math.Ceiling(options.Length / Math.Floor((mainContainerRectTransform.rect.height - 286) / 82) );
+                            columns = (int)Math.Ceiling(options.Length / Math.Floor((mainContainerRectTransform.rect.height - 286) / 82));
                         }
-                            
+
                         self.gridlayoutGroup.constraintCount = self.maxColumnCount = columns;
                         mainPanelRectTransform.sizeDelta = new Vector2(166 + 82 * columns, 166 + (82 * (float)Math.Ceiling(options.Length / (float)columns)));
                     }
@@ -167,7 +167,7 @@ namespace BetterUI
                 List<EquipmentIndex> sortedItems = ItemSorting.sortItems(options.Select(option => PickupCatalog.GetPickupDef(option.pickupIndex).equipmentIndex).ToList(), sortOrder);
 
                 sortedItems.Select(equipemntIndex => new RoR2.PickupPickerController.Option { pickupIndex = PickupCatalog.FindPickupIndex(equipemntIndex), available = availableIndex[(int)equipemntIndex] }).ToArray().CopyTo(sortedOptions, 0); ;
-                sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap,0);
+                sortedOptions.Select(option => Array.IndexOf(options, option)).ToArray().CopyTo(optionMap, 0);
                 options = sortedOptions.Take(options.Length).ToArray();
             }
             else if (options.All(option => PickupCatalog.GetPickupDef(option.pickupIndex).itemIndex != ItemIndex.None))
@@ -194,7 +194,7 @@ namespace BetterUI
             if (ConfigManager.CommandTooltipsShow.Value || ConfigManager.CommandCountersShow.Value)
             {
                 CharacterMaster master = LocalUserManager.GetFirstLocalUser().cachedMasterController.master;
-                PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[0] >= 0 ? optionMap[index] : index ].pickupIndex);
+                PickupDef pickupDef = PickupCatalog.GetPickupDef(self.pickerController.options[optionMap[0] >= 0 ? optionMap[index] : index].pickupIndex);
 
                 if (pickupDef.itemIndex != ItemIndex.None && ConfigManager.CommandCountersShow.Value)
                 {
@@ -237,23 +237,23 @@ namespace BetterUI
                             int count = master.inventory.itemStacks[(int)pickupDef.itemIndex];
                             var stringBuilder = BetterUIPlugin.sharedStringBuilder;
                             stringBuilder.Clear();
-                            stringBuilder.Append(Language.GetString(itemDef.descriptionToken));
+                            stringBuilder.Append(RoR2.Language.GetString(itemDef.descriptionToken));
                             stringBuilder.Append("</style>\n");
                             if (self.pickerController.contextString == "ARTIFACT_COMMAND_CUBE_INTERACTION_PROMPT" && ConfigManager.CommandTooltipsItemStatsBeforeAfter.Value && count > 0)
                             {
                                 stringBuilder.Append("\n<align=left>");
                                 stringBuilder.AppendFormat(
-                                    count > 1 ? 
-                                    Language.GetString("BETTERUI_BEFORE_SINGULAR") : 
-                                    Language.GetString("BETTERUI_BEFORE_PLURAL"), count
+                                    count > 1 ?
+                                    RoR2.Language.GetString("BETTERUI_BEFORE_SINGULA") : 
+                                    RoR2.Language.GetString("BETTERUI_BEFORE_PLURAL"), count
                                 );
                                 ItemStats.GetItemStats(stringBuilder, itemDef, count, master);
 
                                 stringBuilder.Append("\n\n<align=left>");
                                 stringBuilder.AppendFormat(
                                     count > 1 ?
-                                    Language.GetString("BETTERUI_AFTER_SINGULAR") :
-                                    Language.GetString("BETTERUI_AFTER_PLURAL"), count + 1
+                                    RoR2.Language.GetString("BETTERUI_AFTER_SINGULAR") :
+                                    RoR2.Language.GetString("BETTERUI_AFTER_PLURAL"), count + 1
                                 );
                                 ItemStats.GetItemStats(stringBuilder, itemDef, count + 1, master);
                             }

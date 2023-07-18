@@ -386,7 +386,7 @@ namespace BetterUI
                     }
 
                     stringBuilder.Append("\n");
-                    stringBuilder.Append(Language.GetString(itemStat.nameToken));
+                    stringBuilder.Append(RoR2.Language.GetString(itemStat.nameToken));
                     stringBuilder.Append(": ");
                     itemStat.statFormatter.FormatString(stringBuilder, totalValue, master);
                     bool first = true;
@@ -407,7 +407,7 @@ namespace BetterUI
                                             stringBuilder.Append("\n  ");
                                             stringBuilder.Append(itemCount);
                                             stringBuilder.Append(" ");
-                                            stringBuilder.Append(Language.GetString(itemDef.nameToken));
+                                            stringBuilder.Append(RoR2.Language.GetString(itemDef.nameToken));
                                             if (itemCount > 1)
                                             {
                                                 stringBuilder.Append("s");
@@ -426,17 +426,17 @@ namespace BetterUI
                                         {
                                             if (!String.IsNullOrEmpty(itemModifier.pluralNameToken))
                                             {
-                                                stringBuilder.Append(Language.GetString(itemModifier.pluralNameToken));
+                                                stringBuilder.Append(RoR2.Language.GetString(itemModifier.pluralNameToken));
                                             }
                                             else
                                             {
-                                                stringBuilder.Append(Language.GetString(itemModifier.nameToken));
+                                                stringBuilder.Append(RoR2.Language.GetString(itemModifier.nameToken));
                                                 stringBuilder.Append("s");
                                             }
                                         }
                                         else
                                         {
-                                            stringBuilder.Append(Language.GetString(itemModifier.nameToken));
+                                            stringBuilder.Append(RoR2.Language.GetString(itemModifier.nameToken));
                                         }
                                         stringBuilder.Append(": ");
                                         itemStat.statFormatter.FormatString(stringBuilder, modifiedValue, master);
@@ -557,7 +557,7 @@ namespace BetterUI
                     stringBuilder.Append(">");
                 }
                 if (!String.IsNullOrEmpty(customFormatTag)) stringBuilder.Append(customFormatTag);
-                if (!String.IsNullOrEmpty(prefix)) stringBuilder.Append(Language.GetString(prefix));
+                if (!String.IsNullOrEmpty(prefix)) stringBuilder.Append(RoR2.Language.GetString(prefix));
 
                 if (statFormatter != null)
                 {
@@ -568,7 +568,7 @@ namespace BetterUI
                     stringBuilder.AppendFormat("{0:0.##}", value);
                 }
 
-                if (!String.IsNullOrEmpty(suffix)) stringBuilder.Append(Language.GetString(suffix));
+                if (!String.IsNullOrEmpty(suffix)) stringBuilder.Append(RoR2.Language.GetString(suffix));
                 if (!String.IsNullOrEmpty(customFormatClosingTag)) stringBuilder.Append(customFormatClosingTag);
                 if (strikethrough) stringBuilder.Append("</s>");
                 if (underline) stringBuilder.Append("</u>");
@@ -636,7 +636,7 @@ namespace BetterUI
                 if (capFormula != null)
                 {
                     var stacksToCap = capFormula(value, extraStackValue, procCoefficient);
-                    stringBuilder.AppendFormat(Language.GetString(stacksToCap > 1 ? "BETTERUI_PROCSTACKS_PLURAL" : "BETTERUI_PROCSTACKS_SINGULAR"), stacksToCap);
+                    stringBuilder.AppendFormat(RoR2.Language.GetString(stacksToCap > 1 ? "BETTERUI_PROCSTACKS_PLURAL" : "BETTERUI_PROCSTACKS_SINGULAR"), stacksToCap);
                 }
             }
             public float GetValue(int stacks)

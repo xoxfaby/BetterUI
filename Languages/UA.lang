@@ -300,7 +300,7 @@
     "BETTERUI_BASECOOLDOWN": "Базове перезаряджання",
     "BETTERUI_EFFECTIVECOOLDOWN": "Поточне перезаряджання",
     "BETTERUI_SECOND": "секунда",
-    "BETTERUI_SECONDS": "секунд",
+    "BETTERUI_SECOND_PLURAL": "секунд",
     "BETTERUI_SECONDS_SPECIAL": "секунди",
     "BETTERUI_BEFORE_SINGULAR": "До ({0} стеку): ",
     "BETTERUI_BEFORE_PLURAL": "До ({0} стеків): ",

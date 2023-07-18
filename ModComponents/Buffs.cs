@@ -128,9 +128,9 @@ namespace BetterUI
 
         public static void RegisterBuffInfo(BuffDef buffDef, string nameToken = null, string descriptionToken = null)
         {
-            if(buffDef == null)
+            if (buffDef == null)
             {
-                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {Language.GetString(nameToken)}");
+                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {RoR2.Language.GetString(nameToken)}");
                 return;
             }
             buffInfos.TryGetValue(buffDef, out BuffInfo buffInfo);
@@ -142,7 +142,7 @@ namespace BetterUI
         {
             if (buffDef == null)
             {
-                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {Language.GetString("nameToken")}");
+                UnityEngine.Debug.LogError($"Unable to register BuffInfo for {RoR2.Language.GetString("nameToken")}");
                 return;
             }
             if (BetterUIPlugin.BetterAPIModIntegration)
@@ -239,7 +239,7 @@ namespace BetterUI
                             if (characterBody != null && characterBody.timedBuffs.Count > 0)
                             {
                                 timedBuffs = characterBody.timedBuffs.Where(b => b.buffIndex == self.buffDef.buffIndex);
-                                if(timedBuffs.Any())
+                                if (timedBuffs.Any())
                                 {
                                     thisBuff = timedBuffs.OrderByDescending(b => b.timer).First();
                                     timerText.GetComponent<RoR2.UI.HGTextMeshProUGUI>().text = thisBuff.timer < 10 && ConfigManager.BuffTimersDecimal.Value ? thisBuff.timer.ToString("N1") : thisBuff.timer.ToString("N0");

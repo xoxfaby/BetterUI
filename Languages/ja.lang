@@ -271,7 +271,7 @@
     "BETTERUI_BASECOOLDOWN": "基礎クールダウン",
     "BETTERUI_EFFECTIVECOOLDOWN": "実質クールダウン",
     "BETTERUI_SECOND": "秒",
-    "BETTERUI_SECONDS": "秒",
+    "BETTERUI_SECOND_PLURAL": "秒",
     "BETTERUI_BEFORE_SINGULAR": "入手前 ({0} 個): ",
     "BETTERUI_BEFORE_PLURAL": "入手前 ({0} 個): ",
     "BETTERUI_AFTER_SINGULAR": "入手後 ({0} 個): ",

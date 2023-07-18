@@ -29,10 +29,10 @@ namespace BetterUI
                 switch (c)
                 {
                     case '6': // Alphabetical
-                        finalOrder = finalOrder.ThenBy(equipment => Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
+                        finalOrder = finalOrder.ThenBy(equipment => RoR2.Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
                         break;
                     case '7': // Alphabetical Reversed
-                        finalOrder = finalOrder.ThenByDescending(equipment => Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
+                        finalOrder = finalOrder.ThenByDescending(equipment => RoR2.Language.GetString(EquipmentCatalog.GetEquipmentDef(equipment).nameToken));
                         break;
                     case '8': // Random"
                         Random random = new Random();
@@ -89,14 +89,15 @@ namespace BetterUI
         private static ItemSorter<bool> sprintRelatedSorter = (order, inventory, item) => sprintRelatedFilter(item);
         private static ItemSorter<int> tierSorter = (order, inventory, item) =>
         {
-            if (tierMap.TryGetValue(ItemCatalog.GetItemDef(item).tier, out int value)){
+            if (tierMap.TryGetValue(ItemCatalog.GetItemDef(item).tier, out int value))
+            {
                 return ConfigManager.SortingTierOrder[value];
             }
             return ConfigManager.SortingTierOrder[5];
         };
         private static ItemSorter<int> stackSorter = (order, inventory, item) => inventory.itemStacks[(int)item];
         private static ItemSorter<int> pickupSorter = (order, inventory, item) => inventory.itemAcquisitionOrder.IndexOf(item);
-        private static ItemSorter<String> alphabeticalSorter = (order, inventory, item) => Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
+        private static ItemSorter<String> alphabeticalSorter = (order, inventory, item) => RoR2.Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
         private static ItemSorter<int> indexSorter = (order, inventory, item) => (int)item;
         private static ItemSorter<int> randomSorter = (order, inventory, item) =>
         {
@@ -205,7 +206,8 @@ namespace BetterUI
                     }
                     else
                     {
-                        if (tierSorters.TryGetValue(Char.ToUpper(c), out var tierSorter)){
+                        if (tierSorters.TryGetValue(Char.ToUpper(c), out var tierSorter))
+                        {
                             steps.Add(new SortStep { filter = nextFilter, boolSorter = tierSorter, reversed = tierReversed });
                         }
                     }
@@ -279,7 +281,8 @@ namespace BetterUI
                     case '8': // Random"
                         steps.Add(new SortStep { filter = nextFilter, intSorter = randomSorter });
                         break;
-                    case 'C': case 'c': // Special Command Centered
+                    case 'C':
+                    case 'c': // Special Command Centered
                         steps.Add(new SortStep { filter = nextFilter, directSorter = commandSorter });
                         break;
                     case 'i':

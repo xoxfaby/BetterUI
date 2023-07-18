@@ -275,7 +275,7 @@
     "BETTERUI_BASECOOLDOWN": "Base Cooldown",
     "BETTERUI_EFFECTIVECOOLDOWN": "Effective Cooldown",
     "BETTERUI_SECOND": "second",
-    "BETTERUI_SECONDS": "seconds",
+    "BETTERUI_SECOND_PLURAL": "seconds",
     "BETTERUI_BEFORE_SINGULAR": "Before ({0} Stack): ",
     "BETTERUI_BEFORE_PLURAL": "Before ({0} Stacks): ",
     "BETTERUI_AFTER_SINGULAR": "After ({0} Stack): ",
