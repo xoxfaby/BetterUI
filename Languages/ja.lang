@@ -168,7 +168,7 @@
     "BUFF_ELITEVOID_NAME": "空虚の相",
     "BUFF_ELITEVOID_DESC": "空虚に触れた エリートの力を得る。: 15秒に1度ダメージを無効化し、ヒットすると卒倒を与える。",
     "BUFF_FRACTURE_NAME": "卒倒",
-    "BUFF_FRACTURE_DESC": "最初に付与されてから3秒後にスタック1つにつき400%のダメージを与え、全てのスタックを解除する。(スタック可)",
+    "BUFF_FRACTURE_DESC": "最初に付与されてから3秒後にスタック1つにつき400%のダメージを与え、全てのスタックを解除する。 (スタック可)",
     "BUFF_JAILERSLOW_NAME": "収監",
     "BUFF_JAILERSLOW_DESC": "移動速度が0に減少する。",
     "BUFF_JAILERTETHER_NAME": "投獄",
