@@ -1,5 +1,9 @@
 # Changelog
-### v2.8.0
+
+### v2.8.1
+ - Bugfix: Fixed build issue that prevented v2.8.0 from releasing properly.
+ 
+## v2.8.0
  - Addition: Language Support: Automatic Updates  
 Language files will now automatically download the latest version if it is available, or if the language file is missing. This means you no longer have to update BetterUI just because a single string was added to a language.  
 It will also automatically fix installation issues that can occur when people accidentally delete or move the language files to the wrong folder (or not at all). 
