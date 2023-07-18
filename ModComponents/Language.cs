@@ -31,7 +31,7 @@ namespace BetterUI
                 else
                 {
                     JObject result = JObject.Parse(apiRequest.downloadHandler.text);
-                    List<(string, string, string)> r = new(result.SelectToken("$.results").Select(
+                    List<(string, string, string)> languageInfos = new List<(string, string, string)>(result.SelectToken("$.results").Select(
                         s =>(
                         (string) s.SelectToken("$.filename"),
                         (string) s.SelectToken("$.revision"),
@@ -39,16 +39,12 @@ namespace BetterUI
                         )
                         )
                         );
-                    foreach(var s in r)
+                    foreach(var languageInfo in languageInfos)
                     {
-                        UnityEngine.Debug.LogError(s.Item1);
-                        UnityEngine.Debug.LogError(s.Item2);
-                        UnityEngine.Debug.LogError(s.Item3);
-
                         bool downloadFile = false;
-                        string languageName = System.IO.Path.GetFileNameWithoutExtension(s.Item1);
-                        string lPath = System.IO.Path.Combine(languagesPath, System.IO.Path.GetFileName(s.Item1));
-                        string latestHash = s.Item2.Split(',')[0];
+                        string languageName = System.IO.Path.GetFileNameWithoutExtension(languageInfo.Item1);
+                        string lPath = System.IO.Path.Combine(languagesPath, System.IO.Path.GetFileName(languageInfo.Item1));
+                        string latestHash = languageInfo.Item2.Split(',')[0];
                         try
                         {
                             if(latestHash != CalculateBlobHash(lPath)) downloadFile = true;
@@ -59,7 +55,7 @@ namespace BetterUI
                         }
                         if (downloadFile)
                         {
-                            UnityEngine.Networking.UnityWebRequest languageFileRequest = UnityEngine.Networking.UnityWebRequest.Get(s.Item3);
+                            UnityEngine.Networking.UnityWebRequest languageFileRequest = UnityEngine.Networking.UnityWebRequest.Get(languageInfo.Item3);
                             yield return languageFileRequest.SendWebRequest();
                             if (languageFileRequest.isNetworkError)
                             {
@@ -70,10 +66,6 @@ namespace BetterUI
                                 LoadLanguage(languageName, languageFileRequest.downloadHandler.text);
                                 File.WriteAllText(lPath, languageFileRequest.downloadHandler.text);
                             }
-                        }
-                        else
-                        {
-                            UnityEngine.Debug.LogError("Not downloading " + languageName + " because we have it and it looks right");
                         }
                     }
                 }
@@ -87,20 +79,15 @@ namespace BetterUI
         static Language()
         {
             RoR2.Language.onCurrentLanguageChanged += Language_onCurrentLanguageChanged;
-
-            // Get the directory of the .dll file
             dllPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            // Combine the directory of the .dll file with the name of the /Languages/ directory to get the full path
             languagesPath = System.IO.Path.Combine(dllPath, "Languages");
 
-            // If the /Languages/ directory does not exist, use the directory of the .dll file instead
             if (!Directory.Exists(languagesPath))
             {
                 languagesPath = dllPath;
             }
 
-            // Get a list of all .json files in the /Languages/ directory or the directory of the .dll file
             languageFilePaths = new List<string>(Directory.GetFiles(languagesPath, "*.lang"));
         }
 
@@ -168,10 +155,8 @@ namespace BetterUI
 
         public static void LoadLanguages()
         {
-            // Loop through each .json file
             foreach (string jsonFile in languageFilePaths)
             {
-                // Read the contents of the .json file
                 string json = File.ReadAllText(jsonFile);
 
                 string language = System.IO.Path.GetFileNameWithoutExtension(jsonFile);
