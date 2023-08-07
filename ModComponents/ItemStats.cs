@@ -56,7 +56,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "BETTERUI_DAMAGE", 3.5f, 2.8f, LinearStacking);
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "BETTERUI_RADIUS", 12, 2.4f, statFormatter: StatFormatter.Range);
             RegisterStat(RoR2Content.Items.ExtraLife, "BETTERUI_USES", 1, statFormatter: StatFormatter.Charges);
-            RegisterStat(RoR2Content.Items.FallBoots, "BETTERUI_COOLDOWN", 10, 0.5f, DivideByStacks, statFormatter: StatFormatter.Seconds);
+            RegisterStat(RoR2Content.Items.FallBoots, "BETTERUI_COOLDOWN", 10, DivideByStacks, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.Feather, "BETTERUI_EXTRAJUMPS", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.FireballsOnHit, "BETTERUI_DAMAGE", 3);
@@ -111,7 +111,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Mushroom, "BETTERUI_RADIUS", 3, 1.5f, statFormatter: StatFormatter.Range);
             RegisterStat(RoR2Content.Items.NearbyDamageBonus, "BETTERUI_DAMAGE", 0.2f);
             RegisterStat(RoR2Content.Items.NovaOnHeal, "BETTERUI_DAMAGE", 1);
-            RegisterStat(RoR2Content.Items.NovaOnLowHealth, "BETTERUI_RECHARGESPEED", 30, DivideByBonusStacks, statFormatter: StatFormatter.Seconds);
+            RegisterStat(RoR2Content.Items.NovaOnLowHealth, "BETTERUI_RECHARGESPEED", 30, DivideByStacksPlusOne, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.ParentEgg, "BETTERUI_HEATH", 15, statFormatter: StatFormatter.HP);
             RegisterStat(RoR2Content.Items.Pearl, "BETTERUI_HEALTH", 0.1f);
             RegisterModifier(ItemTag.MaxHealth, RoR2Content.Items.Pearl, ItemModifier.PercentBonus, 10);
@@ -120,7 +120,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Plant, "BETTERUI_RADIUS", 5, statFormatter: StatFormatter.Range);
             RegisterStat(RoR2Content.Items.RandomDamageZone, "BETTERUI_RANGE", 16, 1.5f, ExponentialStacking, statFormatter: StatFormatter.Range);
             RegisterStat(RoR2Content.Items.RepeatHeal, "BETTERUI_HEALING", 1, itemTag: ItemTag.Healing);
-            RegisterStat(RoR2Content.Items.RepeatHeal, "BETTERUI_MAXIMUM", 0.1f, 0.5f, ExponentialStacking, itemTag: ItemTag.Healing);
+            RegisterStat(RoR2Content.Items.RepeatHeal, "BETTERUI_MAXIMUM", 0.1f, DivideByStacks, itemTag: ItemTag.Healing);
             RegisterModifier(ItemTag.Healing, RoR2Content.Items.RepeatHeal, ItemModifier.PercentBonus, 100);
             RegisterStat(RoR2Content.Items.RoboBallBuddy, "BETTERUI_DAMAGE", 1f, itemTag: ItemTag.Allies);
             RegisterStat(RoR2Content.Items.SecondarySkillMagazine, "BETTERUI_CHARGES", 1, statFormatter: StatFormatter.Charges);
@@ -165,7 +165,7 @@ namespace BetterUI
 
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_ATTACKSPEED", 0.075f);
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_MOVEMENTSPEED", 0.07f, itemTag: ItemTag.MovementSpeed);
-            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, 65, ExponentialStacking, StatFormatter.Seconds);
+            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, 65, ExponentialStackingAtOne, StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.BleedOnHitVoid, "BETTERUI_CHANCE", 0.1f, itemTag: ItemTag.Luck);
             RegisterProc(DLC1Content.Items.BleedOnHitVoid, 0.1f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "BETTERUI_HITS", 3, statFormatter: StatFormatter.Charges);
@@ -186,10 +186,10 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.GoldOnHurt, "BETTERUI_BASEGOLD", 3, statFormatter: StatFormatter.Gold);
             RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "BETTERUI_SKILLCOOLDOWNS", 0.5f, ExponentialStacking, itemTag: ItemTag.SkillCooldown);
             RegisterModifier(ItemTag.SkillCooldown, DLC1Content.Items.HalfAttackSpeedHalfCooldowns, ItemModifier.ExponentialBonus, 0.5f);
-            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "BETTERUI_ATTACKSPEED", 1, DivideByBonusStacks);
+            RegisterStat(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "BETTERUI_ATTACKSPEED", 1, DivideByStacksPlusOne);
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MAXHEALTH", 1);
             RegisterModifier(ItemTag.MaxHealth, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.PercentBonus, 100);
-            RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 0.5f, ExponentialStacking);
+            RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 1, DivideByStacks);
             RegisterModifier(ItemTag.MovementSpeed, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.ExponentialBonus, 0.5f);
             RegisterStat(DLC1Content.Items.HealingPotion, "BETTERUI_USES", 1f, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_RAINCOAT", 1f, stackingFormula: LinearStacking, statFormatter: StatFormatter.Charges);
@@ -212,7 +212,7 @@ namespace BetterUI
             RegisterProc(DLC1Content.Items.SlowOnHitVoid, 0.05f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.StrengthenBurn, "BETTERUI_DAMAGE", 3f);
             //RegisterStat(DLC1Content.Items.TreasureCacheVoid, "BETTERUI_ENCRUSTEDKEY", , , );
-            RegisterStat(DLC1Content.Items.VoidMegaCrabItem, "BETTERUI_COOLDOWN", 60, 0.5f, ExponentialStacking, statFormatter: StatFormatter.Seconds);
+            RegisterStat(DLC1Content.Items.VoidMegaCrabItem, "BETTERUI_COOLDOWN", 60, DivideByStacks, statFormatter: StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.VoidMegaCrabItem, "BETTERUI_MAXALLIES", 1, statFormatter: StatFormatter.Charges);
 
 
@@ -610,7 +610,7 @@ namespace BetterUI
         {
             return value + extraStackValue * (stacks - 1);
         }
-        public static float ExponentialStackingAtOne(float value, float extraStackValue, int stacks)
+        public static float ExponentialStackingPlusOne(float value, float extraStackValue, int stacks)
         {
             return value * (float)Math.Pow(extraStackValue, stacks);
         }
@@ -622,7 +622,12 @@ namespace BetterUI
         {
             return (1 - (1 - value) * (float)Math.Pow(1 - extraStackValue, stacks - 1));
         }
+        [Obsolete("Deprecated: Use DivideByStacksPlusOne instead.")]
         public static float DivideByBonusStacks(float value, float extraStackValue, int stacks)
+        {
+            return value / (stacks + 1);
+        }
+        public static float DivideByStacksPlusOne(float value, float extraStackValue, int stacks)
         {
             return value / (stacks + 1);
         }
