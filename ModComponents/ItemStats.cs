@@ -256,7 +256,7 @@ namespace BetterUI
             ItemTag itemTag = null
         )
         {
-            return RegisterStat(itemDef, nameToken, value, stackValue, stackingFormula: stackingFormula, statFormatter: statFormatter, itemTag: itemTag);
+            return RegisterStat(itemDef, nameToken, value, stackValue, int.MaxValue, stackingFormula, statFormatter, itemTag);
         }
 
         public static ItemStat RegisterStat(
@@ -264,7 +264,7 @@ namespace BetterUI
             string nameToken,
             float value,
             float stackValue,
-            int stackLimit = int.MaxValue,
+            int stackLimit,
             StackingFormula stackingFormula = null,
             StatFormatter statFormatter = null,
             ItemTag itemTag = null
