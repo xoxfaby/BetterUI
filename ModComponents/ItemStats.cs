@@ -165,7 +165,7 @@ namespace BetterUI
 
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_ATTACKSPEED", 0.075f);
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_MOVEMENTSPEED", 0.07f, itemTag: ItemTag.MovementSpeed);
-            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, 65, ExponentialStackingAtOne, StatFormatter.Seconds);
+            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, 65, ExponentialStackingPlusOne, StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.BleedOnHitVoid, "BETTERUI_CHANCE", 0.1f, itemTag: ItemTag.Luck);
             RegisterProc(DLC1Content.Items.BleedOnHitVoid, 0.1f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "BETTERUI_HITS", 3, statFormatter: StatFormatter.Charges);
