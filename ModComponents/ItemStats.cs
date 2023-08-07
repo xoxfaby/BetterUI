@@ -64,7 +64,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Firework, "BETTERUI_FIREWORKS", 8, 4, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FlatHealth, "BETTERUI_HEALTH", 25, statFormatter: StatFormatter.HP);
             RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_CHARGESPEED", 0.30f);
-            RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_TELEPORTERZONE", 2, stackLimit: 3, stackingFormula: FocusedConvergenceStacking);
+            RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_TELEPORTERZONE", 2, 2, 3, stackingFormula: FocusedConvergenceStacking);
             RegisterStat(RoR2Content.Items.GhostOnKill, "BETTERUI_GHOSTDURATION", 30, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.GoldOnHit, "BETTERUI_GOLDGAINED", 2, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.GoldOnHit, "BETTERUI_GOLDLOST", 1);
