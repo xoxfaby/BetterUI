@@ -64,7 +64,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.Firework, "BETTERUI_FIREWORKS", 8, 4, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FlatHealth, "BETTERUI_HEALTH", 25, statFormatter: StatFormatter.HP);
             RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_CHARGESPEED", 0.30f);
-            RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_TELEPORTERZONE", 2, 3, FocusedConvergenceStacking);
+            RegisterStat(RoR2Content.Items.FocusConvergence, "BETTERUI_TELEPORTERZONE", 2, stackLimit: 3, stackingFormula: FocusedConvergenceStacking);
             RegisterStat(RoR2Content.Items.GhostOnKill, "BETTERUI_GHOSTDURATION", 30, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.GoldOnHit, "BETTERUI_GOLDGAINED", 2, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.GoldOnHit, "BETTERUI_GOLDLOST", 1);
@@ -165,7 +165,7 @@ namespace BetterUI
 
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_ATTACKSPEED", 0.075f);
             RegisterStat(DLC1Content.Items.AttackSpeedAndMoveSpeed, "BETTERUI_MOVEMENTSPEED", 0.07f, itemTag: ItemTag.MovementSpeed);
-            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, ExponentialStacking, StatFormatter.Seconds);
+            RegisterStat(DLC1Content.Items.BearVoid, "BETTERUI_RECHARGETIME", 15, 0.9f, 65, ExponentialStacking, StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.BleedOnHitVoid, "BETTERUI_CHANCE", 0.1f, itemTag: ItemTag.Luck);
             RegisterProc(DLC1Content.Items.BleedOnHitVoid, 0.1f, stackingFormula: LinearStacking, capFormula: LinearCap);
             RegisterStat(DLC1Content.Items.ChainLightningVoid, "BETTERUI_HITS", 3, statFormatter: StatFormatter.Charges);
@@ -256,11 +256,26 @@ namespace BetterUI
             ItemTag itemTag = null
         )
         {
+            return RegisterStat(itemDef, nameToken, value, stackValue, stackingFormula: stackingFormula, statFormatter: statFormatter, itemTag: itemTag);
+        }
+
+        public static ItemStat RegisterStat(
+            ItemDef itemDef,
+            string nameToken,
+            float value,
+            float stackValue,
+            int stackLimit = int.MaxValue,
+            StackingFormula stackingFormula = null,
+            StatFormatter statFormatter = null,
+            ItemTag itemTag = null
+        )
+        {
             ItemStat itemStat = new ItemStat()
             {
                 nameToken = nameToken,
                 value = value,
                 stackValue = stackValue,
+                stackLimit = stackLimit,
                 stackingFormula = stackingFormula ?? LinearStacking,
                 statFormatter = statFormatter ?? StatFormatter.Percent
             };
@@ -361,6 +376,7 @@ namespace BetterUI
         {
             if (itemStats.TryGetValue(itemDef, out var stats))
             {
+                stacks = Math.Max(stacks, itemStats.stackLimit);
                 foreach (var itemStat in stats)
                 {
                     float baseValue = itemStat.stackingFormula(itemStat.value, itemStat.stackValue, stacks);
@@ -605,7 +621,7 @@ namespace BetterUI
         }
         public static float FocusedConvergenceStacking(float value, float extraStackValue, int stacks)
         {
-            return 1 / (value * Math.Min(stacks, extraStackValue));
+            return 1 / (value * stacks);
         }
         public static float HyperbolicStacking(float value, float extraStackValue, int stacks)
         {
@@ -690,6 +706,7 @@ namespace BetterUI
             public StackingFormula stackingFormula;
             public float value;
             public float stackValue;
+            public int stackLimit;
             public StatFormatter statFormatter;
         }
 
