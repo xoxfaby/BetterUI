@@ -3,6 +3,10 @@
 A simple mod that adds various UI improvements.  
 Each can be disabled and configured in the config file.
 
+## Translators Wanted!
+
+If you want to help add new translations or improve our existing ones, please join [my Discord server](https://discord.faby.dev) and ping me (xoxfaby). 
+
 ## Support Me
 
 If you like what I'm doing, consider supporting me through GitHub Sponsors so I can keep doing it:
@@ -30,7 +34,7 @@ https://github.com/sponsors/xoxfaby
 
 If you need help or have suggestions, create an issue on github, join my discord or find me on the RoR2 Modding Discord
 
-[My Discord](https://discord.gg/Zy2HSB4) XoXFaby#1337
+[My Discord Server](https://discord.faby.dev) @xoxfaby
 
 Please do not add me on discord, join of the the two servers and ping me there.
 
