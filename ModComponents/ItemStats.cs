@@ -706,7 +706,7 @@ namespace BetterUI
             public StackingFormula stackingFormula;
             public float value;
             public float stackValue;
-            public int stackLimit;
+            public int stackLimit = int.MaxValue;
             public StatFormatter statFormatter;
         }
 
