@@ -581,7 +581,14 @@ namespace BetterUI
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("{0:0.##}", value);
+                    if (value < 0.1)
+                    {
+                        stringBuilder.AppendFormat("{0:0.###}", value);
+                    }
+                    else
+                    {
+                        stringBuilder.AppendFormat("{0:0.##}", value);
+                    }
                 }
 
                 if (!String.IsNullOrEmpty(suffix)) stringBuilder.Append(RoR2.Language.GetString(suffix));
