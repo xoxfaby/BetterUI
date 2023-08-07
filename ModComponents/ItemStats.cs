@@ -378,8 +378,8 @@ namespace BetterUI
             {
                 foreach (var itemStat in stats)
                 {
-                    limtiedStacks = Math.Max(stacks, itemStat.stackLimit);
-                    float baseValue = itemStat.stackingFormula(itemStat.value, itemStat.stackValue, limtiedStacks);
+                    int limitedStacks = Math.Max(stacks, itemStat.stackLimit);
+                    float baseValue = itemStat.stackingFormula(itemStat.value, itemStat.stackValue, limitedStacks);
                     float totalValue = baseValue;
                     if (itemTags.TryGetValue(itemStat, out var tags))
                     {
