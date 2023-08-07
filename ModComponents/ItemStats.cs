@@ -56,7 +56,7 @@ namespace BetterUI
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "BETTERUI_DAMAGE", 3.5f, 2.8f, LinearStacking);
             RegisterStat(RoR2Content.Items.ExplodeOnDeath, "BETTERUI_RADIUS", 12, 2.4f, statFormatter: StatFormatter.Range);
             RegisterStat(RoR2Content.Items.ExtraLife, "BETTERUI_USES", 1, statFormatter: StatFormatter.Charges);
-            RegisterStat(RoR2Content.Items.FallBoots, "BETTERUI_COOLDOWN", 10, 0.5f, ExponentialStacking, statFormatter: StatFormatter.Seconds);
+            RegisterStat(RoR2Content.Items.FallBoots, "BETTERUI_COOLDOWN", 10, 0.5f, DivideByStacks, statFormatter: StatFormatter.Seconds);
             RegisterStat(RoR2Content.Items.Feather, "BETTERUI_EXTRAJUMPS", 1, statFormatter: StatFormatter.Charges);
             RegisterStat(RoR2Content.Items.FireRing, "BETTERUI_DAMAGE", 3);
             RegisterStat(RoR2Content.Items.FireballsOnHit, "BETTERUI_DAMAGE", 3);
@@ -609,6 +609,10 @@ namespace BetterUI
         public static float LinearStacking(float value, float extraStackValue, int stacks)
         {
             return value + extraStackValue * (stacks - 1);
+        }
+        public static float ExponentialStackingAtOne(float value, float extraStackValue, int stacks)
+        {
+            return value * (float)Math.Pow(extraStackValue, stacks);
         }
         public static float ExponentialStacking(float value, float extraStackValue, int stacks)
         {
