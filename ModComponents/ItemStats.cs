@@ -376,7 +376,7 @@ namespace BetterUI
         {
             if (itemStats.TryGetValue(itemDef, out var stats))
             {
-                stacks = Math.Max(stacks, itemStats.stackLimit);
+                stacks = Math.Max(stacks, stats.stackLimit);
                 foreach (var itemStat in stats)
                 {
                     float baseValue = itemStat.stackingFormula(itemStat.value, itemStat.stackValue, stacks);
