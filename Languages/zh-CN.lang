@@ -166,7 +166,7 @@
     "BUFF_ELITEEARTH_NAME": "大地之证",
     "BUFF_ELITEEARTH_DESC": "获得治疗精英怪的能力：治疗附近的友军。",
     "BUFF_ELITEVOID_NAME": "虚空之触",
-    "BUFF_ELITEVOID_DESC": "每15秒免疫一次伤害；攻击附带瓦解效果",
+    "BUFF_ELITEVOID_DESC": "每15秒免疫一次伤害；攻击附带瓦解效果。",
     "BUFF_FRACTURE_NAME": "瓦解",
     "BUFF_FRACTURE_DESC": "首次命中3秒后造成400%伤害。 (每层)",
     "BUFF_JAILERSLOW_NAME": "减速",
