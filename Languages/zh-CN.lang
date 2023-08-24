@@ -130,7 +130,7 @@
     "BUFF_LUNARSHELL_NAME": "月盾",
     "BUFF_LUNARSHELL_DESC": "每次受到的伤害无法超过最大生命值的10%",
     "BUFF_VOIDFOGMILD_NAME": "虚空毒雾",
-    "BUFF_VOIDFOGMILD_DESC": "视野变暗并受到随时间越来越高的持续伤害",
+    "BUFF_VOIDFOGMILD_DESC": "视野变暗并受到随时间越来越高的持续伤害。",
     "BUFF_VOIDFOGSTRONG_NAME": "强化虚空毒雾",
     "BUFF_VOIDFOGSTRONG_DESC": "视野变暗并受到持续伤害。",
     "BUFF_BODYARMOR_NAME": "生物装甲",
