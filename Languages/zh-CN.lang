@@ -154,7 +154,7 @@
     "BUFF_SLOW30_NAME": "减速",
     "BUFF_SLOW30_DESC": "移动速度-30%",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "更安全的空间 (充能中)",
-    "BUFF_BEARVOIDCOOLDOWN_DESC": "免疫下次攻击",
+    "BUFF_BEARVOIDCOOLDOWN_DESC": "免疫下次攻击。",
     "BUFF_BEARVOIDREADY_NAME": "更安全的空间",
     "BUFF_BEARVOIDREADY_DESC": "免疫下次攻击",
     "BUFF_BLINDED_NAME": "致盲",
