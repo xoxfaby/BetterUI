@@ -158,7 +158,7 @@
     "BUFF_BEARVOIDREADY_NAME": "更安全的空间",
     "BUFF_BEARVOIDREADY_DESC": "免疫下次攻击，之后进入冷却。",
     "BUFF_BLINDED_NAME": "致盲",
-    "BUFF_BLINDED_DESC": "使视野变暗",
+    "BUFF_BLINDED_DESC": "使视野变暗。",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "奇点手环 (充能中)",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "高伤害攻击会制造一个不稳定黑洞",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "奇点手环",
