@@ -172,7 +172,7 @@
     "BUFF_JAILERSLOW_NAME": "减速",
     "BUFF_JAILERSLOW_DESC": "移动速度-100%",
     "BUFF_JAILERTETHER_NAME": "虚空束缚",
-    "BUFF_JAILERTETHER_DESC": "随时间受到束缚伤害",
+    "BUFF_JAILERTETHER_DESC": "随时间受到束缚伤害。",
     "BUFF_KILLMOVESPEED_NAME": "猎人的鱼叉",
     "BUFF_KILLMOVESPEED_DESC": "移动速度+25% (每层)",
     "BUFF_MUSHROOMVOIDACTIVE_NAME": "哭泣真菌",
