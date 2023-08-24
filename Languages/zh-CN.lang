@@ -164,7 +164,7 @@
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "奇点手环",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "高伤害攻击会制造一个不稳定黑洞",
     "BUFF_ELITEEARTH_NAME": "大地之证",
-    "BUFF_ELITEEARTH_DESC": "获得治疗精英怪的能力：治疗附近的友军",
+    "BUFF_ELITEEARTH_DESC": "获得治疗精英怪的能力：治疗附近的友军。",
     "BUFF_ELITEVOID_NAME": "虚空之触",
     "BUFF_ELITEVOID_DESC": "每15秒免疫一次伤害；攻击附带瓦解效果",
     "BUFF_FRACTURE_NAME": "瓦解",
