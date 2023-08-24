@@ -134,7 +134,7 @@
     "BUFF_VOIDFOGSTRONG_NAME": "强化虚空毒雾",
     "BUFF_VOIDFOGSTRONG_DESC": "视野变暗并受到持续伤害。",
     "BUFF_BODYARMOR_NAME": "生物装甲",
-    "BUFF_BODYARMOR_DESC": "免疫下次攻击",
+    "BUFF_BODYARMOR_DESC": "免疫下次攻击。",
     "BUFF_DEAFENED_NAME": "Deafened",
     "BUFF_DEAFENED_DESC": "Muted.",
     "BUFF_ENGITEAMSHIELD_NAME": "工程师之盾 (全体)",
