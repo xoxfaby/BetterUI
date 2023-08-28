@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using RoR2;
@@ -192,7 +192,7 @@ namespace BetterUI
             RegisterStat(DLC1Content.Items.HalfSpeedDoubleHealth, "BETTERUI_MOVEMENTSPEED", 1, DivideByStacks);
             RegisterModifier(ItemTag.MovementSpeed, DLC1Content.Items.HalfSpeedDoubleHealth, ItemModifier.ExponentialBonus, 0.5f);
             RegisterStat(DLC1Content.Items.HealingPotion, "BETTERUI_USES", 1f, statFormatter: StatFormatter.Charges);
-            RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_RAINCOAT", 1f, stackingFormula: LinearStacking, statFormatter: StatFormatter.Charges);
+            RegisterStat(DLC1Content.Items.ImmuneToDebuff, "BETTERUI_DEBUFFSPREVENTED", 1f, stackingFormula: LinearStacking, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.LunarSun, "BETTERUI_CHARGETIME", 3f, DivideByStacks, statFormatter: StatFormatter.Seconds);
             RegisterStat(DLC1Content.Items.LunarSun, "BETTERUI_BOMBS", 3f, 1f, statFormatter: StatFormatter.Charges);
             RegisterStat(DLC1Content.Items.MinorConstructOnKill, "BETTERUI_MAXCONSTRUCTS", 4, statFormatter: StatFormatter.Charges);
