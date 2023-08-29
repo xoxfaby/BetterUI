@@ -32,7 +32,7 @@
     "BUFF_CLOAK_NAME": "Cloak",
     "BUFF_CLOAK_DESC": "Become Invisible to enemies.",
     "BUFF_CLOAKSPEED_NAME": "Cloak Speed",
-    "BUFF_CLOAKSPEED_DESC": "+40% Movement Speed",
+    "BUFF_CLOAKSPEED_DESC": "+40% Movement Speed.",
     "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Celestine Cloak",
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisible",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Elephant Armor Boost",
