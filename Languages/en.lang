@@ -140,7 +140,7 @@
     "BUFF_ENGITEAMSHIELD_NAME": "Engi Shield (Team)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% shield, +30% move speed",
     "BUFF_ENRAGEANCIENTWISP_NAME": "Enrage Ancient Wisp",
-    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% move speed",
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% Movement Speed.",
     "BUFF_GOLDEMPOWERED_NAME": "Gold Empowered",
     "BUFF_GOLDEMPOWERED_DESC": "+100% damage",
     "BUFF_LIGHTNINGSHIELD_NAME": "Lightning Shield",
