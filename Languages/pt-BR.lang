@@ -6,5 +6,6 @@
     "BETTERUI_CLOSE_WINDOW": "Fechar Janela",
     "BETTERUI_MADEBY": "Feito por XoXFaby",
     "BETTERUI_WINDOW_LABEL": "Obrigado por usar BetterUI! Se você gostou do mod, por favor considere fazer uma doação para me ajudar a continuar trabalhando nele o máximo possível!\n\nNo futuro, essa janela vai te permitir editar as configurações de BetterUI!\n\nAté lá é possível configurar BetterUI usando os arquivos de configuração.\n\nEu recomendo usar o editor de r2modman's pra editar os arquivos.",
-    "BETTERUI_TITLE": "BetterUI"
+    "BETTERUI_TITLE": "BetterUI",
+    "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Dispara um raio de curto alcance causando <style=cIsDamage>2000% damage</style>."
 }
