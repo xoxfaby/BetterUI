@@ -10,5 +10,6 @@
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Dispara um raio de curto alcance causando <style=cIsDamage>2000% damage</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Dispara uma bomba em arco causando <style=cIsDamage>1100% damage</style>.",
     "BUFF_AFFIXRED_NAME": "Em chamas",
-    "BUFF_AFFIXRED_DESC": "Ganhe o poder de um Elite em chamas: deixa uma trilha de fogo e aplica chamas ao contato."
+    "BUFF_AFFIXRED_DESC": "Ganhe o poder de um Elite em chamas: deixa uma trilha de fogo e aplica chamas ao contato.",
+    "BUFF_AFFIXBLUE_NAME": "Sobrecarregando"
 }
