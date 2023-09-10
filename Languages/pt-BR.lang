@@ -18,5 +18,6 @@
     "BUFF_AFFIXPOISON_NAME": "Malaquita",
     "BUFF_AFFIXPOISON_DESC": "Ganhe o poder de um Elite de Malaquita: dispara urtigas periodicamente e desabilita cura ao contato.",
     "BUFF_AFFIXHAUNTED_NAME": "Celestina",
-    "BUFF_AFFIXHAUNTED_DESC": "Ganhe o poder de um Elite de Celestina:"
+    "BUFF_AFFIXHAUNTED_DESC": "Ganhe o poder de um Elite de Celestina:",
+    "BUFF_AFFIXLUNAR_NAME": "Aperfeiçoado"
 }
