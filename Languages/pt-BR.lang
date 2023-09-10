@@ -16,5 +16,6 @@
     "BUFF_AFFIXWHITE_NAME": "Glacial",
     "BUFF_AFFIXWHITE_DESC": "Ganhe o poder de um Elite Glacial: deixa uma explosão de gelo ao morrer e aplica 80% de lentidão ao contato.",
     "BUFF_AFFIXPOISON_NAME": "Malaquita",
-    "BUFF_AFFIXPOISON_DESC": "Ganhe o poder de um Elite de Malaquita: dispara urtigas periodicamente e desabilita cura ao contato."
+    "BUFF_AFFIXPOISON_DESC": "Ganhe o poder de um Elite de Malaquita: dispara urtigas periodicamente e desabilita cura ao contato.",
+    "BUFF_AFFIXHAUNTED_NAME": "Celestina"
 }
