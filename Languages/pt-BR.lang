@@ -63,5 +63,6 @@
     "BUFF_LIFESTEAL_DESC": "Cura 20% do dano que você causa",
     "BUFF_POWERBUFF_NAME": "Bônus de Poder",
     "BUFF_POWERBUFF_DESC": "+50% de Dano",
-    "BUFF_ELEMENTALRINGSREADY_NAME": "Anéis Elementais Prontos"
+    "BUFF_ELEMENTALRINGSREADY_NAME": "Anéis Elementais Prontos",
+    "BUFF_ELEMENTALRINGSREADY_DESC": "O efeito de Cinturão de Runald e/ou Cinturão de Kjaro podem ser ativados"
 }
