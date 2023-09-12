@@ -34,5 +34,6 @@
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisível",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Bônus de Armadura Elefante",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 de armadura",
-    "BUFF_ENERGIZED_NAME": "Energizado"
+    "BUFF_ENERGIZED_NAME": "Energizado",
+    "BUFF_ENERGIZED_DESC": "+70% de Velocidade de Ataque"
 }
