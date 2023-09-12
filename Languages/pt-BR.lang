@@ -28,5 +28,6 @@
     "BUFF_BUGWINGS_DESC": "Cresce asas e voe, +20% de Velocidade de Movimento",
     "BUFF_CLOAK_NAME": "Manto",
     "BUFF_CLOAK_DESC": "Se torna invisível para inimigos.",
-    "BUFF_CLOAKSPEED_NAME": "Velocidade de Manto"
+    "BUFF_CLOAKSPEED_NAME": "Velocidade de Manto",
+    "BUFF_CLOAKSPEED_DESC": "+40% de Velocidade de Movimento."
 }
