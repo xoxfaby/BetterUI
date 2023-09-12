@@ -19,5 +19,6 @@
     "BUFF_AFFIXPOISON_DESC": "Ganhe o poder de um Elite de Malaquita: dispara urtigas periodicamente e desabilita cura ao contato.",
     "BUFF_AFFIXHAUNTED_NAME": "Celestina",
     "BUFF_AFFIXHAUNTED_DESC": "Ganhe o poder de um Elite de Celestina:  a aliados próximos e 80% de lentidão ao contato.",
-    "BUFF_AFFIXLUNAR_NAME": "Aperfeiçoado"
+    "BUFF_AFFIXLUNAR_NAME": "Aperfeiçoado",
+    "BUFF_AFFIXLUNAR_DESC": "Ganhe o poder de um Elite Aperfeiçoado:  ao contato, ocasionalmente dispara 5 bombas projeteis em inimigos, ganha 30% de velocidade de movimento aumentada e ganha 25% de vida máxima além de ter toda a vida trocada por escudos."
 }
