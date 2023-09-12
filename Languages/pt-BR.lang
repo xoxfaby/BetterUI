@@ -29,5 +29,6 @@
     "BUFF_CLOAK_NAME": "Manto",
     "BUFF_CLOAK_DESC": "Se torna invisível para inimigos.",
     "BUFF_CLOAKSPEED_NAME": "Velocidade de Manto",
-    "BUFF_CLOAKSPEED_DESC": "+40% de Velocidade de Movimento."
+    "BUFF_CLOAKSPEED_DESC": "+40% de Velocidade de Movimento.",
+    "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Manto de Celestina"
 }
