@@ -41,5 +41,6 @@
     "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerável",
     "BUFF_IMMUNE_NAME": "Imune",
     "BUFF_IMMUNE_DESC": "Invulnerável",
-    "BUFF_CROCOREGEN_NAME": "Regenerativo"
+    "BUFF_CROCOREGEN_NAME": "Regenerativo",
+    "BUFF_CROCOREGEN_DESC": "Ganha Vida e Regeneração igual a 10% da sua vida máxima por 0.5s (acumulável)"
 }
