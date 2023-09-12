@@ -77,5 +77,6 @@
     "BUFF_POISONED_DESC": "Veneno: Dano Contínuo (acumulável)",
     "BUFF_BLIGHT_NAME": "Praga",
     "BUFF_BLIGHT_DESC": "Praga: Dano Contínuo (acumulável)",
-    "BUFF_MERCEXPOSE_NAME": "Expor"
+    "BUFF_MERCEXPOSE_NAME": "Expor",
+    "BUFF_MERCEXPOSE_DESC": "Expor: Acertar inimigos Expostos reduz o tempo de recarga de todas as skills em 1.0s e causa 350% de dano adicional"
 }
