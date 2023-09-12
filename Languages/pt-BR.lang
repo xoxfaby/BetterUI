@@ -32,5 +32,6 @@
     "BUFF_CLOAKSPEED_DESC": "+40% de Velocidade de Movimento.",
     "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Manto de Celestina",
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisível",
-    "BUFF_ELEPHANTARMORBOOST_NAME": "Bônus de Armadura Elefante"
+    "BUFF_ELEPHANTARMORBOOST_NAME": "Bônus de Armadura Elefante",
+    "BUFF_ELEPHANTARMORBOOST_DESC": "+500 de armadura"
 }
