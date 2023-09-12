@@ -61,5 +61,6 @@
     "BUFF_WHIPBOOST_DESC": "+30% de Velocidade de Movimento",
     "BUFF_LIFESTEAL_NAME": "Roubo de Vida",
     "BUFF_LIFESTEAL_DESC": "Cura 20% do dano que você causa",
-    "BUFF_POWERBUFF_NAME": "Bônus de Poder"
+    "BUFF_POWERBUFF_NAME": "Bônus de Poder",
+    "BUFF_POWERBUFF_DESC": "+50% de Dano"
 }
