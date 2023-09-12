@@ -37,5 +37,6 @@
     "BUFF_ENERGIZED_NAME": "Energizado",
     "BUFF_ENERGIZED_DESC": "+70% de Velocidade de Ataque",
     "BUFF_FULLCRIT_DESC": "+100% de chance de Acerto Crítico",
-    "BUFF_HIDDENINVINCIBILITY_NAME": "Invencibilidade Oculta"
+    "BUFF_HIDDENINVINCIBILITY_NAME": "Invencibilidade Oculta",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerável"
 }
