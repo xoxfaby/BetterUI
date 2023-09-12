@@ -58,5 +58,6 @@
     "BUFF_TEAMWARCRY_NAME": "Grito de Guerra de Equipe",
     "BUFF_TEAMWARCRY_DESC": "+50% de Velocidade de Movimento , +100% de Velocidade de Ataque",
     "BUFF_WHIPBOOST_NAME": "Bônus de Chicote",
-    "BUFF_WHIPBOOST_DESC": "+30% de Velocidade de Movimento"
+    "BUFF_WHIPBOOST_DESC": "+30% de Velocidade de Movimento",
+    "BUFF_LIFESTEAL_NAME": "Roubo de Vida"
 }
