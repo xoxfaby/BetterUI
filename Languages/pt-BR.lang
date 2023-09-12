@@ -67,5 +67,6 @@
     "BUFF_ELEMENTALRINGSREADY_DESC": "O efeito de Cinturão de Runald e/ou Cinturão de Kjaro podem ser ativados",
     "BUFF_BANDITSKULL_NAME": "Caveira de Bandido",
     "BUFF_BANDITSKULL_DESC": "+10% de dano de Bandoleiro por acúmulo",
-    "BUFF_LASERTURBINEKILLCHARGE_NAME": "Carga de Morte do Disco de Ressonância"
+    "BUFF_LASERTURBINEKILLCHARGE_NAME": "Carga de Morte do Disco de Ressonância",
+    "BUFF_LASERTURBINEKILLCHARGE_DESC": "Ganhe um acúmulo por abate que dura 7 segundos. Com 4 acúmulos o Disco de Ressonância dispara, resetando todos os acúmulos."
 }
