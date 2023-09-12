@@ -72,5 +72,6 @@
     "BUFF_BLEEDING_NAME": "Sangramento",
     "BUFF_BLEEDING_DESC": "Sangramento: Dano Contínuo (acumulável)",
     "BUFF_SUPERBLEED_NAME": "Hemorragia",
-    "BUFF_SUPERBLEED_DESC": "Hemorragia: Dano Contínuo (acumulável)"
+    "BUFF_SUPERBLEED_DESC": "Hemorragia: Dano Contínuo (acumulável)",
+    "BUFF_POISONED_NAME": "Veneno"
 }
