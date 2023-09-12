@@ -49,5 +49,6 @@
     "BUFF_NOCOOLDOWNS_DESC": "Tempo de recarga de habilidades reduzido para 0.5 segundos",
     "BUFF_TESLAFIELD_NAME": "Campo de Tesla",
     "BUFF_TESLAFIELD_DESC": "Atirando raios",
-    "BUFF_TONICBUFF_NAME": "Efeito de Tônico"
+    "BUFF_TONICBUFF_NAME": "Efeito de Tônico",
+    "BUFF_TONICBUFF_DESC": "*150% Vida Máxima , *150% Escudo máximo , *170% Velocidade de Ataque , *130% Velocidade de Movimento , +20 Armadura , *200% Dano Base, *400% Regeneração de Vida"
 }
