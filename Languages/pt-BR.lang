@@ -57,5 +57,6 @@
     "BUFF_WARCRYBUFF_DESC": "+50% de Velocidade de Movimento, +100% de Velocidade de Ataque",
     "BUFF_TEAMWARCRY_NAME": "Grito de Guerra de Equipe",
     "BUFF_TEAMWARCRY_DESC": "+50% de Velocidade de Movimento , +100% de Velocidade de Ataque",
-    "BUFF_WHIPBOOST_NAME": "Bônus de Chicote"
+    "BUFF_WHIPBOOST_NAME": "Bônus de Chicote",
+    "BUFF_WHIPBOOST_DESC": "+30% de Velocidade de Movimento"
 }
