@@ -75,5 +75,6 @@
     "BUFF_SUPERBLEED_DESC": "Hemorragia: Dano Contínuo (acumulável)",
     "BUFF_POISONED_NAME": "Veneno",
     "BUFF_POISONED_DESC": "Veneno: Dano Contínuo (acumulável)",
-    "BUFF_BLIGHT_NAME": "Praga"
+    "BUFF_BLIGHT_NAME": "Praga",
+    "BUFF_BLIGHT_DESC": "Praga: Dano Contínuo (acumulável)"
 }
