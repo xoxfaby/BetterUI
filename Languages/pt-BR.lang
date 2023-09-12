@@ -45,5 +45,6 @@
     "BUFF_CROCOREGEN_DESC": "Ganha Vida e Regeneração igual a 10% da sua vida máxima por 0.5s (acumulável)",
     "BUFF_MEDKITHEAL_NAME": "Cura de Kit Médico",
     "BUFF_MEDKITHEAL_DESC": "Ativação de Kit Médico",
-    "BUFF_NOCOOLDOWNS_NAME": "Sem tempos de recarga"
+    "BUFF_NOCOOLDOWNS_NAME": "Sem tempos de recarga",
+    "BUFF_NOCOOLDOWNS_DESC": "Tempo de recarga de habilidades reduzido para 0.5 segundos"
 }
