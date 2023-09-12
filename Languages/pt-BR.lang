@@ -70,5 +70,6 @@
     "BUFF_LASERTURBINEKILLCHARGE_NAME": "Carga de Morte do Disco de Ressonância",
     "BUFF_LASERTURBINEKILLCHARGE_DESC": "Ganhe um acúmulo por abate que dura 7 segundos. Com 4 acúmulos o Disco de Ressonância dispara, resetando todos os acúmulos.",
     "BUFF_BLEEDING_NAME": "Sangramento",
-    "BUFF_BLEEDING_DESC": "Sangramento: Dano Contínuo (acumulável)"
+    "BUFF_BLEEDING_DESC": "Sangramento: Dano Contínuo (acumulável)",
+    "BUFF_SUPERBLEED_NAME": "Hemorragia"
 }
