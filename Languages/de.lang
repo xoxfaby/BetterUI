@@ -15,7 +15,7 @@
     "BUFF_AFFIXRED_DESC": "Erhalte die Kraft eines Flammenden Elite: Hinterlasse eine Feuerspur und verursache prozentuale Verbrennung bei Treffern.",
     "BUFF_AFFIXBLUE_DESC": "Erhalte die Kraft eines Überladungs-Elite: Angriffe explodieren nach einer Verzögerung, und 50% der Gesundheit werden durch Schildpunkte ersetzt.",
     "BUFF_AFFIXBLUE_NAME": "Überladung",
-    "BUFF_AFFIXPOISON_NAME": "Malachit",
+    "BUFF_AFFIXPOISON_NAME": "",
     "BUFF_AFFIXWHITE_DESC": "Erhalte die Kraft eines Glazial-Elite: Hinterlasse eine Eisexplosion bei Tod und verursache eine 80%ige Verlangsamung bei Treffern.",
     "BUFF_AFFIXWHITE_NAME": "Eisig"
 }
