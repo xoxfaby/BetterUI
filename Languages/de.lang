@@ -3,5 +3,6 @@
     "BETTERUI_TITLE_HOVER": "Das BetterUI Fenster öffnen.",
     "BETTERUI_DONATE": "An BetterUI spenden",
     "BETTERUI_DISCORD": "Trete unseren Discord Server bei",
-    "BETTERUI_BUGREPORT": "Einen Fehler melden"
+    "BETTERUI_BUGREPORT": "Einen Fehler melden",
+    "BETTERUI_CLOSE_WINDOW": "Fenster schließen"
 }
