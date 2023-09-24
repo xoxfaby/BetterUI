@@ -10,5 +10,6 @@
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Feuere einen Kurzstreckenstrahl für <style=cIsDamage>2000% Schaden</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Feuere eine Bogenbombe für <style=cIsDamage>1100% Schaden</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Verschwinde</style> ins Nichts und <style=cIsUtility>reinige alle Debuffs</style>, während du dich in einem <style=cIsUtility>Vorwärtsbogen bewegst</style>.",
-    "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Verliere <style=cIsHealing>25% Gesundheit</style>, um <style=cIsVoid>25% Verderbnis zu erhalten</style>."
+    "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Verliere <style=cIsHealing>25% Gesundheit</style>, um <style=cIsVoid>25% Verderbnis zu erhalten</style>.",
+    "BUFF_AFFIXRED_NAME": "Flammend"
 }
