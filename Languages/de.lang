@@ -12,5 +12,5 @@
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Verschwinde</style> ins Nichts und <style=cIsUtility>reinige alle Debuffs</style>, während du dich in einem <style=cIsUtility>Vorwärtsbogen bewegst</style>.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Verliere <style=cIsHealing>25% Gesundheit</style>, um <style=cIsVoid>25% Verderbnis zu erhalten</style>.",
     "BUFF_AFFIXRED_NAME": "Flammend",
-    "BUFF_AFFIXRED_DESC": "Erhalte die Krafy eines Flammenden Elite: Hinterlasse eine Feuerspur und verursache prozentuale Verbrennung bei Treffern."
+    "BUFF_AFFIXRED_DESC": "Erhalte die Kraft eines Flammenden Elite: Hinterlasse eine Feuerspur und verursache prozentuale Verbrennung bei Treffern."
 }
