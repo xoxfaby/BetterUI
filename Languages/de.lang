@@ -17,5 +17,6 @@
     "BUFF_AFFIXBLUE_NAME": "Überladung",
     "BUFF_AFFIXPOISON_NAME": "Malachit",
     "BUFF_AFFIXWHITE_DESC": "Erhalte die Kraft eines Glazial-Elite: Hinterlasse eine Eisexplosion bei Tod und verursache eine 80%ige Verlangsamung bei Treffern.",
-    "BUFF_AFFIXWHITE_NAME": "Eisig"
+    "BUFF_AFFIXWHITE_NAME": "Eisig",
+    "BUFF_AFFIXHAUNTED_NAME": "Celestin"
 }
