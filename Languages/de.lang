@@ -13,5 +13,6 @@
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Verliere <style=cIsHealing>25% Gesundheit</style>, um <style=cIsVoid>25% Verderbnis zu erhalten</style>.",
     "BUFF_AFFIXRED_NAME": "Flammend",
     "BUFF_AFFIXRED_DESC": "Erhalte die Kraft eines Flammenden Elite: Hinterlasse eine Feuerspur und verursache prozentuale Verbrennung bei Treffern.",
-    "BUFF_AFFIXBLUE_DESC": "Erhalte die Kraft eines Überladungs-Elite: Angriffe explodieren nach einer Verzögerung, und 50% der Gesundheit werden durch Schildpunkte ersetzt."
+    "BUFF_AFFIXBLUE_DESC": "Erhalte die Kraft eines Überladungs-Elite: Angriffe explodieren nach einer Verzögerung, und 50% der Gesundheit werden durch Schildpunkte ersetzt.",
+    "BUFF_AFFIXBLUE_NAME": "Überladung"
 }
