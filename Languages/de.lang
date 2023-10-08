@@ -1,1 +1,24 @@
-{}
+{
+    "BETTERUI_TITLE": "BetterUI",
+    "BETTERUI_TITLE_HOVER": "Das BetterUI Fenster öffnen.",
+    "BETTERUI_DONATE": "An BetterUI spenden",
+    "BETTERUI_DISCORD": "Trete unseren Discord Server bei",
+    "BETTERUI_BUGREPORT": "Einen Fehler melden",
+    "BETTERUI_CLOSE_WINDOW": "Fenster schließen",
+    "BETTERUI_MADEBY": "Erstellt von XoXFaby",
+    "BETTERUI_WINDOW_LABEL": "Danke dafür, dass du BetterUI verwendest! Wenn dir dieser Mod gefällt, dann ziehe bitte in betracht, eine Spende zu machen, sodass ich weiter so viel ich kann an ihn arbeiten kann!\n\nIn der Zukunft wird dieses Fenster es dir ermöglichen, die Einstellungen für BetterUI zu bearbeiten!\n\nBis dahin kannst du BetterUI über die Konfigurationsdateien anpassen.\n\nIch empfehle den Konfigurationseditor von r2modman zu verwenden um diese Dateien zu bearbeiten.",
+    "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Feuere einen Kurzstreckenstrahl für <style=cIsDamage>2000% Schaden</style>.",
+    "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Feuere eine Bogenbombe für <style=cIsDamage>1100% Schaden</style>.",
+    "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Verschwinde</style> ins Nichts und <style=cIsUtility>reinige alle Debuffs</style>, während du dich in einem <style=cIsUtility>Vorwärtsbogen bewegst</style>.",
+    "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Verliere <style=cIsHealing>25% Gesundheit</style>, um <style=cIsVoid>25% Verderbnis zu erhalten</style>.",
+    "BUFF_AFFIXRED_NAME": "Flammend",
+    "BUFF_AFFIXRED_DESC": "Erhalte die Kraft eines Flammenden Elite: Hinterlasse eine Feuerspur und verursache prozentuale Verbrennung bei Treffern.",
+    "BUFF_AFFIXBLUE_DESC": "Erhalte die Kraft eines Überladungs-Elite: Angriffe explodieren nach einer Verzögerung, und 50% der Gesundheit werden durch Schildpunkte ersetzt.",
+    "BUFF_AFFIXBLUE_NAME": "Überladung",
+    "BUFF_AFFIXPOISON_NAME": "Malachit",
+    "BUFF_AFFIXWHITE_DESC": "Erhalte die Kraft eines Glazial-Elite: Hinterlasse eine Eisexplosion bei Tod und verursache eine 80%ige Verlangsamung bei Treffern.",
+    "BUFF_AFFIXWHITE_NAME": "Eisig",
+    "BUFF_AFFIXHAUNTED_NAME": "Cölestin",
+    "BUFF_AFFIXHAUNTED_DESC": "Erhalte die Kraft eines Cölestin-Elite: Verhülle nahe Verbündete und verursache eine 80%ige Verlangsamung bei Treffern.",
+    "BUFF_AFFIXLUNAR_NAME": "Perfektioniert"
+}

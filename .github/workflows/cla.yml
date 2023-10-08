@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "CLA Signature Bot"
-        uses: MetaMask/cla-signature-bot@v3.0.1
+        uses: roblox/cla-assistant@v2.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          allowlist: 'xoxfaby' 
+          whitelist: 'xoxfaby' 
           path-to-signatures: 'signatures/cla.json'
           url-to-cladocument: 'https://github.com/xoxfaby/BetterUI/blob/master/CLA.md'
