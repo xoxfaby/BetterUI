@@ -283,14 +283,14 @@ namespace BetterUI
 
                 switch (c)
                 {
-                    case '#':
-                        filtering = true;
-                        continue;
                     case '<':
                     case '>':
                         nameParsing = true;
                         tierReversed = (c == '<');
                         break;
+                    case '#':
+                        filtering = true;
+                        continue;
 
                     case 't':
                     case 'T':
