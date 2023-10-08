@@ -198,7 +198,7 @@ namespace BetterUI
             IOrderedEnumerable<ItemIndex> finalOrder = itemList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
             {
-               
+            
                 if (nameParsing)
                 {
                     if (c == '(')
