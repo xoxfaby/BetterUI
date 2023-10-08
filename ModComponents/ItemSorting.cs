@@ -46,7 +46,6 @@ namespace BetterUI
         private delegate bool ItemFilter(ItemIndex item);
         private delegate T ItemSorter<T>(IOrderedEnumerable<ItemIndex> order, Inventory inventory, ItemIndex item);
 
-
         private static ItemFilter scrapFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Scrap);
         private static ItemFilter damageFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Damage);
         private static ItemFilter healingFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Healing);
@@ -107,12 +106,12 @@ namespace BetterUI
 
         private static Dictionary<Char, ItemSorter<bool>> tierSorters = new Dictionary<char, ItemSorter<bool>>()
         {
-            { '1', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
-            { '2', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
-            { '3', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
-            { 'L', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
-            { 'B', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
-            { 'N', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
+            { '1', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
+            { '2', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
+            { '3', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
+            { 'L', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
+            { 'B', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
+            { 'N', (list, inv, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
         };
 
         private static DirectSorter commandSorter = (IOrderedEnumerable<ItemIndex> order) =>
