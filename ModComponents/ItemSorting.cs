@@ -43,26 +43,25 @@ namespace BetterUI
         }
 
         private delegate IOrderedEnumerable<ItemIndex> DirectSorter(IOrderedEnumerable<ItemIndex> order);
-        private delegate bool ItemFilter(ItemIndex item, ItemIndex idx = ItemIndex.None);
-        private delegate T ItemSorter<T>(IOrderedEnumerable<ItemIndex> order, Inventory inventory, ItemIndex item, ItemIndex idx = ItemIndex.None);
+        private delegate bool ItemFilter(ItemIndex item);
+        private delegate T ItemSorter<T>(IOrderedEnumerable<ItemIndex> order, Inventory inventory, ItemIndex item);
 
 
-        private static ItemFilter nameFilter = (item, idx) => item.Equals(idx);
-        private static ItemFilter scrapFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Scrap);
-        private static ItemFilter damageFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Damage);
-        private static ItemFilter healingFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Healing);
-        private static ItemFilter utilityFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Utility);
-        private static ItemFilter onKillEffectFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.OnKillEffect);
-        private static ItemFilter equipmentRelatedFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.EquipmentRelated);
-        private static ItemFilter sprintRelatedFilter = (item, idx) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.SprintRelated);
+        private static ItemFilter scrapFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Scrap);
+        private static ItemFilter damageFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Damage);
+        private static ItemFilter healingFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Healing);
+        private static ItemFilter utilityFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.Utility);
+        private static ItemFilter onKillEffectFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.OnKillEffect);
+        private static ItemFilter equipmentRelatedFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.EquipmentRelated);
+        private static ItemFilter sprintRelatedFilter = (item) => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.SprintRelated);
         private static Dictionary<char, ItemFilter> tierFilters = new Dictionary<char, ItemFilter>()
         {
-            { '1', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
-            { '2', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
-            { '3', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
-            { 'L', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
-            { 'B', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
-            { 'N', (item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier},
+            { '1', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
+            { '2', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
+            { '3', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
+            { 'L', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
+            { 'B', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
+            { 'N', (item) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier},
         };
 
         //0 = White, 1 = Green, 2 = Red, 3 = Lunar, 4 = Boss, 5 = NoTier
@@ -81,15 +80,14 @@ namespace BetterUI
         };
 
 
-        private static ItemSorter<bool> nameSorter = (order, inventory, item, idx) => nameFilter(item, idx);
-        private static ItemSorter<bool> scrapSorter = (order, inventory, item, idx) => scrapFilter(item);
-        private static ItemSorter<bool> damageSorter = (order, inventory, item, idx) => damageFilter(item);
-        private static ItemSorter<bool> healingSorter = (order, inventory, item, idx) => healingFilter(item);
-        private static ItemSorter<bool> utilitySorter = (order, inventory, item, idx) => utilityFilter(item);
-        private static ItemSorter<bool> onKillEffectSorter = (order, inventory, item, idx) => onKillEffectFilter(item);
-        private static ItemSorter<bool> equipmentRelatedSorter = (order, inventory, item, idx) => equipmentRelatedFilter(item);
-        private static ItemSorter<bool> sprintRelatedSorter = (order, inventory, item, idx) => sprintRelatedFilter(item);
-        private static ItemSorter<int> tierSorter = (order, inventory, item, idx) =>
+        private static ItemSorter<bool> scrapSorter = (order, inventory, item) => scrapFilter(item);
+        private static ItemSorter<bool> damageSorter = (order, inventory, item) => damageFilter(item);
+        private static ItemSorter<bool> healingSorter = (order, inventory, item) => healingFilter(item);
+        private static ItemSorter<bool> utilitySorter = (order, inventory, item) => utilityFilter(item);
+        private static ItemSorter<bool> onKillEffectSorter = (order, inventory, item) => onKillEffectFilter(item);
+        private static ItemSorter<bool> equipmentRelatedSorter = (order, inventory, item) => equipmentRelatedFilter(item);
+        private static ItemSorter<bool> sprintRelatedSorter = (order, inventory, item) => sprintRelatedFilter(item);
+        private static ItemSorter<int> tierSorter = (order, inventory, item) =>
         {
             if (tierMap.TryGetValue(ItemCatalog.GetItemDef(item).tier, out int value))
             {
@@ -97,11 +95,11 @@ namespace BetterUI
             }
             return ConfigManager.SortingTierOrder[5];
         };
-        private static ItemSorter<int> stackSorter = (order, inventory, item, idx) => inventory.itemStacks[(int)item];
-        private static ItemSorter<int> pickupSorter = (order, inventory, item, idx) => inventory.itemAcquisitionOrder.IndexOf(item);
-        private static ItemSorter<String> alphabeticalSorter = (order, inventory, item, idx) => RoR2.Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
-        private static ItemSorter<int> indexSorter = (order, inventory, item, idx) => (int)item;
-        private static ItemSorter<int> randomSorter = (order, inventory, item, idx) =>
+        private static ItemSorter<int> stackSorter = (order, inventory, item) => inventory.itemStacks[(int)item];
+        private static ItemSorter<int> pickupSorter = (order, inventory, item) => inventory.itemAcquisitionOrder.IndexOf(item);
+        private static ItemSorter<String> alphabeticalSorter = (order, inventory, item) => RoR2.Language.GetString(ItemCatalog.GetItemDef(item).nameToken);
+        private static ItemSorter<int> indexSorter = (order, inventory, item) => (int)item;
+        private static ItemSorter<int> randomSorter = (order, inventory, item) =>
         {
             Random random = new Random();
             return random.Next();
@@ -109,12 +107,12 @@ namespace BetterUI
 
         private static Dictionary<Char, ItemSorter<bool>> tierSorters = new Dictionary<char, ItemSorter<bool>>()
         {
-            { '1', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
-            { '2', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
-            { '3', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
-            { 'L', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
-            { 'B', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
-            { 'N', (order, inventory, item, idx) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
+            { '1', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
+            { '2', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
+            { '3', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier3 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier3 },
+            { 'L', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Lunar },
+            { 'B', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.Boss || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidBoss },
+            { 'N', (order, inventory, item) => ItemCatalog.GetItemDef(item).tier == ItemTier.NoTier },
         };
 
         private static DirectSorter commandSorter = (IOrderedEnumerable<ItemIndex> order) =>
@@ -155,11 +153,11 @@ namespace BetterUI
                 List<ItemIndex> tempList = list.ToList();
                 if (reversed)
                 {
-                    filteredItems = filteredItems.OrderByDescending(item => sorter(list, inventory, item, idx)).ToList();
+                    filteredItems = filteredItems.OrderByDescending(item => sorter(list, inventory, item)).ToList();
                 }
                 else
                 {
-                    filteredItems = filteredItems.OrderBy(item => sorter(list, inventory, item, idx)).ToList();
+                    filteredItems = filteredItems.OrderBy(item => sorter(list, inventory, item)).ToList();
                 }
                 foreach (var x in filteredIndexes.Select((x, i) => new { Value = x, Index = i }))
                 {
@@ -171,11 +169,11 @@ namespace BetterUI
             {
                 if (reversed)
                 {
-                    return list.OrderByDescending(item => sorter(list, inventory, item, idx));
+                    return list.OrderByDescending(item => sorter(list, inventory, item));
                 }
                 else
                 {
-                    return list.OrderBy(item => sorter(list, inventory, item, idx));
+                    return list.OrderBy(item => sorter(list, inventory, item));
                 }
             }
         }
@@ -187,7 +185,6 @@ namespace BetterUI
             public ItemSorter<String> stringSorter;
             public DirectSorter directSorter;
             public bool reversed;
-            public ItemIndex idx;
         }
 
         public static List<ItemIndex> sortItems(List<ItemIndex> itemList, Inventory inventory, String sortOrder)
@@ -197,18 +194,12 @@ namespace BetterUI
             bool tierSelect = false;
             bool tierReversed = false;
             bool nameParsing = false;
-            bool nameReverse = false;
             StringBuilder parsedName = new StringBuilder();
             ItemFilter nextFilter = null;
             IOrderedEnumerable<ItemIndex> finalOrder = itemList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
             {
-                if (c == '<' || c == '>')  // Start Named Item Parsing
-                {
-                    nameParsing = true;
-                    nameReverse = (c == '<');
-                    continue;
-                }
+              
                 if (nameParsing)
                 {
                     if (c == '(')
@@ -221,11 +212,12 @@ namespace BetterUI
                         ItemIndex indexed = ItemCatalog.FindItemIndex(parsedName.ToString());
                         if (indexed != ItemIndex.None)
                         {
-                            steps.Add(new SortStep { filter = null, boolSorter = nameSorter, reversed = nameReverse, idx = indexed });
+                            ItemSorter<bool> sorter = (order, inventor, item) => item.Equals(indexed);
+                            steps.Add(new SortStep { filter = null, boolSorter = sorter, reversed = tierReversed });
                         }
                         parsedName.Clear();
                         nameParsing = false;
-                        nameReverse = false;
+                        tierReversed = false;
                         continue;
                     }
                     else
@@ -294,6 +286,12 @@ namespace BetterUI
                     case '#':
                         filtering = true;
                         continue;
+                    case '<':
+                    case '>':
+                        nameParsing = true;
+                        tierReversed = (c == '<');
+                        break;
+
                     case 't':
                     case 'T':
                         tierSelect = true;
@@ -360,7 +358,7 @@ namespace BetterUI
             steps.Reverse();
             foreach (var step in steps)
             {
-                if (step.boolSorter != null) finalOrder = filteredSort(finalOrder, inventory, step.boolSorter, step.filter, step.reversed, step.idx);
+                if (step.boolSorter != null) finalOrder = filteredSort(finalOrder, inventory, step.boolSorter, step.filter, step.reversed);
                 else if (step.intSorter != null) finalOrder = filteredSort(finalOrder, inventory, step.intSorter, step.filter, step.reversed);
                 else if (step.stringSorter != null) finalOrder = filteredSort(finalOrder, inventory, step.stringSorter, step.filter, step.reversed);
                 else if (step.directSorter != null) finalOrder = step.directSorter(finalOrder);
