@@ -133,7 +133,7 @@ Filters:
 You can use any tags from the tag based sorting.   
 Examples:  
 `#s0` to sort scrap by tier ascending.  
-`#t14#t28` to sort Tier 1 items by pickup order and tier 2 items randomly
+`#t14#t28` to sort Tier 1 items by pickup order and tier 2 items randomly.
 
 The full options:
 
@@ -179,3 +179,9 @@ T3 = Tier 3 Last
 TL = Lunar Tier Last
 TB = Boss Tier Last
 TN = NoTier Last
+
+Single Items:  
+You can position specific items by specifying their internal name, using angle brackets to specify where.  
+Examples:  
+`s<(RegeneratingScrap)134` to place all scrap first, then regenerating scrap, then the rest of your items as normal.  
+`>(Behemoth)S134` to always place the brillant behemoth last, then the rest of your items as normal.  
