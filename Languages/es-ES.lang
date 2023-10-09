@@ -267,5 +267,6 @@
     "BETTERUI_GHOSTDURATION": "Duración de Fantasma",
     "BETTERUI_CHARGES": "Cargas",
     "BETTERUI_COOLDOWNREDUCTION": "Reducción de Enfriamiento",
-    "BETTERUI_CHANCE": "Probabilidad"
+    "BETTERUI_CHANCE": "Probabilidad",
+    "BETTERUI_MAXIMUMHEALTH": "Vida Máxima"
 }
