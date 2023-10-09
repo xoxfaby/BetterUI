@@ -320,5 +320,6 @@
     "SKILL_BULLET_NAME": "Bala",
     "SKILL_PHASEROUND_NAME": "Ronda de Fase",
     "SKILL_GRENADE_NAME": "Granada",
-    "SKILL_MINE_NAME": "Mina"
+    "SKILL_MINE_NAME": "Mina",
+    "SKILL_HARPOON_NAME": "Arpón"
 }
