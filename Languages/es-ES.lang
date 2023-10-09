@@ -300,5 +300,6 @@
     "SKILL_BITE_NAME": "Mordida",
     "SKILL_LEAP_NAME": "Salto",
     "SKILL_POOL_NAME": "Piscina",
-    "SKILL_BOUNCE_NAME": "Rebotar"
+    "SKILL_BOUNCE_NAME": "Rebotar",
+    "SKILL_BOLT_NAME": "Rayo"
 }
