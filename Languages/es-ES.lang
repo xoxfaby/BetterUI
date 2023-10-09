@@ -317,5 +317,6 @@
     "SKILL_POWERTAZER_NAME": "Tazer de Poder",
     "SKILL_AIRSTRIKE_NAME": "Ataque Aereo",
     "SKILL_IMPACT_NAME": "Impacto",
-    "SKILL_BULLET_NAME": "Bala"
+    "SKILL_BULLET_NAME": "Bala",
+    "SKILL_PHASEROUND_NAME": "Ronda de Fase"
 }
