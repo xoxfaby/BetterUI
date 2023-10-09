@@ -325,5 +325,6 @@
     "SKILL_TURRETSHOT_NAME": "Disparo de Torreta",
     "SKILL_LASER_NAME": "Laser",
     "SKILL_ARROW_NAME": "Flecha",
-    "SKILL_GLAIVE_NAME": "Guja"
+    "SKILL_GLAIVE_NAME": "Guja",
+    "SKILL_RAIN_NAME": "Lluvia"
 }
