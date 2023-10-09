@@ -294,5 +294,6 @@
     "BETTERUI_ARMOR_SUFFIX": " Armadura",
     "BETTERUI_REGEN_SUFFIX": " PV/s",
     "BETTERUI_RANGE_SUFFIX": "m",
-    "BETTERUI_DAMAGE_SUFFIX": " Daño"
+    "BETTERUI_DAMAGE_SUFFIX": " Daño",
+    "SKILL_SLASH_NAME": "Corte"
 }
