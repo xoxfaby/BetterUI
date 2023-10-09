@@ -32,14 +32,14 @@ namespace BetterUI
                 {
                     JObject result = JObject.Parse(apiRequest.downloadHandler.text);
                     List<(string, string, string)> languageInfos = new List<(string, string, string)>(result.SelectToken("$.results").Select(
-                        s =>(
-                        (string) s.SelectToken("$.filename"),
-                        (string) s.SelectToken("$.revision"),
-                        (string) s.SelectToken("$.file_url")
+                        s => (
+                        (string)s.SelectToken("$.filename"),
+                        (string)s.SelectToken("$.revision"),
+                        (string)s.SelectToken("$.file_url")
                         )
                         )
                         );
-                    foreach(var languageInfo in languageInfos)
+                    foreach (var languageInfo in languageInfos)
                     {
                         bool downloadFile = false;
                         string languageName = System.IO.Path.GetFileNameWithoutExtension(languageInfo.Item1);
@@ -47,9 +47,9 @@ namespace BetterUI
                         string latestHash = languageInfo.Item2.Split(',')[0];
                         try
                         {
-                            if(latestHash != CalculateBlobHash(lPath)) downloadFile = true;
+                            if (latestHash != CalculateBlobHash(lPath)) downloadFile = true;
                         }
-                        catch(FileNotFoundException e)
+                        catch (FileNotFoundException e)
                         {
                             downloadFile = true;
                         }
@@ -63,8 +63,8 @@ namespace BetterUI
                             }
                             else
                             {
-                                LoadLanguage(languageName, languageFileRequest.downloadHandler.text);
-                                File.WriteAllText(lPath, languageFileRequest.downloadHandler.text);
+                                var success = LoadLanguage(languageName, languageFileRequest.downloadHandler.text);
+                                if (success) File.WriteAllText(lPath, languageFileRequest.downloadHandler.text);
                             }
                         }
                     }
@@ -164,7 +164,7 @@ namespace BetterUI
             }
         }
 
-        public static void LoadLanguage(string languageName ,string jsonText)
+        public static bool LoadLanguage(string languageName, string jsonText)
         {
             try
             {
@@ -177,7 +177,9 @@ namespace BetterUI
             catch (JsonException ex)
             {
                 UnityEngine.Debug.LogError("Error deserializing JSON for language: " + languageName + " - " + ex.Message);
+                return false;
             }
+            return true;
         }
 
         public static string CalculateBlobHash(string filePath)
