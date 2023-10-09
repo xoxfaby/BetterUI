@@ -142,7 +142,7 @@ namespace BetterUI
         };
 
 
-        private static IOrderedEnumerable<ItemIndex> filteredSort<T>(IOrderedEnumerable<ItemIndex> list, Inventory inventory, ItemSorter<T> sorter, ItemFilter filter = null, bool reversed = false, ItemIndex idx = ItemIndex.None)
+        private static IOrderedEnumerable<ItemIndex> filteredSort<T>(IOrderedEnumerable<ItemIndex> list, Inventory inventory, ItemSorter<T> sorter, ItemFilter filter = null, bool reversed = false)
         {
 
             if (filter != null)
@@ -193,7 +193,6 @@ namespace BetterUI
             bool tierSelect = false;
             bool sortReversed = false;
             bool nameParsing = false;
-            StringBuilder parsedName = new StringBuilder();
             ItemFilter nextFilter = null;
             IOrderedEnumerable<ItemIndex> finalOrder = itemList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
@@ -208,20 +207,21 @@ namespace BetterUI
                     if (c == ')')
                     {
 
-                        ItemIndex indexed = ItemCatalog.FindItemIndex(parsedName.ToString());
+                        ItemIndex indexed = ItemCatalog.FindItemIndex(BetterUIPlugin.sharedStringBuilder.ToString());
                         if (indexed != ItemIndex.None)
                         {
                             ItemSorter<bool> sorter = (order, inventor, item) => item.Equals(indexed);
                             steps.Add(new SortStep { filter = null, boolSorter = sorter, reversed = sortReversed });
                         }
-                        parsedName.Clear();
+                        BetterUIPlugin.sharedStringBuilder.Clear();
+                        
                         nameParsing = false;
                         sortReversed = false;
                         continue;
                     }
                     else
                     {
-                        parsedName.Append(c);
+                        BetterUIPlugin.sharedStringBuilder.Append(c);
                     }
                     continue;
                 }
@@ -286,6 +286,7 @@ namespace BetterUI
                     case '>':
                         nameParsing = true;
                         sortReversed = (c == '<');
+                        BetterUIPlugin.sharedStringBuilder.Clear();
                         break;
                     case '#':
                         filtering = true;
