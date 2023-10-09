@@ -273,5 +273,6 @@
     "BETTERUI_LUCK": "Suerte",
     "BETTERUI_PROCCOEFFICIENT": "Coeficiente de Activación",
     "BETTERUI_BASECOOLDOWN": "Enfriamiento Base",
-    "BETTERUI_EFFECTIVECOOLDOWN": "Enfriamiento Efectivo"
+    "BETTERUI_EFFECTIVECOOLDOWN": "Enfriamiento Efectivo",
+    "BETTERUI_SECOND": "segundo"
 }
