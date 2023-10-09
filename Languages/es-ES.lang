@@ -261,5 +261,6 @@
     "BETTERUI_FIREWORKS": "Fuegos Artificiales",
     "BETTERUI_RANGE": "Rango",
     "BETTERUI_BOMBS": "Bombas",
-    "BETTERUI_TOUGHERTIMES": "Tiempos mas Difíciles"
+    "BETTERUI_TOUGHERTIMES": "Tiempos mas Difíciles",
+    "BETTERUI_DURATION": "Duración"
 }
