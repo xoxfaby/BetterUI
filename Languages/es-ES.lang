@@ -343,5 +343,6 @@
     "SKILL_BOMBLET_NAME": "Bombita",
     "SKILL_CHARGE_NAME": "Carga",
     "SKILL_RAM_NAME": "Apisonar",
-    "SKILL_SYRINGES_NAME": "Jeringas"
+    "SKILL_SYRINGES_NAME": "Jeringas",
+    "SKILL_MORTAR_NAME": "Mortero"
 }
