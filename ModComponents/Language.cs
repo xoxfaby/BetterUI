@@ -47,7 +47,7 @@ namespace BetterUI
                         string latestHash = languageInfo.Item2.Split(',')[0];
                         try
                         {
-                            if (latestHash != CalculateBlobHash(lPath)) downloadFile = true;
+                            if (latestHash != BlobHashFromPath(lPath)) downloadFile = true;
                         }
                         catch (FileNotFoundException e)
                         {
@@ -63,8 +63,15 @@ namespace BetterUI
                             }
                             else
                             {
-                                var success = LoadLanguage(languageName, languageFileRequest.downloadHandler.text);
-                                if (success) File.WriteAllText(lPath, languageFileRequest.downloadHandler.text);
+                                if (BlobHashFromString(languageFileRequest.downloadHandler.text) == latestHash)
+                                {
+                                    var success = LoadLanguage(languageName, languageFileRequest.downloadHandler.text);
+                                    if (success) File.WriteAllText(lPath, languageFileRequest.downloadHandler.text);
+                                }
+                                else
+                                {
+                                    UnityEngine.Debug.LogError("Error downloading file for language: " + languageName + " - Blob hash mismatch");
+                                }
                             }
                         }
                     }
@@ -204,12 +211,22 @@ namespace BetterUI
             }
         }
 
-        public static string CalculateBlobHash(string filePath)
+        public static string BlobHashFromPath(string filePath)
         {
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 return CalculateBlobHash(fileStream);
             }
+        }
+
+        public static string BlobHashFromString(string inputString)
+        {
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+            writer.Write(inputString);
+            writer.Flush();
+            stream.Position = 0;
+            return CalculateBlobHash(stream);
         }
 
         private static string ByteArrayToHexString(byte[] bytes)
