@@ -306,5 +306,6 @@
     "SKILL_SPARKS_NAME": "Chispas",
     "SKILL_SPEAR_NAME": "Lanza",
     "SKILL_WALL_NAME": "Pared",
-    "SKILL_FLAMETHROWER_NAME": "Lanzallamas"
+    "SKILL_FLAMETHROWER_NAME": "Lanzallamas",
+    "SKILL_SURGE_NAME": "Oleada"
 }
