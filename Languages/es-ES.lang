@@ -302,5 +302,8 @@
     "SKILL_POOL_NAME": "Piscina",
     "SKILL_BOUNCE_NAME": "Rebotar",
     "SKILL_BOLT_NAME": "Rayo",
-    "SKILL_EXPLOSION_NAME": "Explosión"
+    "SKILL_EXPLOSION_NAME": "Explosión",
+    "SKILL_SPARKS_NAME": "Chispas",
+    "SKILL_SPEAR_NAME": "Lanza",
+    "SKILL_WALL_NAME": "Pared"
 }
