@@ -263,5 +263,6 @@
     "BETTERUI_BOMBS": "Bombas",
     "BETTERUI_TOUGHERTIMES": "Tiempos mas Difíciles",
     "BETTERUI_DURATION": "Duración",
-    "BETTERUI_ENEMYDIFFICULTY": "Dificultad de Enemigos"
+    "BETTERUI_ENEMYDIFFICULTY": "Dificultad de Enemigos",
+    "BETTERUI_GHOSTDURATION": "Duración de Fantasma"
 }
