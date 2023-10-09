@@ -342,5 +342,6 @@
     "SKILL_CANISTER_NAME": "Frasco",
     "SKILL_BOMBLET_NAME": "Bombita",
     "SKILL_CHARGE_NAME": "Carga",
-    "SKILL_RAM_NAME": "Apisonar"
+    "SKILL_RAM_NAME": "Apisonar",
+    "SKILL_SYRINGES_NAME": "Jeringas"
 }
