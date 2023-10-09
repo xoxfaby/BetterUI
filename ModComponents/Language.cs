@@ -182,28 +182,33 @@ namespace BetterUI
             return true;
         }
 
+        public static string CalculateBlobHash(Stream fileStream)
+        {
+            string header = $"blob {fileStream.Length}\0";
+            byte[] headerBytes = System.Text.Encoding.ASCII.GetBytes(header);
+
+            using (var sha1 = SHA1.Create())
+            {
+                sha1.TransformBlock(headerBytes, 0, headerBytes.Length, headerBytes, 0);
+
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    sha1.TransformBlock(buffer, 0, bytesRead, buffer, 0);
+                }
+                sha1.TransformFinalBlock(buffer, 0, 0);
+
+                byte[] hashBytes = sha1.Hash;
+                return ByteArrayToHexString(hashBytes);
+            }
+        }
+
         public static string CalculateBlobHash(string filePath)
         {
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                string header = $"blob {fileStream.Length}\0";
-                byte[] headerBytes = System.Text.Encoding.ASCII.GetBytes(header);
-
-                using (var sha1 = SHA1.Create())
-                {
-                    sha1.TransformBlock(headerBytes, 0, headerBytes.Length, headerBytes, 0);
-
-                    byte[] buffer = new byte[8192];
-                    int bytesRead;
-                    while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        sha1.TransformBlock(buffer, 0, bytesRead, buffer, 0);
-                    }
-                    sha1.TransformFinalBlock(buffer, 0, 0);
-
-                    byte[] hashBytes = sha1.Hash;
-                    return ByteArrayToHexString(hashBytes);
-                }
+                return CalculateBlobHash(fileStream);
             }
         }
 
