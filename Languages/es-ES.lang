@@ -297,5 +297,7 @@
     "BETTERUI_DAMAGE_SUFFIX": " Daño",
     "SKILL_SLASH_NAME": "Corte",
     "SKILL_SPIT_NAME": "Escupitajo",
-    "SKILL_BITE_NAME": "Mordida"
+    "SKILL_BITE_NAME": "Mordida",
+    "SKILL_LEAP_NAME": "Salto",
+    "SKILL_POOL_NAME": "Piscina"
 }
