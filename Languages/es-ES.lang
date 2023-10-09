@@ -276,5 +276,6 @@
     "BETTERUI_EFFECTIVECOOLDOWN": "Enfriamiento Efectivo",
     "BETTERUI_SECOND": "segundo",
     "BETTERUI_SECOND_PLURAL": "segundos",
-    "BETTERUI_BEFORE_SINGULAR": "Antes de ({0} Acumulación): "
+    "BETTERUI_BEFORE_SINGULAR": "Antes de ({0} Acumulación): ",
+    "BETTERUI_BEFORE_PLURAL": "Antes de ({0} Acumulaciones): "
 }
