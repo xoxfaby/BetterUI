@@ -338,5 +338,6 @@
     "SKILL_NAIL_NAME": "Clavo",
     "SKILL_REBAR_NAME": "Barra Reforzada",
     "SKILL_ROCKET_NAME": "Cohete",
-    "SKILL_SAW_NAME": "Sierra"
+    "SKILL_SAW_NAME": "Sierra",
+    "SKILL_CANISTER_NAME": "Frasco"
 }
