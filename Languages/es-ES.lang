@@ -270,5 +270,6 @@
     "BETTERUI_CHANCE": "Probabilidad",
     "BETTERUI_MAXIMUMHEALTH": "Vida Máxima",
     "BETTERUI_MAXIMUM": "Máxima",
-    "BETTERUI_LUCK": "Suerte"
+    "BETTERUI_LUCK": "Suerte",
+    "BETTERUI_PROCCOEFFICIENT": "Coeficiente de Activación"
 }
