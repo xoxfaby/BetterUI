@@ -1,5 +1,8 @@
 # Changelog
 
+### v2.8.2
+ - Addition: Singular Item Sorting: Allows arbitrary item sorting in the sort string. 
+
 ### v2.8.1
  - Bugfix: Fixed build issue that prevented v2.8.0 from releasing properly.
  

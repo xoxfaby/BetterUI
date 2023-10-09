@@ -1,9 +1,8 @@
 ﻿using System;
 using RoR2;
-using BepInEx;
 using System.Linq;
+using System.Text;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 
 namespace BetterUI
 {
@@ -54,7 +53,7 @@ namespace BetterUI
         private static ItemFilter onKillEffectFilter = item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.OnKillEffect);
         private static ItemFilter equipmentRelatedFilter = item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.EquipmentRelated);
         private static ItemFilter sprintRelatedFilter = item => ItemCatalog.GetItemDef(item).ContainsTag(ItemTag.SprintRelated);
-        private static Dictionary<Char, ItemFilter> tierFilters = new Dictionary<char, ItemFilter>()
+        private static Dictionary<char, ItemFilter> tierFilters = new Dictionary<char, ItemFilter>()
         {
             { '1', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier1 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier1 },
             { '2', item => ItemCatalog.GetItemDef(item).tier == ItemTier.Tier2 || ItemCatalog.GetItemDef(item).tier == ItemTier.VoidTier2 },
@@ -192,11 +191,40 @@ namespace BetterUI
             List<SortStep> steps = new List<ItemSorting.SortStep>();
             bool filtering = false;
             bool tierSelect = false;
-            bool tierReversed = false;
+            bool sortReversed = false;
+            bool nameParsing = false;
             ItemFilter nextFilter = null;
             IOrderedEnumerable<ItemIndex> finalOrder = itemList.OrderBy(a => 1);
             foreach (char c in sortOrder.ToCharArray())
             {
+            
+                if (nameParsing)
+                {
+                    if (c == '(')
+                    {
+                        continue;
+                    }
+                    if (c == ')')
+                    {
+
+                        ItemIndex indexed = ItemCatalog.FindItemIndex(BetterUIPlugin.sharedStringBuilder.ToString());
+                        if (indexed != ItemIndex.None)
+                        {
+                            ItemSorter<bool> sorter = (order, inventor, item) => item.Equals(indexed);
+                            steps.Add(new SortStep { filter = null, boolSorter = sorter, reversed = sortReversed });
+                        }
+                        BetterUIPlugin.sharedStringBuilder.Clear();
+                        
+                        nameParsing = false;
+                        sortReversed = false;
+                        continue;
+                    }
+                    else
+                    {
+                        BetterUIPlugin.sharedStringBuilder.Append(c);
+                    }
+                    continue;
+                }
                 if (tierSelect)
                 {
                     if (filtering)
@@ -208,7 +236,7 @@ namespace BetterUI
                     {
                         if (tierSorters.TryGetValue(Char.ToUpper(c), out var tierSorter))
                         {
-                            steps.Add(new SortStep { filter = nextFilter, boolSorter = tierSorter, reversed = tierReversed });
+                            steps.Add(new SortStep { filter = nextFilter, boolSorter = tierSorter, reversed = sortReversed });
                         }
                     }
                     tierSelect = false;
@@ -254,13 +282,20 @@ namespace BetterUI
 
                 switch (c)
                 {
+                    case '<':
+                    case '>':
+                        nameParsing = true;
+                        sortReversed = (c == '<');
+                        BetterUIPlugin.sharedStringBuilder.Clear();
+                        break;
                     case '#':
                         filtering = true;
                         continue;
+
                     case 't':
                     case 'T':
                         tierSelect = true;
-                        tierReversed = Char.IsLower(c);
+                        sortReversed = Char.IsLower(c);
                         continue;
                     case '0':
                     case '1':  // Tier
