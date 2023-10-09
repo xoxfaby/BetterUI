@@ -1,5 +1,9 @@
 # Changelog
 
+### v2.8.4
+ - Bugfix: Languages: Language file hash will be checked before parsing to ensure the file downloaded correctly.
+ - Bugfix: Languages: Language files will no longer be overwritten if the updated language file fails to parse. 
+
 ### v2.8.3
  - Addition: Item Sorting: Allows arbitrary item sorting in the sort string. See Readme for details on how to use this. 
  - Bugfix: Command Improvements: Fixed typo "BETTERUI_BEFORE_SINGULA", should correctly resolve the string now. 
