@@ -266,5 +266,6 @@
     "BETTERUI_ENEMYDIFFICULTY": "Dificultad de Enemigos",
     "BETTERUI_GHOSTDURATION": "Duración de Fantasma",
     "BETTERUI_CHARGES": "Cargas",
-    "BETTERUI_COOLDOWNREDUCTION": "Reducción de Enfriamiento"
+    "BETTERUI_COOLDOWNREDUCTION": "Reducción de Enfriamiento",
+    "BETTERUI_CHANCE": "Probabilidad"
 }
