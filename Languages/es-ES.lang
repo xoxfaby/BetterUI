@@ -327,5 +327,6 @@
     "SKILL_ARROW_NAME": "Flecha",
     "SKILL_GLAIVE_NAME": "Guja",
     "SKILL_RAIN_NAME": "Lluvia",
-    "SKILL_BALLISTA_NAME": "Balista"
+    "SKILL_BALLISTA_NAME": "Balista",
+    "SKILL_FIST_NAME": "Puño"
 }
