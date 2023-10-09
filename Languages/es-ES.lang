@@ -283,5 +283,6 @@
     "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} Acumulación para el limite)</style>",
     "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} Acumulaciones para el limite)</style>",
     "BETTERUI_DPS": "DPS",
-    "BETTERUI_DEBUFFSPREVENTED": "Desventajas Prevenidas"
+    "BETTERUI_DEBUFFSPREVENTED": "Desventajas Prevenidas",
+    "BETTERUI_DAMAGEREDUCTION": "Reducción de Daño"
 }
