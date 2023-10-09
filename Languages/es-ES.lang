@@ -328,5 +328,6 @@
     "SKILL_GLAIVE_NAME": "Guja",
     "SKILL_RAIN_NAME": "Lluvia",
     "SKILL_BALLISTA_NAME": "Balista",
-    "SKILL_FIST_NAME": "Puño"
+    "SKILL_FIST_NAME": "Puño",
+    "SKILL_ZAP_NAME": "Zap"
 }
