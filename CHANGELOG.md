@@ -1,8 +1,12 @@
 # Changelog
 
-### v2.8.2
- - Addition: Singular Item Sorting: Allows arbitrary item sorting in the sort string. 
+### v2.8.3
+ - Addition: Item Sorting: Allows arbitrary item sorting in the sort string. See Readme for details on how to use this. 
+ - Bugfix: Command Improvements: Fixed typo "BETTERUI_BEFORE_SINGULA", should correctly resolve the string now. 
 
+### v2.8.2
+ - Bugfix: ItemStats: fixed some stacking errors for certain items (BearVoid, FallBoots, NovaOnLowHealth, RepeatHeal,FocusConvergence)
+ 
 ### v2.8.1
  - Bugfix: Fixed build issue that prevented v2.8.0 from releasing properly.
  
