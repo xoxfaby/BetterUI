@@ -282,5 +282,6 @@
     "BETTERUI_AFTER_PLURAL": "Despues de ({0} Acumulaciones): ",
     "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} Acumulación para el limite)</style>",
     "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} Acumulaciones para el limite)</style>",
-    "BETTERUI_DPS": "DPS"
+    "BETTERUI_DPS": "DPS",
+    "BETTERUI_DEBUFFSPREVENTED": "Desventajas Prevenidas"
 }
