@@ -310,5 +310,6 @@
     "SKILL_SURGE_NAME": "Oleada",
     "SKILL_BURST_NAME": "Ráfaga",
     "SKILL_BLAST_NAME": "Estallido",
-    "SKILL_BLADE_NAME": "Cuchilla"
+    "SKILL_BLADE_NAME": "Cuchilla",
+    "SKILL_SHOT_NAME": "Disparo"
 }
