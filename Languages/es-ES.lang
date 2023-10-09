@@ -259,5 +259,6 @@
     "BETTERUI_BARRIER": "Barrera",
     "BETTERUI_EXPLOSIONBASEDAMAGE": "Daño Base de Explosión",
     "BETTERUI_FIREWORKS": "Fuegos Artificiales",
-    "BETTERUI_RANGE": "Rango"
+    "BETTERUI_RANGE": "Rango",
+    "BETTERUI_BOMBS": "Bombas"
 }
