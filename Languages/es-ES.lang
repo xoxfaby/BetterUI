@@ -326,5 +326,6 @@
     "SKILL_LASER_NAME": "Laser",
     "SKILL_ARROW_NAME": "Flecha",
     "SKILL_GLAIVE_NAME": "Guja",
-    "SKILL_RAIN_NAME": "Lluvia"
+    "SKILL_RAIN_NAME": "Lluvia",
+    "SKILL_BALLISTA_NAME": "Balista"
 }
