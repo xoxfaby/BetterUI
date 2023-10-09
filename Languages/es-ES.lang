@@ -352,5 +352,6 @@
     "SKILL_FLOOD_NAME": "Inundación",
     "SKILL_CRUSH_NAME": "Aplastar",
     "SKILL_SHARD_NAME": "Fragmento",
-    "SKILL_MAELSTROM_NAME": "Remolino"
+    "SKILL_MAELSTROM_NAME": "Remolino",
+    "SKILL_DETONATION_NAME": "Detonación"
 }
