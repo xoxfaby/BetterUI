@@ -287,5 +287,6 @@
     "BETTERUI_DAMAGEREDUCTION": "Reducción de Daño",
     "BETTERUI_LUCKCHANCE_SUFFIX": "% Probabilidad",
     "BETTERUI_CHANCE_SUFFIX": "% Probabilidad",
-    "BETTERUI_GOLD_PREFIX": "$"
+    "BETTERUI_GOLD_PREFIX": "$",
+    "BETTERUI_PERCENT_SUFFIX": "%"
 }
