@@ -268,5 +268,7 @@
     "BETTERUI_CHARGES": "Cargas",
     "BETTERUI_COOLDOWNREDUCTION": "Reducción de Enfriamiento",
     "BETTERUI_CHANCE": "Probabilidad",
-    "BETTERUI_MAXIMUMHEALTH": "Vida Máxima"
+    "BETTERUI_MAXIMUMHEALTH": "Vida Máxima",
+    "BETTERUI_MAXIMUM": "Máxima",
+    "BETTERUI_LUCK": "Suerte"
 }
