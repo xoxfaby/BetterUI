@@ -350,5 +350,6 @@
     "SKILL_ROOTS_NAME": "Raíces",
     "SKILL_BEAM_NAME": "Haz",
     "SKILL_FLOOD_NAME": "Inundación",
-    "SKILL_CRUSH_NAME": "Aplastar"
+    "SKILL_CRUSH_NAME": "Aplastar",
+    "SKILL_SHARD_NAME": "Fragmento"
 }
