@@ -313,5 +313,7 @@
     "SKILL_BLADE_NAME": "Cuchilla",
     "SKILL_SHOT_NAME": "Disparo",
     "SKILL_SMOKEBOMB_NAME": "Bomba de Humo",
-    "SKILL_SHOTGUN_NAME": "Escopeta"
+    "SKILL_SHOTGUN_NAME": "Escopeta",
+    "SKILL_POWERTAZER_NAME": "Tazer de Poder",
+    "SKILL_AIRSTRIKE_NAME": "Ataque Aereo"
 }
