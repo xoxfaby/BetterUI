@@ -228,7 +228,7 @@
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Banda de Singularidad (Lista)",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "El efecto de la Banda de Singularidad puede ser activado",
     "BUFF_ELITEEARTH_NAME": "Mending",
-    "BETTERUI_WINDOW_LABEL": "Gracias por usar BetterUI! Si disfrutas el mod, por favor considera donar para permitirme continuar trabajando en el lo mas posible!\n\nEn el futuro, esta ventana te permitira editar la configuracion de BetterUI!\n\nMientras tanto puedes configurar BetterUI utilizando los archivos de configuracion.\n\nRecomiendo utilizar el editor de configuraciones de r2modman (r2modman's Config Editor) para editar estos archivos.",
+    "BETTERUI_WINDOW_LABEL": "Gracias por usar BetterUI! Si disfrutas el mod, por favor considera donar para permitirme continuar trabajando en el lo mas posible!\n\nEn el futuro, esta ventana te permitira editar la configuracion de BetterUI!\n\nMientras tanto puedes configurar BetterUI utilizando los archivos de configuracion.\n\nRecomiendo utilizar el editor de configuraciones de r2modman (r2modman's Config Editor) para editar estos archivos.\n\nGracias a LadyPotaty & domimio por ayudarme con testing",
     "BUFF_AFFIXBLUE_DESC": "Obtén el poder de un Elite Sobrecargado : Los ataques explotan después de un retraso y el 50% de tu vida es reemplazada por un escudo.",
     "BUFF_AFFIXHAUNTED_DESC": "Obtén el poder de un Elite Celestino : Oculta aliados cercanos a ti, y aplica una ralentización del 80% al impacto.",
     "BUFF_AFFIXLUNAR_DESC": "Obtén el poder de un Elite Perfeccionado : Lisia al impacto, ocasionalmente dispara cinco bombas a enemigos, obtén 30% de velocidad de movimiento, y obtén un 25% de vida máxima al igual que reemplazar toda tu vida por escudos.",
@@ -256,5 +256,6 @@
     "BETTERUI_ROOTDURATION": "Duración de Enraizar",
     "BETTERUI_EQUIPMENTCHARGES": "Cargas de Equipamento",
     "BETTERUI_ENCRUSTEDKEY": "Llave Incrustada",
-    "BETTERUI_BARRIER": "Barrera"
+    "BETTERUI_BARRIER": "Barrera",
+    "BETTERUI_EXPLOSIONBASEDAMAGE": "Daño Base de Explosión"
 }
