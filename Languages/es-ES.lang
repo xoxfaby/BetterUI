@@ -255,5 +255,6 @@
     "BETTERUI_SHIPPINGREQUESTFORM": "Solicitud de Envió",
     "BETTERUI_ROOTDURATION": "Duración de Enraizar",
     "BETTERUI_EQUIPMENTCHARGES": "Cargas de Equipamento",
-    "BETTERUI_ENCRUSTEDKEY": "Llave Incrustada"
+    "BETTERUI_ENCRUSTEDKEY": "Llave Incrustada",
+    "BETTERUI_BARRIER": "Barrera"
 }
