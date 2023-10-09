@@ -311,5 +311,6 @@
     "SKILL_BURST_NAME": "Ráfaga",
     "SKILL_BLAST_NAME": "Estallido",
     "SKILL_BLADE_NAME": "Cuchilla",
-    "SKILL_SHOT_NAME": "Disparo"
+    "SKILL_SHOT_NAME": "Disparo",
+    "SKILL_SMOKEBOMB_NAME": "Bomba de Humo"
 }
