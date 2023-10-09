@@ -315,5 +315,6 @@
     "SKILL_SMOKEBOMB_NAME": "Bomba de Humo",
     "SKILL_SHOTGUN_NAME": "Escopeta",
     "SKILL_POWERTAZER_NAME": "Tazer de Poder",
-    "SKILL_AIRSTRIKE_NAME": "Ataque Aereo"
+    "SKILL_AIRSTRIKE_NAME": "Ataque Aereo",
+    "SKILL_IMPACT_NAME": "Impacto"
 }
