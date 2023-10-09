@@ -336,5 +336,6 @@
     "SKILL_DASH_NAME": "Carrera",
     "SKILL_HIT_NAME": "Golpe",
     "SKILL_NAIL_NAME": "Clavo",
-    "SKILL_REBAR_NAME": "Barra Reforzada"
+    "SKILL_REBAR_NAME": "Barra Reforzada",
+    "SKILL_ROCKET_NAME": "Cohete"
 }
