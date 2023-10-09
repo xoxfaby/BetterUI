@@ -264,5 +264,6 @@
     "BETTERUI_TOUGHERTIMES": "Tiempos mas Difíciles",
     "BETTERUI_DURATION": "Duración",
     "BETTERUI_ENEMYDIFFICULTY": "Dificultad de Enemigos",
-    "BETTERUI_GHOSTDURATION": "Duración de Fantasma"
+    "BETTERUI_GHOSTDURATION": "Duración de Fantasma",
+    "BETTERUI_CHARGES": "Cargas"
 }
