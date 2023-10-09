@@ -341,5 +341,6 @@
     "SKILL_SAW_NAME": "Sierra",
     "SKILL_CANISTER_NAME": "Frasco",
     "SKILL_BOMBLET_NAME": "Bombita",
-    "SKILL_CHARGE_NAME": "Carga"
+    "SKILL_CHARGE_NAME": "Carga",
+    "SKILL_RAM_NAME": "Apisonar"
 }
