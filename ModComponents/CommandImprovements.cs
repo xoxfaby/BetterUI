@@ -244,7 +244,7 @@ namespace BetterUI
                                 stringBuilder.Append("\n<align=left>");
                                 stringBuilder.AppendFormat(
                                     count > 1 ?
-                                    RoR2.Language.GetString("BETTERUI_BEFORE_SINGULA") : 
+                                    RoR2.Language.GetString("BETTERUI_BEFORE_SINGULAR") :
                                     RoR2.Language.GetString("BETTERUI_BEFORE_PLURAL"), count
                                 );
                                 ItemStats.GetItemStats(stringBuilder, itemDef, count, master);
