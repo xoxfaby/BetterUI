@@ -257,5 +257,6 @@
     "BETTERUI_EQUIPMENTCHARGES": "Cargas de Equipamento",
     "BETTERUI_ENCRUSTEDKEY": "Llave Incrustada",
     "BETTERUI_BARRIER": "Barrera",
-    "BETTERUI_EXPLOSIONBASEDAMAGE": "Daño Base de Explosión"
+    "BETTERUI_EXPLOSIONBASEDAMAGE": "Daño Base de Explosión",
+    "BETTERUI_FIREWORKS": "Fuegos Artificiales"
 }
