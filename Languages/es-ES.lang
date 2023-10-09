@@ -296,5 +296,6 @@
     "BETTERUI_RANGE_SUFFIX": "m",
     "BETTERUI_DAMAGE_SUFFIX": " Daño",
     "SKILL_SLASH_NAME": "Corte",
-    "SKILL_SPIT_NAME": "Escupitajo"
+    "SKILL_SPIT_NAME": "Escupitajo",
+    "SKILL_BITE_NAME": "Mordida"
 }
