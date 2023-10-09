@@ -344,5 +344,6 @@
     "SKILL_CHARGE_NAME": "Carga",
     "SKILL_RAM_NAME": "Apisonar",
     "SKILL_SYRINGES_NAME": "Jeringas",
-    "SKILL_MORTAR_NAME": "Mortero"
+    "SKILL_MORTAR_NAME": "Mortero",
+    "SKILL_BOOM_NAME": "Boom"
 }
