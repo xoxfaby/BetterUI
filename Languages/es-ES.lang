@@ -353,5 +353,6 @@
     "SKILL_CRUSH_NAME": "Aplastar",
     "SKILL_SHARD_NAME": "Fragmento",
     "SKILL_MAELSTROM_NAME": "Remolino",
-    "SKILL_DETONATION_NAME": "Detonación"
+    "SKILL_DETONATION_NAME": "Detonación",
+    "BETTERUI_RAINCOAT": "Desventajas Prevenidas"
 }
