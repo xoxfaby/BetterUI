@@ -367,5 +367,6 @@
     "SKILL_CRUSH_NAME": "Розчавлення",
     "SKILL_SHARD_NAME": "Осколок",
     "SKILL_MAELSTROM_NAME": "Вихор",
-    "SKILL_DETONATION_NAME": "Детонація"
+    "SKILL_DETONATION_NAME": "Детонація",
+    "BUFF_MEATREGENBOOST_NAME": "Посилення регенерації від м'яса"
 }
