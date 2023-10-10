@@ -154,7 +154,7 @@
     "BUFF_BODYARMOR_DESC": "Блокує наступний удар та витрачається.",
     "BUFF_DEAFENED_NAME": "Оглушений",
     "BUFF_DEAFENED_DESC": "Muted.",
-    "BUFF_ENGITEAMSHIELD_NAME": "Engi Shield (Team)",
+    "BUFF_ENGITEAMSHIELD_NAME": "Щит інженера (Команда)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% щита, +30% швидкості пересування",
     "BUFF_ENRAGEANCIENTWISP_NAME": "Розлючений Стародавній Вогник",
     "BUFF_ENRAGEANCIENTWISP_DESC": "+40% швидкості пересування",
