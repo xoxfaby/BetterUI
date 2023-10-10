@@ -190,7 +190,7 @@
     "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "Void Fiend Corrupt Mode",
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "Abilities are transformed into more aggressive forms.",
     "BUFF_RAINCOATREADY_NAME": "Ben's Raincoat Ready",
-    "BUFF_RAINCOATREADY_DESC": "Consumes 1 charge to prevent one debuff from being applied.\n\n Goes on cooldown when all charges are used.",
+    "BUFF_RAINCOATREADY_DESC": "Consumes 1 charge to prevent one debuff from being applied.\n\nGoes on cooldown when all charges are used.",
     "BUFF_RAINCOATCOOLDOWN_NAME": "Ben's Raincoat On Cooldown",
     "BUFF_RAINCOATCOOLDOWN_DESC": "Ben's Raincoat is currently on cooldown and will not block any debuffs.",
     "BETTERUI_BEETLEGUARDS": "Beetle Guards",
