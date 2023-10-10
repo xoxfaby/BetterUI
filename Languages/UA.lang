@@ -47,7 +47,7 @@
     "BUFF_BUGWINGS_NAME": "Крила жука",
     "BUFF_BUGWINGS_DESC": "Відрощує крила та дає літати, +20% швидкості пересування",
     "BUFF_CLOAK_NAME": "Маскування",
-    "BUFF_CLOAK_DESC": "Невидимий",
+    "BUFF_CLOAK_DESC": "Станьте невидимими для ворогів.",
     "BUFF_CLOAKSPEED_NAME": "Швидкість від маскування",
     "BUFF_CLOAKSPEED_DESC": "+40% швидкості пересування",
     "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Целестинове маскування",
