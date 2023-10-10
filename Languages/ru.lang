@@ -152,7 +152,7 @@
     "BUFF_LOADEROVERCHARGED_NAME": "Перегрузка Погрузчицы",
     "BUFF_LOADEROVERCHARGED_DESC": "За Погрузчицу, ваши атаки в ближнем бою наносят двойной урон и оглушают на 1 секунду.",
     "BUFF_LOADERPYLONPOWERED_NAME": "Заряженная колонна Погрузчика",
-    "BUFF_LOADERPYLONPOWERED_DESC": "При попадании, наносит удары током 3 врагам поблизости на 30% урона в радиусе 20м",
+    "BUFF_LOADERPYLONPOWERED_DESC": "При попадании, наносит удары током 3 врагам поблизости на 30% урона в радиусе 20м.",
     "BUFF_SLOW30_NAME": "30% Замедления",
     "BUFF_SLOW30_DESC": "-30% Скорости передвижения",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Безопасное Место (Перезарядка)",
