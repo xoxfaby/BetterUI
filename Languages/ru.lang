@@ -130,7 +130,7 @@
     "BUFF_LUNARDETONATIONCHARGE_NAME": "Опустошение",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "Поглощает заряды Опустошения нанося 300% урона плюс 120% урона за заряд Опустошения (складывается)",
     "BUFF_ENGISHIELD_NAME": "Щит Инженера",
-    "BUFF_ENGISHIELD_DESC": "+100% шита, при получении урона вас не отбрасывает",
+    "BUFF_ENGISHIELD_DESC": "+100% щита, при получении урона вас не отбрасывает",
     "BUFF_LUNARSHELL_NAME": "Лунарная скорлупа",
     "BUFF_LUNARSHELL_DESC": "Урон не может превышать 10% вашего максимального здоровья",
     "BUFF_VOIDFOGMILD_NAME": "Пустотный туман (Средний)",
