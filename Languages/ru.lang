@@ -347,5 +347,6 @@
     "ITEM_NEARBYDAMAGEBONUS_DESC": "Увеличивает урон врагам в радиусе <style=cIsDamage>13м</style> на <style=cIsDamage>20%</style> <style=cStack>(+20% за стак)</style>.",
     "ITEM_HEALINGPOTIONCONSUMED_DESC": "Пустая бутылка из-под эликсира. Ничего не делает.",
     "BETTERUI_DAMAGEREDUCTION": "Уменьшение урона",
-    "BETTERUI_DAMAGE_SUFFIX": " Урон"
+    "BETTERUI_DAMAGE_SUFFIX": " Урон",
+    "BUFF_RAINCOATREADY_NAME": "Дождевик Бена готов"
 }
