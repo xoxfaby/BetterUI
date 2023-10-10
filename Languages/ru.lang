@@ -38,7 +38,7 @@
     "BUFF_CLOAK_NAME": "Маскировка",
     "BUFF_CLOAK_DESC": "Невидим",
     "BUFF_CLOAKSPEED_NAME": "Скорость под маскировкой",
-    "BUFF_CLOAKSPEED_DESC": "+40% Скорости передвижения",
+    "BUFF_CLOAKSPEED_DESC": "+40% Скорости передвижения.",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Слоновья броня",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Брони",
     "BUFF_ENERGIZED_NAME": "Заряд бодрости",
