@@ -144,7 +144,7 @@
     "BUFF_ENGITEAMSHIELD_NAME": "Щит Инженера (Союзный)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% щита, +30% Скорости передвижения",
     "BUFF_ENRAGEANCIENTWISP_NAME": "Разъярённый древний сгусток",
-    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% Скорости передвижения",
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% Скорости передвижения.",
     "BUFF_GOLDEMPOWERED_NAME": "Усилен золотом",
     "BUFF_GOLDEMPOWERED_DESC": "+100% урона",
     "BUFF_LIGHTNINGSHIELD_NAME": "Щит молний",
