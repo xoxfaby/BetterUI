@@ -157,7 +157,7 @@
     "BUFF_ENGITEAMSHIELD_NAME": "Щит інженера (Команда)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% щита, +30% швидкості пересування",
     "BUFF_ENRAGEANCIENTWISP_NAME": "Розлючений Стародавній Вогник",
-    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% швидкості пересування",
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% швидкості пересування.",
     "BUFF_GOLDEMPOWERED_NAME": "Золото, наділене силою",
     "BUFF_GOLDEMPOWERED_DESC": "+100% шкоди",
     "BUFF_LIGHTNINGSHIELD_NAME": "Щит блискавки",
