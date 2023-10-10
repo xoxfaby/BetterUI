@@ -59,7 +59,7 @@
     "BUFF_FULLCRIT_NAME": "Повний крит",
     "BUFF_FULLCRIT_DESC": "+100% шанс критичного удару",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Прихована недоторканість",
-    "BUFF_HIDDENINVINCIBILITY_DESC": "Невразливий",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Ви невразливі.",
     "BUFF_IMMUNE_NAME": "Недоторканість",
     "BUFF_IMMUNE_DESC": "Ви невразливі до будь-якої шкоди",
     "BUFF_CROCOREGEN_NAME": "Регенеративний",
