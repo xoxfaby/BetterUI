@@ -173,7 +173,7 @@
     "BUFF_JAILERTETHER_DESC": "Бафф-индикатор для того, чтобы показать, что вы связаны. Получаете урон со временем пока связаны. Уйдите подальше, чтобы сломать привязь.",
     "BUFF_KILLMOVESPEED_NAME": "Скорость передвижения за убийство",
     "BUFF_KILLMOVESPEED_DESC": "+25% Скорости передвижения. (складывается)",
-    "BUFF_MUSHROOMVOIDACTIVE_NAME": "Регенерация слёзогриба",
+    "BUFF_MUSHROOMVOIDACTIVE_NAME": "Регенерация Слёзогриба",
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Лечит на 2% (+2% за стак) вашего здоровья каждую секунду во время бега.",
     "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Опаловый щит",
     "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Получаешь 100 брони. При получении урона уходит на перезарядку.",
