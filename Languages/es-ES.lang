@@ -251,7 +251,7 @@
     "BUFF_PERMANENTDEBUFF_DESC": "Reduce la armadura por 2 (2 por acumulación) por el resto del escenario, o hasta morir (acumulable).",
     "BUFF_ELITEEARTH_DESC": "Obtén el poder de un Elite Mending : Cura al aliado mas cercano dentro de 30m por 40% del daño base del portador 4 veces por segundo.",
     "BUFF_STRONGERBURN_DESC": "Variante mas fuerte del efecto de Ignición. Incrementa el daño tomado por quemadura. Regeneración desactivada.",
-    "BUFF_RAINCOATREADY_DESC": "Consume 1 carga para prevenir la aplicación de una desventaja.\n\n Entra en enfriamiento cuando todas las cargas son usadas.",
+    "BUFF_RAINCOATREADY_DESC": "Consume 1 carga para prevenir la aplicación de una desventaja.\n\nEntra en enfriamiento cuando todas las cargas son usadas.",
     "BETTERUI_SHIPPINGREQUESTFORM": "Solicitud de Envió",
     "BETTERUI_ROOTDURATION": "Duración de Enraizar",
     "BETTERUI_EQUIPMENTCHARGES": "Cargas de Equipamento",
