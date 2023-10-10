@@ -165,7 +165,7 @@
     "BUFF_LOADEROVERCHARGED_NAME": "Loader Overcharged",
     "BUFF_LOADEROVERCHARGED_DESC": "As Loader, your melee attack does 2x damage and stuns for 1 second.",
     "BUFF_LOADERPYLONPOWERED_NAME": "Loader Pylon Powered",
-    "BUFF_LOADERPYLONPOWERED_DESC": "On hit, shocks up to 3 nearby enemies for 30% of the damage within 20m",
+    "BUFF_LOADERPYLONPOWERED_DESC": "У разі влучання шокує до 3 ворогів поблизу, завдаючи 30% від завданої шкоди в радіусі 20 м.",
     "BUFF_SLOW30_NAME": "Сповільнення",
     "BUFF_SLOW30_DESC": "-30% швидкості пересування",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Безпечні місця (Перезаряджання)",
