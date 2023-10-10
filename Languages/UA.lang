@@ -49,7 +49,7 @@
     "BUFF_CLOAK_NAME": "Маскування",
     "BUFF_CLOAK_DESC": "Станьте невидимими для ворогів.",
     "BUFF_CLOAKSPEED_NAME": "Швидкість від маскування",
-    "BUFF_CLOAKSPEED_DESC": "+40% швидкості пересування",
+    "BUFF_CLOAKSPEED_DESC": "+40% швидкості пересування.",
     "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Целестинове маскування",
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Невидимий",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Броня слона",
