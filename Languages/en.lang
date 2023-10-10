@@ -6,7 +6,7 @@
     "BETTERUI_BUGREPORT": "Report a bug",
     "BETTERUI_CLOSE_WINDOW": "Close Window",
     "BETTERUI_MADEBY": "Made by XoXFaby",
-    "BETTERUI_WINDOW_LABEL": "Thanks for using BetterUI! If you enjoy the mod, please consider donating to enable me to keep working on it as much as possible!\n\nIn the future, this window will allow you to edit the settings for BetterUI!\n\nUntil then you can configure BetterUI using the configuration files. \n\nI recommend using r2modman's Config Editor to edit these files.\n\nThanks for helping me test LadyPotaty and domimio",
+    "BETTERUI_WINDOW_LABEL": "Thanks for using BetterUI! If you enjoy the mod, please consider donating to enable me to keep working on it as much as possible!\n\nIn the future, this window will allow you to edit the settings for BetterUI!\n\nUntil then you can configure BetterUI using the configuration files. \n\nI recommend using r2modman's Config Editor to edit these files.",
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Fire a short-range beam for <style=cIsDamage>2000% damage</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Fire an arcing bomb for <style=cIsDamage>1100% damage</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Disappear</style> into the Void, <style=cIsUtility>cleansing all debuffs</style> while moving in a <style=cIsUtility>forward arc</style>.",
