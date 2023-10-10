@@ -142,7 +142,7 @@
     "BUFF_LUNARSECONDARYROOT_DESC": "Вкорінення: Понижує швидкість пересування до 0 на 3 (+3 за кожен дублікат) секунд",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "Руїна",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "Витрачає стеки Руїни для нанесення 300% шкоди плюс 120% шкоди за кожен стек Руїни (Може мати більше 1 ефекту)",
-    "BUFF_ENGISHIELD_NAME": "Engi Shield",
+    "BUFF_ENGISHIELD_NAME": "Щит інженера",
     "BUFF_ENGISHIELD_DESC": "+100% щита, не отримуєте віддачі від шкоди",
     "BUFF_LUNARSHELL_NAME": "Lunar Shell",
     "BUFF_LUNARSHELL_DESC": "Шкода не може перевищувати 10% від вашого максимального здоров'я",
