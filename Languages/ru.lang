@@ -31,7 +31,7 @@
     "BUFF_ELITEVOID_DESC": "Накладываешь заряд Разрушения при попадании и блокируешь один удар каждые 15 секунд.",
     "BUFF_ARMORBOOST_NAME": "Усиление брони",
     "BUFF_ARMORBOOST_DESC": "+200 Брони",
-    "BUFF_ATTACKSPEEDONCRIT_NAME": "Скорость атаки при крите",
+    "BUFF_ATTACKSPEEDONCRIT_NAME": "Скорость атаки при Критическом Ударе",
     "BUFF_ATTACKSPEEDONCRIT_DESC": "+12% Скорости атаки (складывается)",
     "BUFF_BUGWINGS_NAME": "Крылья Жука",
     "BUFF_BUGWINGS_DESC": "Хлопай крыльями и взлетай, +20% Скорости передвижения",
