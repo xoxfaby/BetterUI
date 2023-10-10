@@ -42,7 +42,7 @@
     "BUFF_FULLCRIT_NAME": "Full Crit",
     "BUFF_FULLCRIT_DESC": "+100% Critical Strike chance",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Hidden Invincibility",
-    "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerable",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerable.",
     "BUFF_IMMUNE_NAME": "Immune",
     "BUFF_IMMUNE_DESC": "Invulnerable",
     "BUFF_CROCOREGEN_NAME": "Regenerative",
