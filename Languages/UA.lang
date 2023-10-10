@@ -161,7 +161,7 @@
     "BUFF_GOLDEMPOWERED_NAME": "Золото, наділене силою",
     "BUFF_GOLDEMPOWERED_DESC": "+100% шкоди",
     "BUFF_LIGHTNINGSHIELD_NAME": "Щит блискавки",
-    "BUFF_LIGHTNINGSHIELD_DESC": "Повністю невикористаний.",
+    "BUFF_LIGHTNINGSHIELD_DESC": "Воно нічо не робить.",
     "BUFF_LOADEROVERCHARGED_NAME": "Loader Overcharged",
     "BUFF_LOADEROVERCHARGED_DESC": "As Loader, your melee attack does 2x damage and stuns for 1 second.",
     "BUFF_LOADERPYLONPOWERED_NAME": "Loader Pylon Powered",
