@@ -345,5 +345,6 @@
     "SKILL_MAELSTROM_NAME": "Вихрь",
     "SKILL_DETONATION_NAME": "Детонация",
     "ITEM_NEARBYDAMAGEBONUS_DESC": "Увеличивает урон врагам в радиусе <style=cIsDamage>13м</style> на <style=cIsDamage>20%</style> <style=cStack>(+20% за стак)</style>.",
-    "ITEM_HEALINGPOTIONCONSUMED_DESC": "Пустая бутылка из-под эликсира. Ничего не делает."
+    "ITEM_HEALINGPOTIONCONSUMED_DESC": "Пустая бутылка из-под эликсира. Ничего не делает.",
+    "BETTERUI_DAMAGEREDUCTION": "Уменьшение урона"
 }
