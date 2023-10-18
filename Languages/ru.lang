@@ -355,5 +355,6 @@
     "BUFF_RAINCOATCOOLDOWN_NAME": "Дождевик Бена перезаряжается",
     "BUFF_RAINCOATCOOLDOWN_DESC": "Дождевик Бена сейчас на перезарядке и не будет блокировать дебаффы",
     "BETTERUI_DEBUFFSPREVENTED": "Кол-во предотвращённых дебаффов",
-    "BETTERUI_RAINCOAT": "Кол-во предотвращённых дебаффов"
+    "BETTERUI_RAINCOAT": "Кол-во предотвращённых дебаффов",
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "Затемнение экрана и получение увеличивающегося со временем урона."
 }
