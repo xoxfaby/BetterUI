@@ -46,7 +46,7 @@
     "BUFF_FULLCRIT_NAME": "Максимальный крит",
     "BUFF_FULLCRIT_DESC": "100% Шанс критической атаки",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Неуловимость",
-    "BUFF_HIDDENINVINCIBILITY_DESC": "Неуязвим",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Неуязвимость",
     "BUFF_IMMUNE_NAME": "Под защитой",
     "BUFF_IMMUNE_DESC": "Неуязвим",
     "BUFF_CROCOREGEN_NAME": "Регенерация",
