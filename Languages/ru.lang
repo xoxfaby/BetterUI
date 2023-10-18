@@ -348,5 +348,6 @@
     "ITEM_HEALINGPOTIONCONSUMED_DESC": "Пустая бутылка из-под эликсира. Ничего не делает.",
     "BETTERUI_DAMAGEREDUCTION": "Уменьшение урона",
     "BETTERUI_DAMAGE_SUFFIX": " Урон",
-    "BUFF_RAINCOATREADY_NAME": "Дождевик Бена готов"
+    "BUFF_RAINCOATREADY_NAME": "Дождевик Бена готов",
+    "BUFF_MEATREGENBOOST_NAME": "Ускорение регенирации Мяса"
 }
