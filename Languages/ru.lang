@@ -6,7 +6,7 @@
     "BETTERUI_BUGREPORT": "Сообщить об ошибке",
     "BETTERUI_CLOSE_WINDOW": "Закрыть окно",
     "BETTERUI_MADEBY": "Создал XoXFaby",
-    "BETTERUI_WINDOW_LABEL": "Спасибо за использование BetterUI! Если вам нравится мод, пожалуйста, поддержите меня, чтобы я мог продолжать работать над ним как можно дольше!\n\nВ будущем это окно позволит вам настраивать BetterUI!",
+    "BETTERUI_WINDOW_LABEL": "Спасибо за использование BetterUI! Если вам нравится мод, пожалуйста, поддержите меня, чтобы я мог продолжать работать над ним как можно дольше!\n\nВ будущем это окно позволит вам настраивать BetterUI!\n\nА пока вы можете настраивать BetterUI с помощью файлов конфигурации.\n\nДля их редактирования рекомендую использовать настройку конфигов r2modman.",
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Выстрел лучом малой дальности наносящим <style=cIsDamage>2000% урона</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Запуск бомбы по дуге наносящей <style=cIsDamage>1100% урона</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Исчезнуть</style> в Пустоту, <style=cIsUtility>снимая все дебаффы</style> совершая <style=cIsUtility>прыжок вперёд</style>.",
