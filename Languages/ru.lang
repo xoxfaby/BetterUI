@@ -41,7 +41,7 @@
     "BUFF_CLOAKSPEED_DESC": "+40% Скорости передвижения.",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Слоновое Повышение Брони",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Брони",
-    "BUFF_ENERGIZED_NAME": "Заряд бодрости",
+    "BUFF_ENERGIZED_NAME": "Взбодрён",
     "BUFF_ENERGIZED_DESC": "+70% Скорости атаки",
     "BUFF_FULLCRIT_NAME": "Максимальный крит",
     "BUFF_FULLCRIT_DESC": "100% Шанс критической атаки",
