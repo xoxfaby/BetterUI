@@ -269,7 +269,7 @@
     "BETTERUI_SECOND": "секунда",
     "BETTERUI_SECOND_PLURAL": "секунд",
     "BETTERUI_SECOND_SPECIAL": "секунды",
-    "BETTERUI_BEFORE_SINGULAR": "До ({0} стаков): ",
+    "BETTERUI_BEFORE_SINGULAR": "До ({0} стака): ",
     "BETTERUI_BEFORE_PLURAL": "До ({0} стаков): ",
     "BETTERUI_AFTER_SINGULAR": "После ({0} стаков): ",
     "BETTERUI_AFTER_PLURAL": "После ({0} стаков): ",
