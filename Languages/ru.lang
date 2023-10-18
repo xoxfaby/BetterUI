@@ -48,7 +48,7 @@
     "BUFF_HIDDENINVINCIBILITY_NAME": "Неуловимость",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Неуязвимость",
     "BUFF_IMMUNE_NAME": "Под защитой",
-    "BUFF_IMMUNE_DESC": "Неуязвим",
+    "BUFF_IMMUNE_DESC": "Неуязвимость",
     "BUFF_CROCOREGEN_NAME": "Регенерация",
     "BUFF_CROCOREGEN_DESC": "Регенерируешь здоровье в размере 10% максимального здоровья за 0.5s (складывается)",
     "BUFF_MEDKITHEAL_NAME": "Аптечка",
