@@ -43,7 +43,7 @@
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Брони",
     "BUFF_ENERGIZED_NAME": "Взбодрён",
     "BUFF_ENERGIZED_DESC": "+70% Скорости атаки",
-    "BUFF_FULLCRIT_NAME": "Максимальный крит",
+    "BUFF_FULLCRIT_NAME": "Всё критическое",
     "BUFF_FULLCRIT_DESC": "100% Шанс критической атаки",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Неуловимость",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Неуязвимость",
