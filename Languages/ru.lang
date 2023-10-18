@@ -50,7 +50,7 @@
     "BUFF_IMMUNE_NAME": "Под защитой",
     "BUFF_IMMUNE_DESC": "Неуязвимость",
     "BUFF_CROCOREGEN_NAME": "Регенерация",
-    "BUFF_CROCOREGEN_DESC": "Регенерируешь здоровье в размере 10% максимального здоровья за 0.5s (складывается)",
+    "BUFF_CROCOREGEN_DESC": "Ты регенерируешь здоровье в размере 10% максимального здоровья на 0.5s (складывается)",
     "BUFF_MEDKITHEAL_NAME": "Аптечка",
     "BUFF_MEDKITHEAL_DESC": "Активация Аптечки",
     "BUFF_NOCOOLDOWNS_NAME": "Нет перезарядки",
