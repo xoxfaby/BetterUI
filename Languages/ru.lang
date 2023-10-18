@@ -93,7 +93,7 @@
     "BUFF_DEATHMARK_DESC": "Увеличивает получаемый урон на 50% из всех источников на 7 (+7 за стак) секунд",
     "BUFF_PULVERIZEBUILDUP_NAME": "Накопление Разрушения",
     "BUFF_PULVERIZEBUILDUP_DESC": "Накопление Разрушения: по достижении пяти зарядов заменяется на Разрушение (складывается)",
-    "BUFF_PULVERIZED_NAME": "Разрушение",
+    "BUFF_PULVERIZED_NAME": "Измельчён",
     "BUFF_PULVERIZED_DESC": "Разрушение: -60 Брони",
     "BUFF_CRIPPLE_NAME": "Увечье",
     "BUFF_CRIPPLE_DESC": "Увечье: -20 Брони , -50% Скорости передвижения",
