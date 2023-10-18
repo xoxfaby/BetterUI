@@ -350,5 +350,6 @@
     "BETTERUI_DAMAGE_SUFFIX": " Урон",
     "BUFF_RAINCOATREADY_NAME": "Дождевик Бена готов",
     "BUFF_MEATREGENBOOST_NAME": "Ускорение регенерации Мяса",
-    "BUFF_MEATREGENBOOST_DESC": "+2 регенерации * (1f + текущийУровень * 0.2f)"
+    "BUFF_MEATREGENBOOST_DESC": "+2 регенерации * (1f + текущийУровень * 0.2f)",
+    "BUFF_RAINCOATREADY_DESC": "Использует один заряд чтобы предотвратить нанесение дебаффа.\n\nПерезарядка начинается когда все заряды кончаться"
 }
