@@ -349,5 +349,6 @@
     "BETTERUI_DAMAGEREDUCTION": "Уменьшение урона",
     "BETTERUI_DAMAGE_SUFFIX": " Урон",
     "BUFF_RAINCOATREADY_NAME": "Дождевик Бена готов",
-    "BUFF_MEATREGENBOOST_NAME": "Ускорение регенерации Мяса"
+    "BUFF_MEATREGENBOOST_NAME": "Ускорение регенерации Мяса",
+    "BUFF_MEATREGENBOOST_DESC": "+2 регенерации * (1f + текущийУровень * 0.2f)"
 }
