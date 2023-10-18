@@ -148,7 +148,7 @@
     "BUFF_GOLDEMPOWERED_NAME": "Усилен золотом",
     "BUFF_GOLDEMPOWERED_DESC": "+100% урона",
     "BUFF_LIGHTNINGSHIELD_NAME": "Щит молний",
-    "BUFF_LIGHTNINGSHIELD_DESC": "Совершенно не используется.",
+    "BUFF_LIGHTNINGSHIELD_DESC": "У этого баффа нет эффекта.",
     "BUFF_LOADEROVERCHARGED_NAME": "Перегрузка Погрузчицы",
     "BUFF_LOADEROVERCHARGED_DESC": "За Погрузчицу, ваши атаки в ближнем бою наносят двойной урон и оглушают на 1 секунду.",
     "BUFF_LOADERPYLONPOWERED_NAME": "Заряженная колонна Погрузчика",
