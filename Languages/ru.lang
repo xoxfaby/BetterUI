@@ -11,7 +11,7 @@
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Запуск бомбы по дуге наносящей <style=cIsDamage>1100% урона</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Исчезнуть</style> в Пустоту, <style=cIsUtility>снимая все дебаффы</style> совершая <style=cIsUtility>прыжок вперёд</style>.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Разбить <style=cIsHealing>25% здоровья</style> получив <style=cIsVoid>25% Заражения;</style>.",
-    "BUFF_AFFIXRED_NAME": "Метка ифрита",
+    "BUFF_AFFIXRED_NAME": "Огненный",
     "BUFF_AFFIXRED_DESC": "Станьте воплощением огня : Оставляешь огненный след, и применяешь процентное горение при попадании.",
     "BUFF_AFFIXBLUE_NAME": "Затишье между двумя ударами",
     "BUFF_AFFIXBLUE_DESC": "Станьте воплощением молнии : Атаки взрываются с задержкой и 50% здоровья заменено щитом.",
