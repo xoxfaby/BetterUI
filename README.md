@@ -1,3 +1,5 @@
+[![Translation status](http://translate.faby.dev/widget/ror2/betterui/svg-badge.svg)](http://translate.faby.dev/engage/ror2/)
+
 # BetterUI
 
 A simple mod that adds various UI improvements.  
