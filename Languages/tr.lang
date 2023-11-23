@@ -12,5 +12,6 @@
     "SKILL_AIRSTRIKE_NAME": "Hava Saldırısı",
     "SKILL_BULLET_NAME": "Mermi",
     "SKILL_FIST_NAME": "Yumruk",
-    "SKILL_DASH_NAME": "Sıyrılma"
+    "SKILL_DASH_NAME": "Sıyrılma",
+    "SKILL_HIT_NAME": "Vuruş"
 }
