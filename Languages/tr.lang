@@ -13,5 +13,6 @@
     "SKILL_BULLET_NAME": "Mermi",
     "SKILL_FIST_NAME": "Yumruk",
     "SKILL_DASH_NAME": "Sıyrılma",
-    "SKILL_HIT_NAME": "Vuruş"
+    "SKILL_HIT_NAME": "Vuruş",
+    "BUFF_AFFIXWHITE_DESC": "Bir Glacial Elite'in gücünü kazanın: Öldüğünde bir buz patlaması bırakın ve vuruşta %80 yavaşlatma uygulayın."
 }
