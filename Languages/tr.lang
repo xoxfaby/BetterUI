@@ -14,5 +14,6 @@
     "SKILL_FIST_NAME": "Yumruk",
     "SKILL_DASH_NAME": "Sıyrılma",
     "SKILL_HIT_NAME": "Vuruş",
-    "BUFF_AFFIXWHITE_DESC": "Bir Glacial Elite'in gücünü kazanın: Öldüğünde bir buz patlaması bırakın ve vuruşta %80 yavaşlatma uygulayın."
+    "BUFF_AFFIXWHITE_DESC": "Bir Glacial Elite'in gücünü kazanın: Öldüğünde bir buz patlaması bırakın ve vuruşta %80 yavaşlatma uygulayın.",
+    "BUFF_AFFIXPOISON_DESC": "Bir Malachite Elite'in gücünü kazanın: Arada bir deniz kestanesi fırlat ve vuruşlarda \"İyileşmeyi Engelle\" etkisi uygula."
 }
