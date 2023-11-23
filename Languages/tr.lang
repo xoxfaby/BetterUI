@@ -5,5 +5,6 @@
     "BETTERUI_DISCORD": "Discord sunucumuza katılın",
     "BETTERUI_BUGREPORT": "Hata bildir",
     "BETTERUI_CLOSE_WINDOW": "Pencereyi Kapat",
-    "BETTERUI_MADEBY": "XoXFaby tarafından yapıldı"
+    "BETTERUI_MADEBY": "XoXFaby tarafından yapıldı",
+    "BETTERUI_WINDOW_LABEL": "BetterUI'yi kullandığınız için teşekkür ederim! Modu beğendiyseniz, üzerinde mümkün olduğunca çalışmaya devam edebilmem için lütfen bağış yapmayı düşünün!\n\nGelecekte bu pencere BetterUI ayarlarını düzenlemenize olanak tanıyacak!\n\nO zamana kadar BetterUI'ı, konfigürasyon dosyalarını kullanarak yapılandırabilirsiniz.\n\nBu dosyaları düzenlemek için r2modman'ın Config Editor'unu kullanmanızı öneririm."
 }
