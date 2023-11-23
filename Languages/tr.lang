@@ -10,5 +10,6 @@
     "SKILL_SHOTGUN_NAME": "Pompalı Tüfek",
     "SKILL_POWERTAZER_NAME": "Güçlü Elektroşok Cihazı",
     "SKILL_AIRSTRIKE_NAME": "Hava Saldırısı",
-    "SKILL_BULLET_NAME": "Mermi"
+    "SKILL_BULLET_NAME": "Mermi",
+    "SKILL_FIST_NAME": "Yumruk"
 }
