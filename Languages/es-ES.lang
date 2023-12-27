@@ -227,7 +227,7 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Banda de Singularidad esta en enfriamiento.",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Banda de Singularidad (Lista)",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "El efecto de la Banda de Singularidad puede ser activado",
-    "BUFF_ELITEEARTH_NAME": "Mending",
+    "BUFF_ELITEEARTH_NAME": "Enmendar",
     "BETTERUI_WINDOW_LABEL": "Gracias por usar BetterUI! Si disfrutas el mod, por favor considera donar para permitirme continuar trabajando en el lo mas posible!\n\nEn el futuro, esta ventana te permitira editar la configuracion de BetterUI!\n\nMientras tanto puedes configurar BetterUI utilizando los archivos de configuracion.\n\nRecomiendo utilizar el editor de configuraciones de r2modman (r2modman's Config Editor) para editar estos archivos.",
     "BUFF_AFFIXBLUE_DESC": "Obtén el poder de un Elite Sobrecargado : Los ataques explotan después de un retraso y el 50% de tu vida es reemplazada por un escudo.",
     "BUFF_AFFIXHAUNTED_DESC": "Obtén el poder de un Elite Celestino : Oculta aliados cercanos a ti, y aplica una ralentización del 80% al impacto.",
