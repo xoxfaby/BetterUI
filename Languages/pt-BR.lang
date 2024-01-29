@@ -282,5 +282,6 @@
     "BUFF_BEETLEJUICE_NAME": "Suco de Besouro",
     "BUFF_BEETLEJUICE_DESC": "-5% de velocidade de movimento final, -5% de dano de personagem | -5% de velocidade de ataque final | (acumulativo)",
     "BUFF_CLAYGOO_NAME": "Piche",
-    "BUFF_CLAYGOO_DESC": "Velocidade de movimento reduzida em 50%"
+    "BUFF_CLAYGOO_DESC": "Velocidade de movimento reduzida em 50%",
+    "BUFF_SLOW50_NAME": "50% de Lentidão"
 }
