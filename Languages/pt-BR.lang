@@ -212,5 +212,7 @@
     "SKILL_POOL_NAME": "Piscina",
     "SKILL_BOUNCE_NAME": "Quicar",
     "SKILL_BOLT_NAME": "Raio",
-    "SKILL_EXPLOSION_NAME": "Explosão"
+    "SKILL_EXPLOSION_NAME": "Explosão",
+    "SKILL_SPARKS_NAME": "Faíscas",
+    "SKILL_SPEAR_NAME": "Lança"
 }
