@@ -305,5 +305,6 @@
     "BUFF_PERMANENTCURSE_DESC": "Vida máxima reduzida por um fator de 1 = 0.01*n, onde n é o número de acúmulos. Quando recebendo dano em Eclipse 8, aliados ganham um número de acúmulos de Maldição permanente igual a 40 * dano / vida máxima, arredondados para baixo. Todos os acúmulos são removidos até o fim do estágio e quando ressurgido com o Melhor Amigo de Dio, mas não quando usando chuveiro explosivo. (acumulativo)",
     "BUFF_OVERHEAT_NAME": "Superaquecimento",
     "BUFF_OVERHEAT_DESC": "Superaquecimento: Aumenta o dano recebido por fogo",
-    "BUFF_LUNARSECONDARYROOT_NAME": "Raiz Lunar"
+    "BUFF_LUNARSECONDARYROOT_NAME": "Raiz Lunar",
+    "BUFF_LUNARSECONDARYROOT_DESC": "Enraizado: Diminui a velocidade de movimento a 0 por 3 (+3 por acúmulo) segundos"
 }
