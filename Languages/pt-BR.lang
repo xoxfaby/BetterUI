@@ -340,5 +340,5 @@
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Espaços mais seguros (Cooldown)",
     "BUFF_BEARVOIDCOOLDOWN_DESC": "Espaços Mais Seguros está em Cooldown",
     "BUFF_BEARVOIDREADY_NAME": "Espaços mais seguros (Pronto)",
-    "BUFF_BEARVOIDREADY_DESC": "Espaços mais seguros vai bloquear o próximo ataque, e entrará em Tempo de Recarga."
+    "BUFF_BEARVOIDREADY_DESC": "Espaços Mais Seguros vai bloquear o próximo ataque e então entrará em Cooldown."
 }
