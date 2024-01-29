@@ -278,5 +278,6 @@
     "BUFF_CRIPPLE_NAME": "Aleijado",
     "BUFF_CRIPPLE_DESC": "Aleijado: -20 de armadura, velocidade de movimento reduzida em 50%",
     "BUFF_WEAK_NAME": "Fraco",
-    "BUFF_WEAK_DESC": "Enfraquecido: -30 de armadura , velocidade de movimento reduzida em 40% , dano reduzido em 40% (Toxinas Naturais)"
+    "BUFF_WEAK_DESC": "Enfraquecido: -30 de armadura , velocidade de movimento reduzida em 40% , dano reduzido em 40% (Toxinas Naturais)",
+    "BUFF_BEETLEJUICE_NAME": "Suco de Besouro"
 }
