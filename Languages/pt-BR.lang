@@ -340,5 +340,7 @@
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Espaços mais seguros (Cooldown)",
     "BUFF_BEARVOIDCOOLDOWN_DESC": "Espaços Mais Seguros está em Cooldown",
     "BUFF_BEARVOIDREADY_NAME": "Espaços mais seguros (Pronto)",
-    "BUFF_BEARVOIDREADY_DESC": "Espaços Mais Seguros vai bloquear o próximo ataque e então entrará em Cooldown."
+    "BUFF_BEARVOIDREADY_DESC": "Espaços Mais Seguros vai bloquear o próximo ataque e então entrará em Cooldown.",
+    "BUFF_BLINDED_NAME": "Cegado",
+    "BUFF_BLINDED_DESC": "A área em volta de você escurece, obscurecendo sua visão."
 }
