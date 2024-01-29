@@ -209,5 +209,6 @@
     "SKILL_SPIT_NAME": "Cuspir",
     "SKILL_BITE_NAME": "Morder",
     "SKILL_LEAP_NAME": "Salto",
-    "SKILL_POOL_NAME": "Piscina"
+    "SKILL_POOL_NAME": "Piscina",
+    "SKILL_BOUNCE_NAME": "Quicar"
 }
