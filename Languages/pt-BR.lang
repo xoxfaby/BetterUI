@@ -173,5 +173,6 @@
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "As habilidades são transformadas em formas mais agressivas.",
     "BETTERUI_GOLDLOST": "Ouro perdido",
     "BETTERUI_ITEMSUPGRADED": "Itens melhorados",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Faixa de singularidade (Cooldown)"
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Faixa de singularidade (Cooldown)",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Faixa de singularidade está em cooldown"
 }
