@@ -263,5 +263,6 @@
     "SKILL_CRUSH_NAME": "Esmagar",
     "SKILL_SHARD_NAME": "Fragmento",
     "SKILL_MAELSTROM_NAME": "Redemoinho",
-    "SKILL_DETONATION_NAME": "Detonação"
+    "SKILL_DETONATION_NAME": "Detonação",
+    "BETTERUI_RAINCOAT": "Debuffs Prevenidos"
 }
