@@ -261,5 +261,6 @@
     "SKILL_BEAM_NAME": "Feixe",
     "SKILL_FLOOD_NAME": "Inundação",
     "SKILL_CRUSH_NAME": "Esmagar",
-    "SKILL_SHARD_NAME": "Fragmento"
+    "SKILL_SHARD_NAME": "Fragmento",
+    "SKILL_MAELSTROM_NAME": "Redemoinho"
 }
