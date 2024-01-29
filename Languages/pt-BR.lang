@@ -230,5 +230,7 @@
     "SKILL_BULLET_NAME": "Bala",
     "SKILL_PHASEROUND_NAME": "Rodada de fase",
     "SKILL_GRENADE_NAME": "Granada",
-    "SKILL_MINE_NAME": "Mina"
+    "SKILL_MINE_NAME": "Mina",
+    "SKILL_TURRETSHOT_NAME": "Disparo de torreta",
+    "SKILL_HARPOON_NAME": "Arpão"
 }
