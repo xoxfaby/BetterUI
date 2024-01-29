@@ -336,5 +336,5 @@
     "BUFF_MEATREGENBOOST_NAME": "Aumento de Regeneração de Carne",
     "BUFF_MEATREGENBOOST_DESC": "+2 Regeneração * (1f = nível atual * 0.2f)",
     "BUFF_SLOW30_NAME": "Lentidão30",
-    "BUFF_SLOW30_DESC": "-30% Velocidade de movimento"
+    "BUFF_SLOW30_DESC": "-30% de velocidade de movimento"
 }
