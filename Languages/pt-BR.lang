@@ -339,5 +339,6 @@
     "BUFF_SLOW30_DESC": "-30% de velocidade de movimento",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "Espaços mais seguros (Cooldown)",
     "BUFF_BEARVOIDCOOLDOWN_DESC": "Espaços Mais Seguros está em Cooldown",
-    "BUFF_BEARVOIDREADY_NAME": "Espaços mais seguros (Pronto)"
+    "BUFF_BEARVOIDREADY_NAME": "Espaços mais seguros (Pronto)",
+    "BUFF_BEARVOIDREADY_DESC": "Espaços mais seguros vai bloquear o próximo ataque, e entrará em Tempo de Recarga."
 }
