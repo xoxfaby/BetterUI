@@ -309,5 +309,7 @@
     "BUFF_LUNARSECONDARYROOT_DESC": "Enraizado: Diminui a velocidade de movimento a 0 por 3 (+3 por acúmulo) segundos",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "Ruína",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "Consuma acúmulos de Ruína para dar 300% de dano mais 120% de dano por acúmulo de Ruína (acumulativo)",
-    "BUFF_ENGISHIELD_NAME": "Escudo Engi"
+    "BUFF_ENGISHIELD_NAME": "Escudo Engi",
+    "BUFF_ENGISHIELD_DESC": "+100% de escudo, não recebe repulsão ao levar dano",
+    "BUFF_LUNARSHELL_NAME": "Concha Lunar"
 }
