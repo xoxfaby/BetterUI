@@ -215,5 +215,6 @@
     "SKILL_EXPLOSION_NAME": "Explosão",
     "SKILL_SPARKS_NAME": "Faíscas",
     "SKILL_SPEAR_NAME": "Lança",
-    "SKILL_WALL_NAME": "Parede"
+    "SKILL_WALL_NAME": "Parede",
+    "SKILL_FLAMETHROWER_NAME": "Lança-chamas"
 }
