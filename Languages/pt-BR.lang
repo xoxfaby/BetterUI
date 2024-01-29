@@ -256,5 +256,6 @@
     "SKILL_SYRINGES_NAME": "Seringas",
     "SKILL_MORTAR_NAME": "Morteiro",
     "SKILL_BOOM_NAME": "Boom",
-    "SKILL_PROJECTILE_NAME": "Projétil"
+    "SKILL_PROJECTILE_NAME": "Projétil",
+    "SKILL_ROOTS_NAME": "Raízes"
 }
