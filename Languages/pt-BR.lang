@@ -296,5 +296,7 @@
     "BUFF_ENTANGLE_NAME": "Emaranhar",
     "BUFF_ENTANGLE_DESC": "Enraizado: Reduz a velocidade de movimento a 0",
     "BUFF_FRUITING_NAME": "Frutificação",
-    "BUFF_FRUITING_DESC": "Gera 2 - 8 frutas ao morrer"
+    "BUFF_FRUITING_DESC": "Gera 2 - 8 frutas ao morrer",
+    "BUFF_HEALINGDISABLED_NAME": "Cura desabilitada",
+    "BUFF_HEALINGDISABLED_DESC": "Cura desabilitada"
 }
