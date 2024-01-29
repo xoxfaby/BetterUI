@@ -342,5 +342,7 @@
     "BUFF_BEARVOIDREADY_NAME": "Espaços mais seguros (Pronto)",
     "BUFF_BEARVOIDREADY_DESC": "Espaços Mais Seguros vai bloquear o próximo ataque e então entrará em Cooldown.",
     "BUFF_BLINDED_NAME": "Cegado",
-    "BUFF_BLINDED_DESC": "A área em volta de você escurece, obscurecendo sua visão."
+    "BUFF_BLINDED_DESC": "A área em volta de você escurece, obscurecendo sua visão.",
+    "BUFF_JAILERSLOW_DESC": "-100% de velocidade de movimento",
+    "BUFF_KILLMOVESPEED_DESC": "Obtém +25% de velocidade de movimento. (Acumulativo)"
 }
