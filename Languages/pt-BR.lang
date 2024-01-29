@@ -185,5 +185,6 @@
     "BETTERUI_BASECOOLDOWN": "Cooldown base",
     "BETTERUI_EFFECTIVECOOLDOWN": "Cooldown efetivo",
     "BETTERUI_SECOND": "segundo",
-    "BETTERUI_SECOND_PLURAL": "segundos"
+    "BETTERUI_SECOND_PLURAL": "segundos",
+    "BETTERUI_BEFORE_SINGULAR": "Antes de ({0} Pilha): "
 }
