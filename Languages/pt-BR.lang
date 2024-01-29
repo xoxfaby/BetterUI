@@ -195,5 +195,7 @@
     "BETTERUI_DPS": "DPS",
     "BETTERUI_DEBUFFSPREVENTED": "Debuffs Prevenidos",
     "BETTERUI_DAMAGEREDUCTION": "Redução de dano",
-    "BETTERUI_LUCKCHANCE_SUFFIX": "% Probabilidade"
+    "BETTERUI_LUCKCHANCE_SUFFIX": "% Probabilidade",
+    "BETTERUI_CHANCE_SUFFIX": "% Probabilidade",
+    "BETTERUI_GOLD_PREFIX": "$"
 }
