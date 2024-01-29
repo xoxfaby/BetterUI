@@ -298,5 +298,6 @@
     "BUFF_FRUITING_NAME": "Frutificação",
     "BUFF_FRUITING_DESC": "Gera 2 - 8 frutas ao morrer",
     "BUFF_HEALINGDISABLED_NAME": "Cura desabilitada",
-    "BUFF_HEALINGDISABLED_DESC": "Cura desabilitada"
+    "BUFF_HEALINGDISABLED_DESC": "Cura desabilitada",
+    "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "Anéis Elementais em Cooldown"
 }
