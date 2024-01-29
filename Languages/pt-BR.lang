@@ -292,5 +292,6 @@
     "BUFF_NULLIFYSTACK_NAME": "Acúmulo de Nulificação",
     "BUFF_NULLIFYSTACK_DESC": "Acúmulo de Nulificação. Após atingir 3 pilhas, aplica Nulificado (acumulativo)",
     "BUFF_NULLIFIED_NAME": "Nulificado",
-    "BUFF_NULLIFIED_DESC": "Nulificado, velocidade de movimento reduzida a 0"
+    "BUFF_NULLIFIED_DESC": "Nulificado, velocidade de movimento reduzida a 0",
+    "BUFF_ENTANGLE_NAME": "Emaranhar"
 }
