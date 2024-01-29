@@ -210,5 +210,6 @@
     "SKILL_BITE_NAME": "Morder",
     "SKILL_LEAP_NAME": "Salto",
     "SKILL_POOL_NAME": "Piscina",
-    "SKILL_BOUNCE_NAME": "Quicar"
+    "SKILL_BOUNCE_NAME": "Quicar",
+    "SKILL_BOLT_NAME": "Raio"
 }
