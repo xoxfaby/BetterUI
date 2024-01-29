@@ -38,7 +38,7 @@
     "BUFF_ENERGIZED_DESC": "+70% de Velocidade de Ataque",
     "BUFF_FULLCRIT_DESC": "+100% de chance de Acerto Crítico",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Invencibilidade Oculta",
-    "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerável",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerável.",
     "BUFF_IMMUNE_NAME": "Imune",
     "BUFF_IMMUNE_DESC": "Invulnerável",
     "BUFF_CROCOREGEN_NAME": "Regenerativo",
