@@ -301,5 +301,6 @@
     "BUFF_HEALINGDISABLED_DESC": "Cura desabilitada",
     "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "Anéis Elementais em Cooldown",
     "BUFF_ELEMENTALRINGSCOOLDOWN_DESC": "Ganhe 10 acúmulos quando Bracelete de Runald ou Bracelete de Kjaro ativar, perde 1 acúmulo a cada segundo. Impede que Bracelete de Runald ou Bracelete de Kjaro ative. (acumulativo)",
-    "BUFF_PERMANENTCURSE_NAME": "Maldição Permanente"
+    "BUFF_PERMANENTCURSE_NAME": "Maldição Permanente",
+    "BUFF_PERMANENTCURSE_DESC": "Vida máxima reduzida por um fator de 1 = 0.01*n, onde n é o número de acúmulos. Quando recebendo dano em Eclipse 8, aliados ganham um número de acúmulos de Maldição permanente igual a 40 * dano / vida máxima, arredondados para baixo. Todos os acúmulos são removidos até o fim do estágio e quando ressurgido com o Melhor Amigo de Dio, mas não quando usando chuveiro explosivo. (acumulável)"
 }
