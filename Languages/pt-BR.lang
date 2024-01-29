@@ -318,5 +318,6 @@
     "BUFF_VOIDFOGSTRONG_NAME": "Névoa do Void (Forte)",
     "BUFF_VOIDFOGSTRONG_DESC": "Escurece sua visão e recebe dano crescente com o tempo.",
     "BUFF_BODYARMOR_NAME": "Armadura Corporal",
-    "BUFF_BODYARMOR_DESC": "Bloqueia o próximo ataque e é consumido."
+    "BUFF_BODYARMOR_DESC": "Bloqueia o próximo ataque e é consumido.",
+    "BUFF_DEAFENED_NAME": "Ensurdecido"
 }
