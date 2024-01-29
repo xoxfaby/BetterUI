@@ -224,5 +224,7 @@
     "SKILL_SHOT_NAME": "Disparo",
     "SKILL_SMOKEBOMB_NAME": "Bomba de fumaça",
     "SKILL_SHOTGUN_NAME": "Escopeta",
-    "SKILL_POWERTAZER_NAME": "Tazer de poder"
+    "SKILL_POWERTAZER_NAME": "Tazer de poder",
+    "SKILL_AIRSTRIKE_NAME": "Ataque Aéreo",
+    "SKILL_IMPACT_NAME": "Impacto"
 }
