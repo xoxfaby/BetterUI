@@ -326,5 +326,6 @@
     "BUFF_ENRAGEANCIENTWISP_NAME": "Fogo Fátuo Ancião Enfurecido",
     "BUFF_ENRAGEANCIENTWISP_DESC": "+40% De velocidade de movimento.",
     "BUFF_GOLDEMPOWERED_NAME": "Ouro empoderado",
-    "BUFF_GOLDEMPOWERED_DESC": "+100% de dano"
+    "BUFF_GOLDEMPOWERED_DESC": "+100% de dano",
+    "BUFF_LIGHTNINGSHIELD_NAME": "Escudo Relâmpago"
 }
