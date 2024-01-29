@@ -290,5 +290,6 @@
     "BUFF_SLOW80_NAME": "80% de Lentidão",
     "BUFF_SLOW80_DESC": "Velocidade de movimento reduzida em 80%",
     "BUFF_NULLIFYSTACK_NAME": "Acúmulo de Nulificação",
-    "BUFF_NULLIFYSTACK_DESC": "Acúmulo de Nulificação. Após atingir 3 pilhas, aplica Nulificado (acumulativo)"
+    "BUFF_NULLIFYSTACK_DESC": "Acúmulo de Nulificação. Após atingir 3 pilhas, aplica Nulificado (acumulativo)",
+    "BUFF_NULLIFIED_NAME": "Nulificado"
 }
