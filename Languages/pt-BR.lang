@@ -223,5 +223,6 @@
     "SKILL_BLADE_NAME": "Lâmina",
     "SKILL_SHOT_NAME": "Disparo",
     "SKILL_SMOKEBOMB_NAME": "Bomba de fumaça",
-    "SKILL_SHOTGUN_NAME": "Escopeta"
+    "SKILL_SHOTGUN_NAME": "Escopeta",
+    "SKILL_POWERTAZER_NAME": "Tazer de poder"
 }
