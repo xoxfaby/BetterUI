@@ -252,5 +252,8 @@
     "SKILL_CANISTER_NAME": "Lata",
     "SKILL_BOMBLET_NAME": "Bombinha",
     "SKILL_CHARGE_NAME": "Carga",
-    "SKILL_RAM_NAME": "Aríete"
+    "SKILL_RAM_NAME": "Aríete",
+    "SKILL_SYRINGES_NAME": "Seringas",
+    "SKILL_MORTAR_NAME": "Morteiro",
+    "SKILL_BOOM_NAME": "Boom"
 }
