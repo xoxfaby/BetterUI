@@ -211,5 +211,6 @@
     "SKILL_LEAP_NAME": "Salto",
     "SKILL_POOL_NAME": "Piscina",
     "SKILL_BOUNCE_NAME": "Quicar",
-    "SKILL_BOLT_NAME": "Raio"
+    "SKILL_BOLT_NAME": "Raio",
+    "SKILL_EXPLOSION_NAME": "Explosão"
 }
