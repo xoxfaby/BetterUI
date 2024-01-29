@@ -334,5 +334,7 @@
     "BUFF_LOADERPYLONPOWERED_NAME": "Pylon carregador empoderado",
     "BUFF_LOADERPYLONPOWERED_DESC": "Ao impacto, eletrocute até 3 inimigos próximos por 30% do dano em 20m.",
     "BUFF_MEATREGENBOOST_NAME": "Aumento de Regeneração de Carne",
-    "BUFF_MEATREGENBOOST_DESC": "+2 Regeneração * (1f = nível atual * 0.2f)"
+    "BUFF_MEATREGENBOOST_DESC": "+2 Regeneração * (1f = nível atual * 0.2f)",
+    "BUFF_SLOW30_NAME": "Lentidão30",
+    "BUFF_SLOW30_DESC": "-30% Velocidade de movimento"
 }
