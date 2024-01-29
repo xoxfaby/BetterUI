@@ -207,5 +207,7 @@
     "BETTERUI_DAMAGE_SUFFIX": " Dano",
     "SKILL_SLASH_NAME": "Golpear",
     "SKILL_SPIT_NAME": "Cuspir",
-    "SKILL_BITE_NAME": "Morder"
+    "SKILL_BITE_NAME": "Morder",
+    "SKILL_LEAP_NAME": "Salto",
+    "SKILL_POOL_NAME": "Piscina"
 }
