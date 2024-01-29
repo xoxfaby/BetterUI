@@ -241,5 +241,6 @@
     "SKILL_FIST_NAME": "Punho",
     "SKILL_ZAP_NAME": "Zap",
     "SKILL_SLAM_NAME": "Bater",
-    "SKILL_SWORD_NAME": "Espada"
+    "SKILL_SWORD_NAME": "Espada",
+    "SKILL_SLICE_NAME": "Fatiar"
 }
