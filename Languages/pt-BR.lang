@@ -247,5 +247,6 @@
     "SKILL_HIT_NAME": "Golpe",
     "SKILL_NAIL_NAME": "Prego",
     "SKILL_REBAR_NAME": "Vergalhão",
-    "SKILL_ROCKET_NAME": "Foguete"
+    "SKILL_ROCKET_NAME": "Foguete",
+    "SKILL_SAW_NAME": "Serra"
 }
