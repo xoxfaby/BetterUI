@@ -174,5 +174,6 @@
     "BETTERUI_GOLDLOST": "Ouro perdido",
     "BETTERUI_ITEMSUPGRADED": "Itens melhorados",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Faixa de singularidade (Cooldown)",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Faixa de singularidade está em cooldown."
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Faixa de singularidade está em cooldown.",
+    "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Faixa de singularidade (Pronta)"
 }
