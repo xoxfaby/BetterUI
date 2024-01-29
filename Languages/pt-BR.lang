@@ -184,5 +184,6 @@
     "BETTERUI_PROCCOEFFICIENT": "Coeficiente de procedimento",
     "BETTERUI_BASECOOLDOWN": "Cooldown base",
     "BETTERUI_EFFECTIVECOOLDOWN": "Cooldown efetivo",
-    "BETTERUI_SECOND": "segundo"
+    "BETTERUI_SECOND": "segundo",
+    "BETTERUI_SECOND_PLURAL": "segundos"
 }
