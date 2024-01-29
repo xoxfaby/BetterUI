@@ -235,5 +235,6 @@
     "SKILL_HARPOON_NAME": "Arpão",
     "SKILL_LASER_NAME": "Laser",
     "SKILL_ARROW_NAME": "Flecha",
-    "SKILL_GLAIVE_NAME": "Espada"
+    "SKILL_GLAIVE_NAME": "Espada",
+    "SKILL_RAIN_NAME": "Chuva"
 }
