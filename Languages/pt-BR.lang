@@ -314,5 +314,5 @@
     "BUFF_LUNARSHELL_NAME": "Concha Lunar",
     "BUFF_LUNARSHELL_DESC": "Dano não pode exceder 10% da sua vida máxima",
     "BUFF_VOIDFOGMILD_NAME": "Névoa do Void (Leve)",
-    "BUFF_VOIDFOGMILD_DESC": "Escurece sua visão e sofre dano crescente com o tempo. Campos do Vazio: Dano não aumenta com o tempo"
+    "BUFF_VOIDFOGMILD_DESC": "Escurece sua visão e sofre dano crescente com o tempo. Campos do Void: Dano não aumenta com o tempo."
 }
