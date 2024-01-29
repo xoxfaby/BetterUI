@@ -176,5 +176,6 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Faixa de singularidade (Cooldown)",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Faixa de singularidade está em cooldown.",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Faixa de singularidade (Pronta)",
-    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "O efeito da faixa de singularidade pode ser ativado"
+    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "O efeito da faixa de singularidade pode ser ativado",
+    "BUFF_JAILERSLOW_NAME": "Desaceleração do prisioneiro"
 }
