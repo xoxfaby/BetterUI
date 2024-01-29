@@ -270,5 +270,6 @@
     "BUFF_ARMORBOOST_NAME": "Aumento de Armadura",
     "BUFF_FULLCRIT_NAME": "Crítico cheio",
     "BUFF_ONFIRE_NAME": "Queimadura",
-    "BUFF_ONFIRE_DESC": "Queimadura: Dano por segundo e regeneração de vida definida para 0. Nota: Esse debuff parece acumular com Ignição, mas na verdade causa dano e conta para Marca da Morte separadamente.| (acumulativo)"
+    "BUFF_ONFIRE_DESC": "Queimadura: Dano por segundo e regeneração de vida definida para 0. Nota: Esse debuff parece acumular com Ignição, mas na verdade causa dano e conta para Marca da Morte separadamente.| (acumulativo)",
+    "BUFF_PULVERIZEBUILDUP_NAME": "Acúmulo de pulverização"
 }
