@@ -323,5 +323,6 @@
     "BUFF_DEAFENED_DESC": "Silenciado.",
     "BUFF_ENGITEAMSHIELD_NAME": "Escudo Engi (Equipe)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% de escudo, +30% de velocidade de movimento",
-    "BUFF_ENRAGEANCIENTWISP_NAME": "Fogo Fátuo Ancião Enfurecido"
+    "BUFF_ENRAGEANCIENTWISP_NAME": "Fogo Fátuo Ancião Enfurecido",
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% De velocidade de movimento."
 }
