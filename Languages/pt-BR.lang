@@ -189,5 +189,6 @@
     "BETTERUI_BEFORE_SINGULAR": "Antes de ({0} Pilha): ",
     "BETTERUI_BEFORE_PLURAL": "Antes de ({0} Pilhas): ",
     "BETTERUI_AFTER_SINGULAR": "Após ({0} Pilha): ",
-    "BETTERUI_AFTER_PLURAL": "Após ({0} Pilhas): "
+    "BETTERUI_AFTER_PLURAL": "Após ({0} Pilhas): ",
+    "BETTERUI_PROCSTACKS_SINGULAR": " <style=cStack>({0} Empilha até o limite)</style>"
 }
