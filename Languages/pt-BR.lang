@@ -294,5 +294,6 @@
     "BUFF_NULLIFIED_NAME": "Nulificado",
     "BUFF_NULLIFIED_DESC": "Nulificado, velocidade de movimento reduzida a 0",
     "BUFF_ENTANGLE_NAME": "Emaranhar",
-    "BUFF_ENTANGLE_DESC": "Enraizado: Reduz a velocidade de movimento a 0"
+    "BUFF_ENTANGLE_DESC": "Enraizado: Reduz a velocidade de movimento a 0",
+    "BUFF_FRUITING_NAME": "Frutificação"
 }
