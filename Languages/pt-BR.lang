@@ -284,5 +284,6 @@
     "BUFF_CLAYGOO_NAME": "Piche",
     "BUFF_CLAYGOO_DESC": "Velocidade de movimento reduzida em 50%",
     "BUFF_SLOW50_NAME": "50% de Lentidão",
-    "BUFF_SLOW50_DESC": "Velocidade de movimento reduzida em 50%"
+    "BUFF_SLOW50_DESC": "Velocidade de movimento reduzida em 50%",
+    "BUFF_SLOW60_NAME": "60% de Lentidão"
 }
