@@ -194,5 +194,6 @@
     "BETTERUI_PROCSTACKS_PLURAL": " <style=cStack>({0} empilha até o limite)</style>",
     "BETTERUI_DPS": "DPS",
     "BETTERUI_DEBUFFSPREVENTED": "Debuffs Prevenidos",
-    "BETTERUI_DAMAGEREDUCTION": "Redução de dano"
+    "BETTERUI_DAMAGEREDUCTION": "Redução de dano",
+    "BETTERUI_LUCKCHANCE_SUFFIX": "% Probabilidade"
 }
