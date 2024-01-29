@@ -277,5 +277,6 @@
     "BUFF_PULVERIZED_DESC": "Pulverizado: -60 de Armadura",
     "BUFF_CRIPPLE_NAME": "Aleijado",
     "BUFF_CRIPPLE_DESC": "Aleijado: -20 de armadura, velocidade de movimento reduzida em 50%",
-    "BUFF_WEAK_NAME": "Fraco"
+    "BUFF_WEAK_NAME": "Fraco",
+    "BUFF_WEAK_DESC": "Enfraquecido: -30 de armadura , 40% velocidade de movimento reduzida , 40% dano reduzido (toxinas naturais)"
 }
