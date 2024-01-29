@@ -352,5 +352,6 @@
     "BUFF_PERMANENTDEBUFF_DESC": "Reduz a armadura por 2 (2 por pilha) pelo resto da rodada, ou até morrer (acumulativo).",
     "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Shuriken",
     "BUFF_PRIMARYSKILLSHURIKENBUFF_DESC": "Consome uma carga para lançar uma shuriken quando ativar sua habilidade primária. (acumulativo)",
-    "BUFF_STRONGERBURN_NAME": "Queimadura mais forte"
+    "BUFF_STRONGERBURN_NAME": "Queimadura mais forte",
+    "BUFF_STRONGERBURN_DESC": "Variante mais forte do efeito de ignição. Aumenta o dano sofrido por queimadura. Regeneração desativada."
 }
