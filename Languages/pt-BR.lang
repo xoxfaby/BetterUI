@@ -280,5 +280,6 @@
     "BUFF_WEAK_NAME": "Fraco",
     "BUFF_WEAK_DESC": "Enfraquecido: -30 de armadura , velocidade de movimento reduzida em 40% , dano reduzido em 40% (Toxinas Naturais)",
     "BUFF_BEETLEJUICE_NAME": "Suco de Besouro",
-    "BUFF_BEETLEJUICE_DESC": "-5% de velocidade de movimento final, -5% de dano de personagem | -5% de velocidade de ataque final | (acumulativo)"
+    "BUFF_BEETLEJUICE_DESC": "-5% de velocidade de movimento final, -5% de dano de personagem | -5% de velocidade de ataque final | (acumulativo)",
+    "BUFF_CLAYGOO_NAME": "Piche"
 }
