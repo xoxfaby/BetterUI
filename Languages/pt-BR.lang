@@ -242,5 +242,6 @@
     "SKILL_ZAP_NAME": "Zap",
     "SKILL_SLAM_NAME": "Bater",
     "SKILL_SWORD_NAME": "Espada",
-    "SKILL_SLICE_NAME": "Fatiar"
+    "SKILL_SLICE_NAME": "Fatiar",
+    "SKILL_DASH_NAME": "Corrida"
 }
