@@ -218,5 +218,6 @@
     "SKILL_WALL_NAME": "Parede",
     "SKILL_FLAMETHROWER_NAME": "Lança-chamas",
     "SKILL_SURGE_NAME": "Surto",
-    "SKILL_BURST_NAME": "Estouro"
+    "SKILL_BURST_NAME": "Estouro",
+    "SKILL_BLAST_NAME": "Explosão"
 }
