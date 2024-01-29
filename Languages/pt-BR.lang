@@ -243,5 +243,6 @@
     "SKILL_SLAM_NAME": "Bater",
     "SKILL_SWORD_NAME": "Espada",
     "SKILL_SLICE_NAME": "Fatiar",
-    "SKILL_DASH_NAME": "Corrida"
+    "SKILL_DASH_NAME": "Corrida",
+    "SKILL_HIT_NAME": "Golpe"
 }
