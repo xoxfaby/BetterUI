@@ -205,5 +205,7 @@
     "BETTERUI_REGEN_SUFFIX": " PV/s",
     "BETTERUI_RANGE_SUFFIX": "m",
     "BETTERUI_DAMAGE_SUFFIX": " Dano",
-    "SKILL_SLASH_NAME": "Golpear"
+    "SKILL_SLASH_NAME": "Golpear",
+    "SKILL_SPIT_NAME": "Cuspir",
+    "SKILL_BITE_NAME": "Morder"
 }
