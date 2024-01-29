@@ -226,5 +226,6 @@
     "SKILL_SHOTGUN_NAME": "Escopeta",
     "SKILL_POWERTAZER_NAME": "Tazer de poder",
     "SKILL_AIRSTRIKE_NAME": "Ataque Aéreo",
-    "SKILL_IMPACT_NAME": "Impacto"
+    "SKILL_IMPACT_NAME": "Impacto",
+    "SKILL_BULLET_NAME": "Bala"
 }
