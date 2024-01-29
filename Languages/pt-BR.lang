@@ -233,5 +233,6 @@
     "SKILL_MINE_NAME": "Mina",
     "SKILL_TURRETSHOT_NAME": "Disparo de torreta",
     "SKILL_HARPOON_NAME": "Arpão",
-    "SKILL_LASER_NAME": "Laser"
+    "SKILL_LASER_NAME": "Laser",
+    "SKILL_ARROW_NAME": "Flecha"
 }
