@@ -347,5 +347,6 @@
     "BUFF_KILLMOVESPEED_DESC": "Obtém +25% de velocidade de movimento. (Acumulativo)",
     "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Obtém +100 de armadura. Removida ao sofrer um impacto.",
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Cura 2% (+2% por pilha) da sua vida enquanto estiver correndo.",
-    "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Armadura de opala"
+    "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Armadura de opala",
+    "BUFF_PERMANENTDEBUFF_NAME": "Redução permanente de armadura"
 }
