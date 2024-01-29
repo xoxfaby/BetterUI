@@ -172,5 +172,6 @@
     "BUFF_JAILERTETHER_DESC": "Indicador de que está amarrado. Recebe dano enquanto estiver amarrado. Obtenha distância suficiente para quebrar a corda.",
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "As habilidades são transformadas em formas mais agressivas.",
     "BETTERUI_GOLDLOST": "Ouro perdido",
-    "BETTERUI_ITEMSUPGRADED": "Itens melhorados"
+    "BETTERUI_ITEMSUPGRADED": "Itens melhorados",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Faixa de singularidade (Cooldown)"
 }
