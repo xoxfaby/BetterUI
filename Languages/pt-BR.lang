@@ -239,5 +239,7 @@
     "SKILL_RAIN_NAME": "Chuva",
     "SKILL_BALLISTA_NAME": "Balista",
     "SKILL_FIST_NAME": "Punho",
-    "SKILL_ZAP_NAME": "Zap"
+    "SKILL_ZAP_NAME": "Zap",
+    "SKILL_SLAM_NAME": "Bater",
+    "SKILL_SWORD_NAME": "Espada"
 }
