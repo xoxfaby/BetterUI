@@ -264,5 +264,6 @@
     "SKILL_SHARD_NAME": "Fragmento",
     "SKILL_MAELSTROM_NAME": "Redemoinho",
     "SKILL_DETONATION_NAME": "Detonação",
-    "BETTERUI_RAINCOAT": "Debuffs Prevenidos"
+    "BETTERUI_RAINCOAT": "Debuffs Prevenidos",
+    "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Desaparece</style> dentro do Void, <style=cIsUtility>limpando todos os debuffs</style> enquanto se move em um <style=cIsUtility>arco ascendente</style>."
 }
