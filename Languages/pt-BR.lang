@@ -306,5 +306,6 @@
     "BUFF_OVERHEAT_NAME": "Superaquecimento",
     "BUFF_OVERHEAT_DESC": "Superaquecimento: Aumenta o dano recebido por fogo",
     "BUFF_LUNARSECONDARYROOT_NAME": "Raiz Lunar",
-    "BUFF_LUNARSECONDARYROOT_DESC": "Enraizado: Diminui a velocidade de movimento a 0 por 3 (+3 por acúmulo) segundos"
+    "BUFF_LUNARSECONDARYROOT_DESC": "Enraizado: Diminui a velocidade de movimento a 0 por 3 (+3 por acúmulo) segundos",
+    "BUFF_LUNARDETONATIONCHARGE_NAME": "Ruína"
 }
