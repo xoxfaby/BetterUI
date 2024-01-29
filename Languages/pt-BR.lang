@@ -319,5 +319,6 @@
     "BUFF_VOIDFOGSTRONG_DESC": "Escurece sua visão e recebe dano crescente com o tempo.",
     "BUFF_BODYARMOR_NAME": "Armadura Corporal",
     "BUFF_BODYARMOR_DESC": "Bloqueia o próximo ataque e é consumido.",
-    "BUFF_DEAFENED_NAME": "Ensurdecido"
+    "BUFF_DEAFENED_NAME": "Ensurdecido",
+    "BUFF_DEAFENED_DESC": "Silenciado."
 }
