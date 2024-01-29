@@ -349,5 +349,5 @@
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Cura 2% (+2% por pilha) da sua vida enquanto estiver correndo.",
     "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Armadura de opala",
     "BUFF_PERMANENTDEBUFF_NAME": "Redução permanente de armadura",
-    "BUFF_PERMANENTDEBUFF_DESC": "Reduz a armadura por 2 (2 por pilha) pelo resto da rodada, ou até morrer (acumulativo)"
+    "BUFF_PERMANENTDEBUFF_DESC": "Reduz a armadura por 2 (2 por pilha) pelo resto da rodada, ou até morrer (acumulativo)."
 }
