@@ -331,5 +331,6 @@
     "BUFF_LIGHTNINGSHIELD_DESC": "Esse buff não produz efeito.",
     "BUFF_LOADEROVERCHARGED_NAME": "Carregador Sobrecarregado",
     "BUFF_LOADEROVERCHARGED_DESC": "Como Carregador, seu ataque corpo-a-corpo causa 2x o dano e atordoa por 1 segundo.",
-    "BUFF_LOADERPYLONPOWERED_NAME": "Pylon carregador empoderado"
+    "BUFF_LOADERPYLONPOWERED_NAME": "Pylon carregador empoderado",
+    "BUFF_LOADERPYLONPOWERED_DESC": "Ao impacto, eletrocute até 3 inimigos próximos por 30% do dano em 20m"
 }
