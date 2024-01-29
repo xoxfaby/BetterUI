@@ -287,5 +287,6 @@
     "BUFF_SLOW50_DESC": "Velocidade de movimento reduzida em 50%",
     "BUFF_SLOW60_NAME": "60% de Lentidão",
     "BUFF_SLOW60_DESC": "Velocidade de movimento reduzida em 60%",
-    "BUFF_SLOW80_NAME": "80% de Lentidão"
+    "BUFF_SLOW80_NAME": "80% de Lentidão",
+    "BUFF_SLOW80_DESC": "Velocidade de movimento reduzida em 80%"
 }
