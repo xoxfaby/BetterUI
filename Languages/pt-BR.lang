@@ -268,5 +268,6 @@
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Desaparece</style> dentro do Void, <style=cIsUtility>limpando todos os debuffs</style> enquanto se move em um <style=cIsUtility>arco ascendente</style>.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Perca <style=cIsHealing>25% de vida</style> para ganhar <style=cIsVoid>25% de corrupção</style>.",
     "BUFF_ARMORBOOST_NAME": "Aumento de Armadura",
-    "BUFF_FULLCRIT_NAME": "Crítico cheio"
+    "BUFF_FULLCRIT_NAME": "Crítico cheio",
+    "BUFF_ONFIRE_NAME": "Queimadura"
 }
