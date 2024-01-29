@@ -274,5 +274,7 @@
     "BUFF_PULVERIZEBUILDUP_NAME": "Acúmulo de pulverização",
     "BUFF_PULVERIZEBUILDUP_DESC": "Acúmulo de pulverização: com 5 acúmulos aplica Pulverização (acumulativo)",
     "BUFF_PULVERIZED_NAME": "Pulverizado",
-    "BUFF_PULVERIZED_DESC": "Pulverizado: -60 de Armadura"
+    "BUFF_PULVERIZED_DESC": "Pulverizado: -60 de Armadura",
+    "BUFF_CRIPPLE_NAME": "Aleijado",
+    "BUFF_CRIPPLE_DESC": "Aleijado: -20 de armadura, velocidade de movimento reduzida em 50%"
 }
