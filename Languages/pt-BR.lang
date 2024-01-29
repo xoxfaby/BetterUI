@@ -246,5 +246,6 @@
     "SKILL_DASH_NAME": "Corrida",
     "SKILL_HIT_NAME": "Golpe",
     "SKILL_NAIL_NAME": "Prego",
-    "SKILL_REBAR_NAME": "Vergalhão"
+    "SKILL_REBAR_NAME": "Vergalhão",
+    "SKILL_ROCKET_NAME": "Foguete"
 }
