@@ -219,5 +219,7 @@
     "SKILL_FLAMETHROWER_NAME": "Lança-chamas",
     "SKILL_SURGE_NAME": "Surto",
     "SKILL_BURST_NAME": "Estouro",
-    "SKILL_BLAST_NAME": "Explosão"
+    "SKILL_BLAST_NAME": "Explosão",
+    "SKILL_BLADE_NAME": "Lâmina",
+    "SKILL_SHOT_NAME": "Disparo"
 }
