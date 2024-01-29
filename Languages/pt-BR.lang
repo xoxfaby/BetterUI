@@ -222,5 +222,6 @@
     "SKILL_BLAST_NAME": "Explosão",
     "SKILL_BLADE_NAME": "Lâmina",
     "SKILL_SHOT_NAME": "Disparo",
-    "SKILL_SMOKEBOMB_NAME": "Bomba de fumaça"
+    "SKILL_SMOKEBOMB_NAME": "Bomba de fumaça",
+    "SKILL_SHOTGUN_NAME": "Escopeta"
 }
