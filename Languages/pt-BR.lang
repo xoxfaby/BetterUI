@@ -179,5 +179,6 @@
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "O efeito da faixa de singularidade pode ser ativado",
     "BUFF_JAILERSLOW_NAME": "Desaceleração do prisioneiro",
     "BUFF_JAILERTETHER_NAME": "Corda do prisioneiro",
-    "BUFF_KILLMOVESPEED_NAME": "Velocidade de movimento por morte"
+    "BUFF_KILLMOVESPEED_NAME": "Velocidade de movimento por morte",
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Caranguejo do vazio limpa a névoa do vazio."
 }
