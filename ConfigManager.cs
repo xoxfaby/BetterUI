@@ -175,30 +175,30 @@ namespace BetterUI
 
         static ConfigManager()
         {
-            ConfigFileComponents = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Components.cfg", true);
-            ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
-            ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
-            ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
-            ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
-            ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
-            ConfigFileItemCounters = new ConfigFile(Paths.ConfigPath + "\\BetterUI-ItemCounters.cfg", true);
-            ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
-            ConfigFileSorting = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Sorting.cfg", true);
-
             BindComponentsConfig();
 
-            BindMiscConfig();
-            BindAdvancedIconsConfig();
-            BindBuffsConfig();
-            BindCommandScrapperImprovementsConfig();
-            BindDPSMeterConfig();
-            BindItemCountersConfig();
-            BindStatsDisplayConfig();
-            BindSortingConfig();
+            if (ComponentsMisc.Value)
+                BindMiscConfig();
+            if (ComponentsAdvancedIcons.Value)
+                BindAdvancedIconsConfig();
+            if (ComponentsBuffTimers.Value)
+                BindBuffsConfig();
+            if (ComponentsCommandImprovements.Value)
+                BindCommandScrapperImprovementsConfig();
+            if (ComponentsDPSMeter.Value)
+                BindDPSMeterConfig();
+            if (ComponentsItemCounters.Value)
+                BindItemCountersConfig();
+            if (ComponentsStatsDisplay.Value)
+                BindStatsDisplayConfig();
+            if (ComponentsItemSorting.Value)
+                BindSortingConfig();
         }
 
         static void BindComponentsConfig()
         {
+            ConfigFileComponents = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Components.cfg", true);
+
             ComponentsAdvancedIcons = Bind(ConfigFileComponents, "Components", "AdvancedIcons", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
 
             ComponentsBuffTimers = Bind(ConfigFileComponents, "Components", "Buffs", true, "Enable/Disable the component entirely, stopping it from hooking any game functions.");
@@ -218,6 +218,8 @@ namespace BetterUI
 
         static void BindMiscConfig()
         {
+            ConfigFileMisc = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Misc.cfg", true);
+
             MiscShowHidden = Bind(ConfigFileMisc, "Misc", "ShowHidden", false, "Show hidden items in the item inventory.");
 
             MiscAdvancedPickupNotificationsItems = Bind(ConfigFileMisc, "Misc", "AdvancedPickupNotificationsItems", false, "Show advanced descriptions when picking up an item.");
@@ -237,6 +239,8 @@ namespace BetterUI
 
         static void BindAdvancedIconsConfig()
         {
+            ConfigFileAdvancedIcons = new ConfigFile(Paths.ConfigPath + "\\BetterUI-AdvancedIcons.cfg", true);
+
             AdvancedIconsItemAdvancedDescriptions = Bind(ConfigFileAdvancedIcons, "Item Improvements", "AdvancedDescriptions", true, "Show advanced descriptions when hovering over an item.");
 
             AdvancedIconsItemItemStatsIntegration = Bind(ConfigFileAdvancedIcons, "Item Improvements", "ItemStatsIntegration", true, "Show ItemStats where applicable.");
@@ -262,6 +266,8 @@ namespace BetterUI
 
         static void BindBuffsConfig()
         {
+            ConfigFileBuffs = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Buffs.cfg", true);
+
             BuffTimers = Bind(ConfigFileBuffs, "Buffs", "BuffTimers", true, "Show buff timers (host only).");
 
             BuffTimersDecimal = Bind(ConfigFileBuffs, "Buffs", "BuffTimersDecimal", true, "Show 1 decimal point when timer is below 10.");
@@ -284,6 +290,8 @@ namespace BetterUI
 
         static void BindCommandScrapperImprovementsConfig()
         {
+            ConfigFileCommandImprovements = new ConfigFile(Paths.ConfigPath + "\\BetterUI-CommandImprovements.cfg", true);
+
             CommandResizeCommandWindow = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "ResizeCommandWindow", true, "Resize the command window depending on the number of items.");
 
             CommandRemoveBackgroundBlur = Bind(ConfigFileCommandImprovements, "Command / Scrapper Improvements", "RemoveBackgroundBlur", true, "Remove the blur behind the command window that hides the rest of the UI.");
@@ -322,6 +330,8 @@ namespace BetterUI
 
         static void BindDPSMeterConfig()
         {
+            ConfigFileDPSMeter = new ConfigFile(Paths.ConfigPath + "\\BetterUI-DPSMeter.cfg", true);
+
             DPSMeterTimespan = Bind(ConfigFileDPSMeter, "DPSMeter", "Timespan", 5f, "Calculate DPS across this many seconds.");
 
             DPSMeterWindowShow = Bind(ConfigFileDPSMeter, "DPSMeter", "WindowShow", true, "Show a dedicated DPSMeter.");
@@ -354,6 +364,8 @@ namespace BetterUI
 
         static void BindItemCountersConfig()
         {
+            ConfigFileItemCounters = new ConfigFile(Paths.ConfigPath + "\\BetterUI-ItemCounters.cfg", true);
+
             ItemCountersShowItemCounters = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemCounters", true, "Enable/Disable ItemCounters entirely.");
 
             ItemCountersShowItemScore = Bind(ConfigFileItemCounters, "ItemCounters", "ShowItemScore", true, "Show your item score.");
@@ -400,6 +412,8 @@ namespace BetterUI
 
         static void BindStatsDisplayConfig()
         {
+            ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
+
             StatsDisplayEnable = Bind(ConfigFileStatsDisplay, "StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
 
             StatsDisplayStatString = Bind(ConfigFileStatsDisplay, "StatsDisplay", "StatString",
@@ -477,6 +491,8 @@ namespace BetterUI
 
         static void BindSortingConfig()
         {
+            ConfigFileSorting = new ConfigFile(Paths.ConfigPath + "\\BetterUI-Sorting.cfg", true);
+
             SortingSortItemsInventory = Bind(ConfigFileSorting, "Sorting", "SortItemsInventory", true, "Sort items in the inventory and scoreboard.");
 
             SortingSortItemsCommand = Bind(ConfigFileSorting, "Sorting", "SortItemsCommand", true, "Sort items in the command window.");
