@@ -100,7 +100,7 @@ namespace BetterUI
             regexpattern = new Regex(@"(\" + String.Join(@"|\", sortedKeys) + ")");
 
 
-            if (ConfigManager.StatsDisplayEnable.Value)
+            if (ConfigManager.ComponentsStatsDisplay.Value)
             {
                 RoR2.Run.onRunStartGlobal += runStartGlobal;
             }
@@ -137,7 +137,7 @@ namespace BetterUI
         }
         static void onHUDAwake(RoR2.UI.HUD self)
         {
-            if (ConfigManager.StatsDisplayEnable.Value)
+            if (ConfigManager.ComponentsStatsDisplay.Value)
             {
                 statsDisplayContainer = new GameObject("StatsDisplayContainer");
                 RectTransform rectTransform = statsDisplayContainer.AddComponent<RectTransform>();
