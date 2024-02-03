@@ -119,7 +119,6 @@ namespace BetterUI
 
         // StatsDisplay
 
-        public static ConfigEntry<bool> StatsDisplayEnable;
         public static ConfigEntry<String> StatsDisplayStatString;
         public static ConfigEntry<String> StatsDisplayStatStringCustomBind;
         public static ConfigEntry<String> StatsDisplayCustomBind;
@@ -413,8 +412,6 @@ namespace BetterUI
         static void BindStatsDisplayConfig()
         {
             ConfigFileStatsDisplay = new ConfigFile(Paths.ConfigPath + "\\BetterUI-StatsDisplay.cfg", true);
-
-            StatsDisplayEnable = Bind(ConfigFileStatsDisplay, "StatsDisplay", "Enable", true, "Enable/Disable the StatsDisplay entirely.");
 
             StatsDisplayStatString = Bind(ConfigFileStatsDisplay, "StatsDisplay", "StatString",
                 "<color=#FFFFFF>" +
