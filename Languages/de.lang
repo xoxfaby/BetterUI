@@ -21,5 +21,6 @@
     "BUFF_AFFIXHAUNTED_NAME": "Cölestin",
     "BUFF_AFFIXHAUNTED_DESC": "Erhalte die Kraft eines Cölestin-Elite: Verhülle nahe Verbündete und verursache eine 80%ige Verlangsamung bei Treffern.",
     "BUFF_AFFIXLUNAR_NAME": "Perfektioniert",
-    "BUFF_ARMORBOOST_DESC": "+200 Rüstung"
+    "BUFF_ARMORBOOST_DESC": "+200 Rüstung",
+    "BUFF_ARMORBOOST_NAME": "Rüstungsschub"
 }
