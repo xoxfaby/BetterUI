@@ -60,5 +60,6 @@
     "BUFF_LIFESTEAL_NAME": "Lebensraub",
     "BUFF_LIFESTEAL_DESC": "Heile dich um 20% des von dir verursachten Schadens",
     "BUFF_POWERBUFF_DESC": "+50% Schaden",
-    "BUFF_ELEMENTALRINGSREADY_NAME": "Elementarringe bereit"
+    "BUFF_ELEMENTALRINGSREADY_NAME": "Elementarringe bereit",
+    "BUFF_BANDITSKULL_NAME": "Banditenschädel"
 }
