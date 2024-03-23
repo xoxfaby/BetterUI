@@ -29,5 +29,6 @@
     "BUFF_BUGWINGS_NAME": "Käferflügel",
     "BUFF_BUGWINGS_DESC": "Wachse Flügeln und fliege, +20 % Bewegungsgeschwindigkeit",
     "BUFF_CLOAK_DESC": "Werde für Feinde unsichtbar.",
-    "BUFF_CLOAKSPEED_DESC": "+40% Bewegungsgeschwindigkeit."
+    "BUFF_CLOAKSPEED_DESC": "+40% Bewegungsgeschwindigkeit.",
+    "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Unsichtbar"
 }
