@@ -28,5 +28,6 @@
     "BUFF_HIDDENINVINCIBILITY_NAME": "Invincibilità Occulta",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Invulnerabile.",
     "BUFF_IMMUNE_NAME": "Immune",
-    "BUFF_IMMUNE_DESC": "Invulnerabile"
+    "BUFF_IMMUNE_DESC": "Invulnerabile",
+    "BUFF_CROCOREGEN_NAME": "Rigenerazione"
 }
