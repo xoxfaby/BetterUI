@@ -45,5 +45,6 @@
     "BUFF_MEDKITHEAL_NAME": "Medkit-Heilung",
     "BUFF_MEDKITHEAL_DESC": "Aktivierung des Medkits",
     "BUFF_NOCOOLDOWNS_NAME": "Keine Abklingzeiten",
-    "BUFF_NOCOOLDOWNS_DESC": "Die Abklingzeiten der Fähigkeiten wurden auf 0,5 Sekunden reduziert"
+    "BUFF_NOCOOLDOWNS_DESC": "Die Abklingzeiten der Fähigkeiten wurden auf 0,5 Sekunden reduziert",
+    "BUFF_TESLAFIELD_NAME": "Tesla-Feld"
 }
