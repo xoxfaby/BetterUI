@@ -51,5 +51,6 @@
     "BUFF_WARBANNER_NAME": "Kriegsbanner",
     "BUFF_FULLCRIT_NAME": "Vollständige kritische Attacke",
     "BUFF_WARBANNER_DESC": "+30% Bewegungsgeschw., +30 % Angriffsgeschw.",
-    "BUFF_WARCRYBUFF_NAME": "Verstärkung eins Schlachtrufes"
+    "BUFF_WARCRYBUFF_NAME": "Verstärkung eins Schlachtrufes",
+    "BUFF_WARCRYBUFF_DESC": "+50% Bewegungsgeschw., +100% Angriffsgeschw."
 }
