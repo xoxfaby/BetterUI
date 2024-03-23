@@ -33,5 +33,6 @@
     "BUFF_CROCOREGEN_DESC": "Ottieni Rigenerazione Vita pari al 10% della tua massima vita per 0.5s (cumulabile)",
     "BUFF_MEDKITHEAL_NAME": "Cura Medikit",
     "BUFF_MEDKITHEAL_DESC": "Attivazione del Medikit",
-    "BUFF_NOCOOLDOWNS_NAME": "Nessun Cooldown"
+    "BUFF_NOCOOLDOWNS_NAME": "Nessun Cooldown",
+    "BUFF_NOCOOLDOWNS_DESC": "I cooldown delle abilità sono ridotti a 0.5 secondi"
 }
