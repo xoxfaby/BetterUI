@@ -42,5 +42,6 @@
     "BUFF_IMMUNE_DESC": "Unverwundbar",
     "BUFF_CROCOREGEN_NAME": "Regenerativ",
     "BUFF_CROCOREGEN_DESC": "Erhalte 0,5 Sekunden lang eine Gesundheitsregeneration in Höhe von 10% deiner maximalen Gesundheit (stapelbar)",
-    "BUFF_MEDKITHEAL_NAME": "Medkit-Heilung"
+    "BUFF_MEDKITHEAL_NAME": "Medkit-Heilung",
+    "BUFF_MEDKITHEAL_DESC": "Aktivierung des Medkits"
 }
