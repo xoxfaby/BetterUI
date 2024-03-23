@@ -34,5 +34,6 @@
     "BUFF_MEDKITHEAL_NAME": "Cura Medikit",
     "BUFF_MEDKITHEAL_DESC": "Attivazione del Medikit",
     "BUFF_NOCOOLDOWNS_NAME": "Nessun Cooldown",
-    "BUFF_NOCOOLDOWNS_DESC": "I cooldown delle abilità sono ridotti a 0.5 secondi"
+    "BUFF_NOCOOLDOWNS_DESC": "I cooldown delle abilità sono ridotti a 0.5 secondi",
+    "BUFF_TESLAFIELD_DESC": "Sparando fulmini"
 }
