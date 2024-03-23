@@ -57,5 +57,6 @@
     "BUFF_TEAMWARCRY_DESC": "+50% Bewegungsgeschw., +100% Angriffsgeschw.",
     "BUFF_WHIPBOOST_NAME": "Peitschenschub",
     "BUFF_WHIPBOOST_DESC": "+30% Bewegungsgeschw.",
-    "BUFF_LIFESTEAL_NAME": "Lebensraub"
+    "BUFF_LIFESTEAL_NAME": "Lebensraub",
+    "BUFF_LIFESTEAL_DESC": "Heile dich um 20% des von dir verursachten Schadens"
 }
