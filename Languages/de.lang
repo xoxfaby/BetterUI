@@ -50,5 +50,6 @@
     "BUFF_TONICBUFF_DESC": "*150% max. Gesundheit, *150% max. Schild, *170% Angriffsgeschw., *130% Bewegungsgeschw., +20 Rüstung, *200% Grundschaden, *400% Gesundheitsregeneration",
     "BUFF_WARBANNER_NAME": "Kriegsbanner",
     "BUFF_FULLCRIT_NAME": "Vollständige kritische Attacke",
-    "BUFF_WARBANNER_DESC": "+30% Bewegungsgeschw., +30 % Angriffsgeschw."
+    "BUFF_WARBANNER_DESC": "+30% Bewegungsgeschw., +30 % Angriffsgeschw.",
+    "BUFF_WARCRYBUFF_NAME": "Verstärkung eins Schlachtrufes"
 }
