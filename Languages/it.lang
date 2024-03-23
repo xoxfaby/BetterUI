@@ -6,5 +6,6 @@
     "BETTERUI_BUGREPORT": "Segnala un bug",
     "BETTERUI_CLOSE_WINDOW": "Chiudi finestra",
     "BETTERUI_MADEBY": "Sviluppata da XoXFaby",
-    "BETTERUI_WINDOW_LABEL": "Grazie per usare BetterUI! Se ti piace la mod, considera la possibilità di fare una donazione per permetterci di continuare a lavorare sulla mod il più possibile!\n\nIn futuro, questa finestra permetterà di modificare le impostazione della BetterUI!\n\nPrima di allora puoi configurare la BetterUI usando i file di configurazione.\n\nRaccomandiamo di usare il Config Editor di r2modman per modificare quei file."
+    "BETTERUI_WINDOW_LABEL": "Grazie per usare BetterUI! Se ti piace la mod, considera la possibilità di fare una donazione per permetterci di continuare a lavorare sulla mod il più possibile!\n\nIn futuro, questa finestra permetterà di modificare le impostazione della BetterUI!\n\nPrima di allora puoi configurare la BetterUI usando i file di configurazione.\n\nRaccomandiamo di usare il Config Editor di r2modman per modificare quei file.",
+    "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Spara un laser a corto raggio per <style=cIsDamage>2000% del danno</style>."
 }
