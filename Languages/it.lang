@@ -24,5 +24,6 @@
     "BUFF_ELEPHANTARMORBOOST_NAME": "Boost dell'Armatura dell'Elefante",
     "BUFF_ENERGIZED_DESC": "+70% Velocità d'Attacco",
     "BUFF_FULLCRIT_NAME": "Critico al massimo",
-    "BUFF_FULLCRIT_DESC": "+100% Possibilità di Critico"
+    "BUFF_FULLCRIT_DESC": "+100% Possibilità di Critico",
+    "BUFF_HIDDENINVINCIBILITY_NAME": "Invisibilità Occulta"
 }
