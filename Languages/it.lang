@@ -38,5 +38,6 @@
     "BUFF_TESLAFIELD_DESC": "Sparando fulmini",
     "BUFF_TONICBUFF_DESC": "*150% Vita Massima , *150% Scudo Massimo , *170% Velocità d'Attacco , *130% Velocità di Movimento , +20 Armatura , *200% Danno Base , *400% Rigenerazione Vita",
     "BUFF_WARBANNER_DESC": "+30% Velocità di Movimento , +30% Velocità d'Attacco",
-    "BUFF_WARCRYBUFF_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco"
+    "BUFF_WARCRYBUFF_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco",
+    "BUFF_TEAMWARCRY_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco"
 }
