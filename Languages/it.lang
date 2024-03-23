@@ -40,5 +40,6 @@
     "BUFF_WARBANNER_DESC": "+30% Velocità di Movimento , +30% Velocità d'Attacco",
     "BUFF_WARCRYBUFF_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco",
     "BUFF_TEAMWARCRY_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco",
-    "BUFF_WHIPBOOST_DESC": "+30% Velocità di Movimento"
+    "BUFF_WHIPBOOST_DESC": "+30% Velocità di Movimento",
+    "BUFF_LIFESTEAL_NAME": "Ruba Vita"
 }
