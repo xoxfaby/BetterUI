@@ -1,5 +1,7 @@
 {
     "BETTERUI_TITLE": "BetterUI",
     "BETTERUI_TITLE_HOVER": "Apri la finestra di BetterUI.",
-    "BETTERUI_DONATE": "Fai una donazione a BetterUI"
+    "BETTERUI_DONATE": "Fai una donazione a BetterUI",
+    "BETTERUI_DISCORD": "Unisciti al Discord",
+    "BETTERUI_BUGREPORT": "Segnala un bug"
 }
