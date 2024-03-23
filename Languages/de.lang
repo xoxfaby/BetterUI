@@ -61,5 +61,6 @@
     "BUFF_LIFESTEAL_DESC": "Heile dich um 20% des von dir verursachten Schadens",
     "BUFF_POWERBUFF_DESC": "+50% Schaden",
     "BUFF_ELEMENTALRINGSREADY_NAME": "Elementarringe bereit",
-    "BUFF_BANDITSKULL_NAME": "Banditenschädel"
+    "BUFF_BANDITSKULL_NAME": "Banditenschädel",
+    "BUFF_BANDITSKULL_DESC": "+10% Desperado-Schaden pro Stapel"
 }
