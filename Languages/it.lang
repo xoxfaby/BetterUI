@@ -18,5 +18,6 @@
     "BUFF_CLOAK_DESC": "Diventa Invisibile ai nemici.",
     "BUFF_CLOAKSPEED_NAME": "Mantello della Velocità",
     "BUFF_CLOAKSPEED_DESC": "+40% Velocità di Movimento.",
-    "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisibile"
+    "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisibile",
+    "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Armatura"
 }
