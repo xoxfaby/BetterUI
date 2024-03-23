@@ -14,5 +14,6 @@
     "BUFF_ATTACKSPEEDONCRIT_DESC": "+12% Velocità d'attacco (cumulabile)",
     "BUFF_BUGWINGS_NAME": "Ali d'insetto",
     "BUFF_BUGWINGS_DESC": "Spiega le ali e vola, +20% Velocità di Movimento",
-    "BUFF_CLOAK_NAME": "Mantello"
+    "BUFF_CLOAK_NAME": "Mantello",
+    "BUFF_CLOAK_DESC": "Diventa Invisibile ai nemici"
 }
