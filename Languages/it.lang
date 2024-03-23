@@ -21,5 +21,6 @@
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Invisibile",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Armatura",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Spara un bomba curva per il <style=cIsDamage>1100% di danno</style>.",
-    "BUFF_ELEPHANTARMORBOOST_NAME": "Boost dell'Armatura dell'Elefante"
+    "BUFF_ELEPHANTARMORBOOST_NAME": "Boost dell'Armatura dell'Elefante",
+    "BUFF_ENERGIZED_DESC": "+70% Velocità d'Attacco"
 }
