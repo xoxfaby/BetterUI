@@ -36,5 +36,6 @@
     "BUFF_ENERGIZED_NAME": "Aufgeladen",
     "BUFF_ENERGIZED_DESC": "+70% Angriffsgeschwindigkeit",
     "BUFF_FULLCRIT_DESC": "+100 % kritische Trefferchance",
-    "BUFF_HIDDENINVINCIBILITY_NAME": "Verborgene Unbesiegbarkeit"
+    "BUFF_HIDDENINVINCIBILITY_NAME": "Verborgene Unbesiegbarkeit",
+    "BUFF_HIDDENINVINCIBILITY_DESC": "Unverwundbar."
 }
