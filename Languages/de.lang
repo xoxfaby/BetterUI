@@ -55,5 +55,6 @@
     "BUFF_WARCRYBUFF_DESC": "+50% Bewegungsgeschw., +100% Angriffsgeschw.",
     "BUFF_TEAMWARCRY_NAME": "Team-Kriegsschrei",
     "BUFF_TEAMWARCRY_DESC": "+50% Bewegungsgeschw., +100% Angriffsgeschw.",
-    "BUFF_WHIPBOOST_NAME": "Peitschenschub"
+    "BUFF_WHIPBOOST_NAME": "Peitschenschub",
+    "BUFF_WHIPBOOST_DESC": "+30% Bewegungsgeschw."
 }
