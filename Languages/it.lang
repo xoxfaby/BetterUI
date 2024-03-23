@@ -10,5 +10,6 @@
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Spara un laser a corto raggio per <style=cIsDamage>2000% del danno</style>.",
     "BUFF_ARMORBOOST_NAME": "Boost di armatura",
     "BUFF_ARMORBOOST_DESC": "+200 Armatura",
-    "BUFF_ATTACKSPEEDONCRIT_NAME": "Velocità d'attacco sui critici"
+    "BUFF_ATTACKSPEEDONCRIT_NAME": "Velocità d'attacco sui critici",
+    "BUFF_ATTACKSPEEDONCRIT_DESC": "+12% Velocità d'attacco (cumulabile)"
 }
