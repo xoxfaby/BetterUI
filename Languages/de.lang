@@ -26,5 +26,6 @@
     "BUFF_AFFIXPOISON_DESC": "Erhalte die Macht eines Malachit-Elite : Shieße gelegentlich Seeigeln und schalte bei einem Treffer die Heilung aus.",
     "BUFF_ATTACKSPEEDONCRIT_NAME": "Angriffsgeschwindigkeit bei kritischem Treffer",
     "BUFF_ATTACKSPEEDONCRIT_DESC": "+12 % Angriffsgeschwindigkeit (stapelbar)",
-    "BUFF_BUGWINGS_NAME": "Käferflügel"
+    "BUFF_BUGWINGS_NAME": "Käferflügel",
+    "BUFF_BUGWINGS_DESC": "Wachse Flügeln und fliege, +20 % Bewegungsgeschwindigkeit"
 }
