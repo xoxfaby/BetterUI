@@ -17,5 +17,5 @@
     "BUFF_CLOAK_NAME": "Mantello",
     "BUFF_CLOAK_DESC": "Diventa Invisibile ai nemici.",
     "BUFF_CLOAKSPEED_NAME": "Mantello della Velocità",
-    "BUFF_CLOAKSPEED_DESC": "+40% Velocità di Movimento"
+    "BUFF_CLOAKSPEED_DESC": "+40% Velocità di Movimento."
 }
