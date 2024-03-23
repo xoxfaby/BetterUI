@@ -39,5 +39,6 @@
     "BUFF_HIDDENINVINCIBILITY_NAME": "Verborgene Unbesiegbarkeit",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Unverwundbar.",
     "BUFF_IMMUNE_NAME": "Immun",
-    "BUFF_IMMUNE_DESC": "Unverwundbar"
+    "BUFF_IMMUNE_DESC": "Unverwundbar",
+    "BUFF_CROCOREGEN_NAME": "Regenerativ"
 }
