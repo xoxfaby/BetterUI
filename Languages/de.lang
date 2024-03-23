@@ -32,5 +32,7 @@
     "BUFF_CLOAKSPEED_DESC": "+40% Bewegungsgeschwindigkeit.",
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Unsichtbar",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Elefantenrüstungsschub",
-    "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Rüstung"
+    "BUFF_ELEPHANTARMORBOOST_DESC": "+500 Rüstung",
+    "BUFF_ENERGIZED_NAME": "Aufgeladen",
+    "BUFF_ENERGIZED_DESC": "+70% Angriffsgeschwindigkeit"
 }
