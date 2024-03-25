@@ -42,5 +42,6 @@
     "BUFF_TEAMWARCRY_DESC": "+50% Velocità di Movimento , +100% Velocità d'Attacco",
     "BUFF_WHIPBOOST_DESC": "+30% Velocità di Movimento",
     "BUFF_LIFESTEAL_NAME": "Ruba Vita",
-    "BUFF_LIFESTEAL_DESC": "Cura del 20% del danno inflitto"
+    "BUFF_LIFESTEAL_DESC": "Cura del 20% del danno inflitto",
+    "BUFF_POWERBUFF_DESC": "+50% Danno"
 }
