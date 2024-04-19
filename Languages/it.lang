@@ -49,5 +49,6 @@
     "BUFF_BLEEDING_DESC": "Sanguinamento: Danno nel tempo (cumulabile)",
     "BUFF_SUPERBLEED_NAME": "Emorragia",
     "BUFF_SUPERBLEED_DESC": "Emorragia: Danno nel tempo (cumulabile)",
-    "BUFF_POISONED_NAME": "Veleno"
+    "BUFF_POISONED_NAME": "Veleno",
+    "BUFF_POISONED_DESC": "Veleno: Danno nel tempo (cumulabile)"
 }
