@@ -47,5 +47,6 @@
     "BUFF_BANDITSKULL_NAME": "Teschio del Bandito",
     "BUFF_BLEEDING_NAME": "Sanguinamento",
     "BUFF_BLEEDING_DESC": "Sanguinamento: Danno nel tempo (cumulabile)",
-    "BUFF_SUPERBLEED_NAME": "Emorragia"
+    "BUFF_SUPERBLEED_NAME": "Emorragia",
+    "BUFF_SUPERBLEED_DESC": "Emorragia: Danno nel tempo (cumulabile)"
 }
