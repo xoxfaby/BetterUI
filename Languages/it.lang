@@ -55,5 +55,6 @@
     "BUFF_DEATHMARK_DESC": "Aumenta il danno subito del 50% da tutte le fonti per 7 (+7 per stack) secondi",
     "BUFF_PULVERIZED_NAME": "Polverizzato",
     "BUFF_PULVERIZED_DESC": "Polverizzato: -60 Armatura",
-    "BUFF_WEAK_NAME": "Debole"
+    "BUFF_WEAK_NAME": "Debole",
+    "BUFF_WEAK_DESC": "Debole: -30 Armatura, Velocità di Movimento ridotta del 40%. Danno ridotto del 40% (Tossine Naturali)"
 }
