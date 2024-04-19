@@ -53,5 +53,6 @@
     "BUFF_POISONED_DESC": "Veleno: Danno nel tempo (cumulabile)",
     "BUFF_DEATHMARK_NAME": "Marchio della Morte",
     "BUFF_DEATHMARK_DESC": "Aumenta il danno subito del 50% da tutte le fonti per 7 (+7 per stack) secondi",
-    "BUFF_PULVERIZED_NAME": "Polverizzato"
+    "BUFF_PULVERIZED_NAME": "Polverizzato",
+    "BUFF_PULVERIZED_DESC": "Polverizzato: -60 Armatura"
 }
