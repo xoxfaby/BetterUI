@@ -44,5 +44,6 @@
     "BUFF_LIFESTEAL_NAME": "Ruba Vita",
     "BUFF_LIFESTEAL_DESC": "Cura del 20% del danno inflitto",
     "BUFF_POWERBUFF_DESC": "+50% Danno",
-    "BUFF_BANDITSKULL_NAME": "Teschio del Bandito"
+    "BUFF_BANDITSKULL_NAME": "Teschio del Bandito",
+    "BUFF_BLEEDING_NAME": "Sanguinamento"
 }
