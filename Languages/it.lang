@@ -56,5 +56,6 @@
     "BUFF_PULVERIZED_NAME": "Polverizzato",
     "BUFF_PULVERIZED_DESC": "Polverizzato: -60 Armatura",
     "BUFF_WEAK_NAME": "Debole",
-    "BUFF_WEAK_DESC": "Debole: -30 Armatura, Velocità di Movimento ridotta del 40%. Danno ridotto del 40% (Tossine Naturali)"
+    "BUFF_WEAK_DESC": "Debole: -30 Armatura, Velocità di Movimento ridotta del 40%. Danno ridotto del 40% (Tossine Naturali)",
+    "BUFF_CLAYGOO_DESC": "Velocità di Movimento ridotta del 50%"
 }
