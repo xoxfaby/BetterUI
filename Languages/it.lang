@@ -61,5 +61,6 @@
     "BUFF_SLOW50_NAME": "Rallentato del 50%",
     "BUFF_SLOW50_DESC": "Velocità di Movimento ridotta del 50%",
     "BUFF_SLOW60_NAME": "Rallentato del 60%",
-    "BUFF_SLOW60_DESC": "Velocità di Movimento ridotta del 60%"
+    "BUFF_SLOW60_DESC": "Velocità di Movimento ridotta del 60%",
+    "BUFF_SLOW80_NAME": "Rallentato dell'80%"
 }
