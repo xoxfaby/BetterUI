@@ -4,5 +4,6 @@
     "BETTERUI_DISCORD": "Dołącz do naszego Discord`a",
     "BETTERUI_BUGREPORT": "Zgłoś błąd",
     "BETTERUI_CLOSE_WINDOW": "Zamknij Okno",
-    "BETTERUI_WINDOW_LABEL": "Dzięki za korzystanie z BetterUI! Jeśli podoba ci się ten mod, rozważ wsparcie finansowe, by umożliwić mi kontynuowanie dalszych prac nad tym modem w możliwie najszerszym zakresie!\n\nW przyszłości to oknienko umożliwi ci edycję ustawień BetterUI!\n\nJednak do tego momentu możesz skonfigurować BetterUI za pomocą plików konfiguracyjnych.\n\nDo edycji tych plików zalecam użycie edytora konfiguracji r2modman."
+    "BETTERUI_WINDOW_LABEL": "Dzięki za korzystanie z BetterUI! Jeśli podoba ci się ten mod, rozważ wsparcie finansowe, by umożliwić mi kontynuowanie dalszych prac nad tym modem w możliwie najszerszym zakresie!\n\nW przyszłości to oknienko umożliwi ci edycję ustawień BetterUI!\n\nJednak do tego momentu możesz skonfigurować BetterUI za pomocą plików konfiguracyjnych.\n\nDo edycji tych plików zalecam użycie edytora konfiguracji r2modman.",
+    "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Wystrzeliwuje promień o krótkim zasięgu, zadający <style=cIsDamage>2000% obrażeń</style>."
 }
