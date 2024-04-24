@@ -58,5 +58,6 @@
     "BUFF_WARCRYBUFF_NAME": "Wzmacniający Okrzyk Wojenny",
     "BUFF_WARCRYBUFF_DESC": "+50% do Prędkości Ruchu, +100% do Prędkości Ataku",
     "BUFF_TEAMWARCRY_NAME": "Drużynowy Okrzyk Wojenny",
-    "BUFF_TEAMWARCRY_DESC": "+50% do Prędkości Ruchu, +100% do Prędkości Ataku"
+    "BUFF_TEAMWARCRY_DESC": "+50% do Prędkości Ruchu, +100% do Prędkości Ataku",
+    "BUFF_WHIPBOOST_NAME": "Efekt Wzmacniający Bicza"
 }
