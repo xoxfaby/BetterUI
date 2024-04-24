@@ -8,5 +8,6 @@
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "Wystrzeliwuje promień o krótkim zasięgu, zadający <style=cIsDamage>2000% obrażeń</style>.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "Wystrzeliwuje bombę łukową, zadając <style=cIsDamage>1100% obrażeń</style>.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Zniknij</style> w Otchłani, <style=cIsUtility>usuwając wszystkie efekty osłabiające</style> podczas poruszania się<style=cIsUtility> po łuku do przodu</style>.",
-    "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Wchłoń <style=cIsHealing>25% swojego zdrowia,</style> aby zyskać <style=cIsVoid>25% Korupcji </style>."
+    "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Wchłoń <style=cIsHealing>25% swojego zdrowia,</style> aby zyskać <style=cIsVoid>25% Korupcji </style>.",
+    "BUFF_AFFIXRED_NAME": "Płonący"
 }
