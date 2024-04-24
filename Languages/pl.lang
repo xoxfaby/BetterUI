@@ -51,5 +51,6 @@
     "BUFF_NOCOOLDOWNS_DESC": "Skrócono czas odnowienia umiejętności do 0.5 sek.",
     "BUFF_TESLAFIELD_NAME": "Pole Tesli",
     "BUFF_TESLAFIELD_DESC": "Strzelanie błyskawicami",
-    "BUFF_TONICBUFF_NAME": "Wzmocnienie Toniku"
+    "BUFF_TONICBUFF_NAME": "Wzmocnienie Toniku",
+    "BUFF_TONICBUFF_DESC": "*150% Max Zdrowia , *150% Max Tarczy , *170% Prędkości Ataku, *130% Prędkości Ruchu , +20 Pancerza , *200% Obrażeń podstawowych , *400% Regeneracji Zdrowia"
 }
