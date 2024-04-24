@@ -25,5 +25,6 @@
     "BUFF_ARMORBOOST_DESC": "+200 Pancerza",
     "BUFF_ATTACKSPEEDONCRIT_NAME": "Prędkość ataku przy trafieniu krytycznym",
     "BUFF_ATTACKSPEEDONCRIT_DESC": "+12% do szybkości ataku ( kumuluje się)",
-    "BUFF_BUGWINGS_NAME": "Skrzydła Robaka"
+    "BUFF_BUGWINGS_NAME": "Skrzydła Robaka",
+    "BUFF_BUGWINGS_DESC": "Rozwiń skrzydła i leć, +20% do szybkości ruchu"
 }
