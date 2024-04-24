@@ -46,5 +46,6 @@
     "BUFF_CROCOREGEN_NAME": "Regeneracyjny",
     "BUFF_CROCOREGEN_DESC": "Zyskujesz regenerację zdrowia równą 10% maksymalnego zdrowia na  0,5 sek. ( kumuluje się)",
     "BUFF_MEDKITHEAL_NAME": "Uzdrawiający efekt Apteczki",
-    "BUFF_MEDKITHEAL_DESC": "Aktywacja apteczki"
+    "BUFF_MEDKITHEAL_DESC": "Aktywacja apteczki",
+    "BUFF_NOCOOLDOWNS_NAME": "Brak czasów odnawiania"
 }
