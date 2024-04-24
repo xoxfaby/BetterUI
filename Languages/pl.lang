@@ -10,5 +10,6 @@
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "<style=cIsUtility>Zniknij</style> w Otchłani, <style=cIsUtility>usuwając wszystkie efekty osłabiające</style> podczas poruszania się<style=cIsUtility> po łuku do przodu</style>.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Wchłoń <style=cIsHealing>25% swojego zdrowia,</style> aby zyskać <style=cIsVoid>25% Korupcji </style>.",
     "BUFF_AFFIXRED_NAME": "Płonący",
-    "BUFF_AFFIXRED_DESC": "Zyskujesz moc Płonącej Elity: Zostawiasz po sobie smugę ognia i nakładasz procentowe obrażenia od oparzeń przy trafieniu."
+    "BUFF_AFFIXRED_DESC": "Zyskujesz moc Płonącej Elity: Zostawiasz po sobie smugę ognia i nakładasz procentowe obrażenia od oparzeń przy trafieniu.",
+    "BUFF_AFFIXBLUE_NAME": "Przeciążeniowy"
 }
