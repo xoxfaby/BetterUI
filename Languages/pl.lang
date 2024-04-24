@@ -44,5 +44,6 @@
     "BUFF_IMMUNE_NAME": "Odporność",
     "BUFF_IMMUNE_DESC": "Niezniszczalny",
     "BUFF_CROCOREGEN_NAME": "Regeneracyjny",
-    "BUFF_CROCOREGEN_DESC": "Zyskujesz regenerację zdrowia równą 10% maksymalnego zdrowia na  0,5 sek. ( kumuluje się)"
+    "BUFF_CROCOREGEN_DESC": "Zyskujesz regenerację zdrowia równą 10% maksymalnego zdrowia na  0,5 sek. ( kumuluje się)",
+    "BUFF_MEDKITHEAL_NAME": "Uzdrawiający efekt Apteczki"
 }
