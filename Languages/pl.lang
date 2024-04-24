@@ -42,5 +42,6 @@
     "BUFF_HIDDENINVINCIBILITY_NAME": "Ukryta Niezniszczalność",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Niezniszczalny.",
     "BUFF_IMMUNE_NAME": "Odporność",
-    "BUFF_IMMUNE_DESC": "Niezniszczalny"
+    "BUFF_IMMUNE_DESC": "Niezniszczalny",
+    "BUFF_CROCOREGEN_NAME": "Regeneracyjny"
 }
