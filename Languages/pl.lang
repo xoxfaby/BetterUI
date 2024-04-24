@@ -49,5 +49,6 @@
     "BUFF_MEDKITHEAL_DESC": "Aktywacja apteczki",
     "BUFF_NOCOOLDOWNS_NAME": "Brak czasów odnawiania",
     "BUFF_NOCOOLDOWNS_DESC": "Skrócono czas odnowienia umiejętności do 0.5 sek.",
-    "BUFF_TESLAFIELD_NAME": "Pole Tesli"
+    "BUFF_TESLAFIELD_NAME": "Pole Tesli",
+    "BUFF_TESLAFIELD_DESC": "Strzelanie błyskawicami"
 }
