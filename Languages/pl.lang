@@ -30,5 +30,6 @@
     "BUFF_CLOAK_NAME": "Kamuflaż",
     "BUFF_CLOAK_DESC": "Stajesz się niewidzialny dla wrogów.",
     "BUFF_CLOAKSPEED_NAME": "Prędkość Kamuflowania",
-    "BUFF_CLOAKSPEED_DESC": "+40% do szybkości ruchu."
+    "BUFF_CLOAKSPEED_DESC": "+40% do szybkości ruchu.",
+    "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "Kamuflaż Celestynowy"
 }
