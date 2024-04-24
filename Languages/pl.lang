@@ -55,5 +55,6 @@
     "BUFF_TONICBUFF_DESC": "*150% Max Zdrowia , *150% Max Tarczy , *170% Prędkości Ataku, *130% Prędkości Ruchu , +20 Pancerza , *200% Obrażeń podstawowych , *400% Regeneracji Zdrowia",
     "BUFF_WARBANNER_NAME": "Baner wojenny",
     "BUFF_WARBANNER_DESC": "+30% do Prędkości Ruchu, +30% do Prędkości Ataku",
-    "BUFF_WARCRYBUFF_NAME": "Wzmacniający Okrzyk Wojenny"
+    "BUFF_WARCRYBUFF_NAME": "Wzmacniający Okrzyk Wojenny",
+    "BUFF_WARCRYBUFF_DESC": "+50% do Prędkości Ruchu, +100% do Prędkości Ataku"
 }
