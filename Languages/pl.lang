@@ -36,5 +36,6 @@
     "BUFF_ELEPHANTARMORBOOST_NAME": "Wzmocnienie Pancerza Słonia",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 do Pancerza",
     "BUFF_ENERGIZED_NAME": "Pobudzony",
-    "BUFF_ENERGIZED_DESC": "+70% do szybkości ataku"
+    "BUFF_ENERGIZED_DESC": "+70% do szybkości ataku",
+    "BUFF_FULLCRIT_NAME": "Crit'y na Full'a"
 }
