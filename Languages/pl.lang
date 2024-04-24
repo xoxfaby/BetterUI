@@ -20,5 +20,6 @@
     "BUFF_AFFIXHAUNTED_NAME": "Celestynowy",
     "BUFF_AFFIXHAUNTED_DESC": "Zyskujesz moc Celestynowej Elity: Zamaskuj pobliskich sojuszników i nałóż 80% spowolnienia przy trafieniu.",
     "BUFF_AFFIXLUNAR_NAME": "Udoskonalony",
-    "BUFF_AFFIXLUNAR_DESC": "Zyskujesz moc Udoskonalonej Elity: Okaleczenie przy trafieniu, okazjonalnie wystrzeliwuje pięć bomb we wrogów, zyskujesz o 30% zwiększoną prędkość ruchu i 25% maksymalnego hp, a całe zdrowie zostaje zastąpione tarczą."
+    "BUFF_AFFIXLUNAR_DESC": "Zyskujesz moc Udoskonalonej Elity: Okaleczenie przy trafieniu, okazjonalnie wystrzeliwuje pięć bomb we wrogów, zyskujesz o 30% zwiększoną prędkość ruchu i 25% maksymalnego hp, a całe zdrowie zostaje zastąpione tarczą.",
+    "BUFF_ARMORBOOST_NAME": "Wzmocnienie pancerza"
 }
