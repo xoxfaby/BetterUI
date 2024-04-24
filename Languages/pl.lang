@@ -22,5 +22,6 @@
     "BUFF_AFFIXLUNAR_NAME": "Udoskonalony",
     "BUFF_AFFIXLUNAR_DESC": "Zyskujesz moc Udoskonalonej Elity: Okaleczenie przy trafieniu, okazjonalnie wystrzeliwuje pięć bomb we wrogów, zyskujesz o 30% zwiększoną prędkość ruchu i 25% maksymalnego hp, a całe zdrowie zostaje zastąpione tarczą.",
     "BUFF_ARMORBOOST_NAME": "Wzmocnienie pancerza",
-    "BUFF_ARMORBOOST_DESC": "+200 Pancerza"
+    "BUFF_ARMORBOOST_DESC": "+200 Pancerza",
+    "BUFF_ATTACKSPEEDONCRIT_NAME": "Prędkość ataku przy trafieniu krytycznym"
 }
