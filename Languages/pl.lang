@@ -35,5 +35,6 @@
     "BUFF_AFFIXHAUNTEDRECIPIENT_DESC": "Niewidzialny",
     "BUFF_ELEPHANTARMORBOOST_NAME": "Wzmocnienie Pancerza Słonia",
     "BUFF_ELEPHANTARMORBOOST_DESC": "+500 do Pancerza",
-    "BUFF_ENERGIZED_NAME": "Pobudzony"
+    "BUFF_ENERGIZED_NAME": "Pobudzony",
+    "BUFF_ENERGIZED_DESC": "+70% do szybkości ataku"
 }
