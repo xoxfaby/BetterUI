@@ -16,5 +16,6 @@
     "BUFF_AFFIXWHITE_NAME": "Lodowaty",
     "BUFF_AFFIXWHITE_DESC": "Zyskujesz moc Lodowatej Elity: Po śmierci pozostawia lodową eksplozję, która po trafieniu spowalnia przeciwników o 80%.",
     "BUFF_AFFIXPOISON_NAME": "Malachitowy",
-    "BUFF_AFFIXPOISON_DESC": "Zyskujesz moc Malachitowej Elity: strzelaj do okazjonalnych jeżowców i nakładaj blokadę leczenia przy trafieniu."
+    "BUFF_AFFIXPOISON_DESC": "Zyskujesz moc Malachitowej Elity: strzelaj do okazjonalnych jeżowców i nakładaj blokadę leczenia przy trafieniu.",
+    "BUFF_AFFIXHAUNTED_NAME": "Celestynowy"
 }
