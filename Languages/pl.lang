@@ -28,5 +28,6 @@
     "BUFF_BUGWINGS_NAME": "Skrzydła Robaka",
     "BUFF_BUGWINGS_DESC": "Rozwiń skrzydła i leć, +20% do szybkości ruchu",
     "BUFF_CLOAK_NAME": "Kamuflaż",
-    "BUFF_CLOAK_DESC": "Stajesz się niewidzialny dla wrogów."
+    "BUFF_CLOAK_DESC": "Stajesz się niewidzialny dla wrogów.",
+    "BUFF_CLOAKSPEED_NAME": "Prędkość Kamuflowania"
 }
