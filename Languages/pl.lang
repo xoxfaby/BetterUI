@@ -15,5 +15,6 @@
     "BUFF_AFFIXBLUE_DESC": "Zyskujesz moc Przeciążającej Elity: Ataki eksplodują z opóźnieniem, a 50% zdrowia zostaje zastąpione tarczą.",
     "BUFF_AFFIXWHITE_NAME": "Lodowaty",
     "BUFF_AFFIXWHITE_DESC": "Zyskujesz moc Lodowatej Elity: Po śmierci pozostawia lodową eksplozję, która po trafieniu spowalnia przeciwników o 80%.",
-    "BUFF_AFFIXPOISON_NAME": "Malachitowy"
+    "BUFF_AFFIXPOISON_NAME": "Malachitowy",
+    "BUFF_AFFIXPOISON_DESC": "Zyskujesz moc Malachitowej Elity: strzelaj do okazjonalnych jeżowców i nakładaj blokadę leczenia przy trafieniu."
 }
