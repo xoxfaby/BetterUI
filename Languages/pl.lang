@@ -41,5 +41,6 @@
     "BUFF_FULLCRIT_DESC": "+100% szans na trafienie krytyczne",
     "BUFF_HIDDENINVINCIBILITY_NAME": "Ukryta Niezniszczalność",
     "BUFF_HIDDENINVINCIBILITY_DESC": "Niezniszczalny.",
-    "BUFF_IMMUNE_NAME": "Odporność"
+    "BUFF_IMMUNE_NAME": "Odporność",
+    "BUFF_IMMUNE_DESC": "Niezniszczalny"
 }
