@@ -11,5 +11,6 @@
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "Wchłoń <style=cIsHealing>25% swojego zdrowia,</style> aby zyskać <style=cIsVoid>25% Korupcji </style>.",
     "BUFF_AFFIXRED_NAME": "Płonący",
     "BUFF_AFFIXRED_DESC": "Zyskujesz moc Płonącej Elity: Zostawiasz po sobie smugę ognia i nakładasz procentowe obrażenia od oparzeń przy trafieniu.",
-    "BUFF_AFFIXBLUE_NAME": "Przeciążeniowy"
+    "BUFF_AFFIXBLUE_NAME": "Przeciążeniowy",
+    "BUFF_AFFIXBLUE_DESC": "Zyskujesz moc Przeciążającej Elity: Ataki eksplodują z opóźnieniem, a 50% zdrowia zostaje zastąpione tarczą."
 }
