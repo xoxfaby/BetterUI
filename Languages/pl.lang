@@ -18,5 +18,6 @@
     "BUFF_AFFIXPOISON_NAME": "Malachitowy",
     "BUFF_AFFIXPOISON_DESC": "Zyskujesz moc Malachitowej Elity: strzelaj do okazjonalnych jeżowców i nakładaj blokadę leczenia przy trafieniu.",
     "BUFF_AFFIXHAUNTED_NAME": "Celestynowy",
-    "BUFF_AFFIXHAUNTED_DESC": "Zyskujesz moc Celestynowej Elity: Zamaskuj pobliskich sojuszników i nałóż 80% spowolnienia przy trafieniu."
+    "BUFF_AFFIXHAUNTED_DESC": "Zyskujesz moc Celestynowej Elity: Zamaskuj pobliskich sojuszników i nałóż 80% spowolnienia przy trafieniu.",
+    "BUFF_AFFIXLUNAR_NAME": "Udoskonalony"
 }
