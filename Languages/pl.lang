@@ -13,5 +13,6 @@
     "BUFF_AFFIXRED_DESC": "Zyskujesz moc Płonącej Elity: Zostawiasz po sobie smugę ognia i nakładasz procentowe obrażenia od oparzeń przy trafieniu.",
     "BUFF_AFFIXBLUE_NAME": "Przeciążeniowy",
     "BUFF_AFFIXBLUE_DESC": "Zyskujesz moc Przeciążającej Elity: Ataki eksplodują z opóźnieniem, a 50% zdrowia zostaje zastąpione tarczą.",
-    "BUFF_AFFIXWHITE_NAME": "Lodowaty"
+    "BUFF_AFFIXWHITE_NAME": "Lodowaty",
+    "BUFF_AFFIXWHITE_DESC": "Zyskujesz moc Lodowatej Elity: Po śmierci pozostawia lodową eksplozję, która po trafieniu spowalnia przeciwników o 80%."
 }
