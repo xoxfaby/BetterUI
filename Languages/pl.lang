@@ -66,5 +66,6 @@
     "BUFF_POWERBUFF_NAME": "Wzmocnienie Ataku",
     "BUFF_POWERBUFF_DESC": "50% do zadawanych obrażeń",
     "BUFF_ELEMENTALRINGSREADY_NAME": "Pierścienie Żywiołów - gotowe",
-    "BUFF_ELEMENTALRINGSREADY_DESC": "Efekt Opaski Runald'a i/lub Opaski Kjaro może zostać aktywowany"
+    "BUFF_ELEMENTALRINGSREADY_DESC": "Efekt Opaski Runald'a i/lub Opaski Kjaro może zostać aktywowany",
+    "BUFF_BANDITSKULL_NAME": "Czaszka Bandyty"
 }
