@@ -75,5 +75,6 @@
     "BUFF_ONFIRE_DESC": "Spalenie: Obrażenia zadawane wraz z upływem czasu i regeneracja zdrowia ustawiona na 0. Uwaga: Ten efekt osłabienia wydaje się kumulować z Zapłonem, ale w rzeczywistości zadaje obrażenia i liczy się osobno do Znaku Śmierci.| ( kumuluje się)",
     "BUFF_BLEEDING_NAME": "Krwawienie",
     "BUFF_BLEEDING_DESC": "Krwawienie: Obrażenia zadawane wraz z upływem czasu (kumuluje się)",
-    "BUFF_SUPERBLEED_NAME": "Krwotok"
+    "BUFF_SUPERBLEED_NAME": "Krwotok",
+    "BUFF_SUPERBLEED_DESC": "Krwotok: Obrażenia zadawane wraz z upływem czasu (kumuluje się)"
 }
