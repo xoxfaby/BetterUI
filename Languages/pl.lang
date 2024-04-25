@@ -72,5 +72,6 @@
     "BUFF_LASERTURBINEKILLCHARGE_NAME": "Licznik Zabójstw Dyskiem Rezonansu",
     "BUFF_LASERTURBINEKILLCHARGE_DESC": "Zyskujesz stack za każde zabójstwo, utrzymujący się przez 7 sek.  Przy 4 stackach Dysk Rezonansu zostaje wystrzelony, resetując stacki.",
     "BUFF_ONFIRE_NAME": "Spalanie",
-    "BUFF_ONFIRE_DESC": "Spalenie: Obrażenia zadawane wraz z upływem czasu i regeneracja zdrowia ustawiona na 0. Uwaga: Ten efekt osłabienia wydaje się kumulować z Zapłonem, ale w rzeczywistości zadaje obrażenia i liczy się osobno do Znaku Śmierci.| ( kumuluje się)"
+    "BUFF_ONFIRE_DESC": "Spalenie: Obrażenia zadawane wraz z upływem czasu i regeneracja zdrowia ustawiona na 0. Uwaga: Ten efekt osłabienia wydaje się kumulować z Zapłonem, ale w rzeczywistości zadaje obrażenia i liczy się osobno do Znaku Śmierci.| ( kumuluje się)",
+    "BUFF_BLEEDING_NAME": "Krwawienie"
 }
