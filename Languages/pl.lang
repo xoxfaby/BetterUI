@@ -65,5 +65,6 @@
     "BUFF_LIFESTEAL_DESC": "Leczy za 20% zadanych przez ciebie obrażeń",
     "BUFF_POWERBUFF_NAME": "Wzmocnienie Ataku",
     "BUFF_POWERBUFF_DESC": "50% do zadawanych obrażeń",
-    "BUFF_ELEMENTALRINGSREADY_NAME": "Pierścienie Żywiołów - gotowe"
+    "BUFF_ELEMENTALRINGSREADY_NAME": "Pierścienie Żywiołów - gotowe",
+    "BUFF_ELEMENTALRINGSREADY_DESC": "Efekt Opaski Runald'a i/lub Opaski Kjaro może zostać aktywowany"
 }
