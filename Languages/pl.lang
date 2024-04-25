@@ -85,5 +85,6 @@
     "BUFF_MERCEXPOSE_DESC": "Odsłonięcie: Trafienie odsłoniętych wrogów skraca czas odnowienia wszystkich umiejętności o 1 sek. i zadaje dodatkowe +350% obrażeń",
     "BUFF_DEATHMARK_NAME": "Znak Śmierci",
     "BUFF_DEATHMARK_DESC": "Zwiększa otrzymywane obrażenia ze wszystkich źródeł o 50% na 7 sekund (+7 za każdy stack)",
-    "BUFF_PULVERIZEBUILDUP_NAME": "Sproszkowane osad"
+    "BUFF_PULVERIZEBUILDUP_NAME": "Sproszkowane osad",
+    "BUFF_PULVERIZEBUILDUP_DESC": "Sproszkowane osad: po uzyskaniu 5 stacków nakłada Sproszkowane (kumuluje się)"
 }
