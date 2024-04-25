@@ -82,5 +82,6 @@
     "BUFF_BLIGHT_NAME": "Zaraza",
     "BUFF_BLIGHT_DESC": "Zaraza: Obrażenia zadawane wraz z upływem czasu (kumuluje się)",
     "BUFF_MERCEXPOSE_NAME": "Odsłonięcie",
-    "BUFF_MERCEXPOSE_DESC": "Odsłonięcie: Trafienie odsłoniętych wrogów skraca czas odnowienia wszystkich umiejętności o 1 sek. i zadaje dodatkowe +350% obrażeń"
+    "BUFF_MERCEXPOSE_DESC": "Odsłonięcie: Trafienie odsłoniętych wrogów skraca czas odnowienia wszystkich umiejętności o 1 sek. i zadaje dodatkowe +350% obrażeń",
+    "BUFF_DEATHMARK_NAME": "Znak Śmierci"
 }
