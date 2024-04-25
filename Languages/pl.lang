@@ -69,5 +69,6 @@
     "BUFF_ELEMENTALRINGSREADY_DESC": "Efekt Opaski Runald'a i/lub Opaski Kjaro może zostać aktywowany",
     "BUFF_BANDITSKULL_NAME": "Czaszka Bandyty",
     "BUFF_BANDITSKULL_DESC": "+10% obrażeń do umiejętności Desperado na stack",
-    "BUFF_LASERTURBINEKILLCHARGE_NAME": "Licznik Zabójstw Dyskiem Rezonansu"
+    "BUFF_LASERTURBINEKILLCHARGE_NAME": "Licznik Zabójstw Dyskiem Rezonansu",
+    "BUFF_LASERTURBINEKILLCHARGE_DESC": "Zyskujesz stack za każde zabójstwo, utrzymujący się przez 7 sek.  Przy 4 stackach Dysk Rezonansu zostaje wystrzelony, resetując stacki."
 }
