@@ -63,5 +63,6 @@
     "BUFF_WHIPBOOST_DESC": "+30% do Prędkości Ruchu",
     "BUFF_LIFESTEAL_NAME": "Kradzież Życia",
     "BUFF_LIFESTEAL_DESC": "Leczy za 20% zadanych przez ciebie obrażeń",
-    "BUFF_POWERBUFF_NAME": "Wzmocnienie Ataku"
+    "BUFF_POWERBUFF_NAME": "Wzmocnienie Ataku",
+    "BUFF_POWERBUFF_DESC": "50% do zadawanych obrażeń"
 }
