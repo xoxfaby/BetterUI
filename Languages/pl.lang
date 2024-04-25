@@ -77,5 +77,6 @@
     "BUFF_BLEEDING_DESC": "Krwawienie: Obrażenia zadawane wraz z upływem czasu (kumuluje się)",
     "BUFF_SUPERBLEED_NAME": "Krwotok",
     "BUFF_SUPERBLEED_DESC": "Krwotok: Obrażenia zadawane wraz z upływem czasu (kumuluje się)",
-    "BUFF_POISONED_NAME": "Trucizna"
+    "BUFF_POISONED_NAME": "Trucizna",
+    "BUFF_POISONED_DESC": "Trucizna: Obrażenia zadawane wraz z upływem czasu"
 }
