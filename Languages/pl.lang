@@ -89,5 +89,7 @@
     "BUFF_PULVERIZEBUILDUP_DESC": "Sproszkowane osad: po uzyskaniu 5 stacków nakłada Sproszkowane (kumuluje się)",
     "BUFF_PULVERIZED_NAME": "Sproszkowany",
     "BUFF_PULVERIZED_DESC": "Sproszkowany: -60 Pancerza",
-    "BUFF_CRIPPLE_NAME": "Kalectwo"
+    "BUFF_CRIPPLE_NAME": "Kalectwo",
+    "BUFF_CRIPPLE_DESC": "Kalectwo: -20 Pancerza , o 50% zmniejszona Prędkość Ruchu",
+    "BUFF_WEAK_NAME": "Słaby"
 }
