@@ -87,5 +87,6 @@
     "BUFF_DEATHMARK_DESC": "Zwiększa otrzymywane obrażenia ze wszystkich źródeł o 50% na 7 sekund (+7 za każdy stack)",
     "BUFF_PULVERIZEBUILDUP_NAME": "Sproszkowane osad",
     "BUFF_PULVERIZEBUILDUP_DESC": "Sproszkowane osad: po uzyskaniu 5 stacków nakłada Sproszkowane (kumuluje się)",
-    "BUFF_PULVERIZED_NAME": "Sproszkowany"
+    "BUFF_PULVERIZED_NAME": "Sproszkowany",
+    "BUFF_PULVERIZED_DESC": "Sproszkowany: -60 Pancerza"
 }
