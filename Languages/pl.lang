@@ -60,5 +60,6 @@
     "BUFF_TEAMWARCRY_NAME": "Drużynowy Okrzyk Wojenny",
     "BUFF_TEAMWARCRY_DESC": "+50% do Prędkości Ruchu, +100% do Prędkości Ataku",
     "BUFF_WHIPBOOST_NAME": "Efekt Wzmacniający Bicza",
-    "BUFF_WHIPBOOST_DESC": "+30% do Prędkości Ruchu"
+    "BUFF_WHIPBOOST_DESC": "+30% do Prędkości Ruchu",
+    "BUFF_LIFESTEAL_NAME": "Kradzież Życia"
 }
