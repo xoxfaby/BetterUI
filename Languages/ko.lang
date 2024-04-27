@@ -26,7 +26,7 @@
     "BUFF_ARMORBOOST_NAME": "방어력 강화",
     "BUFF_ARMORBOOST_DESC": "방어력 +200",
     "BUFF_ATTACKSPEEDONCRIT_NAME": "치명타 시 공격 속도 증가",
-    "BUFF_ATTACKSPEEDONCRIT_DESC": "중첩당 공격 속도가 12% 증가합니다. (중첩 가능)",
+    "BUFF_ATTACKSPEEDONCRIT_DESC": "공격 속도가 +12% (중첩 가능)",
     "BUFF_BUGWINGS_NAME": "벌레 날개",
     "BUFF_BUGWINGS_DESC": "이동 속도 +20%의 날개",
     "BUFF_CLOAK_NAME": "은신",
