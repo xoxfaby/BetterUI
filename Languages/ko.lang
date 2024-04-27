@@ -91,7 +91,7 @@
     "BUFF_PULVERIZEBUILDUP_DESC": "5 중첩이 되면 분쇄 상태가 적용됩니다. (중첩 가능)",
     "BUFF_PULVERIZED_NAME": "분쇄",
     "BUFF_PULVERIZED_DESC": "방어력이 60 감소합니다.",
-    "BUFF_CRIPPLE_NAME": "장애",
+    "BUFF_CRIPPLE_NAME": "손상",
     "BUFF_CRIPPLE_DESC": "방어력이 20 감소하고 이동 속도도 50% 감소합니다.",
     "BUFF_WEAK_NAME": "약화",
     "BUFF_WEAK_DESC": "방어력이 30 감소하고 이동 속도 및 피해량이 40% 감소합니다.",
