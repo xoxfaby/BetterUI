@@ -150,5 +150,6 @@
     "BUFF_MEATREGENBOOST_NAME": "Zwiększona Regeneracja Mięsa",
     "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + aktualnyPoziom * 0.2f)",
     "BUFF_SLOW30_DESC": "-30% od prędkości ruchu",
-    "BUFF_BEARVOIDCOOLDOWN_NAME": "Bezpieczna Przestrzeń (Czas Odnawiania)"
+    "BUFF_BEARVOIDCOOLDOWN_NAME": "Bezpieczna Przestrzeń (Czas Odnawiania)",
+    "BUFF_BEARVOIDCOOLDOWN_DESC": "Bezpieczna Przestrzeń jest w trakcie odnawiania."
 }
