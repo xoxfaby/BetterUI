@@ -105,5 +105,6 @@
     "BUFF_SLOW80_DESC": "Prędkość Ruchu zmniejszona o 80%",
     "BUFF_NULLIFYSTACK_NAME": "Resetowanie Stacku",
     "BUFF_NULLIFYSTACK_DESC": "Resetuje Stack. Po uzyskaniu 3 stacków nakłada efekt Resetowania Stacku ( kumuluje się)",
-    "BUFF_NULLIFIED_NAME": "Obalony"
+    "BUFF_NULLIFIED_NAME": "Obalony",
+    "BUFF_NULLIFIED_DESC": "Obalony, prędkość ruchu zredukowana do 0"
 }
