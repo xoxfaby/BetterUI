@@ -118,5 +118,6 @@
     "BUFF_PERMANENTCURSE_NAME": "Permanentna Klątwa",
     "BUFF_PERMANENTCURSE_DESC": "Maksymalne zdrowie zostaje zmniejszone o współczynnik 1 + 0,01 * n, gdzie n to liczba stacków. Podczas otrzymywania obrażeń na Eclipse 8 sojusznicy zyskują liczbę stacków Permanentna Klątwa równą 40 * Obrażenia / Maksymalne Zdrowie, zaokrągloną w dół. Wszystkie stacki są usuwane na koniec każdego etapu i podczas wskrzeszania za pomocą Najlepszego Przyjaciela Dio, ale nie podczas używania Oczyszczającego Prysznica. | (kumuluje się)",
     "BUFF_OVERHEAT_NAME": "Przegrzanie",
-    "BUFF_OVERHEAT_DESC": "Przegrzanie: Zwiększa otrzymywane obrażenia od ognia"
+    "BUFF_OVERHEAT_DESC": "Przegrzanie: Zwiększa otrzymywane obrażenia od ognia",
+    "BUFF_LUNARSECONDARYROOT_NAME": "Korzeń Księżycowy"
 }
