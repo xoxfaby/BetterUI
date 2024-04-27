@@ -127,7 +127,7 @@
     "BETTERUI_TARGETS": "목표",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "붕괴중첩을 소모하여 300%의 피해를 입힙니다. 또한, 붕괴 중첩당 120%의 추가 피해를 입힙니다. (중첩 가능)",
     "BUFF_ENGISHIELD_NAME": "엔지니어 방패",
-    "BUFF_ENGISHIELD_DESC": "현재 보호막에 100%를 얻으며, 피격 시 넉백되지 않습니다.",
+    "BUFF_ENGISHIELD_DESC": "보호막 +100%, 피격 시 밀쳐내기 없음",
     "BUFF_LUNARSHELL_NAME": "루나 쉴드",
     "BUFF_LUNARSHELL_DESC": "최대 체력의 10% 이상의 피해를 받지 않습니다.",
     "BUFF_VOIDFOGMILD_NAME": "보이드 안개 (약함)",
