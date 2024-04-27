@@ -58,7 +58,7 @@
     "BUFF_WARBANNER_NAME": "전쟁 깃발",
     "BUFF_WARBANNER_DESC": "이동 속도 및 공격 속도 + 30%",
     "BUFF_WARCRYBUFF_NAME": "전투 함성",
-    "BUFF_WARCRYBUFF_DESC": "이동 속도가 50%, 공격 속도가 100% 증가합니다.",
+    "BUFF_WARCRYBUFF_DESC": "이동 속도 + 50%, 공격 속도 + 100%",
     "BUFF_TEAMWARCRY_NAME": "팀 전투 함성",
     "BUFF_TEAMWARCRY_DESC": "이동 속도가 50%, 공격 속도가 100% 증가합니다.",
     "BUFF_WHIPBOOST_NAME": "채찍 부스터",
