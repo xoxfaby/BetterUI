@@ -111,5 +111,6 @@
     "BUFF_ENTANGLE_DESC": "Korzeń: Prędkość ruchu zredukowana do 0",
     "BUFF_FRUITING_NAME": "Owocowanie",
     "BUFF_FRUITING_DESC": "Pozostawia od 2 do 8 owoców po śmierci",
-    "BUFF_HEALINGDISABLED_NAME": "Leczenie wyłączone"
+    "BUFF_HEALINGDISABLED_NAME": "Leczenie wyłączone",
+    "BUFF_HEALINGDISABLED_DESC": "Leczenie wyłączone"
 }
