@@ -76,7 +76,7 @@
     "BUFF_ONFIRE_NAME": "화상",
     "BUFF_ONFIRE_DESC": "화상: 지속 피해 및 기본 체력 재생량이 0이 됩니다. 참고: 이 디버프는 점화와 함께 쌓이는 것처럼 보이지만 실제로는 데미지를 처리하고 죽음의 표식 쪽으로 카운트 됩니다. (중첩 가능)",
     "BUFF_BLEEDING_NAME": "출혈",
-    "BUFF_BLEEDING_DESC": "지속 피해를 받습니다. (중첩 가능)",
+    "BUFF_BLEEDING_DESC": "출혈: 지속 피해를 받습니다. (중첩 가능)",
     "BUFF_SUPERBLEED_NAME": "일혈",
     "BUFF_SUPERBLEED_DESC": "지속 피해를 받습니다. (중첩 가능)",
     "BUFF_POISONED_NAME": "독",
