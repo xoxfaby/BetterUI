@@ -96,5 +96,6 @@
     "BUFF_BEETLEJUICE_NAME": "Sok z Żuka",
     "BUFF_BEETLEJUICE_DESC": "-5% od finalnej Prędkości Ruchu -5% Obrażeń Postaci | -5% od finalnej Prędkości Ataku | (kumuluje się)",
     "BUFF_CLAYGOO_NAME": "Smoła",
-    "BUFF_CLAYGOO_DESC": "Prędkość Ruchu zmniejszona o 50%"
+    "BUFF_CLAYGOO_DESC": "Prędkość Ruchu zmniejszona o 50%",
+    "BUFF_SLOW50_NAME": "Wolniejszy o 50%"
 }
