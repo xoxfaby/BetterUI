@@ -186,7 +186,7 @@
     "BUFF_PRIMARYSKILLSHURIKENBUFF_DESC": "주 무기를 사용할 때 표창을 날린며, 시간에 따라 충전됩니다. (중첩 가능)",
     "BUFF_STRONGERBURN_NAME": "점화",
     "BUFF_STRONGERBURN_DESC": "화상 효과의 강화 버전입니다. 지속 피해 및 기본 체력 재생력이 사라집니다.",
-    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "Void Crab Void Void Wipe Fog",
+    "BUFF_VOIDRAIDCRABWARDWIPEFOG_NAME": "공허 크랩 공허 공허 안개 지우기",
     "BUFF_VOIDRAIDCRABWARDWIPEFOG_DESC": "화면이 어두워지며 적은 양의 피해를 입습니다. 시간이 지날수록 받는 피해가 증가합니다.",
     "BUFF_VOIDSURVIVORCORRUPTMODE_NAME": "타락한 공허 괴물 모드",
     "BUFF_VOIDSURVIVORCORRUPTMODE_DESC": "능력들이 더 공격적인 형태로 변화합니다.",
