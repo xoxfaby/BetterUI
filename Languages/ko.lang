@@ -82,7 +82,7 @@
     "BUFF_POISONED_NAME": "독",
     "BUFF_POISONED_DESC": "독: 지속 피해를 받습니다. (중첩 가능)",
     "BUFF_BLIGHT_NAME": "역병",
-    "BUFF_BLIGHT_DESC": "지속 피해를 받습니다. (중첩 가능)",
+    "BUFF_BLIGHT_DESC": "역병: 지속 피해를 받습니다. (중첩 가능)",
     "BUFF_MERCEXPOSE_NAME": "노출",
     "BUFF_MERCEXPOSE_DESC": "노출된 적을 공격하면 모든 기술 재사용 대기시간이 1.0초 감소하고 350%의 추가 피해를 입힙니다.",
     "BUFF_DEATHMARK_NAME": "죽음의 표식",
