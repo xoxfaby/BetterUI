@@ -134,5 +134,6 @@
     "BUFF_BODYARMOR_NAME": "Kamizelka Kuloodporna",
     "BUFF_BODYARMOR_DESC": "Blokuje następny atak przeciwnika, znika po użyciu.",
     "BUFF_DEAFENED_NAME": "Ogłuszony",
-    "BUFF_DEAFENED_DESC": "Głuchy."
+    "BUFF_DEAFENED_DESC": "Głuchy.",
+    "BUFF_ENGITEAMSHIELD_NAME": "Tarcza Engiego (Drużyna)"
 }
