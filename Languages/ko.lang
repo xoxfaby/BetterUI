@@ -48,7 +48,7 @@
     "BUFF_CROCOREGEN_NAME": "재생",
     "BUFF_CROCOREGEN_DESC": "최대 체력의 10%에 해당하는 체력 재생을 0.5초간 얻습니다. (중첩 가능)",
     "BUFF_MEDKITHEAL_NAME": "의료 키트 회복",
-    "BUFF_MEDKITHEAL_DESC": "의료키트를 사용합니다.",
+    "BUFF_MEDKITHEAL_DESC": "의료 키트를 사용합니다.",
     "BUFF_NOCOOLDOWNS_NAME": "쿨타임 없음",
     "BUFF_NOCOOLDOWNS_DESC": "스킬의 쿨타임이 0.5초로 감소합니다.",
     "BUFF_TESLAFIELD_NAME": "테슬라 필드",
