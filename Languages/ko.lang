@@ -80,7 +80,7 @@
     "BUFF_SUPERBLEED_NAME": "출혈",
     "BUFF_SUPERBLEED_DESC": "출혈: 지속 피해를 받습니다. (중첩 가능)",
     "BUFF_POISONED_NAME": "독",
-    "BUFF_POISONED_DESC": "지속 피해를 받습니다. (중첩 가능)",
+    "BUFF_POISONED_DESC": "독: 지속 피해를 받습니다. (중첩 가능)",
     "BUFF_BLIGHT_NAME": "역병",
     "BUFF_BLIGHT_DESC": "지속 피해를 받습니다. (중첩 가능)",
     "BUFF_MERCEXPOSE_NAME": "노출",
