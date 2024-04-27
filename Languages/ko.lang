@@ -114,7 +114,7 @@
     "BUFF_FRUITING_NAME": "치유의 과일",
     "BUFF_FRUITING_DESC": "사망 시 2~8개의 치유의 과일을 소환",
     "BUFF_HEALINGDISABLED_NAME": "회복 불가",
-    "BUFF_HEALINGDISABLED_DESC": "모든 회복 효과가 비활성화 됩니다.",
+    "BUFF_HEALINGDISABLED_DESC": "모든 회복 효과 비활성화",
     "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "속성 반지 대기 시간",
     "BUFF_ELEMENTALRINGSCOOLDOWN_DESC": "루널드의 반지나 캬로의 반지가 발동될때 10중첩을 얻고 1초마다 1중첩씩 사라집니다. (중첩 가능)",
     "BUFF_PERMANENTCURSE_NAME": "영원한 저주",
