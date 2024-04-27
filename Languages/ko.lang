@@ -54,7 +54,7 @@
     "BUFF_TESLAFIELD_NAME": "테슬라 영역",
     "BUFF_TESLAFIELD_DESC": "번개를 발사",
     "BUFF_TONICBUFF_NAME": "토닉 버프",
-    "BUFF_TONICBUFF_DESC": "최대 체력 150%, 최대 보호막 150%, 공격 속도 170%, 이동 속도 130%, 방어력 +20, 기본 피해 200%, 체력 재생 400% 만큼 증가합니다.",
+    "BUFF_TONICBUFF_DESC": "최대 체력 +150%, 최대 보호막 +150%, 공격 속도 +170%, 이동 속도 +130%, 방어력 +20, 기본 피해 +200%, 체력 재생 +400%",
     "BUFF_WARBANNER_NAME": "전쟁 깃발",
     "BUFF_WARBANNER_DESC": "이동 속도 및 공격 속도가 30% 증가합니다.",
     "BUFF_WARCRYBUFF_NAME": "전투 함성",
