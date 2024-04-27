@@ -122,5 +122,6 @@
     "BUFF_LUNARSECONDARYROOT_NAME": "Korzeń Księżycowy",
     "BUFF_LUNARSECONDARYROOT_DESC": "Korzeń: Zmniejsza prędkość ruchu do 0 na 3 (+3 na stack) sekundy",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "Ruina",
-    "BUFF_LUNARDETONATIONCHARGE_DESC": "Zużywa stack ruin, zadając 300% obrażeń plus 120% obrażeń za każdy stack ruin (kumuluje się)"
+    "BUFF_LUNARDETONATIONCHARGE_DESC": "Zużywa stack ruin, zadając 300% obrażeń plus 120% obrażeń za każdy stack ruin (kumuluje się)",
+    "BUFF_ENGISHIELD_NAME": "Tarcza Engiego"
 }
