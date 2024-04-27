@@ -50,7 +50,7 @@
     "BUFF_MEDKITHEAL_NAME": "의료 키트 회복",
     "BUFF_MEDKITHEAL_DESC": "의료 키트 사용",
     "BUFF_NOCOOLDOWNS_NAME": "쿨타임 없음",
-    "BUFF_NOCOOLDOWNS_DESC": "스킬의 쿨타임이 0.5초로 감소합니다.",
+    "BUFF_NOCOOLDOWNS_DESC": "스킬의 쿨타임이 0.5초로 감소",
     "BUFF_TESLAFIELD_NAME": "테슬라 영역",
     "BUFF_TESLAFIELD_DESC": "전기를 발사합니다.",
     "BUFF_TONICBUFF_NAME": "토닉 버프",
