@@ -64,7 +64,7 @@
     "BUFF_WHIPBOOST_NAME": "채찍 부스터",
     "BUFF_WHIPBOOST_DESC": "이동 속도가 30% 증가합니다.",
     "BUFF_LIFESTEAL_NAME": "생명력 흡수",
-    "BUFF_LIFESTEAL_DESC": "입힌 피해량의 20%만큼 체력을 회복합니다.",
+    "BUFF_LIFESTEAL_DESC": "입힌 피해의 20%만큼 체력을 회복합니다.",
     "BUFF_POWERBUFF_NAME": "파워 버프",
     "BUFF_POWERBUFF_DESC": "입히는 피해량이 50% 증가합니다.",
     "BUFF_ELEMENTALRINGSREADY_NAME": "속성 반지 활성화",
