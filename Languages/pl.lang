@@ -109,5 +109,6 @@
     "BUFF_NULLIFIED_DESC": "Obalony, prędkość ruchu zredukowana do 0",
     "BUFF_ENTANGLE_NAME": "Oplątany",
     "BUFF_ENTANGLE_DESC": "Korzeń: Prędkość ruchu zredukowana do 0",
-    "BUFF_FRUITING_NAME": "Owocowanie"
+    "BUFF_FRUITING_NAME": "Owocowanie",
+    "BUFF_FRUITING_DESC": "Pozostawia od 2 do 8 owoców po śmierci"
 }
