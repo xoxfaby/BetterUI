@@ -125,7 +125,7 @@
     "BUFF_LUNARSECONDARYROOT_DESC": "3초 동안 이동 속도를 0으로 감소시킵니다. (중첩 가능)",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "붕괴",
     "BETTERUI_TARGETS": "목표",
-    "BUFF_LUNARDETONATIONCHARGE_DESC": "몰락 중첩을 소모하여 300%의 피해를 입힙니다. 또한, 몰락 중첩당 120%의 추가 피해를 입힙니다. (중첩 가능)",
+    "BUFF_LUNARDETONATIONCHARGE_DESC": "붕괴중첩을 소모하여 300%의 피해를 입힙니다. 또한, 붕괴 중첩당 120%의 추가 피해를 입힙니다. (중첩 가능)",
     "BUFF_ENGISHIELD_NAME": "엔지니어 방패",
     "BUFF_ENGISHIELD_DESC": "현재 보호막에 100%를 얻으며, 피격 시 넉백되지 않습니다.",
     "BUFF_LUNARSHELL_NAME": "달의 조개껍질",
