@@ -125,5 +125,6 @@
     "BUFF_LUNARDETONATIONCHARGE_DESC": "Zużywa stack ruin, zadając 300% obrażeń plus 120% obrażeń za każdy stack ruin (kumuluje się)",
     "BUFF_ENGISHIELD_NAME": "Tarcza Engiego",
     "BUFF_ENGISHIELD_DESC": "+100% do tarczy, nie jesteś odrzucany po otrzymaniu obrażeń",
-    "BUFF_LUNARSHELL_NAME": "Muszla Księżycowa"
+    "BUFF_LUNARSHELL_NAME": "Muszla Księżycowa",
+    "BUFF_LUNARSHELL_DESC": "Obrażenia nie mogą przekraczać 10% twojego maksymalnego zdrowia"
 }
