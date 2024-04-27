@@ -164,7 +164,7 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "특이점 반지가 재사용 대기 중입니다,",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "특이점 반지 (사용 가능)",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "특이점 반지 효과를 발동할 수 있습니다.",
-    "BUFF_ELITEEARTH_NAME": "그의 안도감",
+    "BUFF_ELITEEARTH_NAME": "그의 안도",
     "BUFF_ELITEEARTH_DESC": "수리하는 엘리트의 힘을 얻습니다: 30m 이내의 가장 가까운 동료를 초당 4회, 소지자 기본 공격력의 40%만큼 치유합니다.",
     "BUFF_ELITEVOID_NAME": "보이드 감염",
     "BUFF_ELITEVOID_DESC": "타격 시 붕괴하며 15초마다 1번의 공격을 방어합니다.",
