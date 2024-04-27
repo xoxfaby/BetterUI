@@ -28,7 +28,7 @@
     "BUFF_ATTACKSPEEDONCRIT_NAME": "치명타 시 공격 속도 증가",
     "BUFF_ATTACKSPEEDONCRIT_DESC": "중첩당 공격 속도가 12% 증가합니다. (중첩 가능)",
     "BUFF_BUGWINGS_NAME": "벌레 날개",
-    "BUFF_BUGWINGS_DESC": "이동 속도를 20% 증가시키는 날개가 돋아납니다.",
+    "BUFF_BUGWINGS_DESC": "이동 속도 +20%의 날개",
     "BUFF_CLOAK_NAME": "은신",
     "BUFF_CLOAK_DESC": "적으로부터 숨겨집니다.",
     "BUFF_CLOAKSPEED_NAME": "은신 속도",
