@@ -161,7 +161,7 @@
     "BUFF_BLINDED_NAME": "실명",
     "BUFF_BLINDED_DESC": "눈이 멀어 주변이 보이지 않습니다.",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "특이점 반지 (재사용 대기 중)",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "특이점 반지가 재사용 대기 중입니다,",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "특이점 반지 쿨타임",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "특이점 반지 (사용 가능)",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "특이점 반지 효과를 발동할 수 있습니다.",
     "BUFF_ELITEEARTH_NAME": "그의 안도",
