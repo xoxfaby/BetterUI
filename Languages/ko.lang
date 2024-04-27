@@ -66,7 +66,7 @@
     "BUFF_LIFESTEAL_NAME": "생명력 흡수",
     "BUFF_LIFESTEAL_DESC": "입힌 피해의 20%만큼 체력을 회복",
     "BUFF_POWERBUFF_NAME": "파워 버프",
-    "BUFF_POWERBUFF_DESC": "입히는 피해량이 50% 증가합니다.",
+    "BUFF_POWERBUFF_DESC": "데미지 +50%",
     "BUFF_ELEMENTALRINGSREADY_NAME": "속성 반지 활성화",
     "BUFF_ELEMENTALRINGSREADY_DESC": "루널드의 반지나 캬로의 반지 효과가 활성화 되어 있습니다.",
     "BUFF_BANDITSKULL_NAME": "도적 토큰",
