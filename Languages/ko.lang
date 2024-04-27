@@ -6,7 +6,7 @@
     "BETTERUI_BUGREPORT": "버그 보고하기",
     "BETTERUI_CLOSE_WINDOW": "창 닫기",
     "BETTERUI_MADEBY": "제작자 : XoXFaby",
-    "BETTERUI_WINDOW_LABEL": "BetterUI를 사용해주셔서 감사합니다! 만약 이 모드를 즐기신다면, 모드 개발자를 지원하기 위해 기부를 고려해주시면 감사하겠습니다. 이 기부로 모드가 더 많이 개발될 수 있습니다!\n\n차후에 이 창을 통해 BetterUI의 설정을 편집하실 수 있습니다!",
+    "BETTERUI_WINDOW_LABEL": "BetterUI를 사용해주셔서 감사합니다! 만약 이 모드를 즐기신다면, 모드 개발자를 지원하기 위해 기부를 고려해주시면 감사하겠습니다. 이 기부로 모드가 더 많이 개발될 수 있습니다!\n\n미래에는 이 창을 통해 BetterUI의 설정을 편집하실 수 있습니다!\n\n그 전까지는 Config를 통해 BetterUI를 편집할 수 있습니다.\n\nR2modman의 config editor 사용을 권장합니다.",
     "VOIDSURVIVOR_PRIMARY_ALT_DESCRIPTION": "<style=cIsDamage>2000%의 피해</style>를 입히는 단거리 광선을 발사합니다.",
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "<style=cIsDamage>1100%의 피해</style>를 입히는 폭발성 플라즈마 구체를 발사합니다.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "공허 속으로 <style=cIsUtility>사라지면서</style>, <style=cIsUtility>모든 디버프를 제거</style>하고 <style=cIsUtility>전방으로</style> 이동합니다.",
