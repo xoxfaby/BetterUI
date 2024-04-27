@@ -146,5 +146,6 @@
     "BUFF_LOADEROVERCHARGED_NAME": "Przeładowany Ładowacz",
     "BUFF_LOADEROVERCHARGED_DESC": "Jako Ładowacz, twój atak wręcz zadaje 2x obrażenia i ogłusza na 1 sekundę.",
     "BUFF_LOADERPYLONPOWERED_NAME": "Zasilany Pylon Ładowacza",
-    "BUFF_LOADERPYLONPOWERED_DESC": "Po trafieniu razi do 3 pobliskich wrogów w promieniu 20 m, zadając im 30% obrażeń."
+    "BUFF_LOADERPYLONPOWERED_DESC": "Po trafieniu razi do 3 pobliskich wrogów w promieniu 20 m, zadając im 30% obrażeń.",
+    "BUFF_MEATREGENBOOST_NAME": "Zwiększona Regeneracja Mięsa"
 }
