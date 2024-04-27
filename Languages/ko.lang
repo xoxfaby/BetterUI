@@ -16,7 +16,7 @@
     "BUFF_AFFIXBLUE_NAME": "두 타격 사이의 고요",
     "BUFF_AFFIXBLUE_DESC": "과전하 엘리트의 힘을 얻습니다: 일정 시간이 지난 후 공격이 폭발하여 주변 적에게 피해를 입히고, 체력의 50%가 보호막으로 대체됩니다.",
     "BUFF_AFFIXWHITE_NAME": "살을 에는 그녀의 포옹",
-    "BUFF_AFFIXWHITE_DESC": "빙하의 정예의 힘을 얻습니다: 사망 시 얼음 폭발을 일으키며 공격 시 적을 80% 감속시킵니다.",
+    "BUFF_AFFIXWHITE_DESC": "빙하의 엘리트 힘을 얻습니다: 사망 시 얼음 폭발을 일으키며 공격 시 적을 80% 감속시킵니다.",
     "BUFF_AFFIXPOISON_NAME": "은쿠하나의 응수",
     "BUFF_AFFIXPOISON_DESC": "공작석 정예의 힘을 얻습니다: 일정 간격으로 가시를 발사하며, 공격 시 회복 불가 상태를 부여합니다.",
     "BUFF_AFFIXHAUNTED_NAME": "유령 왕관",
