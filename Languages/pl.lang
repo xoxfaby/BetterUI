@@ -120,5 +120,6 @@
     "BUFF_OVERHEAT_NAME": "Przegrzanie",
     "BUFF_OVERHEAT_DESC": "Przegrzanie: Zwiększa otrzymywane obrażenia od ognia",
     "BUFF_LUNARSECONDARYROOT_NAME": "Korzeń Księżycowy",
-    "BUFF_LUNARSECONDARYROOT_DESC": "Korzeń: Zmniejsza prędkość ruchu do 0 na 3 (+3 na stack) sekundy"
+    "BUFF_LUNARSECONDARYROOT_DESC": "Korzeń: Zmniejsza prędkość ruchu do 0 na 3 (+3 na stack) sekundy",
+    "BUFF_LUNARDETONATIONCHARGE_NAME": "Ruina"
 }
