@@ -141,5 +141,6 @@
     "BUFF_ENRAGEANCIENTWISP_DESC": "+40% do szybkości ruchu.",
     "BUFF_GOLDEMPOWERED_NAME": "Wzmocnione Złoto",
     "BUFF_GOLDEMPOWERED_DESC": "+100% do zadawanych obrażeń",
-    "BUFF_LIGHTNINGSHIELD_NAME": "Tarcza Piorunów"
+    "BUFF_LIGHTNINGSHIELD_NAME": "Tarcza Piorunów",
+    "BUFF_LIGHTNINGSHIELD_DESC": "To wzmocnienie nie daje żadnego efektu."
 }
