@@ -30,7 +30,7 @@
     "BUFF_BUGWINGS_NAME": "벌레 날개",
     "BUFF_BUGWINGS_DESC": "이동 속도를 20% 증가시키는 날개가 돋아납니다.",
     "BUFF_CLOAK_NAME": "은신",
-    "BUFF_CLOAK_DESC": "보이지 않습니다.",
+    "BUFF_CLOAK_DESC": "적으로부터 숨겨집니다.",
     "BUFF_CLOAKSPEED_NAME": "은신 속도",
     "BUFF_CLOAKSPEED_DESC": "이동 속도가 40% 증가합니다.",
     "BUFF_AFFIXHAUNTEDRECIPIENT_NAME": "천상의 망토",
