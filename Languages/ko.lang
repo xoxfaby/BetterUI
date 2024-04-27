@@ -72,7 +72,7 @@
     "BUFF_BANDITSKULL_NAME": "도적 토큰",
     "BUFF_BANDITSKULL_DESC": "중첩 당 데스페라도 피해량이 10% 증가합니다. (중첩 가능)",
     "BUFF_LASERTURBINEKILLCHARGE_NAME": "공명 원반 킬 충전",
-    "BUFF_LASERTURBINEKILLCHARGE_DESC": "7초 동안 유지되는 처치당 중첩을 얻습니다. 4개의 중첩이 모이면 공명 디스크가 발사되어 모든 중첩이 초기화됩니다.",
+    "BUFF_LASERTURBINEKILLCHARGE_DESC": "7초 동안 유지되는 킬당 중첩을 얻습니다. 4개의 중첩이 모이면 공명 원반이 발사되며 모든 중첩이 초기화됩니다.",
     "BUFF_ONFIRE_NAME": "화상",
     "BUFF_ONFIRE_DESC": "지속 피해 및 기본 체력 재생량이 사라집니다. (중첩 가능)",
     "BUFF_BLEEDING_NAME": "출혈",
