@@ -101,7 +101,7 @@
     "BUFF_CLAYGOO_DESC": "이동 속도가 50% 감소합니다.",
     "BUFF_SLOW50_NAME": "50% 감속",
     "BUFF_SLOW50_DESC": "이동 속도가 50% 감소합니다.",
-    "BUFF_SLOW60_NAME": "감속",
+    "BUFF_SLOW60_NAME": "60% 감속",
     "BUFF_SLOW60_DESC": "이동 속도가 60% 감소합니다.",
     "BUFF_SLOW80_NAME": "감속",
     "BUFF_SLOW80_DESC": "이동 속도가 80% 감소합니다.",
