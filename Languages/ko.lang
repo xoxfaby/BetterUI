@@ -123,7 +123,7 @@
     "BUFF_OVERHEAT_DESC": "화상 피해의 지속시간이 늘어납니다.",
     "BUFF_LUNARSECONDARYROOT_NAME": "달의 뿌리",
     "BUFF_LUNARSECONDARYROOT_DESC": "3초 동안 이동 속도를 0으로 감소시킵니다. (중첩 가능)",
-    "BUFF_LUNARDETONATIONCHARGE_NAME": "몰락",
+    "BUFF_LUNARDETONATIONCHARGE_NAME": "붕괴",
     "BETTERUI_TARGETS": "목표",
     "BUFF_LUNARDETONATIONCHARGE_DESC": "몰락 중첩을 소모하여 300%의 피해를 입힙니다. 또한, 몰락 중첩당 120%의 추가 피해를 입힙니다. (중첩 가능)",
     "BUFF_ENGISHIELD_NAME": "엔지니어 방패",
