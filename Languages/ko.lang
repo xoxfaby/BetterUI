@@ -24,7 +24,7 @@
     "BUFF_AFFIXLUNAR_NAME": "공유된 설계",
     "BUFF_AFFIXLUNAR_DESC": "완벽한 엘리트의 힘을 얻습니다: 공격 시 적을 강타하여 이동 속도를 낮추고, 일정 간격으로 5개의 폭탄 발사, 이동 속도 30% 증가, 최대 체력의 25% 증가 및 모든 체력이 보호막으로 대체됩니다.",
     "BUFF_ARMORBOOST_NAME": "방어력 강화",
-    "BUFF_ARMORBOOST_DESC": "방어력이 200 증가합니다.",
+    "BUFF_ARMORBOOST_DESC": "방어력 +200",
     "BUFF_ATTACKSPEEDONCRIT_NAME": "치명타 시 공격 속도 증가",
     "BUFF_ATTACKSPEEDONCRIT_DESC": "중첩당 공격 속도가 12% 증가합니다. (중첩 가능)",
     "BUFF_BUGWINGS_NAME": "벌레 날개",
