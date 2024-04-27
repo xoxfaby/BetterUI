@@ -112,5 +112,6 @@
     "BUFF_FRUITING_NAME": "Owocowanie",
     "BUFF_FRUITING_DESC": "Pozostawia od 2 do 8 owoców po śmierci",
     "BUFF_HEALINGDISABLED_NAME": "Leczenie wyłączone",
-    "BUFF_HEALINGDISABLED_DESC": "Leczenie wyłączone"
+    "BUFF_HEALINGDISABLED_DESC": "Leczenie wyłączone",
+    "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "Czas Odnawiania Pierścieni Żywiołów"
 }
