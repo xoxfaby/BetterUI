@@ -130,5 +130,6 @@
     "BUFF_VOIDFOGMILD_NAME": "Mgła Pustki (Łagodna)",
     "BUFF_VOIDFOGMILD_DESC": "Zaciemnia twoje pole widzenia i z czasem zadaje coraz większe obrażenia. Pola Pustki: Obrażenia nie rosną z czasem.",
     "BUFF_VOIDFOGSTRONG_NAME": "Mgła Pustki (Silna)",
-    "BUFF_VOIDFOGSTRONG_DESC": "Zaciemnia twoje pole widzenia i z czasem zadaje coraz większe obrażenia."
+    "BUFF_VOIDFOGSTRONG_DESC": "Zaciemnia twoje pole widzenia i z czasem zadaje coraz większe obrażenia.",
+    "BUFF_BODYARMOR_NAME": "Kamizelka Kuloodporna"
 }
