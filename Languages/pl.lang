@@ -102,5 +102,6 @@
     "BUFF_SLOW60_NAME": "Wolniejszy o 60%",
     "BUFF_SLOW60_DESC": "Prędkość Ruchu zmniejszona o 60%",
     "BUFF_SLOW80_NAME": "Wolniejszy o 80%",
-    "BUFF_SLOW80_DESC": "Prędkość Ruchu zmniejszona o 80%"
+    "BUFF_SLOW80_DESC": "Prędkość Ruchu zmniejszona o 80%",
+    "BUFF_NULLIFYSTACK_NAME": "Resetowanie Stacku"
 }
