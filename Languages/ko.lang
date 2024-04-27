@@ -109,7 +109,7 @@
     "BUFF_NULLIFYSTACK_DESC": "3중첩 발동 시 무효화를 적용합니다. (중첩 가능)",
     "BUFF_NULLIFIED_NAME": "무효화",
     "BUFF_NULLIFIED_DESC": "이동 속도가 0으로 감소합니다.",
-    "BUFF_ENTANGLE_NAME": "구속",
+    "BUFF_ENTANGLE_NAME": "묶임",
     "BUFF_ENTANGLE_DESC": "이동 속도가 0으로 감소합니다.",
     "BUFF_FRUITING_NAME": "치유의 과일",
     "BUFF_FRUITING_DESC": "사망 시 2~8개의 치유의 과일이 떨어집니다.",
