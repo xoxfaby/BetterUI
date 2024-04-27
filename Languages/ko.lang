@@ -143,7 +143,7 @@
     "BUFF_ENRAGEANCIENTWISP_NAME": "고대 위습의 격노",
     "BUFF_ENRAGEANCIENTWISP_DESC": "이동 속도가 40% 증가합니다.",
     "BUFF_GOLDEMPOWERED_NAME": "황금 강화",
-    "BUFF_GOLDEMPOWERED_DESC": "입히는 피해가 100% 증가합니다.",
+    "BUFF_GOLDEMPOWERED_DESC": "데미지 + 100%",
     "BUFF_LIGHTNINGSHIELD_NAME": "번개 보호막",
     "BUFF_LIGHTNINGSHIELD_DESC": "알수 없는 버프",
     "BUFF_LOADEROVERCHARGED_NAME": "로더 과충전",
