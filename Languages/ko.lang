@@ -139,7 +139,7 @@
     "BUFF_DEAFENED_NAME": "청각 손실",
     "BUFF_DEAFENED_DESC": "들리지 않습니다.",
     "BUFF_ENGITEAMSHIELD_NAME": "엔지니어 방패 (팀)",
-    "BUFF_ENGITEAMSHIELD_DESC": "현재 보호막에 50%를 얻으며, 이동 속도가 30% 증가합니다.",
+    "BUFF_ENGITEAMSHIELD_DESC": "보호막 +50%, 이동 속도가 +30%",
     "BUFF_ENRAGEANCIENTWISP_NAME": "고대 위습의 격노",
     "BUFF_ENRAGEANCIENTWISP_DESC": "이동 속도가 40% 증가합니다.",
     "BUFF_GOLDEMPOWERED_NAME": "황금 강화",
