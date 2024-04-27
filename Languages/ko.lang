@@ -68,7 +68,7 @@
     "BUFF_POWERBUFF_NAME": "파워 버프",
     "BUFF_POWERBUFF_DESC": "데미지 +50%",
     "BUFF_ELEMENTALRINGSREADY_NAME": "속성 반지 활성화",
-    "BUFF_ELEMENTALRINGSREADY_DESC": "루널드의 반지나 캬로의 반지 효과가 활성화 되어 있습니다.",
+    "BUFF_ELEMENTALRINGSREADY_DESC": "루널드의 반지나 캬로의 반지 효과가 활성화 됨",
     "BUFF_BANDITSKULL_NAME": "도적 토큰",
     "BUFF_BANDITSKULL_DESC": "중첩 당 데스페라도 피해량이 10% 증가합니다. (중첩 가능)",
     "BUFF_LASERTURBINEKILLCHARGE_NAME": "공명 원반 킬 충전",
