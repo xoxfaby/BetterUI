@@ -145,7 +145,7 @@
     "BUFF_GOLDEMPOWERED_NAME": "황금 강화",
     "BUFF_GOLDEMPOWERED_DESC": "데미지 + 100%",
     "BUFF_LIGHTNINGSHIELD_NAME": "번개 보호막",
-    "BUFF_LIGHTNINGSHIELD_DESC": "알수 없는 버프",
+    "BUFF_LIGHTNINGSHIELD_DESC": "효과가 없는 버프.",
     "BUFF_LOADEROVERCHARGED_NAME": "로더 과충전",
     "BUFF_LOADEROVERCHARGED_DESC": "로더로서, 근접 공격이 2배의 피해를 주고 1초 동안 기절시킵니다.",
     "BUFF_LOADERPYLONPOWERED_NAME": "로더 철탑 강화",
