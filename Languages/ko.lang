@@ -154,7 +154,7 @@
     "BUFF_MEATREGENBOOST_DESC": "+ 재생력이 2(1 + 현재 레벨 *0.2)",
     "BUFF_SLOW30_NAME": "30% 감속",
     "BUFF_SLOW30_DESC": "이동 속도 - 30%",
-    "BUFF_BEARVOIDCOOLDOWN_NAME": "보호 공간 (재사용 대기 중)",
+    "BUFF_BEARVOIDCOOLDOWN_NAME": "보호 공간 (쿨타임)",
     "BUFF_BEARVOIDCOOLDOWN_DESC": "보호 공간이 재사용 대기 중입니다.",
     "BUFF_BEARVOIDREADY_NAME": "보호 공간 (사용 가능)",
     "BUFF_BEARVOIDREADY_DESC": "보호 공간이 다음 공격을 막고 재사용 대기 중이 됩니다.",
