@@ -113,5 +113,6 @@
     "BUFF_FRUITING_DESC": "Pozostawia od 2 do 8 owoców po śmierci",
     "BUFF_HEALINGDISABLED_NAME": "Leczenie wyłączone",
     "BUFF_HEALINGDISABLED_DESC": "Leczenie wyłączone",
-    "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "Czas Odnawiania Pierścieni Żywiołów"
+    "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "Czas Odnawiania Pierścieni Żywiołów",
+    "BUFF_ELEMENTALRINGSCOOLDOWN_DESC": "Zyskujesz 10 ładunków kumulacji po aktywacji Opaski Runald'a lub Opaski Kjaro, tracąc 1 ładunek kumulacji co sekundę. Zapobiega aktywacji Opaski Runalda lub Opaski Kjaro. ( kumuluje się)"
 }
