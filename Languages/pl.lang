@@ -132,5 +132,6 @@
     "BUFF_VOIDFOGSTRONG_NAME": "Mgła Pustki (Silna)",
     "BUFF_VOIDFOGSTRONG_DESC": "Zaciemnia twoje pole widzenia i z czasem zadaje coraz większe obrażenia.",
     "BUFF_BODYARMOR_NAME": "Kamizelka Kuloodporna",
-    "BUFF_BODYARMOR_DESC": "Blokuje następny atak przeciwnika, znika po użyciu."
+    "BUFF_BODYARMOR_DESC": "Blokuje następny atak przeciwnika, znika po użyciu.",
+    "BUFF_DEAFENED_NAME": "Głuchy"
 }
