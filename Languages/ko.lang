@@ -353,5 +353,6 @@
     "SKILL_SHARD_NAME": "파편",
     "SKILL_MAELSTROM_NAME": "소용돌이",
     "SKILL_DETONATION_NAME": "폭발",
-    "BETTERUI_RAINCOAT": "디버프 방지됨"
+    "BETTERUI_RAINCOAT": "디버프 방지됨",
+    "BETTERUI_SECOND_PLURAL": "초"
 }
