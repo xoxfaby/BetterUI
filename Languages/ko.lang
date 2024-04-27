@@ -86,7 +86,7 @@
     "BUFF_MERCEXPOSE_NAME": "노출",
     "BUFF_MERCEXPOSE_DESC": "노출: 노출된 적을 공격하면 모든 기술 재사용 대기시간이 1.0초 감소하고 350%의 추가 피해",
     "BUFF_DEATHMARK_NAME": "죽음의 표식",
-    "BUFF_DEATHMARK_DESC": "모든 공격에 받는 피해를 7초간 50% 증가시킵니다. (중첩당 추가 7초)",
+    "BUFF_DEATHMARK_DESC": "모든 공격에 받는 피해를 7초간 50% 증가 (중첩당 추가 7초)",
     "BUFF_PULVERIZEBUILDUP_NAME": "분쇄 중첩",
     "BUFF_PULVERIZEBUILDUP_DESC": "5 중첩이 되면 분쇄 상태가 적용됩니다. (중첩 가능)",
     "BUFF_PULVERIZED_NAME": "분쇄",
