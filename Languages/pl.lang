@@ -139,5 +139,6 @@
     "BUFF_ENGITEAMSHIELD_DESC": "+50% do tarczy, +30% do prędkości ruchu",
     "BUFF_ENRAGEANCIENTWISP_NAME": "Rozgniewany Pradawny Duszek",
     "BUFF_ENRAGEANCIENTWISP_DESC": "+40% do szybkości ruchu.",
-    "BUFF_GOLDEMPOWERED_NAME": "Wzmocnione Złoto"
+    "BUFF_GOLDEMPOWERED_NAME": "Wzmocnione Złoto",
+    "BUFF_GOLDEMPOWERED_DESC": "+100% do zadawanych obrażeń"
 }
