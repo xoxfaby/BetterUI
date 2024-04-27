@@ -163,7 +163,7 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "특이점 반지 (재사용 대기 중)",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "특이점 반지 쿨타임",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "특이점 반지 (사용 가능)",
-    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "특이점 반지 효과를 발동할 수 있습니다.",
+    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "특이점 반지 효과 발동 가능",
     "BUFF_ELITEEARTH_NAME": "그의 안도",
     "BUFF_ELITEEARTH_DESC": "수리하는 엘리트의 힘을 얻습니다: 30m 이내의 가장 가까운 동료를 초당 4회, 소지자 기본 공격력의 40%만큼 치유합니다.",
     "BUFF_ELITEVOID_NAME": "공허 감염",
