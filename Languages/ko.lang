@@ -104,7 +104,7 @@
     "BUFF_SLOW60_NAME": "60% 감속",
     "BUFF_SLOW60_DESC": "이동 속도가 60% 감소합니다.",
     "BUFF_SLOW80_NAME": "80% 감속",
-    "BUFF_SLOW80_DESC": "이동 속도가 80% 감소합니다.",
+    "BUFF_SLOW80_DESC": "이동 속도 - 80%",
     "BUFF_NULLIFYSTACK_NAME": "무효화 중첩",
     "BUFF_NULLIFYSTACK_DESC": "3중첩 발동 시 무효화를 적용합니다. (중첩 가능)",
     "BUFF_NULLIFIED_NAME": "무효화",
