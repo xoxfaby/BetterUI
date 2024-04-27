@@ -171,7 +171,7 @@
     "BUFF_FRACTURE_NAME": "붕괴",
     "BUFF_FRACTURE_DESC": "첫 번째 중첩이 적용된 후 3초 후, 각 중첩당 400%의 피해를 입히고 모든 중첩을 제거합니다. (중첩 가능)",
     "BUFF_JAILERSLOW_NAME": "감금",
-    "BUFF_JAILERSLOW_DESC": "이동 속도를 100% 감소시킵니다.",
+    "BUFF_JAILERSLOW_DESC": "이동 속도 - 100%",
     "BUFF_JAILERTETHER_NAME": "속박",
     "BUFF_JAILERTETHER_DESC": "속박 중에 지속적으로 피해를 입습니다. 속박에서 벗어나려면 충분히 멀리 떨어져야 합니다.",
     "BUFF_KILLMOVESPEED_NAME": "적 처치 시 이동 속도 증가",
