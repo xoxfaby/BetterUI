@@ -40,7 +40,7 @@
     "BUFF_ENERGIZED_NAME": "에너지 충전",
     "BUFF_ENERGIZED_DESC": "공격속도 +70%",
     "BUFF_FULLCRIT_NAME": "치명타 100%",
-    "BUFF_FULLCRIT_DESC": "치명타 확률이 100% 증가합니다.",
+    "BUFF_FULLCRIT_DESC": "치명타 확률 + 100%",
     "BUFF_HIDDENINVINCIBILITY_NAME": "숨겨진 무적",
     "BUFF_HIDDENINVINCIBILITY_DESC": "모든 공격에 면역입니다.",
     "BUFF_IMMUNE_NAME": "면역",
