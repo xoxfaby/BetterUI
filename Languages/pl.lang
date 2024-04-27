@@ -144,5 +144,6 @@
     "BUFF_LIGHTNINGSHIELD_NAME": "Tarcza Piorunów",
     "BUFF_LIGHTNINGSHIELD_DESC": "To wzmocnienie nie daje żadnego efektu.",
     "BUFF_LOADEROVERCHARGED_NAME": "Przeładowany Ładowacz",
-    "BUFF_LOADEROVERCHARGED_DESC": "Jako Ładowacz, twój atak wręcz zadaje 2x obrażenia i ogłusza na 1 sekundę."
+    "BUFF_LOADEROVERCHARGED_DESC": "Jako Ładowacz, twój atak wręcz zadaje 2x obrażenia i ogłusza na 1 sekundę.",
+    "BUFF_LOADERPYLONPOWERED_NAME": "Zasilany Pylon Ładowacza"
 }
