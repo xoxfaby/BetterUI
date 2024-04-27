@@ -94,7 +94,7 @@
     "BUFF_CRIPPLE_NAME": "손상",
     "BUFF_CRIPPLE_DESC": "손상: 방어력 -20, 이동 속도 -50%",
     "BUFF_WEAK_NAME": "약화",
-    "BUFF_WEAK_DESC": "방어력이 30 감소하고 이동 속도 및 데미지가 40% 감소합니다.",
+    "BUFF_WEAK_DESC": "약화: 방어력 -30,이동 속도 및 데미지 - 40%",
     "BUFF_BEETLEJUICE_NAME": "딱정벌레 주스",
     "BUFF_BEETLEJUICE_DESC": "중첩당 최종 데미지, 이동 속도 및 공격 속도가 5% 감소합니다. (중첩 가능)",
     "BUFF_CLAYGOO_NAME": "타르",
