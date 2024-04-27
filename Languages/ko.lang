@@ -112,7 +112,7 @@
     "BUFF_ENTANGLE_NAME": "묶임",
     "BUFF_ENTANGLE_DESC": "뿌리: 이동 속도가 0으로 감소",
     "BUFF_FRUITING_NAME": "치유의 과일",
-    "BUFF_FRUITING_DESC": "사망 시 2~8개의 치유의 과일이 떨어집니다.",
+    "BUFF_FRUITING_DESC": "사망 시 2~8개의 치유의 과일을 소환",
     "BUFF_HEALINGDISABLED_NAME": "회복 불가",
     "BUFF_HEALINGDISABLED_DESC": "모든 회복 효과가 비활성화 됩니다.",
     "BUFF_ELEMENTALRINGSCOOLDOWN_NAME": "속성 반지 대기 시간",
