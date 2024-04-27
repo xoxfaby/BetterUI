@@ -151,7 +151,7 @@
     "BUFF_LOADERPYLONPOWERED_NAME": "로더 철탑 강화",
     "BUFF_LOADERPYLONPOWERED_DESC": "명중 시, 20m 이내의 최대 3명의 적을 30%의 피해로 감전시킵니다.",
     "BUFF_MEATREGENBOOST_NAME": "고기 재생력 강화",
-    "BUFF_MEATREGENBOOST_DESC": "회복력이 2(1 + 현재 레벨 *0.2)만큼  증가합니다.",
+    "BUFF_MEATREGENBOOST_DESC": "재생력이 2(1 + 현재 레벨 *0.2)  증가합니다.",
     "BUFF_SLOW30_NAME": "감속",
     "BUFF_SLOW30_DESC": "이동 속도가 30% 감소합니다.",
     "BUFF_BEARVOIDCOOLDOWN_NAME": "보호 공간 (재사용 대기 중)",
