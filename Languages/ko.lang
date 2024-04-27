@@ -130,7 +130,7 @@
     "BUFF_ENGISHIELD_DESC": "현재 보호막에 100%를 얻으며, 피격 시 넉백되지 않습니다.",
     "BUFF_LUNARSHELL_NAME": "루나 쉴드",
     "BUFF_LUNARSHELL_DESC": "최대 체력의 10% 이상의 피해를 받지 않습니다.",
-    "BUFF_VOIDFOGMILD_NAME": "보이드 안개",
+    "BUFF_VOIDFOGMILD_NAME": "보이드 안개 (약함)",
     "BUFF_VOIDFOGMILD_DESC": "화면이 어두워지며 적은 양의 피해를 입습니다. 시간이 지날수록 받는 피해가 증가합니다.",
     "BUFF_VOIDFOGSTRONG_NAME": "짙은 보이드 안개",
     "BUFF_VOIDFOGSTRONG_DESC": "화면이 어두워지며 적은 양의 피해를 입습니다. 시간이 지날수록 받는 피해가 증가합니다.",
