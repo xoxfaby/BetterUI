@@ -92,7 +92,7 @@
     "BUFF_PULVERIZED_NAME": "분쇄",
     "BUFF_PULVERIZED_DESC": "분쇄: 방어력 -60",
     "BUFF_CRIPPLE_NAME": "손상",
-    "BUFF_CRIPPLE_DESC": "방어력이 20 감소하고 이동 속도도 50% 감소합니다.",
+    "BUFF_CRIPPLE_DESC": "손상: 방어력 -20, 이동 속도 -50%",
     "BUFF_WEAK_NAME": "약화",
     "BUFF_WEAK_DESC": "방어력이 30 감소하고 이동 속도 및 데미지가 40% 감소합니다.",
     "BUFF_BEETLEJUICE_NAME": "딱정벌레 주스",
