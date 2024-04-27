@@ -98,5 +98,6 @@
     "BUFF_CLAYGOO_NAME": "Smoła",
     "BUFF_CLAYGOO_DESC": "Prędkość Ruchu zmniejszona o 50%",
     "BUFF_SLOW50_NAME": "Wolniejszy o 50%",
-    "BUFF_SLOW50_DESC": "Prędkość Ruchu zmniejszona o 50%"
+    "BUFF_SLOW50_DESC": "Prędkość Ruchu zmniejszona o 50%",
+    "BUFF_SLOW60_NAME": "Wolniejszy o 60%"
 }
