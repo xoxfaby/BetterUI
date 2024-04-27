@@ -206,7 +206,7 @@
     "BETTERUI_SLOWDURATION": "감속 지속 시간",
     "BETTERUI_DROPCHANCE": "드롭 확률",
     "BETTERUI_MAXIMUMATTACKSPEED": "최대 공격 속도",
-    "BETTERUI_ALLIES": "友方",
+    "BETTERUI_ALLIES": "적군",
     "BETTERUI_EXTRAJUMPS": "추가 점프 횟수",
     "BETTERUI_CRITCHANCE": "치명타 확률",
     "BETTERUI_CHARGETIME": "폭탄 획득 시간",
