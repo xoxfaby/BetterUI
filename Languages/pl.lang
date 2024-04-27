@@ -137,5 +137,6 @@
     "BUFF_DEAFENED_DESC": "Głuchy.",
     "BUFF_ENGITEAMSHIELD_NAME": "Tarcza Engiego (Drużyna)",
     "BUFF_ENGITEAMSHIELD_DESC": "+50% do tarczy, +30% do prędkości ruchu",
-    "BUFF_ENRAGEANCIENTWISP_NAME": "Rozgniewany Pradawny Duszek"
+    "BUFF_ENRAGEANCIENTWISP_NAME": "Rozgniewany Pradawny Duszek",
+    "BUFF_ENRAGEANCIENTWISP_DESC": "+40% do szybkości ruchu."
 }
