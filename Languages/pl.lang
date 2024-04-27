@@ -128,6 +128,6 @@
     "BUFF_LUNARSHELL_NAME": "Muszla Księżycowa",
     "BUFF_LUNARSHELL_DESC": "Obrażenia nie mogą przekraczać 10% twojego maksymalnego zdrowia",
     "BUFF_VOIDFOGMILD_NAME": "Mgła Pustki (Łagodna)",
-    "BUFF_VOIDFOGMILD_DESC": "Przyciemnia widoczność i z czasem zadaje coraz większe obrażenia. Pola Pustki: Obrażenia nie rosną z czasem.",
+    "BUFF_VOIDFOGMILD_DESC": "Zaciemnia twoje pole widzenia i z czasem zadaje coraz większe obrażenia. Pola Pustki: Obrażenia nie rosną z czasem.",
     "BUFF_VOIDFOGSTRONG_NAME": "Mgła Pustki (Silna)"
 }
