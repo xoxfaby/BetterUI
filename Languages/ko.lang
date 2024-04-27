@@ -245,7 +245,7 @@
     "BETTERUI_HEALTHPERKILL": "적 처치 시 증가량",
     "BETTERUI_DEBUFFDURATION": "디버프 지속 시간",
     "BETTERUI_COOLDOWN": "재사용 대기 시간",
-    "BETTERUI_RUINDURATION": "몰락 중첩 지속 시간",
+    "BETTERUI_RUINDURATION": "붕괴 지속 시간",
     "BETTERUI_THRESHOLD": "즉사 체력",
     "BETTERUI_ATTACKSPEED": "공격 속도",
     "BETTERUI_SHIELD": "방어막",
