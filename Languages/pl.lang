@@ -135,5 +135,6 @@
     "BUFF_BODYARMOR_DESC": "Blokuje następny atak przeciwnika, znika po użyciu.",
     "BUFF_DEAFENED_NAME": "Ogłuszony",
     "BUFF_DEAFENED_DESC": "Głuchy.",
-    "BUFF_ENGITEAMSHIELD_NAME": "Tarcza Engiego (Drużyna)"
+    "BUFF_ENGITEAMSHIELD_NAME": "Tarcza Engiego (Drużyna)",
+    "BUFF_ENGITEAMSHIELD_DESC": "+50% do tarczy, +30% do prędkości ruchu"
 }
