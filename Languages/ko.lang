@@ -120,7 +120,7 @@
     "BUFF_PERMANENTCURSE_NAME": "영원한 저주",
     "BUFF_PERMANENTCURSE_DESC": "최대 체력이 1 + 0.01*스택만큼 감소합니다. 일식 8단계에서 아군이 데미지를 받으면, 40*데미지/최대체력과 같은 영구 저주를 얻습니다. 각 스테이지가 끝날 때와 디오의 절친으로 부활할 때 모든 중첩이 제거되지만, 폭발 세례를 사용하여도 제거되지 않습니다. (중첩 가능)",
     "BUFF_OVERHEAT_NAME": "과열",
-    "BUFF_OVERHEAT_DESC": "화상 피해의 지속시간이 늘어납니다.",
+    "BUFF_OVERHEAT_DESC": "과열: 화상 피해의 지속시간 증가",
     "BUFF_LUNARSECONDARYROOT_NAME": "달의 뿌리",
     "BUFF_LUNARSECONDARYROOT_DESC": "3초 동안 이동 속도를 0으로 감소시킵니다. (중첩 가능)",
     "BUFF_LUNARDETONATIONCHARGE_NAME": "붕괴",
