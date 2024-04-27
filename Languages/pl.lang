@@ -91,5 +91,6 @@
     "BUFF_PULVERIZED_DESC": "Sproszkowany: -60 Pancerza",
     "BUFF_CRIPPLE_NAME": "Kalectwo",
     "BUFF_CRIPPLE_DESC": "Kalectwo: -20 Pancerza , o 50% zmniejszona Prędkość Ruchu",
-    "BUFF_WEAK_NAME": "Słaby"
+    "BUFF_WEAK_NAME": "Słaby",
+    "BUFF_WEAK_DESC": "Osłabiony: -30 pkt. Pancerza, o 40% zmniejszona Szybkość Ruchu, o 40% zmniejszone Obrażenia (Naturalne toksyny)"
 }
