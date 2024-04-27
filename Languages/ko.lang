@@ -11,7 +11,7 @@
     "VOIDSURVIVOR_SECONDARY_ALT_DESCRIPTION": "<style=cIsDamage>1100%의 피해</style>를 입히는 폭발성 플라즈마 구체를 발사합니다.",
     "VOIDSURVIVOR_UTILITY_ALT_DESCRIPTION": "공허 속으로 <style=cIsUtility>사라지면서</style>, <style=cIsUtility>모든 디버프를 제거</style>하고 <style=cIsUtility>전방으로</style> 이동합니다.",
     "VOIDSURVIVOR_SPECIAL_ALT_DESCRIPTION": "<style=cIsHealing>최대 체력의 25%</style>를 희생하여 <style=cIsVoid>25%의 오염</style>을 얻습니다.",
-    "BUFF_AFFIXRED_NAME": "이프리트의 탁월함",
+    "BUFF_AFFIXRED_NAME": "이프리트의 차이",
     "BUFF_AFFIXRED_DESC": "불타는 엘리트의 힘을 얻습니다: 지나가는 자리에 잠시동안 불을 붙이며, 접촉하면 화상 피해를 받습니다.",
     "BUFF_AFFIXBLUE_NAME": "두 타격 사이의 고요",
     "BUFF_AFFIXBLUE_DESC": "과전하 엘리트의 힘을 얻습니다: 일정 시간이 지난 후 공격이 폭발하여 주변 적에게 피해를 입히고, 체력의 50%가 보호막으로 대체됩니다.",
