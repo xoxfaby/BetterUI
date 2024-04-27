@@ -149,5 +149,5 @@
     "BUFF_LOADERPYLONPOWERED_DESC": "Po trafieniu razi do 3 pobliskich wrogów w promieniu 20 m, zadając im 30% obrażeń.",
     "BUFF_MEATREGENBOOST_NAME": "Zwiększona Regeneracja Mięsa",
     "BUFF_MEATREGENBOOST_DESC": "+2 regen * (1f + aktualnyPoziom * 0.2f)",
-    "BUFF_SLOW30_NAME": "Slow30"
+    "BUFF_SLOW30_NAME": ""
 }
