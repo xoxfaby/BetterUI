@@ -157,5 +157,6 @@
     "BUFF_SLOW30_NAME": "Slow30",
     "BUFF_BLINDED_NAME": "Oślepiony",
     "BUFF_BLINDED_DESC": "Obszar wokół ciebie ciemnieje, przesłaniając pole widzenia.",
-    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Opaska Osobliwości (W trakcie odnawiania)"
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Opaska Osobliwości (W trakcie odnawiania)",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Opaska Osobliwości jest w trakcie odnawiania."
 }
