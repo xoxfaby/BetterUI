@@ -160,5 +160,6 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Opaska Osobliwości (W trakcie odnawiania)",
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Opaska Osobliwości jest w trakcie odnawiania.",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Opaska Osobliwości (Gotowa)",
-    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Efekt Opaski Osobliwości może zostać aktywowany"
+    "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Efekt Opaski Osobliwości może zostać aktywowany",
+    "BUFF_ELITEEARTH_NAME": "Naprawianie"
 }
