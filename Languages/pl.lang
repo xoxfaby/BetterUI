@@ -154,5 +154,6 @@
     "BUFF_BEARVOIDCOOLDOWN_DESC": "Bezpieczna Przestrzeń jest w trakcie odnawiania.",
     "BUFF_BEARVOIDREADY_NAME": "Bezpieczna Przestrzeń (Gotowa)",
     "BUFF_BEARVOIDREADY_DESC": "Bezpieczna Przestrzeń zablokują następne otrzymane obrażenia, a następnie przejdzie w tryb odnawiania.",
-    "BUFF_SLOW30_NAME": "Slow30"
+    "BUFF_SLOW30_NAME": "Slow30",
+    "BUFF_BLINDED_NAME": "Oślepiony"
 }
