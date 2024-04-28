@@ -156,5 +156,6 @@
     "BUFF_BEARVOIDREADY_DESC": "Bezpieczna Przestrzeń zablokują następne otrzymane obrażenia, a następnie przejdzie w tryb odnawiania.",
     "BUFF_SLOW30_NAME": "Slow30",
     "BUFF_BLINDED_NAME": "Oślepiony",
-    "BUFF_BLINDED_DESC": "Obszar wokół ciebie ciemnieje, przesłaniając pole widzenia."
+    "BUFF_BLINDED_DESC": "Obszar wokół ciebie ciemnieje, przesłaniając pole widzenia.",
+    "BUFF_ELEMENTALRINGVOIDCOOLDOWN_NAME": "Opaska Osobliwości (W trakcie odnawiania)"
 }
