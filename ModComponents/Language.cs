@@ -76,6 +76,7 @@ namespace BetterUI
                         }
                     }
                 }
+                Destroy(this);
             }
         }
         static Dictionary<string, List<KeyValuePair<string, string>>> LanguageStrings = new Dictionary<string, List<KeyValuePair<string, string>>>(StringComparer.OrdinalIgnoreCase);
