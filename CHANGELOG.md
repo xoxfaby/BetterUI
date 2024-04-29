@@ -1,5 +1,21 @@
 # Changelog
 
+### v2.8.5
+ - Small Update: Languages: Language updater now removes itself after fetching all the updates. Realistically it didn't do anything after the first run, but there is also no reason to keep it around. 
+ - Small Update: Languages: Updated all the language files. BetterUI does this at startup, but this update also includes all the latest language files, reducing the need new people downloading the mod to update all of their language files. 
+ - Small Update: This update will disable BetterUI if it detects it has been interefered with, more specifically if the main menu button has been removed. 
+
+ Consider this my public statement regarding this issue:
+ 
+ Originally the main menu button was added as a proof of concept/Prototype, as stepping stone for introducing a more sophisticated UI in-game for managing both BetterUI, and other mods and their configs. After the massive drama that followed, I pretty much completely lost interest in modding RoR2, which is why no more came of it. 
+ 
+ It has remained in it's original state since then, acting as an easy way to find my discord so that people can join it to get support, a place for translators to add their credit (though I don't think any have done so yet), and as a way for people to find out how they can support BetterUI. 
+
+ I'm not gonna go to deep into why I placed it where I did, because it's not that important. If you think it's in a bad spot, that's cool with me. If you don't like seeing it and you wanna modify your own version of BetterUI to move it or hide it, I'm totally fine with that. If you're a developer who wants to work with me to move the button to a better space or to add an option to hide it after people have seen it, I am totally cool with that too and you are welcome to hit me up.
+
+ What I'm not okay with is people who release mods that hide the button from users who have potentially never seen it before, especially when a lot of that effort has been combined with mindless hate against me from people who know nothing about me. 
+
+
 ### v2.8.4
  - Bugfix: Languages: Language file hash will be checked before parsing to ensure the file downloaded correctly.
  - Bugfix: Languages: Language files will no longer be overwritten if the updated language file fails to parse. 
