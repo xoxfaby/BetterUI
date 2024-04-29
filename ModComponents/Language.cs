@@ -14,7 +14,7 @@ namespace BetterUI
         internal class UpdateChecker : UnityEngine.MonoBehaviour
         {
             const string apiUrl = "https://weblate.faby.dev/api/components/ror2/betterui/translations/";
-            void Start()
+            void Awake()
             {
                 StartCoroutine(CheckForUpdate());
             }
