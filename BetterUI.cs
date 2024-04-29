@@ -13,6 +13,9 @@ namespace BetterUI
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(GUID, Name, Version)]
+    [BepInIncompatibility("pseudopulse.MenuUIRemover")]
+    [BepInIncompatibility("com.example.nomorebetteruibutton")]
+    [BepInIncompatibility("com.Dragonyck.BUICancel")]
     public partial class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
         public const string GUID = "com.xoxfaby.BetterUI";
