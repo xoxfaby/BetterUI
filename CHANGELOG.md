@@ -1,5 +1,8 @@
 # Changelog
 
+### v2.8.7
+ - Stopped BetterUI from loading if BepInEx is broken. 
+
 ### v2.8.6 
  - Updated Mod BepInIncompatibility
  - Updated statement below because it was missing edits that were meant to be included. 
