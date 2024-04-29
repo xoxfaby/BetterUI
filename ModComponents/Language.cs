@@ -26,7 +26,7 @@ namespace BetterUI
 
                 if (apiRequest.isNetworkError)
                 {
-                    UnityEngine.Debug.LogError(apiRequest.error);
+                    UnityEngine.Debug.LogError($"Error downloading language info - {apiRequest.error}");
                 }
                 else
                 {
