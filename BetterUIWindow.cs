@@ -31,6 +31,16 @@ namespace BetterUI
             betterUIWindowPrefab = bundle.LoadAsset<GameObject>($"Assets/BetterUIWindow.prefab");
         }
 
+        class BetterUIDestroyer : MonoBehaviour{
+            internal GameObject monitoredGameObject;
+            void OnDisable(){
+                if(monitoredGameObject == null){
+                    UnityEngine.Object.Destroy(BetterUIPlugin.instance);
+                    Debug.LogError("It appears the BetterUI Button has been destroyed, this is not supported and BetterUI has been disabled.");
+                }
+            }
+        }
+
         internal static void Init()
         {
             BetterUIPlugin.Hooks.Add<BaseMainMenuScreen>(nameof(BaseMainMenuScreen.Awake), BaseMainMenuScreen_Awake);
@@ -53,8 +63,12 @@ namespace BetterUI
             {
                 var DescriptionController = DescriptionGameObject.GetComponent<LanguageTextMeshController>();
                 var modPanel = GameObject.Instantiate(modPanelPrefab, transform);
-                foreach(var hgButton in modPanel.GetComponentsInChildren<HGButton>())
+                foreach (var hgButton in modPanel.GetComponentsInChildren<HGButton>())
                 {
+                    
+                    var destroyer = self.gameObject.AddComponent<BetterUIDestroyer>();
+                    destroyer.monitoredGameObject = hgButton.gameObject;
+
                     hgButton.hoverLanguageTextMeshController = DescriptionController;
                 }
             }
@@ -132,7 +146,7 @@ namespace BetterUI
         static void SetRecursiveFlags(Transform transform)
         {
             transform.gameObject.hideFlags |= HideFlags.DontSave;
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
                 SetRecursiveFlags(child);
             }
@@ -186,7 +200,7 @@ namespace BetterUI
 
         void OnValidate()
         {
-            if(gameObject.activeInHierarchy) StartCoroutine(WaitAndLoadAsset());
+            if (gameObject.activeInHierarchy) StartCoroutine(WaitAndLoadAsset());
         }
 
     }
