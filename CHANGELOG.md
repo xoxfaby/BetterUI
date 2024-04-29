@@ -1,6 +1,6 @@
 # Changelog
 
-### v2.8.7
+### v2.8.7 & 2.8.8
  - Stopped BetterUI from loading if BepInEx is broken. 
 
 ### v2.8.6 
