@@ -16,7 +16,7 @@ namespace BetterUI
     [BepInIncompatibility("pseudopulse.MenuUIRemover")]
     [BepInIncompatibility("com.example.nomorebetteruibutton")]
     [BepInIncompatibility("com.Dragonyck.BUICancel")]
-    public partial class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
+    public class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
         public const string GUID = "com.xoxfaby.BetterUI";
         public const string Name = "BetterUI";
