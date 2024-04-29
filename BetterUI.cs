@@ -45,7 +45,7 @@ namespace BetterUI
         {
             base.Awake();
 
-            if (this.Incompatibilities.Any(x => !this.Info.Incompatibilities.Select(x => x.IncompatibilityGUID).Contains(x)))
+            if (this.Incompatibilities.Any(x => !this.Info.Incompatibilities.Select(y => y.IncompatibilityGUID).Contains(x)))
             { 
                 UnityEngine.Object.Destroy(this);
                 UnityEngine.Debug.LogError("It appears BepInEx is not functioning correctly, disabling BetterUI.");
