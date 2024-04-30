@@ -57,7 +57,7 @@ namespace BetterUI
         static void BaseMainMenuScreen_Awake(Action<BaseMainMenuScreen> orig, BaseMainMenuScreen self)
         {
             menuParent = self.transform;
-            var transform = self.transform.Find("SafeZone/GenericMenuButtonPanel");
+            var transform = self.transform.Find("SafeZone/GenericMenuButtonPanel/JuicePanel");
             var DescriptionGameObject = self.transform.Find("SafeZone/GenericMenuButtonPanel/JuicePanel/DescriptionPanel, Naked/ContentSizeFitter/DescriptionText");
             if (transform != null || DescriptionGameObject != null)
             {
@@ -71,6 +71,11 @@ namespace BetterUI
 
                     hgButton.hoverLanguageTextMeshController = DescriptionController;
                 }
+
+                RectTransform rectTransform = modPanel.GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 48f);
+
+                rectTransform.SetSiblingIndex(7);
             }
             orig(self);
         }
