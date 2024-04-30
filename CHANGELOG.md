@@ -1,5 +1,8 @@
 # Changelog
 
+### v2.8.9
+ - Moved BetterUI title screen button.
+
 ### v2.8.7 & 2.8.8
  - Stopped BetterUI from loading if BepInEx is broken. 
 
