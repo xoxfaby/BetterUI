@@ -175,5 +175,6 @@
     "BUFF_KILLMOVESPEED_DESC": "Zyskujesz +25% do prędkości ruchu. (Kumuluje się)",
     "BUFF_MUSHROOMVOIDACTIVE_NAME": "Regeneracja od Płaczącego Grzyba",
     "BUFF_MUSHROOMVOIDACTIVE_DESC": "Leczy 2% (+2% za każdy poziom kumulacji) zdrowia co sekundę podczas sprintu.",
-    "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Opalowa Zbroja"
+    "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Opalowa Zbroja",
+    "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Zyskujesz +100 pkt. pancerza. Znika przy trafieniu."
 }
