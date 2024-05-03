@@ -170,5 +170,6 @@
     "BUFF_JAILERSLOW_NAME": "Spowolnienie Strażnika Więziennego",
     "BUFF_JAILERSLOW_DESC": "-100% od prędkości ruchu",
     "BUFF_JAILERTETHER_NAME": "Uwięzienie przez Strażnika Więziennego",
-    "BUFF_JAILERTETHER_DESC": "Wskaźnik pokazujący, że jesteś uwięziony. Otrzymujesz obrażenia w czasie, gdy jesteś uwięziony. Oddal się wystarczająco daleko, aby się uwlonić."
+    "BUFF_JAILERTETHER_DESC": "Wskaźnik pokazujący, że jesteś uwięziony. Otrzymujesz obrażenia w czasie, gdy jesteś uwięziony. Oddal się wystarczająco daleko, aby się uwlonić.",
+    "BUFF_KILLMOVESPEED_NAME": "Prędkość zabójczego ruchu"
 }
