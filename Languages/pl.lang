@@ -173,5 +173,6 @@
     "BUFF_JAILERTETHER_DESC": "Wskaźnik pokazujący, że jesteś uwięziony. Otrzymujesz obrażenia w czasie, gdy jesteś uwięziony. Oddal się wystarczająco daleko, aby się uwlonić.",
     "BUFF_KILLMOVESPEED_NAME": "Prędkość zabójczego ruchu",
     "BUFF_KILLMOVESPEED_DESC": "Zyskujesz +25% do prędkości ruchu. (Kumuluje się)",
-    "BUFF_MUSHROOMVOIDACTIVE_NAME": "Regeneracja od Płaczącego Grzyba"
+    "BUFF_MUSHROOMVOIDACTIVE_NAME": "Regeneracja od Płaczącego Grzyba",
+    "BUFF_MUSHROOMVOIDACTIVE_DESC": "Leczy 2% (+2% za każdy poziom kumulacji) zdrowia co sekundę podczas sprintu."
 }
