@@ -178,5 +178,6 @@
     "BUFF_OUTOFCOMBATARMORBUFF_NAME": "Opalowa Zbroja",
     "BUFF_OUTOFCOMBATARMORBUFF_DESC": "Zyskujesz +100 pkt. pancerza. Znika przy trafieniu.",
     "BUFF_PERMANENTDEBUFF_NAME": "Permanentna Redukcja Pancerza",
-    "BUFF_PERMANENTDEBUFF_DESC": "Zmniejsza pancerz o 2 (2 na stack) do końca etapu lub do śmierci (Kumuluje się)."
+    "BUFF_PERMANENTDEBUFF_DESC": "Zmniejsza pancerz o 2 (2 na stack) do końca etapu lub do śmierci (Kumuluje się).",
+    "BUFF_PRIMARYSKILLSHURIKENBUFF_NAME": "Szuriken"
 }
