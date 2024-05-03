@@ -167,5 +167,6 @@
     "BUFF_ELITEVOID_DESC": "Upada po trafieniu i blokuje jedno trafienie co 15 sekund.",
     "BUFF_FRACTURE_NAME": "Upadek",
     "BUFF_FRACTURE_DESC": "3 sekundy po nałożeniu pierwszej kumulacji zadaje 400% obrażeń za każdą kumulację i zeruje wszystkie kumulacje. ( kumuluje się )",
-    "BUFF_JAILERSLOW_NAME": "Spowolnienie Strażnika Więziennego"
+    "BUFF_JAILERSLOW_NAME": "Spowolnienie Strażnika Więziennego",
+    "BUFF_JAILERSLOW_DESC": "-100% od prędkości ruchu"
 }
