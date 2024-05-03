@@ -164,5 +164,6 @@
     "BUFF_ELITEEARTH_NAME": "Naprawianie",
     "BUFF_ELITEVOID_NAME": "Dotknięty przez pustke",
     "BUFF_ELITEEARTH_DESC": "Zyskujesz moc Elity Naprawiającej: 4 razy na sekundę leczysz najbliższego sojusznika w promieniu 30 m, przywracając mu 40% bazowych punktów zdrowia.",
-    "BUFF_ELITEVOID_DESC": "Upada po trafieniu i blokuje jedno trafienie co 15 sekund."
+    "BUFF_ELITEVOID_DESC": "Upada po trafieniu i blokuje jedno trafienie co 15 sekund.",
+    "BUFF_FRACTURE_NAME": "Upadek"
 }
