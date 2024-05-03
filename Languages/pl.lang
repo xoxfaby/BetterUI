@@ -161,5 +161,7 @@
     "BUFF_ELEMENTALRINGVOIDCOOLDOWN_DESC": "Opaska Osobliwości jest w trakcie odnawiania.",
     "BUFF_ELEMENTALRINGVOIDREADY_NAME": "Opaska Osobliwości (Gotowa)",
     "BUFF_ELEMENTALRINGVOIDREADY_DESC": "Efekt Opaski Osobliwości może zostać aktywowany",
-    "BUFF_ELITEEARTH_NAME": "Naprawianie"
+    "BUFF_ELITEEARTH_NAME": "Naprawianie",
+    "BUFF_ELITEVOID_NAME": "Dotknięty przez pustke",
+    "BUFF_ELITEEARTH_DESC": "Zyskujesz moc Elity Naprawiającej: 4 razy na sekundę leczysz najbliższego sojusznika w promieniu 30 m, przywracając mu 40% bazowych punktów zdrowia."
 }
