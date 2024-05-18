@@ -1,5 +1,9 @@
 # Changelog
 
+v3.0.3 fix broken mods
+
+v3.0.2 update readme i think
+
 v3.0.1 updated icon sorry
 
 v3: core functionality only, stripped other useless features. 
