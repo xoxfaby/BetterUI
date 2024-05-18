@@ -1,5 +1,7 @@
 # Changelog
 
+v3.0.1 updated icon sorry
+
 v3: core functionality only, stripped other useless features. 
 
 v2.something
