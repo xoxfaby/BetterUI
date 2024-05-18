@@ -34,49 +34,14 @@ namespace BetterUI
         {
             base.Awake();
 
+
             instance = this;
             this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
             this.gameObject.AddComponent<BetterUI.Language.UpdateChecker>();
             BetterUI.Language.LoadLanguages();
 
-            if (ConfigManager.ComponentsItemSorting.Value)
-                ItemSorting.Hook();
-            if (ConfigManager.ComponentsStatsDisplay.Value)
-                StatsDisplay.Hook();
-            if (ConfigManager.ComponentsCommandImprovements.Value)
-                CommandImprovements.Hook();
-            if (ConfigManager.ComponentsDPSMeter.Value)
-                DPSMeter.Initialize();
-            if (ConfigManager.ComponentsBuffTimers.Value)
-                Buffs.Hook();
-            if (ConfigManager.ComponentsAdvancedIcons.Value)
-                AdvancedIcons.Hook();
-            if (ConfigManager.ComponentsItemCounters.Value)
-                ItemCounters.Hook();
-            if (ConfigManager.ComponentsMisc.Value)
-                Misc.Hook();
 
             BetterUIWindow.Init();
-            RoR2.ItemCatalog.availability.CallWhenAvailable(ItemStats.Initialize);
-        }
-
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            BetterAPIModIntegration = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterAPI");
-            BetterUIPlugin.Hooks.Add<RoR2.UI.HUD>("Awake", HUD_Awake);
-        }
-
-        internal static void HUD_Awake(Action<RoR2.UI.HUD> orig, RoR2.UI.HUD self)
-        {
-            orig(self);
-            hud = self;
-            objectivePanelController = self.GetComponentInChildren<RoR2.UI.ObjectivePanelController>(true);
-            if (onHUDAwake != null)
-            {
-                onHUDAwake.Invoke(hud);
-            }
         }
     }
 }

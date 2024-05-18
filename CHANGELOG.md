@@ -1,5 +1,7 @@
 # Changelog
 
+v3: core functionality only, stripped other useless features. 
+
 v2.something
 removed dono link from main menu button menu as per new rules
 

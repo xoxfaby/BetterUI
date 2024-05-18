@@ -5,7 +5,7 @@ schemaVersion = "0.0.1"
 namespace = "XoXFaby"
 name = "BetterUI"
 versionNumber = "2.0.0"
-description = "Looking for translators! Various UI improvements like ordered items with multiple ways of sorting, DPSMeter, Item Counters, Skill/Equipment/Item Information, Command/Scrapper counters and other improvements, customizable StatsDisplay, and much more."
+description = "A mod that makes the UI better by adding a nice little button to the main menu."
 websiteUrl = "https://github.com/xoxfaby/BetterUI"
 containsNsfwContent = false
 

@@ -93,12 +93,10 @@ namespace BetterUI
                 if (!exists || instance == null)
                 {
                     spawnedGameObjects[prefab] = GameObject.Instantiate(prefab, BetterUIWindow.menuParent);
-                    var button = spawnedGameObjects[prefab].transform.Find("Window/UpperLeftButtonPanel/DonateButton");
-                    if (button)
-                    {
-                        Destroy(button.gameObject);
-                    }
-                    
+                    Destroy(spawnedGameObjects[prefab].transform.Find("Window/UpperLeftButtonPanel/DonateButton")?.gameObject);
+                    Destroy(spawnedGameObjects[prefab].transform.Find("Window/UpperLeftButtonPanel/DiscordButton")?.gameObject);
+                    Destroy(spawnedGameObjects[prefab].transform.Find("Window/SocialPanel/TwitterButton")?.gameObject);
+
                 }
             }
         }
