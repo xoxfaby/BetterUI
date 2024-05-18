@@ -1,5 +1,8 @@
 # Changelog
 
+v2.something
+removed dono link from main menu button menu as per new rules
+
 ### v2.8.7 & 2.8.8
  - Stopped BetterUI from loading if BepInEx is broken. 
 
