@@ -5,7 +5,7 @@ schemaVersion = "0.0.1"
 namespace = "XoXFaby"
 name = "BetterUI"
 versionNumber = "2.0.0"
-description = "A mod that makes the UI better by adding a nice little button to the main menu."
+description = "A mod that makes the UI better by adding a nice little button to the main menu. All other features have been removed."
 websiteUrl = "https://github.com/xoxfaby/BetterUI"
 containsNsfwContent = false
 
