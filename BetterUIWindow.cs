@@ -63,9 +63,12 @@ namespace BetterUI
             {
                 var DescriptionController = DescriptionGameObject.GetComponent<LanguageTextMeshController>();
                 var modPanel = GameObject.Instantiate(modPanelPrefab, transform);
+
+                float bigifier = 0.1f;
+                modPanel.transform.position += new Vector3(Mathf.SmoothStep(0,250, bigifier),0,0);
                 foreach (var hgButton in modPanel.GetComponentsInChildren<HGButton>())
                 {
-                    
+                    hgButton.transform.localScale *= 1 + bigifier;
                     var destroyer = self.gameObject.AddComponent<BetterUIDestroyer>();
                     destroyer.monitoredGameObject = hgButton.gameObject;
 
@@ -87,6 +90,12 @@ namespace BetterUI
                 if (!exists || instance == null)
                 {
                     spawnedGameObjects[prefab] = GameObject.Instantiate(prefab, BetterUIWindow.menuParent);
+                    var button = spawnedGameObjects[prefab].transform.Find("Window/UpperLeftButtonPanel/DonateButton");
+                    if (button)
+                    {
+                        Destroy(button.gameObject);
+                    }
+                    
                 }
             }
         }
