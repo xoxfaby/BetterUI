@@ -1,5 +1,7 @@
 # Changelog
 
+v3.0.4 remove config manager because broken
+
 v3.0.3 fix broken mods
 
 v3.0.2 update readme i think
