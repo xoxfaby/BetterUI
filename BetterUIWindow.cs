@@ -34,9 +34,12 @@ namespace BetterUI
         class BetterUIDestroyer : MonoBehaviour{
             internal GameObject monitoredGameObject;
             void OnDisable(){
-                if(monitoredGameObject == null){
+                if(monitoredGameObject == null ||
+                    Mathf.Abs(monitoredGameObject.transform.position.x) < 50 ||
+                    Mathf.Abs(monitoredGameObject.transform.position.y) < 50 )
+                {
                     UnityEngine.Object.Destroy(BetterUIPlugin.instance);
-                    Debug.LogError("It appears the BetterUI Button has been destroyed, this is not supported and BetterUI has been disabled.");
+                    Debug.LogError("It appears the BetterUI Button has been destroyed or moved off the screen, this is not supported and BetterUI has been disabled.");
                 }
             }
         }

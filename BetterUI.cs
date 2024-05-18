@@ -13,19 +13,8 @@ namespace BetterUI
     [BepInDependency("dev.ontrigger.itemstats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.xoxfaby.BetterAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(GUID, Name, Version)]
-    [BepInIncompatibility(MenuUIRemoverGUID)]
-    [BepInIncompatibility(nomorebetteruibuttonGUID)]
-    [BepInIncompatibility(BUICancelGUID)]
     public class BetterUIPlugin : BetterUnityPlugin.BetterUnityPlugin<BetterUIPlugin>
     {
-        public const string MenuUIRemoverGUID = "pseudopulse.MenuUIRemover";
-        public const string nomorebetteruibuttonGUID = "com.example.nomorebetteruibutton";
-        public const string BUICancelGUID = "com.Dragonyck.BUICancel";
-        public readonly string[] Incompatibilities = new [] {
-            MenuUIRemoverGUID,
-            nomorebetteruibuttonGUID,
-            BUICancelGUID
-        };
         public const string GUID = "com.xoxfaby.BetterUI";
         public const string Name = "BetterUI";
         public const string Version = "2.7.2";
@@ -44,13 +33,6 @@ namespace BetterUI
         protected override void Awake()
         {
             base.Awake();
-
-            if (this.Incompatibilities.Any(x => !this.Info.Incompatibilities.Select(y => y.IncompatibilityGUID).Contains(x)))
-            { 
-                UnityEngine.Object.Destroy(this);
-                UnityEngine.Debug.LogError("It appears BepInEx is not functioning correctly, disabling BetterUI.");
-                return;
-            }
 
             instance = this;
             this.gameObject.hideFlags |= UnityEngine.HideFlags.HideAndDontSave;
