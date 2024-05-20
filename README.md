@@ -2,6 +2,8 @@
 
 # BetterUI
 
+## Do not try to fork this Repo to bring back old versions of the mod, they will be taken down. 
+
 A mod that makes the UI better by adding a nice little button to the main menu
 
 All other features of BetterUI have been removed. 
